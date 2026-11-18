@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gate That Didn't Open: How Stargate Shrank — Bottleneck by Jun Wei</title>
+<meta name="description" content="A US$500 billion White House promise, a land grab across Texas, and a joint venture that never really started. An explainer on how the biggest number in tech shrank.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/stargate.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <a class="sub" href="../explainers.html">← All explainers</a>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Living document · AI infrastructure</span></div>
+  <h1>The Gate That Didn't Open</h1>
+  <p class="dek">In January 2025, four men stood in the White House and promised US$500 billion of AI data centres. Twenty-two months later, one Texas campus is running, the joint venture behind the name has barely started, and the building happens under other contracts. This is how the biggest number in tech shrank.</p>
+</div>
+
+<div class="hero-fig">
+  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Three nested squares drawn to scale by gigawatts: a 10 GW target outline, about 7 GW planned across named US sites, and about 0.6 GW running at the Abilene flagship."></svg></div>
+  <div class="hero-cap">Squares drawn to scale by power capacity. Target and planned capacity: OpenAI, September 2025. Running capacity: an independent tracker's estimate for Abilene, September 2026, not a company figure. Sources below. Graphic: Jun Wei Heung.</div>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 19, 2026 · 13 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. The promise</a>
+    <a href="#s2">2. The land grab</a>
+    <a href="#s3">3. The power problem</a>
+    <a href="#s4">4. Who was paying?</a>
+    <a href="#s5">5. The stall</a>
+    <a href="#s6">6. What's left standing</a>
+    <a href="#s7">7. How we got here</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">"Stargate" means three things: a joint venture (Stargate LLC), a brand OpenAI puts on its data-centre deals, and a political announcement. I count something as Stargate if OpenAI or its partners called it that in public. Much of the 2026 reporting comes from Bloomberg, The Information and the Wall Street Journal; where I've relied on write-ups of their reporting, I say "reportedly". Site status comes from company statements where they exist and independent trackers where they don't. US-dollar figures are converted at about S$1.29 per US dollar (mid-November 2026), rounded. This explains what happened; it isn't investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>Stargate launched in January 2025 as a <b>US$500 billion</b> (about S$645 billion), four-year pledge from OpenAI, SoftBank, Oracle and MGX, with US$100 billion said to be available immediately.</li>
+      <li>By September 2025 it had grown on paper to <b>nearly 7 GW</b> of planned capacity and <b>over US$400 billion</b> across six US sites, with a 10 GW target.</li>
+      <li>By February 2026 the joint venture itself reportedly had <b>no staff and no data centres under construction</b>. Most real building ran through separate OpenAI–Oracle and OpenAI–SoftBank deals.</li>
+      <li>In spring 2026, an <b>Abilene expansion was dropped</b>, <b>Stargate UK was paused</b> and <b>Stargate Norway went to Microsoft</b>. OpenAI says it has still secured over 8 GW of compute, mostly outside the joint venture.</li>
+      <li>The Abilene flagship was due to be <b>finished by mid-2026</b>. By November 2026, trackers count <b>four to six of its eight buildings</b> live.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>The promise</h2>
+  <figure class="fig rv" id="stageFig">
+    <div class="ft">21 January 2025, the Roosevelt Room</div>
+    <div class="fs">Four men, one podium, one very large number.</div>
+    <svg id="stageSvg" viewBox="0 0 800 460" role="img" aria-label="Illustration: Donald Trump speaks at a podium in the White House, with Masayoshi Son, Larry Ellison and Sam Altman standing beside him. A speech bubble reads US$500 billion, and camera flashes go off."></svg>
+    <figcaption>Illustration by Jun Wei Heung, based on news photos of the announcement. Left to right: Donald Trump, Masayoshi Son (SoftBank), Larry Ellison (Oracle) and Sam Altman (OpenAI). Not a likeness.</figcaption>
+  </figure>
+  <p class="t dropcap">The day after his inauguration, Donald Trump stood in the Roosevelt Room beside Sam Altman of OpenAI, Masayoshi Son of SoftBank and Larry Ellison of Oracle, and <a href="https://www.cbsnews.com/news/trump-announces-private-sector-ai-infrastructure-investment" target="_blank" rel="noopener">announced</a> the largest AI infrastructure project in history. The name started as an internal code name: Altman has said <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">an early data-centre layout looked like the gate</a> from the <i>Stargate</i> TV series. The number was US$500 billion over four years.</p>
+  <p class="t">No government money was involved. The cash was meant to come from the companies themselves, with SoftBank in charge of the finances and OpenAI in charge of operations. Abu Dhabi's MGX came in as a fourth backer.</p>
+  <p class="t">Even the number grew in the room. Son later told Bloomberg that after the election he had <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">promised Trump US$100 billion</a>. Trump told him to go for 200. He came back with 500. Asked how it added up, Altman said it covered the capacity OpenAI expected to need for the next few years, and admitted he wasn't sure even a trillion dollars could be spent profitably that fast.</p>
+  <p class="t">Within a day, people were asking whether the money existed. Elon Musk posted that the backers <a href="https://www.tweaktown.com/news/102735/elon-musk-says-they-dont-actually-have-the-money-to-build-huge-500-billion-stargate-system/index.html" target="_blank" rel="noopener">"don't actually have the money"</a>. Microsoft's Satya Nadella, whose company was missing from the stage, had a <a href="https://venturebeat.com/ai/trumps-500-billion-ai-moonshot-ambition-meets-controversy-in-project-stargate/" target="_blank" rel="noopener">shorter answer</a>.</p>
+
+  <p class="pull">"I'm good for my $80 billion."<small>Satya Nadella, Microsoft, January 2025</small></p>
+
+  <div class="note">
+    <b class="h">An analogy: the engagement announcement</b>
+    Picture a couple announcing their engagement before agreeing where to live, whose name goes on the deed, or who pays the mortgage. The announcement is real. Everything that makes it a household is still to be negotiated. Stargate in January 2025 was the announcement.
+  </div>
+
+  <h2 id="s2"><span class="n">Part 2</span>The land grab</h2>
+  <p class="t">Why so big? Because OpenAI kept running out of chips. When ChatGPT's new image generator went viral in March 2025, the Studio Ghibli craze, Altman said the company had to <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">borrow computing power from its own researchers</a> and slow down other features to keep up. His argument for building anyway: if AI cost a tenth as much, people would use it twenty times as much, so OpenAI would still need twice the compute.</p>
+  <p class="t">For most of 2025, Stargate looked unstoppable. Scroll through the year it grew.</p>
+
+  <div class="scrolly" id="scrolly">
+    <div class="steps" id="steps">
+      <div class="step" data-s="0"><div class="card"><div class="lab">January 2025 · Abilene, Texas</div>The flagship existed before the name did. Crusoe started building on 1,200 acres of bare scrubland in June 2024. The plan, as <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">Crusoe described it</a>: eight buildings, up to 400,000 Nvidia chips, 1.2 GW of power and about 2,200 workers on site, all finished by mid-2026. Its nickname was "Project Ludicrous".<div class="big">US$500B<small>pledged</small></div></div></div>
+      <div class="step" data-s="1"><div class="card"><div class="lab">July 2025 · The Oracle deal</div>OpenAI agrees to take up to 4.5 GW of extra capacity from Oracle, a contract <a href="https://www.scmp.com/tech/big-tech/article/3326619/openai-expands-stargate-five-new-data-centre-sites-across-us" target="_blank" rel="noopener">reportedly worth about US$300 billion</a>. It's one of the largest cloud contracts ever signed.<div class="big">4.5 GW</div></div></div>
+      <div class="step" data-s="2"><div class="card"><div class="lab">23 September 2025 · Five new sites</div>Shackelford County, Texas. Doña Ana County, New Mexico. A Midwest site. Lordstown, Ohio. Milam County, Texas. Picked from over 300 proposals in more than 30 states, <a href="https://openai.com/index/five-new-stargate-sites/" target="_blank" rel="noopener">OpenAI says</a>.<div class="big">~7 GW<small>planned</small></div></div></div>
+      <div class="step" data-s="3"><div class="card"><div class="lab">Late 2025 · "Ahead of schedule"</div>OpenAI says the sites add up to over US$400 billion of investment over three years, and that it's ahead of schedule to lock in the full 10 GW and US$500 billion by the end of 2025.<div class="big">US$400B+</div></div></div>
+      <div class="step" data-s="4"><div class="card"><div class="lab">Going global</div>Stargate UAE, Stargate Norway and Stargate UK are announced with local partners. The name stops being one project and becomes a franchise.</div></div>
+    </div>
+    <div class="sticky">
+      <div class="chartbox">
+        <div class="ct">Stargate on paper</div>
+        <div class="cs">Grey outline: the pledge · Gold: what's been announced so far</div>
+        <svg id="growChart" viewBox="0 0 640 400" role="img" aria-label="Two gauges, money towards US$500 billion and power towards 10 gigawatts, filling as announcements are made through 2025."></svg>
+      </div>
+      <div class="chartnote">Announced and planned figures from OpenAI and partners. Planned is not built.</div>
+    </div>
+  </div>
+
+  <p class="pull">The name was everywhere. The company behind it barely existed.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>The power problem</h2>
+  <p class="t">Chips are only half of a data centre. The other half is electricity, and AI needs far more of it than anything that came before. Crusoe's founder, Chase Lochmiller, told Bloomberg that power has become <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">"the major bottleneck"</a>.</p>
+
+  <figure class="fig rv" id="rackFig">
+    <div class="ft">One rack of servers, then and now</div>
+    <div class="fs">Power budgeted for a single rack, kilowatts</div>
+    <div class="lease">
+      <div class="lrow"><div class="ll"><span>Typical data-centre rack, about 20 years ago</span><b>2–4 kW</b></div><div class="ltrack"><i class="lo" data-w="2.3"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Latest Nvidia AI rack, as Crusoe budgets it</span><b>130 kW</b></div><div class="ltrack"><i class="lg" data-w="100"></i></div></div>
+    </div>
+    <div class="bigstat"><b>1.2 GW</b><span>Abilene's planned power supply: a 200 MW substation, then a 1 GW one. Roughly what 750,000 homes use, by Bloomberg's comparison.</span></div>
+    <figcaption>Rack figures and site plan: Crusoe's Chase Lochmiller, interviewed by <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">Bloomberg Originals</a> (2025). The 2–4 kW bar is drawn at 3 kW.</figcaption>
+  </figure>
+
+  <p class="t">That's why Stargate went to West Texas. Abilene sits among wind farms that produce more power than the area uses, so a data centre there buys cheap electricity that would otherwise go to waste. Even so, Crusoe is building a gas power plant on site as backup. The cooling system is closed-loop: it is filled with about a million gallons of water once, instead of evaporating that much every day.</p>
+  <p class="t">Every gigawatt a site like this adds lands on a power grid that is already stretched, and not every country has spare wind. When OpenAI later paused Stargate UK, high energy costs were the first reason it gave.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Who was paying?</h2>
+  <p class="t">Here's the part the press conference skipped. A data centre this size costs tens of billions of dollars before it earns anything. Somebody has to borrow that money, and lenders want to know who pays it back.</p>
+
+  <figure class="fig rv" id="flowFig">
+    <div class="ft">Follow the money</div>
+    <div class="fs">How a Stargate site gets paid for, simplified. Every arrow points back to one source of cash.</div>
+    <div class="flow">
+      <div class="fbox"><b>Crusoe and other developers</b><small>Build the shell and power, then lease it to Oracle</small></div>
+      <div class="fbox"><b>Oracle</b><small>Fills it with Nvidia chips using borrowed money, then rents the compute to OpenAI</small></div>
+      <div class="fbox"><b>OpenAI</b><small>Uses the compute, and loses money every year</small></div>
+      <div class="fbox gold"><b>Subscriptions and API sales</b><small>The only cash that pays for all of it</small></div>
+    </div>
+    <div class="ft" style="margin-top:26px">The landlord signed for longer than the tenant</div>
+    <div class="fs">Contract lengths as reported. Years from the start of service.</div>
+    <div class="lease">
+      <div class="lrow"><div class="ll"><span>Oracle's data-centre leases</span><b>~15 years</b></div><div class="ltrack"><i class="lo" data-w="100"></i></div></div>
+      <div class="lrow"><div class="ll"><span>OpenAI's contract with Oracle</span><b>~5 years</b></div><div class="ltrack"><i class="lg" data-w="33.3"></i><em class="gap">Who pays for years 6–15?</em></div></div>
+      <div class="laxis"><span>Year 0</span><span>5</span><span>10</span><span>15</span></div>
+    </div>
+    <figcaption>Simplified: real deals involve more lenders, landlords and chip suppliers. Contract lengths are as reported by analysts and press, not from published contracts; see <a href="https://www.useluminix.com/reports/company-overviews/oracle-ai-debt-openai-contract" target="_blank" rel="noopener">Luminix</a> and <a href="https://startupfortune.com/oracles-default-insurance-costs-just-beat-its-2008-financial-crisis-record/" target="_blank" rel="noopener">Startup Fortune</a>.</figcaption>
+  </figure>
+
+  <p class="t">That mismatch is the whole risk in one picture. If OpenAI's revenue grows as fast as it hopes, everyone gets paid. If it doesn't, Oracle is left with buildings full of chips and a lot of debt. Lenders noticed. The price of insuring Oracle's debt against default climbed to a record in July 2026, roughly four times its level a year earlier.</p>
+
+  <figure class="fig rv" id="cdsFig">
+    <div class="ft">What lenders charge to insure Oracle's debt</div>
+    <div class="fs">Five-year credit default swap spread, basis points (1 bp = 0.01% a year)</div>
+    <div class="mkt">
+      <div class="mcol"><div class="mval" data-bp="50">0 bp</div><div class="mbar" data-h="22" style="background:var(--grey)"></div><div class="mlbl">Mid-2025 (approx.)</div></div>
+      <div class="mcol"><div class="mval" data-bp="198">0 bp</div><div class="mbar" data-h="86" style="background:var(--red)"></div><div class="mlbl">17 July 2026</div></div>
+      <div class="stamp" style="left:24%;top:20%">≈4× · record</div>
+    </div>
+    <figcaption>198.23 bp on 17 July 2026, a record, and "roughly quadrupling since mid-2025": Bloomberg data reported by <a href="https://startupfortune.com/oracles-default-insurance-costs-just-beat-its-2008-financial-crisis-record/" target="_blank" rel="noopener">Startup Fortune</a>. The mid-2025 bar is implied from that and is approximate. A rising spread means lenders are more nervous; it doesn't mean a default is coming.</figcaption>
+  </figure>
+
+  <div class="note">
+    <b class="h">An analogy: the landlord who bought the furniture</b>
+    Imagine a landlord who takes out a huge loan to buy a building and fill it with expensive furniture, because one tenant promised to rent it. The tenant is famous, growing fast and losing money every year. The landlord's whole plan rests on that one tenant staying.
+  </div>
+
+  <p class="t">One group gets paid up front, whatever happens next: the chipmakers. Bloomberg's reporter on the story put Abilene's 400,000 chips at <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">a conservative US$15–20 billion</a>, most of it to Nvidia. And the town took a risk too. To win the project, Abilene agreed to waive 85% of the property tax on the data centre. The mayor's view was that 15% of billions is still a lot of new money for roads and police. No one would give him a firm number for how many permanent jobs it would create.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The stall</h2>
+  <p class="t">A year after the White House event, <i>The Information</i> reported that the Stargate joint venture had <a href="https://the-decoder.com/stargates-500-billion-ai-infrastructure-project-reportedly-stalls-over-unresolved-disputes-between-openai-oracle-and-softbank/" target="_blank" rel="noopener">hired no one and wasn't developing any data centres</a> itself. The partners had reportedly spent months <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/stargate-ai-data-centers-for-openai-reportedly-delayed-by-squabbles-between-partners-sources-say-openai-oracle-and-softbank-disagreed-on-who-would-have-ultimate-control-of-the-planned-data-centers" target="_blank" rel="noopener">arguing over who would own and control the sites</a>.</p>
+  <p class="t">The building that did happen mostly ran around the joint venture: direct contracts between OpenAI and Oracle, and between OpenAI and SoftBank's energy arm. Stargate the brand kept going. Stargate the company barely started. Then, within a few weeks in spring 2026, the retreats began.</p>
+
+  <div class="note">
+    <b class="h">The warnings were there in 2025</b>
+    In January 2025, China's DeepSeek showed a leading AI model could be built with far less computing power, and people started asking whether projects this big were needed at all. Microsoft paused or cancelled some of its own data-centre leases. Tariffs raised the cost of the steel, aluminium and chips a data centre is made of. OpenAI had lost about US$5 billion in 2024. And when Bloomberg asked Altman what could go wrong, he named it himself: that people might <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">stop wanting to pay for AI services</a>.
+  </div>
+
+  <div class="dominoes" id="dominoes">
+    <div class="dom rv"><div class="dd">March 2026</div><h4>Abilene expansion dropped</h4><p>Oracle and OpenAI scrap a planned add-on next to the flagship after talks over financing and OpenAI's changing demand forecasts break down, <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/openais-massive-stargate-data-center-canceled-as-firm-cant-reach-terms-with-oracle-operator-struggles-with-reliability-issues-meta-said-to-be-interested-in-snatching-excess-capacity" target="_blank" rel="noopener">Bloomberg reports</a>. The existing campus keeps building.</p><span class="stamp">Dropped</span></div>
+    <div class="dom rv"><div class="dd">9 April 2026</div><h4>Stargate UK paused</h4><p>OpenAI <a href="https://www.semafor.com/article/04/09/2026/openai-pauses-uk-stargate-project" target="_blank" rel="noopener">puts the UK project on hold</a>, citing energy costs and regulation. It says it will move ahead "when the right conditions" are in place.</p><span class="stamp">Paused</span></div>
+    <div class="dom rv"><div class="dd">14 April 2026</div><h4>Norway goes to Microsoft</h4><p>Microsoft <a href="https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html" target="_blank" rel="noopener">takes over the capacity</a> at Nscale's Narvik site that was meant for OpenAI. OpenAI says it will reach Norway through Microsoft's cloud instead.</p><span class="stamp">Handed over</span></div>
+    <div class="dom rv"><div class="dd">2026</div><h4>The spending target shrinks</h4><p>OpenAI reportedly tells investors it's aiming for about <a href="https://www.techzine.eu/news/infrastructure/140487/openai-scales-back-stargate-in-europe-microsoft-fills-the-gap/" target="_blank" rel="noopener">US$600 billion of compute spending by 2030</a>. Months earlier, Altman had talked about US$1.4 trillion of commitments over eight years. The two aren't measured the same way, but the direction is clear.</p><span class="stamp">Cut</span></div>
+    <div class="dom rv"><div class="dd">2026</div><h4>The money question goes internal</h4><p>The Wall Street Journal reports that OpenAI <a href="https://www.datacenterdynamics.com/en/news/openai-missed-revenue-and-user-targets-faces-internal-concern-over-meeting-data-center-spend-commitments-report/" target="_blank" rel="noopener">missed internal revenue and user targets</a>, and that its finance chief worried about paying for future compute contracts. Altman and the CFO call the report's framing "ridiculous". It is close to the risk Altman named a year earlier.</p><span class="stamp">Disputed</span></div>
+  </div>
+
+  <p class="pull">Nobody cancelled Stargate. It got smaller every time someone had to sign a cheque.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>What's left standing</h2>
+  <p class="t">Here's every site that has carried the Stargate name, and where it stands as far as public sources show. Filter by status.</p>
+
+  <figure class="fig rv" id="siteFig">
+    <div class="ft">Stargate, site by site</div>
+    <div class="fs">Status as of November 2026. "Announced" means no confirmed public update on building.</div>
+    <div class="seg-ctrl" role="group" aria-label="Filter sites by status" id="siteFilter">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="go" aria-pressed="false">Running or building</button>
+      <button type="button" data-f="back" aria-pressed="false">Pulled back</button>
+    </div>
+    <table class="data sites">
+      <thead><tr><th>Site</th><th>Partner</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr data-g="go"><td>Abilene, Texas<small>Flagship, due to be finished by mid-2026. Trackers count four to six of its eight buildings live.</small></td><td>Oracle, Crusoe</td><td><span class="pill p-run">Running (partly)</span></td></tr>
+        <tr data-g="go"><td>Milam County, Texas<small>SoftBank owns and develops it; OpenAI designs it and leases it long-term.</small></td><td>SoftBank (SB Energy)</td><td><span class="pill p-build">Building</span></td></tr>
+        <tr data-g="go"><td>Lordstown, Ohio<small>The least public information of any US site.</small></td><td>SoftBank</td><td><span class="pill p-build">Building</span></td></tr>
+        <tr data-g="go"><td>Shackelford County, Texas</td><td>Oracle</td><td><span class="pill p-ann">Announced</span></td></tr>
+        <tr data-g="go"><td>Doña Ana County, New Mexico</td><td>Oracle</td><td><span class="pill p-ann">Announced</span></td></tr>
+        <tr data-g="go"><td>Midwest site<small>Location not named at announcement.</small></td><td>Oracle</td><td><span class="pill p-ann">Announced</span></td></tr>
+        <tr data-g="go"><td>Stargate UAE</td><td>G42, MGX</td><td><span class="pill p-ann">Announced</span></td></tr>
+        <tr data-g="back"><td>Abilene expansion<small>Planned add-on dropped, March 2026.</small></td><td>Oracle</td><td><span class="pill p-stop">Dropped</span></td></tr>
+        <tr data-g="back"><td>Stargate UK<small>On hold since April 2026.</small></td><td>Nscale, Nvidia</td><td><span class="pill p-stop">Paused</span></td></tr>
+        <tr data-g="back"><td>Stargate Norway (Narvik)<small>Capacity taken by Microsoft, April 2026.</small></td><td>Nscale</td><td><span class="pill p-stop">Handed over</span></td></tr>
+      </tbody>
+    </table>
+    <figcaption>Sources: <a href="https://openai.com/index/five-new-stargate-sites/" target="_blank" rel="noopener">OpenAI</a> (site list), <a href="https://stargate.how/news/current-status-us-stargate-data-centers" target="_blank" rel="noopener">Stargate.how tracker</a> (build status), <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/stargate-ai-data-centers-for-openai-reportedly-delayed-by-squabbles-between-partners-sources-say-openai-oracle-and-softbank-disagreed-on-who-would-have-ultimate-control-of-the-planned-data-centers" target="_blank" rel="noopener">Tom's Hardware</a> (Milam terms), plus the reports in Part 5. Trackers and companies disagree; I'll update this table as sites report.</figcaption>
+  </figure>
+
+  <p class="t">Start with the one site that's real. In 2025, Crusoe said all eight Abilene buildings would be done by mid-2026. That date has passed, and independent trackers count four to six of them live. That's fast by normal standards, and a long way short of ludicrous.</p>
+  <p class="t">OpenAI's own scorecard looks very different. In April 2026 it said it had <a href="https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/" target="_blank" rel="noopener">secured more than 8 GW</a> towards its 10 GW US goal, with over 3 GW added in 90 days. Both accounts can be true. OpenAI is getting compute, just not mainly through the venture announced at the White House.</p>
+  <p class="t">So Stargate didn't fall the way companies usually fall. There was no bankruptcy and no single cancellation. What collapsed was the idea that one joint venture, with one headline number, would build America's AI backbone. What replaced it is messier: dozens of separate leases, loans and rental deals, each priced by lenders who care about one thing, whether OpenAI's revenue can cover the bill.</p>
+  <p class="pull">There were two bottlenecks all along: the power to run the chips, and someone willing to carry the debt for them.</p>
+
+  <h2 id="s7"><span class="n">Part 7</span>How we got here</h2>
+  <ol class="tl rv">
+    <li><span class="yr">Jun 2024</span>Crusoe starts building on bare scrubland in Abilene, Texas, before the Stargate name exists.</li>
+    <li><span class="yr">21 Jan 2025</span>Stargate is announced at the White House by OpenAI, SoftBank, Oracle and MGX.<span class="big">US$500B</span></li>
+    <li><span class="yr">22 Jan 2025</span>Musk: "They don't actually have the money." Nadella: "I'm good for my $80 billion."</li>
+    <li><span class="yr">Jan–Apr 2025</span>DeepSeek rattles the industry, Microsoft pauses some data-centre leases, tariffs push up building costs, and the Ghibli craze leaves OpenAI short of GPUs.</li>
+    <li><span class="yr">Jul 2025</span>OpenAI agrees to take up to 4.5 GW of extra capacity from Oracle, reportedly worth about US$300 billion.<span class="big">4.5 GW</span></li>
+    <li><span class="yr">23 Sep 2025</span>Five new US sites. Stargate stands at nearly 7 GW and over US$400 billion, on paper.<span class="big">~7 GW</span></li>
+    <li class="hi"><span class="yr">Feb 2026</span>Reports say the joint venture has no staff and isn't building anything itself.</li>
+    <li><span class="yr">Mar 2026</span>The Abilene expansion is dropped.</li>
+    <li><span class="yr">Apr 2026</span>Stargate UK is paused and Stargate Norway goes to Microsoft. OpenAI says it has secured over 8 GW anyway.<span class="big">8 GW+</span></li>
+    <li><span class="yr">Mid-2026</span>Abilene's promised finish date passes with four to six of eight buildings live.<span class="big">4–6 of 8</span></li>
+    <li><span class="yr">Jul 2026</span>Insuring Oracle's debt costs a record 198 basis points a year.<span class="big">198 bp</span></li>
+    <li class="hi"><span class="yr">Nov 2026</span>You are here.</li>
+  </ol>
+
+  <p class="t">Next time someone announces a number this big, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q"><div class="qn">QUESTION 1</div><p>Who has actually signed to borrow the money?</p></div>
+    <div class="q"><div class="qn">QUESTION 2</div><p>And whose revenue pays it back?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from.</p>
+  <ul class="sources">
+    <li>Announcement, US$500 billion over four years, private funding: <a href="https://www.cbsnews.com/news/trump-announces-private-sector-ai-infrastructure-investment" target="_blank" rel="noopener">CBS News, Jan 21, 2025</a>; MGX and US$100 billion "immediately": <a href="https://venturebeat.com/ai/trumps-500-billion-ai-moonshot-ambition-meets-controversy-in-project-stargate/" target="_blank" rel="noopener">VentureBeat</a>.</li>
+    <li>Musk and Nadella reactions: <a href="https://www.tweaktown.com/news/102735/elon-musk-says-they-dont-actually-have-the-money-to-build-huge-500-billion-stargate-system/index.html" target="_blank" rel="noopener">TweakTown</a>, <a href="https://www.yahoo.com/news/musk-don-t-actually-money-152559630.html" target="_blank" rel="noopener">Yahoo News</a>, <a href="https://venturebeat.com/ai/trumps-500-billion-ai-moonshot-ambition-meets-controversy-in-project-stargate/" target="_blank" rel="noopener">VentureBeat</a>.</li>
+    <li>Five new sites, nearly 7 GW, over US$400 billion, 300 proposals, 10 GW target: <a href="https://openai.com/index/five-new-stargate-sites/" target="_blank" rel="noopener">OpenAI, Sep 23, 2025</a>; <a href="https://www.bloomberg.com/news/articles/2025-09-23/openai-oracle-expand-stargate-with-5-new-data-center-sites-in-us" target="_blank" rel="noopener">Bloomberg</a>. Oracle's 4.5 GW and about US$300 billion: <a href="https://www.scmp.com/tech/big-tech/article/3326619/openai-expands-stargate-five-new-data-centre-sites-across-us" target="_blank" rel="noopener">SCMP</a>.</li>
+    <li>Joint venture stall and partner disputes (reporting by The Information): <a href="https://the-decoder.com/stargates-500-billion-ai-infrastructure-project-reportedly-stalls-over-unresolved-disputes-between-openai-oracle-and-softbank/" target="_blank" rel="noopener">The Decoder</a>, <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/stargate-ai-data-centers-for-openai-reportedly-delayed-by-squabbles-between-partners-sources-say-openai-oracle-and-softbank-disagreed-on-who-would-have-ultimate-control-of-the-planned-data-centers" target="_blank" rel="noopener">Tom's Hardware</a>.</li>
+    <li>Abilene expansion dropped (reporting by Bloomberg): <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/openais-massive-stargate-data-center-canceled-as-firm-cant-reach-terms-with-oracle-operator-struggles-with-reliability-issues-meta-said-to-be-interested-in-snatching-excess-capacity" target="_blank" rel="noopener">Tom's Hardware</a>, <a href="https://www.enverus.com/blog/stargate-scales-back-openai-and-oracle-abandon-data-center-expansion/" target="_blank" rel="noopener">Enverus</a>.</li>
+    <li>Stargate UK paused: <a href="https://www.semafor.com/article/04/09/2026/openai-pauses-uk-stargate-project" target="_blank" rel="noopener">Semafor, Apr 9, 2026</a>; <a href="https://www.thenationalnews.com/news/uk/2026/04/10/openai-puts-uk-stargate-project-on-hold-over-energy-costs" target="_blank" rel="noopener">The National</a>.</li>
+    <li>Stargate Norway to Microsoft: <a href="https://www.bloomberg.com/news/articles/2026-04-14/microsoft-takes-over-norway-openai-data-center-capacity" target="_blank" rel="noopener">Bloomberg, Apr 14, 2026</a>; <a href="https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html" target="_blank" rel="noopener">CNBC</a>.</li>
+    <li>US$600 billion compute target versus US$1.4 trillion of commitments: <a href="https://www.techzine.eu/news/infrastructure/140487/openai-scales-back-stargate-in-europe-microsoft-fills-the-gap/" target="_blank" rel="noopener">Techzine</a>, <a href="https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html" target="_blank" rel="noopener">CNBC</a>. Missed targets and CFO concerns (reporting by the WSJ): <a href="https://www.datacenterdynamics.com/en/news/openai-missed-revenue-and-user-targets-faces-internal-concern-over-meeting-data-center-spend-commitments-report/" target="_blank" rel="noopener">DatacenterDynamics</a>.</li>
+    <li>Over 8 GW secured, 3 GW in 90 days: <a href="https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/" target="_blank" rel="noopener">OpenAI, Apr 29, 2026</a>.</li>
+    <li>Oracle credit default swaps (198.23 bp, Jul 17, 2026): Bloomberg data via <a href="https://startupfortune.com/oracles-default-insurance-costs-just-beat-its-2008-financial-crisis-record/" target="_blank" rel="noopener">Startup Fortune</a>. Lease-length mismatch and OpenAI concentration: <a href="https://www.useluminix.com/reports/company-overviews/oracle-ai-debt-openai-contract" target="_blank" rel="noopener">Luminix</a> (analysis, not company disclosure).</li>
+    <li>Site status, including Abilene running capacity (about 618 MW by September 2026): <a href="https://stargate.how/news/current-status-us-stargate-data-centers" target="_blank" rel="noopener">Stargate.how tracker</a>; background: <a href="https://en.wikipedia.org/wiki/Stargate_LLC" target="_blank" rel="noopener">Wikipedia, Stargate LLC</a>. Tracker figures are estimates and conflict with each other.</li>
+    <li>Abilene plan (June 2024 start, 1,200 acres, eight buildings, up to 400,000 chips, 1.2 GW, 2,200 workers, mid-2026 target), rack power (2–4 kW then, 130 kW now), on-site gas backup, closed-loop cooling, 85% property-tax abatement, the name's origin, Son's US$100B → 200 → 500 account, the Ghibli compute crunch, Altman's view of the risks, the US$15–20 billion chip estimate and OpenAI's 2024 loss: <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">Bloomberg Originals video report from the Abilene site (2025)</a>. These are 2025 statements by people involved in the project.</li>
+    <li>Currency: about S$1.29 per US dollar, mid-November 2026 mid-market. Figures are rounded.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. This is a living document and will be updated as sites report and figures are checked.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s3">The power problem</a><br><a href="#s4">Who was paying?</a><br><a href="#s6">What's left standing</a><br><a href="../explainers.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised.</div>
+</footer>
+
+<script src="../../js/stargate.js"></script>
+</body>
+</html>

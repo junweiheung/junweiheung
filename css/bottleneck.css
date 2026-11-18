@@ -1,7 +1,7 @@
 /*
- * Bottleneck: base styles shared by every page in explainers/ (articles and the index):
+ * Bottleneck: base styles shared by every explainer page in html/ (articles and explainers.html):
  * design tokens, reset, masthead, footer, kicker labels, key-findings box, reveal-on-scroll.
- * Article pages also load article.css. Each page's own styles stay in its inline <style>,
+ * Article pages also load article.css. Each page's own styles live in css/<page>.css,
  * which loads last so it can override anything here. Editing this file changes every page.
  */
 /* ---------- Design tokens ---------- */

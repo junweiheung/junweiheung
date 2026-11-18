@@ -1,10 +1,10 @@
 /*
  * Bottleneck: the single source of truth for every explainer.
  *
- * Both explainers/index.html and the homepage (../index.html) read this file.
+ * Both html/explainers.html and the homepage (index.html) read this file.
  * To publish a new explainer:
- *   1. Put the page in this folder, e.g. explainers/gpus.html
- *   2. Put a 16:9 thumbnail in explainers/thumbs/ (SVG or PNG)
+ *   1. Put the page in html/explainers/, e.g. html/explainers/gpus.html (styles in css/, scripts in js/)
+ *   2. Put a 16:9 thumbnail in images/thumbs/ (SVG or PNG)
  *   3. Add an entry to the END of `articles` below. The newest date is shown as "Latest";
  *      if two share a date, the one added later wins.
  *   4. Add any new companies to `companies` (the id is what you use in `chain`).
@@ -12,13 +12,13 @@
  * `chain` drives the company map: each step lists the companies the explainer covers at that step.
  * A company that appears in several explainers links them together on the map.
  * `margins` is optional: what each company keeps per dollar, as reported in that explainer.
- * Paths (href, thumb) are relative to the explainers/ folder.
+ * Paths (href, thumb) are relative to the html/ folder.
  */
 window.BOTTLENECK = {
   articles: [
     {
       id: "smile",
-      href: "smile.html",
+      href: "explainers/smile.html",
       title: "Who Keeps the Money? The Smile Curve of AI Chips",
       short: "Who keeps the money?",
       kicker: "Investigation",
@@ -27,7 +27,7 @@ window.BOTTLENECK = {
       readMins: 12,
       dek: "The world will spend about $1.5 trillion on chips this year. I followed one AI chip through eight companies to see who actually keeps the money. The answer bends a thirty-year-old rule.",
       summary: "Eight companies, one chip, and why margin follows scarcity",
-      thumb: "thumbs/smile.svg",
+      thumb: "../images/thumbs/smile.svg",
       stats: [
         { big: "$1.51T", text: "Global chip sales forecast for 2026, up about 90% in a year." },
         { big: "66¢", text: "What TSMC keeps of each dollar, from the step that should earn least." },
@@ -56,7 +56,7 @@ window.BOTTLENECK = {
     },
     {
       id: "gpu-unlock",
-      href: "gpu-unlock.html",
+      href: "explainers/gpu-unlock.html",
       title: "Unlocked, and Still Out of Reach: The Hidden Compute in Gaming GPUs",
       short: "Unlocked, and still out of reach",
       kicker: "Explainer",
@@ -65,7 +65,7 @@ window.BOTTLENECK = {
       readMins: 10,
       dek: "An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here's why the unlock helps the people who need it least.",
       summary: "A compute unlock, a used-card rush, and why gamers lose the bidding war",
-      thumb: "thumbs/gpu-unlock.svg",
+      thumb: "../images/thumbs/gpu-unlock.svg",
       stats: [
         { big: "+65%", text: "RTX 3090 BF16 matrix compute after the unlock: 75 → 125 TFLOPS. The RTX 4090 roughly doubles." },
         { big: "0%", text: "Extra frames in games. The parts games use were never locked." },
@@ -80,6 +80,31 @@ window.BOTTLENECK = {
       margins: {
         nvidia: "data centre US$193.7B vs gaming US$16.0B revenue, FY2026"
       }
+    },
+    {
+      id: "stargate",
+      href: "explainers/stargate.html",
+      title: "The Gate That Didn't Open: How Stargate Shrank",
+      short: "The gate that didn't open",
+      kicker: "Explainer",
+      topic: "AI infrastructure",
+      date: "2026-11-19",
+      readMins: 13,
+      dek: "A US$500 billion White House promise, a land grab across Texas, and a joint venture that barely started. How the biggest number in tech shrank.",
+      summary: "A half-trillion pledge, a debt mismatch, and who ends up holding the buildings",
+      thumb: "../images/thumbs/stargate.svg",
+      stats: [
+        { big: "US$500B", text: "Promised at the White House in January 2025, over four years." },
+        { big: "~7 GW", text: "Planned across six US sites by September 2025. About 0.6 GW was running by September 2026, by one tracker's estimate." },
+        { big: "3", text: "Stargate projects dropped, paused or handed to Microsoft in spring 2026." },
+        { big: "198 bp", text: "Record cost of insuring Oracle's debt, July 2026: roughly four times a year earlier." }
+      ],
+      chain: [
+        { step: "Funding", companies: ["softbank", "mgx"] },
+        { step: "Data-centre build", companies: ["crusoe", "oracle", "nscale"] },
+        { step: "Chips", companies: ["nvidia"] },
+        { step: "Compute buyer", companies: ["openai", "microsoft"] }
+      ]
     }
   ],
 
@@ -103,6 +128,13 @@ window.BOTTLENECK = {
     quanta:   { name: "Quanta",            hq: "Taiwan" },
     wistron:  { name: "Wistron",           hq: "Taiwan" },
     asus:     { name: "ASUS",              hq: "Taiwan" },
-    msi:      { name: "MSI",               hq: "Taiwan" }
+    msi:      { name: "MSI",               hq: "Taiwan" },
+    openai:   { name: "OpenAI",            hq: "US" },
+    oracle:   { name: "Oracle",            hq: "US" },
+    softbank: { name: "SoftBank",          hq: "Japan" },
+    mgx:      { name: "MGX",               hq: "UAE" },
+    crusoe:   { name: "Crusoe",            hq: "US" },
+    nscale:   { name: "Nscale",            hq: "UK" },
+    microsoft:{ name: "Microsoft",         hq: "US" }
   }
 };

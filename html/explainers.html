@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottleneck — Explainers by Jun Wei</title>
+<meta name="description" content="Bottleneck: interactive explainers by Jun Wei Heung on the companies and data the world can't do without.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bottleneck.css">
+<link rel="stylesheet" href="../css/explainers.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="explainers.html"><i></i>BOTTLENECK</a>
+    <nav>
+      <a href="#latest">Latest</a><a href="#all">All explainers</a><a href="#map">Company map</a><a href="#about-series">About the series</a>
+    </nav>
+    <a class="sub" href="../index.html">← Jun Wei</a>
+  </div>
+</header>
+
+<!--
+  Everything below "head" is built from articles.js.
+  To add an explainer, edit articles.js only, not this file.
+-->
+<main class="wrap">
+  <div class="head">
+    <div>
+      <div class="kicker">The series <span>· Interactive explainers</span></div>
+      <h1>Bottleneck</h1>
+    </div>
+    <p class="dek">Explainers on the companies and data the world can't do without. One industry at a time, told with charts you scroll through.</p>
+  </div>
+
+  <div class="label" id="latest">Latest <span id="latestDate"></span></div>
+  <a class="feature rv" id="feature" href="#">
+    <div class="thumb"><img id="fThumb" alt=""></div>
+    <div>
+      <div class="kicker" id="fKicker"></div>
+      <h2 id="fTitle"></h2>
+      <p id="fDek"></p>
+      <div class="meta"><span>By <b>Jun Wei Heung</b></span><span id="fDate"></span><span id="fRead"></span></div>
+      <span class="cta">Read the explainer →</span>
+    </div>
+  </a>
+  <div class="strip rv" id="strip" aria-label="Key numbers from the latest explainer"></div>
+
+  <div class="label" id="all">All explainers <span id="count"></span></div>
+  <div class="chips" id="topicChips" hidden></div>
+  <ul class="list" id="list"></ul>
+
+  <section id="map" aria-labelledby="map-title">
+    <div class="label">Company map <span id="mapCount"></span></div>
+    <div class="map-intro">
+      <h3 id="map-title">Who shows up where</h3>
+      <p>Every company the explainers cover, linked to the step of the value chain it sits at. <b style="color:var(--blue)">Blue</b> companies appear at more than one step or in more than one explainer: those are the ones holding the chain together. Click a company to see where it appears; drag to rearrange.</p>
+    </div>
+    <div class="chips" id="mapChips" hidden></div>
+    <div class="mapbox">
+      <svg id="graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
+      <div class="panel" id="panel" aria-live="polite"></div>
+    </div>
+    <div class="legend">
+      <span><i class="sq" style="background:#111"></i>Value-chain step (line shows the order)</span>
+      <span><i style="background:var(--gold2)"></i>Company</span>
+      <span><i style="background:var(--blue)"></i>Company at several steps or explainers</span>
+    </div>
+  </section>
+
+  <section class="about rv" aria-labelledby="about-series">
+    <div>
+      <div class="kicker">About the series</div>
+      <h3 id="about-series" style="margin:12px 0 18px">Why "Bottleneck"?</h3>
+      <p class="t">In every industry, a few players are the ones nobody can replace quickly. They're usually the ones keeping the money. Each explainer picks one industry, follows the money and the data through it, and asks who the bottleneck is.</p>
+      <p class="t">I'm Jun Wei, a Business AI Systems student at NUS. I write and draw these myself. If a number is wrong or out of date, <a href="mailto:heungjunwei@gmail.com" style="text-decoration-color:var(--gold)">tell me</a> and I'll fix it.</p>
+    </div>
+    <div class="keys">
+      <h4>How these work</h4>
+      <ul>
+        <li>Every number links to its source at the bottom of the page.</li>
+        <li>The charts change as you scroll, so you can read them at your own pace.</li>
+        <li>They're living documents and get updated when companies report.</li>
+        <li>They're for learning, not investment advice.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p id="footList"></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this site is investment, legal or tax advice. Figures come from the sources listed in each explainer and may be revised by the companies that report them.</div>
+</footer>
+
+<noscript><p class="wrap" style="padding:20px 24px;font-family:var(--sans)">This page needs JavaScript to list the explainers. <a href="explainers/smile.html">Read the latest: the smile curve of AI chips</a>.</p></noscript>
+
+<script src="../js/articles.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="../js/explainers.js"></script>
+</body>
+</html>

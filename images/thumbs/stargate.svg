@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .in{opacity:0;animation:fade .9s ease forwards}
+    .d1{animation-delay:.3s}.d2{animation-delay:1.1s}.d3{animation-delay:1.9s}
+    @keyframes fade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="120" fill="#fff" font-size="48" font-weight="700">Pledged, planned, running</text>
+  <text x="120" y="172" fill="#8d8a84" font-size="26">Stargate power capacity · areas drawn to scale</text>
+
+  <rect class="in d1" x="120" y="250" width="560" height="560" fill="none" stroke="#77746e" stroke-width="4" stroke-dasharray="12 10"/>
+  <rect class="in d2" x="120" y="341" width="469" height="469" fill="#2a2926" stroke="#5d5a55" stroke-width="3"/>
+  <rect class="in d3" x="120" y="673" width="137" height="137" fill="#e0b65a"/>
+
+  <g class="in d1"><text x="800" y="330" fill="#cfcbc3" font-size="60" font-weight="700">10 GW</text><text x="800" y="372" fill="#8d8a84" font-size="28">Target</text></g>
+  <g class="in d2"><text x="800" y="520" fill="#cfcbc3" font-size="60" font-weight="700">~7 GW</text><text x="800" y="562" fill="#8d8a84" font-size="28">Planned, Sep 2025</text></g>
+  <g class="in d3"><text x="800" y="730" fill="#e0b65a" font-size="60" font-weight="700">~0.6 GW</text><text x="800" y="772" fill="#8d8a84" font-size="28">Running, Sep 2026 (est.)</text></g>
+</svg>

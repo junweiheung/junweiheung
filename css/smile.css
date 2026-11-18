@@ -1,0 +1,26 @@
+/* Page-specific styles. Shared styles: bottleneck.css and article.css. */
+.sans{font-family:var(--sans)}
+.art .wide{grid-column:1/-1}
+.art p.t a:hover{background:rgba(184,137,43,.12)}
+.mkt{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;height:280px;padding:0 10%}
+.mbar{width:100%;max-width:150px;height:0;transition:height 1.4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column-reverse;overflow:hidden}
+.mbar .seg{width:100%}
+.mlbl{font-size:13px;color:var(--muted);margin-top:8px;font-weight:600}
+.step .card .who{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:12px}
+#curve{width:100%;height:auto;display:block;margin-top:8px}
+.rail{display:flex;gap:4px;margin-top:10px;font-family:var(--sans);font-size:10.5px}
+.rail span{flex:1;text-align:center;padding:5px 2px;border-top:2px solid #333;color:#6d6a64;transition:all .3s}
+.rail span.on{border-top-color:var(--gold2);color:#fff}
+.rail span.done{border-top-color:#77684a;color:#a7a39b}
+.mbarline{height:8px;background:#ece8df;position:relative;min-width:80px}
+.mbarline i{position:absolute;left:0;top:0;bottom:0;background:var(--gold)}
+.mbarline i.blue{background:var(--blue)}
+.mbarline i.grey{background:var(--grey)}
+.news form{display:flex}
+.news input{flex:1;min-width:0;padding:12px;font:14px var(--sans);border:1px solid #444;background:#1a1a1d;color:#fff}
+.news button{padding:12px 16px;font:600 13px var(--sans);background:var(--gold2);border:0;color:#111;cursor:pointer}
+h1{max-width:15ch}
+.chartbox{padding-bottom:12px}
+@media(max-width:900px){
+  .rail{display:none}
+}
