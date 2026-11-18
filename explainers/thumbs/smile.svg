@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .real{stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 1.8s ease .3s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @media (prefers-reduced-motion:reduce){.real{animation:none;stroke-dashoffset:0}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <g stroke="#1e1e22" stroke-width="2">
+    <line x1="120" x2="1480" y1="250" y2="250"/><line x1="120" x2="1480" y1="360" y2="360"/>
+    <line x1="120" x2="1480" y1="470" y2="470"/><line x1="120" x2="1480" y1="580" y2="580"/>
+    <line x1="120" x2="1480" y1="690" y2="690"/>
+  </g>
+  <text x="120" y="110" fill="#fff" font-size="44" font-weight="700">Who keeps each dollar of an AI chip</text>
+  <text x="120" y="160" fill="#8d8a84" font-size="26">Dashed: the textbook smile · Gold: 2026</text>
+  <polyline fill="none" stroke="#5d5a55" stroke-width="4" stroke-dasharray="12 12" stroke-linejoin="round"
+    points="180,338 357,382 534,470 711,567 888,584 1066,558 1243,479 1420,329"/>
+  <polyline class="real" fill="none" stroke="#e0b65a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"
+    points="180,360 357,303 534,437 711,398 888,338 1066,593 1243,664 1420,360"/>
+  <g fill="#e0b65a"><circle cx="180" cy="360" r="15"/><circle cx="357" cy="303" r="15"/><circle cx="1066" cy="593" r="15"/><circle cx="1243" cy="664" r="15"/></g>
+  <g fill="#4d8bff"><circle cx="534" cy="437" r="15"/><circle cx="711" cy="398" r="15"/><circle cx="888" cy="338" r="15"/></g>
+  <circle cx="1420" cy="360" r="13" fill="#0d0d0f" stroke="#e0b65a" stroke-width="5"/>
+  <g fill="#fff" font-size="30" font-weight="700" text-anchor="middle">
+    <text x="180" y="328">75¢</text><text x="357" y="271">88¢</text><text x="534" y="405">57¢</text><text x="711" y="366">66¢</text>
+    <text x="888" y="306">80¢</text><text x="1066" y="561">22¢</text><text x="1243" y="632">6¢</text>
+  </g>
+  <g fill="#77746e" font-size="24" text-anchor="middle">
+    <text x="180" y="790">Design</text><text x="357" y="790">EDA</text><text x="534" y="790">Equipment</text><text x="711" y="790">Wafer fab</text>
+    <text x="888" y="790">Memory</text><text x="1066" y="790">Packaging</text><text x="1243" y="790">Assembly</text><text x="1420" y="790">Software</text>
+  </g>
+</svg>

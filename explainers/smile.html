@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Keeps the Money? The Smile Curve of AI Chips — Bottleneck by Jun Wei</title>
+<meta name="description" content="An interactive explainer: following one AI chip through eight companies to see who keeps each dollar.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f5f0; --ink:#111; --ink2:#3d3d3d; --muted:#76736c; --rule:#d9d5cc;
+  --gold:#b8892b; --gold2:#e0b65a; --blue:#2463d6; --grey:#a9a59c; --red:#c2412d;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.sans{font-family:var(--sans)}
+
+/* progress bar */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:100}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50}
+.mast .in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:28px;font-family:var(--sans)}
+.logo{font-family:var(--sans);font-weight:700;letter-spacing:.22em;font-size:15px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:inline-block;width:18px;height:18px;border:2px solid var(--ink);border-radius:50%;position:relative}
+.logo i::after{content:"";position:absolute;left:3px;right:3px;top:5px;height:5px;border-bottom:2px solid var(--ink);border-radius:0 0 8px 8px}
+.mast nav{display:flex;gap:22px;font-size:13px;margin-left:auto}
+.mast nav a{text-decoration:none;color:var(--ink2)}
+.mast nav a:hover{color:var(--ink)}
+.mast .sub{font-size:12px;font-weight:600;border:1px solid var(--ink);padding:7px 12px;text-decoration:none;letter-spacing:.04em}
+.mast .sub:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:820px){.mast nav{display:none}.mast .sub{margin-left:auto}}
+
+/* header */
+.head{max-width:1240px;margin:0 auto;padding:56px 24px 0}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.kicker span{color:var(--muted);font-weight:500}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.02em;max-width:15ch;margin:18px 0 22px}
+.dek{font-size:clamp(19px,2vw,24px);line-height:1.4;color:var(--ink2);max-width:46ch}
+
+/* hero animated header (the "GIF") */
+.hero-fig{max-width:1240px;margin:40px auto 0;padding:0 24px}
+.hero-box{background:#0d0d0f;border-radius:2px;position:relative;overflow:hidden;aspect-ratio:16/7.2}
+.hero-box svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-cap{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5}
+
+/* byline */
+.byline{max-width:720px;margin:34px auto 0;padding:0 24px;font-family:var(--sans);font-size:14px;color:var(--ink2);border-top:1px solid var(--rule);padding-top:16px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between}
+.byline b{color:var(--ink);font-weight:600}
+.share{display:flex;gap:8px}
+.share button{font:inherit;font-size:12px;border:1px solid var(--rule);background:none;padding:5px 10px;cursor:pointer;color:var(--ink2)}
+.share button:hover{border-color:var(--ink);color:var(--ink)}
+
+/* article body */
+.art{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr minmax(0,680px) 1fr;gap:0 40px}
+.art > *{grid-column:2}
+.art .wide{grid-column:1/-1}
+.toc{grid-column:1;grid-row:1/span 40;align-self:start;position:sticky;top:90px;font-family:var(--sans);font-size:12.5px;padding-top:46px;max-width:200px;justify-self:end}
+.toc p{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);margin-bottom:12px}
+.toc a{display:block;text-decoration:none;color:var(--muted);padding:6px 0 6px 12px;border-left:2px solid var(--rule);line-height:1.35}
+.toc a.on{color:var(--ink);border-left-color:var(--gold);font-weight:500}
+@media(max-width:1100px){.toc{display:none}}
+
+.disc{font-style:italic;font-size:15px;color:var(--muted);line-height:1.55;margin:34px 0 8px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.art p.t{font-size:20px;line-height:1.62;margin:22px 0;color:#1d1d1d}
+.art p.t a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.art p.t a:hover{background:rgba(184,137,43,.12)}
+.dropcap::first-letter{float:left;font-size:72px;line-height:.86;font-weight:700;padding:6px 10px 0 0}
+.art h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,36px);line-height:1.12;letter-spacing:-.01em;margin:70px 0 6px;scroll-margin-top:90px}
+.art h2 .n{display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+
+/* key findings */
+.keys{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:26px 28px;margin:36px 0}
+.keys h3{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.keys ul{list-style:none}
+.keys li{font-size:17.5px;line-height:1.5;padding:10px 0 10px 26px;border-top:1px solid #eee;position:relative}
+.keys li:first-child{border-top:0}
+.keys li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+
+/* pull quote */
+.pull{font-size:clamp(26px,3vw,34px);line-height:1.25;font-weight:600;letter-spacing:-.01em;margin:46px 0;padding:24px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);text-align:center}
+.pull small{display:block;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--muted);margin-top:12px;letter-spacing:.04em}
+
+/* figures */
+figure.fig{margin:40px 0;background:#fff;border:1px solid var(--rule);padding:22px 22px 16px}
+.fig .ft{font-family:var(--sans);font-weight:700;font-size:15px}
+.fig .fs{font-family:var(--sans);font-size:13px;color:var(--muted);margin:4px 0 16px}
+.fig figcaption{font-family:var(--sans);font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.5;border-top:1px solid #eee;padding-top:10px}
+
+/* market bars */
+.mkt{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;height:280px;padding:0 10%}
+.mcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-family:var(--sans)}
+.mval{font-weight:700;font-size:22px;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.mbar{width:100%;max-width:150px;height:0;transition:height 1.4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column-reverse;overflow:hidden}
+.mbar .seg{width:100%}
+.mlbl{font-size:13px;color:var(--muted);margin-top:8px;font-weight:600}
+.legend{display:flex;gap:18px;font-family:var(--sans);font-size:12px;color:var(--ink2);margin-top:14px;justify-content:center;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.stamp{position:absolute;font-family:var(--sans);font-weight:800;color:var(--red);border:2px solid var(--red);padding:2px 8px;font-size:18px;transform:rotate(-8deg) scale(.4);opacity:0;transition:all .5s cubic-bezier(.3,1.6,.5,1) .9s}
+.in-view .stamp{transform:rotate(-8deg) scale(1);opacity:1}
+
+/* scrollytelling */
+.scrolly{grid-column:2/4;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;margin:30px 0;position:relative}
+.steps{padding:30vh 0}
+.step{min-height:70vh;display:flex;align-items:center}
+.step .card{background:#fff;border:1px solid var(--rule);padding:24px 26px;font-size:18.5px;line-height:1.55;max-width:520px;transition:opacity .4s,border-color .4s;opacity:.35}
+.step.on .card{opacity:1;border-color:var(--ink)}
+.step .card .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.step .card .who{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:12px}
+.step .card .big{font-family:var(--sans);font-weight:700;font-size:40px;letter-spacing:-.02em;line-height:1;margin-top:12px}
+.step .card .big small{font-size:14px;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:6px}
+.sticky{position:sticky;top:76px;height:calc(100vh - 96px);display:flex;flex-direction:column;justify-content:center}
+.chartbox{background:#0d0d0f;color:#eee;border-radius:2px;padding:20px 18px 12px;position:relative}
+.chartbox .ct{font-family:var(--sans);font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.chartbox .cs{font-family:var(--sans);font-size:12px;color:#8d8a84}
+#curve{width:100%;height:auto;display:block;margin-top:8px}
+.rail{display:flex;gap:4px;margin-top:10px;font-family:var(--sans);font-size:10.5px}
+.rail span{flex:1;text-align:center;padding:5px 2px;border-top:2px solid #333;color:#6d6a64;transition:all .3s}
+.rail span.on{border-top-color:var(--gold2);color:#fff}
+.rail span.done{border-top-color:#77684a;color:#a7a39b}
+.chartnote{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:1100px){.scrolly{grid-column:1/-1}}
+@media(max-width:900px){
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .sticky{top:58px;height:auto;z-index:5;padding:8px 0;background:var(--paper)}
+  .steps{padding:10vh 0;position:relative;z-index:6}
+  .step{min-height:60vh}
+  .rail{display:none}
+}
+
+/* table */
+table.data{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px}
+table.data th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:2px solid var(--ink);padding:8px 6px}
+table.data td{border-bottom:1px solid #eee;padding:10px 6px;vertical-align:middle}
+table.data td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.mbarline{height:8px;background:#ece8df;position:relative;min-width:80px}
+.mbarline i{position:absolute;left:0;top:0;bottom:0;background:var(--gold)}
+.mbarline i.blue{background:var(--blue)}
+.mbarline i.grey{background:var(--grey)}
+
+/* two questions */
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0}
+.q{background:#0d0d0f;color:#fff;padding:26px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transform:perspective(800px) rotateX(70deg);opacity:0;transform-origin:bottom;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.q:nth-child(2){transition-delay:.18s}
+.in-view .q{transform:none;opacity:1}
+.q .qn{font-family:var(--sans);font-size:11px;letter-spacing:.14em;color:var(--gold2);font-weight:700}
+.q p{font-size:23px;line-height:1.25;font-weight:600}
+@media(max-width:600px){.qs{grid-template-columns:1fr}}
+
+/* newsletter */
+.news{background:#0d0d0f;color:#fff;padding:30px;margin:46px 0;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+.news h4{font-family:var(--serif);font-size:24px;line-height:1.2}
+.news p{font-family:var(--sans);font-size:13px;color:#a9a6a0;margin-top:6px}
+.news form{display:flex}
+.news input{flex:1;min-width:0;padding:12px;font:14px var(--sans);border:1px solid #444;background:#1a1a1d;color:#fff}
+.news button{padding:12px 16px;font:600 13px var(--sans);background:var(--gold2);border:0;color:#111;cursor:pointer}
+.news-cta{display:flex;gap:10px;flex-wrap:wrap}
+.news-cta a{padding:12px 16px;font:600 13px var(--sans);background:var(--gold2);color:#111;text-decoration:none}
+.news-cta a.alt{background:none;color:#fff;border:1px solid #444}
+.news-cta a:hover{filter:brightness(1.1)}.news-cta a.alt:hover{border-color:#fff}
+@media(max-width:700px){.news{grid-template-columns:1fr}}
+
+/* sources */
+.sources{font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.sources li{margin:0 0 10px 18px}
+.sources a{color:var(--ink);text-decoration-color:var(--gold)}
+.end{font-size:15px;font-style:italic;color:var(--muted);margin:30px 0 70px}
+
+/* footer */
+footer{background:#0d0d0f;color:#bbb;font-family:var(--sans);font-size:13px;line-height:1.6;padding:50px 0 40px}
+footer .in{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer .logo{color:#fff}
+footer .logo i{border-color:#fff}footer .logo i::after{border-color:#fff}
+footer h5{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+footer .legal{max-width:1240px;margin:36px auto 0;padding:20px 24px 0;border-top:1px solid #2a2a2e;font-size:11.5px;color:#7f7c76}
+@media(max-width:800px){footer .in{grid-template-columns:1fr}}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.rv.in-view{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv,.q{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="index.html"><i></i>BOTTLENECK</a>
+    <nav>
+      <a href="../index.html">Home</a><a href="index.html">Explainers</a><a href="../index.html#works">Works</a><a href="../index.html#about">About</a>
+    </nav>
+    <a class="sub" href="../index.html">← Jun Wei</a>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Investigation <span>· Living document · Semiconductors</span></div>
+  <h1>Who Keeps the Money? The Smile Curve of AI Chips</h1>
+  <p class="dek">The world will spend about $1.5 trillion on chips this year. We followed one AI chip through eight companies to see who actually keeps it. The answer bends a thirty-year-old rule.</p>
+</div>
+
+<div class="hero-fig">
+  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <div class="hero-cap">The textbook smile (dashed) against the 2026 curve. Each dot is one step in making an AI chip, placed at the share of each dollar that step keeps. Graphic: Jun Wei Heung.</div>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 18, 2026 · 12 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Why everyone wants chips</a>
+    <a href="#s2">2. The smile curve</a>
+    <a href="#s3">3. The walk, stop by stop</a>
+    <a href="#s4">4. The 2026 curve</a>
+    <a href="#s5">5. The takeaway</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This is an educational explainer, not investment advice. Margins are each company's latest reported quarter as of publication and will change with the next earnings season. Where a figure is a company's own claim, we say so.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>Global chip sales are forecast at about <b>$1.51 trillion</b> in 2026, up roughly 90% from under $800 billion in 2025.</li>
+      <li>The classic "smile curve" says making things earns the least. In AI chips, the manufacturer in the middle, <b>TSMC, keeps about 66 cents</b> of each dollar in gross profit.</li>
+      <li>Memory maker <b>SK hynix went from 47 to 80 cents</b> of operating profit per dollar in a year, and says the shortage lasts until 2030.</li>
+      <li>The real low point is assembly: <b>Foxconn keeps about 6 cents</b> while building over 40% of AI servers, by its chairman's count.</li>
+      <li>Margin follows scarcity, not position on the chain.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Why everyone wants chips</h2>
+  <p class="t dropcap">This year, the world will buy about $1.5 trillion worth of semiconductors. Last year it bought less than $800 billion. That is almost double, in a single year, according to the <a href="https://telecomlead.com/semiconductor/wsts-raises-semiconductor-forecast-market-to-reach-1-51-trillion-in-2026-grow-to-1-9-trillion-in-2027-126102?noamp=mobile" target="_blank" rel="noopener">industry's own forecasters</a>.</p>
+
+  <figure class="fig rv" id="mktFig">
+    <div class="ft">The chip market nearly doubled in a year</div>
+    <div class="fs">Worldwide semiconductor sales, US dollars</div>
+    <div style="position:relative">
+      <div class="mkt">
+        <div class="mcol"><div class="mval" data-count="795.6" data-fmt="b">$0</div><div class="mbar" data-h="52"><div class="seg" style="height:100%;background:var(--grey)"></div></div><div class="mlbl">2025</div></div>
+        <div class="mcol"><div class="mval" data-count="1.51" data-fmt="t">$0</div><div class="mbar" data-h="100"><div class="seg" style="height:53%;background:var(--gold)"></div><div class="seg" style="height:47%;background:#2b2b2b"></div></div><div class="mlbl">2026 (forecast)</div></div>
+      </div>
+      <div class="stamp" style="left:46%;top:30%">+90%</div>
+    </div>
+    <div class="legend"><span><i style="background:var(--gold)"></i>Memory, 2026 (above $800B)</span><span><i style="background:#2b2b2b"></i>Everything else, 2026</span><span><i style="background:var(--grey)"></i>All chips, 2025</span></div>
+    <figcaption>Source: WSTS Spring 2026 forecast; 2025 sales of $795.6B. Memory's share is shown as about half the 2026 total.</figcaption>
+  </figure>
+
+  <p class="t">The reason is artificial intelligence. Every AI model is trained and run on chips, racked by the thousand inside data centres. More users, bigger models and more companies building them all point the same way: more chips. And the best ones are sold out.</p>
+  <p class="t">Memory alone is set to pass $800 billion, up about 250%. Nvidia's data-centre business <a href="https://www.storagenewsletter.com/?p=304893" target="_blank" rel="noopener">made $89 billion</a> in the single quarter that ended in July. So where does all that money go?</p>
+
+  <div class="news" id="newsletter">
+    <div><h4>Want the next explainer?</h4><p>Bottleneck is my series of interactive explainers. See what else I've written, or say hi.</p></div>
+    <div class="news-cta"><a href="index.html">More explainers</a><a href="mailto:heungjunwei@gmail.com" class="alt">Email me</a></div>
+  </div>
+
+  <h2 id="s2"><span class="n">Part 2</span>The smile curve</h2>
+  <p class="t">In the early 1990s, Stan Shih, the founder of the Taiwanese computer maker Acer, drew a curve. Line up every step of making a product, from the first idea to the final customer, and plot how much profit each step keeps.</p>
+  <p class="t">The two ends are high. Ideas, brands and software are hard to copy. The middle is low: if you can build a factory, so can someone else. Drawn out, it looks like a smile, and for three decades it explained why designers and brands got rich while manufacturers fought over thin margins.</p>
+  <p class="pull">"If you can build a factory, so can someone else."<small>The logic of the smile curve</small></p>
+  <p class="t">Now let's walk it, for one AI chip. Scroll through the eight stops below; each dot lands at the share of every dollar that step keeps.</p>
+
+  <!-- SCROLLYTELLING -->
+  <div class="scrolly" id="s3">
+    <div class="steps" id="steps">
+      <div class="step" data-s="smile"><div class="card"><div class="lab">The textbook</div>This is the smile we were promised: high at the ends, low in the middle. Keep the dashed line in mind.</div></div>
+      <div class="step" data-s="1"><div class="card"><div class="lab">Stop 1 · Chip design</div>Someone has to design the chip. Nvidia, AMD and Broadcom draw the blueprints. They don't own factories.<div class="big">75¢<small>Nvidia, gross margin</small></div><div class="who">Nvidia, AMD, Broadcom</div></div></div>
+      <div class="step" data-s="2"><div class="card"><div class="lab">Stop 2 · EDA software</div>To design a chip you need special software, called EDA. Two companies, Synopsys and Cadence, hold about 30% of the market each. Software is cheap to copy, for its owner.<div class="big">88¢<small>Cadence, non-GAAP gross margin</small></div><div class="who">Synopsys, Cadence</div></div></div>
+      <div class="step" data-s="3"><div class="card"><div class="lab">Stop 3 · Equipment</div>The machines that print chips. Only ASML makes the EUV machines the newest chips need, and it says demand will outrun supply through 2028.<div class="big">57¢<small>ASML, gross margin</small></div><div class="who">ASML, Applied Materials, Lam, TEL, KLA</div></div></div>
+      <div class="step" data-s="4"><div class="card"><div class="lab">Stop 4 · Wafer fab</div>Actually making the chips. This should be the bottom of the smile. But TSMC makes 72.5% of the world's contract-made chips.<div class="big">66¢<small>TSMC, gross margin</small></div><div class="who">TSMC</div></div></div>
+      <div class="step" data-s="5a"><div class="card"><div class="lab">Stop 5 · Memory</div>High-bandwidth memory is stacked right next to the chip to feed it data. A year ago, SK hynix kept 47 cents of operating profit per dollar.<div class="big">47¢<small>SK hynix, Q3 2025</small></div><div class="who">SK hynix, Samsung, Micron</div></div></div>
+      <div class="step" data-s="5"><div class="card"><div class="lab">Stop 5 · Memory, one year later</div>Now it's 80 cents, higher than any other step except chip-design software. SK hynix says the shortage lasts until 2030.<div class="big">80¢<small>SK hynix, operating margin, Q3 2026</small></div></div></div>
+      <div class="step" data-s="6"><div class="card"><div class="lab">Stop 6 · Packaging</div>Package the chip and its memory together. ASE, the biggest outside packager, keeps a fraction of what its neighbours do.<div class="big">22¢<small>ASE, gross margin</small></div><div class="who">TSMC CoWoS, ASE</div></div></div>
+      <div class="step" data-s="7"><div class="card"><div class="lab">Stop 7 · Rack assembly</div>Bolt 72 chips into a server rack and ship it. Foxconn builds over 40% of AI servers, by its chairman's count. This is the real low point of the smile.<div class="big">6¢<small>Foxconn, gross margin</small></div><div class="who">Foxconn, Quanta, Wistron</div></div></div>
+      <div class="step" data-s="8"><div class="card"><div class="lab">Stop 8 · Software</div>The last step is the one customers touch. Developers build on Nvidia's CUDA, so switching chips is painful. CUDA isn't sold on its own. It's why Nvidia's 75 cents stays 75 cents.<div class="who">CUDA (Nvidia again)</div></div></div>
+      <div class="step" data-s="real"><div class="card"><div class="lab">Part 4 · The 2026 curve</div>Put all the dots together. This isn't the smile we were promised. The middle has climbed: TSMC and SK hynix earn like idea companies.</div></div>
+      <div class="step" data-s="scarce"><div class="card"><div class="lab">Why</div>Because they're bottlenecks: sold out, booked for years, hard to copy. A new fab takes years and billions; so does a new memory line. The steps that are easier to add capacity to still earn little.</div></div>
+    </div>
+    <div class="sticky">
+      <div class="chartbox">
+        <div class="ct" id="chartTitle">Profit kept per dollar, by step</div>
+        <div class="cs" id="chartSub">From idea (left) to customer (right)</div>
+        <svg id="curve" viewBox="0 0 640 400"></svg>
+        <div class="rail" id="rail"></div>
+      </div>
+      <div class="chartnote">Latest reported quarter per company. Gross margins, except SK hynix (operating margin).</div>
+    </div>
+  </div>
+
+  <h2 id="s4"><span class="n">Part 4</span>The 2026 curve</h2>
+  <p class="t">The textbook smile dips in the middle. The real 2026 curve does not. TSMC and SK hynix earn like idea companies because nobody can replace them quickly: a new fab takes years and tens of billions of dollars, and so does a new memory line. SK hynix says its long-term supply deals are booked into 2029.</p>
+  <p class="t">The true low point sits further right, at packaging and assembly, where adding capacity is easier and customers have more choices.</p>
+
+  <figure class="fig rv">
+    <div class="ft">Eight stops, one chip</div>
+    <div class="fs">Share of each dollar kept, latest reported quarter</div>
+    <table class="data">
+      <thead><tr><th>Stop</th><th>Company</th><th></th><th style="text-align:right">Kept</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <figcaption>Gross margin unless noted. SK hynix reports operating margin; its gross margin is higher. Cadence figure is non-GAAP. CUDA is not sold separately and is counted inside Nvidia's margin.</figcaption>
+  </figure>
+
+  <p class="pull">Margin follows scarcity, not position.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The takeaway</h2>
+  <p class="t">So who keeps the money? Not whoever is first or last in line. Whoever the line can't do without. In 2026 that means ASML, TSMC and SK hynix as much as the designers at the top of the curve.</p>
+  <p class="t">Next time a chip stock jumps, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q"><div class="qn">QUESTION 1</div><p>Where is it on the curve?</p></div>
+    <div class="q"><div class="qn">QUESTION 2</div><p>And can anyone replace it?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from. Several will change with the next earnings season; Nvidia reports its next quarter shortly after publication.</p>
+  <ul class="sources">
+    <li>Market size, $1.51T in 2026, +90%, memory above $800B: <a href="https://telecomlead.com/semiconductor/wsts-raises-semiconductor-forecast-market-to-reach-1-51-trillion-in-2026-grow-to-1-9-trillion-in-2027-126102?noamp=mobile" target="_blank" rel="noopener">WSTS Spring 2026 forecast via TelecomLead</a>; 2025 sales of $795.6B: <a href="https://hedgefundalpha.com/?p=2206868" target="_blank" rel="noopener">Hedge Fund Alpha</a></li>
+    <li>Nvidia, $89.0B data-centre revenue, quarter ended July 2026: <a href="https://www.storagenewsletter.com/?p=304893" target="_blank" rel="noopener">StorageNewsletter / Nvidia release</a>; 75% gross margin: <a href="https://www.tomshardware.com/pc-components/gpus/nvidia-posts-record-usd215-billion-annual-revenue-in-latest-quarterly-earnings-report-gaming-gpus-now-only-11-45-percent-of-revenue" target="_blank" rel="noopener">Tom's Hardware</a>, <a href="https://www.zacks.com/stock/news/2892755/nvidias-gross-margin-hovers-near-75-can-nvda-maintain-this-level" target="_blank" rel="noopener">Zacks</a></li>
+    <li>Cadence, 88% non-GAAP gross margin, Q1 2026: <a href="https://www.zacks.com/stock/news/2909405/" target="_blank" rel="noopener">Zacks</a>; Cadence and Synopsys about 30% of EDA each: <a href="https://www.nasdaq.com/articles/cadence-spikes-post-earnings-strong-interest-ai-products" target="_blank" rel="noopener">Nasdaq / MarketBeat</a></li>
+    <li>ASML, 57.5% gross margin Q3 2026, supply short of demand in 2027–28: <a href="https://www.sec.gov/Archives/edgar/data/0000937966/000162828026065813/pressreleasefinancialresul.htm" target="_blank" rel="noopener">ASML Q3 2026 release (SEC 6-K)</a>, <a href="https://www.storagenewsletter.com/?p=306155" target="_blank" rel="noopener">StorageNewsletter</a></li>
+    <li>TSMC, 66.4% gross margin Q3 2026: <a href="https://www.trendforce.com/news/?p=65330" target="_blank" rel="noopener">TrendForce</a>; 72.5% foundry share Q2 2026: <a href="https://focustaiwan.tw/business/202609090025" target="_blank" rel="noopener">Focus Taiwan</a></li>
+    <li>SK hynix, 80% operating margin Q3 2026 vs 47% Q3 2025, shortage through 2030: <a href="https://www.webull.com/news/15822865136734208" target="_blank" rel="noopener">Webull / SK hynix results</a>, <a href="https://www.techpowerup.com/354203/" target="_blank" rel="noopener">TechPowerUp</a></li>
+    <li>ASE, 22.1% gross margin Q3 2026: <a href="https://finviz.com/news/411096/ase-technology-holding-co-ltd-reports-its-unaudited-consolidated-financial-results-for-the-third-quarter-of-2026" target="_blank" rel="noopener">Finviz / ASE release</a></li>
+    <li>Foxconn, 6.18% gross margin Q1 2026: <a href="https://iconnect007.com/article/150049/foxconn-announces-q1-2026-financial-results-net-profit-up-19-yoy/150046/smt" target="_blank" rel="noopener">I-Connect007</a>; over 40% of AI servers (chairman's claim): <a href="https://news.tvbs.com.tw/english/3174515" target="_blank" rel="noopener">TVBS</a></li>
+    <li>"72 chips in a rack" refers to Nvidia's NVL72 rack. The smile curve itself (Stan Shih, Acer, early 1990s) is general business history.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. This is a living document and will be updated as companies report.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="index.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">Why everyone wants chips</a><br><a href="#s3">The walk, stop by stop</a><br><a href="#s4">The 2026 curve</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised by the companies that report them.</div>
+</footer>
+
+<script>
+/* ---------------- data ---------------- */
+const STOPS = [
+  { k:'Design',    who:'Nvidia',    v:75,   txt:'75¢',  smile:80, note:'gross margin' },
+  { k:'EDA',       who:'Cadence',   v:88,   txt:'88¢',  smile:70, note:'non-GAAP gross' },
+  { k:'Equipment', who:'ASML',      v:57.5, txt:'57¢',  smile:50, note:'gross margin' },
+  { k:'Wafer fab', who:'TSMC',      v:66.4, txt:'66¢',  smile:28, note:'gross margin' },
+  { k:'Memory',    who:'SK hynix',  v:80,   txt:'80¢',  smile:24, note:'operating margin', prev:47 },
+  { k:'Packaging', who:'ASE',       v:22.1, txt:'22¢',  smile:30, note:'gross margin' },
+  { k:'Assembly',  who:'Foxconn',   v:6.18, txt:'6¢',   smile:48, note:'gross margin' },
+  { k:'Software',  who:'via Nvidia', v:75,   txt:'CUDA', smile:82, note:'inside Nvidia', hollow:true },
+];
+const SCARCE = new Set(['Equipment','Wafer fab','Memory']);
+
+/* ---------------- helpers ---------------- */
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+function smoothPath(pts,yMin,yMax){ // catmull-rom → bezier, kept inside the chart
+  let d=`M${pts[0][0]},${pts[0][1]}`;
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+    const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+    if(yMin!==undefined){const lo=Math.min(p1[1],p2[1]),hi=Math.max(p1[1],p2[1]);
+      // monotone-ish: don't let a segment swing past its own end points
+      c1[1]=Math.max(Math.min(c1[1],hi+ (hi-lo)*.15, yMax),yMin); c2[1]=Math.max(Math.min(c2[1],hi+(hi-lo)*.15,yMax),yMin);}
+    d+=` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+}
+
+/* ---------------- main scrolly chart ---------------- */
+const svg=document.getElementById('curve');
+const W=640,H=400,L=46,R=18,T=26,B=46;
+const X=i=>L+(W-L-R)*(i/(STOPS.length-1));
+const Y=v=>T+(H-T-B)*(1-v/100);
+// grid
+[0,25,50,75,100].forEach(v=>{el('line',{x1:L,x2:W-R,y1:Y(v),y2:Y(v),stroke:'#26262a','stroke-width':1},svg);
+  const t=el('text',{x:L-8,y:Y(v)+4,'text-anchor':'end',fill:'#6d6a64','font-size':11,'font-family':'Inter'},svg);t.textContent=v+'¢';});
+STOPS.forEach((s,i)=>{const t=el('text',{x:X(i),y:H-B+22,'text-anchor':'middle',fill:'#8d8a84','font-size':11,'font-family':'Inter'},svg);t.textContent=s.k;});
+const smileD=smoothPath(STOPS.map((s,i)=>[X(i),Y(s.smile)]));
+const smile=el('path',{d:smileD,fill:'none',stroke:'#8d8a84','stroke-width':2,'stroke-dasharray':'6 6',opacity:0},svg);
+smile.style.transition='opacity .6s';
+const realD=smoothPath(STOPS.map((s,i)=>[X(i),Y(s.v)]),Y(100),Y(0));
+const real=el('path',{d:realD,fill:'none',stroke:'#e0b65a','stroke-width':3,'stroke-linecap':'round'},svg);
+const realLen=real.getTotalLength(); real.style.strokeDasharray=realLen; real.style.strokeDashoffset=realLen; real.style.transition='stroke-dashoffset 1.4s ease';
+const smileLbl=el('text',{x:X(3)-10,y:Y(30)+28,fill:'#8d8a84','font-size':12,'font-family':'Inter','font-style':'italic',opacity:0},svg);smileLbl.textContent='the textbook smile';
+smileLbl.style.transition='opacity .6s';
+// memory "before" ghost + arrow
+const ghost=el('circle',{cx:X(4),cy:Y(47),r:7,fill:'none',stroke:'#8d8a84','stroke-width':2,'stroke-dasharray':'3 3',opacity:0},svg);
+const arrow=el('line',{x1:X(4)+14,y1:Y(47)-4,x2:X(4)+14,y2:Y(80)+10,stroke:'#8d8a84','stroke-width':1.5,'stroke-dasharray':'4 4','marker-end':'url(#ah)',opacity:0},svg);
+const defs=el('defs',{},svg);const mk=el('marker',{id:'ah',viewBox:'0 0 10 10',refX:5,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},defs);el('path',{d:'M0,0 L10,5 L0,10 z',fill:'#8d8a84'},mk);
+[ghost,arrow].forEach(e=>e.style.transition='opacity .5s');
+
+const dots=STOPS.map((s,i)=>{
+  const g=el('g',{},svg);g.style.transition='opacity .5s, transform .9s cubic-bezier(.3,1.4,.5,1)';
+  const halo=el('circle',{cx:X(i),cy:Y(s.v),r:16,fill:'#e0b65a',opacity:0},g);halo.style.transition='opacity .4s';
+  const c=el('circle',{cx:X(i),cy:Y(s.v),r:8,fill:s.hollow?'#0d0d0f':'#e0b65a',stroke:'#e0b65a','stroke-width':s.hollow?2.5:0},g);c.style.transition='fill .4s, stroke .4s';
+  const lab=el('text',{x:X(i),y:Y(s.v)-16,'text-anchor':'middle',fill:'#fff','font-size':12.5,'font-weight':600,'font-family':'Inter'},g);lab.textContent=s.txt;
+  const who=el('text',{x:X(i),y:Y(s.v)+(s.v<15?-32:26),'text-anchor':'middle',fill:'#8d8a84','font-size':10.5,'font-family':'Inter'},g);who.textContent=s.who;
+  g.style.opacity=0; g.style.transform=`translateY(${H-B-Y(s.v)}px)`;
+  return {g,c,halo};
+});
+// rail
+const rail=document.getElementById('rail');
+STOPS.forEach(s=>{const sp=document.createElement('span');sp.textContent=s.k;rail.appendChild(sp);});
+const railEls=[...rail.children];
+
+const title=document.getElementById('chartTitle'), sub=document.getElementById('chartSub');
+function setState(s){
+  const order=['smile','1','2','3','4','5a','5','6','7','8','real','scarce'];
+  const idx=order.indexOf(s);
+  smile.setAttribute('opacity', idx>=0?.9:0); smileLbl.setAttribute('opacity', idx>=0 && idx<=4?1:(idx>=10?1:0));
+  let shown=0; if(idx>=1) shown=Math.min(8, {1:1,2:2,3:3,4:4,5:4,6:5,7:6,8:7,9:8,10:8,11:8}[idx]);
+  const current={1:0,2:1,3:2,4:3,5:4,6:4,7:5,8:6,9:7}[idx];
+  dots.forEach((d,i)=>{
+    const on=i<shown;
+    d.g.style.opacity=on?1:0;
+    d.g.style.transform=on?'translateY(0)':`translateY(${H-B-Y(STOPS[i].v)}px)`;
+    d.halo.setAttribute('opacity', i===current?.25:0);
+    let fill=STOPS[i].hollow?'#0d0d0f':'#e0b65a', stroke='#e0b65a', op=1;
+    if(idx>=10 && (STOPS[i].k==='Wafer fab'||STOPS[i].k==='Memory')){fill='#4d8bff';stroke='#4d8bff';d.halo.setAttribute('opacity',.3);d.halo.setAttribute('fill','#4d8bff');}
+    else d.halo.setAttribute('fill','#e0b65a');
+    if(idx===11 && (STOPS[i].k==='Packaging'||STOPS[i].k==='Assembly')) op=.3;
+    if(idx===11 && STOPS[i].k==='Equipment'){fill='#4d8bff';stroke='#4d8bff';}
+    d.c.setAttribute('fill',fill); d.c.setAttribute('stroke',stroke); if(on) d.g.style.opacity=op;
+  });
+  // memory before/after
+  const memBefore = s==='5a';
+  if(memBefore){ dots[4].g.style.opacity=1; dots[4].g.style.transform=`translateY(${Y(47)-Y(80)}px)`; dots[4].g.querySelector('text').textContent='47¢'; }
+  else dots[4].g.querySelector('text').textContent='80¢';
+  ghost.setAttribute('opacity', s==='5'?1:0); arrow.setAttribute('opacity', s==='5'?1:0);
+  real.style.strokeDashoffset = idx>=10 ? 0 : realLen;
+  railEls.forEach((r,i)=>{r.classList.toggle('on',i===current);r.classList.toggle('done',current!==undefined?i<current:(idx>=10));});
+  if(idx>=10){title.textContent= idx===11?'Margin follows scarcity':'The 2026 curve vs the textbook smile'; sub.textContent= idx===11?'Blue: bottlenecks that are sold out and hard to copy':'Gold line: what each step actually keeps';}
+  else {title.textContent='Profit kept per dollar, by step'; sub.textContent='From idea (left) to customer (right)';}
+}
+setState('none');
+const steps=[...document.querySelectorAll('.step')];
+const sio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){steps.forEach(s=>s.classList.remove('on'));e.target.classList.add('on');setState(e.target.dataset.s);}});},{rootMargin:'-45% 0px -45% 0px'});
+steps.forEach(s=>sio.observe(s));
+
+/* ---------------- table ---------------- */
+const tb=document.getElementById('tbody');
+const WHO={Design:'Nvidia',EDA:'Cadence',Equipment:'ASML','Wafer fab':'TSMC',Memory:'SK hynix',Packaging:'ASE',Assembly:'Foxconn',Software:'CUDA (Nvidia)'};
+STOPS.forEach(s=>{
+  const cls=SCARCE.has(s.k)?'blue':(s.v<30?'grey':'');
+  tb.insertAdjacentHTML('beforeend',`<tr><td>${s.k}</td><td>${WHO[s.k]}</td><td style="width:40%"><div class="mbarline"><i class="${cls}" data-w="${s.hollow?0:s.v}" style="width:0;transition:width 1.2s ease"></i></div></td><td class="num">${s.hollow?'—':s.v+'%'}</td></tr>`);
+});
+
+/* ---------------- hero animated header (loops like a GIF) ---------------- */
+const hs=document.getElementById('heroSvg');
+const HX=i=>180+i*(1240/7), HY=v=>630-v*4.4;
+for(let v=0;v<=100;v+=25) el('line',{x1:120,x2:1480,y1:HY(v),y2:HY(v),stroke:'#1e1e22'},hs);
+const hSmile=el('path',{d:smoothPath(STOPS.map((s,i)=>[HX(i),HY(s.smile)])),fill:'none',stroke:'#5d5a55','stroke-width':3,'stroke-dasharray':'10 10'},hs);
+const hReal=el('path',{d:smoothPath(STOPS.map((s,i)=>[HX(i),HY(s.v)]),HY(100),HY(0)),fill:'none',stroke:'#e0b65a','stroke-width':5,'stroke-linecap':'round'},hs);
+const hLen=hReal.getTotalLength();hReal.style.strokeDasharray=hLen;
+const hDots=STOPS.map((s,i)=>{const g=el('g',{},hs);
+  el('circle',{cx:HX(i),cy:HY(s.v),r:14,fill:SCARCE.has(s.k)?'#4d8bff':'#e0b65a',opacity:s.hollow?0:1},g);
+  if(s.hollow) el('circle',{cx:HX(i),cy:HY(s.v),r:12,fill:'none',stroke:'#e0b65a','stroke-width':4},g);
+  const t=el('text',{x:HX(i),y:HY(s.v)-28,'text-anchor':'middle',fill:'#fff','font-size':26,'font-weight':700,'font-family':'Inter'},g);t.textContent=s.hollow?'':s.txt;
+  const k=el('text',{x:HX(i),y:690,'text-anchor':'middle',fill:'#77746e','font-size':20,'font-family':'Inter'},hs);k.textContent=s.k;
+  return {g,s,i};});
+const hTitle=el('text',{x:120,y:80,fill:'#fff','font-size':34,'font-weight':700,'font-family':'Inter'},hs);hTitle.textContent='Who keeps each dollar of an AI chip';
+const hSub=el('text',{x:120,y:118,fill:'#8d8a84','font-size':20,'font-family':'Inter'},hs);hSub.textContent='Dashed: the textbook smile · Gold: 2026';
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const easeOut=t=>1-Math.pow(1-t,3), easeBack=t=>{const c=1.7;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2);};
+function heroFrame(now){
+  const T=reduced?6.5:((now/1000)%9);   // 9-second loop
+  hSmile.style.opacity = Math.min(1,T/0.6) * (T>8.4?Math.max(0,(9-T)/0.6):1);
+  hDots.forEach(({g,s,i})=>{
+    const t0=0.8+i*0.32, p=Math.min(1,Math.max(0,(T-t0)/0.7));
+    const fade=T>8.4?Math.max(0,(9-T)/0.6):1;
+    const y=(1-easeBack(p))*(630-HY(s.v));
+    g.setAttribute('transform',`translate(0 ${y.toFixed(1)})`); g.style.opacity=(p>0?Math.min(1,p*3):0)*fade;
+  });
+  const lp=Math.min(1,Math.max(0,(T-4.0)/1.6)); hReal.style.strokeDashoffset=hLen*(1-easeOut(lp));
+  hReal.style.opacity=T>8.4?Math.max(0,(9-T)/0.6):1;
+  if(!reduced) requestAnimationFrame(heroFrame);
+}
+requestAnimationFrame(heroFrame);
+
+/* ---------------- reveal + counters ---------------- */
+function countUp(el){
+  const to=+el.dataset.count, fmt=el.dataset.fmt, t0=performance.now(), d=1400;
+  (function f(t){const p=Math.min(1,(t-t0)/d), v=to*easeOut(p);
+    el.textContent = fmt==='t' ? '$'+v.toFixed(2)+'T' : '$'+v.toFixed(1)+'B';
+    if(p<1) requestAnimationFrame(f);})(t0);
+}
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting) return;
+  e.target.classList.add('in-view'); rio.unobserve(e.target);
+  e.target.querySelectorAll('.mbar').forEach(b=>b.style.height=b.dataset.h+'%');
+  e.target.querySelectorAll('[data-count]').forEach(countUp);
+  e.target.querySelectorAll('.mbarline i').forEach(b=>b.style.width=b.dataset.w+'%');
+}),{threshold:.25});
+document.querySelectorAll('.rv, #qs').forEach(e=>rio.observe(e));
+
+/* ---------------- progress bar + TOC ---------------- */
+const prog=document.getElementById('prog'), tocLinks=[...document.querySelectorAll('#toc a')];
+const secs=tocLinks.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  const h=document.documentElement; prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur=0; secs.forEach((s,i)=>{if(s && s.getBoundingClientRect().top<innerHeight*.35) cur=i;});
+  tocLinks.forEach((a,i)=>a.classList.toggle('on',i===cur));
+},{passive:true});
+tocLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});}));
+
+/* ---------------- small bits ---------------- */
+document.getElementById('copyLink').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent='Copied';}catch(_){e.target.textContent='Copy from address bar';}});
+</script>
+</body>
+</html>

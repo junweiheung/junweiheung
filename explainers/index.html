@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottleneck — Explainers by Jun Wei</title>
+<meta name="description" content="Bottleneck: interactive explainers by Jun Wei Heung on the companies and data the world can't do without.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f5f0; --ink:#111; --ink2:#3d3d3d; --muted:#76736c; --rule:#d9d5cc;
+  --gold:#b8892b; --gold2:#e0b65a; --blue:#2463d6;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+/* masthead (same as explainers) */
+.mast{border-bottom:1px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50}
+.mast .in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:28px;font-family:var(--sans)}
+.logo{font-family:var(--sans);font-weight:700;letter-spacing:.22em;font-size:15px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:inline-block;width:18px;height:18px;border:2px solid var(--ink);border-radius:50%;position:relative}
+.logo i::after{content:"";position:absolute;left:3px;right:3px;top:5px;height:5px;border-bottom:2px solid var(--ink);border-radius:0 0 8px 8px}
+.mast nav{display:flex;gap:22px;font-size:13px;margin-left:auto}
+.mast nav a{text-decoration:none;color:var(--ink2)}
+.mast nav a:hover{color:var(--ink)}
+.mast .sub{font-size:12px;font-weight:600;border:1px solid var(--ink);padding:7px 12px;text-decoration:none;letter-spacing:.04em}
+.mast .sub:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:820px){.mast nav{display:none}.mast .sub{margin-left:auto}}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+#latest,#all,#map,#about-series{scroll-margin-top:80px}
+
+/* header */
+.head{padding:64px 0 40px;border-bottom:1px solid var(--ink);display:grid;grid-template-columns:1fr;gap:20px}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.kicker span{color:var(--muted);font-weight:500}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,9vw,120px);line-height:.95;letter-spacing:-.03em;margin-top:14px}
+.dek{font-size:clamp(19px,2vw,24px);line-height:1.4;color:var(--ink2);max-width:40ch;align-self:end}
+@media(min-width:900px){.head{grid-template-columns:1.1fr 1fr;align-items:end}}
+
+/* section labels */
+.label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:14px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:12px}
+.label span{color:var(--muted);font-weight:500}
+
+/* featured */
+.feature{display:grid;grid-template-columns:1fr;gap:28px;padding:32px 0 48px;text-decoration:none}
+.feature .thumb{background:#0d0d0f;border-radius:2px;overflow:hidden;aspect-ratio:16/9}
+.feature .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.feature h2{font-family:var(--serif);font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1.04;letter-spacing:-.02em;margin:12px 0 16px}
+.feature:hover h2{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:6px}
+.feature p{font-size:20px;line-height:1.55;color:#1d1d1d;max-width:46ch}
+.meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.meta b{color:var(--ink);font-weight:600}
+.cta{display:inline-block;margin-top:22px;font-family:var(--sans);font-size:13px;font-weight:600;padding:10px 16px;background:var(--ink);color:var(--paper)}
+.feature:hover .cta{background:var(--gold)}
+@media(min-width:900px){.feature{grid-template-columns:1.25fr 1fr;gap:44px;align-items:center}}
+
+/* key numbers */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-bottom:56px}
+.strip div{padding:20px 18px;border-left:1px solid var(--rule)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip .big{font-family:var(--sans);font-weight:700;font-size:34px;letter-spacing:-.02em;line-height:1}
+.strip p{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.45;margin-top:8px}
+@media(max-width:600px){.strip div{border-left:0;border-top:1px solid var(--rule);padding-left:0}.strip div:first-child{border-top:0}}
+
+/* filter chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 4px}
+.chips button{font-family:var(--sans);font-size:12px;font-weight:500;border:1px solid var(--rule);background:none;padding:6px 12px;cursor:pointer;color:var(--ink2)}
+.chips button:hover{border-color:var(--ink);color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* archive list */
+.list{list-style:none;margin-bottom:64px}
+.list li{border-bottom:1px solid var(--rule)}
+.list a{display:grid;grid-template-columns:110px 1fr auto;gap:8px 24px;align-items:baseline;padding:20px 0;text-decoration:none}
+.list .date{font-family:var(--sans);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list .t{font-size:22px;font-weight:600;line-height:1.25}
+.list .t small{display:block;font-family:var(--sans);font-size:13px;font-weight:400;color:var(--muted);margin-top:4px}
+.list .tag{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.list a:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.list li.soon{padding:20px 0;font-style:italic;color:var(--muted);font-size:18px}
+@media(max-width:600px){.list a{grid-template-columns:1fr}.list .tag{order:-1}}
+
+/* company map */
+.map-intro{display:grid;grid-template-columns:1fr;gap:12px 40px;padding:22px 0 18px}
+.map-intro h3{font-family:var(--serif);font-size:clamp(28px,3.2vw,36px);line-height:1.12;letter-spacing:-.01em}
+.map-intro p{font-size:18px;line-height:1.55;color:var(--ink2);max-width:52ch}
+@media(min-width:900px){.map-intro{grid-template-columns:1fr 1fr;align-items:end}}
+.mapbox{display:grid;grid-template-columns:1fr;border:1px solid var(--rule);border-top:3px solid var(--ink);background:#fff;margin-bottom:12px}
+@media(min-width:900px){.mapbox{grid-template-columns:minmax(0,1fr) 300px}}
+#graph{width:100%;height:560px;display:block;cursor:grab;touch-action:none}
+#graph:active{cursor:grabbing}
+@media(max-width:600px){#graph{height:720px}}
+.panel{border-top:1px solid var(--rule);padding:22px;font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink2)}
+@media(min-width:900px){.panel{border-top:0;border-left:1px solid var(--rule)}}
+.panel h4{font-family:var(--serif);font-size:26px;line-height:1.1;color:var(--ink);margin-bottom:4px}
+.panel .hq{font-size:12px;color:var(--muted);letter-spacing:.04em;margin-bottom:16px}
+.panel .hint{color:var(--muted)}
+.panel ul{list-style:none}
+.panel li{padding:12px 0;border-top:1px solid #eee}
+.panel li a{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);text-decoration-color:var(--gold)}
+.panel li .role{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.panel li .m{font-weight:700;color:var(--ink)}
+.panel .peers{margin-top:16px;font-size:12.5px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--sans);font-size:12px;color:var(--ink2);margin-bottom:64px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.legend i.sq{border-radius:2px}
+
+/* graph marks */
+.g-link{stroke:#d9d5cc;stroke-width:1.2}
+.g-chain{stroke:#111;stroke-width:2;fill:none}
+.g-step rect{fill:#111}
+.g-step text{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;fill:#fff;pointer-events:none}
+.g-co circle{fill:var(--gold2);stroke:#fff;stroke-width:2;cursor:pointer;transition:fill .2s}
+.g-co.bridge circle{fill:var(--blue)}
+.g-co text{font-family:var(--sans);font-size:12px;font-weight:500;fill:var(--ink);pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.g-co.sel circle{stroke:var(--ink);stroke-width:3}
+.dim{opacity:.12}
+.g-co:focus{outline:none}.g-co:focus-visible circle{stroke:var(--ink);stroke-width:3}
+
+/* about the series */
+.about{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:72px}
+.about h3{font-family:var(--serif);font-size:clamp(28px,3.2vw,36px);line-height:1.12;letter-spacing:-.01em}
+.about p.t{font-size:19px;line-height:1.6;color:#1d1d1d;margin-bottom:16px}
+.keys{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:24px 26px;align-self:start}
+.keys h4{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.keys ul{list-style:none}
+.keys li{font-size:17px;line-height:1.5;padding:10px 0 10px 24px;border-top:1px solid #eee;position:relative}
+.keys li:first-child{border-top:0}
+.keys li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+@media(min-width:900px){.about{grid-template-columns:1.2fr 1fr;gap:56px}}
+
+/* footer (same as explainers) */
+footer{background:#0d0d0f;color:#bbb;font-family:var(--sans);font-size:13px;line-height:1.6;padding:50px 0 40px}
+footer .in{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer .logo{color:#fff}
+footer .logo i{border-color:#fff}footer .logo i::after{border-color:#fff}
+footer h5{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+footer .legal{max-width:1240px;margin:36px auto 0;padding:20px 24px 0;border-top:1px solid #2a2a2e;font-size:11.5px;color:#7f7c76}
+@media(max-width:800px){footer .in{grid-template-columns:1fr}}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.rv.in-view{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="index.html"><i></i>BOTTLENECK</a>
+    <nav>
+      <a href="#latest">Latest</a><a href="#all">All explainers</a><a href="#map">Company map</a><a href="#about-series">About the series</a>
+    </nav>
+    <a class="sub" href="../index.html">← Jun Wei</a>
+  </div>
+</header>
+
+<!--
+  Everything below "head" is built from articles.js.
+  To add an explainer, edit articles.js only, not this file.
+-->
+<main class="wrap">
+  <div class="head">
+    <div>
+      <div class="kicker">The series <span>· Interactive explainers</span></div>
+      <h1>Bottleneck</h1>
+    </div>
+    <p class="dek">Explainers on the companies and data the world can't do without. One industry at a time, told with charts you scroll through.</p>
+  </div>
+
+  <div class="label" id="latest">Latest <span id="latestDate"></span></div>
+  <a class="feature rv" id="feature" href="#">
+    <div class="thumb"><img id="fThumb" alt=""></div>
+    <div>
+      <div class="kicker" id="fKicker"></div>
+      <h2 id="fTitle"></h2>
+      <p id="fDek"></p>
+      <div class="meta"><span>By <b>Jun Wei Heung</b></span><span id="fDate"></span><span id="fRead"></span></div>
+      <span class="cta">Read the explainer →</span>
+    </div>
+  </a>
+  <div class="strip rv" id="strip" aria-label="Key numbers from the latest explainer"></div>
+
+  <div class="label" id="all">All explainers <span id="count"></span></div>
+  <div class="chips" id="topicChips" hidden></div>
+  <ul class="list" id="list"></ul>
+
+  <section id="map" aria-labelledby="map-title">
+    <div class="label">Company map <span id="mapCount"></span></div>
+    <div class="map-intro">
+      <h3 id="map-title">Who shows up where</h3>
+      <p>Every company the explainers cover, linked to the step of the value chain it sits at. <b style="color:var(--blue)">Blue</b> companies appear at more than one step or in more than one explainer: those are the ones holding the chain together. Click a company to see where it appears; drag to rearrange.</p>
+    </div>
+    <div class="chips" id="mapChips" hidden></div>
+    <div class="mapbox">
+      <svg id="graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
+      <div class="panel" id="panel" aria-live="polite"></div>
+    </div>
+    <div class="legend">
+      <span><i class="sq" style="background:#111"></i>Value-chain step (line shows the order)</span>
+      <span><i style="background:var(--gold2)"></i>Company</span>
+      <span><i style="background:var(--blue)"></i>Company at several steps or explainers</span>
+    </div>
+  </section>
+
+  <section class="about rv" aria-labelledby="about-series">
+    <div>
+      <div class="kicker">About the series</div>
+      <h3 id="about-series" style="margin:12px 0 18px">Why "Bottleneck"?</h3>
+      <p class="t">In every industry, a few players are the ones nobody can replace quickly. They're usually the ones keeping the money. Each explainer picks one industry, follows the money and the data through it, and asks who the bottleneck is.</p>
+      <p class="t">I'm Jun Wei, a Business AI Systems student at NUS. I write and draw these myself. If a number is wrong or out of date, <a href="mailto:heungjunwei@gmail.com" style="text-decoration-color:var(--gold)">tell me</a> and I'll fix it.</p>
+    </div>
+    <div class="keys">
+      <h4>How these work</h4>
+      <ul>
+        <li>Every number links to its source at the bottom of the page.</li>
+        <li>The charts change as you scroll, so you can read them at your own pace.</li>
+        <li>They're living documents and get updated when companies report.</li>
+        <li>They're for learning, not investment advice.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="index.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p id="footList"></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this site is investment, legal or tax advice. Figures come from the sources listed in each explainer and may be revised by the companies that report them.</div>
+</footer>
+
+<noscript><p class="wrap" style="padding:20px 24px;font-family:var(--sans)">This page needs JavaScript to list the explainers. <a href="smile.html">Read the latest: the smile curve of AI chips</a>.</p></noscript>
+
+<script src="articles.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const DATA = window.BOTTLENECK || { articles: [], companies: {} };
+  const articles = [...DATA.articles].sort((a, b) => b.date.localeCompare(a.date));
+  const companies = DATA.companies;
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmtDate = (iso, opts) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", opts);
+  const longDate = (iso) => fmtDate(iso, { month: "long", day: "numeric", year: "numeric" });
+  const shortDate = (iso) => fmtDate(iso, { month: "short", day: "numeric", year: "numeric" });
+
+  /* ---------- latest + key numbers ---------- */
+  const latest = articles[0];
+  if (latest) {
+    $("latestDate").textContent = fmtDate(latest.date, { month: "short", year: "numeric" });
+    $("feature").href = latest.href;
+    $("fThumb").src = latest.thumb;
+    $("fKicker").innerHTML = `${esc(latest.kicker)} <span>· ${esc(latest.topic)}</span>`;
+    $("fTitle").textContent = latest.title;
+    $("fDek").textContent = latest.dek;
+    $("fDate").textContent = longDate(latest.date);
+    $("fRead").textContent = latest.readMins + " min read";
+    $("strip").innerHTML = (latest.stats || [])
+      .map((s) => `<div><div class="big">${esc(s.big)}</div><p>${esc(s.text)}</p></div>`).join("");
+  }
+
+  /* ---------- list + topic filter ---------- */
+  $("count").textContent = articles.length + " published";
+  const topics = [...new Set(articles.map((a) => a.topic))];
+  let topic = "All";
+  function renderList() {
+    const shown = articles.filter((a) => topic === "All" || a.topic === topic);
+    $("list").innerHTML = shown.map((a) => `
+      <li><a href="${esc(a.href)}">
+        <span class="date">${shortDate(a.date)}</span>
+        <span class="t">${esc(a.title)}<small>${esc(a.summary)} · ${a.readMins} min</small></span>
+        <span class="tag">${esc(a.topic)}</span>
+      </a></li>`).join("") + `<li class="soon">The next one is in the works.</li>`;
+  }
+  function chips(el, options, current, onPick) {
+    if (options.length < 2) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = options.map((o) =>
+      `<button type="button" data-v="${esc(o.v)}" aria-pressed="${o.v === current}">${esc(o.label)}</button>`).join("");
+    el.onclick = (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+      onPick(b.dataset.v);
+    };
+  }
+  chips($("topicChips"), [{ v: "All", label: "All" }, ...topics.map((t) => ({ v: t, label: t }))], "All",
+    (v) => { topic = v; renderList(); });
+  renderList();
+  $("footList").innerHTML = articles.map((a) => `<a href="${esc(a.href)}">${esc(a.short || a.title)}</a>`).join("<br>");
+
+  /* ---------- company map ---------- */
+  const panel = $("panel");
+  const HINT = `<p class="hint">Click a company on the map to see which explainers it appears in, what it does there, and what it keeps per dollar.</p>`;
+  panel.innerHTML = HINT;
+
+  // where each company appears: [{article, step, margin}]
+  const appearances = {};
+  articles.forEach((a) => a.chain.forEach((s) => s.companies.forEach((c) => {
+    (appearances[c] = appearances[c] || []).push({ a, step: s.step, margin: (a.margins || {})[c] });
+  })));
+  const coIds = Object.keys(appearances);
+  $("mapCount").textContent = `${coIds.length} companies · ${articles.length} explainer${articles.length === 1 ? "" : "s"}`;
+
+  function showCompany(id) {
+    const c = companies[id] || { name: id };
+    const rows = appearances[id];
+    const byArticle = new Map();
+    rows.forEach((r) => { if (!byArticle.has(r.a)) byArticle.set(r.a, []); byArticle.get(r.a).push(r); });
+    const peers = new Set();
+    rows.forEach((r) => r.a.chain.filter((s) => s.step === r.step).forEach((s) => s.companies.forEach((p) => p !== id && peers.add(p))));
+    panel.innerHTML = `
+      <h4>${esc(c.name)}</h4>
+      <div class="hq">${c.hq ? "HQ: " + esc(c.hq) : ""}</div>
+      <ul>${[...byArticle].map(([a, rs]) => `
+        <li><a href="${esc(a.href)}">${esc(a.short || a.title)}</a>
+          <span class="role">${rs.map((r) => esc(r.step)).join(" · ")}${rs[0].margin ? ` · keeps <span class="m">${esc(rs[0].margin)}</span>` : ""}</span>
+        </li>`).join("")}</ul>
+      ${peers.size ? `<p class="peers">Alongside: ${[...peers].map((p) => esc((companies[p] || { name: p }).name)).join(", ")}</p>` : ""}`;
+  }
+
+  if (!window.d3) { $("graph").outerHTML = `<p class="panel">The map couldn't load (no internet connection?).</p>`; return; }
+
+  const svg = d3.select("#graph");
+  let sim;
+  function drawGraph(filterId) {
+    if (sim) sim.stop();
+    svg.selectAll("*").remove();
+    const W = svg.node().clientWidth, H = svg.node().clientHeight;
+    const shownArticles = articles.filter((a) => !filterId || filterId === "all" || a.id === filterId);
+
+    const nodes = [], links = [], chainLinks = [];
+    const nodeById = new Map();
+    const add = (n) => { if (!nodeById.has(n.id)) { nodeById.set(n.id, n); nodes.push(n); } return nodeById.get(n.id); };
+
+    // Steps run left→right on wide screens and top→bottom on narrow ones,
+    // zig-zagging so neighbouring labels don't collide. Each explainer gets its own band.
+    const vertical = W < 640, k = shownArticles.length;
+    shownArticles.forEach((a, ai) => {
+      const n = a.chain.length;
+      a.chain.forEach((s, si) => {
+        const t = n === 1 ? 0.5 : si / (n - 1), zig = si % 2 ? 1 : -1;
+        const along = vertical ? H * (0.07 + 0.86 * t) : W * (0.08 + 0.84 * t);
+        const band = (vertical ? W : H) / k;
+        const across = band * (ai + 0.5) + zig * band * (vertical ? 0.1 : 0.2);
+        const step = add({
+          id: `${a.id}:${si}`, type: "step", label: s.step,
+          tx: vertical ? across : along,
+          ty: vertical ? along : across,
+        });
+        if (si > 0) chainLinks.push({ source: `${a.id}:${si - 1}`, target: step.id });
+        s.companies.forEach((c) => {
+          add({ id: c, type: "co", label: (companies[c] || { name: c }).name });
+          links.push({ source: c, target: step.id });
+        });
+      });
+    });
+    // a company is a "bridge" if it sits at more than one step (in the shown explainers)
+    const deg = {}, stepsOf = {};
+    links.forEach((l) => { deg[l.source] = (deg[l.source] || 0) + 1; (stepsOf[l.source] = stepsOf[l.source] || []).push(l.target); });
+    nodes.forEach((n) => { if (n.type === "co") { n.deg = deg[n.id]; n.r = 7 + 3 * (n.deg - 1); } });
+
+    const gLinks = svg.append("g").selectAll("line").data(links).join("line").attr("class", "g-link");
+    chainLinks.forEach((l) => { l.source = nodeById.get(l.source); l.target = nodeById.get(l.target); });
+    const gChain = svg.append("g").selectAll("line").data(chainLinks).join("line").attr("class", "g-chain");
+
+    const coLayer = svg.append("g"), stepLayer = svg.append("g");
+    const steps = stepLayer.selectAll("g").data(nodes.filter((n) => n.type === "step")).join("g").attr("class", "g-step");
+    steps.append("rect").attr("rx", 2).attr("height", 22).attr("y", -11);
+    steps.append("text").attr("text-anchor", "middle").attr("dy", "0.35em").text((d) => d.label);
+    steps.each(function () {
+      const t = d3.select(this).select("text").node().getComputedTextLength();
+      d3.select(this).select("rect").attr("width", t + 16).attr("x", -(t + 16) / 2);
+      d3.select(this).datum().hw = (t + 16) / 2;
+    });
+
+    const cos = coLayer.selectAll("g").data(nodes.filter((n) => n.type === "co")).join("g")
+      .attr("class", (d) => "g-co" + (d.deg > 1 ? " bridge" : ""))
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => d.label);
+    cos.append("circle").attr("r", (d) => d.r);
+    cos.append("text").attr("x", (d) => d.r + 4).attr("dy", "0.35em").text((d) => d.label)
+      .each(function (d) { d.lw = this.getComputedTextLength(); });
+
+    function select(d) {
+      cos.classed("sel", (n) => n === d);
+      if (!d) { [cos, steps, gLinks, gChain].forEach((s) => s.classed("dim", false)); panel.innerHTML = HINT; return; }
+      const near = new Set([d.id]);
+      links.forEach((l) => { if (l.source.id === d.id) near.add(l.target.id); });
+      links.forEach((l) => { if (near.has(l.target.id)) near.add(l.source.id); });
+      cos.classed("dim", (n) => !near.has(n.id));
+      steps.classed("dim", (n) => !near.has(n.id));
+      gLinks.classed("dim", (l) => !(near.has(l.source.id) && near.has(l.target.id)));
+      gChain.classed("dim", true);
+      showCompany(d.id);
+    }
+    cos.on("click", (e, d) => { e.stopPropagation(); select(d); })
+       .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(d); } });
+    svg.on("click", () => select(null));
+
+    sim = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id((d) => d.id).distance(58).strength(0.5))
+      .force("charge", d3.forceManyBody().strength((d) => (d.type === "step" ? -300 : -160)))
+      .force("x", d3.forceX((d) => d.tx ?? W / 2).strength((d) => (d.type === "step" ? 0.9 : 0.02)))
+      .force("y", d3.forceY((d) => d.ty ?? H / 2).strength((d) => (d.type === "step" ? 0.9 : 0.04)))
+      .force("collide", d3.forceCollide((d) => (d.type === "step" ? d.hw * 0.8 : d.r + 8 + (d.lw || 0) * 0.4)).iterations(2))
+      .on("tick", () => {
+        nodes.forEach((d) => {
+          // keep every node, including its label, inside the box
+          const left = d.type === "step" ? d.hw + 4 : d.r + 4;
+          const right = d.type === "step" ? d.hw + 4 : d.r + 8 + (d.lw || 0);
+          d.x = Math.max(left, Math.min(W - right, d.x));
+          d.y = Math.max(16, Math.min(H - 16, d.y));
+        });
+        gLinks.attr("x1", (d) => d.source.x).attr("y1", (d) => d.source.y).attr("x2", (d) => d.target.x).attr("y2", (d) => d.target.y);
+        gChain.attr("x1", (d) => d.source.x).attr("y1", (d) => d.source.y).attr("x2", (d) => d.target.x).attr("y2", (d) => d.target.y);
+        steps.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        cos.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        // put each name on the side facing away from its step(s), so it doesn't cover the step label
+        cos.select("text").each(function (d) {
+          const ss = stepsOf[d.id].map((id) => nodeById.get(id));
+          const sx = ss.reduce((t, n) => t + n.x, 0) / ss.length;
+          const left = d.x < sx && d.x - d.r - 8 - d.lw > 0;
+          this.setAttribute("x", left ? -(d.r + 4) : d.r + 4);
+          this.setAttribute("text-anchor", left ? "end" : "start");
+        });
+      });
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { sim.stop(); for (let i = 0; i < 300; i++) sim.tick(); sim.on("tick")(); }
+
+    const drag = d3.drag()
+      .on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; });
+    cos.call(drag); steps.call(drag);
+  }
+
+  let mapFilter = "all";
+  chips($("mapChips"), [{ v: "all", label: "All explainers" }, ...articles.map((a) => ({ v: a.id, label: a.short || a.title }))], "all",
+    (v) => { mapFilter = v; panel.innerHTML = HINT; drawGraph(v); });
+  drawGraph(mapFilter);
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => drawGraph(mapFilter), 200); });
+})();
+
+/* reveal on scroll */
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in-view"); io.unobserve(e.target); } }), { threshold: 0.2 });
+document.querySelectorAll(".rv").forEach((e) => io.observe(e));
+</script>
+</body>
+</html>
