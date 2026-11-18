@@ -1,0 +1,137 @@
+/*
+ * Bottleneck: styles shared by explainer articles (smile.html, gpu-unlock.html, ...):
+ * article header, layout and table of contents, body text, figures, scrollytelling,
+ * tables, sources. Load after bottleneck.css. Editing this file changes every article.
+ */
+html{-webkit-text-size-adjust:100%}
+
+/* ---------- Reading-progress bar ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:100}
+
+/* ---------- Masthead ---------- */
+.mast .sub{margin-left:auto;font-size:12px;font-weight:600;border:1px solid var(--ink);padding:7px 12px;text-decoration:none;letter-spacing:.04em}
+
+/* ---------- Article header ---------- */
+.head{max-width:1240px;margin:0 auto;padding:56px 24px 0}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.02em;max-width:16ch;margin:18px 0 22px}
+.dek{font-size:clamp(19px,2vw,24px);line-height:1.4;color:var(--ink2);max-width:46ch}
+
+/* ---------- Animated hero graphic ---------- */
+.hero-fig{max-width:1240px;margin:40px auto 0;padding:0 24px}
+.hero-box{background:#0d0d0f;border-radius:2px;position:relative;overflow:hidden;aspect-ratio:16/7.2}
+.hero-box svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-cap{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5}
+
+/* ---------- Byline ---------- */
+.byline{max-width:720px;margin:34px auto 0;padding:0 24px;font-family:var(--sans);font-size:14px;color:var(--ink2);border-top:1px solid var(--rule);padding-top:16px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between}
+.byline b{color:var(--ink);font-weight:600}
+.share{display:flex;gap:8px}
+.share button{font:inherit;font-size:12px;border:1px solid var(--rule);background:none;padding:5px 10px;cursor:pointer;color:var(--ink2)}
+.share button:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ---------- Article layout and table of contents ---------- */
+.art{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr minmax(0,680px) 1fr;gap:0 40px}
+.art>*{grid-column:2}
+.toc{grid-column:1;grid-row:1/span 60;align-self:start;position:sticky;top:90px;font-family:var(--sans);font-size:12.5px;padding-top:46px;max-width:200px;justify-self:end}
+.toc p{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);margin-bottom:12px}
+.toc a{display:block;text-decoration:none;color:var(--muted);padding:6px 0 6px 12px;border-left:2px solid var(--rule);line-height:1.35}
+.toc a.on{color:var(--ink);border-left-color:var(--gold);font-weight:500}
+@media(max-width:1100px){
+  .toc{display:none}
+  .art{grid-template-columns:minmax(0,1fr);max-width:728px}
+  .art>*,.art .scrolly{grid-column:1}
+}
+
+/* ---------- Body text ---------- */
+.disc{font-style:italic;font-size:15px;color:var(--muted);line-height:1.55;margin:34px 0 8px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.art p.t{font-size:20px;line-height:1.62;margin:22px 0;color:#1d1d1d}
+.art p.t a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.dropcap::first-letter{float:left;font-size:72px;line-height:.86;font-weight:700;padding:6px 10px 0 0}
+.art h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,36px);line-height:1.12;letter-spacing:-.01em;margin:70px 0 6px;scroll-margin-top:90px}
+.art h2 .n{display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+
+/* ---------- Key findings box ---------- */
+.keys{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:26px 28px;margin:36px 0}
+.keys h3{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.keys li{font-size:17.5px;line-height:1.5;padding:10px 0 10px 26px;border-top:1px solid #eee;position:relative}
+
+/* ---------- Pull quote ---------- */
+.pull{font-size:clamp(26px,3vw,34px);line-height:1.25;font-weight:600;letter-spacing:-.01em;margin:46px 0;padding:24px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);text-align:center}
+.pull small{display:block;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--muted);margin-top:12px;letter-spacing:.04em}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:40px 0;background:#fff;border:1px solid var(--rule);padding:22px 22px 16px}
+.fig .ft{font-family:var(--sans);font-weight:700;font-size:15px}
+.fig .fs{font-family:var(--sans);font-size:13px;color:var(--muted);margin:4px 0 16px}
+.fig figcaption{font-family:var(--sans);font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.5;border-top:1px solid #eee;padding-top:10px}
+.legend{display:flex;gap:18px;font-family:var(--sans);font-size:12px;color:var(--ink2);margin-top:14px;justify-content:center;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+
+/* ---------- Scrollytelling (sticky chart + steps) ---------- */
+.scrolly{grid-column:2/4;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;margin:30px 0;position:relative}
+.steps{padding:30vh 0}
+.step{min-height:70vh;display:flex;align-items:center}
+.step .card{background:#fff;border:1px solid var(--rule);padding:24px 26px;font-size:18.5px;line-height:1.55;max-width:520px;transition:opacity .4s,border-color .4s;opacity:.35}
+.step.on .card{opacity:1;border-color:var(--ink)}
+.step .card .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.step .card .big{font-family:var(--sans);font-weight:700;font-size:40px;letter-spacing:-.02em;line-height:1;margin-top:12px}
+.step .card .big small{font-size:14px;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:6px}
+.sticky{position:sticky;top:76px;height:calc(100vh - 96px);display:flex;flex-direction:column;justify-content:center}
+.chartbox{background:#0d0d0f;color:#eee;border-radius:2px;padding:20px 18px 14px;position:relative}
+.chartbox .ct{font-family:var(--sans);font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.chartbox .cs{font-family:var(--sans);font-size:12px;color:#8d8a84}
+.chartnote{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:1100px){
+  .scrolly{grid-column:1/-1}
+}
+@media(max-width:900px){
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .sticky{top:58px;height:auto;z-index:5;padding:8px 0;background:var(--paper)}
+  .steps{padding:10vh 0;position:relative;z-index:6}
+  .step{min-height:60vh}
+}
+.mcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-family:var(--sans)}
+.mval{font-weight:700;font-size:22px;margin-bottom:8px;font-variant-numeric:tabular-nums}
+
+/* ---------- Animated stamp ---------- */
+.stamp{position:absolute;font-family:var(--sans);font-weight:800;color:var(--red);border:2px solid var(--red);padding:2px 8px;font-size:18px;transform:rotate(-8deg) scale(.4);opacity:0;transition:all .5s cubic-bezier(.3,1.6,.5,1) .9s}
+.in-view .stamp{transform:rotate(-8deg) scale(1);opacity:1}
+
+/* ---------- Data tables ---------- */
+table.data{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px}
+table.data th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:2px solid var(--ink);padding:8px 6px}
+table.data td{border-bottom:1px solid #eee;padding:10px 6px;vertical-align:middle}
+table.data td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+
+/* ---------- "Two questions" cards ---------- */
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0}
+.q{background:#0d0d0f;color:#fff;padding:26px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transform:perspective(800px) rotateX(70deg);opacity:0;transform-origin:bottom;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.q:nth-child(2){transition-delay:.18s}
+.in-view .q{transform:none;opacity:1}
+.q .qn{font-family:var(--sans);font-size:11px;letter-spacing:.14em;color:var(--gold2);font-weight:700}
+.q p{font-size:23px;line-height:1.25;font-weight:600}
+@media(max-width:600px){
+  .qs{grid-template-columns:1fr}
+}
+
+/* ---------- More-from-the-series box ---------- */
+.news{background:#0d0d0f;color:#fff;padding:30px;margin:46px 0;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+.news h4{font-family:var(--serif);font-size:24px;line-height:1.2}
+.news p{font-family:var(--sans);font-size:13px;color:#a9a6a0;margin-top:6px}
+.news-cta{display:flex;gap:10px;flex-wrap:wrap}
+.news-cta a{padding:12px 16px;font:600 13px var(--sans);background:var(--gold2);color:#111;text-decoration:none}
+.news-cta a.alt{background:none;color:#fff;border:1px solid #444}
+.news-cta a:hover{filter:brightness(1.1)}
+.news-cta a.alt:hover{border-color:#fff}
+@media(max-width:700px){
+  .news{grid-template-columns:1fr}
+}
+
+/* ---------- Sources and closing note ---------- */
+.sources{font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.sources li{margin:0 0 10px 18px}
+.sources a{color:var(--ink);text-decoration-color:var(--gold)}
+.end{font-size:15px;font-style:italic;color:var(--muted);margin:30px 0 70px}
+@media (prefers-reduced-motion:reduce){
+  .rv,.q{opacity:1;transform:none;transition:none}
+}

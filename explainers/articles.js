@@ -5,7 +5,8 @@
  * To publish a new explainer:
  *   1. Put the page in this folder, e.g. explainers/gpus.html
  *   2. Put a 16:9 thumbnail in explainers/thumbs/ (SVG or PNG)
- *   3. Add an entry to `articles` below. Order doesn't matter; newest date is shown as "Latest".
+ *   3. Add an entry to the END of `articles` below. The newest date is shown as "Latest";
+ *      if two share a date, the one added later wins.
  *   4. Add any new companies to `companies` (the id is what you use in `chain`).
  *
  * `chain` drives the company map: each step lists the companies the explainer covers at that step.
@@ -52,6 +53,33 @@ window.BOTTLENECK = {
         ase: "22¢ gross",
         foxconn: "6¢ gross"
       }
+    },
+    {
+      id: "gpu-unlock",
+      href: "gpu-unlock.html",
+      title: "Unlocked, and Still Out of Reach: The Hidden Compute in Gaming GPUs",
+      short: "Unlocked, and still out of reach",
+      kicker: "Explainer",
+      topic: "GPUs",
+      date: "2026-11-18",
+      readMins: 10,
+      dek: "An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here's why the unlock helps the people who need it least.",
+      summary: "A compute unlock, a used-card rush, and why gamers lose the bidding war",
+      thumb: "thumbs/gpu-unlock.svg",
+      stats: [
+        { big: "+65%", text: "RTX 3090 BF16 matrix compute after the unlock: 75 → 125 TFLOPS. The RTX 4090 roughly doubles." },
+        { big: "0%", text: "Extra frames in games. The parts games use were never locked." },
+        { big: "+29%", text: "Used RTX 3090 average in 90 days, to about S$2,100: above its launch price." },
+        { big: "7%", text: "Gaming's share of Nvidia's US$215.9 billion fiscal-2026 revenue." }
+      ],
+      chain: [
+        { step: "Chip design", companies: ["nvidia"] },
+        { step: "Wafer fab", companies: ["tsmc", "samsung"] },
+        { step: "Graphics boards", companies: ["asus", "msi"] }
+      ],
+      margins: {
+        nvidia: "data centre US$193.7B vs gaming US$16.0B revenue, FY2026"
+      }
     }
   ],
 
@@ -73,6 +101,8 @@ window.BOTTLENECK = {
     ase:      { name: "ASE",               hq: "Taiwan" },
     foxconn:  { name: "Foxconn",           hq: "Taiwan" },
     quanta:   { name: "Quanta",            hq: "Taiwan" },
-    wistron:  { name: "Wistron",           hq: "Taiwan" }
+    wistron:  { name: "Wistron",           hq: "Taiwan" },
+    asus:     { name: "ASUS",              hq: "Taiwan" },
+    msi:      { name: "MSI",               hq: "Taiwan" }
   }
 };

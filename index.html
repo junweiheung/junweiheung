@@ -1286,7 +1286,7 @@
           const esc = (s) =>
             String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
           const SHOW = 3;
-          const all = [...data.articles].sort((a, b) => b.date.localeCompare(a.date));
+          const all = [...data.articles].reverse().sort((a, b) => b.date.localeCompare(a.date));
           const items = all.slice(0, SHOW).map((a) => {
             const month = new Date(a.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" });
             return `
