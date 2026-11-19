@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Jun Wei Heung">
+  <rect width="64" height="64" rx="14" fill="#280822"/>
+  <!-- trend line the model expects -->
+  <polyline points="12,44 26,34 40,24 52,16" fill="none" stroke="#efcc92"
+            stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- points sitting on the prediction -->
+  <circle cx="12" cy="44" r="3.5" fill="#efcc92"/>
+  <circle cx="26" cy="34" r="3.5" fill="#efcc92"/>
+  <circle cx="52" cy="16" r="3.5" fill="#efcc92"/>
+  <!-- the edge case that breaks the model -->
+  <circle cx="40" cy="48" r="6" fill="#e06c8f"/>
+</svg>
