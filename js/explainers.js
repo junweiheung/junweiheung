@@ -87,11 +87,107 @@
 
   const svg = d3.select("#graph");
   let sim;
+  // which explainers each company appears in
+  const artsOf = {};
+  coIds.forEach((c) => { artsOf[c] = [...new Set(appearances[c].map((r) => r.a))]; });
+  let showEvery = false;
+  const expandBtn = $("mapExpand");
+
+  /* Overview: one hub per explainer. Only companies shared by 2+ explainers are drawn
+     (they're the interesting links); the rest are counted on each hub until expanded. */
+  function drawOverview() {
+    const W = svg.node().clientWidth, H = svg.node().clientHeight;
+    const k = articles.length;
+    const nodes = [], links = [];
+    const hubs = articles.map((a, i) => {
+      const ang = -Math.PI / 2 + (2 * Math.PI * i) / Math.max(k, 1);
+      const rx = k === 1 ? 0 : W * 0.34, ry = k === 1 ? 0 : H * 0.36;
+      const only = coIds.filter((c) => artsOf[c].length === 1 && artsOf[c][0] === a).length;
+      const h = { id: "hub:" + a.id, type: "hub", a, label: a.short || a.title, only,
+        fx: W / 2 + rx * Math.cos(ang), fy: H / 2 + ry * Math.sin(ang) };
+      nodes.push(h); return h;
+    });
+    const hubOf = new Map(hubs.map((h) => [h.a, h]));
+    coIds.forEach((c) => {
+      const shared = artsOf[c].length > 1;
+      if (!shared && !showEvery) return;
+      const n = { id: c, type: "co", label: (companies[c] || { name: c }).name, deg: artsOf[c].length };
+      n.r = shared ? 7 + 3 * (n.deg - 1) : 5;
+      nodes.push(n);
+      artsOf[c].forEach((a) => links.push({ source: c, target: hubOf.get(a).id }));
+    });
+
+    const gLinks = svg.append("g").selectAll("line").data(links).join("line").attr("class", "g-link");
+    const coLayer = svg.append("g"), hubLayer = svg.append("g");
+    const hubG = hubLayer.selectAll("g").data(hubs).join("g").attr("class", "g-hub")
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => `Open the ${d.label} map`);
+    hubG.append("rect").attr("rx", 3).attr("height", 30).attr("y", -15);
+    hubG.append("text").attr("class", "ht").attr("text-anchor", "middle").attr("dy", "0.35em").text((d) => d.label);
+    hubG.append("text").attr("class", "hs").attr("text-anchor", "middle").attr("y", 30)
+      .text((d) => (!showEvery && d.only ? `+${d.only} more ${d.only === 1 ? "company" : "companies"}` : ""));
+    hubG.each(function (d) {
+      const t = d3.select(this).select(".ht").node().getComputedTextLength();
+      d.hw = (t + 24) / 2;
+      d3.select(this).select("rect").attr("width", t + 24).attr("x", -d.hw);
+      // keep hubs (fixed) inside the box
+      d.fx = Math.max(d.hw + 6, Math.min(W - d.hw - 6, d.fx));
+      d.fy = Math.max(22, Math.min(H - 40, d.fy));
+    });
+
+    const cos = coLayer.selectAll("g").data(nodes.filter((n) => n.type === "co")).join("g")
+      .attr("class", (d) => "g-co" + (d.deg > 1 ? " bridge" : " minor"))
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => d.label);
+    cos.append("circle").attr("r", (d) => d.r);
+    cos.append("text").attr("x", (d) => d.r + 4).attr("dy", "0.35em").text((d) => d.label)
+      .each(function (d) { d.lw = this.getComputedTextLength(); });
+
+    function select(d) {
+      cos.classed("sel", (n) => n === d);
+      if (!d) { [cos, hubG, gLinks].forEach((s) => s.classed("dim", false)); panel.innerHTML = HINT; return; }
+      const near = new Set([d.id]);
+      links.forEach((l) => { if (l.source.id === d.id) near.add(l.target.id); });
+      cos.classed("dim", (n) => !near.has(n.id));
+      hubG.classed("dim", (n) => !near.has(n.id));
+      gLinks.classed("dim", (l) => l.source.id !== d.id);
+      showCompany(d.id);
+    }
+    cos.on("click", (e, d) => { e.stopPropagation(); select(d); })
+       .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(d); } });
+    const openHub = (d) => setMapFilter(d.a.id);
+    hubG.on("click", (e, d) => { e.stopPropagation(); openHub(d); })
+        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openHub(d); } });
+    svg.on("click", () => select(null));
+
+    sim = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id((d) => d.id).distance((l) => (l.source.deg > 1 ? 70 : 46)).strength((l) => (l.source.deg > 1 ? 0.25 : 0.7)))
+      .force("charge", d3.forceManyBody().strength((d) => (d.type === "hub" ? -500 : -90)))
+      .force("x", d3.forceX(W / 2).strength(0.02))
+      .force("y", d3.forceY(H / 2).strength(0.03))
+      .force("collide", d3.forceCollide((d) => (d.type === "hub" ? d.hw * 0.9 : d.r + 6 + (d.lw || 0) * 0.45)).iterations(2))
+      .on("tick", () => {
+        nodes.forEach((d) => {
+          if (d.type === "hub") return;
+          d.x = Math.max(d.r + 4, Math.min(W - d.r - 10 - (d.lw || 0), d.x));
+          d.y = Math.max(16, Math.min(H - 16, d.y));
+        });
+        gLinks.attr("x1", (d) => d.source.x).attr("y1", (d) => d.source.y).attr("x2", (d) => d.target.x).attr("y2", (d) => d.target.y);
+        hubG.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        cos.attr("transform", (d) => `translate(${d.x},${d.y})`);
+      });
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { sim.stop(); for (let i = 0; i < 300; i++) sim.tick(); sim.on("tick")(); }
+    cos.call(d3.drag()
+      .on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+  }
+
   function drawGraph(filterId) {
     if (sim) sim.stop();
     svg.selectAll("*").remove();
+    if (expandBtn) expandBtn.hidden = filterId !== "all";
+    if (filterId === "all") { drawOverview(); return; }
     const W = svg.node().clientWidth, H = svg.node().clientHeight;
-    const shownArticles = articles.filter((a) => !filterId || filterId === "all" || a.id === filterId);
+    const shownArticles = articles.filter((a) => a.id === filterId);
 
     const nodes = [], links = [], chainLinks = [];
     const nodeById = new Map();
@@ -200,6 +296,22 @@
   let mapFilter = "all";
   chips($("mapChips"), [{ v: "all", label: "All explainers" }, ...articles.map((a) => ({ v: a.id, label: a.short || a.title }))], "all",
     (v) => { mapFilter = v; panel.innerHTML = HINT; drawGraph(v); });
+  // also used by clicking a hub in the overview
+  function setMapFilter(v) {
+    mapFilter = v; panel.innerHTML = HINT;
+    $("mapChips").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v));
+    drawGraph(v);
+  }
+  if (expandBtn) {
+    const single = coIds.filter((c) => artsOf[c].length === 1).length;
+    const label = () => (showEvery ? "Show shared companies only" : `Show all ${coIds.length} companies`);
+    expandBtn.textContent = label();
+    expandBtn.hidden = single === 0;
+    expandBtn.addEventListener("click", () => {
+      showEvery = !showEvery; expandBtn.setAttribute("aria-pressed", showEvery); expandBtn.textContent = label();
+      panel.innerHTML = HINT; drawGraph("all");
+    });
+  }
   drawGraph(mapFilter);
   let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => drawGraph(mapFilter), 200); });
 })();

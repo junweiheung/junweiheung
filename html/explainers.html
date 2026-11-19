@@ -58,17 +58,18 @@
     <div class="label">Company map <span id="mapCount"></span></div>
     <div class="map-intro">
       <h3 id="map-title">Who shows up where</h3>
-      <p>Every company the explainers cover, linked to the step of the value chain it sits at. <b style="color:var(--blue)">Blue</b> companies appear at more than one step or in more than one explainer: those are the ones holding the chain together. Click a company to see where it appears; drag to rearrange.</p>
+      <p>Each black box is an explainer. The <b style="color:var(--blue)">blue</b> companies show up in more than one of them: those are the ones holding different industries together. Click a company to see where it appears, or click an explainer to open its full value chain.</p>
     </div>
     <div class="chips" id="mapChips" hidden></div>
+    <button type="button" class="expand" id="mapExpand" aria-pressed="false" hidden></button>
     <div class="mapbox">
       <svg id="graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
       <div class="panel" id="panel" aria-live="polite"></div>
     </div>
     <div class="legend">
-      <span><i class="sq" style="background:#111"></i>Value-chain step (line shows the order)</span>
+      <span><i class="sq" style="background:#111"></i>Explainer (or, inside one, a value-chain step)</span>
       <span><i style="background:var(--gold2)"></i>Company</span>
-      <span><i style="background:var(--blue)"></i>Company at several steps or explainers</span>
+      <span><i style="background:var(--blue)"></i>Company in several explainers or steps</span>
     </div>
   </section>
 

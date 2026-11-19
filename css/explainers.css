@@ -91,6 +91,15 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,9vw,120px);line
 .g-co.bridge circle{fill:var(--blue)}
 .g-co text{font-family:var(--sans);font-size:12px;font-weight:500;fill:var(--ink);pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
 .g-co.sel circle{stroke:var(--ink);stroke-width:3}
+.g-co.minor text{font-size:11px;fill:var(--muted)}
+.g-hub{cursor:pointer}
+.g-hub rect{fill:#111}
+.g-hub:hover rect,.g-hub:focus-visible rect{fill:var(--gold)}
+.g-hub:focus{outline:none}
+.g-hub .ht{font-family:var(--sans);font-size:12.5px;font-weight:700;fill:#fff;pointer-events:none}
+.g-hub .hs{font-family:var(--sans);font-size:11px;font-weight:500;fill:var(--muted);pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.expand{display:block;margin:6px 0 12px;font-family:var(--sans);font-size:12px;font-weight:600;border:0;background:none;padding:0;color:var(--blue);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.expand[hidden]{display:none}
 .dim{opacity:.12}
 .g-co:focus{outline:none}
 .g-co:focus-visible circle{stroke:var(--ink);stroke-width:3}
