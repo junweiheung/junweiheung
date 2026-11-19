@@ -13,6 +13,50 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "pi-clubs",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/pi-clubs.html",
+      "title": "The Insurer Nobody Sees: Twelve Clubs Behind Every Big Ship",
+      "summary": "Whenever a big ship hits something, a bill lands on a company you have almost certainly never heard of. Twelve mutual clubs insure about 90% of the world's ocean-going tonnage and share one tower of cover. In 2024 a Singapore-flagged ship pushed it to its last layer.",
+      "content_text": "Whenever a big ship hits something, a bill lands on a company you have almost certainly never heard of. Twelve mutual clubs insure about 90% of the world's ocean-going tonnage and share one tower of cover. In 2024 a Singapore-flagged ship pushed it to its last layer.",
+      "date_published": "2026-11-19T09:00:00+08:00",
+      "tags": [
+        "Shipping insurance"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/pi-clubs.png",
+      "_bottleneck": {
+        "short": "The 12 clubs behind every big ship",
+        "topic": "Shipping insurance",
+        "readMins": 11,
+        "stat": {
+          "big": "~90%",
+          "text": "Share of the world's ocean-going tonnage covered for liability by the International Group's 12 clubs, by the clubs' own description."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/pi-clubs.png"
+      }
+    },
+    {
+      "id": "amd",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/amd.html",
+      "title": "From a $2 Stock to the Trillion-Dollar Club: How AMD Came Back",
+      "summary": "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
+      "content_text": "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
+      "date_published": "2026-11-19T09:00:00+08:00",
+      "tags": [
+        "Semiconductors"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/amd.png",
+      "_bottleneck": {
+        "short": "How AMD came back",
+        "topic": "Semiconductors",
+        "readMins": 11,
+        "stat": {
+          "big": "$1.62",
+          "text": "AMD's lowest close, July 2015, less than a year into Lisa Su's time as CEO. Market value was under $2 billion."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/amd.png"
+      }
+    },
+    {
       "id": "anthropic-ipo",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/anthropic-ipo.html",
       "title": "Who Owns Anthropic? Inside the $1.5 Trillion IPO",

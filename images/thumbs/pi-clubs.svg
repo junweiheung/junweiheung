@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .in{opacity:0;animation:fade .5s ease forwards}
+    @keyframes fade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="56" font-weight="700">The insurer nobody sees</text>
+  <text x="120" y="190" fill="#8d8a84" font-size="28">12 clubs · one tower of cover</text>
+  <text class="in" style="animation-delay:.2s" x="120" y="420" fill="#e0b65a" font-size="190" font-weight="800">~90%</text>
+  <text class="in" style="animation-delay:.3s" x="120" y="480" fill="#fff" font-size="36" font-weight="700">of ocean-going tonnage</text>
+  <text class="in" style="animation-delay:2.4s" x="120" y="640" fill="#c2412d" font-size="40" font-weight="700">Dali, 2024: $2.8bn+</text>
+  <text class="in" style="animation-delay:2.5s" x="120" y="690" fill="#8d8a84" font-size="28">first claim into the last layer</text>
+  <g class="in" style="animation-delay:0.30s"><rect x="1000" y="750" width="320" height="70" fill="#17171a" stroke="#4d8bff" stroke-width="4"/><text x="976" y="795.0" fill="#8d8a84" font-size="28" text-anchor="end">first $10m</text><text x="1344" y="795.0" fill="#4d8bff" font-size="30" font-weight="700">Club</text></g><g class="in" style="animation-delay:0.65s"><rect x="1000" y="640" width="320" height="110" fill="#17171a" stroke="#2f9a8a" stroke-width="4"/><text x="976" y="705.0" fill="#8d8a84" font-size="28" text-anchor="end">$90m above $10m</text><text x="1344" y="705.0" fill="#2f9a8a" font-size="30" font-weight="700">Pool</text></g><g class="in" style="animation-delay:1.00s"><rect x="1000" y="400" width="320" height="240" fill="#17171a" stroke="#e0b65a" stroke-width="4"/><text x="976" y="530.0" fill="#8d8a84" font-size="28" text-anchor="end">$2bn above $100m</text><text x="1344" y="530.0" fill="#e0b65a" font-size="30" font-weight="700">Reinsurance</text></g><g class="in" style="animation-delay:1.35s"><rect x="1000" y="270" width="320" height="130" fill="#17171a" stroke="#cfcbc3" stroke-width="4"/><text x="976" y="345.0" fill="#8d8a84" font-size="28" text-anchor="end">$1bn on top</text><text x="1344" y="345.0" fill="#cfcbc3" font-size="30" font-weight="700">Overspill</text></g>
+  <rect class="in" style="animation-delay:1.80s" x="1005" y="750" width="310" height="70" fill="#c2412d" opacity=".9"/><rect class="in" style="animation-delay:2.10s" x="1005" y="640" width="310" height="110" fill="#c2412d" opacity=".9"/><rect class="in" style="animation-delay:2.40s" x="1005" y="400" width="310" height="240" fill="#c2412d" opacity=".9"/><rect class="in" style="animation-delay:2.70s" x="1005" y="309.0" width="310" height="91.0" fill="#c2412d" opacity=".9"/>
+  <text class="in" style="animation-delay:2.6s" x="1160.0" y="246" fill="#c2412d" font-size="36" font-weight="800" text-anchor="middle">$2.8bn+ reserved</text>
+</svg>

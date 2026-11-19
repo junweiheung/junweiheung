@@ -203,6 +203,29 @@ window.BOTTLENECK = {
         { step: "Wafer fab", companies: ["tsmc"] },
         { step: "Data centre", companies: ["amd", "microsoft"] }
       ]
+    },
+    {
+      id: "pi-clubs",
+      href: "explainers/pi-clubs.html",
+      title: "The Insurer Nobody Sees: Twelve Clubs Behind Every Big Ship",
+      short: "The 12 clubs behind every big ship",
+      kicker: "Explainer",
+      topic: "Shipping insurance",
+      date: "2026-11-19",
+      readMins: 11,
+      dek: "Whenever a big ship hits something, a bill lands on a company you have almost certainly never heard of. Twelve mutual clubs insure about 90% of the world's ocean-going tonnage and share one tower of cover. In 2024 a Singapore-flagged ship pushed it to its last layer.",
+      summary: "Twelve mutual clubs, one four-layer tower, and the Dali claim that reached the top",
+      thumb: "../images/thumbs/pi-clubs.svg",
+      stats: [
+        { big: "~90%", text: "Share of the world's ocean-going tonnage covered for liability by the International Group's 12 clubs, by the clubs' own description." },
+        { big: "$2.8bn+", text: "Reserved insured loss from the Dali hitting Baltimore's Key Bridge (2024), up from a first reserve of ~$1.5bn: the largest single marine loss on record (Howden Re)." },
+        { big: "$3.1bn", text: "Approximate size of the clubs' shared tower of cover for the loss year (S$4.0 billion); raised to $3.35bn for 2026." },
+        { big: "10 of 12", text: "International Group clubs with offices in Singapore, per the Group's chief executive (April 2024)." }
+      ],
+      chain: [
+        { step: "Ship owner and manager", companies: ["synergy"] },
+        { step: "P&I clubs", companies: ["britannia", "gard", "northstandard"] }
+      ]
     }
   ],
 
@@ -247,6 +270,10 @@ window.BOTTLENECK = {
     threesquare:{ name: "Three Square Market", hq: "US",       sector: "Wearables" },
     anthropic:{ name: "Anthropic",         hq: "US",           sector: "AI labs" },
     amazon:   { name: "Amazon",            hq: "US",           sector: "Cloud & data centres" },
-    google:   { name: "Google",            hq: "US",           sector: "Cloud & data centres" }
+    google:   { name: "Google",            hq: "US",           sector: "Cloud & data centres" },
+    synergy:  { name: "Synergy Marine",    hq: "Singapore",    sector: "Shipping" },
+    britannia:{ name: "Britannia P&I Club", hq: "UK",          sector: "Shipping insurance" },
+    gard:     { name: "Gard",              hq: "Norway",       sector: "Shipping insurance" },
+    northstandard:{ name: "NorthStandard", hq: "UK",           sector: "Shipping insurance" }
   }
 };
