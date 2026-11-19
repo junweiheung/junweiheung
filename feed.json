@@ -38,8 +38,8 @@
       "id": "amd",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/amd.html",
       "title": "From a $2 Stock to the Trillion-Dollar Club: How AMD Came Back",
-      "summary": "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
-      "content_text": "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
+      "summary": "In July 2015 AMD closed at $1.62 and analysts wondered if it would survive. Under Lisa Su it passed Intel, won OpenAI as an AI-chip customer, and briefly topped $1 trillion in September 2026.",
+      "content_text": "In July 2015 AMD closed at $1.62 and analysts wondered if it would survive. Under Lisa Su it passed Intel, won OpenAI as an AI-chip customer, and briefly topped $1 trillion in September 2026.",
       "date_published": "2026-11-19T09:00:00+08:00",
       "tags": [
         "Semiconductors"
@@ -48,10 +48,10 @@
       "_bottleneck": {
         "short": "How AMD came back",
         "topic": "Semiconductors",
-        "readMins": 11,
+        "readMins": 13,
         "stat": {
           "big": "$1.62",
-          "text": "AMD's lowest close, July 2015, less than a year into Lisa Su's time as CEO. Market value was under $2 billion."
+          "text": "AMD's lowest close, July 2015, nine months into Lisa Su's time as CEO. Its market value was under $2 billion."
         },
         "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/amd.png"
       }

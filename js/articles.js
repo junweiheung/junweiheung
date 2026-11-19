@@ -188,20 +188,20 @@ window.BOTTLENECK = {
       kicker: "Explainer",
       topic: "Semiconductors",
       date: "2026-11-19",
-      readMins: 11,
-      dek: "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
-      summary: "A $2 stock, two architecture bets, a $49B share swap, and the AI race",
+      readMins: 13,
+      dek: "In July 2015 AMD closed at $1.62 and analysts wondered if it would survive. Under Lisa Su it passed Intel, won OpenAI as an AI-chip customer, and briefly topped $1 trillion in September 2026.",
+      summary: "A $1.62 stock, the Zen bet, a $49B share swap, and the AI race",
       thumb: "../images/thumbs/amd.svg",
       stats: [
-        { big: "$1.62", text: "AMD's lowest close, July 2015, less than a year into Lisa Su's time as CEO. Market value was under $2 billion." },
-        { big: "~46%", text: "EPYC's share of server-CPU revenue by 2026, up from low single digits in the mid-2010s (Mercury Research)." },
-        { big: "$49B", text: "Closing value of the all-stock Xilinx deal (Feb 2022), up from ~$35B agreed in 2020: the largest chip acquisition on record." },
-        { big: "$1T", text: "AMD's market value milestone, crossed in September 2026 after passing Intel in 2022." }
+        { big: "$1.62", text: "AMD's lowest close, July 2015, nine months into Lisa Su's time as CEO. Its market value was under $2 billion." },
+        { big: "46.2%", text: "AMD's share of x86 server-chip revenue in early 2026, up from 1–2% of units in 2018 (Mercury Research)." },
+        { big: "$49B", text: "Closing value of the all-stock Xilinx deal (Feb 2022), up from about $35B when agreed in 2020." },
+        { big: "$8.5B", text: "AMD's data-centre sales in July–September 2026, nearly two-thirds of revenue, after its value briefly passed $1 trillion." }
       ],
       chain: [
-        { step: "Chip design", companies: ["amd", "nvidia"] },
-        { step: "Wafer fab", companies: ["tsmc"] },
-        { step: "Data centre", companies: ["amd", "microsoft"] }
+        { step: "Chip design", companies: ["amd", "nvidia", "intel"] },
+        { step: "Foundry", companies: ["tsmc", "globalfoundries"] },
+        { step: "AI customers", companies: ["openai", "microsoft", "meta", "oracle", "anthropic"] }
       ]
     },
     {
@@ -269,6 +269,9 @@ window.BOTTLENECK = {
     smartcap: { name: "SmartCap",          hq: "Australia",    sector: "Wearables" },
     threesquare:{ name: "Three Square Market", hq: "US",       sector: "Wearables" },
     anthropic:{ name: "Anthropic",         hq: "US",           sector: "AI labs" },
+    intel:    { name: "Intel",             hq: "US",           sector: "Chip design" },
+    globalfoundries:{ name: "GlobalFoundries", hq: "US",       sector: "Foundry" },
+    meta:     { name: "Meta",              hq: "US",           sector: "Cloud & data centres" },
     amazon:   { name: "Amazon",            hq: "US",           sector: "Cloud & data centres" },
     google:   { name: "Google",            hq: "US",           sector: "Cloud & data centres" },
     synergy:  { name: "Synergy Marine",    hq: "Singapore",    sector: "Shipping" },
