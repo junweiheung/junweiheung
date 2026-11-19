@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From $2 Stock to Trillion-Dollar Club: How AMD Came Back — Bottleneck by Jun Wei</title>
+<meta name="description" content="An explainer on AMD's comeback under Lisa Su: from a near-bankrupt $2 stock to a chip giant that passed Intel and chases Nvidia in AI.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/scene-kit.css">
+<link rel="stylesheet" href="../../css/amd.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <a class="sub" href="../explainers.html">← All explainers</a>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Living document · Semiconductors</span></div>
+  <h1>From a $2 Stock to the Trillion-Dollar Club: How AMD Came Back</h1>
+  <p class="dek">In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later it had passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. This is the full story of the comeback, and of its CEO, Lisa Su.</p>
+</div>
+
+<div class="hero-fig">
+  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <div class="hero-cap">AMD's share price from Lisa Su's first day as CEO (October 2014) to the trillion-dollar milestone. Each marker is a turning point in the story below. Graphic: Jun Wei Heung.</div>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 2026 · 11 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Two cousins, two monster stocks</a>
+    <a href="#s2">2. The Intel rivalry</a>
+    <a href="#s3">3. The dark decade</a>
+    <a href="#s4">4. Lisa Su's two bets</a>
+    <a href="#s5">5. The Xilinx trick</a>
+    <a href="#s6">6. The AI race</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">Financial figures here are cited to filings, company releases or reputable outlets in the Sources section, and will change with the next earnings season. Some of the narrative and anecdotes draw on three video profiles of AMD and Lisa Su, also listed in the Sources. Educational only, not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>AMD's lowest close was about <b>$1.62 in July 2015</b>, less than a year into Lisa Su's time as CEO, with a market value under $2 billion.</li>
+      <li>Its two self-inflicted near-death moments were the <b>$5.4 billion ATI purchase</b> in 2006, more than half of which it later wrote off, and the server share that fell toward <b>roughly 1%</b> by the mid-2010s.</li>
+      <li>The turnaround ran on two bets: the <b>Zen</b> chiplet architecture (2017) and a push into <b>data-centre EPYC</b> chips, which took AMD's server-CPU revenue share from low single digits to about <b>46% by 2026</b>.</li>
+      <li>The <b>$49 billion Xilinx deal</b> (closed Feb 2022) was all-stock, so a rising AMD share price lifted the price from the ~$35 billion agreed in 2020. It is the largest semiconductor acquisition on record.</li>
+      <li>AMD <b>passed Intel by market value in 2022</b> and crossed a <b>$1 trillion</b> valuation in September 2026. In AI accelerators it is a clear number two behind Nvidia.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Two cousins, two monster stocks</h2>
+  <p class="t dropcap">The two chip companies riding the AI wave hardest are Nvidia and AMD, and the people running them, Jensen Huang and Lisa Su, are distant cousins who met as adults, not at family dinners. Su has confirmed the relation and the no-family-dinners part in interviews. We covered Nvidia before; this page is about the other one.</p>
+  <p class="t">Most people know AMD for gaming graphics cards. That undersells it. AMD is one of two companies that matter in desktop and server CPUs, and one of two that matter in standalone GPUs. For most of its half-century, the rival it could never shake was not Nvidia. It was Intel.</p>
+
+  <figure class="fig rv photo">
+    <img style="max-width:100%;height:auto" src="../../images/photos/lisa-su.jpg" alt="Lisa Su, chair and CEO of AMD, speaking at an event" loading="lazy" width="720" height="900">
+    <figcaption>Lisa Su became AMD's CEO in October 2014, when the stock traded near $3 and the company was fighting for survival. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:AMD_CEO_Lisa_Su_20150603.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, CC BY 2.0.</span></figcaption>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>The Intel rivalry</h2>
+  <p class="t">Both companies trace back to Fairchild Semiconductor, the firm often called the cradle of Silicon Valley. Fairchild's talent kept leaking out: its two best-known founders, Robert Noyce and Gordon Moore, left to start Intel in 1968, and a year later Fairchild's sales director, Jerry Sanders, left to start AMD. From the beginning the two were uneven. Intel had the famous scientists and easy money; AMD was one of dozens of small chip startups scrapping for funding. One early backer of Sanders, by the account in the videos, was Noyce himself, so the rivalry was personal from day one.</p>
+  <p class="t">For its first stretch AMD survived by riding Intel's slipstream. In the era of the IBM PC, big buyers refused to depend on a single supplier, so they forced Intel to license its x86 chip designs to a "second source." AMD was that second source. It built Intel's designs alongside Intel and shared in the standard that defined the PC. Think of it as drafting behind a cyclist: the follower spends less energy, and the leader is happy to have company.</p>
+  <p class="t">AMD eventually decided it could not stay tied to Intel forever. It raised research spending, bought the chip-design firm NexGen in 1995 (and, almost by accident, the engineer who had led Intel's Pentium), and in 1999 launched the Athlon line. Athlon was faster than Intel's equivalent and cheaper, and it turned years of losses into a billion-dollar profit. By 2006 AMD's desktop share briefly rivalled Intel's and its server share had jumped from a sliver to over 20%. Riding that high, it made the bet that nearly killed it.</p>
+  <p class="pull">The rival AMD could never shake was not Nvidia. It was Intel.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>The dark decade</h2>
+  <p class="t">A computer needs two main chips: a CPU, the general-purpose brain, and a GPU, the graphics processor. AMD led in neither market alone, but it saw a prize in holding both: combine them and you could sell a package Intel couldn't match. On the GPU side, only two firms were left after the 1990s shakeout, Nvidia and ATI. AMD looked at buying one of them. Nvidia was too big and too expensive, and a merger risked AMD being swallowed instead. ATI, smaller, was affordable. So in 2006 AMD bought ATI.</p>
+  <p class="t">The price was about <b>$5.4 billion</b>: roughly $4.3 billion in cash, 58 million AMD shares, and a $2.5 billion loan to cover the rest. The strategy was sound, and it is the reason AMD can fight Nvidia in graphics today. The price was not. Within about a year AMD had to admit ATI was worth far less than it paid, and over the next two years it wrote off more than half the deal's value. The timing made it worse: three days after the ATI announcement, Intel shipped its Core 2 chips, excellent on both speed and power, and pulled away again.</p>
+  <p class="t">Now AMD was fighting on two fronts, designing and manufacturing at once, with debt piling toward $5 billion. In 2008 it did the thing that looked like surrender and turned out to be wise: it spun off its factories, which became GlobalFoundries, and kept only chip design. It raised cash and let AMD stop trying to manage two very different businesses at the same time. But the bleeding continued. Desktop CPU share slid from near 50% toward 20%, server share fell from its mid-2000s peak toward roughly 1%, the stock sank under $2, and AMD sold its headquarters building for about $160 million. Wall Street analysts openly wondered whether the company would survive.</p>
+
+  <figure class="fig rv scene" id="shareFig">
+    <div class="ft">AMD's server share: the fall, then Zen</div>
+    <div class="fs">Share of x86 server-CPU revenue. Watch the collapse, then the climb after Zen and EPYC.</div>
+    <svg id="shareSvg" viewBox="0 0 800 460" role="img" aria-label="Animated chart: AMD's x86 server CPU revenue share falls to about 1 percent in the mid-2010s, then climbs after 2017 to about 46 percent by 2026."></svg>
+    <figcaption>Illustrative timeline. Low single-digit server share in the mid-2010s; about 46% of server-CPU revenue by 2026 (Mercury Research, via TechPowerUp). Years are approximate and some points are interpolated.</figcaption>
+  </figure>
+
+  <h2 id="s4"><span class="n">Part 4</span>Lisa Su's two bets</h2>
+  <p class="t">Lisa Su became CEO in October 2014. She was an MIT-trained electrical engineer with a doctorate who had worked on chips at Texas Instruments and IBM before joining AMD in 2012. She told Bloomberg the job was "a dream come true," even though she inherited a company trading near $2 that one commentator called "deader than dead." After stabilising the basics (simplifying the company, protecting key customers, cutting costs) she made two strategic bets, each extremely hard on its own and far harder together.</p>
+  <p class="t"><b>Bet one: high-performance computing.</b> AMD had drifted into the cheap middle of the market, selling budget chips on price. Su judged that the low end had no future: thin margins, no room to invest. She pointed the company at top-end performance instead and said the phrase "high-performance computing" so often in interviews that it became a tic. The payoff was <b>Zen</b>, launched in February 2017: a clean-sheet design built from small dies called "chiplets," stitched together into larger processors. Chiplets raise manufacturing yields and give AMD flexibility to mix and match, and the whole modern lineup is built on them. AMD had aimed for a 40% jump over its previous chips; the first-generation Ryzen beat Intel's eight-core i7 by a wide margin at less than half the price. Later Zen generations, on TSMC's 7nm process from 2019, took outright performance leadership.</p>
+
+  <figure class="fig rv photo">
+    <img style="max-width:100%;height:auto" src="../../images/photos/amd-epyc-chiplets.jpg" alt="A delidded AMD EPYC processor showing one central IO die surrounded by eight smaller chiplet dies" loading="lazy" width="900" height="600">
+    <figcaption>A delidded AMD EPYC 7702: the large central IO die is ringed by eight smaller "chiplets," the building blocks of the Zen design. <span class="credit">Photo: Fritzchens Fritz, <a href="https://commons.wikimedia.org/wiki/File:AMD_Epyc_7702_delidded.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, CC0 / public domain.</span></figcaption>
+  </figure>
+
+  <p class="t"><b>Bet two: widen the business.</b> AMD had leaned too long on PC chips alone. Su named three growth areas: gaming, the data centre, and embedded or immersive devices. Gaming was the quiet lifesaver. The reason AMD could straddle CPUs and GPUs was precisely the ATI deal that nearly sank it, and that let AMD win the big game consoles. PlayStation, Xbox and the Steam Deck all run AMD chips, a business worth a few billion dollars a year that helped cover the losses on the PC side during the lean years.</p>
+  <p class="t">The far bigger prize was the data centre. Cloud providers and supercomputers buy enormous numbers of server CPUs, a market Intel had owned almost entirely. To take it, AMD first needed chips good enough, which is what Zen delivered, and then a reason to switch. Its pitch was <b>total cost of ownership</b>. For a data centre, the sticker price of a chip is the small part; power, cooling and maintenance over years of nonstop running are the rest. AMD's <b>EPYC</b> server line, built on Zen, argued it was both cheaper to buy and cheaper to run than Intel's Xeon, and it put a comparison tool on its own website to prove it. Enterprise buyers move slowly, but AWS, Microsoft Azure and Google Cloud all began using EPYC. The share crept, then climbed: from low single digits in the mid-2010s to about <b>46% of server-CPU revenue by 2026</b>.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The Xilinx trick</h2>
+  <p class="t">To widen out once more, AMD bought Xilinx, the leader in FPGAs: a third kind of chip, after CPUs and GPUs, that can be reprogrammed after it is made and shows up in cars, communications gear and specialised equipment. Owning it gave AMD a broader product range to sell into the same data-centre and networking customers. The strategy is ordinary. The way AMD paid for it is the interesting part.</p>
+  <p class="t">AMD had only a few billion dollars of spare cash, nowhere near enough to buy a company this size. So it paid in its own <b>stock</b> instead: every Xilinx share would convert into 1.7234 AMD shares, a fixed ratio. When the deal was announced in October 2020, that ratio was worth about <b>$35 billion</b>. Deals this large take more than a year to clear regulators, and for the whole wait the price floats with the buyer's share price, because the number of shares is fixed but their value is not.</p>
+  <p class="t">By the time the deal closed on <b>14 February 2022</b>, AMD's stock had risen roughly 40%. The same fixed share ratio was now worth about <b>$49 billion</b>, the largest semiconductor acquisition on record. In effect, a rising share price let AMD pay about $14 billion more for Xilinx without spending a single extra dollar of cash. When your own stock is soaring, it becomes a currency you can buy other companies with.</p>
+
+  <figure class="fig rv scene" id="swapFig">
+    <div class="ft">Paying with stock that keeps rising</div>
+    <div class="fs">The Xilinx deal was a fixed share swap. As AMD's stock rose between signing and closing, the deal's dollar value rose with it.</div>
+    <svg id="swapSvg" viewBox="0 0 800 420" role="img" aria-label="Animated illustration: a fixed 1.7234 share-swap ratio stays constant while AMD's share price rises, lifting the Xilinx deal value from about $35 billion at announcement to about $49 billion at close."></svg>
+    <figcaption>Illustration by Jun Wei Heung. Announced value ~$35B (Oct 2020); closing value ~$49B (Feb 2022), fixed exchange ratio 1.7234 AMD shares per Xilinx share.</figcaption>
+  </figure>
+
+  <h2 id="s6"><span class="n">Part 6</span>The AI race</h2>
+  <p class="t">Much of AMD's rise came from Intel's own stumble. For years Intel upgraded its chips in small annual steps, a strategy it called "tick-tock," and customers grumbled it was squeezing out improvements like toothpaste. Then Intel got stuck. Its move to the 10-nanometer manufacturing process ran into deep problems, and it sat at 14nm for years; in 2019 it had to apologise in writing to customers for being unable to supply enough chips. That is the trap of doing your own manufacturing: when the factory stalls, the whole product line stalls with it. AMD, having sold its factories, simply switched to TSMC when GlobalFoundries couldn't keep up.</p>
+  <p class="t">The scoreboard caught up. AMD <b>passed Intel by market value in 2022</b> for the first time, and crossed <b>$1 trillion</b> in September 2026. Intel, once the dominant chipmaker on earth, became the cautionary tale: in this industry a single wrong manufacturing bet can cost you the lead for a decade.</p>
+  <p class="t">The fight with Nvidia is a different kind of contest from the one with Intel. Against Intel it was close to zero-sum, a straight battle over the same CPU customers. In AI, Su argues, demand so far outruns supply that there is room for more than one winner; buyers want working chips and don't much care whose name is on them. AMD's MI300 accelerators passed <b>$5 billion</b> in sales in 2024 and run real workloads for Microsoft and Meta. But Nvidia still earns many times more from AI chips, and it owns CUDA, the software developers build on, which makes switching away painful. AMD is a strong and fast-growing number two, not yet a challenger for the top spot.</p>
+
+  <p class="t">The pattern is the one that runs through the rest of this series: in chips, leadership is rented, not owned. Every few years a new architecture can topple the leader, so a winner has to keep betting a large share of its worth on the next five years. The products you see on a shelf are the visible tip of research that started three to five years earlier. AMD kept making those bets, Intel stopped, and Nvidia is making them now. AMD's own story says the lead can change hands fast, which is exactly why no one at the top can relax.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Figures are cited to filings, company releases or reputable outlets. Some narrative framing and anecdotes come from the three video profiles listed at the end.</p>
+  <ul class="sources">
+    <li>Lisa Su became CEO October 2014, stock near $2–3, company near bankruptcy: <a href="https://spectrum.ieee.org/amds-lisa-su-breaks-through-the-silicon-ceiling" target="_blank" rel="noopener">IEEE Spectrum</a>, <a href="https://www.cnbc.com/2025/03/20/amds-lisa-su-has-already-beaten-intel-now-comes-nvidia.html" target="_blank" rel="noopener">CNBC</a></li>
+    <li>Lowest close about $1.62 on 27 July 2015: <a href="https://blofin.com/academy/education/amd/amd-stock-price-history-and-cycles" target="_blank" rel="noopener">Blofin (via Yahoo Finance data)</a></li>
+    <li>ATI acquisition ~$5.4 billion, closed Oct 2006, $2.5 billion term loan: <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312506217735/dex991.htm" target="_blank" rel="noopener">AMD 8-K press release (SEC)</a>, <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312507087794/dex992.htm" target="_blank" rel="noopener">AMD pro forma financials (SEC)</a>; over half later written off: <a href="https://arstechnica.com/gadgets/2008/12/amd-writes-down-atis-value-again/" target="_blank" rel="noopener">Ars Technica</a>, <a href="https://www.latimes.com/archives/la-xpm-2007-dec-13-fi-amd13-story.html" target="_blank" rel="noopener">Los Angeles Times</a></li>
+    <li>Zen launched February 2017; Zen 2 on 7nm (2019); chiplet design: <a href="https://en.wikipedia.org/wiki/Zen_(microarchitecture)" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://www.tomshardware.com/news/amd-64-core-128-thread-7nm-rome-cpu,38032.html" target="_blank" rel="noopener">Tom's Hardware</a></li>
+    <li>EPYC server-CPU revenue share about 46.2% in 2026, up from ~1–2% in 2018: <a href="https://www.techpowerup.com/349029/amd-epyc-cpus-reach-record-server-revenue-share-of-46-2" target="_blank" rel="noopener">TechPowerUp / Mercury Research</a>, <a href="https://wccftech.com/intel-server-client-cpu-market-share-huge-drop-since-launch-of-amd-ryzen-epyc-chips/" target="_blank" rel="noopener">Wccftech / Mercury Research</a></li>
+    <li>MI300 data-centre GPU revenue above $5 billion in 2024, customers Microsoft and Meta: <a href="https://www.crn.com/news/components-peripherals/2025/amd-fourth-quarter-2024-earnings" target="_blank" rel="noopener">CRN</a>, <a href="https://www.datacenterdynamics.com/en/news/amd-posts-record-data-center-revenue-in-q2-2024-thanks-to-1bn-in-mi300x-sales/" target="_blank" rel="noopener">DataCenterDynamics</a></li>
+    <li>Xilinx all-stock deal, 1.7234 ratio, ~$35B at announcement (Oct 2020) and ~$49B at close (14 Feb 2022), largest chip deal: <a href="https://amd.com/en/newsroom/press-releases/2022-2-14-amd-completes-acquisition-of-xilinx.html" target="_blank" rel="noopener">AMD press release</a>, <a href="https://www.anandtech.com/show/17251/amds-acquisition-of-xilinx-receives-regulatory-go-expected-to-close-feb-14th" target="_blank" rel="noopener">AnandTech</a>, <a href="https://finance.yahoo.com/news/amd-closes-biggest-chip-acquisition-134003210.html" target="_blank" rel="noopener">Reuters via Yahoo</a></li>
+    <li>AMD passed Intel by market value in 2022: <a href="https://www.cnbc.com/2022/11/22/how-amd-became-a-chip-giant-leapfrogged-intel-after-playing-catch-up.html" target="_blank" rel="noopener">CNBC</a>; crossed $1 trillion September 2026: <a href="https://en.wikipedia.org/wiki/Lisa_Su" target="_blank" rel="noopener">Wikipedia (Lisa Su)</a></li>
+    <li>Video profiles used for narrative and anecdotes (Fairchild origins, Noyce as an early AMD investor, the second-source history, the ATI decision, the TCO pitch, and Lisa Su's "dream come true" / "deader than dead" / no-family-dinners remarks): <a href="https://youtu.be/cnTSFpSqYSM" target="_blank" rel="noopener">一口气了解AMD (小Lin说)</a>; <a href="https://youtu.be/SMN2v2HdeDo" target="_blank" rel="noopener">看蘇姿丰如何扭轉AMD (名人商業解密)</a>; <a href="https://youtu.be/8Ve5SAFPYZ8" target="_blank" rel="noopener">AMD's CEO Wants to Chip Away at Nvidia's Lead, The Circuit with Emily Chang (Bloomberg Originals)</a>. Video content was summarised and paraphrased for compliance with licensing restrictions.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. A living document; figures will be updated as companies report.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s3">The dark decade</a><br><a href="#s4">Lisa Su's two bets</a><br><a href="#s6">The AI race</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised by the companies that report them.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/amd.js"></script>
+</body>
+</html>

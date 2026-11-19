@@ -179,6 +179,30 @@ window.BOTTLENECK = {
         { step: "IPO placement", companies: ["google", "nvidia", "amd", "broadcom", "micron", "microsoft", "tsmc"] },
         { step: "The issuer", companies: ["anthropic"] }
       ]
+    },
+    {
+      id: "amd",
+      href: "explainers/amd.html",
+      title: "From a $2 Stock to the Trillion-Dollar Club: How AMD Came Back",
+      short: "How AMD came back",
+      kicker: "Explainer",
+      topic: "Semiconductors",
+      date: "2026-11-19",
+      readMins: 11,
+      dek: "In 2015 AMD traded near $1.62 and analysts wrote its obituary. A decade later, under Lisa Su, it passed Intel, joined the trillion-dollar club, and lined up behind Nvidia in the AI race. The full story of the comeback.",
+      summary: "A $2 stock, two architecture bets, a $49B share swap, and the AI race",
+      thumb: "../images/thumbs/amd.svg",
+      stats: [
+        { big: "$1.62", text: "AMD's lowest close, July 2015, less than a year into Lisa Su's time as CEO. Market value was under $2 billion." },
+        { big: "~46%", text: "EPYC's share of server-CPU revenue by 2026, up from low single digits in the mid-2010s (Mercury Research)." },
+        { big: "$49B", text: "Closing value of the all-stock Xilinx deal (Feb 2022), up from ~$35B agreed in 2020: the largest chip acquisition on record." },
+        { big: "$1T", text: "AMD's market value milestone, crossed in September 2026 after passing Intel in 2022." }
+      ],
+      chain: [
+        { step: "Chip design", companies: ["amd", "nvidia"] },
+        { step: "Wafer fab", companies: ["tsmc"] },
+        { step: "Data centre", companies: ["amd", "microsoft"] }
+      ]
     }
   ],
 

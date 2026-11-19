@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .rise{stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 1.9s ease .3s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @media (prefers-reduced-motion:reduce){.rise{animation:none;stroke-dashoffset:0}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <g stroke="#1e1e22" stroke-width="2">
+    <line x1="120" x2="1480" y1="250" y2="250"/><line x1="120" x2="1480" y1="400" y2="400"/>
+    <line x1="120" x2="1480" y1="550" y2="550"/><line x1="120" x2="1480" y1="700" y2="700"/>
+  </g>
+  <text x="120" y="110" fill="#fff" font-size="44" font-weight="700">From a $2 stock to the trillion-dollar club</text>
+  <text x="120" y="160" fill="#8d8a84" font-size="26">AMD's comeback under Lisa Su · share price, illustrative</text>
+  <!-- area under the curve -->
+  <path d="M200,720 L200,700 L430,735 L660,560 L890,470 L1120,300 L1420,210 L1420,720 Z" fill="#e01e2b" fill-opacity="0.18"/>
+  <!-- the rising line -->
+  <polyline class="rise" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"
+    points="200,700 430,735 660,560 890,470 1120,300 1420,210"/>
+  <g fill="#e01e2b" stroke="#fff" stroke-width="4">
+    <circle cx="200" cy="700" r="13"/><circle cx="430" cy="735" r="13"/><circle cx="660" cy="560" r="13"/>
+    <circle cx="890" cy="470" r="13"/><circle cx="1120" cy="300" r="13"/><circle cx="1420" cy="210" r="13"/>
+  </g>
+  <g fill="#fff" font-size="27" font-weight="700">
+    <text x="430" y="790" text-anchor="middle">$1.62 low</text>
+    <text x="660" y="528" text-anchor="middle">Zen</text>
+    <text x="1120" y="268" text-anchor="middle">Passes Intel</text>
+    <text x="1420" y="178" text-anchor="end">$1T</text>
+  </g>
+  <g fill="#77746e" font-size="24" text-anchor="middle">
+    <text x="200" y="790">2014</text><text x="890" y="840">2022</text><text x="1420" y="840">2026</text>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+/* AMD explainer page styles. Shared styles: bottleneck.css, article.css, scene-kit.css. */
+
+h1{max-width:18ch}
+
+/* TOC active link (in case article.css doesn't define it) */
+#toc a.on{color:var(--ink);font-weight:600}
