@@ -105,6 +105,31 @@ window.BOTTLENECK = {
         { step: "Chips", companies: ["nvidia"] },
         { step: "Compute buyer", companies: ["openai", "microsoft"] }
       ]
+    },
+    {
+      id: "glass-cloth",
+      href: "explainers/glass-cloth.html",
+      title: "The Cloth Inside the Chip: One Japanese Mill and AI's Quietest Shortage",
+      short: "The cloth inside the chip",
+      kicker: "Explainer",
+      topic: "Advanced packaging",
+      date: "2026-11-19",
+      readMins: 11,
+      dek: "Under every advanced AI processor sits a sheet of woven glass. One Japanese company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade, and the queue for it is long.",
+      summary: "A woven glass sheet, a 1918 textile firm, and a shortage nobody sees",
+      thumb: "../images/thumbs/glass-cloth.svg",
+      stats: [
+        { big: "~90%", text: "Nittobo's estimated share of T-glass cloth, the grade that keeps big AI chip packages flat." },
+        { big: "814→1,700", text: "Nvidia interposer area in mm², Hopper to Blackwell: +109%." },
+        { big: "8–10→20+", text: "Weeks of lead time for the laminate the cloth goes into, as reported." },
+        { big: "¥15B", text: "About US$94 million (S$121 million) for a new Fukushima building, targeting up to ~3× output." }
+      ],
+      chain: [
+        { step: "Glass cloth", companies: ["nittobo", "nanya"] },
+        { step: "Substrate and board laminates", companies: ["kingboard"] },
+        { step: "Chip packaging", companies: ["tsmc"] },
+        { step: "Chip design", companies: ["nvidia"] }
+      ]
     }
   ],
 
@@ -135,6 +160,9 @@ window.BOTTLENECK = {
     mgx:      { name: "MGX",               hq: "UAE" },
     crusoe:   { name: "Crusoe",            hq: "US" },
     nscale:   { name: "Nscale",            hq: "UK" },
-    microsoft:{ name: "Microsoft",         hq: "US" }
+    microsoft:{ name: "Microsoft",         hq: "US" },
+    nittobo:  { name: "Nittobo",           hq: "Japan" },
+    nanya:    { name: "Nan Ya Plastics",   hq: "Taiwan" },
+    kingboard:{ name: "Kingboard",         hq: "Hong Kong" }
   }
 };

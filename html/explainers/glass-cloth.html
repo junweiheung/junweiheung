@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cloth Inside the Chip: One Japanese Mill and AI's Quietest Shortage — Bottleneck by Jun Wei</title>
+<meta name="description" content="Inside every advanced AI chip package is a sheet of woven glass. One Japanese company, Nittobo, reportedly makes about 90% of the best grade. An explainer on the quietest shortage in AI.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/glass-cloth.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <a class="sub" href="../explainers.html">← All explainers</a>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Living document · Advanced packaging</span></div>
+  <h1>The Cloth Inside the Chip</h1>
+  <p class="dek">Under every advanced AI processor sits a sheet of woven glass thinner than paper. One Japanese textile company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade. Nvidia, Microsoft, Google and Amazon are reportedly queuing for it.</p>
+</div>
+
+<div class="hero-fig">
+  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A grid of 100 squares, 90 of them gold, representing Nittobo's roughly 90% share of high-end T-glass cloth supply."></svg></div>
+  <div class="hero-cap">100 squares stand for 100% of T-glass supply; 90 are gold. Share is a TrendForce estimate, also reported by Tom's Hardware; it is not a company figure. Lead-time figure is for copper-clad laminate, per Tom's Hardware. Sources below. Graphic: Jun Wei Heung.</div>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 19, 2026 · 11 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. The cloth nobody sees</a>
+    <a href="#s2">2. Inside the package</a>
+    <a href="#s3">3. Why bigger chips need it</a>
+    <a href="#s4">4. One company, one town</a>
+    <a href="#s5">5. The queue</a>
+    <a href="#s6">6. The fix, and why it's slow</a>
+    <a href="#s7">7. How we got here</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This is about one material, glass cloth, and mostly one company, Nitto Boseki ("Nittobo"). Nittobo's share figures come from industry researchers (chiefly TrendForce) and trade press, not from audited filings, so I say "reportedly" or "an estimate" where that applies. Its expansion plans come from the company's own August 2025 filing. Where sources disagree on dates or prices, I give the range. Yen and US-dollar figures are converted at the mid-November 2026 rates of about ¥159 and S$1.29 per US dollar, and are rounded. This explains an industry; it isn't investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>Advanced AI chips sit on a package substrate whose core is resin reinforced with <b>woven glass cloth</b>. The grade that keeps big, hot packages flat is called <b>T-glass</b>.</li>
+      <li>TrendForce estimates Nittobo holds about <b>90% of T-glass</b> and <b>60–70% of the next grade, NER glass</b>. Trade press calls it the only firm able to make the top grade stably at scale.</li>
+      <li>Nittobo is spending about <b>¥15 billion</b> (about US$94 million, S$121 million) on a new Fukushima building that could, on its own filing's terms, take output to <b>roughly three times</b> today's level. Relief is not expected before <b>mid-2027</b>, and some forecasters say 2028.</li>
+      <li>Meanwhile, laminate lead times reportedly stretched from <b>8–10 weeks to over 20</b>, and Nvidia reportedly went to the cloth maker directly. That is unusual this far upstream.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>The cloth nobody sees</h2>
+  <p class="t dropcap">Start with why you've never heard of it. Glass cloth is a component of a component of a component. It is woven into the core of a substrate, which holds a chip package, which sits on a board, which goes into a server. Nobody buys it. Nobody puts it on a slide. It doesn't show up in a teardown photo unless you slice the package open.</p>
+  <p class="t">It is also a small business. BofA analyst Takashi Enomoto estimates Nittobo's whole electronic-materials segment made about ¥40.9 billion (about US$257 million, S$331 million) in 2025, <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">according to Tom's Hardware</a>. Nvidia's fiscal-2026 revenue was <a href="../explainers/gpu-unlock.html">US$215.9 billion</a>. Different year-ends, so treat it as rough, but that is about one-thousandth. A very small supplier is holding up a very large industry.</p>
+
+  <figure class="fig rv" id="procFig">
+    <div class="ft">From sand to sheet</div>
+    <div class="fs">How glass cloth is made, simplified. The furnace temperature is from Tom's Hardware.</div>
+    <div class="proc">
+      <div class="pbox"><b>Melt</b><small>Silica-rich glass in an electric furnace at 1,600–1,700°C</small></div>
+      <div class="pbox"><b>Spin</b><small>Molten glass is drawn into fine fibres, then twisted into yarn</small></div>
+      <div class="pbox"><b>Weave</b><small>Yarn goes on looms and becomes ultrathin cloth</small></div>
+      <div class="pbox"><b>Soak</b><small>Cloth is impregnated with resin to make sheets for substrates and boards</small></div>
+      <div class="pbox gold"><b>Core</b><small>The stiff middle layer of a chip substrate</small></div>
+    </div>
+    <figcaption>Melting, spinning and weaving: <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>. Resin step: <a href="https://www.mpbxchange.com/research/pcb-material-shortage-2026-glass-cloth-copper-foil" target="_blank" rel="noopener">MPBxChange</a> describes laminates and prepreg made with glass cloth. Steps simplified by me.</figcaption>
+  </figure>
+
+  <div class="note">
+    <b class="h">An analogy: rebar in concrete</b>
+    Resin on its own is like unreinforced concrete: fine until it heats up and moves. Woven glass is the steel mesh inside. Without it, the slab bends. T-glass is the premium mesh, used when the slab is huge and the load is extreme.
+  </div>
+
+  <h2 id="s2"><span class="n">Part 2</span>Inside the package</h2>
+  <p class="t">Here is where the cloth sits. Scroll through the layers of a simplified AI accelerator, from the chip you've heard of down to the layer you haven't.</p>
+
+  <div class="scrolly" id="scrolly">
+    <div class="steps" id="steps">
+      <div class="step" data-s="0"><div class="card"><div class="lab">Layer 1 · The chip</div>The processor and its stacked high-bandwidth memory. This is the layer with the famous names and the big margins. It cannot work alone.</div></div>
+      <div class="step" data-s="1"><div class="card"><div class="lab">Layer 2 · The interposer</div>A slab of silicon that wires the processor to its memory. Nvidia's data show interposers growing from 814 mm² in Hopper to 1,700 mm² in Blackwell, per <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>.<div class="big">814 → 1,700<small>mm²</small></div></div></div>
+      <div class="step" data-s="2"><div class="card"><div class="lab">Layer 3 · The substrate core</div>Underneath is an organic substrate. Its core is resin reinforced with woven glass cloth. For big, hot AI packages, that cloth is T-glass, with low thermal expansion. This is Nittobo's territory.<div class="big">~90%<small>T-glass share, est.</small></div></div></div>
+      <div class="step" data-s="3"><div class="card"><div class="lab">Layer 4 · The board</div>Below that, the circuit board carries signals at high speed. Low-dielectric glass cloth helps there. Nittobo says its version has gone into AI-server switch boards since summer 2023. TrendForce estimates its share of that NER grade at 60–70%.</div></div>
+      <div class="step" data-s="4"><div class="card"><div class="lab">Why it matters · Heat</div>Run the chip and everything heats. Silicon barely expands; plain resin expands a lot. Where materials disagree, the package bends. A warped substrate can crack tiny solder joints, so yield falls. T-glass is there to stop the bend.</div></div>
+    </div>
+    <div class="sticky">
+      <div class="chartbox">
+        <div class="ct">Anatomy of an AI package</div>
+        <div class="cs">Highlighted layer follows the story</div>
+        <svg id="stackChart" viewBox="0 0 640 360" role="img" aria-label="Cross-section of an AI accelerator package: a chip with memory stacks on a silicon interposer, on a glass-cloth substrate core, on a circuit board. The final step shows the substrate warped by heat."></svg>
+      </div>
+      <div class="chartnote">Schematic only. Layer roles from <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a> and <a href="https://www.marketscreener.com/news/nitto-boseki-notice-regarding-expansion-of-glass-cloth-production-capacity-ce7c50dcd18ff226" target="_blank" rel="noopener">Nittobo's August 2025 filing</a>; not to scale.</div>
+    </div>
+  </div>
+
+  <p class="pull">The most advanced chip on Earth still depends on a woven sheet to stay flat.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Why bigger chips need it</h2>
+  <p class="t">Nobody needed to think about glass cloth when chips were small. Cheap E-glass, the standard grade, is used in lower-end parts, such as microcontrollers and older mobile processors. The trouble is that AI chips keep growing, and a bigger package has more room to warp.</p>
+
+  <figure class="fig rv" id="interFig">
+    <div class="ft">The interposer doubled</div>
+    <div class="fs">Interposer area in Nvidia's accelerators, square millimetres</div>
+    <div class="mkt">
+      <div class="mcol"><div class="mval">814</div><div class="mbar" data-h="41" style="background:var(--grey)"></div><div class="mlbl">Hopper</div></div>
+      <div class="mcol"><div class="mval">1,700</div><div class="mbar" data-h="86" style="background:var(--gold)"></div><div class="mlbl">Blackwell</div></div>
+      <div class="stamp" style="left:36%;top:16%">+109%</div>
+    </div>
+    <figcaption>Nvidia data as cited by Yole Group's Bilal Hachemi in <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>, March 2026. The same article says later generations are expected to grow further. Only two data points are published here, so only two bars are drawn.</figcaption>
+  </figure>
+
+  <p class="t">Substrate makers run on thin margins, says Hachemi, so a modest rise in demand can tip them into shortage. Then there is the second effect: newer racks reportedly use more layers and more boards. TrendForce points to Nvidia's Rubin generation, whose substrate has seen "significant increases in both area and layer count", and to cable-free rack designs that need extra midplanes and backplanes.</p>
+  <p class="t">So each package needs more cloth, and there are more packages. Demand grows on both axes. Supply, as the next part shows, grows on neither.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>One company, one town</h2>
+  <p class="t">Nittobo is a century-old Japanese company. According to a Wikipedia entry and a company-history summary, it was founded in April 1918 as a silk spinner in the city of Fukushima, and by 1938 it had become the first in Japan to industrialise glass fibre. It is now headquartered in Tokyo, but the plant that matters for this story is still in Fukushima.</p>
+
+  <figure class="fig rv" id="shareFig">
+    <div class="ft">Who makes the cloth?</div>
+    <div class="fs">Nittobo's estimated share of global supply, by grade</div>
+    <div class="lease">
+      <div class="lrow"><div class="ll"><span>T-glass (low thermal expansion)</span><b>~90%</b></div><div class="ltrack"><i class="lg" data-w="90"></i></div></div>
+      <div class="lrow"><div class="ll"><span>NER glass (low dielectric)</span><b>60–70%</b></div><div class="ltrack"><i class="lg rng" data-w="70"></i><i class="lg" data-w="60"></i></div></div>
+    </div>
+    <figcaption>TrendForce estimate, April 2026 (<a href="https://insights.trendforce.com/p/glass-fiber-cloth-shortage" target="_blank" rel="noopener">TrendForce</a>); also reported by <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a> and <a href="https://www.mpbxchange.com/research/pcb-material-shortage-2026-glass-cloth-copper-foil" target="_blank" rel="noopener">MPBxChange</a>. The 60–70% bar is drawn solid to 60% with the range shaded. These are analyst estimates, and I found no audited company figure.</figcaption>
+  </figure>
+
+  <p class="t">Why can't others just copy it? According to Tom's Hardware, Nittobo has a proprietary glass composition and a direct-melting production method that rivals have struggled to replicate. Taiwan Glass, Grace Fabric and several Chinese makers are trying, but low yields have so far deterred meaningful entry. A November 2025 TrendForce news item, citing Taiwanese press, calls Nittobo the only company able to stably mass-produce top-grade T-glass.</p>
+
+  <p class="pull">A recipe anyone can read is not a moat. A recipe that only works at scale in one factory is.</p>
+
+  <div class="note">
+    <b class="h">An analogy: the one bakery with the sourdough starter</b>
+    Anyone can buy flour and an oven. What's hard is the culture that took decades to keep alive and the recipe that makes the loaf rise the same way every day. Competitors have the same ingredients. They don't yet have the same yield.
+  </div>
+
+  <h2 id="s5"><span class="n">Part 5</span>The queue</h2>
+  <p class="t">When one maker supplies almost everything, demand doesn't compete on price first. It competes on place in line. Nikkei, as relayed by TrendForce, reported that Nvidia, Microsoft, Google and Amazon had booked most of Nittobo's premium cloth capacity for 2026. Yole's Hachemi told Tom's Hardware that Nvidia contacting an upstream supplier like Nittobo directly is unprecedented in this part of the chain.</p>
+
+  <figure class="fig rv" id="leadFig">
+    <div class="ft">The wait for laminate</div>
+    <div class="fs">Lead time for copper-clad laminate (the sheet glass cloth goes into), weeks</div>
+    <div class="lease">
+      <div class="lrow"><div class="ll"><span>Normal</span><b>8–10 weeks</b></div><div class="ltrack"><i class="lo" data-w="37.5"></i></div></div>
+      <div class="lrow"><div class="ll"><span>2026, T-glass tight</span><b>over 20 weeks</b></div><div class="ltrack"><i class="lr" data-w="83.3"></i></div></div>
+    </div>
+    <div class="bigstat"><b>20–30%</b><span>Reported price rise for the material. A Yuanta analyst said suppliers "are no longer providing lead times".</span></div>
+    <figcaption><a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>, March 2026. Bars drawn at 9 weeks and 20 weeks; the second is a floor ("beyond 20"). These are laminate figures, not glass-cloth-only.</figcaption>
+  </figure>
+
+  <p class="t">The squeeze has spread beyond T-glass. MPBxChange's roundup collects supply-chain reports that thin E-glass styles, such as 1080 and 2116, were the tightest by late October, with a survey cited by Commercial Times putting the cumulative rise in style 1080 cloth at about 300% from low to high. Glass cloth is about 19% of laminate cost, per TrendForce, so price rises feed through. The same roundup says weaving looms are a binding constraint: global output of the relevant looms is about 2,400 a year, possibly 3,600 in 2027, according to supply-chain sources. Treat those as reported, unaudited figures.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>The fix, and why it's slow</h2>
+  <p class="t">Nittobo is building. On 29 August 2025 its board approved a new two-storey building at its Fukushima Enterprise Center, with new equipment, for about ¥15 billion (about US$94 million, S$121 million). Japan's trade ministry is expected to chip in up to about ¥2.4 billion (about US$15 million, S$19 million) under a plan to ensure T-glass supply. Construction runs October 2025 to December 2026, with production due to start in the fourth quarter of fiscal 2026, meaning January to March 2027.</p>
+
+  <figure class="fig rv" id="capFig">
+    <div class="ft">The promise, in multiples</div>
+    <div class="fs">Nittobo's T-glass output: today versus the best case from the new building</div>
+    <div class="mkt">
+      <div class="mcol"><div class="mval">1×</div><div class="mbar" data-h="33" style="background:var(--grey)"></div><div class="mlbl">Current level</div></div>
+      <div class="mcol"><div class="mval">~3×</div><div class="mbar" data-h="100" style="background:var(--gold);opacity:.55"></div><div class="mlbl">If all new capacity goes to T-glass</div></div>
+      <div class="stamp s2" style="left:34%;top:10%">conditional</div>
+    </div>
+    <figcaption>Nittobo's own wording (<a href="https://www.marketscreener.com/news/nitto-boseki-notice-regarding-expansion-of-glass-cloth-production-capacity-ce7c50dcd18ff226" target="_blank" rel="noopener">filing, 29 Aug 2025</a>): "If all the expanded capacity goes to T-glass cloth for cutting-edge logic IC applications, output could reach roughly three times the current level." Secondary sources say the aim is about three times the year-to-March-2026 level by the year to March 2029; see <a href="https://www.mpbxchange.com/research/pcb-material-shortage-2026-glass-cloth-copper-foil" target="_blank" rel="noopener">MPBxChange</a>. A target, not output.</figcaption>
+  </figure>
+
+  <p class="t">It is also adding a second source for the weaving step. Nan Ya Plastics, part of Taiwan's Formosa Plastics Group, said in November 2025 it would weave about 20% of the specialty glass cloth Nittobo supplies by 2027, with Nittobo supplying the yarn. Tom's Hardware adds that Nittobo is doubling raw-yarn capacity at a Taiwan plant. Note what this does and doesn't do: more weavers help, but the key know-how, the glass itself, stays with Nittobo.</p>
+  <p class="t">The relief date keeps slipping into the future. Yole's Hachemi expects the imbalance to last until the second half of 2027 at the earliest. MPBxChange's roundup cites two European laminate suppliers expecting no significant easing in glass fabric before 2028. Meanwhile demand is moving too: JPMorgan, per Tom's Hardware, reports rising demand for ultra-thin T-glass, a harder product to make.</p>
+
+  <figure class="fig rv" id="salesFig">
+    <div class="ft">What the bottleneck is worth</div>
+    <div class="fs">Nittobo electronic-materials sales, ¥ billion: reported 2025 vs a BofA forecast</div>
+    <div class="mkt">
+      <div class="mcol"><div class="mval">¥40.9B</div><div class="mbar" data-h="40" style="background:var(--grey)"></div><div class="mlbl">2025 (about S$331M)</div></div>
+      <div class="mcol"><div class="mval">¥87.7B</div><div class="mbar" data-h="86" style="background:var(--gold);opacity:.55"></div><div class="mlbl">By March 2028, forecast (about S$710M)</div></div>
+    </div>
+    <figcaption>BofA's Takashi Enomoto, via <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>. The 2028 bar is a single analyst's estimate, shown lighter. The same note expects operating margins to approach 48%. Conversions: ¥159.4 and S$1.289 per US$1 (<a href="https://open.er-api.com/v6/latest/USD" target="_blank" rel="noopener">open exchange-rate data</a>, 19 Nov 2026).</figcaption>
+  </figure>
+
+  <p class="t">One more point. Nittobo's own filing notes that it has a medium-term plan of ¥80 billion of capital spending over four years. A company that dominates one grade has every reason to build carefully. Secondary write-ups say it is also scaling back low-margin E-glass to focus on T-glass, which, if true, shifts the tightness onto the cheaper cloth too.</p>
+
+  <h2 id="s7"><span class="n">Part 7</span>How we got here</h2>
+  <ol class="tl rv">
+    <li><span class="yr">Apr 1918</span>A silk spinner is founded in Fukushima city. It later becomes Nitto Boseki.</li>
+    <li><span class="yr">1938</span>Nittobo is reported as the first in Japan to industrialise glass fibre.</li>
+    <li><span class="yr">Summer 2023</span>Nittobo's low-dielectric cloth starts going into AI-server switch boards, per its filing.</li>
+    <li><span class="yr">2024</span>Advanced packaging goes into full-scale adoption, needing larger substrates.</li>
+    <li class="hi"><span class="yr">29 Aug 2025</span>Board approves the ¥15 billion Fukushima building.<span class="big">¥15B</span></li>
+    <li><span class="yr">28 Nov 2025</span>Nan Ya says it will weave about 20% of Nittobo's cloth by 2027.<span class="big">~20%</span></li>
+    <li><span class="yr">Mar 2026</span>Tom's Hardware reports lead times beyond 20 weeks, with new supply not due before mid-2027.<span class="big">20+ wks</span></li>
+    <li><span class="yr">Apr 2026</span>TrendForce: Nittobo about 90% of T-glass; no new capacity before mid-2027 at the earliest.<span class="big">~90%</span></li>
+    <li class="hi"><span class="yr">Nov 2026</span>You are here.</li>
+    <li><span class="yr">Dec 2026</span>Construction of the new building is scheduled to finish.</li>
+    <li class="hi"><span class="yr">Jan–Mar 2027</span>Production due to start. Relief expected later.</li>
+  </ol>
+
+  <p class="t">So the bottleneck isn't a chip or a fab. It's a mill, a glass recipe and a yield rate. Next time a shortage hits something that looks simple, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q"><div class="qn">QUESTION 1</div><p>Who else can make the top grade at a usable yield?</p></div>
+    <div class="q"><div class="qn">QUESTION 2</div><p>And how many months until their output is qualified by the customer?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from.</p>
+  <ul class="sources">
+    <li>~90% T-glass and 60–70% NER share; no new capacity before mid-2027 at the earliest; Rubin demand: <a href="https://insights.trendforce.com/p/glass-fiber-cloth-shortage" target="_blank" rel="noopener">TrendForce, 30 Apr 2026</a>.</li>
+    <li>Interposer 814 → 1,700 mm²; furnace 1,600–1,700°C; prices +20–30%; lead times 8–10 → 20+ weeks; BofA ¥40.9B → ¥87.7B and ~48% margin; Nan Ya ~20%; Taiwan yarn doubling; competitors and yields: <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware, 9 Mar 2026</a>.</li>
+    <li>¥15.0B Fukushima building, ¥2.4B subsidy, Oct 2025–Dec 2026 construction, ~3× capacity, switch-board use since summer 2023, ¥80B capex plan: <a href="https://www.marketscreener.com/news/nitto-boseki-notice-regarding-expansion-of-glass-cloth-production-capacity-ce7c50dcd18ff226" target="_blank" rel="noopener">Nittobo notice via MarketScreener, 29 Aug 2025</a>.</li>
+    <li>Nan Ya partnership, 28 Nov 2025: <a href="https://trendforce.com/news/2025/11/28/news-nittobo-expands-glass-fiber-output-with-nan-ya-nan-ya-to-handle-20-by-2027-amid-ai-surge" target="_blank" rel="noopener">TrendForce News</a>.</li>
+    <li>Customer bookings (via Nikkei), thin-style tightness, 1080 cloth ~+300%, ~19% of laminate cost, loom counts, 2028 easing views, ~3× by year to March 2029: <a href="https://www.mpbxchange.com/research/pcb-material-shortage-2026-glass-cloth-copper-foil" target="_blank" rel="noopener">MPBxChange roundup</a>. This is a secondary compilation; I treat its numbers as reported, not verified.</li>
+    <li>Scaling back E-glass, Nvidia and AMD as customers: <a href="https://thebuildout.ai/intel/09b5e7b3-8d30-41f7-ab9a-5928f2d23086" target="_blank" rel="noopener">The Buildout, 5 Aug 2026</a>. Secondary and unverified.</li>
+    <li>Founded April 1918: <a href="https://en.wikipedia.org/wiki/Nitto_Boseki" target="_blank" rel="noopener">Wikipedia: Nitto Boseki</a>. Silk-spinner origin and 1938 glass-fibre industrialisation: <a href="https://the-shashi.com/en/tse/3110/" target="_blank" rel="noopener">company-history summary</a>. Dates differ slightly across sources.</li>
+    <li>Nvidia FY2026 revenue US$215.9B: <a href="../explainers/gpu-unlock.html">my GPU explainer</a>.</li>
+    <li>Currency: about ¥159.4 and S$1.289 per US$1, <a href="https://open.er-api.com/v6/latest/USD" target="_blank" rel="noopener">open exchange-rate data</a>, 19 Nov 2026. Figures are rounded.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. This is a living document and will be updated as new capacity comes online and figures are checked.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">Inside the package</a><br><a href="#s4">One company, one town</a><br><a href="#s6">The fix, and why it's slow</a><br><a href="../explainers.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised.</div>
+</footer>
+
+<script src="../../js/glass-cloth.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* Page-specific styles. Shared styles: bottleneck.css and article.css. */
+
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.chartnote a,.fig figcaption a,.note a,.step .card a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Scrolly: the package stack ---------- */
+#stackChart{width:100%;height:auto;display:block;margin-top:8px}
+#stackChart .layer{transition:opacity .5s ease}
+#stackChart .tag{transition:opacity .5s ease}
+
+/* ---------- Two-bar comparisons ---------- */
+.mkt{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;height:260px;padding:0 10%;position:relative}
+.mbar{width:100%;max-width:150px;height:0;transition:height 1.4s cubic-bezier(.2,.8,.2,1)}
+.mlbl{font-size:13px;color:var(--muted);margin-top:8px;font-weight:600;text-align:center}
+
+/* ---------- Horizontal bars ---------- */
+.lease{display:grid;gap:16px;font-family:var(--sans)}
+.lrow .ll{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:6px;gap:10px}
+.lrow .ll b{color:var(--ink)}
+.ltrack{height:28px;background:#ece8df;position:relative}
+.ltrack i{position:absolute;left:0;top:0;bottom:0;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.ltrack i.lo{background:var(--blue)}
+.ltrack i.lg{background:var(--gold)}
+.ltrack i.lr{background:var(--red)}
+.ltrack i.rng{opacity:.45}
+.bigstat{display:flex;gap:18px;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid #eee;font-family:var(--sans)}
+.bigstat b{font-size:40px;letter-spacing:-.02em;color:var(--gold);white-space:nowrap}
+.bigstat span{font-size:13px;color:var(--ink2);line-height:1.5}
+@media(max-width:600px){.bigstat{flex-direction:column;align-items:flex-start;gap:4px}}
+
+/* ---------- Process strip: sand to cloth ---------- */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;font-family:var(--sans)}
+.pbox{position:relative;border:1px solid var(--ink);padding:12px 10px;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.pbox b{font-size:14px;line-height:1.2}
+.pbox small{font-size:12px;color:var(--muted);line-height:1.4}
+.pbox.gold{background:var(--ink);color:#fff}
+.pbox.gold small{color:var(--gold2)}
+.pbox:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--ink)}
+.in-view .pbox{opacity:1;transform:none}
+.proc>*:nth-child(2){transition-delay:.25s}.proc>*:nth-child(3){transition-delay:.5s}.proc>*:nth-child(4){transition-delay:.75s}.proc>*:nth-child(5){transition-delay:1s}
+@media(max-width:800px){
+  .proc{grid-template-columns:1fr;gap:20px}
+  .pbox:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}
+}
+
+/* ---------- Capacity stack (1x vs ~3x) ---------- */
+.stamp.s2{font-size:15px}
+
+/* ---------- Timeline ---------- */
+.tl{list-style:none;margin:30px 0;border-left:2px solid var(--ink);padding-left:22px}
+.tl li{position:relative;padding:0 0 26px;font-size:18px;line-height:1.5}
+.tl li::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.tl li.hi::before{background:var(--gold)}
+.tl .yr{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.tl .big{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.02em;display:block;margin-top:4px}
+
+@media (prefers-reduced-motion:reduce){
+  .pbox{opacity:1;transform:none;transition:none}
+  .ltrack i,.mbar{transition:none}
+  #stackChart .layer,#stackChart .tag{transition:none}
+}
