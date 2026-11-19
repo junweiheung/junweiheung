@@ -181,3 +181,60 @@ addEventListener('scroll',()=>{
 tocLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});}));
 
 document.getElementById('copyLink').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent='Copied';}catch(_){e.target.textContent='Copy from address bar';}});
+
+/* ---------------- live updates (data/anthropic-live.json, refreshed hourly by a scheduled job) ---------------- */
+(function(){
+  const box=document.getElementById('live'); if(!box) return;
+  const $=id=>document.getElementById(id);
+  const sgt=new Intl.DateTimeFormat('en-SG',{timeZone:'Asia/Singapore',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
+  const et=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
+  const ago=iso=>{const m=Math.round((Date.now()-new Date(iso))/60000);return m<1?'just now':m<60?m+' min ago':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago';};
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function spark(pts,ipo){
+    const s=$('liveSpark'); s.innerHTML='';
+    if(pts.length<2) return;
+    const v=pts.map(p=>p.price).concat([ipo]), lo=Math.min(...v), hi=Math.max(...v), r=hi-lo||1;
+    const X=i=>4+i/(pts.length-1)*292, Y=p=>64-(p-lo)/r*58;
+    el('line',{x1:0,x2:300,y1:Y(ipo),y2:Y(ipo),stroke:'#5d5a55','stroke-dasharray':'3 3'},s);
+    txt(s,298,Y(ipo)-3,'$'+ipo+' IPO',{'text-anchor':'end','font-size':9,fill:'#8d8a84'});
+    const up=pts[pts.length-1].price>=ipo;
+    el('polyline',{points:pts.map((p,i)=>X(i)+','+Y(p.price)).join(' '),fill:'none',stroke:up?'#4fc26b':'#ff7a63','stroke-width':2.2},s);
+  }
+  function render(d){
+    const ipo=d.ipoPrice||PRICE, p=d.price;
+    const trading=d.status==='trading';
+    $('liveBadge').classList.toggle('off',!trading);
+    $('liveBadge').lastChild.textContent=trading?'LIVE':d.status==='closed'?'MARKET CLOSED':'BEFORE FIRST TRADE';
+    $('liveWhen').textContent='Updated '+ago(d.updated)+' · '+sgt.format(new Date(d.updated))+' SGT';
+    if(p){
+      $('livePrice').textContent='$'+p.toFixed(2);
+      const ch=(p/ipo-1)*100, c=$('liveChg');
+      c.textContent=(ch>=0?'+':'')+ch.toFixed(1)+'% vs $'+ipo+' IPO price'+(d.priceTime?' · as of '+et.format(new Date(d.priceTime))+' ET':'');
+      c.className=ch>0.05?'up':ch<-0.05?'dn':'flat';
+      $('liveFd').textContent=fmtB(FD*p); $('liveAmz').textContent=fmtB(AMZ*p);
+      $('liveGoog').textContent=fmtB(GOOG*p); $('liveCf').textContent='~'+fmtB(CF_ALL/7*p);
+      const inp=$('pxIn'); if(inp&&!inp.dataset.touched){inp.value=Math.round(Math.min(+inp.max,Math.max(+inp.min,p)));inp.dispatchEvent(new Event('input'));}
+    }else{
+      $('livePrice').textContent='$'+ipo.toFixed(2); $('liveChg').textContent='IPO price · first trade from 9:30am New York time (10:30pm SGT)'; $('liveChg').className='flat';
+      $('liveFd').textContent=fmtB(FD*ipo); $('liveAmz').textContent=fmtB(AMZ*ipo); $('liveGoog').textContent=fmtB(GOOG*ipo); $('liveCf').textContent='~'+fmtB(CF_ALL/7*ipo);
+    }
+    spark((d.intraday&&d.intraday.length>1?d.intraday:d.daily)||[],ipo);
+    const m=d.sentiment, mb=$('liveMood');
+    if(m&&m.summary){
+      mb.hidden=false;
+      const cls={positive:'pos',negative:'neg',mixed:'mix'}[String(m.label||'').toLowerCase()]||'';
+      $('moodTag').textContent=(m.label||'Neutral').toUpperCase(); $('moodTag').className='mood-tag '+cls;
+      $('moodText').textContent=m.summary;
+      $('moodPts').innerHTML=(m.points||[]).slice(0,4).map(x=>`<li>${esc(x)}</li>`).join('');
+      $('moodSrc').innerHTML=(m.t?'As of '+esc(sgt.format(new Date(m.t)))+' SGT · ':'')+'Based on: '+(m.sources||[]).slice(0,6).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join(', ');
+    }else mb.hidden=true;
+    $('liveLog').innerHTML=(d.updates||[]).slice().sort((a,b)=>b.t.localeCompare(a.t)).slice(0,12).map(u=>
+      `<li><time datetime="${esc(u.t)}">${esc(sgt.format(new Date(u.t)))} SGT</time>${esc(u.text)}${u.url?` <a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.source||'Source')}</a>`:''}</li>`).join('');
+  }
+  async function load(){
+    try{const r=await fetch('../../data/anthropic-live.json?t='+Date.now(),{cache:'no-store'}); if(r.ok) render(await r.json());}
+    catch(e){$('liveWhen').textContent='Couldn\'t load the latest update.';}
+  }
+  const inp=$('pxIn'); if(inp) inp.addEventListener('input',e=>{if(e.isTrusted) inp.dataset.touched='1';});
+  load(); setInterval(load,5*60000);
+})();

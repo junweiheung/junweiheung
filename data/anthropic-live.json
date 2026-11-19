@@ -1,0 +1,26 @@
+{
+  "ticker": "ANT",
+  "exchange": "Nasdaq",
+  "ipoPrice": 83,
+  "updated": "2026-11-19T06:10:00Z",
+  "status": "pre-open",
+  "price": null,
+  "priceTime": null,
+  "open": null,
+  "dayHigh": null,
+  "dayLow": null,
+  "prevClose": null,
+  "priceSources": [],
+  "intraday": [],
+  "sentiment": null,
+  "sentimentHistory": [],
+  "daily": [],
+  "updates": [
+    {
+      "t": "2026-11-18T23:00:00Z",
+      "text": "Anthropic prices its IPO at $83 a share, above the $70–78 range, selling 980 million shares and raising $81.3 billion. Trading on Nasdaq under ANT is expected from 9:30am New York time on 19 November.",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+    }
+  ]
+}
