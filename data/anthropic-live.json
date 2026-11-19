@@ -2,7 +2,7 @@
   "ticker": "ANT",
   "exchange": "Nasdaq",
   "ipoPrice": 83,
-  "updated": "2026-11-19T06:10:00Z",
+  "updated": "2026-11-19T14:10:00Z",
   "status": "pre-open",
   "price": null,
   "priceTime": null,
@@ -12,13 +12,42 @@
   "prevClose": null,
   "priceSources": [],
   "intraday": [],
-  "sentiment": null,
-  "sentimentHistory": [],
+  "sentiment": {
+    "t": "2026-11-19T14:10:00Z",
+    "label": "Mixed",
+    "summary": "Ahead of the 9:30am ET debut there is no first trade or opening indication yet, so the mood rests on pre-listing coverage: reports of strong institutional demand sit alongside continuing questions about the valuation.",
+    "points": [
+      "Stocktwits reported the offer was oversubscribed about seven times, though it attributed this to reports it had not independently confirmed",
+      "A Stocktwits poll found 68% of respondents did not plan to buy in the IPO, even though retail sentiment on ANT stayed strongly bullish",
+      "Investinglive, citing the WSJ, said investors had pushed for a lower valuation than $1.5 trillion after a tech selloff",
+      "No pre-market indication was found, and the first trade may come well after the opening bell"
+    ],
+    "sources": [
+      {
+        "name": "Stocktwits",
+        "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-ipo-draws-strong-demand-but-most-retail-traders-plan-to-sit-out-poll-shows/cNb7pWqR9gR"
+      },
+      {
+        "name": "Stocktwits",
+        "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-ipo-reportedly-oversubscribed-7-times-but-will-the-ai-euphoria-survive-the-stock-market-debut/cNb79cJR9X3"
+      },
+      {
+        "name": "Investinglive",
+        "url": "https://investinglive.com/stocks/wsj-anthropic-ipo-investors-push-for-lower-1-5-trillion-valuation-after-tech-selloff/"
+      }
+    ]
+  },
+  "sentimentHistory": [
+    {
+      "t": "2026-11-19T14:10:00Z",
+      "label": "Mixed"
+    }
+  ],
   "daily": [],
   "updates": [
     {
       "t": "2026-11-18T23:00:00Z",
-      "text": "Anthropic prices its IPO at $83 a share, above the $70–78 range, selling 980 million shares and raising $81.3 billion. Trading on Nasdaq under ANT is expected from 9:30am New York time on 19 November.",
+      "text": "Anthropic prices its IPO at $83 a share, above the $70\u201378 range, selling 980 million shares and raising $81.3 billion. Trading on Nasdaq under ANT is expected from 9:30am New York time on 19 November.",
       "source": "Anthropic",
       "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
     }
