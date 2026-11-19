@@ -24,6 +24,19 @@
       .map((s) => `<div><div class="big">${esc(s.big)}</div><p>${esc(s.text)}</p></div>`).join("");
   }
 
+  // shared by the list/topic filter and the company map
+  function chips(el, options, current, onPick) {
+    if (options.length < 2) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = options.map((o) =>
+      `<button type="button" data-v="${esc(o.v)}" aria-pressed="${o.v === current}">${esc(o.label)}</button>`).join("");
+    el.onclick = (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+      onPick(b.dataset.v);
+    };
+  }
+
   /* ---------- list + topic filter ---------- */
   if ($("list")) {
   $("count").textContent = articles.length + " published";
@@ -37,17 +50,6 @@
         <span class="t">${esc(a.title)}<small>${esc(a.summary)} · ${a.readMins} min</small></span>
         <span class="tag">${esc(a.topic)}</span>
       </a></li>`).join("") + `<li class="soon">The next one is in the works.</li>`;
-  }
-  function chips(el, options, current, onPick) {
-    if (options.length < 2) { el.hidden = true; return; }
-    el.hidden = false;
-    el.innerHTML = options.map((o) =>
-      `<button type="button" data-v="${esc(o.v)}" aria-pressed="${o.v === current}">${esc(o.label)}</button>`).join("");
-    el.onclick = (e) => {
-      const b = e.target.closest("button"); if (!b) return;
-      el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
-      onPick(b.dataset.v);
-    };
   }
   chips($("topicChips"), [{ v: "All", label: "All" }, ...topics.map((t) => ({ v: t, label: t }))], "All",
     (v) => { topic = v; renderList(); });
@@ -92,40 +94,58 @@
 
   const svg = d3.select("#graph");
   let sim;
+  // zoom/pan: everything is drawn inside `vp`, and d3.zoom transforms it.
+  let vp = svg.append("g").attr("class", "vp");
+  const layer = () => vp.append("g");
+  const zoom = d3.zoom().scaleExtent([0.4, 4])
+    .filter((e) => e.type !== "dblclick") // wheel, trackpad pinch and drag-pan all zoom the map; no dblclick zoom
+    .on("zoom", (e) => vp.attr("transform", e.transform));
+  svg.call(zoom).on("dblclick.zoom", null);
+  const zoomBy = (k) => svg.transition().duration(200).call(zoom.scaleBy, k);
+  const zoomReset = () => svg.transition().duration(250).call(zoom.transform, d3.zoomIdentity);
+  $("zoomIn") && $("zoomIn").addEventListener("click", () => zoomBy(1.4));
+  $("zoomOut") && $("zoomOut").addEventListener("click", () => zoomBy(1 / 1.4));
+  $("zoomReset") && $("zoomReset").addEventListener("click", zoomReset);
   // which explainers each company appears in
   const artsOf = {};
   coIds.forEach((c) => { artsOf[c] = [...new Set(appearances[c].map((r) => r.a))]; });
+  // which sector each company belongs to (falls back to "Other" if untagged)
+  const sectorOf = (c) => (companies[c] || {}).sector || "Other";
+  // sectors in the order their companies first appear, so the layout is stable
+  const sectors = [...new Set(coIds.map(sectorOf))];
   let showEvery = false;
   const expandBtn = $("mapExpand");
 
-  /* Overview: one hub per explainer. Only companies shared by 2+ explainers are drawn
-     (they're the interesting links); the rest are counted on each hub until expanded. */
+  /* Overview: one hub per sector. A company links to its single sector hub.
+     Companies that appear in 2+ explainers are the bottlenecks and stay drawn (blue);
+     the rest are counted on each hub until expanded. */
   function drawOverview() {
     const W = svg.node().clientWidth, H = svg.node().clientHeight;
-    const k = articles.length;
+    const k = sectors.length;
     const nodes = [], links = [];
-    const hubs = articles.map((a, i) => {
+    const hubs = sectors.map((sec, i) => {
       const ang = -Math.PI / 2 + (2 * Math.PI * i) / Math.max(k, 1);
-      const rx = k === 1 ? 0 : W * 0.34, ry = k === 1 ? 0 : H * 0.36;
-      const only = coIds.filter((c) => artsOf[c].length === 1 && artsOf[c][0] === a).length;
-      const h = { id: "hub:" + a.id, type: "hub", a, label: a.short || a.title, only,
+      // spread hubs wider when there are many sectors so their labels don't collide
+      const rx = k === 1 ? 0 : W * (k > 8 ? 0.4 : 0.34), ry = k === 1 ? 0 : H * (k > 8 ? 0.4 : 0.36);
+      const only = coIds.filter((c) => sectorOf(c) === sec && artsOf[c].length === 1).length;
+      const h = { id: "hub:" + sec, type: "hub", sector: sec, label: sec, only,
         fx: W / 2 + rx * Math.cos(ang), fy: H / 2 + ry * Math.sin(ang) };
       nodes.push(h); return h;
     });
-    const hubOf = new Map(hubs.map((h) => [h.a, h]));
+    const hubOf = new Map(hubs.map((h) => [h.sector, h]));
     coIds.forEach((c) => {
-      const shared = artsOf[c].length > 1;
-      if (!shared && !showEvery) return;
+      const bridge = artsOf[c].length > 1;
+      if (!bridge && !showEvery) return;
       const n = { id: c, type: "co", label: (companies[c] || { name: c }).name, deg: artsOf[c].length };
-      n.r = shared ? 7 + 3 * (n.deg - 1) : 5;
+      n.r = bridge ? 7 + 3 * (n.deg - 1) : 5;
       nodes.push(n);
-      artsOf[c].forEach((a) => links.push({ source: c, target: hubOf.get(a).id }));
+      links.push({ source: c, target: hubOf.get(sectorOf(c)).id });
     });
 
-    const gLinks = svg.append("g").selectAll("line").data(links).join("line").attr("class", "g-link");
-    const coLayer = svg.append("g"), hubLayer = svg.append("g");
+    const gLinks = layer().selectAll("line").data(links).join("line").attr("class", "g-link");
+    const coLayer = layer(), hubLayer = layer();
     const hubG = hubLayer.selectAll("g").data(hubs).join("g").attr("class", "g-hub")
-      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => `Open the ${d.label} map`);
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => `Highlight the ${d.label} companies`);
     hubG.append("rect").attr("rx", 3).attr("height", 30).attr("y", -15);
     hubG.append("text").attr("class", "ht").attr("text-anchor", "middle").attr("dy", "0.35em").text((d) => d.label);
     hubG.append("text").attr("class", "hs").attr("text-anchor", "middle").attr("y", 30)
@@ -156,11 +176,32 @@
       gLinks.classed("dim", (l) => l.source.id !== d.id);
       showCompany(d.id);
     }
+    // highlight a whole sector and list its companies in the side panel
+    function selectSector(d) {
+      cos.classed("sel", false);
+      const ids = coIds.filter((c) => sectorOf(c) === d.sector);
+      const drawn = new Set(nodes.filter((n) => n.type === "co").map((n) => n.id));
+      cos.classed("dim", (n) => sectorOf(n.id) !== d.sector);
+      hubG.classed("dim", (n) => n !== d);
+      gLinks.classed("dim", (l) => l.target.id !== d.id);
+      const shown = ids.filter((c) => drawn.has(c));
+      const hidden = ids.length - shown.length;
+      panel.innerHTML = `
+        <h4>${esc(d.sector)}</h4>
+        <div class="hq">${ids.length} ${ids.length === 1 ? "company" : "companies"}</div>
+        <ul>${ids.map((c) => `<li><a href="#" data-co="${esc(c)}">${esc((companies[c] || { name: c }).name)}</a>
+          <span class="role">${esc((companies[c] || {}).hq || "")}</span></li>`).join("")}</ul>
+        ${hidden ? `<p class="peers">${hidden} shown only after “Show all companies”.</p>` : ""}`;
+      panel.querySelectorAll("a[data-co]").forEach((a) => a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const n = nodes.find((x) => x.type === "co" && x.id === a.dataset.co);
+        if (n) select(n); else showCompany(a.dataset.co);
+      }));
+    }
     cos.on("click", (e, d) => { e.stopPropagation(); select(d); })
        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(d); } });
-    const openHub = (d) => setMapFilter(d.a.id);
-    hubG.on("click", (e, d) => { e.stopPropagation(); openHub(d); })
-        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openHub(d); } });
+    hubG.on("click", (e, d) => { e.stopPropagation(); selectSector(d); })
+        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectSector(d); } });
     svg.on("click", () => select(null));
 
     sim = d3.forceSimulation(nodes)
@@ -189,6 +230,8 @@
   function drawGraph(filterId) {
     if (sim) sim.stop();
     svg.selectAll("*").remove();
+    vp = svg.append("g").attr("class", "vp");
+    svg.call(zoom.transform, d3.zoomIdentity); // reset zoom for the new view
     if (expandBtn) expandBtn.hidden = filterId !== "all";
     if (filterId === "all") { drawOverview(); return; }
     const W = svg.node().clientWidth, H = svg.node().clientHeight;
@@ -225,11 +268,11 @@
     links.forEach((l) => { deg[l.source] = (deg[l.source] || 0) + 1; (stepsOf[l.source] = stepsOf[l.source] || []).push(l.target); });
     nodes.forEach((n) => { if (n.type === "co") { n.deg = deg[n.id]; n.r = 7 + 3 * (n.deg - 1); } });
 
-    const gLinks = svg.append("g").selectAll("line").data(links).join("line").attr("class", "g-link");
+    const gLinks = layer().selectAll("line").data(links).join("line").attr("class", "g-link");
     chainLinks.forEach((l) => { l.source = nodeById.get(l.source); l.target = nodeById.get(l.target); });
-    const gChain = svg.append("g").selectAll("line").data(chainLinks).join("line").attr("class", "g-chain");
+    const gChain = layer().selectAll("line").data(chainLinks).join("line").attr("class", "g-chain");
 
-    const coLayer = svg.append("g"), stepLayer = svg.append("g");
+    const coLayer = layer(), stepLayer = layer();
     const steps = stepLayer.selectAll("g").data(nodes.filter((n) => n.type === "step")).join("g").attr("class", "g-step");
     steps.append("rect").attr("rx", 2).attr("height", 22).attr("y", -11);
     steps.append("text").attr("text-anchor", "middle").attr("dy", "0.35em").text((d) => d.label);

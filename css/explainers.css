@@ -62,11 +62,16 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,9vw,120px);line
 @media(min-width:900px){
   .mapbox{grid-template-columns:minmax(0,1fr) 300px}
 }
+.graphwrap{position:relative;min-width:0}
 #graph{width:100%;height:560px;display:block;cursor:grab;touch-action:none}
 #graph:active{cursor:grabbing}
 @media(max-width:600px){
   #graph{height:720px}
 }
+.zoomctl{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:2}
+.zoomctl button{width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:19px;line-height:1;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08);transition:background .15s,border-color .15s}
+.zoomctl button:hover{background:var(--gold);border-color:var(--ink)}
+.zoomctl button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
 .panel{border-top:1px solid var(--rule);padding:22px;font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink2)}
 @media(min-width:900px){
   .panel{border-top:0;border-left:1px solid var(--rule)}

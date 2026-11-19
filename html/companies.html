@@ -43,16 +43,23 @@
     <div class="label">Company map <span id="mapCount"></span></div>
     <div class="map-intro">
       <h3 id="map-title">Who shows up where</h3>
-      <p>Each black box is an explainer. The <b style="color:var(--blue)">blue</b> companies show up in more than one of them: those are the ones holding different industries together. Click a company to see where it appears, or click an explainer to open its full value chain.</p>
+      <p>Each black box is a sector, and every company sits under the one it works in. The <b style="color:var(--blue)">blue</b> companies show up in more than one explainer: those are the ones holding different industries together. Click a company to see where it appears, or click a sector to see everyone in it.</p>
     </div>
     <div class="chips" id="mapChips" hidden></div>
     <button type="button" class="expand" id="mapExpand" aria-pressed="false" hidden></button>
     <div class="mapbox">
-      <svg id="graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
+      <div class="graphwrap">
+        <svg id="graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
+        <div class="zoomctl" role="group" aria-label="Zoom the map">
+          <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+          <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+          <button type="button" id="zoomReset" aria-label="Reset zoom">⟲</button>
+        </div>
+      </div>
       <div class="panel" id="panel" aria-live="polite"></div>
     </div>
     <div class="legend">
-      <span><i class="sq" style="background:#111"></i>Explainer (or, inside one, a value-chain step)</span>
+      <span><i class="sq" style="background:#111"></i>Sector (or, inside an explainer, a value-chain step)</span>
       <span><i style="background:var(--gold2)"></i>Company</span>
       <span><i style="background:var(--blue)"></i>Company in several explainers or steps</span>
     </div>
@@ -71,7 +78,7 @@
 <noscript><p class="wrap" style="padding:20px 24px;font-family:var(--sans)">This page needs JavaScript to draw the company map. <a href="explainers.html">Back to the explainers</a>.</p></noscript>
 
 <script src="../js/articles.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="../js/vendor/d3.v7.min.js"></script>
 <script src="../js/explainers.js"></script>
 </body>
 </html>
