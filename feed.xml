@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Bottleneck by Jun Wei</title>
+  <link>https://junweiheung.github.io/junweiheung/html/explainers.html</link>
+  <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Explainers on the companies and industries the world can't do without.</description>
+  <language>en-sg</language>
+  <lastBuildDate>Thu, 19 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <item>
+    <title>Chipped at Work: How Close Are Bosses to Putting Tech Inside You?</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/implants.html</link>
+    <guid isPermaLink="false">bottleneck-implants</guid>
+    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Neurotech and work</category>
+    <description>A Wisconsin company once threw a party to microchip its staff. Brain implants now let paralysed people move cursors by thought. How realistic is it that your boss asks you to get one?</description>
+  </item>
+  <item>
+    <title>The Cloth Inside the Chip: One Japanese Mill and AI&apos;s Quietest Shortage</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/glass-cloth.html</link>
+    <guid isPermaLink="false">bottleneck-glass-cloth</guid>
+    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Advanced packaging</category>
+    <description>Under every advanced AI processor sits a sheet of woven glass. One Japanese company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade, and the queue for it is long.</description>
+  </item>
+  <item>
+    <title>The Gate That Didn&apos;t Open: How Stargate Shrank</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/stargate.html</link>
+    <guid isPermaLink="false">bottleneck-stargate</guid>
+    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
+    <category>AI infrastructure</category>
+    <description>A US$500 billion White House promise, a land grab across Texas, and a joint venture that barely started. How the biggest number in tech shrank.</description>
+  </item>
+  <item>
+    <title>Unlocked, and Still Out of Reach: The Hidden Compute in Gaming GPUs</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/gpu-unlock.html</link>
+    <guid isPermaLink="false">bottleneck-gpu-unlock</guid>
+    <pubDate>Wed, 18 Nov 2026 01:00:00 GMT</pubDate>
+    <category>GPUs</category>
+    <description>An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here&apos;s why the unlock helps the people who need it least.</description>
+  </item>
+  <item>
+    <title>Who Keeps the Money? The Smile Curve of AI Chips</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/smile.html</link>
+    <guid isPermaLink="false">bottleneck-smile</guid>
+    <pubDate>Wed, 18 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Semiconductors</category>
+    <description>The world will spend about $1.5 trillion on chips this year. I followed one AI chip through eight companies to see who actually keeps the money. The answer bends a thirty-year-old rule.</description>
+  </item>
+</channel>
+</rss>
