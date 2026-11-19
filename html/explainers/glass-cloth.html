@@ -83,10 +83,11 @@
     <figcaption>Melting, spinning and weaving: <a href="https://www.tomshardware.com/tech-industry/shortages-of-crucial-chip-packaging-material-threatens-ai-accelerator-supply-chains-nittobos-fukushima-plant-is-tripling-capacity-but-itll-take-years-before-market" target="_blank" rel="noopener">Tom's Hardware</a>. Resin step: <a href="https://www.mpbxchange.com/research/pcb-material-shortage-2026-glass-cloth-copper-foil" target="_blank" rel="noopener">MPBxChange</a> describes laminates and prepreg made with glass cloth. Steps simplified by me.</figcaption>
   </figure>
 
-  <div class="note">
-    <b class="h">An analogy: rebar in concrete</b>
-    Resin on its own is like unreinforced concrete: fine until it heats up and moves. Woven glass is the steel mesh inside. Without it, the slab bends. T-glass is the premium mesh, used when the slab is huge and the load is extreme.
-  </div>
+  <figure class="fig rv scene analogy" id="rebarFig">
+    <div class="ft">An analogy: rebar in concrete</div>
+    <svg id="rebarSvg" viewBox="0 0 800 360" role="img" aria-label="Illustration: two slabs are heated from below. The resin-only slab sags; the slab with woven glass mesh stays flat."></svg>
+    <p class="say">Resin on its own is like unreinforced concrete: fine until it heats up and moves. Woven glass is the steel mesh inside. Without it, the slab bends. T-glass is the premium mesh, used when the slab is huge and the load is extreme.</p>
+  </figure>
 
   <h2 id="s2"><span class="n">Part 2</span>Inside the package</h2>
   <p class="t">Here is where the cloth sits. Scroll through the layers of a simplified AI accelerator, from the chip you've heard of down to the layer you haven't.</p>
@@ -152,10 +153,11 @@
 
   <p class="pull">A recipe anyone can read is not a moat. A recipe that only works at scale in one factory is.</p>
 
-  <div class="note">
-    <b class="h">An analogy: the one bakery with the sourdough starter</b>
-    Anyone can buy flour and an oven. What's hard is the culture that took decades to keep alive and the recipe that makes the loaf rise the same way every day. Competitors have the same ingredients. They don't yet have the same yield.
-  </div>
+  <figure class="fig rv scene analogy" id="bakeryFig">
+    <div class="ft">An analogy: the one bakery with the sourdough starter</div>
+    <svg id="bakerySvg" viewBox="0 0 800 360" role="img" aria-label="Illustration: two bakers with the same flour and oven. The one with a decades-old starter bakes a tall loaf; the other&#x27;s stays flat."></svg>
+    <p class="say">Anyone can buy flour and an oven. What's hard is the culture that took decades to keep alive and the recipe that makes the loaf rise the same way every day. Competitors have the same ingredients. They don't yet have the same yield.</p>
+  </figure>
 
   <h2 id="s5"><span class="n">Part 5</span>The queue</h2>
   <p class="t">When one maker supplies almost everything, demand doesn't compete on price first. It competes on place in line. Nikkei, as relayed by TrendForce, reported that Nvidia, Microsoft, Google and Amazon had booked most of Nittobo's premium cloth capacity for 2026. Yole's Hachemi told Tom's Hardware that Nvidia contacting an upstream supplier like Nittobo directly is unprecedented in this part of the chain.</p>
@@ -250,6 +252,7 @@
 
 <script src="../../js/scene-kit.js"></script>
 <script src="../../js/scenes.js"></script>
+<script src="../../js/analogies.js"></script>
 <script src="../../js/glass-cloth.js"></script>
 </body>
 </html>

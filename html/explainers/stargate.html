@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/bottleneck.css">
 <link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/scene-kit.css">
 <link rel="stylesheet" href="../../css/stargate.css">
 </head>
 <body>
@@ -80,10 +81,11 @@
 
   <p class="pull">"I'm good for my $80 billion."<small>Satya Nadella, Microsoft, January 2025</small></p>
 
-  <div class="note">
-    <b class="h">An analogy: the engagement announcement</b>
-    Picture a couple announcing their engagement before agreeing where to live, whose name goes on the deed, or who pays the mortgage. The announcement is real. Everything that makes it a household is still to be negotiated. Stargate in January 2025 was the announcement.
-  </div>
+  <figure class="fig rv scene analogy" id="engageFig">
+    <div class="ft">An analogy: the engagement announcement</div>
+    <svg id="engageSvg" viewBox="0 0 800 360" role="img" aria-label="Illustration: a couple announces their engagement with confetti, while three unsigned documents about where to live, the deed and the mortgage sit on a table."></svg>
+    <p class="say">Picture a couple announcing their engagement before agreeing where to live, whose name goes on the deed, or who pays the mortgage. The announcement is real. Everything that makes it a household is still to be negotiated. Stargate in January 2025 was the announcement.</p>
+  </figure>
 
   <h2 id="s2"><span class="n">Part 2</span>The land grab</h2>
   <p class="t">Why so big? Because OpenAI kept running out of chips. When ChatGPT's new image generator went viral in March 2025, the Studio Ghibli craze, Altman said the company had to <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">borrow computing power from its own researchers</a> and slow down other features to keep up. His argument for building anyway: if AI cost a tenth as much, people would use it twenty times as much, so OpenAI would still need twice the compute.</p>
@@ -161,10 +163,11 @@
     <figcaption>198.23 bp on 17 July 2026, a record, and "roughly quadrupling since mid-2025": Bloomberg data reported by <a href="https://startupfortune.com/oracles-default-insurance-costs-just-beat-its-2008-financial-crisis-record/" target="_blank" rel="noopener">Startup Fortune</a>. The mid-2025 bar is implied from that and is approximate. A rising spread means lenders are more nervous; it doesn't mean a default is coming.</figcaption>
   </figure>
 
-  <div class="note">
-    <b class="h">An analogy: the landlord who bought the furniture</b>
-    Imagine a landlord who takes out a huge loan to buy a building and fill it with expensive furniture, because one tenant promised to rent it. The tenant is famous, growing fast and losing money every year. The landlord's whole plan rests on that one tenant staying.
-  </div>
+  <figure class="fig rv scene analogy" id="landlordFig">
+    <div class="ft">An analogy: the landlord who bought the furniture</div>
+    <svg id="landlordSvg" viewBox="0 0 800 360" role="img" aria-label="Illustration: a landlord holds a lengthening loan while furniture fills his building for one famous tenant, who is dropping coins."></svg>
+    <p class="say">Imagine a landlord who takes out a huge loan to buy a building and fill it with expensive furniture, because one tenant promised to rent it. The tenant is famous, growing fast and losing money every year. The landlord's whole plan rests on that one tenant staying.</p>
+  </figure>
 
   <p class="t">One group gets paid up front, whatever happens next: the chipmakers. Bloomberg's reporter on the story put Abilene's 400,000 chips at <a href="https://www.youtube.com/watch?v=GhIJs4zbH0o" target="_blank" rel="noopener">a conservative US$15–20 billion</a>, most of it to Nvidia. And the town took a risk too. To win the project, Abilene agreed to waive 85% of the property tax on the data centre. The mayor's view was that 15% of billions is still a lot of new money for roads and police. No one would give him a firm number for how many permanent jobs it would create.</p>
 
@@ -272,6 +275,8 @@
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised.</div>
 </footer>
 
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/analogies.js"></script>
 <script src="../../js/stargate.js"></script>
 </body>
 </html>

@@ -30,3 +30,8 @@
   .scene .sk-bubble{transform:none;opacity:1}
   .scene .sk-blink{opacity:1}
 }
+
+/* Analogy scenes: replace the old text-only analogy boxes */
+.scene.analogy{border-left:3px solid var(--blue)}
+.scene.analogy .ft{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.scene .say{font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--ink2);margin-top:14px}
