@@ -2,7 +2,7 @@
   "ticker": "ANT",
   "exchange": "Nasdaq",
   "ipoPrice": 83,
-  "updated": "2026-11-19T15:10:00Z",
+  "updated": "2026-11-19T16:10:00Z",
   "status": "pre-open",
   "price": null,
   "priceTime": null,
@@ -13,31 +13,31 @@
   "priceSources": [],
   "intraday": [],
   "sentiment": {
-    "t": "2026-11-19T15:10:00Z",
+    "t": "2026-11-19T16:10:00Z",
     "label": "Mixed",
-    "summary": "As of about 10:05am ET no first trade had been reported, so the mood still rests on pre-listing coverage: strong demand for the record deal against questions over valuation and a possibly late opening auction.",
+    "summary": "As of the latest coverage found (about 9:40am ET) no first trade had been reported, so sentiment still rests on pre-listing coverage: strong demand for the record deal set against valuation questions and an uncertain opening time. I found little new this hour.",
     "points": [
-      "Anthropic priced at $83, above the $70-78 range, raising $81.3bn in what CNBC and NPR describe as the largest IPO on record",
-      "Stock Titan's live page noted 'no trade yet' at 9:35am ET; Fast Company warned trading may begin well after the bell",
-      "Khaleej Times reports expected inclusion in several major indexes within weeks, and that SpaceX's debut is seen as a pricing template",
-      "Investinglive, citing the WSJ, said some investors had pushed for a lower valuation after a tech selloff"
+      "Anthropic priced at $83, above the $70-78 range, raising about $81.3bn, per its pricing announcement and CNBC",
+      "Stock Titan's live page said ANT had not traded as of 9:35am ET, with the first trade awaiting Nasdaq's opening auction",
+      "Stock Titan headlines note tech stocks rose ahead of the expected debut",
+      "Investinglive, citing the WSJ, earlier said some investors had pushed for a lower valuation after a tech selloff"
     ],
     "sources": [
-      {
-        "name": "CNBC",
-        "url": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html"
-      },
       {
         "name": "Stock Titan",
         "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
       },
       {
-        "name": "Fast Company",
-        "url": "https://www.fastcompany.com/91645598/anthropic-ipo-what-time-trading-start-stock-price-live-update"
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html"
       },
       {
-        "name": "Khaleej Times",
-        "url": "https://www.khaleejtimes.com/business/from-spacex-to-anthropic-markets-have-a-new-playbook-for-mega-share-debuts"
+        "name": "Anthropic",
+        "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+      },
+      {
+        "name": "Investinglive",
+        "url": "https://investinglive.com/stock-market-update/wsj-anthropic-targets-nasdaq-debut-next-week-under-ticker-ant-despite-tech-selloff/"
       }
     ]
   },
@@ -49,10 +49,20 @@
     {
       "t": "2026-11-19T15:10:00Z",
       "label": "Mixed"
+    },
+    {
+      "t": "2026-11-19T16:10:00Z",
+      "label": "Mixed"
     }
   ],
   "daily": [],
   "updates": [
+    {
+      "t": "2026-11-19T10:06:00Z",
+      "text": "Anthropic filed its final prospectus with the SEC on the morning of 19 November, confirming 980 million Class A shares at $83 (about $81.3bn). The sale is expected to close on 20 November, with a separate $26bn Class N share sale to seven tech companies to follow and a 30-day option for banks to buy up to 147 million more shares.",
+      "source": "Stock Titan",
+      "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
+    },
     {
       "t": "2026-11-19T15:10:00Z",
       "text": "Khaleej Times reports that Anthropic is expected to join at least six major indexes, including the Nasdaq 100, within 5 to 15 days of listing, and that a separate $26 billion private sale with cornerstone investors is also planned.",
