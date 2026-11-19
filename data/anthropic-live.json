@@ -2,38 +2,52 @@
   "ticker": "ANT",
   "exchange": "Nasdaq",
   "ipoPrice": 83,
-  "updated": "2026-11-19T20:10:00Z",
-  "status": "trading",
-  "price": null,
-  "priceTime": null,
+  "updated": "2026-11-19T21:10:00Z",
+  "status": "closed",
+  "price": 97.17,
+  "priceTime": "2026-11-19T21:00:00Z",
   "open": 111.5,
-  "dayHigh": 114.99,
-  "dayLow": null,
-  "prevClose": null,
-  "priceSources": [],
-  "intraday": [],
+  "dayHigh": 115.1,
+  "dayLow": 92.72,
+  "prevClose": 83,
+  "priceSources": [
+    {
+      "name": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+    },
+    {
+      "name": "Yahoo Finance",
+      "url": "https://ca.finance.yahoo.com/quote/ANT/"
+    }
+  ],
+  "intraday": [
+    {
+      "t": "2026-11-19T21:00:00Z",
+      "price": 97.17
+    }
+  ],
   "sentiment": {
-    "t": "2026-11-19T20:10:00Z",
+    "t": "2026-11-19T21:10:00Z",
     "label": "Mixed",
-    "summary": "Commentary remains split: strong demand signals, heavy volume and a $1 trillion-plus valuation sit against shares trading well below the opening price in a falling market. I could not confirm a fresh price from two sources this hour.",
+    "summary": "Coverage of the debut is broadly constructive on demand and big-name backing, but the shares gave up much of their early pop and closed well below the opening trade amid a weak broader market.",
     "points": [
-      "StockTitan put shares at $95.79 at 2:00pm ET, about 15% above the $83 IPO price but 14% below the $111.50 first trade, with roughly 654 million shares traded",
-      "CNBC reports Altimeter's Brad Gerstner plans a $5 billion investment and that about half of institutional orders went unfilled, pointing to strong demand",
-      "CNBC says Melius Research initiated at Buy with a $155 target; Fox News reports the broader market struggled despite the IPO",
-      "StockTitan notes FINRA describes new stocks as inherently more volatile and that Morgan Stanley may, but need not, stabilise the price"
+      "Shares closed at $97.17, about 17% above the $83 IPO price but about 13% below the $111.50 first trade (CNBC, Yahoo Finance)",
+      "CNBC reports Melius Research initiated with a Buy rating and $155 target, and Vanda Research estimates retail net buying of about $250 million",
+      "CNBC says Nvidia plans a roughly $10 billion Class N purchase and Altimeter's Brad Gerstner plans a $5 billion investment",
+      "Yahoo Finance shows the stock at $96.00 in after-hours trading, and CNBC notes lawmakers renewed calls for AI regulation"
     ],
     "sources": [
-      {
-        "name": "StockTitan",
-        "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
-      },
       {
         "name": "CNBC",
         "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
       },
       {
-        "name": "Fox News",
-        "url": "https://www.foxnews.com/live-news/anthropic-claude-ai-ipo-nasdaq-11-19-26"
+        "name": "Yahoo Finance",
+        "url": "https://ca.finance.yahoo.com/quote/ANT/"
+      },
+      {
+        "name": "StockTitan",
+        "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
       }
     ]
   },
@@ -65,10 +79,37 @@
     {
       "t": "2026-11-19T20:10:00Z",
       "label": "Mixed"
+    },
+    {
+      "t": "2026-11-19T21:10:00Z",
+      "label": "Mixed"
     }
   ],
-  "daily": [],
+  "daily": [
+    {
+      "t": "2026-11-19",
+      "price": 97.17
+    }
+  ],
   "updates": [
+    {
+      "t": "2026-11-19T21:03:00Z",
+      "text": "Anthropic's shares closed their first day on Nasdaq at $97.17, about 17% above the $83 IPO price but well below the $111.50 first trade and the intraday high of roughly $115.",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+    },
+    {
+      "t": "2026-11-19T20:30:00Z",
+      "text": "CNBC reports that Nvidia has agreed to buy about $10 billion of Anthropic Class N stock in a private placement to follow the public offering.",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+    },
+    {
+      "t": "2026-11-19T21:03:00Z",
+      "text": "CNBC cites Vanda Research as estimating retail net buying of about $250 million on the first day, roughly double the figure for SpaceX's debut.",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+    },
     {
       "t": "2026-11-19T19:26:00Z",
       "text": "CNBC's live coverage says Anthropic has become the tenth US tech company to reach a valuation of $1 trillion or more, with the market capitalisation put at nearly $2 trillion at the open.",
