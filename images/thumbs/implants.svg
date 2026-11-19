@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .in{opacity:0;animation:fade .9s ease forwards}
+    .d1{animation-delay:.3s}.d2{animation-delay:1.1s}.d3{animation-delay:1.9s}
+    .ring{transform-box:fill-box;transform-origin:center;animation:ring 1.6s ease-out infinite}
+    @keyframes fade{to{opacity:1}}
+    @keyframes ring{from{transform:scale(.4);opacity:1}to{transform:scale(2.2);opacity:0}}
+    @media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1}.ring{animation:none}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="120" fill="#fff" font-size="48" font-weight="700">How deep does work go?</text>
+  <text x="120" y="172" fill="#8d8a84" font-size="26">Workplace tech, from the scalp to the brain</text>
+
+  <g class="in d1"><rect y="230" width="1600" height="200" fill="#1a1a1d"/>
+    <text x="120" y="300" fill="#8d8a84" font-size="22" font-weight="700" letter-spacing="3">ON THE HEAD</text>
+    <text x="120" y="356" fill="#fff" font-size="40" font-weight="700">EEG caps</text>
+    <text x="900" y="350" fill="#e0b65a" font-size="40" font-weight="700">Already at work</text></g>
+  <g class="in d2"><rect y="430" width="1600" height="200" fill="#231c1a"/>
+    <text x="120" y="500" fill="#8d8a84" font-size="22" font-weight="700" letter-spacing="3">UNDER THE SKIN</text>
+    <text x="120" y="556" fill="#fff" font-size="40" font-weight="700">Hand chips</text>
+    <rect x="690" y="520" width="56" height="18" rx="9" fill="#e0b65a"/>
+    <circle class="ring" cx="718" cy="529" r="22" fill="none" stroke="#e0b65a" stroke-width="3"/>
+    <text x="900" y="550" fill="#e0b65a" font-size="40" font-weight="700">Rare, voluntary</text></g>
+  <g class="in d3"><rect y="630" width="1600" height="200" fill="#2c1714"/>
+    <text x="120" y="700" fill="#8d8a84" font-size="22" font-weight="700" letter-spacing="3">INSIDE THE SKULL</text>
+    <text x="120" y="756" fill="#fff" font-size="40" font-weight="700">Brain implants</text>
+    <text x="900" y="750" fill="#ff7a63" font-size="40" font-weight="700">Trials only</text></g>
+</svg>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chipped at Work: How Close Are Bosses to Putting Tech Inside You? — Bottleneck by Jun Wei</title>
+<meta name="description" content="Companies are implanting chips in hands and brains. How realistic is it that your employer asks you to get one? An explainer on cyborg implants at work.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/implants.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <a class="sub" href="../explainers.html">← All explainers</a>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Living document · Neurotech and work</span></div>
+  <h1>Chipped at Work</h1>
+  <p class="dek">A Wisconsin company once threw a party to put microchips in its staff's hands. Today, brain implants let paralysed people move cursors with their thoughts. So how close are we to a boss asking you to get one? Closer for some kinds of tech than you'd think, and much further for others.</p>
+</div>
+
+<div class="hero-fig">
+  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A cross-section from the skin surface down into the brain, showing three depths of workplace tech: EEG caps worn on the head, RFID chips under the skin of the hand, and brain implants inside the skull, each with how widespread it is."></svg></div>
+  <div class="hero-cap">How deep tech goes, and how many people have it. Sources: Wenco/SmartCap, MIT Technology Review, European Parliament study, Neuralink via Wikipedia (see Sources). Implant counts are estimates. Graphic: Jun Wei Heung.</div>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 19, 2026 · 12 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. The chip party</a>
+    <a href="#s2">2. The brain race</a>
+    <a href="#s3">3. No surgery required</a>
+    <a href="#s4">4. Would you say yes?</a>
+    <a href="#s5">5. The law got there first</a>
+    <a href="#s6">6. So how realistic is it?</a>
+    <a href="#s7">7. How we got here</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">"Cyborg implant" here covers two very different things: small RFID chips under the skin, and brain-computer interfaces (BCIs) placed in or on the brain. I also cover EEG wearables, which read brain signals without surgery, because that's where workplaces actually are today. Implant counts are estimates: nobody keeps an official register. Company figures come from company statements reported in the press. This is an explainer, not medical, legal or investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>Workplace chipping has already happened, voluntarily. In 2017 about <b>50 staff at Three Square Market</b> in Wisconsin had a rice-sized chip put in their hands; by 2018 it was about <b>80 of 250</b>.</li>
+      <li>Brain implants are still medical experiments. Neuralink reported <b>21 trial participants</b> in January 2026, and <b>no brain-computer interface has full FDA approval</b> for permanent use, let alone for healthy workers.</li>
+      <li>The brain data is arriving without surgery: miners and truck drivers already wear <b>EEG caps that score their fatigue</b>, for about US$1–2 per worker per day.</li>
+      <li>The law moved first. <b>At least a dozen US states</b> ban employers from requiring implants, Washington joined in 2026, and Colorado, California and Montana now treat <b>neural data</b> as sensitive.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>The chip party</h2>
+  <p class="t dropcap">On 1 August 2017, Three Square Market, a company in River Falls, Wisconsin that makes self-service kiosks for office break rooms, held what it called a "chip party". About <a href="https://www.npr.org/2017/07/25/539265157/wisconsin-company-plans-to-start-implanting-chips-in-its-employees" target="_blank" rel="noopener">50 employees volunteered</a> to have a chip the size of a grain of rice injected between their thumb and forefinger. Each one cost about <a href="https://siliconangle.com/blog/2017/07/25/u-s-vending-machine-company-32m-implant-microchips-inside-employees/" target="_blank" rel="noopener">US$300</a>, and the company paid.</p>
+  <p class="t">A year later, <a href="https://www.technologyreview.com/2018/08/17/140994/this-company-embeds-microchips-in-its-employees-and-they-love-it/" target="_blank" rel="noopener">MIT Technology Review</a> found about 80 of its 250 staff had one. The chips came from BioHax, a Swedish company whose implants were already in use at Epicenter, a Stockholm office hub where members used them to open doors.</p>
+
+  <figure class="fig rv" id="chipFig">
+    <div class="ft">What a hand chip actually does</div>
+    <div class="fs">A passive RFID/NFC tag, the same kind of technology as a contactless office badge. Tap the buttons to see it work.</div>
+    <div class="seg-ctrl" role="group" aria-label="Chip demo">
+      <button type="button" data-act="door" aria-pressed="true">Open a door</button>
+      <button type="button" data-act="pay" aria-pressed="false">Pay at a kiosk</button>
+      <button type="button" data-act="track" aria-pressed="false">Track my location?</button>
+    </div>
+    <svg id="chipSvg" viewBox="0 0 640 260" role="img" aria-label="A hand with a small chip between thumb and forefinger. Near a reader, the reader powers the chip and reads its ID. Away from a reader, the chip is silent and cannot report location."></svg>
+    <p class="chipnote" id="chipNote">The reader on the door sends out a weak radio field. It powers the chip for an instant, reads its ID number, and unlocks the door.</p>
+    <figcaption>Simplified. Passive chips have no battery or GPS; they only work a few centimetres from a reader. Some newer payment implants, such as Walletmor's, work with contactless card terminals. Sources: NPR, MIT Technology Review, Finextra.</figcaption>
+  </figure>
+
+  <p class="t">That's the first thing to understand about hand chips: they are far less sinister than they sound. A passive chip can't follow you home. It's a door badge you can't lose. The bigger worry is what it signals: if a company can ask you to put its badge inside your body, what else might it ask?</p>
+  <p class="t">The idea never really spread. The Polish company Walletmor, which sells payment implants, announced its <a href="https://finextra.com/newsarticle/40810/walletmor-sells-payment-implant-number-1000" target="_blank" rel="noopener">1,000th sale</a> in 2022. A <a href="https://www.statewatch.org/media/documents/news/2018/mar/ep-study-chips-in-workers.pdf" target="_blank" rel="noopener">European Parliament study</a> in 2018 put the number of people with chip implants worldwide at somewhere between 2,000 and 10,000, and later estimates run into the tens of thousands. Nobody really knows.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>The brain race</h2>
+  <p class="t">Hand chips are the toy version. The serious money is going into brain-computer interfaces: implants that read signals from neurons and turn them into actions, like moving a cursor or typing. Right now, every one of them is a medical device being tested on people with paralysis or other severe conditions. Scroll to see how far each one has got.</p>
+
+  <div class="scrolly" id="scrolly">
+    <div class="steps" id="steps">
+      <div class="step" data-s="0"><div class="card"><div class="lab">The road</div>A brain implant has to pass through every stage on the right before an employer could even think about asking for one. Most of the industry is still in the first half.</div></div>
+      <div class="step" data-s="1"><div class="card"><div class="lab">Neuralink</div>Elon Musk's company implanted its first patient in January 2024. Weeks later it said some of the device's hair-thin threads had <a href="https://qz.com/neuralink-electrode-threads-retract-1851479529" target="_blank" rel="noopener">pulled out of the brain</a>. By January 2026 it reported <a href="https://en.wikipedia.org/wiki/Neuralink" target="_blank" rel="noopener">21 participants</a> in its trials.<div class="big">21<small>people, Jan 2026</small></div></div></div>
+      <div class="step" data-s="2"><div class="card"><div class="lab">Synchron</div>Synchron's device goes in through a blood vessel, without opening the skull. It has been tested in trials in Australia and the US, and has FDA Breakthrough Device designation, but <a href="https://bciintel.com/bci-fda-approval-tracker/" target="_blank" rel="noopener">no full approval yet</a>.</div></div>
+      <div class="step" data-s="3"><div class="card"><div class="lab">Precision Neuroscience</div>Precision has the most concrete green light: FDA clearance for a thin electrode sheet that can sit on the brain for <a href="https://en.wikipedia.org/wiki/Precision_Neuroscience" target="_blank" rel="noopener">up to 30 days</a>, for diagnosis. That's temporary, not a permanent implant.<div class="big">30<small>days, max</small></div></div></div>
+      <div class="step" data-s="4"><div class="card"><div class="lab">Paradromics</div>Paradromics got FDA permission to start a feasibility study in November 2025, and surgeons completed its first long-term implant in 2026, according to <a href="https://en.wikipedia.org/wiki/Paradromics" target="_blank" rel="noopener">company and press reports</a>.</div></div>
+      <div class="step" data-s="5"><div class="card"><div class="lab">The gap</div>Not one of these devices is approved for permanent use in patients, let alone for healthy people. And getting there means brain surgery. The last two stages on the right are empty, and they may stay that way for a long time.<div class="big">0<small>approved for healthy people</small></div></div></div>
+    </div>
+    <div class="sticky">
+      <div class="chartbox">
+        <div class="ct">From lab to workplace</div>
+        <div class="cs">Where each brain-implant company stands, November 2026</div>
+        <svg id="roadChart" viewBox="0 0 640 400" role="img" aria-label="A road with six stages: lab, human trials, limited FDA clearance, approved for patients, used by healthy people, required by employers. Company markers sit in the first three stages."></svg>
+      </div>
+      <div class="chartnote">Positions are simplified from public trial and FDA status. Sources in the step cards.</div>
+    </div>
+  </div>
+
+  <p class="pull">The brain implant you've read about is a medical trial. The one at work is still science fiction.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>No surgery required</h2>
+  <p class="t">Here's the twist: you don't need an implant to have your brain read at work. EEG (electroencephalography) sensors pick up faint electrical activity through the scalp, and they already fit inside caps, helmets and headphones.</p>
+  <p class="t">In Australia, mining operators including Rio Tinto have used <a href="https://bestpractice.ai/ai-use-cases/case-studies/manufacturing-industrials/rio-tinto-machinery-operators-wear-smartcaps-to-detect-dangerous-levels-of-fatique-by-applying-neural-networks-to-brain-signals" target="_blank" rel="noopener">SmartCap</a>, a cap that turns brain signals into a fatigue score so tired truck drivers can be stood down before they crash. In 2018 the South China Morning Post reported that Chinese factories and state firms had put <a href="https://www.scmp.com/news/china/society/article/2143899/forget-facebook-leak-china-mining-data-directly-workers-brains" target="_blank" rel="noopener">EEG sensors in workers' hats</a> to watch for fatigue and emotional changes, with managers sending workers home or moving them when the system raised an alarm.</p>
+
+  <figure class="fig rv" id="costFig">
+    <div class="ft">The price of reading a brain at work</div>
+    <div class="fs">Rough cost per worker, US$</div>
+    <div class="lease">
+      <div class="lrow"><div class="ll"><span>EEG fatigue cap, per worker per day (trucking)</span><b>~US$1</b></div><div class="ltrack"><i class="lo" data-w="0.33"></i></div></div>
+      <div class="lrow"><div class="ll"><span>EEG fatigue cap, per worker per day (mining)</span><b>~US$2</b></div><div class="ltrack"><i class="lo" data-w="0.67"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Hand chip, one-off (2017)</span><b>~US$300</b></div><div class="ltrack"><i class="lg" data-w="100"></i></div></div>
+    </div>
+    <div class="bigstat"><b>Brain surgery</b><span>No price exists for a brain implant in a healthy person, because no one is allowed to sell one. Every implant so far has been part of a medical trial.</span></div>
+    <figcaption>SmartCap prices as reported by its maker to <a href="https://www.equipmentworld.com/technology/article/14965955/smartcap-integrates-camera-free-worker-fatigue-monitoring-into-hard-hats-ball-caps-and-more" target="_blank" rel="noopener">Equipment World</a>; chip price from SiliconANGLE. Bars to scale.</figcaption>
+  </figure>
+
+  <div class="note">
+    <b class="h">An analogy: the breathalyser in the truck</b>
+    Some trucks won't start until the driver blows into a breathalyser. Few people object, because the test checks one thing, for one clear safety reason, and nothing else. A fatigue cap is the same deal, as long as it only measures tiredness. The fight starts when the same signal is used to rate how focused, happy or loyal you are.
+  </div>
+
+  <p class="t">The scientific evidence for those bigger claims is thin. MIT Technology Review pointed out that scalp EEG is <a href="https://www.technologyreview.com/2018/04/30/143155/with-brain-scanning-hats-china-signals-it-has-no-interest-in-workers-privacy/" target="_blank" rel="noopener">very limited</a> in what it can detect, and that the link between its signals and emotions isn't well understood. But a measurement doesn't have to be accurate to be used against you.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Would you say yes?</h2>
+  <p class="t">Most people wouldn't. In a Pew Research Center survey of more than 10,000 American adults in late 2021, a majority said widespread use of brain chips to boost thinking would be a bad idea for society, and most said they wouldn't want one themselves.</p>
+
+  <figure class="fig rv" id="pewFig">
+    <div class="ft">Brain chips to boost thinking: good idea?</div>
+    <div class="fs">US adults, November 2021</div>
+    <div class="stack" id="pewStack">
+      <i class="bad" data-w="56"><b>56%</b> Bad idea</i>
+      <i class="unsure" data-w="31"><b>31%</b> Not sure</i>
+      <i class="good" data-w="13"><b>13%</b> Good</i>
+    </div>
+    <div class="lease" style="margin-top:22px">
+      <div class="lrow"><div class="ll"><span>Would not want one for themselves</span><b>78%</b></div><div class="ltrack"><i class="lr" data-w="78"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Would want one</span><b>20%</b></div><div class="ltrack"><i class="lg" data-w="20"></i></div></div>
+    </div>
+    <figcaption>Survey of 10,260 US adults, 1–7 November 2021: <a href="https://www.pewresearch.org/internet/2022/03/17/ai-and-human-enhancement-americans-openness-is-tempered-by-a-range-of-concerns/" target="_blank" rel="noopener">Pew Research Center</a>. The question asked about chips that let people process information faster and more accurately.</figcaption>
+  </figure>
+
+  <p class="t">But "would you?" is a different question at work. When the person asking also decides your pay and your promotion, saying no isn't free, even if the offer is called voluntary. Nevada took that argument to its logical end and banned even voluntary workplace chip programmes.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The law got there first</h2>
+  <p class="t">Unusually for new technology, lawmakers moved before the problem was widespread. A growing list of US states bans employers from requiring an implant as a condition of a job.</p>
+
+  <figure class="fig rv" id="lawFig">
+    <div class="ft">States that ban employers from requiring implants</div>
+    <div class="fs">As listed by SHRM and other legal trackers. Tap a highlighted state for the detail.</div>
+    <div class="states" id="states"></div>
+    <p class="chipnote" id="stateNote">Tap Nevada or Washington.</p>
+    <figcaption>Sources: <a href="https://www.shrm.org/topics-tools/news/technology/another-state-bans-employers-microchipping-workers" target="_blank" rel="noopener">SHRM</a>, <a href="https://www.lexisnexis.com/community/insights/legal/capitol-journal/b/state-net/posts/washington-joins-states-limiting-employer-mandated-worker-microchipping" target="_blank" rel="noopener">LexisNexis State Net</a>, <a href="https://www.carnegiecouncil.org/media/article/preemptive-bans-human-microchip-implants" target="_blank" rel="noopener">Carnegie Council</a>. Trackers count differently; check each state's statute before relying on it.</figcaption>
+  </figure>
+
+  <p class="t">The next fight is over the data. Even without an implant, headphones and caps can collect brain signals, and a <a href="https://www.cbsnews.com/news/state-privacy-laws-brain-data-devices/" target="_blank" rel="noopener">Neurorights Foundation review</a> found 29 of 30 consumer neurotech companies it studied had access to users' brain data. Colorado (2024) and California (2024) now count "neural data" as sensitive personal information, and Montana followed in 2025. Abroad, Chile wrote mental privacy into its constitution in 2021, and in November 2025 UNESCO adopted the first global <a href="https://www.arnoldporter.com/en/perspectives/advisories/2025/07/neural-data-privacy-regulation" target="_blank" rel="noopener">recommendation on the ethics of neurotechnology</a>.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>So how realistic is it?</h2>
+  <p class="t">It depends on which version you mean. Pick a scenario to see where it stands today.</p>
+
+  <figure class="fig rv" id="meterFig">
+    <div class="ft">The realism meter</div>
+    <div class="fs">My judgement, based on the evidence in this explainer</div>
+    <div class="seg-ctrl scen" role="group" aria-label="Scenario">
+      <button type="button" data-k="0" aria-pressed="true">Wear an EEG cap</button>
+      <button type="button" data-k="1" aria-pressed="false">Offered a hand chip</button>
+      <button type="button" data-k="2" aria-pressed="false">Required hand chip</button>
+      <button type="button" data-k="3" aria-pressed="false">Required brain implant</button>
+    </div>
+    <svg id="meterSvg" viewBox="0 0 640 230" role="img" aria-label="A gauge from science fiction to already happening, with a needle for the selected scenario."></svg>
+    <p class="chipnote" id="meterNote"></p>
+    <figcaption>An editorial judgement, not a forecast. Each verdict is explained under the gauge.</figcaption>
+  </figure>
+
+  <p class="t">The pattern is clear. The tech that's easiest to adopt is the tech that doesn't go inside you: caps, headbands and earbuds. They're cheap, they come off at the end of a shift, and they're sold as safety gear. That's where the real questions about brain data at work will be fought over the next few years.</p>
+  <p class="t">Implants are a different matter. A hand chip is a solution looking for a problem: a phone or a badge does the same job. A brain implant means surgery, a device no regulator has approved for healthy people, and a growing pile of laws in the way. If a boss ever asks for one, the realistic answer for now is that they can't.</p>
+
+  <p class="pull">The boss who reads your brain won't use a scalpel. They'll use a hat.</p>
+
+  <h2 id="s7"><span class="n">Part 7</span>How we got here</h2>
+  <ol class="tl rv">
+    <li><span class="yr">2015</span>Epicenter, a Stockholm office hub, offers members chip implants to open doors.</li>
+    <li><span class="yr">1 Aug 2017</span>Three Square Market's "chip party": about 50 staff get hand chips.<span class="big">~50</span></li>
+    <li><span class="yr">2018</span>Reports of EEG caps on workers in China; about 80 of Three Square Market's 250 staff now chipped.<span class="big">80 / 250</span></li>
+    <li><span class="yr">2019</span>Nevada bans even voluntary workplace chip programmes.</li>
+    <li><span class="yr">2021</span>Chile protects mental privacy in its constitution. Pew finds 56% of Americans think brain chips for thinking would be bad for society.<span class="big">56%</span></li>
+    <li class="hi"><span class="yr">Jan 2024</span>Neuralink implants its first patient. Some threads later pull loose.</li>
+    <li><span class="yr">2024–25</span>Colorado, California and Montana start treating neural data as sensitive. UNESCO adopts neurotech ethics rules.</li>
+    <li><span class="yr">Jan 2026</span>Neuralink reports 21 trial participants.<span class="big">21</span></li>
+    <li><span class="yr">2026</span>Washington becomes the latest state to ban employer-required implants.</li>
+    <li class="hi"><span class="yr">Nov 2026</span>You are here. No brain implant is approved for healthy people.</li>
+  </ol>
+
+  <p class="t">If your company ever pitches brain tech at work, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q"><div class="qn">QUESTION 1</div><p>Could I say no without it costing me?</p></div>
+    <div class="q"><div class="qn">QUESTION 2</div><p>Who owns the data, and what else will it be used for?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from.</p>
+  <ul class="sources">
+    <li>Three Square Market chip party, about 50 volunteers, 1 August 2017, BioHax partnership: <a href="https://www.npr.org/2017/07/25/539265157/wisconsin-company-plans-to-start-implanting-chips-in-its-employees" target="_blank" rel="noopener">NPR</a>, <a href="https://www.mprnews.org/story/2017/07/25/wisconsin-retail-tech-company-offers-to-microchip-its-staff" target="_blank" rel="noopener">MPR News</a>; US$300 per chip: <a href="https://siliconangle.com/blog/2017/07/25/u-s-vending-machine-company-32m-implant-microchips-inside-employees/" target="_blank" rel="noopener">SiliconANGLE</a>; about 80 of 250 staff by 2018: <a href="https://www.technologyreview.com/2018/08/17/140994/this-company-embeds-microchips-in-its-employees-and-they-love-it/" target="_blank" rel="noopener">MIT Technology Review</a>.</li>
+    <li>Epicenter's door-opening chip implants (2015): <a href="https://www.bbc.com/news/technology-31042477" target="_blank" rel="noopener">BBC News</a>.</li>
+    <li>Walletmor's 1,000th payment implant (2022): <a href="https://finextra.com/newsarticle/40810/walletmor-sells-payment-implant-number-1000" target="_blank" rel="noopener">Finextra</a>. Worldwide implant estimate of 2,000–10,000 (2018): <a href="https://www.statewatch.org/media/documents/news/2018/mar/ep-study-chips-in-workers.pdf" target="_blank" rel="noopener">European Parliament study via Statewatch</a>; higher later estimates: <a href="https://www.cpacanada.ca/news/pivot-magazine/2019-10-31-vivokey-implants" target="_blank" rel="noopener">CPA Canada</a>.</li>
+    <li>Neuralink's first implant and thread retraction: <a href="https://qz.com/neuralink-electrode-threads-retract-1851479529" target="_blank" rel="noopener">Quartz</a>; 21 participants as of January 2026 and Blindsight status: <a href="https://en.wikipedia.org/wiki/Neuralink" target="_blank" rel="noopener">Wikipedia, Neuralink</a> (citing company updates). Third-party trackers report higher later counts that Neuralink hasn't confirmed.</li>
+    <li>Synchron, Precision Neuroscience and Paradromics status: <a href="https://bciintel.com/bci-fda-approval-tracker/" target="_blank" rel="noopener">BCI FDA approval tracker</a>, <a href="https://en.wikipedia.org/wiki/Precision_Neuroscience" target="_blank" rel="noopener">Wikipedia, Precision Neuroscience</a>, <a href="https://en.wikipedia.org/wiki/Paradromics" target="_blank" rel="noopener">Wikipedia, Paradromics</a>. Check company and FDA announcements for exact dates.</li>
+    <li>SmartCap at Rio Tinto: <a href="https://bestpractice.ai/ai-use-cases/case-studies/manufacturing-industrials/rio-tinto-machinery-operators-wear-smartcaps-to-detect-dangerous-levels-of-fatique-by-applying-neural-networks-to-brain-signals" target="_blank" rel="noopener">Best Practice AI</a>; pricing of about US$1–2 per worker per day: <a href="https://www.equipmentworld.com/technology/article/14965955/smartcap-integrates-camera-free-worker-fatigue-monitoring-into-hard-hats-ball-caps-and-more" target="_blank" rel="noopener">Equipment World</a>; EU-OSHA case study: <a href="https://www.wencomine.com/news/eu-osha-wenco-smartcap-worker-safety" target="_blank" rel="noopener">Wenco</a>.</li>
+    <li>EEG caps on workers in China (2018): <a href="https://www.scmp.com/news/china/society/article/2143899/forget-facebook-leak-china-mining-data-directly-workers-brains" target="_blank" rel="noopener">South China Morning Post</a>; limits of scalp EEG: <a href="https://www.technologyreview.com/2018/04/30/143155/with-brain-scanning-hats-china-signals-it-has-no-interest-in-workers-privacy/" target="_blank" rel="noopener">MIT Technology Review</a>.</li>
+    <li>Public opinion (56% bad idea, 13% good, 31% unsure; 78% wouldn't want one): <a href="https://www.pewresearch.org/internet/2022/03/17/ai-and-human-enhancement-americans-openness-is-tempered-by-a-range-of-concerns/" target="_blank" rel="noopener">Pew Research Center, March 2022</a>.</li>
+    <li>State bans on employer-required implants, Nevada's 2019 ban on voluntary programmes, Washington HB 2303 (2026): <a href="https://www.shrm.org/topics-tools/news/technology/another-state-bans-employers-microchipping-workers" target="_blank" rel="noopener">SHRM</a>, <a href="https://www.lexisnexis.com/community/insights/legal/capitol-journal/b/state-net/posts/washington-joins-states-limiting-employer-mandated-worker-microchipping" target="_blank" rel="noopener">LexisNexis State Net</a>, <a href="https://www.dwt.com/blogs/employment-labor-and-benefits/2026/03/washington-hb-2303-employee-microchip-implant-ban" target="_blank" rel="noopener">Davis Wright Tremaine</a>, <a href="https://www.carnegiecouncil.org/media/article/preemptive-bans-human-microchip-implants" target="_blank" rel="noopener">Carnegie Council</a>.</li>
+    <li>Neural data laws (Colorado HB 24-1058, California SB 1223, Montana SB 163), Chile, UNESCO and the Neurorights Foundation review: <a href="https://www.arnoldporter.com/en/perspectives/advisories/2025/07/neural-data-privacy-regulation" target="_blank" rel="noopener">Arnold &amp; Porter</a>, <a href="https://www.cbsnews.com/news/state-privacy-laws-brain-data-devices/" target="_blank" rel="noopener">CBS News</a>, <a href="https://trustarc.com/resource/neurotechnology-privacy-safeguarding-the-next-frontier-of-data/" target="_blank" rel="noopener">TrustArc</a>.</li>
+  </ul>
+  <p class="end">Educational only. Not medical, legal or investment advice. This is a living document and will be updated as trials report and laws change.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">The brain race</a><br><a href="#s6">So how realistic is it?</a><br><a href="../explainers.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is medical, legal, investment or tax advice. Figures come from the sources listed and may be revised.</div>
+</footer>
+
+<script src="../../js/implants.js"></script>
+</body>
+</html>

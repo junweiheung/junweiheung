@@ -130,6 +130,31 @@ window.BOTTLENECK = {
         { step: "Chip packaging", companies: ["tsmc"] },
         { step: "Chip design", companies: ["nvidia"] }
       ]
+    },
+    {
+      id: "implants",
+      href: "explainers/implants.html",
+      title: "Chipped at Work: How Close Are Bosses to Putting Tech Inside You?",
+      short: "Chipped at work",
+      kicker: "Explainer",
+      topic: "Neurotech and work",
+      date: "2026-11-19",
+      readMins: 12,
+      dek: "A Wisconsin company once threw a party to microchip its staff. Brain implants now let paralysed people move cursors by thought. How realistic is it that your boss asks you to get one?",
+      summary: "Hand chips, brain implants, EEG caps, and the laws that got there first",
+      thumb: "../images/thumbs/implants.svg",
+      stats: [
+        { big: "~80 / 250", text: "Staff at Three Square Market with a hand chip by 2018, a year after its 2017 chip party." },
+        { big: "21", text: "People in Neuralink's trials, January 2026. No brain implant is approved for healthy people." },
+        { big: "US$1–2", text: "Rough daily cost per worker of an EEG cap that scores fatigue at mines and in trucking." },
+        { big: "13", text: "US states, including Washington in 2026, that ban employers from requiring an implant." }
+      ],
+      chain: [
+        { step: "Brain implants", companies: ["neuralink", "synchron", "precision", "paradromics"] },
+        { step: "Hand chips", companies: ["biohax", "walletmor"] },
+        { step: "Wearable EEG", companies: ["smartcap"] },
+        { step: "Workplace adopters", companies: ["threesquare"] }
+      ]
     }
   ],
 
@@ -163,6 +188,14 @@ window.BOTTLENECK = {
     microsoft:{ name: "Microsoft",         hq: "US" },
     nittobo:  { name: "Nittobo",           hq: "Japan" },
     nanya:    { name: "Nan Ya Plastics",   hq: "Taiwan" },
-    kingboard:{ name: "Kingboard",         hq: "Hong Kong" }
+    kingboard:{ name: "Kingboard",         hq: "Hong Kong" },
+    neuralink:{ name: "Neuralink",         hq: "US" },
+    synchron: { name: "Synchron",          hq: "US" },
+    precision:{ name: "Precision Neuroscience", hq: "US" },
+    paradromics:{ name: "Paradromics",     hq: "US" },
+    biohax:   { name: "BioHax",            hq: "Sweden" },
+    walletmor:{ name: "Walletmor",         hq: "Poland" },
+    smartcap: { name: "SmartCap",          hq: "Australia" },
+    threesquare:{ name: "Three Square Market", hq: "US" }
   }
 };
