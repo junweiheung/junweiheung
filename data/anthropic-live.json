@@ -2,38 +2,42 @@
   "ticker": "ANT",
   "exchange": "Nasdaq",
   "ipoPrice": 83,
-  "updated": "2026-11-19T17:10:00Z",
-  "status": "pre-open",
+  "updated": "2026-11-19T18:10:00Z",
+  "status": "trading",
   "price": null,
   "priceTime": null,
-  "open": null,
-  "dayHigh": null,
+  "open": 111.5,
+  "dayHigh": 114.99,
   "dayLow": null,
   "prevClose": null,
   "priceSources": [],
   "intraday": [],
   "sentiment": {
-    "t": "2026-11-19T17:10:00Z",
+    "t": "2026-11-19T18:10:00Z",
     "label": "Mixed",
-    "summary": "ANT still had not traded as of 11:35am ET, two hours after the open, so the mood rests on pre-listing coverage: strong demand and above-range pricing set against an unusually delayed debut and valuation questions. I found little new this hour.",
+    "summary": "ANT opened 34% above the $83 IPO price but gave back much of the gain within the first hour, leaving coverage split between record demand and doubts about the valuation. Analyst initiations are starting to appear, while commentators flag stretched pricing and losses.",
     "points": [
-      "Anthropic priced at $83, above the $70-78 range, selling 980 million Class A shares for about $81.3bn, per its announcement",
-      "Stock Titan's live page said at 11:35am ET that ANT had still not traded and no start time was set",
-      "Stock Titan's market summary says tech stocks gave up early gains ahead of the expected debut",
-      "Investinglive, citing the WSJ, earlier said some investors had pushed for a lower valuation after a tech selloff"
+      "Shares opened at $111.50, 34.3% above the $83 IPO price, per Stock Titan and CNBC",
+      "MLQ, citing Nasdaq, reports a fall from a $114.99 high to about $101 at 12:31pm ET, and Fox News had shares near $96 at 12:20pm",
+      "CNBC reports Melius Research started coverage with a Buy rating and a $155 target",
+      "The WSJ editorial board warned valuations are 'stretched', and Fox notes a $1.3bn operating loss in the first nine months of 2026"
     ],
     "sources": [
       {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+      },
+      {
+        "name": "MLQ.ai",
+        "url": "https://mlq.ai/news/anthropic-shares-open-at-11150-on-nasdaq-34-above-the-83-ipo-price-then-trim-gains-to-about-101/"
+      },
+      {
+        "name": "Fox News",
+        "url": "https://www.foxnews.com/live-news/anthropic-claude-ai-ipo-nasdaq-11-19-26"
+      },
+      {
         "name": "Stock Titan",
         "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
-      },
-      {
-        "name": "Anthropic",
-        "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
-      },
-      {
-        "name": "Investinglive",
-        "url": "https://investinglive.com/stock-market-update/wsj-anthropic-targets-nasdaq-debut-next-week-under-ticker-ant-despite-tech-selloff/"
       }
     ]
   },
@@ -53,10 +57,32 @@
     {
       "t": "2026-11-19T17:10:00Z",
       "label": "Mixed"
+    },
+    {
+      "t": "2026-11-19T18:10:00Z",
+      "label": "Mixed"
     }
   ],
   "daily": [],
   "updates": [
+    {
+      "t": "2026-11-19T18:06:00Z",
+      "text": "CNBC's live blog says Melius Research has started coverage of Anthropic with a Buy rating and a $155 price target. It also reports that roughly half of institutional investors who placed orders received no allocation in the offering.",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html"
+    },
+    {
+      "t": "2026-11-19T17:32:00Z",
+      "text": "Shares slipped from an intraday high of $114.99 to about $101 by 12:31pm ET, according to MLQ, citing Nasdaq data. Around 484 million shares had changed hands, roughly half the number sold in the offering.",
+      "source": "MLQ.ai",
+      "url": "https://mlq.ai/news/anthropic-shares-open-at-11150-on-nasdaq-34-above-the-83-ipo-price-then-trim-gains-to-about-101/"
+    },
+    {
+      "t": "2026-11-19T17:08:30Z",
+      "text": "Anthropic's Class A shares began trading on Nasdaq at about 11:48am ET, opening at $111.50, 34% above the $83 IPO price. The stock debuted well over two hours after the opening bell, valuing the company at roughly $2 trillion.",
+      "source": "Yahoo Finance",
+      "url": "https://ca.finance.yahoo.com/news/anthropic-shares-open-34-above-170830437.html"
+    },
     {
       "t": "2026-11-19T10:06:00Z",
       "text": "Anthropic filed its final prospectus with the SEC on the morning of 19 November, confirming 980 million Class A shares at $83 (about $81.3bn). The sale is expected to close on 20 November, with a separate $26bn Class N share sale to seven tech companies to follow and a 30-day option for banks to buy up to 147 million more shares.",
