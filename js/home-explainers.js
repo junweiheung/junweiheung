@@ -22,8 +22,8 @@
       </li>`;
   });
   const more = all.length > SHOW
-    ? `<a href="html/explainers.html" style="color: var(--gold)">See all ${all.length} explainers and the company map →</a>`
-    : `Next explainer in the works… meanwhile, <a href="html/explainers.html#map" style="color: var(--gold)">see the company map →</a>`;
+    ? `<a href="html/explainers.html" style="color: var(--gold)">See all ${all.length} explainers</a> · <a href="html/companies.html" style="color: var(--gold)">company map →</a>`
+    : `Next explainer in the works… meanwhile, <a href="html/companies.html" style="color: var(--gold)">see the company map →</a>`;
   document.querySelector("#explainers .essays").innerHTML =
     items.join("") + `<li class="essay essay--soon reveal">${more}</li>`;
 })();

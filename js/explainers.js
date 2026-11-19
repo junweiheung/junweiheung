@@ -11,7 +11,7 @@
 
   /* ---------- latest + key numbers ---------- */
   const latest = articles[0];
-  if (latest) {
+  if (latest && $("feature")) {
     $("latestDate").textContent = fmtDate(latest.date, { month: "short", year: "numeric" });
     $("feature").href = latest.href;
     $("fThumb").src = latest.thumb;
@@ -25,6 +25,7 @@
   }
 
   /* ---------- list + topic filter ---------- */
+  if ($("list")) {
   $("count").textContent = articles.length + " published";
   const topics = [...new Set(articles.map((a) => a.topic))];
   let topic = "All";
@@ -51,9 +52,13 @@
   chips($("topicChips"), [{ v: "All", label: "All" }, ...topics.map((t) => ({ v: t, label: t }))], "All",
     (v) => { topic = v; renderList(); });
   renderList();
-  $("footList").innerHTML = articles.map((a) => `<a href="${esc(a.href)}">${esc(a.short || a.title)}</a>`).join("<br>");
+  }
+  if ($("footList")) {
+    $("footList").innerHTML = articles.map((a) => `<a href="${esc(a.href)}">${esc(a.short || a.title)}</a>`).join("<br>");
+  }
 
   /* ---------- company map ---------- */
+  if (!$("graph")) return;
   const panel = $("panel");
   const HINT = `<p class="hint">Click a company on the map to see which explainers it appears in, what it does there, and what it keeps per dollar.</p>`;
   panel.innerHTML = HINT;
