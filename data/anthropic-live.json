@@ -2,7 +2,7 @@
   "ticker": "ANT",
   "exchange": "Nasdaq",
   "ipoPrice": 83,
-  "updated": "2026-11-19T16:10:00Z",
+  "updated": "2026-11-19T17:10:00Z",
   "status": "pre-open",
   "price": null,
   "priceTime": null,
@@ -13,23 +13,19 @@
   "priceSources": [],
   "intraday": [],
   "sentiment": {
-    "t": "2026-11-19T16:10:00Z",
+    "t": "2026-11-19T17:10:00Z",
     "label": "Mixed",
-    "summary": "As of the latest coverage found (about 9:40am ET) no first trade had been reported, so sentiment still rests on pre-listing coverage: strong demand for the record deal set against valuation questions and an uncertain opening time. I found little new this hour.",
+    "summary": "ANT still had not traded as of 11:35am ET, two hours after the open, so the mood rests on pre-listing coverage: strong demand and above-range pricing set against an unusually delayed debut and valuation questions. I found little new this hour.",
     "points": [
-      "Anthropic priced at $83, above the $70-78 range, raising about $81.3bn, per its pricing announcement and CNBC",
-      "Stock Titan's live page said ANT had not traded as of 9:35am ET, with the first trade awaiting Nasdaq's opening auction",
-      "Stock Titan headlines note tech stocks rose ahead of the expected debut",
+      "Anthropic priced at $83, above the $70-78 range, selling 980 million Class A shares for about $81.3bn, per its announcement",
+      "Stock Titan's live page said at 11:35am ET that ANT had still not traded and no start time was set",
+      "Stock Titan's market summary says tech stocks gave up early gains ahead of the expected debut",
       "Investinglive, citing the WSJ, earlier said some investors had pushed for a lower valuation after a tech selloff"
     ],
     "sources": [
       {
         "name": "Stock Titan",
         "url": "https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026"
-      },
-      {
-        "name": "CNBC",
-        "url": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html"
       },
       {
         "name": "Anthropic",
@@ -52,6 +48,10 @@
     },
     {
       "t": "2026-11-19T16:10:00Z",
+      "label": "Mixed"
+    },
+    {
+      "t": "2026-11-19T17:10:00Z",
       "label": "Mixed"
     }
   ],
