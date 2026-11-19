@@ -155,6 +155,30 @@ window.BOTTLENECK = {
         { step: "Wearable EEG", companies: ["smartcap"] },
         { step: "Workplace adopters", companies: ["threesquare"] }
       ]
+    },
+    {
+      id: "anthropic-ipo",
+      href: "explainers/anthropic-ipo.html",
+      title: "Who Owns Anthropic? Inside the $1.5 Trillion IPO",
+      short: "Who owns Anthropic?",
+      kicker: "Explainer",
+      topic: "AI and capital markets",
+      date: "2026-11-19",
+      readMins: 13,
+      dek: "Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can't vote. Seven co-founders hold one share with 50.1% of the votes.",
+      summary: "The cap table, the voting structure, the price, and the lock-up calendar",
+      thumb: "../images/thumbs/anthropic-ipo.svg",
+      stats: [
+        { big: "$81.3B", text: "Raised at $83 a share, the largest IPO on record, valuing Anthropic at about $1.5 trillion fully diluted." },
+        { big: "28% / 0%", text: "Amazon and Google's combined stake, and their share of the votes." },
+        { big: "50.1%", text: "Votes carried by a single Class F share held by the seven co-founders." },
+        { big: "15.5B", text: "Locked-up shares that unlock in about 25 waves over the next year." }
+      ],
+      chain: [
+        { step: "Strategic owners", companies: ["amazon", "google"] },
+        { step: "IPO placement", companies: ["google", "nvidia", "amd", "broadcom", "micron", "microsoft", "tsmc"] },
+        { step: "The issuer", companies: ["anthropic"] }
+      ]
     }
   ],
 
@@ -196,6 +220,9 @@ window.BOTTLENECK = {
     biohax:   { name: "BioHax",            hq: "Sweden" },
     walletmor:{ name: "Walletmor",         hq: "Poland" },
     smartcap: { name: "SmartCap",          hq: "Australia" },
-    threesquare:{ name: "Three Square Market", hq: "US" }
+    threesquare:{ name: "Three Square Market", hq: "US" },
+    anthropic:{ name: "Anthropic",         hq: "US" },
+    amazon:   { name: "Amazon",            hq: "US" },
+    google:   { name: "Google",            hq: "US" }
   }
 };

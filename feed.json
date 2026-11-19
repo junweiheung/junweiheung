@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "anthropic-ipo",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/anthropic-ipo.html",
+      "title": "Who Owns Anthropic? Inside the $1.5 Trillion IPO",
+      "summary": "Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can't vote. Seven co-founders hold one share with 50.1% of the votes.",
+      "content_text": "Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can't vote. Seven co-founders hold one share with 50.1% of the votes.",
+      "date_published": "2026-11-19T09:00:00+08:00",
+      "tags": [
+        "AI and capital markets"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-ipo.png",
+      "_bottleneck": {
+        "short": "Who owns Anthropic?",
+        "topic": "AI and capital markets",
+        "readMins": 13,
+        "stat": {
+          "big": "$81.3B",
+          "text": "Raised at $83 a share, the largest IPO on record, valuing Anthropic at about $1.5 trillion fully diluted."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-ipo.png"
+      }
+    },
+    {
       "id": "implants",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/implants.html",
       "title": "Chipped at Work: How Close Are Bosses to Putting Tech Inside You?",

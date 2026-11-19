@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .g{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:grow 1s cubic-bezier(.2,.8,.2,1) forwards}
+    .d1{animation-delay:.2s}.d2{animation-delay:.4s}.d3{animation-delay:.6s}.d4{animation-delay:.8s}.d5{animation-delay:1s}.d6{animation-delay:1.2s}
+    .v1{animation-delay:1.6s}.v2{animation-delay:1.9s}
+    @keyframes grow{to{transform:scaleX(1)}}
+    @media (prefers-reduced-motion:reduce){.g{animation:none;transform:none}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="56" font-weight="800">Who owns Anthropic?</text>
+  <text x="120" y="186" fill="#8d8a84" font-size="28">980M shares at $83 · $81.3B raised · ~$1.5T</text>
+
+  <text x="120" y="300" fill="#8d8a84" font-size="22" font-weight="700" letter-spacing="3">SHARES OWNED</text>
+  <g>
+    <rect class="g d1" x="120" y="320" width="195" height="130" fill="#ff9f43"/>
+    <rect class="g d2" x="318" y="320" width="180" height="130" fill="#4d8bff"/>
+    <rect class="g d3" x="501" y="320" width="170" height="130" fill="#e0b65a"/>
+    <rect class="g d4" x="674" y="320" width="84" height="130" fill="#7fbf8a"/>
+    <rect class="g d5" x="761" y="320" width="98" height="130" fill="#cfcbc3"/>
+    <rect class="g d6" x="862" y="320" width="618" height="130" fill="#3a3833"/>
+  </g>
+  <text x="138" y="375" fill="#111" font-size="24" font-weight="700">Amazon</text>
+  <text x="138" y="420" fill="#111" font-size="36" font-weight="800">14.5%</text>
+  <text x="336" y="375" fill="#111" font-size="24" font-weight="700">Google</text>
+  <text x="336" y="420" fill="#111" font-size="36" font-weight="800">13.4%</text>
+  <text x="519" y="375" fill="#111" font-size="24" font-weight="700">Founders</text>
+  <text x="519" y="420" fill="#111" font-size="36" font-weight="800">12.7%</text>
+  <text x="880" y="375" fill="#cfcbc3" font-size="24" font-weight="700">Everyone else</text>
+
+  <text x="120" y="560" fill="#8d8a84" font-size="22" font-weight="700" letter-spacing="3">VOTES</text>
+  <rect class="g v1" x="120" y="580" width="681" height="130" fill="#e0b65a"/>
+  <rect class="g v2" x="804" y="580" width="676" height="130" fill="#3a3833"/>
+  <text x="140" y="636" fill="#111" font-size="24" font-weight="700">One founder share</text>
+  <text x="140" y="684" fill="#111" font-size="40" font-weight="800">50.1%</text>
+  <text x="824" y="636" fill="#cfcbc3" font-size="24" font-weight="700">All Class A holders</text>
+  <text x="824" y="684" fill="#fff" font-size="40" font-weight="800">49.9%</text>
+  <text x="120" y="800" fill="#fff" font-size="32" font-weight="700">Amazon + Google: 28% of shares, 0% of votes</text>
+</svg>

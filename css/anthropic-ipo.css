@@ -1,0 +1,97 @@
+/* Page-specific styles for the Anthropic IPO explainer. Shared styles: bottleneck.css and article.css. */
+
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a,.capt a{color:inherit;text-decoration-color:var(--gold)}
+.chipnote{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin-top:12px;min-height:44px}
+
+/* ---------- Button groups ---------- */
+.seg-ctrl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-family:var(--sans)}
+.seg-ctrl button{font:500 12px var(--sans);border:1px solid var(--rule);background:none;padding:6px 12px;cursor:pointer;color:var(--ink2)}
+.seg-ctrl button:hover{border-color:var(--ink);color:var(--ink)}
+.seg-ctrl button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ---------- Waffle: who owns / who votes ---------- */
+.waffle-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.waffle{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;max-width:340px}
+.waffle i{aspect-ratio:1;border-radius:2px;background:#ece8df;transition:background .5s ease;transition-delay:calc(var(--k) * 8ms)}
+.wlegend{font-family:var(--sans);font-size:13.5px;line-height:1.35;display:grid;gap:9px}
+.wlegend div{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:start;transition:opacity .4s}
+.wlegend div.zero{opacity:.38}
+.wlegend s{width:14px;height:14px;border-radius:2px;margin-top:2px;display:block}
+.wlegend b{font-weight:700;font-variant-numeric:tabular-nums}
+.wlegend small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+@media(max-width:640px){.waffle-wrap{grid-template-columns:1fr}.waffle{max-width:none}}
+
+/* ---------- Holder table ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.holders{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;font-variant-numeric:tabular-nums;min-width:520px}
+table.holders th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;font-weight:600;padding:8px 6px;border-bottom:2px solid var(--ink)}
+table.holders th:first-child,table.holders td:first-child{text-align:left}
+table.holders td{padding:9px 6px;border-bottom:1px solid #eee;text-align:right}
+table.holders td small{display:block;color:var(--muted);font-size:11.5px}
+table.holders tr.sub td{color:var(--ink2)}
+table.holders td.v0{color:var(--red);font-weight:600}
+
+/* ---------- Horizontal bars ---------- */
+.lease{display:grid;gap:16px;font-family:var(--sans)}
+.lrow .ll{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:6px;gap:10px}
+.lrow .ll b{color:var(--ink);white-space:nowrap}
+.ltrack{height:26px;background:#ece8df;position:relative}
+.ltrack i{position:absolute;left:0;top:0;bottom:0;width:0;min-width:3px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.ltrack i.lo{background:var(--blue)}
+.ltrack i.lg{background:var(--gold)}
+.ltrack i.lr{background:var(--red)}
+.ltrack i.lk{background:#5d5a55}
+.bigstat{display:flex;gap:18px;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid #eee;font-family:var(--sans)}
+.bigstat b{font-size:30px;letter-spacing:-.02em;color:var(--red);white-space:nowrap}
+.bigstat span{font-size:13px;color:var(--ink2);line-height:1.5}
+@media(max-width:600px){.bigstat{flex-direction:column;align-items:flex-start;gap:4px}}
+
+/* ---------- Price calculator ---------- */
+.calc{font-family:var(--sans)}
+.calc .px{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.calc .px b{font-size:44px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.calc .px span{font-size:13px;color:var(--muted)}
+.calc input[type=range]{width:100%;margin:14px 0 4px;accent-color:#111}
+#ladderSvg{width:100%;height:auto;display:block}
+.calc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.calc-grid div{background:#f3efe6;padding:12px 14px}
+.calc-grid small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.calc-grid b{font-size:21px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.calc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.calc .px b{font-size:36px}}
+
+/* ---------- Lock-up chart ---------- */
+#lockSvg{width:100%;height:auto;display:block}
+#lockSvg .bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.in-view #lockSvg .bar{transform:scaleY(1)}
+#lockSvg .cum{stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 2.4s ease .4s}
+.in-view #lockSvg .cum{stroke-dashoffset:0}
+
+/* ---------- Timeline ---------- */
+.tl{list-style:none;margin:30px 0;border-left:2px solid var(--ink);padding-left:22px}
+.tl li{position:relative;padding:0 0 26px;font-size:18px;line-height:1.5}
+.tl li::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.tl li.hi::before{background:var(--gold)}
+.tl .yr{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.tl .big{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.02em;display:block;margin-top:4px}
+
+/* ---------- Hero ---------- */
+#heroSvg .seg{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:grow 1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+
+@media (prefers-reduced-motion:reduce){
+  .ltrack i,.waffle i,#lockSvg .bar,#lockSvg .cum{transition:none}
+  #lockSvg .bar{transform:none}
+  #lockSvg .cum{stroke-dashoffset:0}
+  #heroSvg .seg{animation:none;transform:none}
+}
+
+/* ---------- Scene extras ---------- */
+.scene .ipo-tick{animation:ipo-tick 18s linear infinite;animation-play-state:paused}
+.scene.in-view .ipo-tick{animation-play-state:running}
+@keyframes ipo-tick{to{transform:translateX(-50%)}}
+.scene .ipo-drop{opacity:0}
+.scene.in-view .ipo-drop{animation:ipo-drop 3.5s ease-in infinite}
+@keyframes ipo-drop{0%{opacity:0;transform:translateY(-20px)}15%{opacity:1}75%{opacity:1;transform:translateY(56px)}85%,100%{opacity:0;transform:translateY(60px)}}
+@media (prefers-reduced-motion:reduce){.scene .ipo-drop{opacity:1}}
