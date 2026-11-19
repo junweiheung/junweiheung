@@ -66,6 +66,11 @@
 
   <h2 id="s1"><span class="n">Part 1</span>What got unlocked</h2>
   <p class="t dropcap">The unlock doesn't overclock anything. According to its authors, there's <a href="https://github.com/Zagitta/gpu-unlock" target="_blank" rel="noopener">no patched driver and no VBIOS flash</a>, and the card's normal power management and throttling stay in place. What changes is the speed of one kind of matrix maths on the card's tensor cores.</p>
+  <figure class="fig rv photo">
+    <img src="../../images/photos/rtx-3090.jpg" alt="A Gigabyte GeForce RTX 3090 graphics card with three fans" loading="lazy" width="720" height="480">
+    <figcaption>An RTX 3090, one of the cards the unlock works on (this one is a Gigabyte Eagle OC model). <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Gigabyte_GeForce_RTX_3090_Eagle_OC_24G,_24576_MiB_GDDR6X_Front_20201114_DSC5880.jpg" target="_blank" rel="noopener">PantheraLeo1359531</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, via Wikimedia Commons.</span></figcaption>
+  </figure>
+
   <p class="t">GeForce RTX 30 and 40 cards run half-precision matrix maths that adds up its results in higher precision (FP16 or BF16 with FP32 accumulation) at <a href="https://web.cs.miami.edu/home/burt/learning/csc596.231/docs/NVIDIA-ampere-GA102-GPU-Architecture-Whitepaper-V1.pdf" target="_blank" rel="noopener">half the rate</a> of the same maths adding up in FP16. That's in Nvidia's own architecture whitepapers. It's a product decision, not a physical limit: the unlock projects describe GeForce tensor cores as <a href="https://github.com/Zagitta/gpu-unlock" target="_blank" rel="noopener">capped to half speed</a> for this path.</p>
 
   <figure class="fig rv" id="segFig">
@@ -152,6 +157,11 @@
     </div>
     <div class="legend"><span><i style="background:var(--ink)"></i>Launch price, 2020: US$1,499 (about S$1,930)</span></div>
     <figcaption>US$1,463 (<a href="https://openclawdc.com/gear/rtx-3090/" target="_blank" rel="noopener">Sep</a>) and US$1,626 across 313 listings (<a href="https://openclawdc.com/gear/rtx-3090/" target="_blank" rel="noopener">Nov</a>), converted at about S$1.29 per US dollar. These are listing averages, not confirmed sales. The 29% is the tracker's 90-day change.</figcaption>
+  </figure>
+
+  <figure class="fig rv photo">
+    <img src="../../images/photos/rtx-3090-vs-4090.jpg" alt="An RTX 3090 graphics card above a larger RTX 4090" loading="lazy" width="720" height="597">
+    <figcaption>Size check: an RTX 3090 (top) and an RTX 4090 (bottom), the two generations in this story. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Size_comparison_between_RTX_3090_and_RTX_4090.jpg" target="_blank" rel="noopener">Benlisquare</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons.</span></figcaption>
   </figure>
 
   <p class="t">Modding shops in China went further, soldering extra memory onto gaming cards so that bigger models fit on one card, and fitting them with server-style blower coolers.</p>

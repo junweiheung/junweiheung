@@ -135,3 +135,13 @@ table.data td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight
 @media (prefers-reduced-motion:reduce){
   .rv,.q{opacity:1;transform:none;transition:none}
 }
+
+/* ---------- Real photos (credited in each caption) ---------- */
+figure.photo img{width:100%;height:auto;display:block;border-radius:2px;background:#ece8df}
+figure.photo .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+figure.photo .pair img{aspect-ratio:4/3;object-fit:cover}
+figure.photo figcaption .credit{display:block;margin-top:4px;color:#9a958b}
+@media(max-width:600px){
+  figure.photo .pair{grid-template-columns:1fr}
+}
+figure.photo > img{width:auto;max-width:100%;max-height:560px;margin:0 auto}
