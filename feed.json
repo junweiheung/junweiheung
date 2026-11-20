@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "cls",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/cls.html",
+      "title": "The Bank Behind the Currency Market: How CLS Keeps FX Trades From Going Wrong",
+      "summary": "More than US$14 trillion of currency trades come due every day, in two currencies across two clocks. One little-known New York bank, CLS, locks the two halves together for 18 currencies, Singapore's among them. Yet only about a third of the market settles that safely.",
+      "content_text": "More than US$14 trillion of currency trades come due every day, in two currencies across two clocks. One little-known New York bank, CLS, locks the two halves together for 18 currencies, Singapore's among them. Yet only about a third of the market settles that safely.",
+      "date_published": "2026-11-20T09:00:00+08:00",
+      "tags": [
+        "FX settlement"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/cls.png",
+      "_bottleneck": {
+        "short": "The bank behind the currency market",
+        "topic": "FX settlement",
+        "readMins": 11,
+        "stat": {
+          "big": "$14tn+",
+          "text": "Gross FX obligations coming due on an average day in April 2025 (BIS)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/cls.png"
+      }
+    },
+    {
       "id": "oil-window",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/oil-window.html",
       "title": "The Price Behind the Price: Who Sets the Number Oil Is Sold Against",

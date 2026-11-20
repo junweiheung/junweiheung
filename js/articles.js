@@ -251,6 +251,29 @@ window.BOTTLENECK = {
         { step: "Traders in the window", companies: ["vitol", "bp", "shell"] },
         { step: "Producers pricing off it", companies: ["aramco", "adnoc"] }
       ]
+    },
+    {
+      id: "cls",
+      href: "explainers/cls.html",
+      title: "The Bank Behind the Currency Market: How CLS Keeps FX Trades From Going Wrong",
+      short: "The bank behind the currency market",
+      kicker: "Explainer",
+      topic: "FX settlement",
+      date: "2026-11-20",
+      readMins: 11,
+      dek: "More than US$14 trillion of currency trades come due every day, in two currencies across two clocks. One little-known New York bank, CLS, locks the two halves together for 18 currencies, Singapore's among them. Yet only about a third of the market settles that safely.",
+      summary: "Herstatt risk, payment-versus-payment, and the $1.4tn a day with no safeguard",
+      thumb: "../images/thumbs/cls.svg",
+      stats: [
+        { big: "$14tn+", text: "Gross FX obligations coming due on an average day in April 2025 (BIS)." },
+        { big: "36%", text: "Share settled payment-versus-payment, the lock where both legs happen together or not at all (BIS)." },
+        { big: "$1.4tn", text: "A day settled gross with no safeguard, about 10% of the total (BIS)." },
+        { big: "18", text: "Currencies CLS settles, using an account at each currency's central bank. The Singapore dollar has been one since 2003 (CLS; Wikipedia)." }
+      ],
+      chain: [
+        { step: "The settlement bank", companies: ["cls"] },
+        { step: "Central banks holding the accounts", companies: ["mas"] }
+      ]
     }
   ],
 
@@ -309,6 +332,8 @@ window.BOTTLENECK = {
     bp:       { name: "BP",                hq: "UK",           sector: "Oil trading" },
     shell:    { name: "Shell",             hq: "UK",           sector: "Oil trading" },
     aramco:   { name: "Saudi Aramco",      hq: "Saudi Arabia", sector: "Oil producers" },
-    adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" }
+    adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" },
+    cls:      { name: "CLS Bank",          hq: "US",           sector: "FX settlement" },
+    mas:      { name: "Monetary Authority of Singapore", hq: "Singapore", sector: "Central banks" }
   }
 };
