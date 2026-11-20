@@ -226,6 +226,31 @@ window.BOTTLENECK = {
         { step: "Ship owner and manager", companies: ["synergy"] },
         { step: "P&I clubs", companies: ["britannia", "gard", "northstandard"] }
       ]
+    },
+    {
+      id: "oil-window",
+      href: "explainers/oil-window.html",
+      title: "The Price Behind the Price: Who Sets the Number Oil Is Sold Against",
+      short: "The price behind the price",
+      kicker: "Explainer",
+      topic: "Oil price benchmarks",
+      date: "2026-11-20",
+      readMins: 12,
+      dek: "Most of the world's exported crude oil is sold against a number that a news-and-data firm fixes once a day, from a thin slice of trades. One of those numbers, Dubai, has less and less Dubai in it. This month, Abu Dhabi moved its own crude onto it.",
+      summary: "Dated Brent, Platts Dubai, the 16:30 window, and ADNOC's switch",
+      thumb: "../images/thumbs/oil-window.svg",
+      stats: [
+        { big: "~78%", text: "Share of exported crude priced off Brent, directly or indirectly (Energy Intelligence via ICE). Other estimates: about two-thirds." },
+        { big: "<700k", text: "Barrels a day from the five North Sea grades behind Dated Brent in early 2023, down from 850,000 in December 2020." },
+        { big: "400k→60k", text: "Barrels a day of Dubai crude itself, early 1990s peak to a 2012 paper's latest figure. The benchmark kept the name." },
+        { big: "1 Nov", text: "2026: ADNOC moved the pricing of all its crude grades onto Platts Dubai, away from its own Murban futures." }
+      ],
+      chain: [
+        { step: "Price reporting", companies: ["platts"] },
+        { step: "Benchmark futures", companies: ["ice"] },
+        { step: "Traders in the window", companies: ["vitol", "bp", "shell"] },
+        { step: "Producers pricing off it", companies: ["aramco", "adnoc"] }
+      ]
     }
   ],
 
@@ -277,6 +302,13 @@ window.BOTTLENECK = {
     synergy:  { name: "Synergy Marine",    hq: "Singapore",    sector: "Shipping" },
     britannia:{ name: "Britannia P&I Club", hq: "UK",          sector: "Shipping insurance" },
     gard:     { name: "Gard",              hq: "Norway",       sector: "Shipping insurance" },
-    northstandard:{ name: "NorthStandard", hq: "UK",           sector: "Shipping insurance" }
+    northstandard:{ name: "NorthStandard", hq: "UK",           sector: "Shipping insurance" },
+    platts:   { name: "S&P Global Platts", hq: "US",           sector: "Price reporting" },
+    ice:      { name: "ICE",               hq: "US",           sector: "Exchanges" },
+    vitol:    { name: "Vitol",             hq: "Switzerland",  sector: "Oil trading" },
+    bp:       { name: "BP",                hq: "UK",           sector: "Oil trading" },
+    shell:    { name: "Shell",             hq: "UK",           sector: "Oil trading" },
+    aramco:   { name: "Saudi Aramco",      hq: "Saudi Arabia", sector: "Oil producers" },
+    adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" }
   }
 };

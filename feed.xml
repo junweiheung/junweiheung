@@ -6,7 +6,15 @@
   <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Explainers on the companies and industries the world can't do without.</description>
   <language>en-sg</language>
-  <lastBuildDate>Thu, 19 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <item>
+    <title>The Price Behind the Price: Who Sets the Number Oil Is Sold Against</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/oil-window.html</link>
+    <guid isPermaLink="false">bottleneck-oil-window</guid>
+    <pubDate>Fri, 20 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Oil price benchmarks</category>
+    <description>Most of the world&apos;s exported crude oil is sold against a number that a news-and-data firm fixes once a day, from a thin slice of trades. One of those numbers, Dubai, has less and less Dubai in it. This month, Abu Dhabi moved its own crude onto it.</description>
+  </item>
   <item>
     <title>The Insurer Nobody Sees: Twelve Clubs Behind Every Big Ship</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/pi-clubs.html</link>

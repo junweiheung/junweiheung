@@ -1,0 +1,56 @@
+/* Page-specific styles. Shared styles: bottleneck.css, article.css, scene-kit.css. */
+.chartnote a,.fig figcaption a,.step .card a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Scrolly: the shrinking basket ---------- */
+#basketChart{width:100%;height:auto;display:block;margin-top:8px}
+#basketChart .row{transition:opacity .5s ease}
+#basketChart .bar{transform-box:fill-box;transform-origin:left center;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+
+/* ---------- Horizontal bars ---------- */
+.lease{display:grid;gap:16px;font-family:var(--sans)}
+.lrow .ll{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:6px;gap:10px}
+.lrow .ll b{color:var(--ink);white-space:nowrap}
+.ltrack{height:28px;background:#ece8df;position:relative}
+.ltrack i{position:absolute;left:0;top:0;bottom:0;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.ltrack i.lo{background:var(--blue)}
+.ltrack i.lg{background:var(--gold)}
+.ltrack i.lr{background:var(--red)}
+.ltrack i.lk{background:var(--grey)}
+.ltrack .mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.bigstat{display:flex;gap:18px;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid #eee;font-family:var(--sans)}
+.bigstat b{font-size:40px;letter-spacing:-.02em;color:var(--gold);white-space:nowrap}
+.bigstat span{font-size:13px;color:var(--ink2);line-height:1.5}
+@media(max-width:600px){.bigstat{flex-direction:column;align-items:flex-start;gap:4px}}
+
+/* ---------- How a price is made: flow ---------- */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-family:var(--sans)}
+.fbox{position:relative;border:1px solid var(--ink);padding:14px 12px;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.fbox b{font-size:15px;line-height:1.2}
+.fbox small{font-size:12px;color:var(--muted);line-height:1.4}
+.fbox.gold{background:var(--ink);color:#fff}
+.fbox.gold small{color:var(--gold2)}
+.fbox:not(:last-child)::after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--ink)}
+.in-view .fbox{opacity:1;transform:none}
+.flow>*:nth-child(2){transition-delay:.3s}.flow>*:nth-child(3){transition-delay:.6s}.flow>*:nth-child(4){transition-delay:.9s}
+@media(max-width:700px){
+  .flow{grid-template-columns:1fr;gap:22px}
+  .fbox:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}
+}
+
+/* ---------- Table of rulings ---------- */
+table.data td small{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.45}
+table.data td.when{white-space:nowrap;font-weight:600;vertical-align:top}
+table.data td{vertical-align:top}
+
+/* ---------- Timeline ---------- */
+.tl{list-style:none;margin:30px 0;border-left:2px solid var(--ink);padding-left:22px}
+.tl li{position:relative;padding:0 0 26px;font-size:18px;line-height:1.5}
+.tl li::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.tl li.hi::before{background:var(--gold)}
+.tl .yr{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.tl .big{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.02em;display:block;margin-top:4px}
+
+@media (prefers-reduced-motion:reduce){
+  .ltrack i,.fbox{transition:none}
+  #basketChart .row,#basketChart .bar{transition:none}
+}

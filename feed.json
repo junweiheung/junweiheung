@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "oil-window",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/oil-window.html",
+      "title": "The Price Behind the Price: Who Sets the Number Oil Is Sold Against",
+      "summary": "Most of the world's exported crude oil is sold against a number that a news-and-data firm fixes once a day, from a thin slice of trades. One of those numbers, Dubai, has less and less Dubai in it. This month, Abu Dhabi moved its own crude onto it.",
+      "content_text": "Most of the world's exported crude oil is sold against a number that a news-and-data firm fixes once a day, from a thin slice of trades. One of those numbers, Dubai, has less and less Dubai in it. This month, Abu Dhabi moved its own crude onto it.",
+      "date_published": "2026-11-20T09:00:00+08:00",
+      "tags": [
+        "Oil price benchmarks"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/oil-window.png",
+      "_bottleneck": {
+        "short": "The price behind the price",
+        "topic": "Oil price benchmarks",
+        "readMins": 12,
+        "stat": {
+          "big": "~78%",
+          "text": "Share of exported crude priced off Brent, directly or indirectly (Energy Intelligence via ICE). Other estimates: about two-thirds."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/oil-window.png"
+      }
+    },
+    {
       "id": "pi-clubs",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/pi-clubs.html",
       "title": "The Insurer Nobody Sees: Twelve Clubs Behind Every Big Ship",
