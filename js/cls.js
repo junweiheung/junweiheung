@@ -5,11 +5,11 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* How a typical April 2025 day of FX obligations (>$14tn) was settled, % (BIS). Squares rounded to sum to 100. */
 const CATS=[
-  {k:'pvp', n:'Payment-versus-payment', a:'36%', sq:36, c:'#4d8bff'},
-  {k:'net', n:'Netted before settling', a:'15%', sq:15, c:'#2f9a8a'},
-  {k:'grp', n:'Inside one banking group', a:'>35%', sq:36, c:'#8d8a84'},
-  {k:'tim', n:'Timing controls', a:'3%', sq:3, c:'#e0b65a'},
-  {k:'gro', n:'Gross, no safeguard', a:'10%', sq:10, c:'#c2412d'}
+  {k:'pvp', n:'Locked together', a:'36%', sq:36, c:'#4d8bff'},
+  {k:'net', n:'Cancelled out first', a:'15%', sq:15, c:'#2f9a8a'},
+  {k:'grp', n:'Inside one bank', a:'>35%', sq:36, c:'#8d8a84'},
+  {k:'tim', n:'Careful timing', a:'3%', sq:3, c:'#e0b65a'},
+  {k:'gro', n:'No safeguard', a:'10%', sq:10, c:'#c2412d'}
 ];
 
 /* ---------------- hero: the settlement mix as one bar ---------------- */
@@ -53,7 +53,7 @@ const CATS=[
   const sm=txt(s,430,152,'',{fill:'#8d8a84','font-size':13});
   txt(s,430,300,'1 square ≈ 1% of the day',{fill:'#8d8a84','font-size':12});
   txt(s,430,318,'Rounded so 100 squares add up',{fill:'#8d8a84','font-size':12});
-  const sub=['Locked both ways, no exposure.','Cut down before it moves.','Both sides sit in one group.','Safeguards, but not eliminated.','Full trade value at risk for a while.'];
+  const sub=['Both sides swap at once, no risk.','Offsetting trades wiped out first.','Money never leaves the firm.','A safeguard, but not a true lock.','One side pays and just hopes.'];
   const state=i=>{
     const order=CATS.map(c=>c.k);
     rects.forEach(({c,r})=>{

@@ -105,3 +105,80 @@ window.SceneKit = (function () {
 
   return { el, txt, origin, person, bubble, room, label, hair, SKINS };
 })();
+
+/*
+ * Flip cards for the closing "two questions". Each .q card with a data-answer
+ * (or a .qa element) gets a flippable back face revealing the answer on click.
+ * Front markup (the .qn label and question <p>) is preserved as-is.
+ */
+(function () {
+  function initFlipCards() {
+    const cards = document.querySelectorAll('.qs .q');
+    cards.forEach(card => {
+      // answer source: data-answer attribute, or an element with class "qa"
+      let answer = card.getAttribute('data-answer');
+      const qaEl = card.querySelector('.qa');
+      if (!answer && qaEl) answer = qaEl.innerHTML.trim();
+      if (!answer) return;                       // no answer provided: leave card static
+      if (card.classList.contains('flip')) return; // already initialised
+
+      if (qaEl) qaEl.remove();
+
+      // front face wraps the card's current contents
+      const front = document.createElement('div');
+      front.className = 'q-face q-front';
+      while (card.firstChild) front.appendChild(card.firstChild);
+
+      // back face: an "Answer" label plus the response
+      const back = document.createElement('div');
+      back.className = 'q-face q-back';
+      const qn = (front.querySelector('.qn')?.textContent || 'Question').trim();
+      const label = document.createElement('div');
+      label.className = 'qn';
+      label.textContent = qn.replace(/^QUESTION/i, 'ANSWER').replace(/^Q(?=\s|$)/i, 'A') || 'ANSWER';
+      if (label.textContent === qn) label.textContent = 'ANSWER';
+      const p = document.createElement('p');
+      p.innerHTML = answer;                      // answer text is author-controlled, from the page's own HTML
+      back.appendChild(label);
+      back.appendChild(p);
+
+      const hintF = document.createElement('div');
+      hintF.className = 'q-hint';
+      hintF.textContent = 'Flip for answer';
+      front.appendChild(hintF);
+      const hintB = document.createElement('div');
+      hintB.className = 'q-hint';
+      hintB.textContent = 'Flip back';
+      back.appendChild(hintB);
+
+      // inner wrapper does the 3D rotation; .q keeps its grid sizing,
+      // entrance animation and perspective.
+      const inner = document.createElement('div');
+      inner.className = 'q-inner';
+      inner.appendChild(front);
+      inner.appendChild(back);
+      card.appendChild(inner);
+      card.classList.add('flip');
+
+      // accessibility
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-expanded', 'false');
+
+      const toggle = () => {
+        const open = card.classList.toggle('flipped');
+        card.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFlipCards);
+  } else {
+    initFlipCards();
+  }
+})();

@@ -111,47 +111,58 @@
   // which explainers each company appears in
   const artsOf = {};
   coIds.forEach((c) => { artsOf[c] = [...new Set(appearances[c].map((r) => r.a))]; });
-  // which sector each company belongs to (falls back to "Other" if untagged)
-  const sectorOf = (c) => (companies[c] || {}).sector || "Other";
-  // sectors in the order their companies first appear, so the layout is stable
-  const sectors = [...new Set(coIds.map(sectorOf))];
+  // which categories a company appears in (same grouping as the explainers list).
+  // A company can span several categories; those are the cross-industry bottlenecks.
+  const catOfArticle = (a) => a.category || a.topic;
+  const catsOf = (c) => [...new Set(artsOf[c].map(catOfArticle))];
+  // categories in the order their companies first appear, so the layout is stable
+  const categories = [...new Set(coIds.flatMap(catsOf))];
   let showEvery = false;
+  // categories the user has clicked open: their companies are drawn as bubbles
+  const expanded = new Set();
   const expandBtn = $("mapExpand");
 
-  /* Overview: one hub per sector. A company links to its single sector hub.
-     Companies that appear in 2+ explainers are the bottlenecks and stay drawn (blue);
-     the rest are counted on each hub until expanded. */
+  /* Overview: one hub per category (matching the explainers list). A company links to
+     every category it appears in; companies spanning 2+ categories are the bottlenecks
+     (blue). Single-category companies are counted on each hub until expanded. */
   function drawOverview() {
     const W = svg.node().clientWidth, H = svg.node().clientHeight;
-    const k = sectors.length;
+    const k = categories.length;
     const nodes = [], links = [];
-    const hubs = sectors.map((sec, i) => {
+    const hubs = categories.map((cat, i) => {
       const ang = -Math.PI / 2 + (2 * Math.PI * i) / Math.max(k, 1);
-      // spread hubs wider when there are many sectors so their labels don't collide
+      // spread hubs wider when there are many categories so their labels don't collide
       const rx = k === 1 ? 0 : W * (k > 8 ? 0.4 : 0.34), ry = k === 1 ? 0 : H * (k > 8 ? 0.4 : 0.36);
-      const only = coIds.filter((c) => sectorOf(c) === sec && artsOf[c].length === 1).length;
-      const h = { id: "hub:" + sec, type: "hub", sector: sec, label: sec, only,
+      const only = coIds.filter((c) => catsOf(c).length === 1 && catsOf(c)[0] === cat && artsOf[c].length === 1).length;
+      const h = { id: "hub:" + cat, type: "hub", category: cat, label: cat, only, open: expanded.has(cat),
         fx: W / 2 + rx * Math.cos(ang), fy: H / 2 + ry * Math.sin(ang) };
       nodes.push(h); return h;
     });
-    const hubOf = new Map(hubs.map((h) => [h.sector, h]));
+    const hubOf = new Map(hubs.map((h) => [h.category, h]));
     coIds.forEach((c) => {
-      const bridge = artsOf[c].length > 1;
-      if (!bridge && !showEvery) return;
-      const n = { id: c, type: "co", label: (companies[c] || { name: c }).name, deg: artsOf[c].length };
-      n.r = bridge ? 7 + 3 * (n.deg - 1) : 5;
+      const cats = catsOf(c);
+      // "bridge" = spans more than one category, or appears in more than one explainer
+      const bridge = cats.length > 1 || artsOf[c].length > 1;
+      // draw a company if it's a bridge, everything is shown, or one of its
+      // categories has been clicked open
+      const inOpen = cats.some((cat) => expanded.has(cat));
+      if (!bridge && !showEvery && !inOpen) return;
+      const n = { id: c, type: "co", label: (companies[c] || { name: c }).name, deg: Math.max(cats.length, artsOf[c].length) };
+      n.r = bridge ? 7 + 3 * (Math.max(cats.length, artsOf[c].length) - 1) : 5;
       nodes.push(n);
-      links.push({ source: c, target: hubOf.get(sectorOf(c)).id });
+      cats.forEach((cat) => links.push({ source: c, target: hubOf.get(cat).id }));
     });
 
     const gLinks = layer().selectAll("line").data(links).join("line").attr("class", "g-link");
     const coLayer = layer(), hubLayer = layer();
-    const hubG = hubLayer.selectAll("g").data(hubs).join("g").attr("class", "g-hub")
-      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (d) => `Highlight the ${d.label} companies`);
+    const hubG = hubLayer.selectAll("g").data(hubs).join("g")
+      .attr("class", (d) => "g-hub" + (d.open ? " open" : ""))
+      .attr("tabindex", 0).attr("role", "button").attr("aria-pressed", (d) => d.open)
+      .attr("aria-label", (d) => `${d.open ? "Hide" : "Show"} the ${d.label} companies`);
     hubG.append("rect").attr("rx", 3).attr("height", 30).attr("y", -15);
     hubG.append("text").attr("class", "ht").attr("text-anchor", "middle").attr("dy", "0.35em").text((d) => d.label);
     hubG.append("text").attr("class", "hs").attr("text-anchor", "middle").attr("y", 30)
-      .text((d) => (!showEvery && d.only ? `+${d.only} more ${d.only === 1 ? "company" : "companies"}` : ""));
+      .text((d) => (!showEvery && !d.open && d.only ? `+${d.only} more ${d.only === 1 ? "company" : "companies"}` : ""));
     hubG.each(function (d) {
       const t = d3.select(this).select(".ht").node().getComputedTextLength();
       d.hw = (t + 24) / 2;
@@ -178,32 +189,28 @@
       gLinks.classed("dim", (l) => l.source.id !== d.id);
       showCompany(d.id);
     }
-    // highlight a whole sector and list its companies in the side panel
-    function selectSector(d) {
-      cos.classed("sel", false);
-      const ids = coIds.filter((c) => sectorOf(c) === d.sector);
-      const drawn = new Set(nodes.filter((n) => n.type === "co").map((n) => n.id));
-      cos.classed("dim", (n) => sectorOf(n.id) !== d.sector);
-      hubG.classed("dim", (n) => n !== d);
-      gLinks.classed("dim", (l) => l.target.id !== d.id);
-      const shown = ids.filter((c) => drawn.has(c));
-      const hidden = ids.length - shown.length;
+    // clicking a category opens it: its companies pop in as bubbles (and list in the panel).
+    // clicking it again closes it.
+    function toggleCategory(cat) {
+      if (expanded.has(cat)) expanded.delete(cat); else expanded.add(cat);
+      drawGraph("all"); // redraw so the new company bubbles appear
+      if (expanded.has(cat)) showCategoryPanel(cat); else panel.innerHTML = HINT;
+    }
+    function showCategoryPanel(cat) {
+      const ids = coIds.filter((c) => catsOf(c).includes(cat));
       panel.innerHTML = `
-        <h4>${esc(d.sector)}</h4>
+        <h4>${esc(cat)}</h4>
         <div class="hq">${ids.length} ${ids.length === 1 ? "company" : "companies"}</div>
         <ul>${ids.map((c) => `<li><a href="#" data-co="${esc(c)}">${esc((companies[c] || { name: c }).name)}</a>
-          <span class="role">${esc((companies[c] || {}).hq || "")}</span></li>`).join("")}</ul>
-        ${hidden ? `<p class="peers">${hidden} shown only after “Show all companies”.</p>` : ""}`;
+          <span class="role">${esc((companies[c] || {}).hq || "")}</span></li>`).join("")}</ul>`;
       panel.querySelectorAll("a[data-co]").forEach((a) => a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const n = nodes.find((x) => x.type === "co" && x.id === a.dataset.co);
-        if (n) select(n); else showCompany(a.dataset.co);
+        e.preventDefault(); showCompany(a.dataset.co);
       }));
     }
     cos.on("click", (e, d) => { e.stopPropagation(); select(d); })
        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(d); } });
-    hubG.on("click", (e, d) => { e.stopPropagation(); selectSector(d); })
-        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectSector(d); } });
+    hubG.on("click", (e, d) => { e.stopPropagation(); toggleCategory(d.category); })
+        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleCategory(d.category); } });
     svg.on("click", () => select(null));
 
     sim = d3.forceSimulation(nodes)
@@ -343,22 +350,20 @@
     cos.call(drag); steps.call(drag);
   }
 
-  let mapFilter = "all";
-  chips($("mapChips"), [{ v: "all", label: "All explainers" }, ...articles.map((a) => ({ v: a.id, label: a.short || a.title }))], "all",
-    (v) => { mapFilter = v; panel.innerHTML = HINT; drawGraph(v); });
-  // also used by clicking a hub in the overview
-  function setMapFilter(v) {
-    mapFilter = v; panel.innerHTML = HINT;
-    $("mapChips").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v));
-    drawGraph(v);
-  }
+  // The map always shows the category overview; there is no per-explainer filter row.
+  const mapFilter = "all";
+  if ($("mapChips")) $("mapChips").hidden = true;
   if (expandBtn) {
-    const single = coIds.filter((c) => artsOf[c].length === 1).length;
-    const label = () => (showEvery ? "Show shared companies only" : `Show all ${coIds.length} companies`);
+    // companies hidden by default: those in a single category AND a single explainer
+    const hiddenCount = coIds.filter((c) => catsOf(c).length === 1 && artsOf[c].length === 1).length;
+    const label = () => (showEvery ? "Show shared companies only" : `Show all ${coIds.length} companies by category`);
     expandBtn.textContent = label();
-    expandBtn.hidden = single === 0;
+    expandBtn.hidden = hiddenCount === 0;
+    expandBtn.setAttribute("aria-pressed", showEvery);
     expandBtn.addEventListener("click", () => {
-      showEvery = !showEvery; expandBtn.setAttribute("aria-pressed", showEvery); expandBtn.textContent = label();
+      showEvery = !showEvery;
+      if (!showEvery) expanded.clear(); // collapsing "show all" also closes opened categories
+      expandBtn.setAttribute("aria-pressed", showEvery); expandBtn.textContent = label();
       panel.innerHTML = HINT; drawGraph("all");
     });
   }

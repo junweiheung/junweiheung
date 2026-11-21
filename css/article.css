@@ -114,6 +114,25 @@ table.data td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight
   .qs{grid-template-columns:1fr}
 }
 
+/* ---------- Flip cards: question on the front, answer behind ---------- */
+/* scene-kit.js wraps each card's faces in .q-inner and adds .flip to .q.
+   The inner rotates; faces fade at the midpoint so the swap is robust even
+   where backface-visibility compositing is unreliable. */
+.q.flip{background:none;padding:0;min-height:278px;perspective:1400px;cursor:pointer}
+.q.flip .q-inner{position:relative;width:100%;min-height:278px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.85,.3,1)}
+.q.flip.flipped .q-inner{transform:rotateY(180deg)}
+.q.flip .q-face{position:absolute;inset:0;display:flex;flex-direction:column;padding:24px 26px 42px;background:#0d0d0f;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-sizing:border-box;overflow:hidden;transition:opacity 0s linear .22s}
+.q.flip .q-front{transform:rotateY(0deg);opacity:1;justify-content:flex-start}
+.q.flip .q-back{transform:rotateY(180deg);background:#14110c;border:1px solid #2a2418;opacity:0}
+.q.flip.flipped .q-front{opacity:0}
+.q.flip.flipped .q-back{opacity:1}
+.q.flip .q-front .qn{margin-bottom:14px}       /* label and question stack together at the top */
+.q.flip .q-back .qn{color:var(--gold2);margin-bottom:10px}
+.q.flip .q-back p{font-size:15px;line-height:1.45;font-weight:400;color:#e7e3da}
+.q.flip .q-hint{position:absolute;left:26px;right:26px;bottom:16px;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6a665e;font-weight:700;text-align:right;pointer-events:none}
+.q.flip:hover .q-hint{color:var(--gold2)}
+.q.flip:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+
 /* ---------- More-from-the-series box ---------- */
 .news{background:#0d0d0f;color:#fff;padding:30px;margin:46px 0;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
 .news h4{font-family:var(--serif);font-size:24px;line-height:1.2}
@@ -134,6 +153,14 @@ table.data td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight
 .end{font-size:15px;font-style:italic;color:var(--muted);margin:30px 0 70px}
 @media (prefers-reduced-motion:reduce){
   .rv,.q{opacity:1;transform:none;transition:none}
+  /* no 3D flip: cross-fade the back over the front instead */
+  .q.flip .q-inner{transition:none}
+  .q.flip.flipped .q-inner{transform:none}
+  .q.flip .q-face{backface-visibility:visible;-webkit-backface-visibility:visible;transition:opacity .2s}
+  .q.flip .q-front{transform:none}
+  .q.flip .q-back{transform:none;opacity:0}
+  .q.flip.flipped .q-front{opacity:0}
+  .q.flip.flipped .q-back{opacity:1}
 }
 
 /* ---------- Real photos (credited in each caption) ---------- */

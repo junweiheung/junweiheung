@@ -43,9 +43,8 @@
     <div class="label">Company map <span id="mapCount"></span></div>
     <div class="map-intro">
       <h3 id="map-title">Who shows up where</h3>
-      <p>Each black box is a sector, and every company sits under the one it works in. The <b style="color:var(--blue)">blue</b> companies show up in more than one explainer: those are the ones holding different industries together. Click a company to see where it appears, or click a sector to see everyone in it.</p>
+      <p>Each black box is a category, the same ones the explainers are grouped by. The <b style="color:var(--blue)">blue</b> companies show up in more than one of them: those are the ones holding different industries together. Click a category to pop out every company in it; click it again to close. Click a company to see where it appears.</p>
     </div>
-    <div class="chips" id="mapChips" hidden></div>
     <button type="button" class="expand" id="mapExpand" aria-pressed="false" hidden></button>
     <div class="mapbox">
       <div class="graphwrap">
@@ -59,7 +58,7 @@
       <div class="panel" id="panel" aria-live="polite"></div>
     </div>
     <div class="legend">
-      <span><i class="sq" style="background:#111"></i>Sector (or, inside an explainer, a value-chain step)</span>
+      <span><i class="sq" style="background:#111"></i>Category (or, inside an explainer, a value-chain step)</span>
       <span><i style="background:var(--gold2)"></i>Company</span>
       <span><i style="background:var(--blue)"></i>Company in several explainers or steps</span>
     </div>

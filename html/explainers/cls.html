@@ -113,9 +113,9 @@
     <div class="steps" id="steps">
       <div class="step" data-s="0"><div class="card"><div class="lab">The lock · PvP</div><b>36%</b>, about <b>$5.2tn</b> (S$6.7tn), settled payment-versus-payment, where one leg can't happen without the other. CLS is the biggest such system; non-CLS ones exist too.<div class="big">36%<small>PvP</small></div></div></div>
       <div class="step" data-s="1"><div class="card"><div class="lab">The cancel-out · netting</div><b>15%</b>, more than <b>$2tn</b>, was netted before settling: offsetting trades cancelled out. That left just <b>$337bn</b> of it to settle by other means.<div class="big">15%<small>netted first</small></div></div></div>
-      <div class="step" data-s="2"><div class="card"><div class="lab">Same family · intragroup</div>More than <b>35%</b> were trades between two parts of the same banking group, such as a bank's London desk and its New York branch. Both legs sit inside one balance sheet, so the risk is internal.<div class="big">&gt;35%<small>intragroup</small></div></div></div>
+      <div class="step" data-s="2"><div class="card"><div class="lab">Same company · in-house</div>More than <b>35%</b> were trades between two arms of the same bank, like its London desk and its New York branch. The money never really leaves the firm, so there's no stranger on the other side to stiff you.<div class="big">&gt;35%<small>same company</small></div></div></div>
       <div class="step" data-s="3"><div class="card"><div class="lab">A sliver · timing controls</div>Only <b>3%</b> settled over ordinary bank accounts with timing controls, such as paying only after confirming the other leg is on its way. That's a safeguard, but not a lock.<div class="big">3%<small>timing controls</small></div></div></div>
-      <div class="step" data-s="4"><div class="card"><div class="lab">The exposed slice · gross</div><b>10%</b>, about <b>$1.4tn</b> (S$1.8tn) a day, was settled gross and bilaterally with <b>no mitigation</b>: the Herstatt gap, still open. The BIS notes that 90% settled by methods that eliminate or reduce the risk.<div class="big">10%<small>no safeguard</small></div></div></div>
+      <div class="step" data-s="4"><div class="card"><div class="lab">The exposed slice · no safeguard</div><b>10%</b>, about <b>$1.4tn</b> (S$1.8tn) a day, had <b>no protection at all</b>: one side pays and just hopes the other follows. The Herstatt gap, still wide open. The BIS notes the other 90% used methods that remove or cut the risk.<div class="big">10%<small>no safeguard</small></div></div></div>
     </div>
     <div class="sticky">
       <div class="chartbox">
@@ -130,34 +130,34 @@
   <p class="pull">Even in the most settled market on earth, one trade in ten still has the Herstatt gap wide open.</p>
 
   <h2 id="s5"><span class="n">Part 5</span>Why it's a bottleneck</h2>
-  <p class="t">CLS is the main lock, and a lock is only as useful as the doors it covers. Three limits stand out in the BIS data.</p>
-  <p class="t"><b>Which currencies.</b> CLS-eligible pairs were <b>$12.2tn</b> a day, more than four-fifths of the total, and just <b>40%</b> of that settled through PvP. Pairs CLS can't do saw only <b>12%</b> settled through other PvP systems. Those include CCIL in India (rupee and dollar), CHATS in Hong Kong (HKD, offshore renminbi, euro, rupiah, ringgit, baht and dollar) and Buna in the UAE, according to the BIS.</p>
-  <p class="t"><b>Who has access.</b> About three-quarters of the unprotected 10% could not have used PvP at all. Of those, the BIS says 57% involved a counterparty with no direct or indirect PvP access. <b>What kind of trade.</b> Same-day (T+0) trades can't currently settle through PvP, and 37% of that group were of an ineligible type. Another 36% were ineligible currency pairs. (The reasons overlap, so they don't sum to 100.) The other quarter, $347bn a day, was PvP-<i>eligible</i> yet still settled gross.</p>
+  <p class="t">A lock only helps on the doors it fits. Three things stop the lock from reaching every trade.</p>
+  <p class="t"><b>The currency has to be one of the 18.</b> Trades in currencies CLS can handle came to <b>$12.2tn</b> a day, more than four-fifths of the market, yet only <b>40%</b> of them actually used the lock. For pairs CLS doesn't cover, almost nothing was locked: just <b>12%</b> went through other lock-style systems. Those other systems are CCIL in India, CHATS in Hong Kong and Buna in the UAE, according to the BIS.</p>
+  <p class="t"><b>Both sides have to be set up for it.</b> Of the unprotected 10%, about three-quarters could not have used the lock even if they'd wanted to. The most common reason, the BIS says, was that one side of the trade simply wasn't connected to any locking system (57% of cases). <b>And the trade has to be the right kind.</b> Trades that settle the same day can't use the lock yet, and that explains 37% of the stuck trades; another 36% were in currencies the lock doesn't cover. (A trade can hit more than one of these, so the reasons add up to more than 100%.) The last quarter, <b>$347bn a day</b>, could have been locked and wasn't: the firms just didn't use it.</p>
 
   <figure class="fig rv" id="reasonFig">
     <div class="ft">Why trades stayed unprotected</div>
-    <div class="fs">Among unprotected trades that could not use PvP (about three-quarters of the 10%), share citing each reason (reasons overlap), percent</div>
+    <div class="fs">Of the unprotected trades that couldn't use the lock (about three-quarters of the 10%), the share blaming each reason. A trade can hit more than one, so they add to more than 100%.</div>
     <div class="lease">
-      <div class="lrow"><div class="ll"><span>Counterparty lacked PvP access (direct or indirect)</span><b>57%</b></div><div class="ltrack"><i class="lr" data-w="57"></i></div></div>
-      <div class="lrow"><div class="ll"><span>Trade type not eligible (e.g. same-day)</span><b>37%</b></div><div class="ltrack"><i class="lg" data-w="37"></i></div></div>
-      <div class="lrow"><div class="ll"><span>Currency pair not eligible</span><b>36%</b></div><div class="ltrack"><i class="lo" data-w="36"></i></div></div>
+      <div class="lrow"><div class="ll"><span>The other side wasn't connected to any lock</span><b>57%</b></div><div class="ltrack"><i class="lr" data-w="57"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Wrong kind of trade (e.g. same-day)</span><b>37%</b></div><div class="ltrack"><i class="lg" data-w="37"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Currency the lock doesn't cover</span><b>36%</b></div><div class="ltrack"><i class="lo" data-w="36"></i></div></div>
     </div>
-    <figcaption>Applies to the roughly three-quarters of the gross-bilateral trades that were <i>not</i> PvP-eligible. Source: <a href="https://www.bis.org/publ/qtrpdf/r_qt2606c.htm" target="_blank" rel="noopener">BIS Quarterly Review, June 2026</a>, "Reasons for gross bilateral settlement".</figcaption>
+    <figcaption>Covers the roughly three-quarters of unprotected trades that couldn't have used the lock. Source: <a href="https://www.bis.org/publ/qtrpdf/r_qt2606c.htm" target="_blank" rel="noopener">BIS Quarterly Review, June 2026</a>, "Reasons for gross bilateral settlement".</figcaption>
   </figure>
 
   <figure class="fig rv" id="whoFig">
     <div class="ft">Who gets the lock, and who doesn't</div>
-    <div class="fs">PvP share of trades, by who the trade was with, April 2025, percent</div>
+    <div class="fs">Share of trades that used the lock, by who was on each side, April 2025</div>
     <div class="lease">
-      <div class="lrow"><div class="ll"><span>Bank to bank (external inter-dealer)</span><b>72%</b></div><div class="ltrack"><i class="lo" data-w="72"></i></div></div>
-      <div class="lrow"><div class="ll"><span>Bank with other financial institutions</span><b>44%</b></div><div class="ltrack"><i class="lo" data-w="44"></i></div></div>
-      <div class="lrow"><div class="ll"><span>Bank with non-financial customers</span><b>32%</b></div><div class="ltrack"><i class="lo" data-w="32"></i></div></div>
+      <div class="lrow"><div class="ll"><span>Two big banks trading with each other</span><b>72%</b></div><div class="ltrack"><i class="lo" data-w="72"></i></div></div>
+      <div class="lrow"><div class="ll"><span>A bank trading with a fund or smaller firm</span><b>44%</b></div><div class="ltrack"><i class="lo" data-w="44"></i></div></div>
+      <div class="lrow"><div class="ll"><span>A bank trading with an ordinary company</span><b>32%</b></div><div class="ltrack"><i class="lo" data-w="32"></i></div></div>
     </div>
-    <div class="bigstat"><b>0.01%</b><span>of gross obligations failed to settle at all in the survey month: $121m between dealers and $1.4bn at non-reporting institutions. The safeguards mostly work. The question is the tail.</span></div>
-    <figcaption>Source: <a href="https://www.bis.org/publ/qtrpdf/r_qt2606c.htm" target="_blank" rel="noopener">BIS Quarterly Review, June 2026</a>. Note that "customers" in the third row means firms such as corporates; the first row excludes trades inside one banking group.</figcaption>
+    <div class="bigstat"><b>0.01%</b><span>of the money due actually failed to arrive in the survey month: $121m between banks and $1.4bn elsewhere. The safeguards mostly work. The worry is the rare trade that slips through.</span></div>
+    <figcaption>Source: <a href="https://www.bis.org/publ/qtrpdf/r_qt2606c.htm" target="_blank" rel="noopener">BIS Quarterly Review, June 2026</a>. The last row's "ordinary company" means businesses such as corporates; the first row leaves out trades inside one banking group.</figcaption>
   </figure>
 
-  <p class="t">And there is the structural point. CLS isn't one of many: it's the hub the market built, and regulators know it. Wikipedia reports that the US Financial Stability Oversight Council designated CLS a systemically important financial market utility in <b>July 2012</b>. When the lock itself is a single institution, "who guards the lock?" is a fair question. I found no record in these sources of a serious outage; that is an absence of evidence in what I read, not proof.</p>
+  <p class="t">And there is the bigger worry. CLS isn't one lock among many: it's the single hub the market built, and regulators treat it that way. Wikipedia reports that in <b>July 2012</b> a US regulator formally labelled CLS "systemically important", official code for too central to be allowed to fail. When the lock is one institution, "what happens if the lock itself breaks?" is a fair question. I found no record of a serious outage in these sources, but that's silence in what I read, not proof it can't happen.</p>
 
   <h2 id="s6"><span class="n">Part 6</span>The Singapore angle</h2>
   <p class="t">Singapore is a major FX trading centre, and the Singapore dollar is one of CLS's 18. Wikipedia dates its addition to <b>September 2003</b>, in the second wave after the original seven, and the Monetary Authority of Singapore (MAS) is the central bank holding CLS's SGD account. So an SGD/USD trade between two members can settle with the lock.</p>
@@ -180,8 +180,8 @@
 
   <p class="t">So the bottleneck isn't a mine or a fab. It is a lock: the one institution that ties 18 central banks' clocks together for a few hours each day, so that nobody gets Herstatted. Next time you hear about a currency trade, ask two things.</p>
   <div class="qs" id="qs">
-    <div class="q"><div class="qn">QUESTION 1</div><p>Why do two-thirds of the market still settle without the lock, and who bears the cost when a leg fails?</p></div>
-    <div class="q"><div class="qn">QUESTION 2</div><p>What happens to currencies outside the 18 if shorter settlement cycles and same-day trading squeeze the time to fix errors?</p></div>
+    <div class="q" data-answer="Most of it is kept safe other ways: cancelling offsetting trades (15%), deals inside one bank (over 35%) and careful timing (3%). That leaves about 10%, roughly $1.4tn a day, with no protection, usually because the currency, the type of trade, or the other side wasn't set up for the lock. Trades that actually failed were tiny, at 0.01%."><div class="qn">QUESTION 1</div><p>Why do two-thirds of the market still settle without the lock, and who bears the cost when a leg fails?</p></div>
+    <div class="q" data-answer="The article leaves this open. For currencies outside the 18, only 12% got the lock through other systems, and trades that settle the same day can't be locked at all. Those keep relying on trust and timing, and faster settlement leaves even less time to catch a mistake."><div class="qn">QUESTION 2</div><p>What happens to currencies outside the 18 if shorter settlement cycles and same-day trading squeeze the time to fix errors?</p></div>
   </div>
 
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>

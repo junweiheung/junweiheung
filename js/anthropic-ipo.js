@@ -163,6 +163,87 @@ const fmtN=v=>Math.round(v).toLocaleString('en-US');
   [[1,316],[175,3000],[358,1900],[100,1700]].forEach(([d,m])=>txt(s,X(d)+(d===1?8:0),Y(m)-6,m>=1000?(m/1000)+'B':m+'M',{'text-anchor':d===1?'start':'middle','font-size':11,'font-weight':700,fill:'#111'}));
 })();
 
+/* ---------------- waterfall renderer ---------------- */
+/* steps: {label, value, type, color, faint}.
+   type: 'base' sets the running total to value (bar from 0);
+         'add' is an incremental step up or down from the running total;
+         'total' draws a bar from 0 that must equal the running total so far (a checkpoint);
+         'aside' is a standalone bar off the running line (not part of the total). */
+function waterfall(svgId, steps, opts={}){
+  const s=document.getElementById(svgId); if(!s) return;
+  const vb=s.viewBox.baseVal, Wv=vb.width, Hv=vb.height;
+  const L=58, R=Wv-18, T=34, B=Hv-70;
+  const unit=opts.unit||'$', dec=opts.dec==null?1:opts.dec;
+  const posC=opts.posColor||'#2463d6', negC=opts.negColor||'#c2412d', totC=opts.totColor||'#111', mutedC='#a9a59c';
+  const fmt=v=>(v<0?'−':'')+unit+Math.abs(v).toFixed(dec)+'B';
+
+  // first pass: running total before/after each step, and y-axis extents
+  let run=0, lo=0, hi=0;
+  const geo=steps.map(st=>{
+    let from=run, to=run;
+    if(st.type==='aside'){from=0; to=st.value;}
+    else if(st.type==='base'||st.type==='total'){from=0; to=st.value; run=st.value;}
+    else {to=run+st.value; run=to;}
+    if(st.type!=='aside'){lo=Math.min(lo,run);hi=Math.max(hi,run);}
+    lo=Math.min(lo,from,to,0); hi=Math.max(hi,from,to);
+    return {from,to};
+  });
+  const span=(hi-lo)||1, pad=span*0.1;
+  hi+=pad; if(lo<0) lo-=pad;
+  const Y=v=>B-(v-lo)/(hi-lo)*(B-T);
+
+  // gridlines + zero line
+  const gridN=4;
+  for(let i=0;i<=gridN;i++){const v=lo+(hi-lo)*i/gridN, y=Y(v);
+    el('line',{x1:L,y1:y,x2:R,y2:y,stroke:Math.abs(v)<1e-6?'#cfcbc3':'#eee','stroke-width':Math.abs(v)<1e-6?1.5:1},s);
+    txt(s,L-8,y+4,(v<0?'−':'')+'$'+Math.abs(Math.round(v)),{'text-anchor':'end','font-size':11,fill:'#76736c'});}
+
+  const n=steps.length, gap=20, bw=(R-L-gap*(n-1))/n;
+  const xOf=i=>L+i*(bw+gap);
+
+  // dashed connectors linking each running bar's top to the next (drawn first, behind bars)
+  let prevX=null, prevY=null;
+  steps.forEach((st,i)=>{
+    if(st.type==='aside'){prevX=null;prevY=null;return;}
+    const topLevel=Y(geo[i].to), x=xOf(i);
+    if(prevX!=null) el('line',{class:'wconn',x1:prevX,y1:prevY,x2:x,y2:prevY,stroke:'#b8b4ab','stroke-width':1,'stroke-dasharray':'3 3'},s);
+    prevX=x+bw; prevY=topLevel;
+  });
+
+  // bars + labels
+  let delay=0;
+  steps.forEach((st,i)=>{
+    const x=xOf(i), {from,to}=geo[i];
+    const top=Y(Math.max(from,to)), bottom=Y(Math.min(from,to)), h=Math.max(bottom-top,2);
+    let color = st.color || (st.type==='aside'?mutedC : (st.type==='base'||st.type==='total')?totC : (st.value>=0?posC:negC));
+    const bar=el('rect',{class:'wbar',x,y:top,width:bw,height:h,fill:color,opacity:st.faint?0.55:1},s);
+    bar.style.transitionDelay=delay+'s';
+    const label = (st.type==='add')?fmt(st.value) : fmt(to);
+    txt(s,x+bw/2, top-7, label, {'text-anchor':'middle','font-size':12,'font-weight':700,fill:st.faint?'#8d8a84':'#111'});
+    st.label.split('\n').forEach((w,wi)=>txt(s,x+bw/2, B+18+wi*14, w, {'text-anchor':'middle','font-size':11,fill:'#3d3d3d','font-weight':600}));
+    delay+=0.12;
+  });
+
+  if(opts.caption) txt(s,L,Hv-26,opts.caption,{'font-size':11,fill:'#76736c'});
+}
+
+/* money flow into Anthropic */
+waterfall('wfSvg',[
+  {label:'Public\nshares',value:79.4,type:'base'},
+  {label:'Private\nplacement',value:26.0,type:'add'},
+  {label:'Underwriters\'\noption',value:12.2,type:'add',faint:true},
+  {label:'Total to\nAnthropic',value:117.6,type:'total'},
+  {label:'Co-founders\'\nsale',value:2.0,type:'aside',color:'#5d5a55'},
+],{caption:'Blue: cash in. Grey: optional or paid to the founders, not the company.'});
+
+/* net loss bridge */
+waterfall('lossSvg',[
+  {label:'Operating\nincome',value:0.3,type:'base',color:'#2463d6'},
+  {label:'Non-cash\ncharge',value:-72.4,type:'add'},
+  {label:'Other\nitems',value:-8.6,type:'add'},
+  {label:'Net loss,\nH1 2026',value:-80.7,type:'total'},
+],{caption:'Blue: real operating result. Red: paper charges, mostly revalued convertible notes.'});
+
 /* ---------------- reveal ---------------- */
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
   e.target.classList.add('in-view');rio.unobserve(e.target);
@@ -182,59 +263,3 @@ tocLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.q
 
 document.getElementById('copyLink').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent='Copied';}catch(_){e.target.textContent='Copy from address bar';}});
 
-/* ---------------- live updates (data/anthropic-live.json, refreshed hourly by a scheduled job) ---------------- */
-(function(){
-  const box=document.getElementById('live'); if(!box) return;
-  const $=id=>document.getElementById(id);
-  const sgt=new Intl.DateTimeFormat('en-SG',{timeZone:'Asia/Singapore',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
-  const et=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
-  const ago=iso=>{const m=Math.round((Date.now()-new Date(iso))/60000);return m<1?'just now':m<60?m+' min ago':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago';};
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  function spark(pts,ipo){
-    const s=$('liveSpark'); s.innerHTML='';
-    if(pts.length<2) return;
-    const v=pts.map(p=>p.price).concat([ipo]), lo=Math.min(...v), hi=Math.max(...v), r=hi-lo||1;
-    const X=i=>4+i/(pts.length-1)*292, Y=p=>64-(p-lo)/r*58;
-    el('line',{x1:0,x2:300,y1:Y(ipo),y2:Y(ipo),stroke:'#5d5a55','stroke-dasharray':'3 3'},s);
-    txt(s,298,Y(ipo)-3,'$'+ipo+' IPO',{'text-anchor':'end','font-size':9,fill:'#8d8a84'});
-    const up=pts[pts.length-1].price>=ipo;
-    el('polyline',{points:pts.map((p,i)=>X(i)+','+Y(p.price)).join(' '),fill:'none',stroke:up?'#4fc26b':'#ff7a63','stroke-width':2.2},s);
-  }
-  function render(d){
-    const ipo=d.ipoPrice||PRICE, p=d.price;
-    const trading=d.status==='trading';
-    $('liveBadge').classList.toggle('off',!trading);
-    $('liveBadge').lastChild.textContent=trading?'LIVE':d.status==='closed'?'MARKET CLOSED':'BEFORE FIRST TRADE';
-    $('liveWhen').textContent='Updated '+ago(d.updated)+' · '+sgt.format(new Date(d.updated))+' SGT';
-    if(p){
-      $('livePrice').textContent='$'+p.toFixed(2);
-      const ch=(p/ipo-1)*100, c=$('liveChg');
-      c.textContent=(ch>=0?'+':'')+ch.toFixed(1)+'% vs $'+ipo+' IPO price'+(d.priceTime?' · as of '+et.format(new Date(d.priceTime))+' ET':'');
-      c.className=ch>0.05?'up':ch<-0.05?'dn':'flat';
-      $('liveFd').textContent=fmtB(FD*p); $('liveAmz').textContent=fmtB(AMZ*p);
-      $('liveGoog').textContent=fmtB(GOOG*p); $('liveCf').textContent='~'+fmtB(CF_ALL/7*p);
-      const inp=$('pxIn'); if(inp&&!inp.dataset.touched){inp.value=Math.round(Math.min(+inp.max,Math.max(+inp.min,p)));inp.dispatchEvent(new Event('input'));}
-    }else{
-      $('livePrice').textContent='$'+ipo.toFixed(2); $('liveChg').textContent='IPO price · first trade from 9:30am New York time (10:30pm SGT)'; $('liveChg').className='flat';
-      $('liveFd').textContent=fmtB(FD*ipo); $('liveAmz').textContent=fmtB(AMZ*ipo); $('liveGoog').textContent=fmtB(GOOG*ipo); $('liveCf').textContent='~'+fmtB(CF_ALL/7*ipo);
-    }
-    spark((d.intraday&&d.intraday.length>1?d.intraday:d.daily)||[],ipo);
-    const m=d.sentiment, mb=$('liveMood');
-    if(m&&m.summary){
-      mb.hidden=false;
-      const cls={positive:'pos',negative:'neg',mixed:'mix'}[String(m.label||'').toLowerCase()]||'';
-      $('moodTag').textContent=(m.label||'Neutral').toUpperCase(); $('moodTag').className='mood-tag '+cls;
-      $('moodText').textContent=m.summary;
-      $('moodPts').innerHTML=(m.points||[]).slice(0,4).map(x=>`<li>${esc(x)}</li>`).join('');
-      $('moodSrc').innerHTML=(m.t?'As of '+esc(sgt.format(new Date(m.t)))+' SGT · ':'')+'Based on: '+(m.sources||[]).slice(0,6).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join(', ');
-    }else mb.hidden=true;
-    $('liveLog').innerHTML=(d.updates||[]).slice().sort((a,b)=>b.t.localeCompare(a.t)).slice(0,12).map(u=>
-      `<li><time datetime="${esc(u.t)}">${esc(sgt.format(new Date(u.t)))} SGT</time>${esc(u.text)}${u.url?` <a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.source||'Source')}</a>`:''}</li>`).join('');
-  }
-  async function load(){
-    try{const r=await fetch('../../data/anthropic-live.json?t='+Date.now(),{cache:'no-store'}); if(r.ok) render(await r.json());}
-    catch(e){$('liveWhen').textContent='Couldn\'t load the latest update.';}
-  }
-  const inp=$('pxIn'); if(inp) inp.addEventListener('input',e=>{if(e.isTrusted) inp.dataset.touched='1';});
-  load(); setInterval(load,5*60000);
-})();
