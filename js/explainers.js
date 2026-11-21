@@ -57,9 +57,6 @@
     (v) => { category = v; renderList(); });
   renderList();
   }
-  if ($("footList")) {
-    $("footList").innerHTML = articles.map((a) => `<a href="${esc(a.href)}">${esc(a.short || a.title)}</a>`).join("<br>");
-  }
 
   /* ---------- company map ---------- */
   if (!$("graph")) return;
@@ -374,3 +371,11 @@
 /* reveal on scroll */
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in-view"); io.unobserve(e.target); } }), { threshold: 0.2 });
 document.querySelectorAll(".rv").forEach((e) => io.observe(e));
+
+/* close the header stack menu on outside click or Escape */
+(function () {
+  const menu = document.querySelector(".mast .menu");
+  if (!menu) return;
+  document.addEventListener("click", (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.open) menu.open = false; });
+})();

@@ -182,3 +182,11 @@ window.SceneKit = (function () {
     initFlipCards();
   }
 })();
+
+/* Close the header stack menu when clicking outside it or pressing Escape. */
+(function () {
+  const menu = document.querySelector('.mast .menu');
+  if (!menu) return;
+  document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.open) menu.open = false; });
+})();
