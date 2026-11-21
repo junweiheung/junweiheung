@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia — Bottleneck by Jun Wei</title>
+<meta name="description" content="Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. A market-share explainer on AMD, Intel and Nvidia.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/chip-share.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· United States · Semiconductors</span></div>
+  <h1>Three Companies, Four Battlegrounds</h1>
+  <p class="dek">Intel once owned the processor outright. Today the fight between AMD, Intel and Nvidia splits across four separate markets, server and PC chips, AI accelerators, gaming graphics, and embedded, and in each of them the leader is a different company. Here is who holds what, and how the lead changed hands.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 24, 2026 · 10 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. How we got here</a>
+    <a href="#s3">2. Data centre</a>
+    <a href="#s4">3. Client PCs</a>
+    <a href="#s5">4. Gaming</a>
+    <a href="#s6">5. Embedded</a>
+    <a href="#sources">Notes</a>
+  </aside>
+
+  <p class="disc">A market-share snapshot of three US chip companies, segment by segment, as of the third quarter of 2026, with historical context. Current figures come from Mercury Research (x86 CPUs), Jon Peddie Research (graphics) and industry estimates (AI accelerators, FPGAs) as summarised in my notes; shares move every quarter and different trackers count differently (units vs revenue, discrete vs all graphics), so treat them as approximate. This explains a market; it isn't investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>There is no single "chip market." AMD, Intel and Nvidia lead in <b>different places</b>: Intel still ships the most PC CPUs, AMD leads cloud server CPUs, owns consoles and leads FPGAs, and Nvidia dominates AI and gaming graphics.</li>
+      <li>In x86 <b>server CPUs</b>, AMD hit a record <b>35.5%</b> of units in Q3 2026 (up from 27.8% a year earlier), and <b>46.8%</b> of mainstream cloud/enterprise servers, a level it last approached in the Opteron days of 2006.</li>
+      <li>In <b>AI accelerators</b>, Nvidia holds roughly <b>75–81%</b> of revenue; AMD about 5–7%, with custom hyperscaler chips (Google TPU, Broadcom-built) around 12–15%.</li>
+      <li>In <b>discrete gaming GPUs</b>, Nvidia holds about <b>90%</b> of shipments. But AMD powers essentially <b>all current-generation consoles</b> and most PC handhelds.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>How we got here</h2>
+  <p class="t dropcap">For most of the x86 era, there was one giant and one gadfly. Intel, founded in 1968, set the pace; AMD lived in its shadow, with one brief exception. In 2006 AMD's Opteron server chips reached about a quarter of the x86 server market, its high-water mark. Then a weak chip design (Bulldozer) and years of losses pushed its server share toward the low single digits, and by the mid-2010s Intel controlled roughly 90% or more of server CPUs.</p>
+  <p class="t">The comeback came with the <b>Zen</b> architecture and the EPYC server line from 2017. AMD broke back through 10% server share in 2021 and kept climbing. Meanwhile Nvidia, long the gaming-graphics leader, turned its GPUs into the default engine of the AI boom, and AMD bought its way into embedded chips by acquiring Xilinx in 2022. The result is today's split market.</p>
+
+  <figure class="fig rv" id="timelineFig">
+    <div class="ft">The lead changes hands</div>
+    <div class="fs">AMD's share of x86 server CPUs, the key turning points</div>
+    <ol class="milestones">
+      <li><span class="yr">1968</span>Intel founded; it will dominate x86 for decades.</li>
+      <li><span class="yr">2006</span>AMD's Opteron peaks near <b>26%</b> of the x86 server market.</li>
+      <li><span class="yr">2017</span>After the Bulldozer era, AMD is down to <b>0.8%</b> of x86 server chips at the end of 2017; Intel has the rest.</li>
+      <li><span class="yr">2017</span>Zen and EPYC launch; the climb back begins.</li>
+      <li><span class="yr">2021</span>AMD breaks back above <b>10%</b> server share (10.7% at year end).</li>
+      <li class="hi"><span class="yr">2026</span>AMD hits a record <b>35.5%</b> of server units; Intel's overall x86 share drops below 70% for the first time since 1995.</li>
+    </ol>
+    <figcaption>Turning points only; the timelapse below plays the full series. Figures from Mercury Research and contemporary reporting; see notes.</figcaption>
+  </figure>
+
+  <figure class="fig rv" id="lapseFig">
+    <div class="ft">Watch the share change</div>
+    <div class="fs">AMD vs Intel, share of x86 server CPUs shipped. Press play.</div>
+    <div class="lapse">
+      <div class="lapse-ctrl">
+        <button type="button" id="lapsePlay" aria-label="Play">▶ Play</button>
+        <div class="lapse-seg" role="group" aria-label="Choose which race to play">
+          <div class="lapse-group">
+            <span class="lapse-cat">Data centre</span>
+            <button type="button" data-l="server" aria-pressed="true">Server CPUs</button>
+            <button type="button" data-l="ai" aria-pressed="false">AI accelerators</button>
+          </div>
+          <div class="lapse-group">
+            <span class="lapse-cat">Client PCs</span>
+            <button type="button" data-l="desktop" aria-pressed="false">Desktop CPUs</button>
+            <button type="button" data-l="laptop" aria-pressed="false">Laptop CPUs</button>
+          </div>
+          <div class="lapse-group">
+            <span class="lapse-cat">Gaming</span>
+            <button type="button" data-l="gpu" aria-pressed="false">Graphics cards</button>
+            <button type="button" data-l="integrated" aria-pressed="false">All PC graphics</button>
+            <button type="button" data-l="console" aria-pressed="false">Consoles</button>
+          </div>
+        </div>
+      </div>
+      <div class="lapse-year"><span id="lapseYear">2006</span><small id="lapseCount"></small></div>
+      <svg id="lapseSvg" viewBox="0 0 680 300" role="img" aria-label="Line chart of each company's market share, drawn point by point as the timelapse plays."></svg>
+      <p class="lapse-why" id="lapseWhy" aria-live="polite"></p>
+      <p class="lapse-src" id="lapseSrc"></p>
+      <input type="range" id="lapseScrub" min="0" max="1" step="1" value="0" aria-label="Scrub through the years">
+    </div>
+    <figcaption>Every point is a reported quarterly figure, with no gaps filled in; a faint dashed line marks a stretch with no published data. CPU shares are Mercury Research unit shares of x86 chips (excluding IoT), so Intel's share is the rest; Apple and Arm chips aren't counted. Graphics cards are Jon Peddie Research shares of desktop add-in boards; "All PC graphics" is its count of every PC graphics chip, including those built into processors. AI figures mix revenue and shipment estimates from different firms, so read that race as rough. Sources below each point and in the notes.</figcaption>
+  </figure>
+
+  <h2 id="s3"><span class="n">Part 2</span>Data centre: two very different races</h2>
+  <p class="t">The data centre is really two markets. In <b>server CPUs</b>, AMD's EPYC has stormed back: <b>35.5%</b> of all x86 server units in Q3 2026, up from 27.8% a year earlier, and <b>46.8%</b> once you narrow to mainstream cloud and enterprise two-socket servers, almost half. Intel's Xeon still holds the majority overall, but the gap is the narrowest in decades.</p>
+  <p class="t">In <b>AI accelerators</b>, the picture flips entirely. This is a $200 billion-plus market, and <b>Nvidia owns roughly 75–81% of the revenue</b>. AMD's Instinct line holds about <b>5–7%</b> (and may climb toward 7–10% as its MI450 and Helios racks ship), while custom hyperscaler chips, Google's TPU and Broadcom-built accelerators, take around 12–15%. Intel is a rounding error here.</p>
+
+  <h2 id="s4"><span class="n">Part 3</span>Client PCs: Intel still ships the most</h2>
+  <p class="t">In the PCs people actually buy, Intel remains ahead by units. In Q3 2026 AMD held <b>29.9%</b> of x86 desktop CPUs (down from 34.9% the prior quarter, as GPU supply bottlenecks hit gaming-PC builds) against Intel's 70.1%, and a record <b>29.2%</b> of laptop processors against Intel's 70.8%. Combine client and server and AMD sits at <b>30.1%</b> of all x86 units, up from 25.6% a year earlier, its highest ever, while Intel's share dipped below 70% for the first time since 1995.</p>
+
+  <h2 id="s5"><span class="n">Part 4</span>Gaming: it depends how you count</h2>
+  <p class="t">Gaming graphics is the segment where the headline number misleads most. In <b>discrete desktop graphics cards</b>, Nvidia holds about <b>90%</b> of shipments, AMD about 8%, and Intel about 2%. But count <b>all PC graphics</b>, including the graphics built into Ryzen and Intel processors, and it reshuffles: in the second quarter of 2026, Intel had about <b>56%</b>, Nvidia about 23% and AMD about 21%. Intel leads simply because most PCs, especially cheap laptops, have no separate graphics card at all. Its share has slipped from 71% at the end of 2022 as Ryzen chips with built-in Radeon graphics sell more.</p>
+  <p class="t">And there's a market Nvidia isn't in at all. AMD's <b>semi-custom</b> chips power essentially <b>100% of current-generation consoles</b>, the PlayStation 5 and PS5 Pro and the Xbox Series X and S, with only Nintendo's Switch using a different design. AMD also powers most Windows and SteamOS handhelds, the Steam Deck, ROG Ally and Legion Go. Nvidia's near-monopoly on discrete cards sits next to AMD's near-monopoly on consoles.</p>
+
+  <h2 id="s6"><span class="n">Part 5</span>Embedded: the quiet lead</h2>
+  <p class="t">The least-watched segment is one AMD bought its way into. With <b>Xilinx</b>, AMD holds <b>more than half</b> of the FPGA market, the reconfigurable chips used in telecoms, aerospace, industrial and defence gear, according to Yole Group. That lead is old: back in 2010, Xilinx already had about <b>52%</b> to Altera's 39%, by the Linley Group's count. Altera, bought by Intel in 2015, became independent again in 2025 when Silver Lake took a majority stake; Microchip and Lattice fill out the rest. It's a small, high-margin market, about $11–12 billion a year, that rarely makes headlines.</p>
+
+  <p class="pull">There is no "chip champion." There are four races, and three companies that each win a different one.</p>
+
+  <p class="t">So next time someone says a company "leads the chip market," ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q" data-answer="Which market. Intel leads PC CPUs by units; AMD leads cloud server CPUs, consoles and FPGAs; Nvidia dominates AI accelerators and discrete gaming GPUs. 'The chip market' isn't one race."><div class="qn">QUESTION 1</div><p>Which segment do they actually lead?</p></div>
+    <div class="q" data-answer="Units or revenue, discrete or total. AMD has ~8% of discrete GPUs but ~21% of all PC graphics; Nvidia has most AI revenue but a different share of units. The measure changes who looks dominant."><div class="qn">QUESTION 2</div><p>Are they counting units or revenue, and which slice?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures come from.</p>
+  <ul class="sources">
+    <li>Q3 2026 shares (AMD 35.5% of server units, 29.9% desktop, record 29.2% laptop, 30.1% of client and server combined) and Intel's x86 share below 70% for the first time since 1995: Mercury Research via <a href="https://hothardware.com/news/amd-snipes-more-server-cpu-share-intel-rallies-desktop-market" target="_blank" rel="noopener">HotHardware</a>, <a href="https://hwbusters.com/news/intel-takes-back-five-points-of-desktop-cpu-share-in-q3-as-amd-slips-below-30/" target="_blank" rel="noopener">Hardware Busters</a>, <a href="https://techradar.com/pro/intel-claims-cpu-top-spot-for-the-first-time-for-over-a-year-now-can-it-stay-there-as-amd-fights-back" target="_blank" rel="noopener">TechRadar</a> and <a href="https://www.techpowerup.com/351908/amd-gains-ground-as-intel-x86-market-share-goes-back-to-1995-levels" target="_blank" rel="noopener">TechPowerUp</a>. Other outlets quote 33.9% overall, a wider count that includes IoT and semi-custom chips.</li>
+    <li>Timelapse, server/desktop/laptop unit shares every quarter (Mercury Research, excluding IoT): Q3 2016–Q4 2024 from the running tables in <a href="https://tomshardware.com/pc-components/cpus/amd-gained-consumer-desktop-and-laptop-cpu-market-share-in-2024-server-passes-25-percent" target="_blank" rel="noopener">Tom's Hardware's Q4 2024 report</a> and <a href="https://www.tomshardware.com/pc-components/cpus/amd-takes-revenue-share-from-intel-in-server-desktop-and-notebooks-new-mercury-research-data-shares-q4-2023-data" target="_blank" rel="noopener">Q4 2023 report</a>; Q1–Q4 2025 and Q1 2026 from Tom's Hardware (<a href="https://www.tomshardware.com/pc-components/cpus/amd-continues-to-chip-away-at-intels-x86-market-share-company-now-sells-over-25-percent-of-all-x86-chips-and-powers-33-percent-of-all-desktop-systems" target="_blank" rel="noopener">Q3 2025</a>, <a href="https://www.tomshardware.com/pc-components/cpus/30-percent-of-x86-cpus-sold-are-now-made-by-amd-as-companys-market-share-grows-thanks-to-a-flagging-intel-enjoys-growth-across-all-segments-as-competition-intensifies" target="_blank" rel="noopener">Q4 2025</a>, <a href="https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share" target="_blank" rel="noopener">Q1 2026</a>), with earlier 2025 quarters read from their year-ago comparisons; Q2–Q3 2026 from TechRadar, HotHardware and Hardware Busters (above). Server share in 2005–2006 (7.4% in Q1 2005; 22.1% and 25.9% in Q1 and Q2 2006): Mercury Research via <a href="https://www.infoworld.com/article/2218757/amd-cracks-server-market-milestone-at-intel-s-expense.html" target="_blank" rel="noopener">InfoWorld</a> and <a href="https://www.eweek.com/networking/amd-gained-market-share-in-06-new-research-shows/" target="_blank" rel="noopener">eWeek</a>. Mercury's separate server, desktop and laptop figures for 2007–2016 were not published in the press, so that stretch has no points.</li>
+    <li>EPYC's recovery past 10% in 2021: <a href="https://www.nextplatform.com/compute/2021/05/11/amd-finally-breaks-the-10-percent-server-share-barrier/1659564" target="_blank" rel="noopener">The Next Platform</a>.</li>
+    <li>AI accelerators: Nvidia about 80.6% of cloud and data-centre AI processor revenue in 2020 (Omdia, via <a href="https://techradar.com/news/nvidia-has-absolutely-trounced-amd-in-this-vital-chip-area" target="_blank" rel="noopener">TechRadar</a>); about 80% in 2024 (analysts, via <a href="https://www.fool.com/investing/2024/12/25/nvidia-stock-investors-bad-news-ai-rival-broadcom" target="_blank" rel="noopener">Motley Fool</a>); today's ~75–81%, AMD ~5–7% and custom chips ~12–15%: <a href="https://www.cnbc.com/2024/06/02/nvidia-dominates-the-ai-chip-market-but-theres-rising-competition-.html" target="_blank" rel="noopener">CNBC</a> and industry estimates.</li>
+    <li>Desktop graphics cards, by quarter (Jon Peddie Research; where a firm's share wasn't given it is the remainder, and the note says so). Q3 2018–Q3 2019 from <a href="https://www.pcgamesn.com/amd/nvidia-market-share-report-q3-2019" target="_blank" rel="noopener">PCGamesN</a>; Q4 2019 and Q3 2020 from <a href="https://wccftech.com/amd-radeon-rx-nvidia-geforce-rtx-gpu-market-share-q3-2020/" target="_blank" rel="noopener">Wccftech</a>; Q1 2020 from <a href="https://www.cgw.com/Press-Center/News/2020/JPR-Reports-Increase-for-Global-Add-in-Board-Mar.aspx" target="_blank" rel="noopener">JPR via CGW</a>; Q2 2020 from <a href="https://www.pcgamer.com/au/nvidia-market-share-q2-2020" target="_blank" rel="noopener">PC Gamer</a>; Q3 2021 from <a href="https://www.jonpeddie.com/news/graphics-add-in-board-market-reached-13-7-billion-for-q321-showing-double-d/" target="_blank" rel="noopener">JPR</a>; Q1–Q2 2022 from <a href="https://www.tomshardware.com/news/jpr-sales-of-discrete-graphics-cards-drop-but-nvidia-strenghtens-positions" target="_blank" rel="noopener">Tom's Hardware</a>; Q1–Q2 2023 from <a href="https://www.tomshardware.com/news/gpu-market-healthy-and-vibrant-in-q2-2023-report" target="_blank" rel="noopener">Tom's Hardware</a>; Q1–Q2 2024 from <a href="https://www.tomshardware.com/pc-components/gpus/nvidias-grasp-of-desktop-gpu-market-balloons-to-88-amd-has-just-12-intel-negligible-says-jpr" target="_blank" rel="noopener">Tom's Hardware</a>; Q3 2024 from <a href="https://wccftech.com/nvidia-aib-market-share-grows-to-90-percent-as-total-gpu-shipments-declined-by-14-5-percent-in-q3-2024/" target="_blank" rel="noopener">Wccftech</a>; Q1–Q3 2025 from <a href="https://finance.yahoo.com/news/nvidia-secures-92-gpu-market-150444612.html" target="_blank" rel="noopener">Yahoo Finance</a>, <a href="https://www.tomshardware.com/pc-components/gpus/nvidia-dominates-gpu-shipments-with-94-percent-share-shipment-surge-likely-caused-by-customers-getting-ahead-of-tariffs" target="_blank" rel="noopener">Tom's Hardware</a> and <a href="https://www.techspot.com/news/110464-nvidia-dominates-discrete-gpu-market-92-share-despite.html" target="_blank" rel="noopener">TechSpot</a>; Q1 2026 from <a href="https://www.igorslab.de/en/gpu-market-q1-2026-1182-million-graphics-cards-shipped-nvidia-remains-untouchable/" target="_blank" rel="noopener">Igor's Lab</a>. Fourth-quarter figures: 2017 from <a href="https://digitaltrends.com/computing/nvidia-add-in-graphics-market" target="_blank" rel="noopener">Digital Trends</a> and <a href="https://techradar.com/news/new-figures-show-nvidia-leaving-amd-in-the-dust-with-graphics-card-sales" target="_blank" rel="noopener">TechRadar</a>; 2020 from <a href="https://www.tomshardware.com/news/gpu-sales-report-q4-2020-jpr" target="_blank" rel="noopener">Tom's Hardware</a>; 2021 from <a href="https://www.jonpeddie.com/news/add-in-board-market-reaches-51-8-billion-in-2021/" target="_blank" rel="noopener">Jon Peddie Research</a>; 2022 from <a href="https://www.tomshardware.com/news/nvidia-maintains-lead-as-sales-of-graphics-cards-hit-all-time-low-in-2022-jpr" target="_blank" rel="noopener">Tom's Hardware</a>; 2023 from <a href="https://www.tomshardware.com/pc-components/gpus/pc-market-recovery-continues-gpu-and-cpu-shipments-up-20-year-over-year-in-q4-2023" target="_blank" rel="noopener">Tom's Hardware</a>; 2024 from <a href="https://www.tomshardware.com/tech-industry/amd-grabs-a-share-of-the-gpu-market-from-nvidia-as-gpu-shipments-rise-slightly-in-q4" target="_blank" rel="noopener">Tom's Hardware</a>; 2025 from <a href="https://www.pcgamer.com/hardware/gamers-are-buying-fewer-graphics-cards-according-to-a-new-research-report-although-nvidia-looks-to-be-sitting-pretty-with-roughly-94-percent-of-the-market-share-to-amds-5-percent/" target="_blank" rel="noopener">PC Gamer</a>; mid-2026 (~90%, AMD ~8%, Intel ~2%) from <a href="https://www.tomshardware.com/pc-components/gpus/desktop-graphics-card-shipments-hit-four-year-high-of-12-5-million-despite-increasing-prices-nvidia-takes-90-percent-share-as-gamers-rush-to-beat-looming-price-spikes" target="_blank" rel="noopener">Tom's Hardware</a>. All PC graphics, including graphics built into processors (Jon Peddie Research): Q4 2019 from <a href="https://www.tomshardware.com/news/amd-versus-nvidia-graphics-card-gpu-coronavirus" target="_blank" rel="noopener">Tom's Hardware</a>; Q4 2020 from <a href="https://www.tomshardware.com/news/gpu-sales-report-q4-2020-jpr" target="_blank" rel="noopener">Tom's Hardware</a>; Q3 2020 (Intel 62%) from <a href="https://wccftech.com/amd-radeon-rx-nvidia-geforce-rtx-gpu-market-share-q3-2020/" target="_blank" rel="noopener">Wccftech</a>; Q4 2021 from <a href="https://www.tomshardware.com/news/gpu-analysis-jpr-q4-2021" target="_blank" rel="noopener">Tom's Hardware</a>; Q3 2022 (Intel 72%) from <a href="https://www.notebookcheck.net/AMD-and-Nvidia-reportedly-lose-market-share-in-Q3-2022-as-GPU-shipments-suffer-massive-25-year-over-year-decline.670012.0.html" target="_blank" rel="noopener">Notebookcheck</a>; Q4 2022 from <a href="https://www.tomshardware.com/news/pc-gpu-shipments-drop-35-percent-yoy-in-q4-2022" target="_blank" rel="noopener">Tom's Hardware</a>; Q2 2025 (Nvidia 24%, AMD 14%; Intel the remainder) from <a href="https://wccftech.com/nvidia-claws-away-gpu-market-share-intel-amd-shipments-reach-74-7-million-q2-2025/" target="_blank" rel="noopener">Wccftech</a>; Q2 2026 (Intel 56%, Nvidia 23%, AMD 21%) from <a href="https://www.jonpeddie.com/news/pc-gpu-shipments-increased-10-4-q-q-up-1-1-y-y/" target="_blank" rel="noopener">Jon Peddie Research</a>.</li>
+    <li>FPGAs: Xilinx 52% and Altera 39% in 2010 (<a href="https://design-reuse.com/news/25633/fpga-report.html" target="_blank" rel="noopener">Linley Group via Design &amp; Reuse</a>); Xilinx/AMD "more than 50%" today (<a href="https://www.yolegroup.com/?p=2976274" target="_blank" rel="noopener">Yole Group</a>); market of about $11–12 billion and Altera's 2025 sale to Silver Lake: <a href="https://www.marketsandmarkets.com/ResearchInsight/fpga-market-share.asp" target="_blank" rel="noopener">MarketsandMarkets</a>. AMD semi-custom chips in PS4, Xbox One, PS5 and Xbox Series X/S, and most PC handhelds: AMD disclosures and industry coverage.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. Market-share figures move every quarter and vary by tracker and by whether units or revenue are counted; confirm against the latest Mercury Research and Jon Peddie reports.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">How we got here</a><br><a href="#s5">Gaming</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/chip-share.js"></script>
+<script src="../../js/bond-market.js"></script>
+</body>
+</html>

@@ -13,6 +13,72 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "chip-share",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/chip-share.html",
+      "title": "Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia",
+      "summary": "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      "content_text": "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      "date_published": "2026-11-24T09:00:00+08:00",
+      "tags": [
+        "Semiconductors"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chip-share.png",
+      "_bottleneck": {
+        "short": "AMD vs Intel vs Nvidia",
+        "topic": "Semiconductors",
+        "readMins": 10,
+        "stat": {
+          "big": "35.5%",
+          "text": "AMD's share of x86 server CPU units in Q3 2026, a record, up from 27.8% a year earlier (Mercury Research)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chip-share.png"
+      }
+    },
+    {
+      "id": "stablecoins",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/stablecoins.html",
+      "title": "Keeping a Coin Worth a Dollar: How Stablecoins Hold (and Lose) Their Peg",
+      "summary": "A stablecoin promises to be worth one dollar. Some hold that promise with cash in a bank, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind wiped out about $40 billion in three days. Here's what keeps a dollar a dollar, and what breaks it.",
+      "content_text": "A stablecoin promises to be worth one dollar. Some hold that promise with cash in a bank, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind wiped out about $40 billion in three days. Here's what keeps a dollar a dollar, and what breaks it.",
+      "date_published": "2026-11-23T09:00:00+08:00",
+      "tags": [
+        "Crypto"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/stablecoins.png",
+      "_bottleneck": {
+        "short": "Keeping a coin worth $1",
+        "topic": "Crypto",
+        "readMins": 11,
+        "stat": {
+          "big": "1:1",
+          "text": "What a fiat-backed coin like USDC promises: one dollar of cash or reserves for each token."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/stablecoins.png"
+      }
+    },
+    {
+      "id": "govt-bonds",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/govt-bonds.html",
+      "title": "Lending to Governments: US Treasuries vs Singapore's Bonds",
+      "summary": "A bond is a loan you make to a government. The US borrows to spend and now pays more interest than it spends on defence. Singapore borrows more, relative to its economy, yet almost none of it funds spending. Two countries, two very different reasons to issue debt.",
+      "content_text": "A bond is a loan you make to a government. The US borrows to spend and now pays more interest than it spends on defence. Singapore borrows more, relative to its economy, yet almost none of it funds spending. Two countries, two very different reasons to issue debt.",
+      "date_published": "2026-11-22T09:00:00+08:00",
+      "tags": [
+        "Government debt"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/govt-bonds.png",
+      "_bottleneck": {
+        "short": "Lending to governments",
+        "topic": "Government debt",
+        "readMins": 9,
+        "stat": {
+          "big": "$963B",
+          "text": "US interest on the debt in the first ten months of fiscal 2026, more than the $763B spent on defence (CBO)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/govt-bonds.png"
+      }
+    },
+    {
       "id": "bond-market",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/bond-market.html",
       "title": "One Seesaw, Two Fears: How the Fed Uses the Bond Market",

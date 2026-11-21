@@ -1,0 +1,66 @@
+/* Page-specific styles for the AMD/Intel/Nvidia market-share explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Milestones (how we got here) ---------- */
+.milestones{list-style:none;margin:6px 0 4px;font-family:var(--sans);display:grid;gap:0}
+.milestones li{position:relative;padding:14px 0 14px 96px;border-top:1px solid #eee;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.milestones li:first-child{border-top:0}
+.milestones li b{color:var(--ink)}
+.milestones .yr{position:absolute;left:0;top:14px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--gold);font-variant-numeric:tabular-nums}
+.milestones li.hi{background:#faf6ec}
+.milestones li.hi .yr{color:var(--red,#c2412d)}
+
+/* ---------- Year-by-year timelapse ---------- */
+.lapse{font-family:var(--sans)}
+.lapse-ctrl{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:12px}
+#lapsePlay{font-size:13px;font-weight:700;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:9px 18px;cursor:pointer;min-width:98px;transition:background .15s}
+#lapsePlay:hover{background:var(--gold)}
+.lapse-seg{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:4px}
+.lapse-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.lapse-cat{flex-basis:100%;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1px}
+@media(min-width:620px){
+  .lapse-cat{flex-basis:110px;margin-bottom:0;text-align:right;padding-right:4px}
+}
+.lapse-seg button{font-size:12px;font-weight:600;border:1px solid var(--rule);background:none;padding:7px 12px;cursor:pointer;color:var(--ink2);transition:background .15s,border-color .15s,color .15s}
+.lapse-seg button:hover{border-color:var(--ink);color:var(--ink)}
+.lapse-seg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.lapse-year{font-family:var(--serif);font-weight:700;font-size:40px;letter-spacing:-.02em;color:var(--ink);line-height:1;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+#lapseSvg{width:100%;height:auto;display:block}
+.lapse-why{font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 2px;min-height:44px;border-left:3px solid var(--gold);padding-left:14px}
+#lapseScrub{width:100%;margin:10px 0 2px;accent-color:#111;cursor:pointer}
+@media(max-width:600px){.lapse-seg{margin-left:0;width:100%}}
+
+/* ---------- Segment tabs ---------- */
+.seg-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 20px;font-family:var(--sans)}
+.seg-tabs button{font-size:13px;font-weight:600;border:1px solid var(--rule);background:none;padding:9px 16px;cursor:pointer;color:var(--ink2);transition:background .15s,border-color .15s,color .15s}
+.seg-tabs button:hover{border-color:var(--ink);color:var(--ink)}
+.seg-tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ---------- Share bars ---------- */
+.seg-chart{display:grid;gap:22px;font-family:var(--sans)}
+.brow .blabel{font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px}
+.btrack{display:flex;height:40px;background:#ece8df;overflow:hidden;border:1px solid var(--rule)}
+.bseg{display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;overflow:hidden;white-space:nowrap;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.seg-chart.in .bseg{width:var(--w)}
+.bseg b{font-size:13px;font-weight:700;line-height:1.1}
+.bseg em{font-style:normal;font-size:11.5px;opacity:.85;font-variant-numeric:tabular-nums}
+.bsmall{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:7px;font-size:12px;color:var(--ink2)}
+.bsmall .sm{display:inline-flex;align-items:center;gap:5px}
+.bsmall .sm i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.seg-note{font-size:14px;line-height:1.55;color:var(--ink2);margin-top:16px;min-height:42px}
+.share-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-family:var(--sans);font-size:12px;color:var(--ink2)}
+.share-legend .lg{display:inline-flex;align-items:center;gap:5px}
+.share-legend .lg i{width:13px;height:13px;border-radius:2px;display:inline-block}
+
+@media(max-width:600px){
+  .milestones li{padding-left:72px}
+  .btrack{height:46px}
+}
+@media (prefers-reduced-motion:reduce){
+  .bseg{transition:none;width:var(--w)}
+}
+
+/* ---------- Timelapse additions: counter, trend line, source ---------- */
+.lapse-year{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.lapse-year small{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+#lapseTrend{width:100%;height:auto;display:block;margin-top:6px}
+.lapse-src{font-size:12px;color:var(--muted);margin:2px 0 0 17px}

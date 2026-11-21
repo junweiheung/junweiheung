@@ -379,6 +379,32 @@ window.BOTTLENECK = {
         { step: "Algorithmic stablecoins", companies: ["terraform"] },
         { step: "Bitcoin-treasury instruments", companies: ["strategy"] }
       ]
+    },
+    {
+      id: "chip-share",
+      href: "explainers/chip-share.html",
+      title: "Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia",
+      short: "AMD vs Intel vs Nvidia",
+      kicker: "Explainer",
+      topic: "Semiconductors",
+      category: "Chips & hardware",
+      date: "2026-11-24",
+      readMins: 10,
+      dek: "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      summary: "Market share across data centre, client, gaming and embedded, and how the lead changed hands",
+      thumb: "../images/thumbs/chip-share.svg",
+      stats: [
+        { big: "35.5%", text: "AMD's share of x86 server CPU units in Q3 2026, a record, up from 27.8% a year earlier (Mercury Research)." },
+        { big: "~75–81%", text: "Nvidia's share of data-centre AI accelerator revenue; AMD about 5–7%, custom ASICs 12–15%." },
+        { big: "~90%", text: "Nvidia's share of discrete desktop graphics-card shipments; AMD about 8%, Intel about 2% (Jon Peddie)." },
+        { big: "0.8% → 35.5%", text: "AMD's share of x86 server CPUs shipped, end of 2017 to Q3 2026 (Mercury Research)." }
+      ],
+      chain: [
+        { step: "Data centre: server CPUs & AI GPUs", companies: ["amd", "intel", "nvidia"] },
+        { step: "Client PCs: desktop & laptop CPUs", companies: ["amd", "intel"] },
+        { step: "Gaming: GPUs, consoles & handhelds", companies: ["amd", "intel", "nvidia"] },
+        { step: "Embedded: FPGAs & adaptive SoCs", companies: ["amd"] }
+      ]
     }
   ],
 

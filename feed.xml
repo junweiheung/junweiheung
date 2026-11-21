@@ -6,7 +6,31 @@
   <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Explainers on the companies and industries the world can't do without.</description>
   <language>en-sg</language>
-  <lastBuildDate>Sat, 21 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <item>
+    <title>Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/chip-share.html</link>
+    <guid isPermaLink="false">bottleneck-chip-share</guid>
+    <pubDate>Tue, 24 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Semiconductors</category>
+    <description>Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.</description>
+  </item>
+  <item>
+    <title>Keeping a Coin Worth a Dollar: How Stablecoins Hold (and Lose) Their Peg</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/stablecoins.html</link>
+    <guid isPermaLink="false">bottleneck-stablecoins</guid>
+    <pubDate>Mon, 23 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Crypto</category>
+    <description>A stablecoin promises to be worth one dollar. Some hold that promise with cash in a bank, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind wiped out about $40 billion in three days. Here&apos;s what keeps a dollar a dollar, and what breaks it.</description>
+  </item>
+  <item>
+    <title>Lending to Governments: US Treasuries vs Singapore&apos;s Bonds</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/govt-bonds.html</link>
+    <guid isPermaLink="false">bottleneck-govt-bonds</guid>
+    <pubDate>Sun, 22 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Government debt</category>
+    <description>A bond is a loan you make to a government. The US borrows to spend and now pays more interest than it spends on defence. Singapore borrows more, relative to its economy, yet almost none of it funds spending. Two countries, two very different reasons to issue debt.</description>
+  </item>
   <item>
     <title>One Seesaw, Two Fears: How the Fed Uses the Bond Market</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/bond-market.html</link>

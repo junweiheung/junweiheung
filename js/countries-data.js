@@ -18,7 +18,8 @@ window.BOTTLENECK_COUNTRIES = {
       articles: [
         { title: "Why the Fed fights its own bond market", href: "explainers/bond-market.html" },
         { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" },
-        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" }
+        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" },
+        { title: "Three companies, four battlegrounds: AMD vs Intel vs Nvidia", href: "explainers/chip-share.html" }
       ]
     },
     "Taiwan": {
