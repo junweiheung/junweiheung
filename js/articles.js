@@ -308,6 +308,30 @@ window.BOTTLENECK = {
         { step: "Chilean caliche producers", companies: ["sqm", "cosayach", "acfminera"] },
         { step: "Japanese brine producers", companies: ["ise", "godoshigen", "inpex"] }
       ]
+    },
+    {
+      id: "bond-market",
+      href: "explainers/bond-market.html",
+      title: "One Seesaw, Two Fears: How the Fed Uses the Bond Market",
+      short: "One seesaw, two fears",
+      kicker: "Explainer",
+      topic: "Central banking",
+      category: "Market infrastructure",
+      date: "2026-11-21",
+      readMins: 10,
+      dek: "The Fed aims for 2% inflation. Afraid of a slump in 2020, it pushed bond prices up and yields down; afraid of inflation in 2022–23, it did the reverse. One price-yield seesaw explains both.",
+      summary: "The price-yield seesaw, QE and QT, and the 2020–2023 rate cycle",
+      thumb: "../images/thumbs/bond-market.svg",
+      stats: [
+        { big: "0.52%", text: "Record-low 10-year US Treasury yield, 4 August 2020, after the Fed cut to near zero and bought bonds (US Treasury)." },
+        { big: "9.1%", text: "US inflation in June 2022, the fastest since 1981 (Bureau of Labor Statistics)." },
+        { big: "5.5%", text: "Top of the Fed's target range by July 2023, after eleven rate rises from March 2022 (Federal Reserve)." },
+        { big: "4.98%", text: "10-year yield peak on 19 October 2023, as bond prices fell (US Treasury)." }
+      ],
+      chain: [
+        { step: "Sets the policy rate and buys or runs off bonds", companies: ["fed"] },
+        { step: "Issues the bonds", companies: ["ustreasury"] }
+      ]
     }
   ],
 
@@ -369,6 +393,8 @@ window.BOTTLENECK = {
     adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" },
     cls:      { name: "CLS Bank",          hq: "US",           sector: "FX settlement" },
     mas:      { name: "Monetary Authority of Singapore", hq: "Singapore", sector: "Central banks" },
+    fed:      { name: "US Federal Reserve", hq: "US", sector: "Central banks" },
+    ustreasury:{ name: "US Treasury", hq: "US", sector: "Government bond issuers" },
     sqm:      { name: "SQM",               hq: "Chile",        sector: "Iodine producers" },
     cosayach: { name: "Cosayach",          hq: "Chile",        sector: "Iodine producers" },
     acfminera:{ name: "ACF Minera",        hq: "Chile",        sector: "Iodine producers" },

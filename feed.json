@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "bond-market",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/bond-market.html",
+      "title": "One Seesaw, Two Fears: How the Fed Uses the Bond Market",
+      "summary": "The Fed aims for 2% inflation. Afraid of a slump in 2020, it pushed bond prices up and yields down; afraid of inflation in 2022–23, it did the reverse. One price-yield seesaw explains both.",
+      "content_text": "The Fed aims for 2% inflation. Afraid of a slump in 2020, it pushed bond prices up and yields down; afraid of inflation in 2022–23, it did the reverse. One price-yield seesaw explains both.",
+      "date_published": "2026-11-21T09:00:00+08:00",
+      "tags": [
+        "Central banking"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bond-market.png",
+      "_bottleneck": {
+        "short": "One seesaw, two fears",
+        "topic": "Central banking",
+        "readMins": 10,
+        "stat": {
+          "big": "0.52%",
+          "text": "Record-low 10-year US Treasury yield, 4 August 2020, after the Fed cut to near zero and bought bonds (US Treasury)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bond-market.png"
+      }
+    },
+    {
       "id": "iodine",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/iodine.html",
       "title": "The Crystal Behind Your Scan and Your Screen: Who Controls the World's Iodine",
