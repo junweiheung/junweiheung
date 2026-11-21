@@ -1,0 +1,111 @@
+/*
+ * Bottleneck header menu: turns the <details class="menu"> in the masthead into a panel that slides in
+ * from the right, dims the page, folds the ☰ icon into an X, and staggers the links in.
+ * Closes on the X, a click on the dimmed page, Escape, or following a link. Shared by every page in html/.
+ */
+(function () {
+  const menu = document.querySelector('.mast .menu');
+  if (!menu) return;
+  const summary = menu.querySelector('summary');
+  const sheet = menu.querySelector('.sheet');
+  if (!summary || !sheet) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CLOSE_MS = reduced ? 0 : 560;
+  menu.classList.add('js');
+
+  // dimmed backdrop
+  const dim = document.createElement('div');
+  dim.className = 'menu-dim';
+  dim.setAttribute('aria-hidden', 'true');
+  menu.insertBefore(dim, sheet);
+
+  // label, numbers and staggering for the main links; mark the current page
+  const here = location.pathname.replace(/index\.html$/, '');
+  const label = document.createElement('div');
+  label.className = 'menu-label stag'; label.textContent = 'Menu';
+  sheet.insertBefore(label, sheet.firstChild);
+  let i = 0;
+  sheet.querySelectorAll(':scope > a').forEach((a) => {
+    const base = a.classList.contains('base');
+    if (!base) {
+      const text = a.textContent.trim();
+      a.innerHTML = `<span class="no">0${++i}</span><span class="tx"></span>`;
+      a.querySelector('.tx').textContent = text;
+    }
+    a.classList.add('stag');
+    try { if (new URL(a.href).pathname.replace(/index\.html$/, '') === here) a.setAttribute('aria-current', 'page'); } catch (e) {}
+  });
+
+  // the three newest explainers, from the site's feed (same folder as index.html)
+  const home = sheet.querySelector('a.base');
+  let latestDone = false;
+  function addLatest() {
+    if (latestDone || !home) return; latestDone = true;
+    const feedUrl = new URL('feed.json', home.href).href;
+    fetch(feedUrl).then((r) => r.ok ? r.json() : null).then((feed) => {
+      if (!feed || !feed.items || !feed.items.length) return;
+      const box = document.createElement('div');
+      box.className = 'menu-latest';
+      box.innerHTML = '<div class="menu-label">Latest explainers</div>';
+      feed.items.slice(0, 3).forEach((it) => {
+        const a = document.createElement('a');
+        a.href = it.url;
+        const sm = document.createElement('small'); sm.textContent = (it._bottleneck && it._bottleneck.topic) || '';
+        a.append(sm, document.createTextNode((it._bottleneck && it._bottleneck.short) || it.title));
+        box.appendChild(a);
+      });
+      box.classList.add('stag');
+      box.style.setProperty('--i', i + 1);
+      sheet.insertBefore(box, home);
+      home.style.setProperty('--i', i + 2);
+      // if the menu is already open, let the new block animate in too
+      if (menu.classList.contains('is-open')) requestAnimationFrame(() => box.getBoundingClientRect());
+    }).catch(() => {});
+  }
+  sheet.querySelectorAll('.stag').forEach((el, k) => el.style.setProperty('--i', k));
+
+  let closeTimer = 0;
+  function open() {
+    clearTimeout(closeTimer);
+    menu.open = true;
+    summary.setAttribute('aria-label', 'Close menu');
+    summary.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('menu-lock');
+    addLatest();
+    sheet.getBoundingClientRect(); // let the browser register the closed position first
+    requestAnimationFrame(() => menu.classList.add('is-open'));
+    const first = sheet.querySelector('a');
+    if (first) setTimeout(() => first.focus({ preventScroll: true }), reduced ? 0 : 350);
+  }
+  function close(returnFocus) {
+    if (!menu.open) return;
+    menu.classList.remove('is-open');
+    summary.setAttribute('aria-label', 'Open menu');
+    summary.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('menu-lock');
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(() => { menu.open = false; }, CLOSE_MS);
+    if (returnFocus) summary.focus({ preventScroll: true });
+  }
+
+  summary.setAttribute('aria-expanded', 'false');
+  summary.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (menu.classList.contains('is-open')) close(false); else open();
+  });
+  dim.addEventListener('click', () => close(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) close(true);
+    // keep keyboard focus inside the open panel
+    if (e.key === 'Tab' && menu.classList.contains('is-open')) {
+      const items = [summary, ...sheet.querySelectorAll('a')];
+      const idx = items.indexOf(document.activeElement);
+      if (e.shiftKey && idx <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+      else if (!e.shiftKey && idx === items.length - 1) { e.preventDefault(); items[0].focus(); }
+    }
+  });
+  // same-page links (#anchors) close the panel before scrolling
+  sheet.addEventListener('click', (e) => { const a = e.target.closest('a'); if (a && a.hash && a.pathname === location.pathname) close(false); });
+  // coming back via the browser's back button shouldn't show a half-open menu
+  addEventListener('pageshow', () => { menu.classList.remove('is-open'); menu.open = false; document.documentElement.classList.remove('menu-lock'); });
+})();

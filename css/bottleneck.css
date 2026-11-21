@@ -27,20 +27,45 @@ a{color:inherit}
   .mast .sub{margin-left:auto}
 }
 
-/* ---------- Stack menu (brand icon + ☰ dropdown) ---------- */
+/* ---------- Stack menu: a panel that slides in from the right (js/menu.js) ----------
+   Without JavaScript the <details> still opens and shows the panel, just without animation. */
 .mast .menu{margin-left:auto;position:relative;font-family:var(--sans)}
-.mast .menu>summary{list-style:none;cursor:pointer;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid var(--ink);background:var(--paper)}
+.mast .menu>summary{list-style:none;cursor:pointer;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid var(--ink);background:var(--paper);position:relative;z-index:3;transition:background .3s,border-color .3s}
 .mast .menu>summary::-webkit-details-marker{display:none}
-.mast .menu>summary span{display:block;width:18px;height:2px;background:var(--ink)}
+.mast .menu>summary span{display:block;width:18px;height:2px;background:var(--ink);transition:transform .45s cubic-bezier(.77,0,.18,1),opacity .25s,background .3s}
 .mast .menu>summary:hover{background:var(--ink)}
 .mast .menu>summary:hover span{background:var(--paper)}
-.mast .menu[open]>summary{background:var(--ink)}
-.mast .menu[open]>summary span{background:var(--paper)}
-.mast .menu .sheet{position:absolute;top:calc(100% + 8px);right:0;min-width:190px;background:var(--paper);border:1px solid var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.14);z-index:60;display:flex;flex-direction:column}
-.mast .menu .sheet a{padding:12px 16px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:.02em}
-.mast .menu .sheet a:hover{background:var(--ink);color:var(--paper)}
-.mast .menu .sheet a.base{border-top:1px solid var(--rule);font-size:12px;font-weight:600;color:var(--ink2);letter-spacing:.04em}
-.mast .menu .sheet a.base:hover{color:var(--paper)}
+.mast .menu>summary:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+/* open: the three lines fold into an X */
+.mast .menu.is-open>summary{background:transparent;border-color:#3a3833}
+.mast .menu.is-open>summary span{background:var(--paper)}
+.mast .menu.is-open>summary span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.mast .menu.is-open>summary span:nth-child(2){opacity:0;transform:scaleX(0)}
+.mast .menu.is-open>summary span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+/* dimmed page behind the panel */
+.mast .menu .menu-dim{position:fixed;inset:0;background:#0d0d0f;opacity:0;transition:opacity .45s ease;z-index:1;cursor:pointer}
+.mast .menu.is-open .menu-dim{opacity:.55}
+/* the panel */
+.mast .menu .sheet{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);background:#111;color:var(--paper);z-index:2;display:flex;flex-direction:column;padding:88px 32px 28px;overflow-y:auto;transform:translateX(100%);transition:transform .55s cubic-bezier(.77,0,.18,1);box-shadow:-20px 0 60px rgba(0,0,0,.25)}
+.mast .menu:not(.js)[open] .sheet,.mast .menu.is-open .sheet{transform:none}
+.mast .menu .sheet .menu-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8d8a84;margin-bottom:10px}
+.mast .menu .sheet a{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid #2a2926;font-size:26px;font-weight:700;letter-spacing:-.01em;color:var(--paper);text-decoration:none;text-transform:uppercase;position:relative}
+.mast .menu .sheet a .no{font-size:11px;font-weight:600;color:var(--gold2);letter-spacing:.08em;min-width:20px}
+.mast .menu .sheet a .tx{position:relative}
+.mast .menu .sheet a .tx::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--gold2);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.77,0,.18,1)}
+.mast .menu .sheet a:hover .tx::after,.mast .menu .sheet a:focus-visible .tx::after,.mast .menu .sheet a[aria-current="page"] .tx::after{transform:scaleX(1);transform-origin:left}
+.mast .menu .sheet a:focus-visible{outline:none}
+.mast .menu .sheet a.base{border-bottom:0;margin-top:auto;padding-top:22px;font-size:13px;font-weight:600;letter-spacing:.06em;color:#cfcbc3}
+.mast .menu .sheet .menu-latest{margin-top:30px}
+.mast .menu .sheet .menu-latest a{display:block;font-size:15px;font-weight:600;text-transform:none;letter-spacing:0;line-height:1.35;padding:11px 0}
+.mast .menu .sheet .menu-latest a small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px}
+/* each item slides in after the panel, one after another */
+.mast .menu.js .sheet .stag{opacity:0;transform:translateX(40px);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.mast .menu.is-open .sheet .stag{opacity:1;transform:none;transition-delay:calc(.18s + var(--i,0) * .06s)}
+html.menu-lock,html.menu-lock body{overflow:hidden}
+@media (prefers-reduced-motion:reduce){
+  .mast .menu .sheet,.mast .menu .menu-dim,.mast .menu>summary span,.mast .menu.js .sheet .stag{transition:none}
+}
 
 /* ---------- Kicker labels ---------- */
 .kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
