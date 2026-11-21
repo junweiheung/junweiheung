@@ -37,22 +37,24 @@
     };
   }
 
-  /* ---------- list + topic filter ---------- */
+  /* ---------- list + category filter ---------- */
+  // Explainers are grouped by the nature of the business (category), not one chip per article.
+  const catOf = (a) => a.category || a.topic;
   if ($("list")) {
   $("count").textContent = articles.length + " published";
-  const topics = [...new Set(articles.map((a) => a.topic))];
-  let topic = "All";
+  const categories = [...new Set(articles.map(catOf))];
+  let category = "All";
   function renderList() {
-    const shown = articles.filter((a) => topic === "All" || a.topic === topic);
+    const shown = articles.filter((a) => category === "All" || catOf(a) === category);
     $("list").innerHTML = shown.map((a) => `
       <li><a href="${esc(a.href)}">
         <span class="date">${shortDate(a.date)}</span>
         <span class="t">${esc(a.title)}<small>${esc(a.summary)} · ${a.readMins} min</small></span>
-        <span class="tag">${esc(a.topic)}</span>
+        <span class="tag">${esc(catOf(a))}</span>
       </a></li>`).join("") + `<li class="soon">The next one is in the works.</li>`;
   }
-  chips($("topicChips"), [{ v: "All", label: "All" }, ...topics.map((t) => ({ v: t, label: t }))], "All",
-    (v) => { topic = v; renderList(); });
+  chips($("topicChips"), [{ v: "All", label: "All" }, ...categories.map((t) => ({ v: t, label: t }))], "All",
+    (v) => { category = v; renderList(); });
   renderList();
   }
   if ($("footList")) {
