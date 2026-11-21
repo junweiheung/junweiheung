@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .coin{animation:bob 3.5s ease-in-out infinite;transform-origin:430px 470px}
+    .peg{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.8s ease .2s forwards}
+    .tag{opacity:0;animation:fade .6s ease forwards}
+    .t1{animation-delay:1.2s}.t2{animation-delay:1.45s}.t3{animation-delay:1.7s}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes fade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.coin,.peg,.tag{animation:none;stroke-dashoffset:0;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="120" fill="#fff" font-size="48" font-weight="700">Keeping a coin worth a dollar</text>
+  <text x="120" y="172" fill="#8d8a84" font-size="26">Three ways to hold the peg, and how they break</text>
+
+  <!-- the $1 peg line -->
+  <line class="peg" x1="120" y1="470" x2="760" y2="470" stroke="#2f9a8a" stroke-width="4" stroke-dasharray="1400"/>
+  <text x="770" y="478" fill="#2f9a8a" font-size="26" font-weight="700">$1 peg</text>
+
+  <!-- the coin -->
+  <g class="coin">
+    <circle cx="430" cy="470" r="86" fill="#e0b65a" stroke="#b8892b" stroke-width="6"/>
+    <text x="430" y="492" fill="#5a4310" font-size="68" font-weight="800" text-anchor="middle">$1</text>
+  </g>
+
+  <!-- the three backings -->
+  <g class="tag t1"><rect x="930" y="250" width="540" height="90" rx="8" fill="#14120e" stroke="#2463d6" stroke-width="3"/><text x="956" y="300" fill="#4d8bff" font-size="26" font-weight="800">Fiat-backed</text><text x="956" y="326" fill="#cfcbc3" font-size="20">cash in a bank · trust the issuer</text></g>
+  <g class="tag t2"><rect x="930" y="360" width="540" height="90" rx="8" fill="#14120e" stroke="#e0b65a" stroke-width="3"/><text x="956" y="410" fill="#e0b65a" font-size="26" font-weight="800">Crypto-backed</text><text x="956" y="436" fill="#cfcbc3" font-size="20">lock more crypto than you mint</text></g>
+  <g class="tag t3"><rect x="930" y="470" width="540" height="90" rx="8" fill="#14120e" stroke="#c2412d" stroke-width="3"/><text x="956" y="520" fill="#c2412d" font-size="26" font-weight="800">Algorithmic</text><text x="956" y="546" fill="#cfcbc3" font-size="20">code and confidence · can spiral to $0</text></g>
+</svg>

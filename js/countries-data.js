@@ -17,7 +17,8 @@ window.BOTTLENECK_COUNTRIES = {
     "United States of America": {
       articles: [
         { title: "Why the Fed fights its own bond market", href: "explainers/bond-market.html" },
-        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
+        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" },
+        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" }
       ]
     },
     "Taiwan": {
@@ -39,7 +40,8 @@ window.BOTTLENECK_COUNTRIES = {
     },
     "South Korea": {
       articles: [
-        { title: "Who keeps the money?", href: "explainers/smile.html" }
+        { title: "Who keeps the money?", href: "explainers/smile.html" },
+        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" }
       ]
     },
     "Netherlands": {

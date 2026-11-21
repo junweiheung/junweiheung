@@ -38,6 +38,41 @@ table.cmp tbody tr:hover{background:#faf8f2}
 .split2 .part:nth-child(2){border-top-color:#8d8a84}
 @media(max-width:600px){.split2{grid-template-columns:1fr}}
 
+/* ---------- Drill-down pie: who holds the debt ---------- */
+.pie-block.drill{display:flex;flex-direction:column;align-items:center;gap:18px;padding:8px 0 4px}
+@media(min-width:620px){.pie-block.drill{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}}
+.pie{width:220px;height:220px;display:block;margin:0 auto}
+/* smooth cross-fade when drilling between views */
+.pie-block.drill .pie,.pie-block.drill .pie-legend{transition:opacity .2s ease,transform .2s ease}
+.pie-block.drill.swapping .pie{opacity:0;transform:scale(.94)}
+.pie-block.drill.swapping .pie-legend{opacity:0}
+.pie-back{display:inline-flex;align-items:center;margin:4px 0 20px;font-family:var(--sans);font-size:12px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--ink2);padding:7px 13px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.pie-back[hidden]{display:none}
+.pie-back:hover{border-color:var(--ink);color:var(--ink)}
+.pie-legend{list-style:none;width:100%;max-width:320px;font-family:var(--sans);font-size:13.5px}
+.pie-legend li{display:grid;grid-template-columns:14px 1fr auto;gap:10px;align-items:center;padding:8px 8px;border-top:1px solid #eee;cursor:default;outline:none;border-radius:3px;transition:background .15s}
+.pie-legend li:first-child{border-top:0}
+.pie-legend li.on{background:#f3efe6}
+.pie-legend li.drillable{cursor:pointer}
+.pie-legend li:focus-visible{box-shadow:0 0 0 2px var(--gold2)}
+.pie-legend s{width:14px;height:14px;border-radius:3px;display:block}
+.pie-legend span{color:var(--ink2)}
+.pie-legend .hint{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--gold);margin-left:6px;white-space:nowrap}
+.pie-legend b{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.pie .pie-val{font-family:var(--sans);font-size:22px;font-weight:800;fill:var(--ink);pointer-events:none;font-variant-numeric:tabular-nums}
+
+/* slices: resting state is full size; wipe in from the centre on reveal / view swap */
+#holdersFig .pslice{cursor:default;outline:none;transform:scale(1);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .18s ease}
+#holdersFig .pslice.drillable{cursor:pointer}
+/* initial scroll-in reveal: collapsed until the figure enters view */
+#holdersFig:not(.in-view) .pslice{transform:scale(0)}
+/* hover/focus: highlight one slice, dim the rest */
+#holdersFig .pie.active .pslice.off{opacity:.3}
+#holdersFig .pie.active .pslice.on{opacity:1}
+#holdersFig .pslice:focus-visible{stroke:var(--ink);stroke-width:2.5}
+
+
 @media (prefers-reduced-motion:reduce){
   .ltrack i{transition:none}
+  #holdersFig .pslice,#holdersFig:not(.in-view) .pslice{transform:scale(1);transition:opacity .18s ease}
 }

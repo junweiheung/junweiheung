@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keeping a Coin Worth a Dollar: How Stablecoins Hold (and Lose) Their Peg — Bottleneck by Jun Wei</title>
+<meta name="description" content="A stablecoin promises to be worth one dollar. Some hold that promise with cash, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind wiped out about $40 billion in three days. An explainer on fiat-backed, crypto-backed and algorithmic stablecoins, the Terra collapse, and Bitcoin, Ether and STRC.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/stablecoins.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Crypto · Stablecoins</span></div>
+  <h1>Keeping a Coin Worth a Dollar</h1>
+  <p class="dek">A stablecoin promises one thing: that it will always be worth a dollar. Some keep that promise with cash in a bank, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind once wiped out about $40 billion in three days. Here's what keeps a dollar a dollar, and what breaks it.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 23, 2026 · 11 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. What a stablecoin is</a>
+    <a href="#s2">2. Three ways to hold a dollar</a>
+    <a href="#s3">3. Fiat-backed: trust the issuer</a>
+    <a href="#s4">4. Crypto-backed: over-collateralise</a>
+    <a href="#s5">5. Algorithmic: the Terra spiral</a>
+    <a href="#s6">6. Bitcoin, Ether and STRC</a>
+    <a href="#sources">Notes</a>
+  </aside>
+
+  <p class="disc">This explains how stablecoins try to stay worth a dollar and why some fail, plus a few related crypto instruments. Mechanisms are described in plain terms; specific products (USDT, USDC, BOLD, TerraUSD, STRC) change their terms, reserves and rates over time, so check each issuer's current disclosures before relying on anything here. Where I describe risks, I am setting out how a design can fail, not predicting that a named product will. This is educational, not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A stablecoin is a crypto token that tries to <b>track a reference value</b>, almost always one US dollar. How it holds that peg is the whole story.</li>
+      <li><b>Fiat-backed</b> coins (USDT, USDC) hold cash and reserves 1:1 and lean on <b>trust in the issuer</b> and audits. <b>Crypto-backed</b> coins (BOLD) lock <b>more</b> crypto than they issue. <b>Algorithmic</b> coins use code alone.</li>
+      <li>Algorithmic designs are the most capital-efficient and the most fragile. <b>TerraUSD</b> and its sister token <b>LUNA</b> collapsed together in a "death spiral" in May 2022, erasing roughly <b>$40 billion</b>.</li>
+      <li>Even sound-looking designs can break: a crypto-backed coin can become <b>underbacked</b> if its collateral crashes faster than the system can sell it.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>What a stablecoin is</h2>
+  <p class="t dropcap">Cryptocurrencies run on a <b>blockchain</b>: a shared ledger no single company controls. Most crypto prices swing wildly, which makes them hard to use as money. A <b>stablecoin</b> is the fix: a token designed to track a steady reference value, almost always one US dollar. Type "1 USDC" and it should be worth a dollar today, tomorrow, and next year.</p>
+  <p class="t">The promise is easy to make and hard to keep. A stablecoin's price is still set by trading: if enough holders sell and too few buy, the price can slip <b>below a dollar</b>, because the market clears at whatever price a seller will accept. What stops that slip, or fails to, is the coin's design. There are three main designs.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>Three ways to hold a dollar</h2>
+  <p class="t">Every stablecoin answers one question: what actually stands behind the dollar it promises?</p>
+
+  <figure class="fig rv" id="typesFig">
+    <div class="ft">Three designs, three kinds of backing</div>
+    <div class="fs">What each type relies on to stay at $1</div>
+    <div class="tbl-wrap">
+      <table class="cmp three">
+        <thead><tr><th>Type</th><th>Fiat-backed</th><th>Crypto-backed</th><th>Algorithmic</th></tr></thead>
+        <tbody>
+          <tr><td>Backed by</td><td>Cash &amp; reserves (incl. Treasuries)</td><td>Crypto locked in a contract, worth more than the coins issued</td><td>Nothing but code and another token</td></tr>
+          <tr><td>You trust</td><td>The issuer, its banks and audits</td><td>Public on-chain collateral and automated rules</td><td>The mechanism and other buyers</td></tr>
+          <tr><td>Strength</td><td>Simple, widely accepted</td><td>Transparent; no bank to trust</td><td>Capital-efficient (little real collateral)</td></tr>
+          <tr><td>Weakness</td><td>You must trust reserves exist</td><td>Collateral can crash faster than it sells</td><td>Fragile; can spiral to zero</td></tr>
+          <tr><td>Example</td><td>USDT, USDC</td><td>BOLD (backed by ETH)</td><td>TerraUSD (UST)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>The trade-off runs left to right: more capital-efficient, less safe. Fiat-backed needs a dollar in a bank for every token; algorithmic needs almost no real collateral, which is exactly why it can fail.</figcaption>
+  </figure>
+
+  <h2 id="s3"><span class="n">Part 3</span>Fiat-backed: trust the issuer</h2>
+  <p class="t">The simplest design. For every token in circulation, the issuer claims to hold <b>one dollar</b> of cash or safe reserves, often including US Treasuries. <b>USDT</b> (Tether) and <b>USDC</b> (Circle) work this way. Hand a token back and you should get a dollar.</p>
+  <p class="t">Because you can't see the bank account, this design runs on <b>trust</b>, propped up three ways: issuers publish <b>periodic audits</b> or attestations to show the reserves exist; they keep <b>policies to restrict or delay redemptions</b> if too many people cash out at once; and the market itself arbitrages small gaps. Still, the price is set by trading, so a fiat-backed coin can briefly slip under a dollar when sellers pile up faster than buyers, which is exactly what a <b>bank run</b> looks like.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Crypto-backed: over-collateralise</h2>
+  <p class="t">Here there's no bank to trust. Instead you lock <b>more</b> crypto than the stablecoin you mint, and everyone can see the collateral on-chain. <b>BOLD</b> is a crypto-backed stablecoin that targets $1 and is backed by <b>ETH</b>. You lock ETH in a smart contract, borrow freshly created BOLD against it, and if your collateral falls too far, the system <b>liquidates</b> it to cover the debt.</p>
+
+  <div class="note"><b class="h">A worked example</b>Lock about $2,000 of ETH and you can borrow roughly $1,000 of BOLD. Spend that BOLD as dollars, then later repay the $1,000 of BOLD plus interest to unlock your ETH. You've borrowed against your crypto without selling it. The extra collateral, the "over" in over-collateralised, is the safety buffer.</div>
+
+  <p class="t">That buffer is the whole defence, and it can fail. The danger isn't an ETH price drop by itself; it's a drop so fast that the system <b>can't sell the collateral in time</b>.</p>
+
+  <figure class="fig rv" id="bustFig">
+    <div class="ft">How a crypto-backed coin becomes underbacked</div>
+    <div class="fs">One loan, a fast crash, and a shortfall</div>
+    <div class="flow">
+      <div class="fstep"><div class="fl">Step 1 · borrow</div><p>Someone locks <b>$2,000 of ETH</b> and borrows <b>1,000 BOLD</b>.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">Step 2 · crash</div><p>ETH suddenly crashes; the collateral is now worth only <b>$700</b>.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">Step 3 · can't sell</div><p>Network congestion or too few buyers stop the system selling it in time.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">Step 4 · shortfall</div><p>Selling now raises only <b>$700</b> against a <b>$1,000</b> debt. Multiply across many loans and BOLD can become <b>underbacked</b>.</p></div>
+    </div>
+    <figcaption>Simplified numbers. The design depends on liquidations keeping up with prices. If confidence then goes, holders may sell BOLD below $1, worsening the loss. An ETH drop alone isn't collapse; a drop plus failing liquidations is. Source: Liquity documentation.</figcaption>
+  </figure>
+
+  <h2 id="s5"><span class="n">Part 5</span>Algorithmic: the Terra spiral</h2>
+  <p class="t">The most capital-efficient design holds almost no real collateral. It keeps the peg with code and a second token. <b>TerraUSD (UST)</b> was the famous example: each UST could always be swapped for <b>$1 worth of LUNA</b>, a companion token whose value rested on how useful the Terra network was. In calm markets, that swap kept UST at a dollar. Under stress, it became a trap.</p>
+
+  <figure class="fig rv scene" id="spiralFig">
+    <div class="ft">The death spiral</div>
+    <div class="fs">May 2022: how UST and LUNA pulled each other down</div>
+    <svg id="spiralSvg" viewBox="0 0 800 380" role="img" aria-label="A loop: UST falls below one dollar, holders swap UST for one dollar of LUNA, they sell that LUNA which pushes LUNA's price down, Terra prints more LUNA to honour the next swap, which pushes LUNA down further, and confidence drains until both collapse."></svg>
+    <figcaption>Illustration by Jun Wei Heung. A simplified loop of the mechanism, not a tick-by-tick record. The loop feeds itself: each step makes the next worse.</figcaption>
+  </figure>
+
+  <div class="spiral-steps rv">
+    <ol>
+      <li><b>UST slips below $1.</b> Selling pressure pushes it under the peg.</li>
+      <li><b>Holders swap UST for LUNA.</b> Each gets $1 worth of newly made LUNA and sells it, pushing LUNA's price down.</li>
+      <li><b>Terra prints more LUNA.</b> To give the next person $1 of LUNA at a lower price, it must mint even more, driving the price down again.</li>
+      <li><b>Confidence breaks.</b> Terra tried to save one falling token by printing another. Buyers fled, and both UST and LUNA collapsed together.</li>
+    </ol>
+  </div>
+
+  <p class="pull">Terra tried to save a falling token by printing another one. The market lost faith in both.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Bitcoin, Ether and a Bitcoin-backed stock</h2>
+  <p class="t">Stablecoins live on top of two networks worth knowing.</p>
+  <p class="t"><b>Bitcoin</b> was the first widely successful cryptocurrency: scarce digital money with no central operator, which is why people call it "digital gold." Its coin is <b>BTC</b>. <b>Ethereum</b> is a platform where developers build things on top: stablecoins, lending, NFTs and other apps. Its coin is <b>Ether (ETH)</b>, the same ETH that backs BOLD above.</p>
+  <p class="t">Bitcoin's rise has also spawned instruments built around holding it. One is <b>STRC</b>, a perpetual preferred share issued by <b>Strategy</b> (formerly MicroStrategy), which uses the proceeds to buy and hold Bitcoin.</p>
+
+  <figure class="fig rv" id="strcFig">
+    <div class="ft">STRC, in plain terms</div>
+    <div class="fs">A bond-like share that funds a Bitcoin pile</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Feature</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>What it is</td><td>A perpetual preferred share from Strategy; proceeds buy Bitcoin, which the company holds in reserve.</td></tr>
+          <tr><td>Perpetual</td><td>No maturity date; it doesn't "come due" like a bond.</td></tr>
+          <tr><td>Dividend</td><td>About 11.5% a year (roughly 1% a month). Buy one $100 unit and you'd receive about $1 each month.</td></tr>
+          <tr><td>Price target</td><td>Aims to trade near $100. If it slips, the dividend can be raised to attract buyers.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>As described for 2026; terms can change. "Perpetual preferred" means a share that pays a set dividend forever, with no repayment date.</figcaption>
+  </figure>
+
+  <div class="note warn"><b class="h">Why critics are wary of STRC</b>The attraction is obvious: a high, bond-like yield. The worry is where the yield comes from. Critics argue the structure leans on <b>new investors' money and on Bitcoin continuing to rise</b> to cover the dividend, needing at least a couple of percent of Bitcoin appreciation a year just to break even on the payout. Paying dividends largely out of fresh capital is the hallmark of a <b>Ponzi-like structure</b>, and sceptics call the model unsustainable on those grounds. Whether that criticism proves right depends on Bitcoin's price and Strategy's own disclosures, which you should read directly.</div>
+
+  <p class="t">The thread through all of it is the same question a stablecoin asks: <b>what actually stands behind the promise?</b> Cash you must trust, crypto you can see, code you have to believe in, or a rising asset that has to keep rising.</p>
+
+  <p class="t">So next time something promises a steady value or a fat yield, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q" data-answer="What actually backs it. Fiat-backed coins need real cash you can't see (trust the issuer and audits); crypto-backed coins lock more crypto than they issue (watch the buffer and whether liquidations can keep up); algorithmic coins rely on code and confidence, which can spiral to zero, as TerraUSD did."><div class="qn">QUESTION 1</div><p>What stands behind the dollar, and can you see it?</p></div>
+    <div class="q" data-answer="Where the yield comes from. If a payout depends on new buyers arriving or an asset continuing to rise, rather than on cash the thing already earns, it can unwind the moment either stops, the pattern critics flag in instruments like STRC."><div class="qn">QUESTION 2</div><p>Is the yield paid from earnings, or from the next buyer?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li>Stablecoin types, fiat-backing 1:1, audits and redemption controls, and that exchange price is set by trading: general stablecoin descriptions from the issuers (<a href="https://tether.to/" target="_blank" rel="noopener">Tether</a>, <a href="https://www.circle.com/usdc" target="_blank" rel="noopener">Circle</a>).</li>
+    <li>BOLD mechanics (ETH collateral, borrowing, liquidation, the under-collateralisation scenario): <a href="https://docs.liquity.org/" target="_blank" rel="noopener">Liquity documentation</a>.</li>
+    <li>The TerraUSD / LUNA design and the May 2022 collapse, including the roughly $40 billion in value lost: contemporary reporting on the Terra collapse.</li>
+    <li>Bitcoin as the first widely successful cryptocurrency and "digital gold"; Ethereum as a platform for stablecoins, lending and NFTs: general network descriptions.</li>
+    <li>STRC as a perpetual preferred share from <a href="https://www.strategy.com/" target="_blank" rel="noopener">Strategy</a> funding Bitcoin purchases, with a stated ~11.5% annual dividend and a ~$100 target: Strategy's disclosures. The Ponzi-like criticism is a characterisation by sceptics, not a statement of fact about the company.</li>
+  </ul>
+  <p class="end">Educational only. Not investment, legal or tax advice. Crypto products are volatile and can lose all their value; confirm every figure with the issuer before acting.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s5">The Terra spiral</a><br><a href="#s6">Bitcoin, Ether and STRC</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/stablecoins-scene.js"></script>
+<script src="../../js/bond-market.js"></script>
+</body>
+</html>

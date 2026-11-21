@@ -127,6 +127,40 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,9vw,120px);line
 .maplegend .lg i{display:inline-block;width:14px;height:14px;border-radius:2px;border:1px solid rgba(0,0,0,.12)}
 .maplegend .lgcap{color:var(--muted);margin-left:4px}
 
+/* ---------- "Explore all" button on the landing page ---------- */
+.explore-all{display:flex;justify-content:center;padding:8px 0 64px}
+.explore-all a{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;font-weight:600;padding:13px 22px;background:var(--ink);color:var(--paper);text-decoration:none;letter-spacing:.02em}
+.explore-all a:hover{background:var(--gold)}
+
+/* ---------- Category filter chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:16px 0 4px}
+.chips button{font-family:var(--sans);font-size:12px;font-weight:500;border:1px solid var(--rule);background:none;padding:7px 14px;cursor:pointer;color:var(--ink2);transition:background .15s,border-color .15s,color .15s}
+.chips button:hover{border-color:var(--ink);color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ---------- Full article list (all.html) ---------- */
+.list{list-style:none;margin-bottom:64px}
+.list li{border-bottom:1px solid var(--rule)}
+.list a{display:grid;grid-template-columns:120px 1fr auto;gap:8px 24px;align-items:baseline;padding:20px 0;text-decoration:none}
+.list .date{font-family:var(--sans);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list .t{font-size:22px;font-weight:600;line-height:1.25}
+.list .t small{display:block;font-family:var(--sans);font-size:13px;font-weight:400;color:var(--muted);margin-top:4px}
+.list .tag{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.list a:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.list li.soon{padding:20px 0;font-style:italic;color:var(--muted);font-size:18px}
+@media(max-width:600px){
+  .list a{grid-template-columns:1fr}
+  .list .tag{order:-1}
+}
+
+/* ---------- Pagination ---------- */
+.pager{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-40px 0 64px;font-family:var(--sans)}
+.pager button{min-width:38px;height:38px;padding:0 10px;border:1px solid var(--rule);background:none;color:var(--ink2);font-size:13px;font-weight:600;cursor:pointer;font-variant-numeric:tabular-nums;transition:background .15s,border-color .15s,color .15s}
+.pager button:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
+.pager button[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pager button:disabled{opacity:.35;cursor:default}
+.pager .pg-arrow{font-size:15px}
+
 /* footer on the series and map pages has two columns, not three (no "Read" list) */
 footer .in.two-col{grid-template-columns:1.2fr 1fr}
 @media(max-width:700px){footer .in.two-col{grid-template-columns:1fr}}

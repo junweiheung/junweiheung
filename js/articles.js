@@ -281,8 +281,7 @@ window.BOTTLENECK = {
         { big: "18", text: "Currencies CLS settles, using an account at each currency's central bank. The Singapore dollar has been one since 2003 (CLS; Wikipedia)." }
       ],
       chain: [
-        { step: "The settlement bank", companies: ["cls"] },
-        { step: "Central banks holding the accounts", companies: ["mas"] }
+        { step: "The settlement bank", companies: ["cls"] }
       ]
     },
     {
@@ -328,10 +327,9 @@ window.BOTTLENECK = {
         { big: "5.5%", text: "Top of the Fed's target range by July 2023, after eleven rate rises from March 2022 (Federal Reserve)." },
         { big: "4.98%", text: "10-year yield peak on 19 October 2023, as bond prices fell (US Treasury)." }
       ],
-      chain: [
-        { step: "Sets the policy rate and buys or runs off bonds", companies: ["fed"] },
-        { step: "Issues the bonds", companies: ["ustreasury"] }
-      ]
+      // About public institutions (the Fed, the US Treasury), which are not private
+      // companies, so this explainer contributes nothing to the company map.
+      chain: []
     },
     {
       id: "govt-bonds",
@@ -352,9 +350,34 @@ window.BOTTLENECK = {
         { big: "172%", text: "Singapore's government debt-to-GDP, yet about 99% is issued to build markets and reserves, not to fund spending." },
         { big: "S$500", text: "Minimum to buy a Singapore Savings Bond, which you can redeem any month with no penalty." }
       ],
+      // About governments and their treasuries/central banks, not private
+      // companies, so this explainer contributes nothing to the company map.
+      chain: []
+    },
+    {
+      id: "stablecoins",
+      href: "explainers/stablecoins.html",
+      title: "Keeping a Coin Worth a Dollar: How Stablecoins Hold (and Lose) Their Peg",
+      short: "Keeping a coin worth $1",
+      kicker: "Explainer",
+      topic: "Crypto",
+      category: "Crypto",
+      date: "2026-11-23",
+      readMins: 11,
+      dek: "A stablecoin promises to be worth one dollar. Some hold that promise with cash in a bank, some with crypto locked in a contract, and some with nothing but code and confidence. The last kind wiped out about $40 billion in three days. Here's what keeps a dollar a dollar, and what breaks it.",
+      summary: "Fiat-backed, crypto-backed and algorithmic coins, the Terra collapse, and Bitcoin, Ether and STRC",
+      thumb: "../images/thumbs/stablecoins.svg",
+      stats: [
+        { big: "1:1", text: "What a fiat-backed coin like USDC promises: one dollar of cash or reserves for each token." },
+        { big: "~$40B", text: "Value erased when the algorithmic stablecoin TerraUSD and its sister token LUNA collapsed in May 2022." },
+        { big: "2x", text: "Rough collateral a crypto-backed coin like BOLD holds: lock ~$2,000 of ETH to borrow $1,000." },
+        { big: "11.5%", text: "Advertised annual dividend on Strategy's STRC, paid while it uses proceeds to buy Bitcoin." }
+      ],
       chain: [
-        { step: "United States Treasury", companies: ["ustreasury"] },
-        { step: "Monetary Authority of Singapore", companies: ["mas"] }
+        { step: "Fiat-backed stablecoins", companies: ["tether", "circle"] },
+        { step: "Crypto-backed stablecoins", companies: ["liquity"] },
+        { step: "Algorithmic stablecoins", companies: ["terraform"] },
+        { step: "Bitcoin-treasury instruments", companies: ["strategy"] }
       ]
     }
   ],
@@ -416,9 +439,11 @@ window.BOTTLENECK = {
     aramco:   { name: "Saudi Aramco",      hq: "Saudi Arabia", sector: "Oil producers" },
     adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" },
     cls:      { name: "CLS Bank",          hq: "US",           sector: "FX settlement" },
-    mas:      { name: "Monetary Authority of Singapore", hq: "Singapore", sector: "Central banks" },
-    fed:      { name: "US Federal Reserve", hq: "US", sector: "Central banks" },
-    ustreasury:{ name: "US Treasury", hq: "US", sector: "Government bond issuers" },
+    tether:   { name: "Tether",            hq: "British Virgin Islands", sector: "Stablecoin issuers" },
+    circle:   { name: "Circle",            hq: "US",           sector: "Stablecoin issuers" },
+    liquity:  { name: "Liquity (BOLD)",    hq: "Switzerland",  sector: "Stablecoin issuers" },
+    terraform:{ name: "Terraform Labs",    hq: "South Korea",  sector: "Stablecoin issuers" },
+    strategy: { name: "Strategy",          hq: "US",           sector: "Bitcoin treasuries" },
     sqm:      { name: "SQM",               hq: "Chile",        sector: "Iodine producers" },
     cosayach: { name: "Cosayach",          hq: "Chile",        sector: "Iodine producers" },
     acfminera:{ name: "ACF Minera",        hq: "Chile",        sector: "Iodine producers" },

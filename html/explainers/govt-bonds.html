@@ -25,6 +25,7 @@
         <a href="../explainers.html">Home</a>
         <a href="../companies.html">Companies</a>
         <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
         <a class="base" href="../../index.html">← Jun Wei</a>
       </div>
     </details>
@@ -111,7 +112,18 @@
     <figcaption>Source: CBO Monthly Budget Review, as summarised in "US Interest on the Debt Exceeds Defense Spending". Bars are to scale against Social Security.</figcaption>
   </figure>
 
-  <p class="t">That interest sits on about <b>$40.1 trillion</b> of public debt. A little over 41% is held by other US investors; the Federal Reserve and US government accounts hold more; and roughly a fifth is held abroad. The <b>largest foreign holders are Japan, the United Kingdom and China</b>. Because the debt keeps growing and the government still runs a deficit, the interest bill compounds, which is why it is projected to top <b>$1 trillion in 2027</b>.</p>
+  <p class="t">That interest sits on about <b>$40.1 trillion</b> of public debt. Just under half is held by other US investors, roughly a fifth by US government accounts, and about a ninth by the Federal Reserve. The last fifth, around <b>$8.5 trillion</b>, is held abroad, and the <b>largest foreign holders are Japan, the United Kingdom and China</b>. Because the debt keeps growing and the government still runs a deficit, the interest bill compounds, which is why it is projected to top <b>$1 trillion in 2027</b>.</p>
+
+  <figure class="fig rv" id="holdersFig">
+    <div class="ft" id="pieTitle">Who holds the $40.1 trillion</div>
+    <div class="fs" id="pieSub">Click the <b>foreign holders</b> slice to break it down by country</div>
+    <button type="button" class="pie-back" id="pieBack" hidden>← All holders</button>
+    <div class="pie-block drill">
+      <svg class="pie" id="pie" viewBox="0 0 220 220" role="img" aria-label="Pie chart of who holds the 40.1 trillion dollar US debt: other US investors 48.0 percent, US government accounts 19.4 percent, foreign holders 21.3 percent, Federal Reserve 11.3 percent. Click foreign holders to see the country split."></svg>
+      <ul class="pie-legend" id="leg"></ul>
+    </div>
+    <figcaption>Source: US Treasury (Debt to the Penny; TIC) and Federal Reserve H.4.1, April–August 2026, as summarised in "US Interest on the Debt Exceeds Defense Spending". The foreign view splits the $8.5tn foreign total; "other foreign" is every holder outside the top three.</figcaption>
+  </figure>
 
   <div class="note"><b class="h">Why rising rates bite twice</b>When the Fed raises rates to fight inflation, the government must offer higher coupons to sell new debt and to roll over old debt. So the same rate rise that cools the economy also makes the government's own borrowing more expensive, feeding the interest bill.</div>
 
@@ -204,6 +216,7 @@
 
 <script src="../../js/scene-kit.js"></script>
 <script src="../../js/menu.js"></script>
+<script src="../../js/govt-bonds.js"></script>
 <script src="../../js/bond-market.js"></script>
 </body>
 </html>
