@@ -13,6 +13,12 @@
   const CLOSE_MS = reduced ? 0 : 560;
   menu.classList.add('js');
 
+  // the drawer's own close button, pinned to its top-right corner
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button'; closeBtn.className = 'menu-close'; closeBtn.setAttribute('aria-label', 'Close menu');
+  closeBtn.innerHTML = '<span></span><span></span>';
+  sheet.insertBefore(closeBtn, sheet.firstChild);
+
   // dimmed backdrop
   const dim = document.createElement('div');
   dim.className = 'menu-dim';
@@ -72,10 +78,10 @@
     summary.setAttribute('aria-expanded', 'true');
     document.documentElement.classList.add('menu-lock');
     addLatest();
+    placeClose();
     sheet.getBoundingClientRect(); // let the browser register the closed position first
     requestAnimationFrame(() => menu.classList.add('is-open'));
-    const first = sheet.querySelector('a');
-    if (first) setTimeout(() => first.focus({ preventScroll: true }), reduced ? 0 : 350);
+    setTimeout(() => closeBtn.focus({ preventScroll: true }), reduced ? 0 : 350);
   }
   function close(returnFocus) {
     if (!menu.open) return;
@@ -94,11 +100,32 @@
     if (menu.classList.contains('is-open')) close(false); else open();
   });
   dim.addEventListener('click', () => close(false));
+  closeBtn.addEventListener('click', () => close(true));
+  // put the X exactly where the stack (☰) button is, so it reads as the same button changing shape.
+  // On very wide screens the ☰ can sit left of the drawer, so the X is kept inside the drawer.
+  function placeClose() {
+    const b = summary.getBoundingClientRect();
+    const vw = document.documentElement.clientWidth;
+    const fromRight = vw - b.right;
+    const maxRight = sheet.offsetWidth - b.width - 12;
+    closeBtn.style.top = Math.max(0, b.top) + 'px';
+    closeBtn.style.right = Math.max(0, Math.min(fromRight, maxRight)) + 'px';
+    closeBtn.style.width = b.width + 'px';
+    closeBtn.style.height = b.height + 'px';
+  }
+  addEventListener('resize', () => { if (menu.classList.contains('is-open')) placeClose(); });
+  // block page scrolling while open, but let the panel itself scroll if it's taller than the screen
+  const scrollsInSheet = (t) => t instanceof Node && sheet.contains(t) && sheet.scrollHeight > sheet.clientHeight;
+  const block = (e) => { if (menu.classList.contains('is-open') && !scrollsInSheet(e.target)) e.preventDefault(); };
+  addEventListener('wheel', block, { passive: false });
+  addEventListener('touchmove', block, { passive: false });
+  const SCROLL_KEYS = new Set([' ', 'PageUp', 'PageDown', 'Home', 'End', 'ArrowUp', 'ArrowDown']);
+  addEventListener('keydown', (e) => { if (menu.classList.contains('is-open') && SCROLL_KEYS.has(e.key) && e.target !== summary && !(e.key === ' ' && e.target.closest && e.target.closest('a')) && !scrollsInSheet(e.target)) e.preventDefault(); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) close(true);
     // keep keyboard focus inside the open panel
     if (e.key === 'Tab' && menu.classList.contains('is-open')) {
-      const items = [summary, ...sheet.querySelectorAll('a')];
+      const items = [closeBtn, ...sheet.querySelectorAll('a')];
       const idx = items.indexOf(document.activeElement);
       if (e.shiftKey && idx <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
       else if (!e.shiftKey && idx === items.length - 1) { e.preventDefault(); items[0].focus(); }

@@ -37,11 +37,28 @@
       <div class="kicker">The series <span>· Countries</span></div>
       <h1>Countries</h1>
     </div>
-    <p class="dek">Where the bottlenecks sit on the map: the countries that hold the irreplaceable steps across the explainers.</p>
+    <p class="dek">The macro view: each country shaded by how many Bottleneck articles cover it. The darker a country, the more of the series it shows up in.</p>
   </div>
 
-  <section style="padding:40px 0 80px">
-    <p style="font-family:var(--sans);font-size:18px;color:var(--ink2)">This page is coming soon. In the meantime, see the <a href="companies.html" style="text-decoration-color:var(--gold)">company map</a> or the <a href="explainers.html" style="text-decoration-color:var(--gold)">explainers</a>.</p>
+  <section id="map" aria-labelledby="map-title">
+    <div class="label">Country map</div>
+    <div class="map-intro">
+      <h3 id="map-title">Where the stories are</h3>
+      <p>Each country is shaded by the number of articles that cover it, from empty to deep gold. Hover to see the count, click a shaded country to list its articles. Scroll or pinch to zoom, drag to pan. This view is about countries, not companies.</p>
+    </div>
+    <div class="mapbox">
+      <div class="graphwrap">
+        <svg id="worldmap" role="img" aria-label="World map shaded by how many articles cover each country"></svg>
+        <div class="maptip" id="maptip" hidden></div>
+        <div class="zoomctl" role="group" aria-label="Zoom the map">
+          <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+          <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+          <button type="button" id="zoomReset" aria-label="Reset zoom">⟲</button>
+        </div>
+      </div>
+      <div class="panel" id="panel" aria-live="polite"></div>
+    </div>
+    <div class="maplegend" id="maplegend"></div>
   </section>
 </main>
 
@@ -53,6 +70,11 @@
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this site is investment, legal or tax advice. Figures come from the sources listed in each explainer and may be revised by the companies that report them.</div>
 </footer>
 
+<script src="../js/vendor/d3.v7.min.js"></script>
+<script src="../js/vendor/topojson-client.min.js"></script>
+<script src="../js/vendor/world-110m.js"></script>
+<script src="../js/countries-data.js"></script>
+<script src="../js/countries.js"></script>
 <script src="../js/menu.js"></script>
 </body>
 </html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Seesaw, Two Fears: How the Fed Uses the Bond Market — Bottleneck by Jun Wei</title>
+<meta name="description" content="The US Federal Reserve aims for 2% inflation. Afraid of a slump in 2020, it made money cheap by pushing bond prices up; afraid of inflation in 2022–23, it did the reverse. The price-yield seesaw, QE, QT and rate hikes, explained with the data.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/scene-kit.css">
+<link rel="stylesheet" href="../../css/bond-market.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· United States · Central banking</span></div>
+  <h1>One Seesaw, Two Fears: How the Fed Uses the Bond Market</h1>
+  <p class="dek">The US Federal Reserve aims for inflation of about 2% a year. When it fears a slump, it makes money cheap by pushing bond prices up and yields down. When prices run hot, it does the reverse. Between 2020 and 2023 it did both, in the space of three years. Here's how one seesaw explains it all.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 21, 2026 · 10 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. The price-yield seesaw</a>
+    <a href="#s2">2. Afraid of a slump (2020)</a>
+    <a href="#s3">3. The turn (2021–22)</a>
+    <a href="#s4">4. Afraid of inflation (2022–23)</a>
+    <a href="#s5">5. Side by side</a>
+    <a href="#words">Words in the headlines</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">A plain-English model of how the Federal Reserve uses the bond market, built around the 2020–2023 cycle. It simplifies a lot: the Fed sets a short-term interest rate and buys or runs down bonds, while the yields on longer bonds are set by investors, who also react to inflation, growth and government borrowing. Figures come from the Fed, the US Treasury and the Bureau of Labor Statistics (see Sources). Educational only, not a forecast and not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>The short version</h3>
+    <ul>
+      <li>A bond's <b>price and its yield move in opposite directions</b>. Push the price up and the yield falls; let the price drop and the yield climbs.</li>
+      <li>The Fed aims for about <b>2% inflation</b>. It never wants prices to fall; it wants them rising slowly and steadily.</li>
+      <li><b>Afraid of a slump</b> (2020), it cut its rate to near zero and bought so many bonds that its holdings went from about $4.2 trillion to nearly $9 trillion. Bond prices rose, yields fell, and borrowing got cheap.</li>
+      <li><b>Afraid of inflation</b> (2022–23), after prices rose 9.1% in a year, it raised its rate to 5.25–5.5% and let its bond holdings shrink. Bond prices fell, yields rose, and borrowing got expensive.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>The price-yield seesaw</h2>
+  <p class="t dropcap">Start with the one rule that makes the rest work. A bond pays a fixed stream of cash. If you pay more for that fixed stream, the return you earn on your money, the <b>yield</b>, is lower. If the bond gets cheaper, the same fixed cash is a bigger return, so the yield is higher. Price and yield sit on opposite ends of a seesaw.</p>
+
+  <figure class="fig rv" id="seesawFig">
+    <div class="ft">The seesaw</div>
+    <div class="fs">Two ways to tip it, and what each does to borrowing</div>
+    <div class="seesaw">
+      <div class="side up"><div class="lab">Price <span class="ar">↑</span></div><div class="val">Yield <span class="ar">↓</span></div><p>Borrowing gets cheaper. Money flows into the economy.</p></div>
+      <div class="pivot">vs</div>
+      <div class="side down"><div class="lab">Price <span class="ar">↓</span></div><div class="val">Yield <span class="ar">↑</span></div><p>Borrowing gets dearer. Spending and lending cool.</p></div>
+    </div>
+    <figcaption>Whoever moves bond prices, the Fed buying, investors rushing in, or investors selling out, moves yields the opposite way. Mortgages and company loans are priced off those yields, which is how the seesaw reaches the rest of the economy.</figcaption>
+  </figure>
+
+  <figure class="fig rv scene" id="seesawSceneFig">
+    <div class="ft">The Fed on the seesaw</div>
+    <div class="fs">Push one end down, the other end goes up.</div>
+    <svg id="seesawSceneSvg" viewBox="0 0 800 400" role="img" aria-label="Cartoon: a central banker sits on a seesaw. On the left end a bond labelled PRICE rides high while a tag reads YIELD down; on the right the price end is low and yield is up. The seesaw rocks gently."></svg>
+    <figcaption>Illustration by Jun Wei Heung. A generic figure, not a real person.</figcaption>
+  </figure>
+
+  <p class="t">So how does the Fed push on the seesaw? It has two tools. The main one is its <b>policy rate</b>, the interest rate banks charge each other overnight. The second is buying bonds, or letting the bonds it owns run off. The rate works on bond prices in a way that surprises people, so it's worth one worked example.</p>
+
+  <figure class="fig rv" id="oldBondFig">
+    <div class="ft">Why a rate rise makes old bonds cheaper</div>
+    <div class="fs">A 10-year, $1,000 bond paying $30 a year, when new bonds start paying 5%</div>
+    <div class="ob">
+      <div class="ob-card"><small>Your old bond</small><b>$30 a year</b><span>3% on $1,000</span></div>
+      <div class="ob-mid">New bonds now pay <b>$50 a year</b> for the same $1,000</div>
+      <div class="ob-card hot"><small>What a buyer will now pay for yours</small><b>about $846</b><span>at that price, your $30 plus the $1,000 at the end works out to 5% a year</span></div>
+    </div>
+    <figcaption>Nobody pays full price for a bond paying 3% when new ones pay 5%. So the old bond's price falls until its yield matches the market: here to about $846. My arithmetic, for a bond with ten years left; longer bonds fall further. That's why bond prices tend to drop when rates rise, and rise when rates fall.</figcaption>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>Afraid of a slump (2020)</h2>
+  <p class="t">In early March 2020, Covid hit. Factories closed, people stayed home, and a deep recession looked certain. The Fed's fear was a slump, and in the worst case prices falling outright, which makes debts harder to repay and makes people delay spending. Its answer was to make money as cheap as it could.</p>
+
+  <div class="flow rv">
+    <div class="fstep"><div class="fl">3 and 15 March 2020</div><p>The Fed cuts its rate twice in two weeks, from 1.5–1.75% to <b>0–0.25%</b>, close to zero.</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep bad"><div class="fl">The dash for cash</div><p>Panicked investors sell almost everything, even US government bonds, to raise cash. Bond prices fall: the 10-year yield jumps from <b>0.54% to 1.18%</b> between 9 and 18 March. The market itself is pushing the seesaw the wrong way.</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep"><div class="fl">23 March: quantitative easing</div><p>The Fed promises to buy bonds in whatever amounts are needed. It pays with newly created money, so its holdings swell from about <b>$4.2 trillion to $7 trillion</b> by June.</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep tag"><div class="fl">The seesaw</div><p><b>Price ↑ · yield ↓</b> · the 10-year hits a record low of <b>0.52%</b> on 4 August</p></div>
+  </div>
+
+  <p class="t">With the Fed buying, bond prices rose and yields fell. Cheap money then had two effects worth separating.</p>
+
+  <div class="split rv">
+    <div class="fstep good"><div class="fl">Investors cheer</div><p>With bonds paying almost nothing, investors look for returns elsewhere. <b>Stocks rise.</b></p></div>
+    <div class="fstep"><div class="fl">The lending catch</div><p>Banks are flush with cash to lend, and mortgages get cheap. But nervous households and firms hang back; the bold ones grab cheap loans.</p></div>
+  </div>
+
+  <div class="note"><b class="h">Why "quantitative easing"?</b>When the Fed's rate is already near zero, it can't cut much further. So it adds money another way: it creates new money (reserves held at the Fed) and uses it to buy bonds. That lifts bond prices, holds yields down, and leaves banks with cash to lend. It's "quantitative" because the Fed targets a quantity of purchases rather than a price.</div>
+
+  <h2 id="s3"><span class="n">Part 3</span>The turn (2021–22)</h2>
+  <p class="t">Cheap money worked, and then some. Spending came back faster than factories and shipping could. Governments had handed out support, and the war in Ukraine pushed up energy and food. US consumer prices went from rising <b>0.1%</b> a year in May 2020 to <b>9.1%</b> in June 2022, the fastest since 1981. Now the Fed's bigger fear flipped.</p>
+
+  <figure class="fig rv" id="cycleFig">
+    <div class="ft">The cycle in one chart</div>
+    <div class="fs">The Fed's rate and the 10-year government bond yield, monthly, 2019–2024</div>
+    <div class="legend-row"><span><i class="k-fed"></i>Fed policy rate (top of target range)</span><span><i class="k-10y"></i>10-year Treasury yield (monthly average)</span><span><i class="k-cpi"></i>Inflation, % a year</span></div>
+    <svg id="cycleSvg" viewBox="0 0 800 420" role="img" aria-label="Line chart from 2019 to 2024. The Fed's rate falls to 0.25% in March 2020 and stays there until March 2022, then climbs to 5.5% by July 2023. The 10-year yield falls from about 1.8% to a low near 0.6% in 2020, rises through 2022 and peaks near 4.8% in October 2023. Inflation markers show 0.1% in May 2020, 9.1% in June 2022 and 3.0% in June 2023."></svg>
+    <figcaption>Sources: Federal Reserve rate decisions; US Treasury daily yield curve (10-year, averaged by month); Bureau of Labor Statistics consumer price index (12-month change). Monthly averages smooth out daily spikes such as the March 2020 dash for cash.</figcaption>
+  </figure>
+
+  <p class="t">The Fed stopped buying bonds in March 2022 and started raising its rate the same month. Bond investors didn't wait. Expecting higher rates and worried that inflation would eat into fixed payments, they sold, and bond prices fell before most of the hikes had even happened. Look at the chart: the 10-year yield (gold) starts rising in early 2022, alongside the Fed's rate (black).</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Afraid of inflation (2022–23)</h2>
+  <p class="t">The Fed's goal now was to slow price rises back towards 2%, not to make prices fall. That's sometimes called <b>disinflation</b>. To get there it pushed the seesaw the other way, with both tools.</p>
+
+  <div class="flow rv">
+    <div class="fstep"><div class="fl">March 2022 to July 2023</div><p>Eleven rate rises take the Fed's rate from near zero to <b>5.25–5.5%</b>, its fastest increase since the early 1980s.</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep"><div class="fl">From June 2022: quantitative tightening</div><p>The Fed lets the bonds it owns mature without buying new ones, shrinking its holdings from about <b>$9 trillion</b>. It mostly doesn't sell; it stops replacing.</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep tag"><div class="fl">The seesaw</div><p><b>Price ↓ · yield ↑</b> · the 10-year peaks at <b>4.98%</b> on 19 October 2023</p></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fstep"><div class="fl">People borrow and spend less</div><p>Mortgages and company loans get expensive. Spending and hiring slow, and price rises ease: inflation is back to <b>3.0%</b> by June 2023. That's the point.</p></div>
+  </div>
+
+  <p class="t">From here the story can go two ways, and the same policy looks either like a triumph or a mistake.</p>
+
+  <div class="split rv">
+    <div class="fstep good"><div class="fl">Soft landing</div><p>Inflation cools without a deep recession or a jump in unemployment. Investors relax, long-term yields drift down, and <b>stocks recover</b>.</p></div>
+    <div class="fstep bad"><div class="fl">Hard landing</div><p>Higher rates bite too hard. Firms cut jobs, borrowers default, and <b>stocks fall</b>. In 2022, stocks and bonds fell together.</p></div>
+  </div>
+
+  <figure class="fig rv scene analogy" id="moodsSceneFig">
+    <div class="ft">The Fed's two fears</div>
+    <svg id="moodsSceneSvg" viewBox="0 0 800 360" role="img" aria-label="Cartoon: on the left the Fed smiles and hands out coins under a sun, labelled easy money, cheap loans; on the right the Fed holds up a stop sign and the coins dry up, labelled tight money, dear loans."></svg>
+    <p class="say">Same central bank, two fears. When it's afraid of a slump, it hands out cheap money to wake the economy up. When it's afraid of runaway prices, it holds up a stop sign to cool things down. Either way it's aiming for the same thing: prices rising about 2% a year.</p>
+  </figure>
+
+  <h2 id="s5"><span class="n">Part 5</span>Side by side</h2>
+  <p class="t">Strip away the events and the two playbooks are mirror images.</p>
+
+  <figure class="fig rv" id="tblFig">
+    <div class="ft">One seesaw, two fears</div>
+    <div class="tbl-wrap">
+      <table class="pb">
+        <thead><tr><th></th><th>Afraid of a slump (2020)</th><th>Afraid of inflation (2022–23)</th></tr></thead>
+        <tbody>
+          <tr><td>Inflation at the time</td><td>0.1% (May 2020)</td><td>9.1% (June 2022)</td></tr>
+          <tr><td>The Fed's rate</td><td>Cut to 0–0.25%</td><td>Raised to 5.25–5.5%</td></tr>
+          <tr><td>The Fed and bonds</td><td>Buys them (QE): holdings to about $9 trillion</td><td>Lets them mature without replacing (QT)</td></tr>
+          <tr><td>Bond prices</td><td>Up</td><td>Down</td></tr>
+          <tr><td>10-year yield</td><td>Down, to 0.52%</td><td>Up, to 4.98%</td></tr>
+          <tr><td>Borrowing</td><td>Cheap; money flows</td><td>Expensive; spending cools</td></tr>
+          <tr><td>Hoped-for ending</td><td>Recovery; stocks rise</td><td>Soft landing; stocks recover</td></tr>
+          <tr><td>Feared ending</td><td>Inflation overshoots (it did)</td><td>Recession; stocks fall</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Both columns aim at the same 2% target, from opposite sides. Sources: Federal Reserve, US Treasury, Bureau of Labor Statistics.</figcaption>
+  </figure>
+
+  <p class="pull">Price up, yield down. Price down, yield up. Everything the Fed does to steer inflation is a choice about which way to tip that one seesaw.</p>
+
+  <div class="note" id="words"><b class="h">Words you'll see in the headlines</b>
+    <dl class="gloss">
+      <dt>Yield</dt><dd>The yearly return a bond pays, as a percentage of what you paid for it.</dd>
+      <dt>Hike / cut</dt><dd>The Fed raising or lowering its policy rate.</dd>
+      <dt>Hawkish / dovish</dt><dd>Leaning towards higher rates to fight inflation (hawkish), or towards lower rates to support jobs and growth (dovish).</dd>
+      <dt>Liquidity</dt><dd>How easily money moves: how quickly you can turn something into cash, or how easy it is to borrow.</dd>
+      <dt>QE / QT</dt><dd>Quantitative easing: the Fed creating money to buy bonds. Quantitative tightening: the Fed letting its bonds mature without replacing them.</dd>
+      <dt>Soft landing</dt><dd>Cooling inflation without causing a recession.</dd>
+    </dl>
+  </div>
+
+  <p class="t">So next time you read that the Fed "hiked" or "turned dovish", ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q" data-answer="Which fear is bigger. Cutting rates or buying bonds means it's more afraid of a slump: price up, yield down, cheap money. Hiking or shrinking its bonds means it's more afraid of inflation: price down, yield up, dear money."><div class="qn">QUESTION 1</div><p>Is the Fed more afraid of a slump, or of inflation?</p></div>
+    <div class="q" data-answer="Whether the cooling lands softly or breaks something. The hoped-for path is inflation easing while unemployment stays low; the feared path is rates biting so hard that jobs, spending and stocks drop."><div class="qn">QUESTION 2</div><p>Is this heading for a soft landing, or a hard one?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from.</p>
+  <ul class="sources">
+    <li>The Fed's 2% inflation goal and why it doesn't want falling prices: <a href="https://www.federalreserve.gov/faqs/economy_14400.htm" target="_blank" rel="noopener">Federal Reserve, "Why does the Federal Reserve aim for inflation of 2 percent?"</a></li>
+    <li>Rate cuts on 3 and 15 March 2020 to 0–0.25%: <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm" target="_blank" rel="noopener">Federal Reserve, 15 March 2020</a>; purchases "in the amounts needed": <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20200323b.htm" target="_blank" rel="noopener">Federal Reserve, 23 March 2020</a>.</li>
+    <li>Rate rises from March 2022 to 5.25–5.5% in July 2023: <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20230726a.htm" target="_blank" rel="noopener">Federal Reserve, 26 July 2023</a>; quantitative tightening from June 2022 by not reinvesting maturing bonds: <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20220504b.htm" target="_blank" rel="noopener">Federal Reserve, plans for reducing the balance sheet (4 May 2022)</a>.</li>
+    <li>The Fed's holdings, about $4.2 trillion before Covid, about $7 trillion by June 2020 and close to $9 trillion at the 2022 peak: <a href="https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm" target="_blank" rel="noopener">Federal Reserve, balance sheet trends</a>.</li>
+    <li>10-year yields, including 0.54% on 9 March 2020, 1.18% on 18 March 2020, the 0.52% low on 4 August 2020 and the 4.98% high on 19 October 2023, and the monthly averages in the chart: <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve" target="_blank" rel="noopener">US Treasury, daily yield curve rates</a>.</li>
+    <li>Inflation of 0.1% (May 2020), 9.1% (June 2022, the largest since November 1981) and 3.0% (June 2023): <a href="https://www.bls.gov/news.release/archives/cpi_07132022.htm" target="_blank" rel="noopener">Bureau of Labor Statistics, June 2022 CPI release</a>; <a href="https://www.bls.gov/news.release/archives/cpi_07122023.htm" target="_blank" rel="noopener">June 2023 CPI release</a>; <a href="https://www.bls.gov/news.release/archives/cpi_06102020.htm" target="_blank" rel="noopener">May 2020 CPI release</a>.</li>
+    <li>The worked example ($1,000 bond, $30 a year, ten years left, priced to yield 5%) is my own arithmetic.</li>
+  </ul>
+  <p class="end">Educational only. Not investment, legal or tax advice. A simplified model of a complex system; real outcomes depend on far more than one seesaw.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">The seesaw</a><br><a href="#s5">Side by side</a><br><a href="../countries.html">Country map</a><br><a href="../explainers.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/bond-market-scene.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/bond-market.js"></script>
+</body>
+</html>
