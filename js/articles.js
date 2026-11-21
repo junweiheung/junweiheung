@@ -274,6 +274,29 @@ window.BOTTLENECK = {
         { step: "The settlement bank", companies: ["cls"] },
         { step: "Central banks holding the accounts", companies: ["mas"] }
       ]
+    },
+    {
+      id: "iodine",
+      href: "explainers/iodine.html",
+      title: "The Crystal Behind Your Scan and Your Screen: Who Controls the World's Iodine",
+      short: "The crystal behind your scan and your screen",
+      kicker: "Explainer",
+      topic: "Iodine",
+      date: "2026-11-21",
+      readMins: 11,
+      dek: "Iodine goes into CT-scan dye and the films inside LCD screens. About two-thirds of it comes from one Chilean desert, one company says it sells about 37% of the world's supply, and the price has more than tripled since 2017.",
+      summary: "A hidden element, three source areas, and a price that rose 3.5 times",
+      thumb: "../images/thumbs/iodine.svg",
+      stats: [
+        { big: "~2/3", text: "Share of world iodine produced in Chile, excluding the US (USGS, 2025)." },
+        { big: "37%", text: "Share of global iodine sales SQM estimates for itself in 2024; five Chilean firms about 60% (SQM)." },
+        { big: "37%", text: "Share of iodine demand going into X-ray contrast media; LCD and LED screens about 13% (SQM estimates)." },
+        { big: "3.5x", text: "US import price, from US$19.55 a kilogram in 2017 to an estimated US$68 in 2025 (USGS)." }
+      ],
+      chain: [
+        { step: "Chilean caliche producers", companies: ["sqm", "cosayach", "acfminera"] },
+        { step: "Japanese brine producers", companies: ["ise", "godoshigen", "inpex"] }
+      ]
     }
   ],
 
@@ -334,6 +357,12 @@ window.BOTTLENECK = {
     aramco:   { name: "Saudi Aramco",      hq: "Saudi Arabia", sector: "Oil producers" },
     adnoc:    { name: "ADNOC",             hq: "UAE",          sector: "Oil producers" },
     cls:      { name: "CLS Bank",          hq: "US",           sector: "FX settlement" },
-    mas:      { name: "Monetary Authority of Singapore", hq: "Singapore", sector: "Central banks" }
+    mas:      { name: "Monetary Authority of Singapore", hq: "Singapore", sector: "Central banks" },
+    sqm:      { name: "SQM",               hq: "Chile",        sector: "Iodine producers" },
+    cosayach: { name: "Cosayach",          hq: "Chile",        sector: "Iodine producers" },
+    acfminera:{ name: "ACF Minera",        hq: "Chile",        sector: "Iodine producers" },
+    ise:      { name: "Ise Chemicals",     hq: "Japan",        sector: "Iodine producers" },
+    godoshigen:{ name: "Godo Shigen",      hq: "Japan",        sector: "Iodine producers" },
+    inpex:    { name: "INPEX",             hq: "Japan",        sector: "Iodine producers" }
   }
 };

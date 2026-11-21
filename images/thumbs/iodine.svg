@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    .in{opacity:0;animation:fade .5s ease forwards}
+    @keyframes fade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1}}
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="56" font-weight="700">The crystal behind your scan and your screen</text>
+  <text x="120" y="190" fill="#8d8a84" font-size="28">Iodine · Chile · Japan · one desert</text>
+  <text class="in" style="animation-delay:.2s" x="120" y="440" fill="#e0b65a" font-size="190" font-weight="800">~2/3</text>
+  <text class="in" style="animation-delay:.3s" x="120" y="500" fill="#fff" font-size="36" font-weight="700">of the world's iodine is Chilean</text>
+  <text class="in" style="animation-delay:1.8s" x="120" y="700" fill="#4d8bff" font-size="64" font-weight="800">23,000 t</text>
+  <text class="in" style="animation-delay:1.9s" x="470" y="700" fill="#cfcbc3" font-size="32">Chile, 2025</text>
+  <text class="in" style="animation-delay:2.2s" x="120" y="780" fill="#c2412d" font-size="64" font-weight="800">3.5x</text>
+  <text class="in" style="animation-delay:2.3s" x="300" y="780" fill="#cfcbc3" font-size="32">price since 2017</text>
+  <rect class="in" style="animation-delay:.6s" x="120" y="580" width="1020" height="50" fill="#4d8bff"/>
+  <rect class="in" style="animation-delay:.9s" x="1140" y="580" width="340" height="50" fill="#c2412d"/>
+</svg>

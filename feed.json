@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "iodine",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/iodine.html",
+      "title": "The Crystal Behind Your Scan and Your Screen: Who Controls the World's Iodine",
+      "summary": "Iodine goes into CT-scan dye and the films inside LCD screens. About two-thirds of it comes from one Chilean desert, one company says it sells about 37% of the world's supply, and the price has more than tripled since 2017.",
+      "content_text": "Iodine goes into CT-scan dye and the films inside LCD screens. About two-thirds of it comes from one Chilean desert, one company says it sells about 37% of the world's supply, and the price has more than tripled since 2017.",
+      "date_published": "2026-11-21T09:00:00+08:00",
+      "tags": [
+        "Iodine"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/iodine.png",
+      "_bottleneck": {
+        "short": "The crystal behind your scan and your screen",
+        "topic": "Iodine",
+        "readMins": 11,
+        "stat": {
+          "big": "~2/3",
+          "text": "Share of world iodine produced in Chile, excluding the US (USGS, 2025)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/iodine.png"
+      }
+    },
+    {
       "id": "cls",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/cls.html",
       "title": "The Bank Behind the Currency Market: How CLS Keeps FX Trades From Going Wrong",
