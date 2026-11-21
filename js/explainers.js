@@ -10,52 +10,23 @@
   const shortDate = (iso) => fmtDate(iso, { month: "short", day: "numeric", year: "numeric" });
 
   /* ---------- latest + key numbers ---------- */
-  const latest = articles[0];
-  if (latest && $("feature")) {
-    $("latestDate").textContent = fmtDate(latest.date, { month: "short", year: "numeric" });
-    $("feature").href = latest.href;
-    $("fThumb").src = latest.thumb;
-    $("fKicker").innerHTML = `${esc(latest.kicker)} <span>· ${esc(latest.topic)}</span>`;
-    $("fTitle").textContent = latest.title;
-    $("fDek").textContent = latest.dek;
-    $("fDate").textContent = longDate(latest.date);
-    $("fRead").textContent = latest.readMins + " min read";
-    $("strip").innerHTML = (latest.stats || [])
-      .map((s) => `<div><div class="big">${esc(s.big)}</div><p>${esc(s.text)}</p></div>`).join("");
-  }
-
-  // shared by the list/topic filter and the company map
-  function chips(el, options, current, onPick) {
-    if (options.length < 2) { el.hidden = true; return; }
-    el.hidden = false;
-    el.innerHTML = options.map((o) =>
-      `<button type="button" data-v="${esc(o.v)}" aria-pressed="${o.v === current}">${esc(o.label)}</button>`).join("");
-    el.onclick = (e) => {
-      const b = e.target.closest("button"); if (!b) return;
-      el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
-      onPick(b.dataset.v);
-    };
-  }
-
-  /* ---------- list + category filter ---------- */
-  // Explainers are grouped by the nature of the business (category), not one chip per article.
   const catOf = (a) => a.category || a.topic;
-  if ($("list")) {
-  $("count").textContent = articles.length + " published";
-  const categories = [...new Set(articles.map(catOf))];
-  let category = "All";
-  function renderList() {
-    const shown = articles.filter((a) => category === "All" || catOf(a) === category);
-    $("list").innerHTML = shown.map((a) => `
-      <li><a href="${esc(a.href)}">
-        <span class="date">${shortDate(a.date)}</span>
-        <span class="t">${esc(a.title)}<small>${esc(a.summary)} · ${a.readMins} min</small></span>
-        <span class="tag">${esc(catOf(a))}</span>
-      </a></li>`).join("") + `<li class="soon">The next one is in the works.</li>`;
-  }
-  chips($("topicChips"), [{ v: "All", label: "All" }, ...categories.map((t) => ({ v: t, label: t }))], "All",
-    (v) => { category = v; renderList(); });
-  renderList();
+
+  /* ---------- the three latest explainers, as cards ---------- */
+  if ($("latestCards")) {
+    const latest = articles[0];
+    if (latest) $("latestDate").textContent = fmtDate(latest.date, { month: "short", year: "numeric" });
+    const top3 = articles.slice(0, 3);
+    $("latestCards").innerHTML = top3.map((a, i) => `
+      <a class="card${i === 0 ? " lead" : ""}" href="${esc(a.href)}">
+        <div class="card-thumb"><img src="${esc(a.thumb)}" alt="" loading="lazy"></div>
+        <div class="card-body">
+          <div class="kicker">${esc(a.kicker)} <span>· ${esc(catOf(a))}</span></div>
+          <h2>${esc(a.title)}</h2>
+          <p>${esc(a.dek)}</p>
+          <div class="meta"><span>${longDate(a.date)}</span><span>${a.readMins} min read</span></div>
+        </div>
+      </a>`).join("");
   }
 
   /* ---------- company map ---------- */

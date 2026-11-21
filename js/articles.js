@@ -297,7 +297,7 @@ window.BOTTLENECK = {
       readMins: 11,
       dek: "Iodine goes into CT-scan dye and the films inside LCD screens. About two-thirds of it comes from one Chilean desert, one company says it sells about 37% of the world's supply, and the price has more than tripled since 2017.",
       summary: "A hidden element, three source areas, and a price that rose 3.5 times",
-      thumb: "../images/thumbs/iodine.svg",
+      thumb: "../images/photos/iodine-humberstone.jpg",
       stats: [
         { big: "~2/3", text: "Share of world iodine produced in Chile, excluding the US (USGS, 2025)." },
         { big: "37%", text: "Share of global iodine sales SQM estimates for itself in 2024; five Chilean firms about 60% (SQM)." },
@@ -331,6 +331,30 @@ window.BOTTLENECK = {
       chain: [
         { step: "Sets the policy rate and buys or runs off bonds", companies: ["fed"] },
         { step: "Issues the bonds", companies: ["ustreasury"] }
+      ]
+    },
+    {
+      id: "govt-bonds",
+      href: "explainers/govt-bonds.html",
+      title: "Lending to Governments: US Treasuries vs Singapore's Bonds",
+      short: "Lending to governments",
+      kicker: "Explainer",
+      topic: "Government debt",
+      category: "Market infrastructure",
+      date: "2026-11-22",
+      readMins: 9,
+      dek: "A bond is a loan you make to a government. The US borrows to spend and now pays more interest than it spends on defence. Singapore borrows more, relative to its economy, yet almost none of it funds spending. Two countries, two very different reasons to issue debt.",
+      summary: "T-Bills, bonds and SSBs, and why the US and Singapore borrow for opposite reasons",
+      thumb: "../images/thumbs/govt-bonds.svg",
+      stats: [
+        { big: "$963B", text: "US interest on the debt in the first ten months of fiscal 2026, more than the $763B spent on defence (CBO)." },
+        { big: "$40.1T", text: "US public debt outstanding; the largest foreign holders are Japan, the UK and China (US Treasury)." },
+        { big: "172%", text: "Singapore's government debt-to-GDP, yet about 99% is issued to build markets and reserves, not to fund spending." },
+        { big: "S$500", text: "Minimum to buy a Singapore Savings Bond, which you can redeem any month with no penalty." }
+      ],
+      chain: [
+        { step: "United States Treasury", companies: ["ustreasury"] },
+        { step: "Monetary Authority of Singapore", companies: ["mas"] }
       ]
     }
   ],

@@ -10,6 +10,8 @@ document.querySelectorAll('.flow, .split').forEach((chain) => {
 const rio = new IntersectionObserver((es) => es.forEach((e) => {
   if (!e.isIntersecting) return;
   e.target.classList.add('in-view');
+  // fill any horizontal bars inside this block (reads data-w, like the other explainers)
+  e.target.querySelectorAll('.ltrack i[data-w]').forEach((b) => { b.style.width = b.dataset.w + '%'; });
   rio.unobserve(e.target);
 }), { threshold: 0.15 });
 document.querySelectorAll('.rv, #qs').forEach((e) => rio.observe(e));

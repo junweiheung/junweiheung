@@ -44,22 +44,30 @@
     <p class="dek">Explainers on the companies and data the world can't do without. One industry at a time, told with charts you scroll through.</p>
   </div>
 
-  <div class="label" id="latest">Latest <span id="latestDate"></span></div>
-  <a class="feature rv" id="feature" href="#">
-    <div class="thumb"><img id="fThumb" alt=""></div>
-    <div>
-      <div class="kicker" id="fKicker"></div>
-      <h2 id="fTitle"></h2>
-      <p id="fDek"></p>
-      <div class="meta"><span>By <b>Jun Wei Heung</b></span><span id="fDate"></span><span id="fRead"></span></div>
-      <span class="cta">Read the explainer →</span>
-    </div>
-  </a>
-  <div class="strip rv" id="strip" aria-label="Key numbers from the latest explainer"></div>
+  <div class="label" id="latest">Latest explainers <span id="latestDate"></span></div>
+  <div class="cards rv" id="latestCards" aria-label="The three latest explainers"></div>
 
-  <div class="label" id="all">All explainers <span id="count"></span></div>
-  <div class="chips" id="topicChips" hidden></div>
-  <ul class="list" id="list"></ul>
+  <div class="label" id="explore">Explore the series</div>
+  <div class="explore rv">
+    <a class="xcard companies" href="companies.html">
+      <div class="xcard-art" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="line"></span><span class="line l2"></span></div>
+      <div class="xcard-body">
+        <div class="kicker">Company map</div>
+        <h3>Who shows up where</h3>
+        <p>Every company across the explainers, mapped by the value-chain steps they hold. The ones in several places are the bottlenecks.</p>
+        <span class="cta">Open the map →</span>
+      </div>
+    </a>
+    <a class="xcard countries" href="countries.html">
+      <div class="xcard-art" aria-hidden="true"><span class="grid"></span></div>
+      <div class="xcard-body">
+        <div class="kicker">Country map</div>
+        <h3>Where the stories are</h3>
+        <p>The macro view: each country shaded by how many articles cover it, from empty to deep gold.</p>
+        <span class="cta">Open the map →</span>
+      </div>
+    </a>
+  </div>
 
   <section class="about rv" aria-labelledby="about-series">
     <div>

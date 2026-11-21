@@ -1,20 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
   <style>
-    .in{opacity:0;animation:fade .6s ease forwards}
-    @keyframes fade{to{opacity:1}}
-    @media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1}}
     text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    /* the plank, the two bond blocks and the seated figure rock together, forever */
+    .rock{animation:rock 4.8s ease-in-out infinite;transform-origin:400px 250px}
+    .bub{transform-origin:400px 70px;animation:pop 4.8s ease-in-out .3s infinite}
+    @keyframes rock{0%,100%{transform:rotate(-6.5deg)}50%{transform:rotate(6.5deg)}}
+    @keyframes pop{0%,70%,100%{transform:scale(1)}80%{transform:scale(1.06)}}
+    @media (prefers-reduced-motion:reduce){.rock,.bub{animation:none}}
   </style>
-  <rect width="1600" height="900" fill="#0d0d0f"/>
-  <text x="120" y="130" fill="#fff" font-size="56" font-weight="700">One seesaw, two fears</text>
-  <text x="120" y="190" fill="#8d8a84" font-size="28">The Fed's rate and the 10-year bond yield, 2019–2024</text>
-  <rect class="in" style="animation-delay:.1s" x="388" y="300" width="460" height="500" fill="#16241a"/>
-  <rect class="in" style="animation-delay:.1s" x="848" y="300" width="306" height="500" fill="#2a1814"/>
-  <text class="in" style="animation-delay:.2s" x="618" y="340" fill="#7fbf8a" font-size="26" font-weight="700" text-anchor="middle">Afraid of a slump</text>
-  <text class="in" style="animation-delay:.2s" x="1001" y="340" fill="#ff7a63" font-size="26" font-weight="700" text-anchor="middle">Afraid of inflation</text>
-  <path class="in" style="animation-delay:.4s" d="M120 592 H139 V592 H158 V592 H177 V592 H197 V592 H216 V592 H235 V612 H254 V612 H273 V633 H292 V654 H312 V654 H331 V654 H350 V654 H369 V654 H388 V779 H407 V779 H426 V779 H446 V779 H465 V779 H484 V779 H503 V779 H522 V779 H541 V779 H561 V779 H580 V779 H599 V779 H618 V779 H637 V779 H656 V779 H675 V779 H695 V779 H714 V779 H733 V779 H752 V779 H771 V779 H790 V779 H810 V779 H829 V779 H848 V758 H867 V758 H886 V717 H905 V654 H925 V592 H944 V592 H963 V529 H982 V529 H1001 V467 H1020 V425 H1039 V425 H1059 V404 H1078 V383 H1097 V383 H1116 V362 H1135 V362 H1154 V342 H1174 V342 H1193 V342 H1212 V342 H1231 V342 H1250 V342 H1269 V342 H1288 V342 H1308 V342 H1327 V342 H1346 V342 H1365 V342 H1384 V342 H1403 V342 H1423 V383 H1442 V383 H1461 V404 H1480 V425" fill="none" stroke="#fff" stroke-width="6"/>
-  <polyline class="in" style="animation-delay:.8s" points="120,574 139,577 158,586 177,589 197,600 216,628 235,628 254,664 273,658 292,658 312,649 331,645 350,653 369,675 388,728 407,745 426,744 446,739 465,748 484,746 503,743 522,734 541,728 561,722 580,710 599,695 618,666 637,663 656,665 675,673 695,690 714,693 733,686 752,668 771,670 790,678 810,653 829,639 848,622 867,571 886,558 905,538 925,558 944,558 963,507 982,468 1001,476 1020,498 1039,506 1059,488 1078,495 1097,512 1116,502 1135,488 1154,475 1174,452 1193,435 1212,400 1231,425 1250,465 1269,462 1288,449 1308,449 1327,422 1346,427 1365,441 1384,446 1403,478 1423,490 1442,458 1461,437 1480,434" fill="none" stroke="#e0b65a" stroke-width="6" stroke-linejoin="round"/>
-  <text class="in" style="animation-delay:1.1s" x="426" y="720" fill="#e0b65a" font-size="34" font-weight="800">0.52% low</text>
-  <text class="in" style="animation-delay:1.1s" x="1308" y="550" fill="#e0b65a" font-size="34" font-weight="800" text-anchor="middle">4.98% peak</text>
-  <text class="in" style="animation-delay:1.2s" x="1480" y="860" fill="#cfcbc3" font-size="24" text-anchor="end">white: Fed rate · gold: 10-year yield</text>
+
+  <!-- backdrop: pale wall + floor strip, matching the in-article scene -->
+  <rect width="800" height="400" fill="#eef2f5"/>
+  <rect x="0" y="330" width="800" height="70" fill="#cbd3d8"/>
+
+  <!-- fulcrum -->
+  <path d="M400 250 L372 320 L428 320 Z" fill="#8a6d3b"/>
+
+  <g class="rock">
+    <!-- plank -->
+    <rect x="120" y="242" width="560" height="16" rx="4" fill="#5a4632"/>
+
+    <!-- LEFT end: BOND PRICE, yield down -->
+    <g>
+      <rect x="150" y="150" width="92" height="64" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+      <text x="196" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#111">BOND</text>
+      <text x="196" y="200" text-anchor="middle" font-size="14" font-weight="700" fill="#b8892b">PRICE</text>
+      <text x="196" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#76736c">yield ↓</text>
+    </g>
+
+    <!-- RIGHT end: BOND PRICE (dark), yield up -->
+    <g>
+      <rect x="558" y="150" width="92" height="64" rx="6" fill="#0d0d0f" stroke="#111" stroke-width="3"/>
+      <text x="604" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">BOND</text>
+      <text x="604" y="200" text-anchor="middle" font-size="14" font-weight="700" fill="#e0b65a">PRICE</text>
+      <text x="604" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#76736c">yield ↑</text>
+    </g>
+
+    <!-- the Fed, seated at the pivot -->
+    <g>
+      <!-- hands resting -->
+      <ellipse cx="400" cy="246" rx="34" ry="12" fill="#d9a77f"/>
+      <!-- suit jacket -->
+      <path d="M362 196 Q362 180 378 178 L422 178 Q438 180 438 196 L446 250 L354 250 Z" fill="#2f4a7a"/>
+      <!-- shirt + tie -->
+      <path d="M387 178 L413 178 L400 226 Z" fill="#f7f5f0"/>
+      <path d="M400 184 l-5 6 l3 28 l2 5 l2 -5 l3 -28 z" fill="#c2412d"/>
+      <!-- neck -->
+      <rect x="392" y="156" width="16" height="22" fill="#d9a77f"/>
+      <!-- head -->
+      <ellipse cx="400" cy="138" rx="20" ry="24" fill="#d9a77f"/>
+      <!-- ears -->
+      <circle cx="380" cy="140" r="5" fill="#d9a77f"/>
+      <circle cx="420" cy="140" r="5" fill="#d9a77f"/>
+      <!-- hair -->
+      <path d="M380 136 Q378 108 400 110 Q422 108 420 136 Q412 120 400 121 Q388 120 380 136 Z" fill="#2a2018"/>
+      <!-- eyes -->
+      <circle cx="393" cy="136" r="2.4" fill="#222"/>
+      <circle cx="407" cy="136" r="2.4" fill="#222"/>
+      <!-- smile -->
+      <path d="M395 150 q5 3 10 0" stroke="#7a3b2e" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- speech bubble: One lever. -->
+    <g class="bub">
+      <rect x="315" y="20" width="170" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="2"/>
+      <path d="M394 71 L400 94 L412 71 Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="395" y="69" width="16" height="5" fill="#fff"/>
+      <text x="400" y="53" text-anchor="middle" font-size="22" font-weight="800" fill="#111">One lever.</text>
+    </g>
+  </g>
 </svg>

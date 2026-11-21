@@ -1,0 +1,43 @@
+/* Page-specific styles for the government-bonds explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Comparison tables ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp th:nth-child(2){color:var(--blue)}
+table.cmp th:nth-child(3){color:var(--gold)}
+table.cmp.three{min-width:680px}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
+table.cmp tbody tr:hover{background:#faf8f2}
+
+/* ---------- Horizontal bars (US spending) ---------- */
+.lease{display:grid;gap:16px;font-family:var(--sans)}
+.lrow .ll{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:6px;gap:10px}
+.lrow .ll b{color:var(--ink);white-space:nowrap}
+.ltrack{height:26px;background:#ece8df;position:relative}
+.ltrack i{position:absolute;left:0;top:0;bottom:0;width:0;min-width:3px;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.ltrack i.lo{background:var(--blue)}
+.ltrack i.lr{background:var(--red,#c2412d)}
+.ltrack i.lk{background:#5d5a55}
+.bigstat{display:flex;gap:18px;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid #eee;font-family:var(--sans)}
+.bigstat b{font-size:30px;letter-spacing:-.02em;color:var(--red,#c2412d);white-space:nowrap}
+.bigstat span{font-size:13px;color:var(--ink2);line-height:1.5}
+@media(max-width:600px){.bigstat{flex-direction:column;align-items:flex-start;gap:4px}}
+
+/* ---------- Singapore 99 / 1 split ---------- */
+.split2{display:grid;grid-template-columns:3fr 1fr;gap:14px;font-family:var(--sans);margin:4px 0}
+.split2 .part{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:20px 22px}
+.split2 .part .pv{font-family:var(--serif);font-size:38px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.split2 .part p{font-size:14px;line-height:1.5;color:var(--ink2);margin-top:10px}
+.split2 .part:nth-child(2){border-top-color:#8d8a84}
+@media(max-width:600px){.split2{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  .ltrack i{transition:none}
+}

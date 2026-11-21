@@ -16,7 +16,8 @@ window.BOTTLENECK_COUNTRIES = {
   countries: {
     "United States of America": {
       articles: [
-        { title: "Why the Fed fights its own bond market", href: "explainers/bond-market.html" }
+        { title: "Why the Fed fights its own bond market", href: "explainers/bond-market.html" },
+        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
       ]
     },
     "Taiwan": {
@@ -48,7 +49,8 @@ window.BOTTLENECK_COUNTRIES = {
     },
     "Singapore": {
       articles: [
-        { title: "The bank behind the currency market", href: "explainers/cls.html" }
+        { title: "The bank behind the currency market", href: "explainers/cls.html" },
+        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
       ]
     }
   }
