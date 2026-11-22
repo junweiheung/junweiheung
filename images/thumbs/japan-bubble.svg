@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .curve{stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 2s cubic-bezier(.4,0,.2,1) forwards}
+    .peak{opacity:0;animation:pop .4s ease .9s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes pop{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.curve{animation:none;stroke-dashoffset:0}.peak{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">The biggest bubble in history</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Japan's Nikkei: the rise, and the lost decades</text>
+
+  <!-- axis -->
+  <line x1="150" y1="760" x2="1480" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+
+  <!-- rise/fall shading -->
+  <rect x="150" y="240" width="560" height="520" fill="#15241a" opacity="0.6"/>
+  <rect x="710" y="240" width="770" height="520" fill="#2a1713" opacity="0.6"/>
+
+  <!-- the curve: climb to a peak near x=710, then long decline -->
+  <polyline class="curve" points="150,690 300,650 430,560 560,420 640,320 710,250 800,470 920,520 1050,600 1200,590 1340,650 1480,660"
+    fill="none" stroke="#c2412d" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- peak marker -->
+  <g class="peak">
+    <circle cx="710" cy="250" r="12" fill="#c2412d"/>
+    <text x="710" y="220" fill="#fff" font-size="30" font-weight="800" text-anchor="middle">38,915</text>
+  </g>
+
+  <text x="430" y="810" fill="#6f8a6f" font-size="22" text-anchor="middle">1985–89: the bubble inflates</text>
+  <text x="1090" y="810" fill="#a86a56" font-size="22" text-anchor="middle">1990s: the lost decades begin</text>
+</svg>

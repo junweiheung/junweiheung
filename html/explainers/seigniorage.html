@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lord's Cut: How Seigniorage Lets Money-Makers Profit — Bottleneck by Jun Wei</title>
+<meta name="description" content="Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage. An explainer on how it worked from medieval mints and coin debasement to modern central banks, bank deposits, stablecoins and CBDCs.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/scene-kit.css">
+<link rel="stylesheet" href="../../css/seigniorage.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Market infrastructure · Seigniorage</span></div>
+  <h1>The Lord's Cut</h1>
+  <p class="dek">Make a dollar for a few cents, then spend it at face value, and you keep the difference. That gap is <b>seigniorage</b>, the oldest profit in finance. Medieval lords took it by minting coins, and took more by quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take their own version of it. Here is how the same trick has run from the mint to the blockchain.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 27, 2026 · 10 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. What seigniorage is</a>
+    <a href="#s2">2. The mint and the shave</a>
+    <a href="#s3">3. When it runs in reverse</a>
+    <a href="#s4">4. Paper money</a>
+    <a href="#s5">5. Bank money</a>
+    <a href="#s6">6. Stablecoins</a>
+    <a href="#s7">7. Digital central-bank money</a>
+    <a href="#s8">8. The same cut, and its limit</a>
+    <a href="#sources">Notes</a>
+  </aside>
+
+  <p class="disc">This explains a single idea, seigniorage, and traces it across very different kinds of money. Historical silver-content figures are approximate and vary by source and mint. Modern figures (printing costs, central-bank remittances, stablecoin profits) change year to year; the numbers here show the mechanism, not a current quote. Company names appear as examples. Nothing here is investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li><b>Seigniorage</b> is the profit an issuer makes from putting money into circulation: the <b>face value</b> of the money minus the <b>cost</b> of creating it. The word comes from the Old French for a feudal lord's right to mint coins.</li>
+      <li>Early mints charged a fee to coin your metal. Rulers took a bigger, hidden cut by <b>debasement</b>, lowering the precious-metal content while keeping the face value. The Roman denarius fell from about <b>98% silver to roughly 2%</b> over three centuries. Small coins now run the <b>opposite way</b>: a US penny costs more to make than it's worth, a loss called reverse seigniorage.</li>
+      <li>Paper and digital money make the gap enormous: a <b>$100 note costs about nine cents</b> to print, so almost the whole $100 is seigniorage. A modern central bank earns it as interest on the assets it buys with new money, and hands the profit to the treasury.</li>
+      <li>The same logic now runs through <b>bank deposits</b>, <b>stablecoins</b> (take a dollar, hold Treasuries, keep the yield) and proposed <b>central-bank digital currencies</b>. In every case the issuer profits from money it created cheaply, and <b>over-issuing it causes inflation</b>, which is the natural limit.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>What seigniorage is</h2>
+  <p class="t dropcap">Here is the whole idea in one line. If you can create money for less than it's worth and spend it at full value, you pocket the difference. That difference is <b>seigniorage</b>. A $100 bill that costs about nine cents to print hands its issuer roughly $99.91 of pure profit the moment it's spent into the economy.</p>
+  <p class="t">The name is medieval. It comes from the Old French <i>seigneuriage</i>, the right of the <b>seigneur</b>, the lord, to mint money, and it has meant "the profit from issuing money" ever since. The thing being issued has changed many times, from silver coins to paper notes to numbers in a database, but the profit has the same shape every time: <b>face value minus cost to create</b>.</p>
+
+  <figure class="fig rv scene" id="outlookFig">
+    <div class="ft">The industry that always does well</div>
+    <div class="fs">Sector outlooks, with one exception</div>
+    <svg id="outlookSvg" viewBox="0 0 800 470" role="img" aria-label="Cartoon: an analyst presents an industry-outlook board. Five sectors (staples, financials, high tech, healthcare and travel) slide downwards with red arrows, while the money-printing chart shoots up and out of the top of its panel as coins and banknotes fly out. The analyst says the only industry that always seems to do well is the printing industry, specifically money printing."></svg>
+    <figcaption>Illustration by Jun Wei Heung, after a widely shared economics cartoon. Generic figure, not a real person. Every other sector's outlook slides; the money-printing line runs off the top, because its product costs almost nothing to make and sells at full face value. That's the joke, and the whole of seigniorage.</figcaption>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>The mint and the shave</h2>
+  <p class="t">For most of history money <i>was</i> the metal. A silver coin was worth roughly the silver in it. So where was the profit? Two places.</p>
+  <p class="t">First, an honest fee. If you brought raw silver to the ruler's mint to be struck into coins, the mint kept a small cut for the service. That fee was the original seigniorage, modest and openly charged.</p>
+  <p class="t">Second, the shave. A ruler who controlled the mint could <b>debase</b> the coinage: issue a coin that still said "one denarius" but contained less silver than before, melt in cheap base metal, and spend the extra coins at full value. It's seigniorage by stealth, and rulers short of money reached for it again and again. Rome did it for centuries.</p>
+
+  <figure class="fig rv" id="denariusFig">
+    <div class="ft">The incredible shrinking denarius</div>
+    <div class="fs">Silver content of Rome's main coin, Augustus to the late third century</div>
+    <svg id="denariusSvg" viewBox="0 0 680 270" role="img" aria-label="A bar chart of the silver fineness of the Roman denarius over time. It starts near 98% under Augustus, falls to about 80% under Nero and Trajan, 75% under Marcus Aurelius, 50% under Septimius Severus and Caracalla, and collapses to about 5% under Gallienus and 2% by the late third century."></svg>
+    <p class="den-why" id="denariusWhy"></p>
+    <figcaption>Approximate fineness; exact figures vary by source and mint. Each emperor who lowered the silver content spent the saved metal as new coins, taking the difference as seigniorage. Debase too far and people notice: prices rose and the good old coins vanished from circulation, hoarded away. Sources: numismatic histories of the denarius.</figcaption>
+  </figure>
+
+  <div class="note"><b class="h">Good money, bad money</b>When a debased coin and a full-silver one both count as "one denarius," people spend the bad one and keep the good one. The pure coins disappear into hoards and only the watered-down ones circulate. That tendency, later summed up as "bad money drives out good," is Gresham's law, and it's the recurring cost of pushing seigniorage too hard.</div>
+
+  <h2 id="s3"><span class="n">Part 3</span>When it runs in reverse</h2>
+  <p class="t">Seigniorage isn't always a profit. When the cost of making a coin meets or beats its face value, the issuer earns little, nothing, or even takes a loss. That's <b>negative, or reverse, seigniorage</b>, and it shows up in two very different places: at the honest top of the market, and at the humble bottom of it.</p>
+  <p class="t">At the top sit <b>bullion coins</b>, the opposite of a debased one. A coin like the American Gold Eagle carries a <b>$50 face value</b> but contains a full ounce of gold worth thousands of dollars. The face value is almost symbolic; the coin is worth its metal. Governments don't issue these to pocket a gap, because there isn't one. The mint sells them at the <b>gold price plus a small premium</b> that just covers striking and handling, so the buyer pays for the metal and the making. The whole point is that the metal is real, which is also why there's no seigniorage profit to take.</p>
+  <p class="t">At the bottom sit the <b>smallest everyday coins</b>, where the metal and manufacturing now cost <b>more than the coin is worth</b>. Here the issuer loses money on every piece it strikes. It's the mirror image of Roman debasement: instead of the coin being worth less than its stamp, the coin costs more than its stamp.</p>
+
+  <figure class="fig rv" id="reverseFig">
+    <div class="ft">Two ways seigniorage turns negative</div>
+    <div class="fs">When the metal, or the making, is worth as much as the coin</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Coin</th><th>Face value</th><th>What it's really worth / costs</th><th>Seigniorage</th></tr></thead>
+        <tbody>
+          <tr><td>American Gold Eagle (1 oz)</td><td>$50</td><td>Roughly the gold price, several thousand dollars; sold at metal value plus a mint premium</td><td>None by design: the buyer pays for the metal</td></tr>
+          <tr><td>US penny</td><td>1&cent;</td><td>About 3.7&cent; to make and distribute (2024)</td><td>Negative: a loss on every coin</td></tr>
+          <tr><td>US nickel</td><td>5&cent;</td><td>About 13.8&cent; to make and distribute (2024)</td><td>Negative: a loss of nearly 9&cent; each</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Figures approximate and from fiscal 2024 for the US coins. In 2024 the US Mint lost about <b>$85 million</b> on pennies alone, and the penny stopped being produced for circulation in 2025. Sources: US Mint 2024 Annual Report (via the Federal Reserve) and bullion-coin pricing.</figcaption>
+  </figure>
+
+  <div class="note warn"><b class="h">Why the humble coin lost its profit</b>A penny that cost a fraction of a cent to make a century ago now costs several cents, because metal and manufacturing got more expensive while the face value stayed frozen at one cent. The same pressure explains the whole arc of this story: as coins became loss-makers, seigniorage migrated to where production is almost free, first to <b>paper notes</b>, then to <b>digital money</b>. The profit didn't disappear; it moved to a cheaper medium.</div>
+
+  <h2 id="s4"><span class="n">Part 4</span>Paper money</h2>
+  <p class="t">Paper breaks the link between a coin and its metal, and that's exactly what makes the profit explode. A banknote is worth its face value by law and habit, not by the paper. So the cost of creating it falls to almost nothing while the face value stays whole.</p>
+  <p class="t">In the United States, the Treasury's Bureau of Engraving and Printing makes the notes and the Federal Reserve issues them. Printing a <b>$100 note costs only around nine cents</b>; the other $99.91 is seigniorage. But a central bank doesn't simply spend new money. It <b>buys assets</b> with it, mostly government bonds, and those assets pay interest. That interest, minus the Fed's running costs, is the modern form of seigniorage.</p>
+
+  <div class="note"><b class="h">Where the profit goes</b>The Federal Reserve isn't allowed to keep its profit. After expenses, it <b>remits the surplus to the US Treasury</b>, so the seigniorage ends up funding the government. In 2021 that remittance was about <b>$76 billion</b>. (When interest rates jumped from 2022, the Fed's own interest costs rose above its income and the remittances stopped for a time, a reminder that seigniorage isn't guaranteed.)</div>
+
+  <h2 id="s5"><span class="n">Part 5</span>Bank money</h2>
+  <p class="t">Most money today isn't cash at all. It's the balance in your bank account, created when banks make loans. Commercial banks don't print notes, so their version of the profit is different, but it rhymes with seigniorage.</p>
+  <p class="t">When a bank lends, it credits the borrower's account with new deposit money, backed by the loan it now holds as an asset. The bank's profit is the <b>interest it charges on that lending</b>, over what it pays to fund itself. It is earning a return on money that largely came into being with a keystroke. Economists debate whether to call bank profit true seigniorage, but the family resemblance is clear: create the medium cheaply, earn on it at full value.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Stablecoins</h2>
+  <p class="t">The newest issuers look surprisingly like the oldest. A <b>stablecoin</b> such as USDT promises to be worth one dollar (see our <a href="stablecoins.html">explainer on stablecoins</a>). Here is how the issuer profits from making it.</p>
+
+  <figure class="fig rv" id="stableFig">
+    <div class="ft">How a stablecoin issuer earns seigniorage</div>
+    <div class="fs">Take a real dollar, hold a Treasury, keep the interest</div>
+    <div class="flow">
+      <div class="fstep tag"><div class="fl">Step 1 · mint</div><p>You send the issuer <b>$1</b>. It creates <b>1 token</b> and gives it to you. Creating the token costs almost nothing.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">Step 2 · invest</div><p>The issuer takes your dollar and buys a <b>US Treasury bill</b> that pays interest.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">Step 3 · keep the yield</div><p>You hold a token worth $1; the issuer holds a bond earning yield and <b>keeps the interest</b>. Multiply by billions of tokens and the profit is large.</p></div>
+    </div>
+    <figcaption>This is seigniorage in all but name: the token circulates at face value, costs almost nothing to issue, and the backing it was created against earns a return for the issuer. In 2024 the USDT issuer Tether reported roughly <b>$13 billion</b> in profit, against well over $100 billion of US Treasuries. Source: Tether attestations and reporting.</figcaption>
+  </figure>
+
+  <p class="t">The catch, as with any issuer, is the promise to redeem. The dollar you handed over is now tied up in a bond; if too many holders ask for their dollars back at once and the issuer can't sell the backing fast enough, the peg can break. That risk is the price of the profit.</p>
+
+  <h2 id="s7"><span class="n">Part 7</span>Digital central-bank money</h2>
+  <p class="t">Several central banks are exploring a <b>central-bank digital currency</b> (CBDC): official money issued as digital tokens rather than paper. For seigniorage, a CBDC works like physical cash, with one difference. There's no paper or ink, so the <b>cost of issuing falls to almost zero</b>. The same face-value-minus-cost profit stays with the central bank, and the same assets sit behind it.</p>
+  <p class="t">The arguments around CBDCs are mostly about control, privacy and the role of banks, not the seigniorage, which looks much like it does for cash today. But it's a clean illustration of the trend across this whole story: as money grows more abstract, the <b>cost of making it keeps falling toward zero</b>, and the profit in issuing it keeps growing.</p>
+
+  <figure class="fig rv" id="keepFig">
+    <div class="ft">What the issuer keeps</div>
+    <div class="fs">Profit as a share of each unit's face value, by kind of money</div>
+    <svg id="keepSvg" viewBox="0 0 680 250" role="img" aria-label="Bars showing how much of each unit's face value the issuer keeps as profit. An honest silver coin keeps only about 2%, the rest being real metal. A coin debased to half silver keeps about 50%. A $100 note keeps almost 100%, since it costs about nine cents. A stablecoin keeps close to 100% to mint and earns yield on the backing."></svg>
+    <div class="legend">
+      <span><i style="background:#5f8a63"></i>Kept by the issuer</span>
+      <span><i style="background:#9a9385"></i>Real cost / backing</span>
+    </div>
+    <figcaption>Illustrative. As money moves from metal to paper to digits, the cost of creating a unit collapses and the issuer's share climbs toward the whole face value. The stablecoin keeps almost all of it to mint, then also earns the yield on the dollar of backing.</figcaption>
+  </figure>
+
+  <h2 id="s8"><span class="n">Part 8</span>The same cut, and its limit</h2>
+  <p class="t">Line the eras up and the pattern is one idea wearing different clothes.</p>
+
+  <figure class="fig rv" id="cmpFig">
+    <div class="ft">One profit, many forms</div>
+    <div class="fs">Who issues, what it costs, where the profit comes from (or goes)</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Form of money</th><th>Issuer</th><th>Where the seigniorage comes from</th></tr></thead>
+        <tbody>
+          <tr><td>Silver coin</td><td>The ruler's mint</td><td>A small fee to strike your metal into coins.</td></tr>
+          <tr><td>Debased coin</td><td>The ruler's mint</td><td>Less silver per coin, same face value; the saved metal is spent as extra coins.</td></tr>
+          <tr><td>Bullion coin</td><td>Modern mint</td><td>None by design: sold at metal value plus a premium, so the metal is fully paid for.</td></tr>
+          <tr><td>Small coin (penny)</td><td>Modern mint</td><td>Negative: metal and making cost more than the face value, so the mint loses money.</td></tr>
+          <tr><td>Paper note</td><td>Central bank / treasury</td><td>Face value far above the cent-level printing cost; interest on the bonds bought with new money, remitted to the treasury.</td></tr>
+          <tr><td>Bank deposit</td><td>Commercial bank</td><td>Interest charged on lending that created the deposit money.</td></tr>
+          <tr><td>Stablecoin</td><td>Private issuer</td><td>Near-zero cost to mint; yield on the Treasuries held as backing.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Same idea, different media. The profit is largest where the money costs almost nothing to make (notes, digital tokens) and vanishes or turns negative where the metal is real (bullion) or the coin is cheap but costly to strike (the penny).</figcaption>
+  </figure>
+
+  <p class="t">There is a hard limit, and it's the same one the Roman emperors hit. Seigniorage is only profitable while the money holds its value. Create <b>too much</b> of it and you flood the economy with claims on the same goods, and prices rise: that's <b>inflation</b>. A debased coin and an over-printed currency fail the same way, by making each unit worth less than before. Push it to an extreme and you get the hyperinflations where money becomes nearly worthless.</p>
+
+  <p class="pull">Seigniorage is the quiet profit in being the one who makes the money. Its only enemy is making too much of it.</p>
+
+  <p class="t">So whenever something new claims to be money, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q" data-answer="The gap between what the money is worth and what it cost to create, captured by whoever issues it. A mint took a fee and, dishonestly, shaved silver from coins; a central bank earns interest on the bonds it buys with newly issued cash and hands the profit to the treasury; a bank earns interest on deposit money it created by lending; a stablecoin issuer invests your dollar in Treasuries and keeps the yield. Same move, different medium: issue it cheaply, earn on it at face value."><div class="qn">QUESTION 1</div><p>Where exactly does the issuer's profit come from?</p></div>
+    <div class="q" data-answer="Over-issuance, which shows up as inflation. Seigniorage only works while each unit holds its value. Create too much and you have more claims chasing the same goods, so prices rise and each unit buys less, which is exactly what debasing a coin did centuries ago. The Roman denarius lost almost all its silver and its value with it; an over-printed paper currency fails the same way, in the extreme as hyperinflation. The profit and the danger are two sides of the same act."><div class="qn">QUESTION 2</div><p>What stops the issuer from just making unlimited money?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li>Definition and etymology of seigniorage (the Old French <i>seigneuriage</i>, a lord's right to mint): <a href="https://en.wikipedia.org/wiki/Seigniorage" target="_blank" rel="noopener">Wikipedia</a> and <a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/le-seigneuriage" target="_blank" rel="noopener">Banque de France</a>; the face-value-minus-cost framing: <a href="https://www.investopedia.com/terms/s/seigniorage.asp" target="_blank" rel="noopener">Investopedia</a> and <a href="https://www.econlib.org/seigniorage/" target="_blank" rel="noopener">Econlib</a>.</li>
+    <li>Debasement of the Roman denarius, from about 98% silver under Augustus to roughly 2% by the late third century (approximate, varying by source): <a href="https://en.wikipedia.org/wiki/Debasement" target="_blank" rel="noopener">Wikipedia, "Debasement"</a>, <a href="https://coinweek.com/ngc-ancients-the-decline-of-roman-imperial-silver-coinage-part-i/" target="_blank" rel="noopener">CoinWeek / NGC</a>, and <a href="https://www.worldhistory.org/article/1338/follow-the-money--the-coinage-of-later-imperial-ro/" target="_blank" rel="noopener">World History Encyclopedia</a>.</li>
+    <li>Gresham's law ("bad money drives out good"): <a href="https://en.wikipedia.org/wiki/Gresham%27s_law" target="_blank" rel="noopener">Wikipedia</a>.</li>
+    <li>Negative (reverse) seigniorage on US coins: the penny costing about 3.69 cents and the nickel about 13.78 cents to produce in fiscal 2024, the ~$85 million penny loss, and the end of penny production in 2025 (US Mint 2024 Annual Report): Federal Reserve Bank of Richmond, <a href="https://www.richmondfed.org/publications/research/economic_brief/2025/eb_25-27" target="_blank" rel="noopener">"Rounding Up: The Impact of Phasing Out the Penny"</a>, and <a href="https://en.wikipedia.org/wiki/Penny_debate_in_the_United_States" target="_blank" rel="noopener">Wikipedia</a>.</li>
+    <li>Bullion coins carrying a symbolic face value and sold at metal value plus a mint premium (the one-ounce American Gold Eagle's $50 face value against its gold content worth thousands): <a href="https://www.bullionstandard.com/knowledge-center/coin-guide/what-are-bullion-coins" target="_blank" rel="noopener">Bullion Standard</a> and <a href="https://findbullionprices.com/blog/gold-eagle-premiums-why-american-gold-eagle-coins-cost-more-than-spot/" target="_blank" rel="noopener">FindBullionPrices</a>.</li>
+    <li>Cost to print a $100 note (about nine cents) and US currency production: <a href="https://www.federalreserve.gov/faqs/currency_12771.htm" target="_blank" rel="noopener">Federal Reserve</a> and <a href="https://www.econlib.org/seigniorage/" target="_blank" rel="noopener">Econlib</a>.</li>
+    <li>The Federal Reserve buying assets with issued money and remitting its surplus to the Treasury (about $76 billion in 2021, then losses from 2022 as rates rose): <a href="https://www.federalreserve.gov/aboutthefed/appendix-a-currency.htm" target="_blank" rel="noopener">Federal Reserve</a> and <a href="https://fraser.stlouisfed.org/files/docs/historical/congressional/crs_federalreserve_20230123.pdf" target="_blank" rel="noopener">Congressional Research Service via FRASER</a>.</li>
+    <li>Stablecoin issuers taking in dollars, holding US Treasuries and keeping the yield; Tether's roughly $13 billion 2024 profit and $100 billion-plus Treasury holdings: <a href="https://www.investopedia.com/stablecoin-issuer-tether-reports-us-treasury-stash-first-half-of-2024-8686758" target="_blank" rel="noopener">Investopedia</a> and <a href="https://www.spark.money/tools/stablecoin-issuer-revenue-comparison" target="_blank" rel="noopener">Spark</a>.</li>
+    <li>Seigniorage and the risk that over-issuing money causes inflation: <a href="https://www.investopedia.com/terms/s/seigniorage.asp" target="_blank" rel="noopener">Investopedia</a> and <a href="https://www.dallasfed.org/~/media/documents/research/er/1998/er9803b.pdf" target="_blank" rel="noopener">Federal Reserve Bank of Dallas</a>.</li>
+    <li>The framing of physical cash, bank money, stablecoins and CBDCs as forms of the same profit follows the source notes this explainer was built from.</li>
+  </ul>
+  <p class="end">Educational only. Historical figures are approximate; modern figures change over time. Nothing here is investment, legal or tax advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">The shrinking denarius</a><br><a href="#s3">When it runs in reverse</a><br><a href="#s6">Stablecoins</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/seigniorage.js"></script>
+</body>
+</html>

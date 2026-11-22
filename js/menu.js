@@ -42,7 +42,9 @@
     try { if (new URL(a.href).pathname.replace(/index\.html$/, '') === here) a.setAttribute('aria-current', 'page'); } catch (e) {}
   });
 
-  // the three newest explainers, from the site's feed (same folder as index.html)
+  // the three newest explainers, from the site's feed (same folder as index.html).
+  // Fetch and insert this up front, before the menu is ever opened, so the block
+  // is part of the same staggered reveal as the links rather than popping in late.
   const home = sheet.querySelector('a.base');
   let latestDone = false;
   function addLatest() {
@@ -60,15 +62,19 @@
         a.append(sm, document.createTextNode((it._bottleneck && it._bottleneck.short) || it.title));
         box.appendChild(a);
       });
-      box.classList.add('stag');
       box.style.setProperty('--i', i + 1);
-      sheet.insertBefore(box, home);
       home.style.setProperty('--i', i + 2);
-      // if the menu is already open, let the new block animate in too
-      if (menu.classList.contains('is-open')) requestAnimationFrame(() => box.getBoundingClientRect());
+      const openNow = menu.classList.contains('is-open');
+      // if the menu is already open (slow fetch), insert hidden first and force a
+      // reflow so the block transitions in rather than popping to its final state
+      box.classList.add('stag');
+      sheet.insertBefore(box, home);
+      if (openNow && !reduced) { box.getBoundingClientRect(); }
     }).catch(() => {});
   }
   sheet.querySelectorAll('.stag').forEach((el, k) => el.style.setProperty('--i', k));
+  // load the latest block now so it's in place (hidden) before the first open
+  addLatest();
 
   let closeTimer = 0;
   function open() {

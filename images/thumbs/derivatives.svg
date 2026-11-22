@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .payoff{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+    .fuse{transform-origin:left;animation:pulse 1.8s ease-in-out infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.payoff{animation:none;stroke-dashoffset:0}.fuse{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Financial weapons of mass destruction?</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Futures, options and swaps, and how they blow up</text>
+
+  <!-- axes -->
+  <line x1="200" y1="280" x2="200" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <line x1="200" y1="620" x2="1420" y2="620" stroke="#3a3a3f" stroke-width="3"/>
+  <text x="170" y="300" fill="#8d8a84" font-size="22" text-anchor="end">gain</text>
+  <text x="170" y="755" fill="#8d8a84" font-size="22" text-anchor="end">loss</text>
+
+  <!-- strike line -->
+  <line x1="720" y1="280" x2="720" y2="700" stroke="#4a4a50" stroke-width="2" stroke-dasharray="6 10"/>
+  <text x="720" y="740" fill="#8d8a84" font-size="22" text-anchor="middle">strike</text>
+
+  <!-- option payoff: flat then rising (capped loss, open upside) -->
+  <polyline class="payoff" points="200,680 720,680 1360,320" fill="none" stroke="#c2412d" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <text x="430" y="720" fill="#8d8a84" font-size="22" text-anchor="middle">lose only the premium</text>
+  <text x="1120" y="420" fill="#fff" font-size="26" font-weight="700" class="fuse">upside open</text>
+
+  <text x="120" y="840" fill="#8d8a84" font-size="22">Buffett, 2002: "time bombs… potentially lethal."</text>
+</svg>

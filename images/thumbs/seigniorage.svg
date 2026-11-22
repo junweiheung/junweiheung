@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .bar{transform:scaleY(0);transform-origin:bottom;animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+    .b2{animation-delay:.12s}.b3{animation-delay:.24s}.b4{animation-delay:.36s}.b5{animation-delay:.48s}.b6{animation-delay:.6s}
+    .coin{opacity:0;animation:fade .5s ease .7s forwards}
+    @keyframes rise{to{transform:scaleY(1)}}
+    @keyframes fade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.bar{animation:none;transform:scaleY(1)}.coin{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">The lord's cut</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Seigniorage: the profit in making money</text>
+
+  <!-- baseline -->
+  <line x1="150" y1="760" x2="1150" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+
+  <!-- descending silver-content bars (the shrinking denarius) -->
+  <g>
+    <rect class="bar"    x="170" y="300" width="120" height="460" fill="#9a9385"/>
+    <rect class="bar b2" x="330" y="360" width="120" height="400" fill="#9a9385"/>
+    <rect class="bar b3" x="490" y="400" width="120" height="360" fill="#c08a2d"/>
+    <rect class="bar b4" x="650" y="530" width="120" height="230" fill="#c08a2d"/>
+    <rect class="bar b5" x="810" y="690" width="120" height="70"  fill="#c2412d"/>
+    <rect class="bar b6" x="970" y="730" width="120" height="30"  fill="#c2412d"/>
+  </g>
+  <text x="230" y="285" fill="#cfcbc3" font-size="22" text-anchor="middle">98%</text>
+  <text x="1030" y="715" fill="#cfcbc3" font-size="22" text-anchor="middle">2%</text>
+  <text x="150" y="810" fill="#8d8a84" font-size="22">Silver in the Roman denarius, Augustus → 3rd century</text>
+
+  <!-- a coin on the right -->
+  <g class="coin">
+    <circle cx="1340" cy="400" r="120" fill="#1a1a1e" stroke="#c08a2d" stroke-width="6"/>
+    <text x="1340" y="392" fill="#c08a2d" font-size="54" font-weight="800" text-anchor="middle">$</text>
+    <text x="1340" y="446" fill="#8d8a84" font-size="24" text-anchor="middle">= 9¢ cost</text>
+  </g>
+</svg>

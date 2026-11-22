@@ -383,14 +383,14 @@ window.BOTTLENECK = {
     {
       id: "chip-share",
       href: "explainers/chip-share.html",
-      title: "Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia",
+      title: "Three Companies, One Industry: AMD vs Intel vs Nvidia",
       short: "AMD vs Intel vs Nvidia",
       kicker: "Explainer",
       topic: "Semiconductors",
       category: "Chips & hardware",
       date: "2026-11-24",
       readMins: 10,
-      dek: "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      dek: "Intel once owned the processor. Today the fight splits across different markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
       summary: "Market share across data centre, client, gaming and embedded, and how the lead changed hands",
       thumb: "../images/thumbs/chip-share.svg",
       stats: [
@@ -405,6 +405,77 @@ window.BOTTLENECK = {
         { step: "Gaming: GPUs, consoles & handhelds", companies: ["amd", "intel", "nvidia"] },
         { step: "Embedded: FPGAs & adaptive SoCs", companies: ["amd"] }
       ]
+    },
+    {
+      id: "derivatives",
+      href: "explainers/derivatives.html",
+      title: "Financial Weapons of Mass Destruction? How Derivatives Work",
+      short: "How derivatives work",
+      kicker: "Explainer",
+      topic: "Derivatives",
+      category: "Market infrastructure",
+      date: "2026-11-25",
+      readMins: 9,
+      dek: "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      summary: "Futures, options and swaps, hedging versus speculation, and why Buffett warned about them",
+      thumb: "../images/thumbs/derivatives.svg",
+      stats: [
+        { big: "3", text: "Main building blocks: futures (fix a price now for a trade later), options (the right but not the duty to trade), and swaps (exchange one cash-flow stream for another)." },
+        { big: "2002", text: "Year Warren Buffett called derivatives \"financial weapons of mass destruction\" in Berkshire Hathaway's annual letter." },
+        { big: "$3.6B", text: "Rescue arranged for the hedge fund Long-Term Capital Management in 1998 after its derivative bets unwound." },
+        { big: "$182B", text: "US government support committed to insurer AIG in 2008, much of it tied to credit-default-swap guarantees it couldn't cover." }
+      ],
+      // A concept explainer about market infrastructure, not a company profile,
+      // so it has no country link and contributes nothing to the company map.
+      chain: []
+    },
+    {
+      id: "japan-bubble",
+      href: "explainers/japan-bubble.html",
+      title: "The Biggest Bubble in History: Japan's Lost Decades",
+      short: "Japan's lost decades",
+      kicker: "Explainer",
+      topic: "Asset bubbles",
+      category: "Economic history",
+      date: "2026-11-26",
+      readMins: 14,
+      dek: "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
+      summary: "The post-war miracle, the Plaza Accord, the land-and-share feedback loop, the burst, zombie loans and QE",
+      thumb: "../images/thumbs/japan-bubble.svg",
+      stats: [
+        { big: "38,915", text: "The Nikkei 225's peak, reached at the end of December 1989. One broker predicted it would hit 80,000 by 1995; instead it fell about 60% by 1992." },
+        { big: "+5,000%", text: "Rise in Japanese land prices from 1956 to 1986, falling in only one of those years, on a myth that land could only go up." },
+        { big: "360 → ~120", text: "Yen per US dollar: the post-war fixed rate, and roughly where it went after the 1985 Plaza Accord, which doubled the price of Japanese exports." },
+        { big: "~0.8%", text: "Japan's average annual real growth across the two lost decades, down from around 10% a year during the post-war miracle." }
+      ],
+      // An economic-history explainer about one country, linked to Japan on the
+      // country map. It profiles no single company, so it adds nothing to the
+      // company map (companies like Sony and Toyota appear only as examples).
+      chain: []
+    },
+    {
+      id: "seigniorage",
+      href: "explainers/seigniorage.html",
+      title: "The Lord's Cut: How Seigniorage Lets Money-Makers Profit",
+      short: "The profit in making money",
+      kicker: "Explainer",
+      topic: "Seigniorage",
+      category: "Market infrastructure",
+      date: "2026-11-27",
+      readMins: 10,
+      dek: "Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage, the oldest profit in finance. Medieval lords took it by minting coins and quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take a version of it. Here is how the same trick has worked from the mint to the blockchain.",
+      summary: "The profit from issuing money, from coin debasement to central banks, bank deposits, stablecoins and CBDCs",
+      thumb: "../images/thumbs/seigniorage.svg",
+      stats: [
+        { big: "~9¢", text: "Rough cost to the US to print a $100 note; the issuer captures almost the entire $100 of face value as seigniorage (Federal Reserve)." },
+        { big: "98% → 2%", text: "Silver content of the Roman denarius from Augustus to the late third century, as emperors debased the coin to fund spending." },
+        { big: "$76B", text: "Profit the Federal Reserve remitted to the US Treasury in 2021, largely interest on the assets behind the money it issued." },
+        { big: "~$13B", text: "Tether's reported 2024 profit, earned by holding US Treasuries against the USDT it issues and keeping the yield." }
+      ],
+      // A concept explainer about how money issuers profit, from minting to
+      // stablecoins. Not a company or single-country profile: no country link,
+      // and nothing added to the company map.
+      chain: []
     }
   ],
 

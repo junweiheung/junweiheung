@@ -1,0 +1,80 @@
+/* Page-specific styles for the seigniorage explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box (plus a warning variant) ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.note.warn{border-left-color:var(--red,#c2412d)}
+.note.warn b.h{color:var(--red,#c2412d)}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Comparison tables ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:520px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:160px}
+table.cmp tbody tr:hover{background:#faf8f2}
+
+/* ---------- Vertical flow of steps (shared look) ---------- */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:30px 0;font-family:var(--sans)}
+.fstep{background:#0d0d0f;color:#fff;padding:18px 22px;width:100%;max-width:560px;box-sizing:border-box;transition:transform .25s ease,box-shadow .25s ease}
+.fstep .fl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.fstep p{font-size:15.5px;line-height:1.5;color:#e7e3da}
+.fstep:not(.tag) p b{color:#fff}
+.fstep:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.farrow{width:2px;height:26px;background:var(--rule);position:relative}
+.farrow::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--rule)}
+.flow > *{opacity:0}
+.flow > .fstep{transform:translateY(16px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.flow > .farrow{transform:scaleY(0);transform-origin:top;transition:opacity .25s ease,transform .35s ease}
+.flow.in-view > *,.fig.in-view .flow > *{opacity:1;transition-delay:calc(var(--i, 0) * 140ms)}
+.flow.in-view > .fstep,.fig.in-view .flow > .fstep{transform:none}
+.flow.in-view > .farrow,.fig.in-view .flow > .farrow{transform:scaleY(1)}
+
+/* ---------- Denarius chart: the per-bar hover caption ---------- */
+.den-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);border-left:3px solid var(--gold);padding:8px 0 8px 14px;margin:14px 0 2px;min-height:2.6em}
+
+/* ---------- "What the issuer keeps" labels fade in after the bars grow ---------- */
+.keep-lab{opacity:0;animation:keepFade .4s ease forwards;animation-delay:calc(.5s + var(--i,0)*120ms)}
+@keyframes keepFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.keep-lab{opacity:1;animation:none}}
+
+/* ---------- Legend row under a figure ---------- */
+.fig .legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px;font-family:var(--sans);font-size:12.5px;color:var(--ink2)}
+.fig .legend span{display:inline-flex;align-items:center;gap:6px}
+.fig .legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+@media (prefers-reduced-motion:reduce){
+  .flow > *{opacity:1;transform:none;transition:none}
+  .fstep{transition:none}
+}
+
+/* ---------- "The industry that always does well" cartoon ----------
+   Nothing moves until the figure is in view (.in-view on the .scene). Order: tiles appear, the five
+   sector lines slide down and get red badges, then the money line climbs out of its panel, coins
+   burst out, and the analyst's quote pops up. Coins and notes keep gently moving afterwards. */
+#outlookSvg{width:100%;height:auto;display:block}
+#outlookSvg text{font-family:Inter,sans-serif}
+#outlookSvg .ol-tile{opacity:0}
+#outlookSvg .ol-down,#outlookSvg .ol-up{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400)}
+#outlookSvg .ol-badge,#outlookSvg .ol-coin,#outlookSvg .ol-quote,#outlookSvg .ol-head{opacity:0;transform-box:fill-box;transform-origin:center}
+#outlookSvg .ol-note{opacity:0}
+.scene.in-view #outlookSvg .ol-tile{animation:olIn .45s ease forwards;animation-delay:calc(var(--i,0) * .1s)}
+.scene.in-view #outlookSvg .ol-down{animation:olDraw .9s ease forwards;animation-delay:calc(.4s + var(--i,0) * .15s)}
+.scene.in-view #outlookSvg .ol-badge{animation:olPop .35s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:calc(1.2s + var(--i,0) * .15s)}
+.scene.in-view #outlookSvg .ol-up{animation:olDraw 1.5s cubic-bezier(.5,0,.3,1) 2.1s forwards}
+.scene.in-view #outlookSvg .ol-head{animation:olPop .3s ease 3.5s forwards}
+.scene.in-view #outlookSvg .ol-coin{animation:olPop .4s cubic-bezier(.3,1.6,.5,1) forwards,olBob 2.4s ease-in-out infinite;animation-delay:calc(3.5s + var(--k,0) * .08s),calc(4s + var(--k,0) * .3s)}
+.scene.in-view #outlookSvg .ol-note{animation:olPrint 2.4s linear infinite;animation-delay:calc(2.1s + var(--k,0) * .8s)}
+.scene.in-view #outlookSvg .ol-quote{animation:olPop .5s cubic-bezier(.3,1.4,.5,1) 4s forwards}
+@keyframes olIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes olDraw{to{stroke-dashoffset:0}}
+@keyframes olPop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+@keyframes olBob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes olPrint{0%{opacity:0;transform:translateX(-14px)}15%{opacity:1}70%{opacity:1;transform:translateX(26px)}100%{opacity:0;transform:translateX(34px)}}
+@media (prefers-reduced-motion:reduce){
+  #outlookSvg .ol-tile,#outlookSvg .ol-badge,#outlookSvg .ol-coin,#outlookSvg .ol-quote,#outlookSvg .ol-head{opacity:1;transform:none;animation:none!important}
+  #outlookSvg .ol-down,#outlookSvg .ol-up{stroke-dashoffset:0;animation:none!important}
+  #outlookSvg .ol-note{animation:none!important;opacity:1;transform:translateX(26px)}
+  #outlookSvg .ol-note:not(:first-of-type){display:none}
+}

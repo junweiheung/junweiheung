@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financial Weapons of Mass Destruction? How Derivatives Work — Bottleneck by Jun Wei</title>
+<meta name="description" content="A derivative is a contract whose value comes from something else. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. An explainer on futures, options and swaps, hedging versus speculation, and why Warren Buffett called them financial weapons of mass destruction after LTCM, AIG and 2008.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/derivatives.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Market infrastructure · Derivatives</span></div>
+  <h1>Financial Weapons of Mass Destruction?</h1>
+  <p class="dek">A derivative is a contract whose value comes from something else: a price, a rate, an index. A farmer uses one to lock in next season's wheat price; an airline uses one to cap its fuel bill. The same contracts also let a trader bet huge sums with little money down. In 2002 Warren Buffett called them "financial weapons of mass destruction." Here is what they are, why they're useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 9 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. What a derivative is</a>
+    <a href="#s2">2. The three building blocks</a>
+    <a href="#s3">3. Hedging vs speculation</a>
+    <a href="#s4">4. Buffett's warning</a>
+    <a href="#s5">5. When derivatives blew up</a>
+    <a href="#s6">6. Open interest</a>
+    <a href="#sources">Notes</a>
+  </aside>
+
+  <p class="disc">This explains what derivatives are and how they're used, in plain terms, with simplified numbers to show mechanisms rather than exact market prices. The historical episodes (LTCM, AIG, 2008) are summarised; the full stories are more involved than any one cause. Where I describe risks, I am setting out how a tool can fail when misused, not making a claim that any particular product or firm will. This is educational, not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A derivative is a <b>contract that settles at a future date</b>, and its value is <b>derived</b> from an underlying thing: a commodity price, an interest rate, a stock, an index.</li>
+      <li>Three building blocks cover most of the market: <b>futures</b> (fix a price now for a trade later), <b>options</b> (the right, not the duty, to trade at a set price), and <b>swaps</b> (exchange one stream of payments for another).</li>
+      <li>The same contract can <b>reduce</b> risk or <b>add</b> it. A user with real exposure <b>hedges</b>; a trader with none <b>speculates</b>, often with heavy <b>leverage</b>, controlling a large position for a small outlay.</li>
+      <li>Buffett's 2002 "weapons of mass destruction" warning was about that leverage plus <b>interconnection</b>: when big players owe each other on derivatives, one failure can cascade. <b>LTCM</b> (1998), <b>AIG</b> (2008) and the wider 2008 crisis all showed it.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>What a derivative is</h2>
+  <p class="t dropcap">Buy a share of a company and you own something directly. A <b>derivative</b> is one step removed: it's a <b>contract</b> whose value is <i>derived</i> from the price of something else, the "underlying." The underlying can be almost anything with a price that moves: wheat, oil, a currency, an interest rate, a stock, a market index. You don't have to own the underlying to trade a derivative on it.</p>
+  <p class="t">The common thread is <b>time</b>. A derivative is an agreement made today about a transaction that settles <b>later</b>, at a price or on terms fixed now. That lets two parties move a future risk between them: one of them wants certainty about a future price, and the other is willing to take the other side. Everything else is a variation on that idea.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>The three building blocks</h2>
+  <p class="t">Most derivatives are built from three basic kinds of contract. Learn these and the rest are combinations.</p>
+
+  <figure class="fig rv" id="typesFig">
+    <div class="ft">Futures, options and swaps</div>
+    <div class="fs">What each contract commits you to</div>
+    <div class="tbl-wrap">
+      <table class="cmp three">
+        <thead><tr><th>Contract</th><th>Futures</th><th>Options</th><th>Swaps</th></tr></thead>
+        <tbody>
+          <tr><td>What it is</td><td>An agreement to buy or sell something at a <b>set price on a set future date</b></td><td>The <b>right, not the obligation</b>, to buy or sell at a set price before a deadline</td><td>An agreement to <b>exchange one stream of payments for another</b> over time</td></tr>
+          <tr><td>Do you have to act?</td><td>Yes. Both sides are committed</td><td>No. The holder chooses whether to use it; they pay a fee (the "premium") up front</td><td>Yes, for the life of the deal</td></tr>
+          <tr><td>Everyday example</td><td>A farmer locks in a wheat price for the autumn harvest now</td><td>You pay for the right to buy a stock at $100; if it jumps to $140 you exercise, if it falls you walk away</td><td>Two firms swap a floating interest rate for a fixed one so each gets the payments it prefers</td></tr>
+          <tr><td>Why use it</td><td>Certainty: you know the price in advance</td><td>Insurance: cap your downside, keep the upside, for the cost of the premium</td><td>Fit: convert a payment you have into the kind you want</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Futures bind both sides; an option binds only the seller, giving the buyer a choice for an up-front premium; a swap trades two ongoing cash-flow streams. Nearly every exotic-sounding derivative is some mix of these three.</figcaption>
+  </figure>
+
+  <figure class="fig rv" id="payoffFig">
+    <div class="ft">Why an option is like insurance</div>
+    <div class="fs">Payoff of the right to buy a stock at $100</div>
+    <svg id="payoffSvg" viewBox="0 0 640 320" role="img" aria-label="A payoff chart. Below a stock price of one hundred dollars the option holder loses only the premium they paid, a small flat amount. Above one hundred dollars the payoff rises in a straight line as the stock climbs, so losses are capped but gains are not.">
+      <!-- axes -->
+      <line x1="70" y1="40" x2="70" y2="250" stroke="#c9c3b6" stroke-width="1.5"/>
+      <line x1="70" y1="210" x2="600" y2="210" stroke="#c9c3b6" stroke-width="1.5"/>
+      <!-- zero line label -->
+      <text x="60" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">$0</text>
+      <text x="60" y="44" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">gain</text>
+      <text x="60" y="248" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">loss</text>
+      <!-- strike marker -->
+      <line x1="300" y1="40" x2="300" y2="250" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="3 4"/>
+      <text x="300" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#8a8373">strike $100</text>
+      <!-- payoff line: flat (premium loss) then rising -->
+      <polyline points="70,230 300,230 560,70" fill="none" stroke="#c2412d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- premium loss label -->
+      <text x="185" y="248" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#8a8373">lose only the premium</text>
+      <!-- upside label -->
+      <text x="470" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#1f1f22" font-weight="600">upside open</text>
+      <!-- x axis label -->
+      <text x="335" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8a8373">stock price at expiry →</text>
+    </svg>
+    <figcaption>Simplified. The most you can lose by buying this call option is the premium you paid, no matter how far the stock falls. If the stock rises well above $100, your gain keeps climbing. Capped loss, open upside: that asymmetry is what people pay the premium for.</figcaption>
+  </figure>
+
+  <h2 id="s3"><span class="n">Part 3</span>Hedging vs speculation</h2>
+  <p class="t">The same contract can make the financial system <b>safer</b> or <b>riskier</b>. What changes is who's using it and why. Two people can hold the identical futures contract for opposite reasons.</p>
+  <p class="t">A <b>hedger</b> already has a real-world exposure and uses a derivative to cancel it out. An airline knows it must buy jet fuel for years to come, so it buys contracts that lock in the price; if fuel spikes, the gain on the contract offsets the higher bill. A <b>speculator</b> has no such exposure. They take the position purely to profit from a price move, often using <b>leverage</b>: a small deposit controls a large contract, so gains and losses are both magnified.</p>
+
+  <figure class="fig rv" id="useFig">
+    <div class="ft">One contract, two motives</div>
+    <div class="fs">The split that decides whether a derivative dampens or amplifies risk</div>
+    <div class="flow">
+      <div class="fstep tag"><div class="fl">The contract</div><p>A futures contract on oil at a fixed price for delivery in six months.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">Used by a hedger</div><p>An <b>airline</b> buys it to lock its fuel cost. It has a real exposure; the contract <b>removes</b> uncertainty. Risk goes down.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">Used by a speculator</div><p>A <b>trader</b> with no fuel to buy takes the same position with <b>borrowed size</b>, betting on the price. The contract <b>adds</b> risk, and leverage magnifies it.</p></div>
+    </div>
+    <figcaption>Hedging and speculating aren't different products; they're different reasons for holding the same product. Markets need both: speculators provide the willing counterparties that let hedgers offload risk. Trouble starts when the speculative, leveraged side grows large and interconnected.</figcaption>
+  </figure>
+
+  <p class="pull">A derivative doesn't create or destroy risk by itself. It moves risk from someone who wants to shed it to someone willing to carry it.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Buffett's warning</h2>
+  <p class="t">In Berkshire Hathaway's 2002 annual letter, Warren Buffett set out at length why he distrusted the fast-growing derivatives market. His line became the most quoted verdict on the subject.</p>
+
+  <div class="bigquote rv">
+    <blockquote>"We view them as <span class="wmd">time bombs</span>, both for the parties that deal in them and the economic system… In our view… derivatives are <span class="wmd">financial weapons of mass destruction</span>, carrying dangers that, while now latent, are potentially lethal."</blockquote>
+    <cite>Warren Buffett, Berkshire Hathaway annual letter, 2002</cite>
+  </div>
+
+  <p class="t">His worry wasn't the contracts themselves; it was three things that come with a large, lightly watched derivatives market. <b>Leverage</b> lets positions grow far beyond the cash behind them. <b>Interconnection</b> means big institutions owe each other on these contracts, so one firm's failure becomes everyone's problem. And <b>opacity</b>: positions valued by models rather than market prices can hide how large and how fragile they really are, until they aren't. Within a decade, each of those played out.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>When derivatives blew up</h2>
+  <p class="t">Three episodes show the failure modes Buffett named. In each, derivatives did exactly what they were designed to do until conditions turned, and the leverage and interconnection that made them powerful made the fallout spread.</p>
+
+  <div class="cards rv">
+    <div class="card">
+      <div class="cn">Leverage</div>
+      <h4>LTCM, 1998</h4>
+      <p>Long-Term Capital Management, a hedge fund run by Nobel laureates, used huge leverage on derivative bets that small price gaps would close. When markets moved the wrong way, the magnified losses threatened its many trading partners.</p>
+      <div class="eg"><b>What happened:</b> the Federal Reserve organised a roughly <b>$3.6 billion</b> rescue by its lenders to unwind the positions in an orderly way and prevent a chain reaction.</div>
+    </div>
+    <div class="card">
+      <div class="cn">Interconnection</div>
+      <h4>AIG, 2008</h4>
+      <p>The insurer AIG had sold vast amounts of <b>credit default swaps</b>, contracts promising to pay out if certain mortgage bonds defaulted. It collected premiums as if the payouts would never come, and set aside little against them.</p>
+      <div class="eg"><b>What happened:</b> when housing collapsed, the claims did come. AIG couldn't cover them, and because so many banks relied on its guarantees, the US committed up to <b>$182 billion</b> of support.</div>
+    </div>
+    <div class="card">
+      <div class="cn">Opacity</div>
+      <h4>The 2008 crisis</h4>
+      <p>Mortgage risk was sliced, repackaged and insured through layers of derivatives few could value. On paper the risk looked spread out and safe; in reality it was concentrated and uncollateralised.</p>
+      <div class="eg"><b>What happened:</b> when the underlying mortgages failed, the hidden losses surfaced all at once across interconnected firms, turning a housing downturn into a global financial crisis.</div>
+    </div>
+  </div>
+
+  <div class="note warn"><b class="h">The pattern, not the products</b>Note what's common across all three: the derivative worked as intended in calm times and masked a build-up of risk. The problem each time was a large, leveraged, interconnected position whose true size and fragility were hard to see from outside, exactly the "latent, potentially lethal" danger Buffett described. Used to hedge a real exposure, these same contracts are routine and useful. The danger lives in scale, leverage and opacity, not in the idea of a derivative.</div>
+
+  <h2 id="s6"><span class="n">Part 6</span>Open interest</h2>
+  <p class="t">One number tells you how big and how active a derivatives market has become: <b>open interest</b>. It's the total count of contracts that are currently <b>open</b>, meaning entered into and not yet closed out, settled or expired. Every open contract has a buyer on one side and a seller on the other, so it measures the stack of live obligations between market participants.</p>
+  <p class="t">Open interest isn't the same as volume. <b>Volume</b> counts how many contracts changed hands in a day, including ones opened and closed the same day; <b>open interest</b> counts how many remain outstanding at the end of it. A single contract can trade many times (adding to volume) without changing open interest, because it's just passing between hands. Open interest only moves when a <b>new</b> contract is created or an existing one is <b>closed</b>.</p>
+
+  <figure class="fig rv" id="oiFig">
+    <div class="ft">Open interest vs volume</div>
+    <div class="fs">Two numbers people often confuse</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Measure</th><th>What it counts</th></tr></thead>
+        <tbody>
+          <tr><td>Volume</td><td>How many contracts <b>traded</b> during the day, even if opened and closed within it. A measure of activity.</td></tr>
+          <tr><td>Open interest</td><td>How many contracts remain <b>open</b> at the close. A measure of outstanding obligations still on the books.</td></tr>
+          <tr><td>Rises when</td><td>Open interest: a buyer and seller create a <b>brand-new</b> contract. Volume: any trade at all occurs.</td></tr>
+          <tr><td>Falls when</td><td>Open interest: an existing contract is <b>closed, settled or expires</b>. Volume resets to zero each day.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Why it matters: rising open interest means fresh money and new obligations are flowing into a market, so more risk is being carried between participants. That's the leverage-and-interconnection build-up Buffett was pointing at, made into a single trackable figure.</figcaption>
+  </figure>
+
+  <p class="t">So when you read that open interest in a contract is "at a record," it means more live bets than ever are stacked up in that market, each one an obligation someone eventually has to honour. Whether that's healthy hedging or a fragile pile of speculation is the same question this whole piece turns on.</p>
+
+  <p class="t">Next time you meet a derivative, ask two things.</p>
+  <div class="qs" id="qs">
+    <div class="q" data-answer="Whether the holder has a real exposure or not. A hedger with an actual future cost (an airline buying fuel, a farmer selling wheat) uses the contract to cancel risk, which makes them safer. A speculator with no underlying exposure uses it to bet, usually with leverage, which adds risk. Same contract, opposite effect, and the difference is simply who's holding it and why."><div class="qn">QUESTION 1</div><p>Is this contract hedging a real risk, or creating a new one?</p></div>
+    <div class="q" data-answer="How much is borrowed, how connected it is, and how clearly it's valued. Buffett's three dangers were leverage (a small deposit controlling a huge position), interconnection (big players owing each other, so one failure cascades), and opacity (positions priced by models, not markets, hiding their true size). LTCM showed leverage, AIG showed interconnection, 2008 showed opacity. A derivative used to hedge is routine; those three forces are what turn it into a weapon."><div class="qn">QUESTION 2</div><p>How much leverage, interconnection and hidden size sits behind it?</p></div>
+  </div>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li>Definitions of futures, options and swaps, and the hedging-versus-speculation distinction: standard descriptions in general finance references and exchange educational materials (e.g. <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group education</a>).</li>
+    <li>The "financial weapons of mass destruction" and "time bombs" quotes: <a href="https://www.berkshirehathaway.com/letters/2002pdf.pdf" target="_blank" rel="noopener">Berkshire Hathaway's 2002 annual letter</a>, in the section on derivatives.</li>
+    <li>Long-Term Capital Management's 1998 near-collapse and the roughly $3.6 billion creditor-led rescue coordinated by the Federal Reserve Bank of New York: contemporary reporting and Federal Reserve accounts.</li>
+    <li>AIG's credit-default-swap exposures and the up-to-$182 billion of US government support in 2008: US Treasury and Federal Reserve disclosures and crisis reporting.</li>
+    <li>The role of mortgage-linked derivatives in the 2008 financial crisis: the Financial Crisis Inquiry Commission report and standard accounts of the crisis.</li>
+    <li>Open interest and its distinction from trading volume: exchange and regulator definitions (e.g. <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group</a>).</li>
+  </ul>
+  <p class="end">Educational only. Not investment, legal or tax advice. Derivatives are complex and can lose more than the money put up; the historical episodes here are simplified summaries. Confirm any figure before relying on it.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s4">Buffett's warning</a><br><a href="#s5">When derivatives blew up</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/scene-kit.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/bond-market.js"></script>
+</body>
+</html>

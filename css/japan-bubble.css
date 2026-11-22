@@ -1,0 +1,56 @@
+/* Page-specific styles for Japan's lost decades explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box (plus a warning variant) ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.note.warn{border-left-color:var(--red,#c2412d)}
+.note.warn b.h{color:var(--red,#c2412d)}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Comparison tables ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:520px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
+table.cmp tbody tr:hover{background:#faf8f2}
+
+/* ---------- Vertical flow of steps (same look as the other explainers) ---------- */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:30px 0;font-family:var(--sans)}
+.fstep{background:#0d0d0f;color:#fff;padding:18px 22px;width:100%;max-width:560px;box-sizing:border-box;transition:transform .25s ease,box-shadow .25s ease}
+.fstep .fl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.fstep p{font-size:15.5px;line-height:1.5;color:#e7e3da}
+.fstep:not(.tag) p b{color:#fff}
+.fstep.bad{border-top:3px solid var(--red,#c2412d)}
+.fstep:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.farrow{width:2px;height:26px;background:var(--rule);position:relative}
+.farrow::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--rule)}
+.flow > *{opacity:0}
+.flow > .fstep{transform:translateY(16px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.flow > .farrow{transform:scaleY(0);transform-origin:top;transition:opacity .25s ease,transform .35s ease}
+.flow.in-view > *,.fig.in-view .flow > *{opacity:1;transition-delay:calc(var(--i, 0) * 140ms)}
+.flow.in-view > .fstep,.fig.in-view .flow > .fstep{transform:none}
+.flow.in-view > .farrow,.fig.in-view .flow > .farrow{transform:scaleY(1)}
+
+/* ---------- Nikkei timeline: the per-point caption ---------- */
+.nikkei-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);border-left:3px solid var(--gold);padding:8px 0 8px 14px;margin:14px 0 2px;min-height:2.6em}
+
+/* ---------- The feedback loop ---------- */
+.loop-fig svg{max-width:560px;display:block;margin:4px auto 0}
+.loop-node{opacity:0;transform:scale(.88);transform-origin:center;transform-box:fill-box}
+.loop-arrow{opacity:0}
+.fig.in-view .loop-node{opacity:1;transform:scale(1);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 180ms)}
+.fig.in-view .loop-arrow{opacity:1;transition:opacity .5s ease;transition-delay:calc(var(--i,0) * 180ms + 120ms)}
+
+/* ---------- Before/after bubble stat strip ---------- */
+.excess{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;font-family:var(--sans)}
+.excess .ex{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:16px 16px 18px}
+.excess .ex b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1;color:var(--ink);margin-bottom:8px}
+.excess .ex p{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:0}
+@media (max-width:760px){.excess{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  .flow > *{opacity:1;transform:none;transition:none}
+  .fstep{transition:none}
+  .loop-node,.loop-arrow{opacity:1;transform:none}
+}

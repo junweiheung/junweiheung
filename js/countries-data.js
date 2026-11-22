@@ -12,48 +12,25 @@
  *
  * Countries not listed here are drawn empty (zero articles).
  */
+/*
+ * A country is listed when an article is MAINLY about a single company (labelled
+ * with that company's home country) OR when an article is mainly about one
+ * country's own economy or history. Articles about an industry, a mechanism or
+ * several companies spread across places have no country.
+ */
 window.BOTTLENECK_COUNTRIES = {
   countries: {
     "United States of America": {
       articles: [
-        { title: "Why the Fed fights its own bond market", href: "explainers/bond-market.html" },
-        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" },
-        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" },
-        { title: "Three companies, four battlegrounds: AMD vs Intel vs Nvidia", href: "explainers/chip-share.html" }
-      ]
-    },
-    "Taiwan": {
-      articles: [
-        { title: "Who keeps the money?", href: "explainers/smile.html" },
-        { title: "The cloth inside the chip", href: "explainers/glass-cloth.html" }
+        { title: "Who owns Anthropic? Inside the $1.5 trillion IPO", href: "explainers/anthropic-ipo.html" },
+        { title: "From a $2 stock to the trillion-dollar club: how AMD came back", href: "explainers/amd.html" },
+        { title: "The bank behind the currency market (CLS)", href: "explainers/cls.html" }
       ]
     },
     "Japan": {
       articles: [
-        { title: "The cloth inside the chip", href: "explainers/glass-cloth.html" },
-        { title: "The crystal behind your scan", href: "explainers/iodine.html" }
-      ]
-    },
-    "Chile": {
-      articles: [
-        { title: "The crystal behind your scan and your screen", href: "explainers/iodine.html" }
-      ]
-    },
-    "South Korea": {
-      articles: [
-        { title: "Who keeps the money?", href: "explainers/smile.html" },
-        { title: "Keeping a coin worth a dollar: how stablecoins hold their peg", href: "explainers/stablecoins.html" }
-      ]
-    },
-    "Netherlands": {
-      articles: [
-        { title: "Who keeps the money?", href: "explainers/smile.html" }
-      ]
-    },
-    "Singapore": {
-      articles: [
-        { title: "The bank behind the currency market", href: "explainers/cls.html" },
-        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
+        { title: "The cloth inside the chip (Nittobo)", href: "explainers/glass-cloth.html" },
+        { title: "The biggest bubble in history: Japan's lost decades", href: "explainers/japan-bubble.html" }
       ]
     }
   }
