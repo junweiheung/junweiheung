@@ -199,8 +199,9 @@
 })();
 
 /* ---------------- The timeline: AMD and Intel share prices, drawn up to the step being read ----------------
-   Year-end closes 2002–2025 (StatMuse) plus dated 2015 and 2026 closes. Log scale. Steps before 2002 show the
-   chart greyed, since earlier prices aren't plotted. */
+   Year-end closes 1980–2001 (Yahoo Finance) and 2002–2025 (StatMuse; the two agree exactly where they overlap),
+   plus dated 2015 and 2026 closes. Split-adjusted; Intel also dividend-adjusted, as StatMuse gives it. Log scale.
+   Steps before 1980 show the chart greyed, since earlier prices aren't plotted. */
 (function () {
   const svg = document.getElementById('tlChart'); if (!svg) return;
   const NS = 'http://www.w3.org/2000/svg';
@@ -208,23 +209,23 @@
   const say = (p, x, y, s, a = {}) => { const t = mk('text', Object.assign({ x, y, 'font-family': 'Inter' }, a), p); t.textContent = s; return t; };
   const NARROW = matchMedia('(max-width: 900px)').matches;
   const YE = (y, v) => ({ t: y + 0.999, v, ye: y });
-  const AMD = [[2002, 6.46], [2003, 14.90], [2004, 22.02], [2005, 30.60], [2006, 20.35], [2007, 7.50], [2008, 2.16], [2009, 9.68], [2010, 8.18], [2011, 5.40], [2012, 2.40], [2013, 3.87], [2014, 2.67]]
+  const AMD = [[1980, 5.75], [1981, 2.94], [1982, 6.28], [1983, 16.81], [1984, 14.75], [1985, 14.5], [1986, 6.88], [1987, 4.94], [1988, 4.31], [1989, 3.94], [1990, 2.44], [1991, 8.75], [1992, 9.06], [1993, 8.88], [1994, 12.44], [1995, 8.25], [1996, 12.88], [1997, 8.88], [1998, 14.5], [1999, 14.47], [2000, 13.81], [2001, 15.86], [2002, 6.46], [2003, 14.90], [2004, 22.02], [2005, 30.60], [2006, 20.35], [2007, 7.50], [2008, 2.16], [2009, 9.68], [2010, 8.18], [2011, 5.40], [2012, 2.40], [2013, 3.87], [2014, 2.67]]
     .map(([y, v]) => YE(y, v)).concat([{ t: 2015.57, v: 1.62, d: '27 Jul 2015' }],
     [[2015, 2.87], [2016, 11.34], [2017, 10.28], [2018, 18.46], [2019, 45.86], [2020, 91.71], [2021, 143.90], [2022, 64.77], [2023, 147.41], [2024, 120.79], [2025, 214.16]].map(([y, v]) => YE(y, v)),
     [{ t: 2026.72, v: 615.52, d: '21 Sep 2026' }, { t: 2026.765, v: 649.42, d: '6 Oct 2026' }, { t: 2026.885, v: 424.39, d: '20 Nov 2026' }]);
-  const INTC = [[2002, 8.91], [2003, 18.42], [2004, 13.52], [2005, 14.62], [2006, 12.11], [2007, 16.25], [2008, 9.18], [2009, 13.21], [2010, 14.04], [2011, 16.76], [2012, 14.75], [2013, 19.31], [2014, 27.84], [2015, 27.23], [2016, 29.61], [2017, 38.75], [2018, 40.39], [2019, 52.80], [2020, 45.04], [2021, 47.76], [2022, 25.49], [2023, 49.59], [2024, 20.05], [2025, 36.90]]
+  const INTC = [[1980, 0.234], [1981, 0.131], [1982, 0.225], [1983, 0.488], [1984, 0.325], [1985, 0.34], [1986, 0.244], [1987, 0.462], [1988, 0.414], [1989, 0.601], [1990, 0.671], [1991, 0.854], [1992, 1.52], [1993, 2.17], [1994, 2.25], [1995, 4.0], [1996, 9.25], [1997, 9.94], [1998, 16.81], [1999, 23.38], [2000, 17.1], [2001, 17.93], [2002, 8.91], [2003, 18.42], [2004, 13.52], [2005, 14.62], [2006, 12.11], [2007, 16.25], [2008, 9.18], [2009, 13.21], [2010, 14.04], [2011, 16.76], [2012, 14.75], [2013, 19.31], [2014, 27.84], [2015, 27.23], [2016, 29.61], [2017, 38.75], [2018, 40.39], [2019, 52.80], [2020, 45.04], [2021, 47.76], [2022, 25.49], [2023, 49.59], [2024, 20.05], [2025, 36.90]]
     .map(([y, v]) => YE(y, v)).concat([{ t: 2026.47, v: 140.94, d: '22 Jun 2026' }, { t: 2026.73, v: 127.39, d: '24 Sep 2026' }, { t: 2026.885, v: 51.28, d: '20 Nov 2026' }]);
 
   const W = 600, H = NARROW ? 330 : 470, L = NARROW ? 58 : 46, R = W - 16, T = 18, B = H - (NARROW ? 34 : 28);
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  const t0 = 2002, t1 = 2027;
+  const t0 = 1980, t1 = 2027;
   const X = (t) => L + (t - t0) / (t1 - t0) * (R - L);
-  const lg = Math.log10, Y = (v) => B - (lg(v) - lg(1)) / (lg(1000) - lg(1)) * (B - T);
-  [1, 3, 10, 30, 100, 300, 1000].forEach((v) => {
-    mk('line', { x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: v === 1 || v === 10 || v === 100 || v === 1000 ? '#2a2a30' : '#1d1d22' }, svg);
+  const lg = Math.log10, Y = (v) => B - (lg(v) - lg(0.1)) / (lg(1000) - lg(0.1)) * (B - T);
+  [0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000].forEach((v) => {
+    mk('line', { x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: [0.1, 1, 10, 100, 1000].includes(v) ? '#2a2a30' : '#1d1d22' }, svg);
     say(svg, L - 6, Y(v) + 5, '$' + v, { 'text-anchor': 'end', 'font-size': NARROW ? 17 : 11, fill: '#8d8a84' });
   });
-  [2005, 2010, 2015, 2020, 2025].forEach((y) => say(svg, X(y), H - 6, y, { 'text-anchor': 'middle', 'font-size': NARROW ? 17 : 11, fill: '#8d8a84' }));
+  (NARROW ? [1980, 1990, 2000, 2010, 2020] : [1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]).forEach((y) => say(svg, X(y), H - 6, y, { 'text-anchor': 'middle', 'font-size': NARROW ? 17 : 11, fill: '#8d8a84' }));
   const line = (pts) => 'M' + pts.map((p) => X(p.t).toFixed(1) + ' ' + Y(p.v).toFixed(1)).join('L');
   // faint full lines for the future, bright lines clipped to the reader's point in time
   mk('path', { d: line(AMD), fill: 'none', stroke: '#e01e2b', 'stroke-width': 2, opacity: 0.16 }, svg);
@@ -237,7 +238,7 @@
   const cur = mk('line', { y1: T, y2: B, stroke: '#f0b23a', 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, svg);
   const dotA = mk('circle', { r: 5, fill: '#e01e2b', stroke: '#0d0d0f', 'stroke-width': 2 }, svg);
   const dotI = mk('circle', { r: 5, fill: '#2463d6', stroke: '#0d0d0f', 'stroke-width': 2 }, svg);
-  const pre = say(svg, (L + R) / 2, (T + B) / 2, 'Share prices on this chart start in 2002', { 'text-anchor': 'middle', 'font-size': NARROW ? 15 : 14, 'font-weight': 700, fill: '#8d8a84' });
+  const pre = say(svg, (L + R) / 2, (T + B) / 2, 'Share prices on this chart start in 1980', { 'text-anchor': 'middle', 'font-size': NARROW ? 15 : 14, 'font-weight': 700, fill: '#8d8a84' });
   const yearEl = document.getElementById('tlYear'), valsEl = document.getElementById('tlVals');
   // the latest data point at or before time t (what the readout reports)
   const at = (pts, t) => { let p = null; pts.forEach((q) => { if (q.t <= t + 0.001) p = q; }); return p; };
@@ -251,7 +252,7 @@
     }
     return Y(pts[pts.length - 1].v);
   };
-  const fmt = (v) => '$' + (v >= 100 ? v.toFixed(0) : v.toFixed(2));
+  const fmt = (v) => '$' + (v >= 100 ? v.toFixed(0) : v >= 1 ? v.toFixed(2) : v.toFixed(3));
   const when = (p) => p.d || ('end ' + p.ye);
   function setTime(t, label) {
     yearEl.textContent = label;
@@ -287,4 +288,24 @@
   // the contents list fades out while the timeline (which uses its column) is on screen
   const scrolly = document.getElementById('tlScrolly');
   new IntersectionObserver((es) => es.forEach((e) => document.body.classList.toggle('tl-wide', e.isIntersecting)), { rootMargin: '-20% 0px -20% 0px' }).observe(scrolly);
+})();
+
+/* ---------------- Request flow: a highlight walks the steps of one request, lingering on decode ---------------- */
+(function () {
+  const fig = document.getElementById('flowFig'); if (!fig) return;
+  const rows = [...fig.querySelectorAll('ol.fl li')].filter((li) => !li.classList.contains('fl-grp'));
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // time spent on each step (ms): the plumbing is quick, decode is the long part
+  const dwell = rows.map((li) => li.classList.contains('fl-dec') ? 3200 : li.classList.contains('fl-pre') ? 1300 : 750);
+  let k = -1, timer = null;
+  const step = () => {
+    rows.forEach((r) => r.classList.remove('now'));
+    k = (k + 1) % (rows.length + 1);           // one beat of rest after the response
+    if (k < rows.length) rows[k].classList.add('now');
+    timer = setTimeout(step, k < rows.length ? dwell[k] : 1200);
+  };
+  new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting && !timer) step();
+    else if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; k = -1; rows.forEach((r) => r.classList.remove('now')); }
+  }), { threshold: 0.3 }).observe(fig);
 })();
