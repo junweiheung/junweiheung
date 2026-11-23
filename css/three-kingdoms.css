@@ -1,0 +1,105 @@
+/* Page-specific styles for the Three Kingdoms timeline. Shared: bottleneck.css + article.css. */
+
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:170px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- The cast chart ---------- */
+#castSvg{width:100%;height:auto;display:block}
+#castSvg .cast-row{cursor:pointer;outline:none}
+#castSvg .cast-row .cast-bar{opacity:.55;transition:opacity .25s}
+#castSvg .cast-row:hover .cast-bar,#castSvg .cast-row:focus-visible .cast-bar,#castSvg .cast-row.on .cast-bar{opacity:1}
+#castSvg .cast-row.on > rect:first-child{fill:#f6f2e8}
+
+/* ---------- The scrolly: sticky map + steps ---------- */
+.art .tk-scrolly{grid-column:2/4;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;margin:30px 0;position:relative}
+.tk-sticky{position:sticky;top:70px;height:calc(100vh - 86px);display:flex;flex-direction:column;justify-content:center}
+.tk-mapbox{background:#fff;border:1px solid var(--rule);padding:14px 14px 10px;display:flex;flex-direction:column;max-height:100%}
+.tk-head{display:flex;align-items:baseline;gap:12px;font-family:var(--sans);margin-bottom:8px}
+.tk-head #tkYear{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.tk-head #tkTitle{font-size:14px;font-weight:700;color:var(--muted)}
+#tkMap{width:100%;height:auto;max-height:calc(100vh - 230px);display:block;min-height:0}
+#tkMap .tk-prov{transition:fill .7s ease}
+#tkMap .tk-faclab text{pointer-events:none}
+#tkMap .tk-me{transition:transform .7s cubic-bezier(.3,.7,.3,1)}
+#tkMap .tk-pulse{transform-box:fill-box;transform-origin:center;animation:tkPulse 1.8s ease-out infinite}
+@keyframes tkPulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+.tk-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--sans);font-size:11.5px;color:var(--ink2);margin-top:8px}
+.tk-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tk-note{font-family:var(--sans);font-size:13px;color:var(--muted)}
+
+/* the person picker */
+.tk-pickbar{position:sticky;top:70px;z-index:3;background:var(--paper);padding:10px 0 12px;border-bottom:1px solid var(--rule)}
+.tk-pickbar .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.tk-pick{display:flex;flex-wrap:wrap;gap:6px}
+.tk-pick button{font-family:var(--sans);font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:5px 12px 5px 5px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.tk-pick button b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pc);color:#fff;font-size:12px;font-weight:700}
+.tk-pick button:hover{border-color:var(--pc)}
+.tk-pick button[aria-pressed=true]{background:var(--pc);color:#fff;border-color:var(--pc)}
+.tk-pick button[aria-pressed=true] b{background:#fff;color:var(--pc)}
+.tk-pick-m{display:none}
+
+/* the steps */
+#tkSteps{padding:8vh 0 30vh}
+.tk-step{min-height:78vh;display:flex;align-items:center}
+.tk-step .card{background:#fff;border:1px solid var(--rule);padding:22px 24px;max-width:540px;opacity:.35;transition:opacity .4s,border-color .4s}
+.tk-step.on .card{opacity:1;border-color:var(--ink)}
+.tk-yr{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gold)}
+.tk-step h3{font-family:var(--serif);font-size:23px;line-height:1.2;margin:4px 0 8px}
+.tk-step p{font-size:16.5px;line-height:1.55;color:#1d1d1d;margin:0}
+.tk-person{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)}
+.tk-who{display:flex;align-items:center;gap:12px;font-family:var(--sans)}
+.tk-av{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--pc);color:#fff;font-size:19px;font-weight:700}
+.tk-who.gone .tk-av{background:#fff;color:var(--pc);border:2px solid var(--pc)}
+.tk-wn{font-size:15px;font-weight:800;color:var(--ink)}
+.tk-wn span{font-weight:600;color:var(--muted);margin-left:4px}
+.tk-wm{font-size:12.5px;color:var(--muted);margin-top:2px}
+.tk-step p.tk-wt{margin-top:10px;font-size:16px;border-left:3px solid var(--pc);padding-left:12px}
+
+@media(max-width:1100px){.art .tk-scrolly{grid-column:1}}
+@media(max-width:900px){
+  .art .tk-scrolly{grid-template-columns:minmax(0,1fr);gap:0}
+  .tk-sticky{top:56px;height:auto;z-index:5;padding:6px 0 0;background:var(--paper)}
+  .tk-mapbox{padding:8px 8px 6px}
+  .tk-head{margin-bottom:4px}
+  .tk-head #tkYear{font-size:20px}
+  .tk-head #tkTitle{font-size:12.5px}
+  #tkMap{max-height:36vh}
+  .tk-legend{display:none}
+  .tk-pick-m{display:flex;flex-wrap:nowrap;overflow-x:auto;margin-top:6px;padding-bottom:2px;scrollbar-width:none}
+  .tk-pick-m::-webkit-scrollbar{display:none}
+  .tk-pick-m button{flex:none}
+  .tk-pickbar{display:none}
+  #tkSteps{padding:4vh 0 20vh;position:relative;z-index:4}
+  .tk-step{min-height:70vh;align-items:flex-end}
+  .tk-step .card{padding:18px 18px}
+  .tk-step h3{font-size:20px}
+  .tk-step p{font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  #tkMap .tk-prov,#tkMap .tk-me{transition:none}
+  #tkMap .tk-pulse{animation:none;opacity:0}
+}
+
+/* ---------- Chinese version: CJK fonts after the Latin ones, and no fake drop cap ---------- */
+html:lang(zh){--serif:"Source Serif 4","Songti SC","Noto Serif SC","Noto Serif CJK SC","STSong","SimSun",serif;--sans:Inter,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+html:lang(zh) .art p.t,html:lang(zh) .tk-step p{line-height:1.8}
+html:lang(zh) .dropcap::first-letter{float:none;font-size:inherit;padding:0;line-height:inherit;font-weight:inherit}
+html:lang(zh) .head h1{letter-spacing:.08em}
+#langBtn{font-weight:700}
+
+/* ---------- Year-by-year cards: era, quotation box, silent years ---------- */
+.tk-yr span{font-weight:700;letter-spacing:.04em;color:var(--muted)}
+.tk-step{min-height:64vh}
+.tk-q{margin:14px 0 0;padding:10px 14px;background:#f6f2e8;border-left:3px solid var(--gold);font-family:var(--serif)}
+.tk-qs{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:4px}
+.tk-step .tk-q p{font-size:15px;line-height:1.75;color:#2a2620}
+.tk-step .tk-q p.tk-qe{font-size:14px;font-style:italic;color:var(--muted);margin-top:6px;line-height:1.5}
+.tk-who.quiet .tk-av{background:#fff;color:var(--pc);border:2px dashed var(--pc)}
+.tk-step p.tk-wt.quiet{color:var(--muted);font-style:italic;border-left-style:dashed}
+@media(max-width:900px){.tk-step{min-height:62vh}.tk-step .tk-q p{font-size:14.5px}}

@@ -500,6 +500,29 @@ window.BOTTLENECK = {
       // economies deeply involved; it profiles no single company, so it adds
       // nothing to the company map.
       chain: []
+    },
+    {
+      id: "three-kingdoms",
+      href: "explainers/three-kingdoms.html",
+      title: "Three Kingdoms: How the Han Empire Broke Apart, 184–280",
+      short: "The Three Kingdoms",
+      kicker: "Explainer",
+      topic: "Three Kingdoms",
+      category: "History",
+      date: "2026-11-23",
+      readMins: 30,
+      dek: "In 184 a religious rising shook the Han empire, and the generals who put it down never gave their armies back. For the next century they and their heirs fought over China until three states were left: Wei, Shu and Wu. A scrolling map of the borders, and one life followed through it: Cao Cao, Liu Bei, Sun Quan, Zhuge Liang, Guan Yu or Sima Yi.",
+      summary: "A scrolling map of China from the Yellow Turbans to Jin's reunification, with six lives to follow through it",
+      thumb: "../images/thumbs/three-kingdoms.svg",
+      stats: [
+        { big: "184", text: "The Yellow Turban rising. The generals raised to crush it outlasted the Han dynasty itself." },
+        { big: "208", text: "Red Cliffs, where Sun Quan and Liu Bei burned Cao Cao's fleet and kept China divided for another 72 years." },
+        { big: "3", text: "Emperors at once by 229: Wei in the north, Shu in the west and Wu in the south-east." },
+        { big: "280", text: "The year Jin, the dynasty of Sima Yi's family, reunited China. None of the three founders' houses won." }
+      ],
+      // A history explainer about China. Linked on the country map to China;
+      // it profiles no company, so it adds nothing to the company map.
+      chain: []
     }
   ],
 

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .r{opacity:0;animation:in .6s ease forwards}
+    .r1{animation-delay:.2s}.r2{animation-delay:.6s}.r3{animation-delay:1s}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.r{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Three Kingdoms</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">How the Han empire broke apart, 184–280</text>
+
+  <!-- three states, schematic -->
+  <g stroke="#0d0d0f" stroke-width="6" stroke-linejoin="round">
+    <path class="r r1" fill="#3e6aa8" d="M620,250 L1010,230 L1180,330 L1150,470 L980,500 L860,470 L700,500 L560,450 L520,340 Z"/>
+    <path class="r r2" fill="#4f8a55" d="M520,340 L560,450 L700,500 L760,560 L720,700 L560,730 L430,640 L420,470 Z"/>
+    <path class="r r3" fill="#c2412d" d="M700,500 L860,470 L980,500 L1150,470 L1200,560 L1120,720 L920,770 L720,700 L760,560 Z"/>
+  </g>
+  <g fill="#fff" font-weight="800" font-size="34" letter-spacing="3" text-anchor="middle">
+    <text x="850" y="380" class="r r1">WEI</text>
+    <text x="580" y="600" class="r r2">SHU</text>
+    <text x="950" y="640" class="r r3">WU</text>
+  </g>
+  <g font-size="64" font-weight="700" fill="#fff" opacity=".9" text-anchor="middle">
+    <text x="1380" y="380" class="r r1" fill="#3e6aa8">魏</text>
+    <text x="1380" y="520" class="r r2" fill="#4f8a55">蜀</text>
+    <text x="1380" y="660" class="r r3" fill="#c2412d">吳</text>
+  </g>
+</svg>

@@ -34,6 +34,11 @@ window.BOTTLENECK_COUNTRIES = {
         { title: "The biggest bubble in history: Japan's lost decades", href: "explainers/japan-bubble.html" }
       ]
     },
+    "China": {
+      articles: [
+        { title: "Three Kingdoms: how the Han empire broke apart", href: "explainers/three-kingdoms.html" }
+      ]
+    },
     "Thailand": {
       articles: [
         { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
