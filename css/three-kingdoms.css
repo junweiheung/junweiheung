@@ -103,3 +103,96 @@ html:lang(zh) .head h1{letter-spacing:.08em}
 .tk-who.quiet .tk-av{background:#fff;color:var(--pc);border:2px dashed var(--pc)}
 .tk-step p.tk-wt.quiet{color:var(--muted);font-style:italic;border-left-style:dashed}
 @media(max-width:900px){.tk-step{min-height:62vh}.tk-step .tk-q p{font-size:14.5px}}
+
+/* ---------- Wide timeline: the map takes over the table-of-contents column ----------
+   On wide screens the timeline spans the full article width (and a bit beyond), with the map on the left
+   getting most of it. The "In this story" list fades out while the timeline is on screen. */
+@media(min-width:901px){
+  .art .tk-scrolly{grid-column:1/-1;justify-self:start;width:min(1400px,calc(100vw - 48px));margin-left:calc(50% - min(700px,calc(50vw - 24px)));grid-template-columns:minmax(0,1.45fr) minmax(340px,.8fr);gap:36px}
+  .tk-sticky{top:64px;height:calc(100vh - 72px)}
+  .tk-mapbox{padding:12px 14px 8px}
+  #tkMap{max-height:calc(100vh - 150px)}
+  .tk-legend{margin-top:6px;font-size:11px}
+  .tk-step .card{max-width:none}
+}
+.toc{transition:opacity .3s ease,visibility .3s}
+body.tk-wide .toc{opacity:0;visibility:hidden}
+
+/* the map fills its whole box: content beyond the viewBox shows, and the box clips it */
+#tkMap{overflow:visible}
+.tk-mapwrap{overflow:hidden;line-height:0;background:#dfe6ea}
+#tkMap{background:#dfe6ea}
+
+/* ---------- Person picker grouped by side: Wei, Shu, Wu ---------- */
+.tk-pick{gap:6px 14px}
+.tk-grp{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tk-gl{font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gc);border-bottom:2px solid var(--gc);padding:0 1px 1px;margin-right:2px}
+@media(max-width:900px){.tk-pick-m{gap:12px}.tk-grp{flex-wrap:nowrap;flex:none}}
+
+/* ---------- Person picker as a dropdown ---------- */
+.tk-pick{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.tk-selav{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--pc,#3e6aa8);color:#fff;font-family:var(--sans);font-size:14px;font-weight:700}
+.tk-sel{flex:1;min-width:0;max-width:280px;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23111' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--rule);border-radius:8px;padding:8px 34px 8px 12px;appearance:none;-webkit-appearance:none;cursor:pointer}
+.tk-sel:hover,.tk-sel:focus{border-color:var(--ink);outline:none}
+@media(max-width:900px){.tk-pick-m{display:flex;overflow:visible;margin-top:6px}.tk-pick-m .tk-sel{max-width:none;font-size:15px}}
+@media(min-width:901px){.tk-pick-m{display:none}}
+
+/* ---------- Map views: political, economy, people, battles ---------- */
+.tk-head{flex-wrap:wrap}
+.tk-views{margin-left:auto;display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden;align-self:center}
+.tk-views button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:6px 11px;cursor:pointer}
+.tk-views button+button{border-left:1px solid var(--rule)}
+.tk-views button[aria-pressed=true]{background:#0d0d0f;color:#fff}
+#tkMap g[clip-path]{transition:opacity .4s}
+.tk-legend i.g{width:16px;height:16px;border-radius:50%;color:#fff;font-size:10px;font-style:normal;font-weight:700;display:inline-grid;place-items:center;vertical-align:-3px}
+.tk-legend .tk-lnote{flex-basis:100%;color:var(--muted);line-height:1.45}
+@media(max-width:900px){
+  .tk-views{margin-left:0;width:100%;margin-top:4px}
+  .tk-views button{flex:1;padding:5px 4px}
+  .tk-legend{display:none}
+}
+#tkMap .tk-mk{cursor:help}
+
+/* ---------- Marker tooltip card ---------- */
+.tk-mapwrap{position:relative}
+.tk-tipbox{position:absolute;z-index:4;max-width:250px;background:#111;color:#eee;border-radius:6px;padding:8px 10px;font-family:var(--sans);font-size:12.5px;line-height:1.45;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none}
+.tk-tipbox b{display:block;color:#fff;font-size:13px;margin-bottom:3px}
+.tk-tipbox span{display:block}
+.tk-tipbox[hidden]{display:none}
+.tk-namesbtn{font-family:var(--sans);font-size:12px;font-weight:700;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:7px;padding:6px 10px;cursor:pointer;align-self:center}
+.tk-namesbtn[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}
+.tk-namesbtn:hover{border-color:var(--ink)}
+@media(max-width:900px){.tk-views{width:auto;flex:1}.tk-namesbtn{margin-top:4px;padding:5px 8px}}
+.tk-views button{white-space:nowrap}
+@media(max-width:900px){
+  .tk-namesbtn{margin-left:auto;margin-top:0}
+  .tk-views{order:3;flex:1 1 100%;width:100%;margin-top:4px}
+}
+.tk-legend .tk-popchart{flex-basis:100%;max-width:520px;width:100%;height:auto}
+
+/* ---------- History and the novel table ---------- */
+table.cmp.tk-novel{min-width:0;table-layout:fixed}
+table.tk-novel th:nth-child(1){width:22%}
+table.tk-novel th:nth-child(2){width:30%}
+table.tk-novel td:first-child{width:auto}
+.tk-sc{display:block;font-weight:800;color:var(--ink);margin-bottom:6px}
+.tk-vd{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--vc);border-radius:3px;padding:2px 6px}
+.tk-nq{margin:8px 0 0;padding:8px 10px;background:#f6f2e8;border-left:3px solid var(--gold);font-family:var(--serif)}
+.tk-nq p{font-size:13.5px;line-height:1.65;color:#2a2620;margin:0}
+.tk-nq p.tk-qe{font-family:var(--sans);font-size:12.5px;font-style:italic;color:var(--muted);margin-top:4px;line-height:1.45}
+@media(max-width:640px){
+  table.tk-novel,table.tk-novel tbody,table.tk-novel tr,table.tk-novel td{display:block;width:auto}
+  table.tk-novel thead{display:none}
+  table.tk-novel tr{border-bottom:1px solid var(--rule);padding:12px 0}
+  table.tk-novel td{border:0;padding:4px 0}
+  table.tk-novel td[data-h]::before{content:attr(data-h);display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+}
+
+/* ---------- Wide novel table on desktop (the contents list fades out while it is on screen) ---------- */
+@media(min-width:901px){
+  .art #novelFig{grid-column:1/-1;justify-self:start;width:min(1180px,calc(100vw - 48px));margin-left:calc(50% - min(590px,calc(50vw - 24px)));box-sizing:border-box;position:relative;z-index:2}
+  table.tk-novel th:nth-child(1){width:17%}
+  table.tk-novel th:nth-child(2){width:28%}
+  table.cmp.tk-novel{font-size:14px}
+  .tk-nq p{font-size:14.5px}
+}

@@ -22,7 +22,7 @@ const rio = new IntersectionObserver((es) => es.forEach((e) => {
   if (!e.isIntersecting) return;
   e.target.classList.add('in-view');
   rio.unobserve(e.target);
-}), { threshold: 0.15 });
+}), { threshold: 0, rootMargin: '0px 0px -12% 0px' }); // any part on screen counts, so very tall figures still appear
 document.querySelectorAll('.rv, #qs').forEach((e) => rio.observe(e));
 const prog = document.getElementById('prog');
 const tocLinks = [...document.querySelectorAll('#toc a')];
@@ -117,6 +117,57 @@ const PLACE = { qiao: 'Qiao', zhuo: 'Zhuo', xiapi: 'Xiapi', langya: 'Langya', we
 /* Capitals and seats shown on the map. */
 const CITIES = [['Luoyang', 'luoyang'], ["Chang'an", 'changan'], ['Xu', 'xu'], ['Ye', 'ye'], ['Chengdu', 'chengdu'], ['Jianye', 'jianye'], ['Xiangyang', 'longzhong']];
 
+/* ---------------- the other map views: economy, population, battles ---------------- */
+const VIEWS = [['political', 'Political', '政治'], ['economy', 'Economy', '经济'], ['population', 'People', '人口'], ['battles', 'Battles', '战役']];
+
+/* Economy: resources and policies, each shown from the year it starts (and until it ends, if it does).
+   Glyph categories: 盐 salt, 铁 iron, 粮 grain land, 屯 state farms, 马 horses, 锦 silk, 船 fleets, 钱 money. */
+const ECON_KIND = { salt: ['盐', '#7f8c99', 'Salt', '盐'], iron: ['铁', '#4d4a46', 'Iron', '铁'], grain: ['粮', '#c49a2c', 'Grain land', '粮区'], farm: ['屯', '#5f8a3a', 'State farms', '屯田'], horse: ['马', '#8a5a3a', 'Horses', '马匹'], silk: ['锦', '#b0447a', 'Silk', '蜀锦'], ship: ['船', '#2f6a8f', 'Fleets', '水军'], coin: ['钱', '#b8892b', 'Money', '钱币'] };
+const ECON = [
+  { k: 'salt', ll: [110.95, 34.92], from: 155, side: 'l', en: 'Hedong salt lake', zh: '河东盐池', d: ["The great salt lake of Hedong; whoever held it controlled much of the north’s salt.", "河东解县（今运城）盐池，北方食盐的重要来源，控制河东即掌握大量盐利。"] },
+  { k: 'salt', ll: [103.45, 30.25], from: 155, en: 'Brine wells of Shu', zh: '蜀地盐井', d: ["Sichuan drilled wells for brine and boiled it into salt, a key revenue for Liu Zhang and then Shu.", "蜀地凿井取卤煮盐，是刘璋和后来蜀汉的重要财源。"] },
+  { k: 'salt', ll: [120.9, 30.5], from: 155, en: 'Sea salt', zh: '东南海盐', d: ["Salt boiled from seawater along the south-east coast, a mainstay of Wu’s revenue.", "东南沿海煮海为盐，是东吴的重要收入。"] },
+  { k: 'iron', ll: [112.53, 33.0], from: 155, side: 'l', en: 'Nanyang ironworks', zh: '南阳冶铁', d: ["Nanyang had one of the Han’s main iron offices, making farm tools and weapons.", "南阳宛城设有汉代铁官，是农具与兵器的重要产地。"] },
+  { k: 'iron', ll: [103.55, 30.65], from: 155, en: 'Linqiong iron', zh: '临邛冶铁', d: ["Linqiong near Chengdu had been famous for iron since the Qin; Shu put officials in charge of salt and iron.", "成都附近的临邛自秦代起以冶铁著称；蜀汉设司盐校尉管理盐铁之利。"] },
+  { k: 'grain', ll: [108.4, 34.55], from: 155, en: 'Guanzhong plain', zh: '关中平原', d: ["The irrigated Wei valley around Chang’an, wrecked and emptied by the wars after 190.", "长安周围的渭河平原，190年后屡遭战乱，人口流散。"] },
+  { k: 'grain', ll: [115.6, 37.6], from: 155, en: 'Hebei plain', zh: '河北平原', d: ["The densely farmed North China plain: Yuan Shao’s power base, then Cao Cao’s.", "人口稠密的华北平原，先是袁绍的根据地，后归曹操。"] },
+  { k: 'grain', ll: [104.3, 31.2], from: 155, en: 'Chengdu plain', zh: '成都平原（天府之土）', d: ["Watered by the Dujiangyan weir; Zhuge Liang called Yi “fertile land for a thousand li, a storehouse of heaven.”", "都江堰灌溉的成都平原，诸葛亮在《隆中对》中称益州“沃野千里，天府之土”。"] },
+  { k: 'grain', ll: [119.6, 31.0], from: 196, en: 'Taihu lowlands', zh: '太湖平原', d: ["The lakes and paddy fields around Lake Tai, opened up under the Sun family: the base of Wu’s wealth.", "太湖周围的水乡，在孙氏治下得到开发，是东吴财富的基础。"] },
+  { k: 'farm', ll: [113.82, 34.04], from: 196, en: 'State farms at Xu (196)', zh: '许下屯田（196）', d: ["Soldiers and refugees farmed state land around Xu; a note in the Records says the first year yielded a million measures of grain.", "196年在许县周围募民屯田，裴注引《魏书》说当年“得谷百万斛”，解决了曹军的军粮。"] },
+  { k: 'farm', ll: [116.6, 32.25], from: 209, en: 'Quebei farms (209)', zh: '芍陂屯田（209）', d: ["Cao Cao restored the old Quebei reservoir south of the Huai and farmed around it to feed the Hefei front.", "曹操在淮南修复芍陂，开垦屯田，为合肥前线供粮。"] },
+  { k: 'farm', ll: [107.6, 34.3], from: 234, to: 234, en: 'Zhuge Liang’s army farms (234)', zh: '诸葛亮五丈原屯田（234）', d: ["On his last campaign Zhuge Liang set soldiers to farm among the locals so the army could stay for the long haul.", "诸葛亮最后一次北伐时分兵屯田，与当地百姓杂处，作久驻之计。"] },
+  { k: 'farm', ll: [117.6, 33.0], from: 241, en: 'Deng Ai’s Huai farms (241)', zh: '邓艾淮南淮北屯田（241）', d: ["Deng Ai’s canals and farms on both banks of the Huai fed Wei’s armies against Wu for decades.", "邓艾在淮南淮北开渠屯田，为魏国对吴作战提供了长期的军粮。"] },
+  { k: 'horse', ll: [101.5, 37.8], from: 155, en: 'Liang horses', zh: '凉州马', d: ["The north-western frontier bred the warhorses behind Ma Teng, Han Sui and Ma Chao.", "西北边地出产战马，是马腾、韩遂、马超骑兵的基础。"] },
+  { k: 'horse', ll: [118.6, 41.6], from: 207, en: 'Wuhuan cavalry joins Cao Cao (207)', zh: '乌桓突骑归曹（207）', d: ["After White Wolf Mountain, Wuhuan horsemen joined Cao Cao’s armies and were called the finest cavalry in the realm.", "白狼山之战后，乌桓骑兵编入曹军，“由是三郡乌丸为天下名骑”。"] },
+  { k: 'silk', ll: [104.06, 30.66], from: 214, en: 'Shu brocade', zh: '蜀锦', d: ["Chengdu’s brocade was Shu’s chief export; Wei and Wu both bought it, helping pay for the wars.", "成都织锦是蜀汉最重要的输出品，魏、吴都向蜀购锦，用以支撑战争开支。"] },
+  { k: 'ship', ll: [119.45, 32.2], from: 200, en: 'Wu fleets', zh: '东吴水军', d: ["Wu’s war fleets on the Yangtze were its main defence against the northern armies.", "长江上的东吴水军，是抵御北方大军的主要屏障。"] },
+  { k: 'ship', ll: [114.35, 36.33], from: 208, to: 208, en: 'Xuanwu Pool navy drill (208)', zh: '玄武池练水军（208）', d: ["Cao Cao dug a lake at Ye to train sailors before marching south.", "曹操在邺城开凿玄武池操练水军，准备南征。"] },
+  { k: 'coin', ll: [112.45, 34.62], from: 190, to: 196, side: 'l', en: 'Dong Zhuo’s small coins: grain at hundreds of thousands', zh: '董卓铸小钱，谷价飞涨', d: ["Dong Zhuo melted bronze statues into tiny coins; prices soared and a measure of grain cost hundreds of thousands.", "董卓熔铜人、铸小钱，物价飞涨，谷一斛至数十万钱。"] },
+  { k: 'salt', ll: [108.4, 33.95], from: 200, side: 'l', en: 'Salt monopoly restored (c. 200)', zh: '复置盐官（约200）', d: ["On Wei Ji’s advice Cao Cao put salt sales back under officials and used the profit to buy oxen and resettle Guanzhong.", "曹操采纳卫觊的建议，恢复官府专卖食盐，用盐利购买耕牛，招抚关中流民。"] },
+  { k: 'coin', ll: [104.06, 30.66], from: 214, en: 'Liu Bei’s “worth-a-hundred” coin (214)', zh: '刘备铸直百钱（214）', d: ["With the treasury empty after Chengdu fell, Liu Ba had a coin minted worth a hundred ordinary ones; the treasury filled within months.", "刘备取成都后府库空虚，采纳刘巴的建议铸“直百钱”，数月之间府库充实。"] },
+  { k: 'coin', ll: [112.45, 34.62], from: 221, to: 226, side: 'l', en: 'Cao Pi drops coins: trade in grain and silk (221)', zh: '曹丕罢五铢，以谷帛为市（221）', d: ["In 221 Wei stopped using coins and had people trade in grain and silk; coins returned in 227.", "221年魏国罢五铢钱，令百姓以谷帛交易；227年才恢复用钱。"] },
+  { k: 'coin', ll: [118.8, 32.05], from: 236, en: 'Sun Quan’s “worth-500” coin (236)', zh: '孙权铸大泉五百（236）', d: ["Wu cast big coins worth 500 and later 1,000 ordinary coins, a disguised tax people resented; they were withdrawn in 246.", "东吴铸“大泉五百”，后又铸“大泉当千”，实为变相加税，民间不便，246年收回。"] }
+];
+
+/* People: registered population in the Han census of 140 (Book of the Later Han, treatise on commanderies),
+   summed by the map's provinces from the commandery figures. You excludes Liaodong (unknown); Jiao is partial. */
+const POP140 = { sili: 3106161, yu: 6179139, ji: 5931973, yan: 4052111, xu: 2791683, qing: 3709803, jingN: 3452686, jingS: 2813266, huainan: 857109, jiangdong: 3481429, hanzhong: 267402, yi: 6256158, liang: 391652, bing: 420228, you: 1556610, liaodong: 300213, jiao: 1114444 };
+
+/* Battles: [year, place, winner's colour key, English, Chinese]. */
+const BATTLES = [
+  [190, [113.38, 34.8], 'dong', 'Xingyang', '荥阳', "Cao Cao, almost alone among the coalition, attacks Dong Zhuo’s army and is badly beaten by Xu Rong.", "曹操几乎独自进攻董卓军，被徐荣大败。"], [191, [112.7, 34.2], 'sun', 'Yangren', '阳人', "Sun Jian routs Dong Zhuo’s army and kills Hua Xiong, then enters Luoyang.", "孙坚大破董卓军，斩华雄，随后进入洛阳。"], [194, [115.03, 35.7], 'lubu', 'Puyang', '濮阳', "Cao Cao and Lü Bu fight for over a hundred days until famine ends it, neither side winning.", "曹操与吕布相持百余日，因蝗灾饥荒罢兵，未分胜负。"],
+  [197, [112.53, 33.0], 'other', 'Wan', '宛城', "Zhang Xiu surrenders, then attacks Cao Cao by night; Cao Ang and Dian Wei are killed.", "张绣先降后叛，夜袭曹营，曹昂、典韦战死。"], [200, [114.6, 35.6], 'cao', 'Baima', '白马', "Cao Cao’s feint lets Guan Yu ride in and kill Yuan Shao’s general Yan Liang.", "曹操声东击西，关羽于万军之中斩袁绍大将颜良。"], [200, [114.05, 34.75], 'cao', 'Guandu', '官渡', "Outnumbered, Cao Cao burns Yuan Shao’s grain at Wuchao and Yuan’s army collapses: the north is decided.", "兵少的曹操火烧乌巢粮草，袁绍大军崩溃，北方归属由此决定。"],
+  [204, [114.35, 36.33], 'cao', 'Ye', '邺城', "Cao Cao floods and starves the Yuan capital into surrender; Ye becomes his base.", "曹操引漳水灌城，围困数月攻下袁氏都城，此后以邺为根据地。"], [207, [119.75, 41.13], 'cao', 'White Wolf Mtn', '白狼山', "Far beyond the Wall, Cao Cao routs the Wuhuan and kills their chieftain Tadun.", "曹操远征塞外，大破乌桓，斩单于蹋顿。"], [208, [111.8, 30.85], 'cao', 'Changban', '长坂', "Cao Cao’s cavalry catch the fleeing Liu Bei and his refugees; Zhao Yun saves Liu Bei’s son.", "曹操轻骑追上南逃的刘备和百姓，刘备大败，赵云救出幼子。"],
+  [208, [113.9, 29.75], 'sun', 'Red Cliffs', '赤壁', "The Sun–Liu alliance burns Cao Cao’s fleet; with plague in his camp he retreats north.", "孙刘联军火攻曹军舰队，加上疫病，曹操北撤，三分之势初成。"], [209, [112.2, 30.35], 'sun', 'Jiangling', '江陵', "Zhou Yu besieges Cao Ren for a year until Cao Ren abandons the city.", "周瑜围攻江陵一年，曹仁弃城北撤。"], [211, [110.25, 34.6], 'cao', 'Tong Pass', '潼关', "Cao Cao crosses the Wei River, splits Ma Chao from Han Sui and crushes the north-western warlords.", "曹操渡渭水，离间马超、韩遂，大破关中诸将。"],
+  [213, [117.95, 31.4], 'sun', 'Ruxu', '濡须', "Cao Cao attacks Sun Quan’s river fort and withdraws after a month’s stand-off.", "曹操进攻孙权的濡须坞，相持月余后撤退。"], [214, [104.4, 30.99], 'liubei', 'Luo', '雒城', "Liu Bei besieges Luo for a year, losing Pang Tong, before taking it and then Chengdu.", "刘备围攻雒城近一年，庞统中箭身亡，城破后成都投降。"], [215, [106.1, 32.95], 'cao', 'Yangping', '阳平关', "Cao Cao breaks through the pass into Hanzhong, and Zhang Lu surrenders.", "曹操攻破阳平关，张鲁投降，汉中归曹。"],
+  [215, [117.27, 31.86], 'cao', 'Hefei', '合肥', "Zhang Liao’s 800 men charge Sun Quan’s army of 100,000 and nearly capture him at Xiaoyao Ford.", "张辽以八百人冲击孙权十万大军，在逍遥津几乎生擒孙权。"], [219, [106.6, 33.15], 'liubei', 'Dingjun Mtn', '定军山', "Huang Zhong kills Xiahou Yuan, and Liu Bei wins Hanzhong.", "黄忠斩夏侯渊，刘备夺得汉中。"], [219, [112.15, 32.05], 'cao', 'Fancheng', '樊城', "Guan Yu drowns Yu Jin’s army in the floods, but the siege fails when Wu strikes his rear.", "关羽水淹于禁七军，威震华夏，但东吴从背后偷袭，樊城之围失败。"],
+  [219, [111.75, 30.95], 'sun', 'Maicheng', '麦城', "Cut off by Lü Meng, Guan Yu’s army melts away; he is captured and killed.", "吕蒙袭取荆州，关羽军心瓦解，败走麦城后被擒杀。"], [222, [111.3, 30.7], 'sun', 'Yiling', '夷陵', "Lu Xun waits out Liu Bei for months, then burns his line of camps.", "陆逊坚守数月，以火攻烧毁刘备连营，蜀军大败。"], [228, [105.7, 34.9], 'cao', 'Jieting', '街亭', "Ma Su leaves the water supply for a hilltop and is routed by Zhang He, ending Zhuge Liang’s first campaign.", "马谡舍水上山，被张郃击败，诸葛亮第一次北伐失败。"],
+  [228, [116.55, 30.85], 'sun', 'Shiting', '石亭', "Lu Xun lures the Wei general Cao Xiu deep into Wu territory and routs him.", "陆逊诱魏将曹休深入，在石亭大破魏军。"], [234, [107.6, 34.3], 'cao', 'Wuzhang', '五丈原', "Sima Yi refuses battle for a hundred days; Zhuge Liang dies in camp and Shu withdraws.", "司马懿坚守不战百余日，诸葛亮病逝军中，蜀军撤退。"], [238, [123.17, 41.27], 'cao', 'Xiangping', '襄平', "Sima Yi besieges Gongsun Yuan’s capital through the summer rains and takes Liaodong.", "司马懿冒雨围攻襄平，斩公孙渊，平定辽东。"],
+  [263, [104.2, 31.35], 'cao', 'Mianzhu', '绵竹', "Deng Ai, through the mountains, beats Zhuge Zhan at Mianzhu; Liu Shan surrenders Chengdu.", "邓艾偷渡阴平，在绵竹击败诸葛瞻，刘禅开城投降。"], [280, [118.8, 32.05], 'jin', 'Jianye', '建业', "Jin fleets come down the Yangtze; Sun Hao surrenders and China is reunited.", "晋军舟师顺江而下，孙皓投降，天下重归一统。"]
+];
+// the last year a step covers ("225–228" covers up to 228)
+const stepEnd = (s) => { const m = String(s.yr).match(/(\d{3})\D*$/); return m ? +m[1] : s.y; };
+
 /* The steps and lives (js/three-kingdoms-data.js). Each step's full map and faction names are built by
    carrying the changes forward from the step before. */
 const DATA = window.TK_DATA;
@@ -124,7 +175,13 @@ const STEPS = DATA.steps;
 STEPS.reduce((prev, s) => { s.map = Object.assign({}, prev, s.own); return s.map; }, {});
 STEPS.reduce((prev, s) => { s.names = Object.assign({}, prev, s.nm || {}); return s.names; }, {});
 const PEOPLE = DATA.people;
-const ORDER = ['caocao', 'liubei', 'sunquan', 'zhuge', 'guanyu', 'simayi'];
+// people grouped by the side they served: Wei, Shu, Wu (the picker and the cast chart both use this order)
+const GROUPS = [
+  { k: 'wei', n: ['Wei', '魏'], fac: 'cao', who: ['caocao', 'simayi'] },
+  { k: 'shu', n: ['Shu', '蜀'], fac: 'liubei', who: ['liubei', 'zhuge', 'guanyu'] },
+  { k: 'wu', n: ['Wu', '吴'], fac: 'sun', who: ['sunquan'] }
+];
+const ORDER = GROUPS.flatMap((g) => g.who);
 // for each person: the step where they die, and where they first appear
 Object.values(PEOPLE).forEach((per) => {
   per.deathIdx = STEPS.findIndex((s) => per.life[s.id] && per.life[s.id][3]);
@@ -173,9 +230,12 @@ applyStatic();
 /* ================= THE MAP ================= */
 (function () {
   const svg = document.getElementById('tkMap'); if (!svg) return;
+  // wrap the map so whatever it draws beyond its own box is clipped there, not over the year or legend
+  const wrap = document.createElement('div'); wrap.className = 'tk-mapwrap';
+  svg.parentNode.insertBefore(wrap, svg); wrap.appendChild(svg);
   const stepsBox = document.getElementById('tkSteps');
   const yearEl = document.getElementById('tkYear'), titleEl = document.getElementById('tkTitle'), legendEl = document.getElementById('tkLegend');
-  const W = 600, H = NARROW ? 470 : 620;
+  const W = 600, H = NARROW ? 470 : 600;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const hasMap = window.d3 && window.topojson && window.__WORLD110M;
   const proj = hasMap
@@ -186,7 +246,9 @@ applyStatic();
   const ring = (pts) => 'M' + pts.map((ll) => pt(ll).map((v) => v.toFixed(1)).join(' ')).join('L') + 'Z';
 
   // land and sea
-  mk('rect', { x: 0, y: 0, width: W, height: H, fill: '#dfe6ea' }, svg);
+  // the sea reaches well past the drawing area: when the map box is wider or taller than the map,
+  // the SVG shows what lies beyond its viewBox instead of blank bands (see #tkMap overflow in the CSS)
+  mk('rect', { x: -W * 2, y: -H * 2, width: W * 5, height: H * 5, fill: '#dfe6ea' }, svg);
   const world = window.__WORLD110M;
   const feats = topojson.feature(world, world.objects.countries).features;
   const NEAR = new Set(['China', 'Vietnam', 'Laos', 'Myanmar', 'Mongolia', 'North Korea', 'South Korea', 'Taiwan', 'Thailand', 'Cambodia', 'Russia', 'India', 'Bhutan', 'Nepal', 'Bangladesh', 'Kazakhstan', 'Japan']);
@@ -224,6 +286,50 @@ applyStatic();
   };
   // faction names, placed at the middle of each faction's land
   const facLab = mk('g', { class: 'tk-faclab' }, svg);
+  const ovG = mk('g', { class: 'tk-ov' }, svg); // markers for the economy, population and battle views
+  // a small card with the marker's name and a one-line description: on hover with a mouse, on tap on phones
+  const tip = document.createElement('div'); tip.className = 'tk-tipbox'; tip.hidden = true;
+  wrap.appendChild(tip);
+  let tipTimer = 0;
+  const showTip = (m) => {
+    const c = svg.getScreenCTM(); if (!c) return;
+    const p = svg.createSVGPoint(); [p.x, p.y] = m.__xy; const q = p.matrixTransform(c);
+    const r = wrap.getBoundingClientRect();
+    tip.innerHTML = `<b>${m.__name}</b>${m.__desc ? `<span>${m.__desc}</span>` : ''}`;
+    tip.hidden = false;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = q.x - r.left - w / 2, y = q.y - r.top - h - 14;
+    if (y < 4) y = q.y - r.top + 16;
+    tip.style.left = Math.max(4, Math.min(r.width - w - 4, x)) + 'px';
+    tip.style.top = y + 'px';
+  };
+  const hideTip = () => { tip.hidden = true; };
+  ovG.addEventListener('pointerover', (e) => { const m = e.target.closest('.tk-mk'); if (m && e.pointerType === 'mouse') showTip(m); });
+  ovG.addEventListener('pointerout', (e) => { const m = e.target.closest('.tk-mk'); if (m && e.pointerType === 'mouse' && !m.contains(e.relatedTarget)) hideTip(); });
+  ovG.addEventListener('click', (e) => {
+    const m = e.target.closest('.tk-mk'); if (!m) return;
+    showTip(m); clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 5000);
+  });
+  let view = 'political';
+  const head = document.querySelector('.tk-head');
+  const viewBox = document.createElement('div'); viewBox.className = 'tk-views'; viewBox.setAttribute('role', 'group');
+  head.appendChild(viewBox);
+  const renderViews = () => {
+    viewBox.setAttribute('aria-label', isZh() ? '地图视图' : 'Map view');
+    viewBox.innerHTML = VIEWS.map(([k, en, zh]) => `<button type="button" data-v="${k}" aria-pressed="${k === view}">${isZh() ? zh : en}</button>`).join('');
+  };
+  viewBox.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; view = b.dataset.v; renderViews(); draw(curSi, curWho); });
+  // a switch for the big faction names on the political map
+  let showNames = true;
+  const namesBtn = document.createElement('button'); namesBtn.type = 'button'; namesBtn.className = 'tk-namesbtn';
+  head.appendChild(namesBtn);
+  const renderNamesBtn = () => {
+    namesBtn.setAttribute('aria-pressed', showNames);
+    namesBtn.textContent = (isZh() ? '势力名称' : 'Big names') + (showNames ? (isZh() ? '：开' : ': on') : (isZh() ? '：关' : ': off'));
+  };
+  namesBtn.addEventListener('click', () => { showNames = !showNames; renderNamesBtn(); draw(curSi, curWho); });
+  renderViews(); renderNamesBtn();
+  let curSi = 0, curWho = 'caocao';
   // the chosen person's trail and position
   const trail = mk('path', { fill: 'none', stroke: '#111', 'stroke-width': 2, 'stroke-dasharray': '2 5', 'stroke-linecap': 'round', opacity: 0.75 }, svg);
   const trailDots = mk('g', {}, svg);
@@ -235,7 +341,81 @@ applyStatic();
   const meTx = say(meTag, 0, -18, '', { 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 800, fill: '#fff' });
 
   const area = (pts) => Math.abs(d3.polygonArea(pts.map(pt)));
+  const fmtPop = (v) => isZh() ? (v >= 1e4 ? Math.round(v / 1e4) + '万' : v) : (v >= 1e6 ? (v / 1e6).toFixed(1) + 'm' : Math.round(v / 1e3) + 'k');
+  /* recorded (registered) population: only the figures that survive, with the gap left visibly empty */
+  function popChart(zh) {
+    const W = 520, H = 170, L = 42, B = 132, T = 14, max = 60;
+    const Y = (v) => B - v / max * (B - T);
+    const bars = [
+      { x: 70, lab: '140', parts: [[49.14, '#cdbf98']], note: zh ? '东汉' : 'Han' },
+      { x: 130, lab: '157', parts: [[56.49, '#cdbf98']], note: zh ? '东汉' : 'Han' },
+      { x: 360, lab: zh ? '263 / 280' : '263 / 280', parts: [[4.43, FAC.cao.c], [0.94, FAC.liubei.c], [2.3, FAC.sun.c]], note: zh ? '魏 蜀 吴' : 'Wei Shu Wu' },
+      { x: 450, lab: '280', parts: [[16.16, FAC.jin.c]], note: zh ? '西晋' : 'Jin' }
+    ];
+    let g = '';
+    [0, 20, 40, 60].forEach((v) => { g += `<line x1="${L}" x2="${W - 10}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e4dfd3"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="10" fill="#8a8578">${v}${zh ? '百万' : 'm'}</text>`; });
+    // the 106 years with no surviving census
+    g += `<rect x="168" y="${T}" width="150" height="${B - T}" fill="url(#tkHatch)"/><text x="243" y="${(T + B) / 2}" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8578">${zh ? '158–262年' : '158–262'}</text><text x="243" y="${(T + B) / 2 + 15}" text-anchor="middle" font-size="10.5" fill="#8a8578">${zh ? '无户口记录存世' : 'no census survives'}</text>`;
+    bars.forEach((b) => {
+      let y = B, tot = 0;
+      b.parts.forEach(([v, c]) => { const h = B - Y(v); y -= h; tot += v; g += `<rect x="${b.x - 18}" y="${y}" width="36" height="${h}" fill="${c}"/>`; });
+      g += `<text x="${b.x}" y="${y - 5}" text-anchor="middle" font-size="11" font-weight="800" fill="#1f1f22">${zh ? Math.round(tot * 100) + '万' : tot.toFixed(1) + 'm'}</text>`;
+      g += `<text x="${b.x}" y="${B + 14}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f1f22">${b.lab}</text><text x="${b.x}" y="${B + 27}" text-anchor="middle" font-size="10" fill="#8a8578">${b.note}</text>`;
+    });
+    const svgTx = `<svg class="tk-popchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${zh ? '登记人口：140年约4914万，157年约5649万，158至262年无记录，三国末年魏蜀吴合计约767万，280年西晋约1616万。' : 'Registered population: about 49.1 million in 140, 56.5 million in 157, no records 158 to 262, about 7.7 million for Wei, Shu and Wu at the end, and 16.2 million for Jin in 280.'}"><defs><pattern id="tkHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#e4dfd3" stroke-width="2"/></pattern></defs>${g}</svg>`;
+    const note = zh
+      ? '圆圈为140年各州人口（《后汉书·郡国志》）。柱图只画存世的户口数字：140年、157年（《帝王世纪》）、三国末年（魏、蜀263年，吴280年，见裴注所引）、西晋280年（《晋书·地理志》）。这是登记纳税的人口，不是实际人口：大幅下降既有战乱饥荒中的死亡，也有大量百姓逃亡或投靠豪族而脱离户籍；280年的回升多是晋朝重新清点户口。'
+      : 'Circles: each province in 140 (Book of the Later Han). The bars show only the census figures that survive: 140, 157 (Diwang Shiji), the end of each state (Wei and Shu in 263, Wu in 280, quoted in Pei\u2019s notes) and Jin in 280 (Book of Jin). These count registered taxpayers, not people: the collapse mixes deaths from war and famine with millions who fled or became tenants of great families and dropped off the rolls, and the 280 rebound is mostly Jin re-registering them.';
+    return svgTx + `<span class="tk-lnote">${note}</span>`;
+  }
+  function drawView(si) {
+    const s = STEPS[si], end = stepEnd(s), zh = isZh();
+    ovG.innerHTML = ''; tip.hidden = true;
+    provG.style.opacity = view === 'political' ? 1 : view === 'population' ? 0.25 : 0.4;
+    facLab.style.display = view === 'political' && showNames ? '' : 'none';
+    trail.style.display = trailDots.style.display = view === 'political' ? '' : 'none';
+    if (view === 'economy') {
+      const items = ECON.filter((m) => m.from <= end && (m.to === undefined || m.to >= s.y));
+      items.forEach((m) => {
+        const [g, col] = ECON_KIND[m.k], c = pt(m.ll);
+        const fresh = m.from >= s.y && m.from <= end && m.from > 155;
+        const grp = mk('g', { transform: `translate(${c[0]} ${c[1]})`, class: 'tk-mk' }, ovG);
+        Object.assign(grp, { __xy: c, __name: zh ? m.zh : m.en, __desc: m.d[zh ? 1 : 0] });
+        grp.setAttribute('aria-label', grp.__name);
+        mk('circle', { r: fresh ? 12 : 9, fill: col, stroke: '#fff', 'stroke-width': 2 }, grp);
+        say(grp, 0, fresh ? 4.5 : 3.5, g, { 'text-anchor': 'middle', 'font-size': fresh ? 12 : 9.5, 'font-weight': 700, fill: '#fff' });
+        if (fresh) say(grp, m.side === 'l' ? -15 : 15, 4, zh ? m.zh : m.en, { 'text-anchor': m.side === 'l' ? 'end' : 'start', 'font-size': NARROW ? 12 : 10.5, 'font-weight': 700, fill: '#1f1f22', 'paint-order': 'stroke', stroke: 'rgba(255,255,255,.9)', 'stroke-width': 3 });
+      });
+      const kinds = [...new Set(items.map((m) => m.k))];
+      legendEl.innerHTML = kinds.map((k) => `<span><i class="g" style="background:${ECON_KIND[k][1]}" lang="zh">${ECON_KIND[k][0]}</i>${ECON_KIND[k][zh ? 3 : 2]}</span>`).join('') +
+        `<span class="tk-lnote">${zh ? '只标注本节点新出现的项目；悬停或点按图标查看说明。' : 'Only new items are labelled; hover or tap an icon to read about it.'}</span>`;
+    } else if (view === 'population') {
+      const max = Math.max(...Object.values(POP140));
+      Object.entries(POP140).forEach(([k, v]) => {
+        const LA = { yi: [103.5, 29.5], jiao: [110, 23.3], jiangdong: [118.6, 28.5], liang: [99.5, 38.2], liaodong: [123, 41.3], huainan: [117.2, 32.3], hanzhong: [107.3, 32.95] };
+        const c = LA[k] ? pt(LA[k]) : centroid(PROV[k].p);
+        const r = 6 + 30 * Math.sqrt(v / max);
+        mk('circle', { cx: c[0], cy: c[1], r, fill: 'rgba(194,65,45,.55)', stroke: '#8a2a1c', 'stroke-width': 1.2 }, ovG);
+        say(ovG, c[0], c[1] + 4, fmtPop(v), { 'text-anchor': 'middle', 'font-size': NARROW ? 12.5 : 11, 'font-weight': 800, fill: '#1f1f22', 'paint-order': 'stroke', stroke: 'rgba(255,255,255,.9)', 'stroke-width': 3 });
+      });
+      legendEl.innerHTML = popChart(zh);
+    } else if (view === 'battles') {
+      BATTLES.filter((b) => b[0] <= end).forEach(([y, ll, f, en, zhn, den, dzh]) => {
+        const c = pt(ll), now = y >= s.y && y <= end;
+        const grp = mk('g', { transform: `translate(${c[0]} ${c[1]})`, opacity: now ? 1 : 0.7, class: 'tk-mk' }, ovG);
+        Object.assign(grp, { __xy: c, __name: `${zh ? zhn : en} · ${y}`, __desc: zh ? dzh : den });
+        grp.setAttribute('aria-label', grp.__name);
+        mk('circle', { r: 9, fill: 'transparent' }, grp); // a bigger target for hover and tap
+        if (now) mk('circle', { r: 16, fill: 'none', stroke: FAC[f].c, 'stroke-width': 2.5, class: 'tk-pulse' }, grp);
+        const k = now ? 7 : 4.5;
+        mk('path', { d: `M-${k} -${k} L${k} ${k} M${k} -${k} L-${k} ${k}`, stroke: FAC[f].c, 'stroke-width': now ? 4 : 2.5, 'stroke-linecap': 'round' }, grp);
+        if (now) say(grp, 11, -7, `${zh ? zhn : en} ${y}`, { 'font-size': NARROW ? 13 : 12, 'font-weight': 800, fill: '#1f1f22', 'paint-order': 'stroke', stroke: 'rgba(255,255,255,.9)', 'stroke-width': 3 });
+      });
+      legendEl.innerHTML = `<span class="tk-lnote">${zh ? '✕ 颜色为胜方；只标注本节点的战役，悬停或点按查看说明。' : '✕ coloured by the winner; only this step’s battles are named. Hover or tap for details.'}</span>`;
+    }
+  }
   function draw(si, who) {
+    curSi = si; curWho = who;
     const s = STEPS[si];
     Object.entries(s.map).forEach(([k, f]) => provEls[k].setAttribute('fill', FAC[f].c));
     // faction labels and legend
@@ -251,6 +431,7 @@ applyStatic();
     legendEl.innerHTML = Object.keys(tally).sort((a, b) => tally[b].a - tally[a].a)
       .map((f) => `<span><i style="background:${FAC[f].c}"></i>${facName(si, f)}</span>`).join('');
     yearEl.textContent = s.yr; titleEl.textContent = stepTitle(si);
+    drawView(si);
     // the person: their route so far, and where they are now
     const per = PEOPLE[who], col = FAC[per.fac].c, st = status(who, si);
     const path = [];
@@ -342,22 +523,33 @@ applyStatic();
   renderSteps();
 
   const toggles = document.querySelectorAll('.tk-pick');
+  /* the person picker: a dropdown grouped by side (Wei, Shu, Wu), with the chosen person's badge beside it */
+  const syncPicker = () => toggles.forEach((box) => {
+    const sel = box.querySelector('select'); if (sel) sel.value = who;
+    const av = box.querySelector('.tk-selav');
+    if (av) { av.textContent = perCh(who); av.style.setProperty('--pc', FAC[PEOPLE[who].fac].c); }
+  });
   function pick(k, from) {
     who = k;
-    toggles.forEach((box) => box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.p === k ? 'true' : 'false')));
+    syncPicker();
     renderPeople(); draw(si, who);
     document.querySelectorAll('#castSvg .cast-row').forEach((g) => g.classList.toggle('on', g.dataset.p === k));
     if (from === 'cast') document.getElementById('tkScrolly').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
   }
-  const renderToggles = () => toggles.forEach((box) => {
-    box.innerHTML = ORDER.map((k) => `<button type="button" data-p="${k}" aria-pressed="${k === who}" style="--pc:${FAC[PEOPLE[k].fac].c}"><b lang="zh">${perCh(k)}</b>${perName(k)}</button>`).join('');
-  });
-  toggles.forEach((box) => box.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) pick(b.dataset.p); }));
+  const renderToggles = () => {
+    toggles.forEach((box) => {
+      const opts = GROUPS.map((g) => `<optgroup label="${g.n[L()]}">` +
+        g.who.map((k) => `<option value="${k}">${perName(k)}</option>`).join('') + '</optgroup>').join('');
+      box.innerHTML = `<span class="tk-selav" aria-hidden="true" lang="zh"></span><select class="tk-sel" aria-label="${isZh() ? '选择要跟随的人物' : 'Choose whose life to follow'}">${opts}</select>`;
+    });
+    syncPicker();
+  };
+  toggles.forEach((box) => box.addEventListener('change', (e) => { if (e.target.matches('select')) pick(e.target.value); }));
   renderToggles();
   window.__tkPick = pick;
   window.__tkWho = () => who;
   mapLabels();
-  langHooks.push(() => { mapLabels(); renderSteps(); renderPeople(); renderToggles(); draw(si, who); });
+  langHooks.push(() => { mapLabels(); renderViews(); renderNamesBtn(); renderSteps(); renderPeople(); renderToggles(); draw(si, who); });
 
   function setStep(i) {
     if (i === si && stepEls[i].classList.contains('on')) return;
@@ -369,6 +561,14 @@ applyStatic();
   const obs = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setStep(+e.target.dataset.i); }),
     { rootMargin: NARROW ? '-70% 0px -25% 0px' : '-48% 0px -48% 0px' });
   stepEls.forEach((el) => obs.observe(el));
+  // hide the "In this story" list while the timeline is on screen, so the map can use that column
+  // (the wide novel table below does the same)
+  const wideOn = new Set();
+  const wideObs = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) wideOn.add(e.target); else wideOn.delete(e.target); });
+    document.body.classList.toggle('tk-wide', wideOn.size > 0);
+  }, { rootMargin: '-20% 0px -20% 0px' });
+  ['tkScrolly', 'novelFig'].forEach((id) => { const el = document.getElementById(id); if (el) wideObs.observe(el); });
   renderPeople(); setStep(0);
 })();
 
@@ -403,6 +603,26 @@ applyStatic();
     g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
     if (k === (window.__tkWho ? window.__tkWho() : 'caocao')) g.classList.add('on');
   });
+  }
+  build();
+  langHooks.push(build);
+})();
+
+/* ================= HISTORY AND THE NOVEL: the table, built from js/three-kingdoms-novel.js ================= */
+(function () {
+  const N = window.TK_NOVEL, fig = document.getElementById('novelFig'); if (!N || !fig) return;
+  const table = fig.querySelector('table'); if (!table) return;
+  table.classList.add('tk-novel');
+  function build() {
+    const zh = isZh(), i = zh ? 1 : 0;
+    const head = zh ? ['情节', '小说怎么写', '史书怎么写'] : ['Scene', 'In the novel', 'In the history'];
+    table.innerHTML = `<thead><tr>${head.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
+      N.rows.map((r) => {
+        const [ven, vzh, vc] = N.verdicts[r.v];
+        const quote = r.q ? `<blockquote class="tk-nq"><div class="tk-qs">${zh ? '原文' : 'Original text'} · <span lang="zh">${r.q.src}</span></div><p lang="zh">「${r.q.c}」</p>${zh ? '' : `<p class="tk-qe">${r.q.en}</p>`}</blockquote>` : '';
+        return `<tr><td><span class="tk-sc">${r.s[i]}</span><span class="tk-vd" style="--vc:${vc}">${zh ? vzh : ven}</span></td>` +
+          `<td data-h="${head[1]}">${r.n[i]}</td><td data-h="${head[2]}">${r.h[i]}${quote}</td></tr>`;
+      }).join('') + '</tbody>';
   }
   build();
   langHooks.push(build);
