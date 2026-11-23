@@ -78,3 +78,13 @@ table.cmp tbody tr:hover{background:#faf8f2}
   #outlookSvg .ol-note{animation:none!important;opacity:1;transform:translateX(26px)}
   #outlookSvg .ol-note:not(:first-of-type){display:none}
 }
+
+/* new graphics: Gresham scene, balance scales, Fed slider, stablecoin flow */
+#greshamSvg,#scaleSvg,#fedSvg,#stableSvg{width:100%;height:auto;display:block}
+#greshamSvg{border:1px solid var(--rule)}
+.fed-ctl{font-family:var(--sans);font-size:14px;color:var(--ink2);margin:10px 0 6px;display:grid;gap:8px}
+.fed-ctl b{color:var(--ink)}
+.fed-ctl input[type=range]{width:100%;accent-color:#8a2a1c}
+.fed-why{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink2);margin:6px 0 0;padding-left:12px;border-left:3px solid #c2412d;min-height:3em}
+.st-count{font-family:var(--sans);font-size:14px;color:var(--ink2);margin:4px 0 14px;text-align:center;min-height:1.5em}
+.st-count b{color:#3f6a45;font-variant-numeric:tabular-nums}

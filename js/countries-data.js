@@ -14,9 +14,10 @@
  */
 /*
  * A country is listed when an article is MAINLY about a single company (labelled
- * with that company's home country) OR when an article is mainly about one
- * country's own economy or history. Articles about an industry, a mechanism or
- * several companies spread across places have no country.
+ * with that company's home country), when an article is mainly about one
+ * country's own economy or history, OR, for a regional story, the specific
+ * countries that were deeply involved. Articles about an industry or a mechanism
+ * with no particular geography have no country.
  */
 window.BOTTLENECK_COUNTRIES = {
   countries: {
@@ -31,6 +32,31 @@ window.BOTTLENECK_COUNTRIES = {
       articles: [
         { title: "The cloth inside the chip (Nittobo)", href: "explainers/glass-cloth.html" },
         { title: "The biggest bubble in history: Japan's lost decades", href: "explainers/japan-bubble.html" }
+      ]
+    },
+    "Thailand": {
+      articles: [
+        { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
+      ]
+    },
+    "Indonesia": {
+      articles: [
+        { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
+      ]
+    },
+    "South Korea": {
+      articles: [
+        { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
+      ]
+    },
+    "Malaysia": {
+      articles: [
+        { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
+      ]
+    },
+    "Philippines": {
+      articles: [
+        { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
       ]
     }
   }

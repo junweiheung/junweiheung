@@ -64,6 +64,93 @@ const rail=document.getElementById('rail');
 STOPS.forEach(s=>{const sp=document.createElement('span');sp.textContent=s.k;rail.appendChild(sp);});
 const railEls=[...rail.children];
 
+
+/* ---------------- the chip's journey: what physically happens at each stop ----------------
+   A picture above the margin curve, swapped as the reader scrolls. Each scene is its own <g>;
+   only the active one is shown, and its small loop animations run only while it's active. */
+const stage=document.getElementById('stage'), stageCap=document.getElementById('stageCap');
+const SC={}; // scene groups by key
+const sg=(k)=>{const g=el('g',{class:'stg','data-k':k},stage);SC[k]=g;return g;};
+const T_=(p,x,y,str,a={})=>{const t=el('text',Object.assign({x,y,'font-family':'Inter','font-size':11,fill:'#8d8a84'},a),p);t.textContent=str;return t;};
+const GOLDc='#e0b65a', BLUEc='#4d8bff', SIL='#b9c3cf';
+// little icon set, reused by the overview strip
+function iconBlueprint(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-26,y:-20,width:52,height:40,rx:3,fill:'#1d3b6b'},g);for(let i=1;i<4;i++){el('line',{x1:-26,x2:26,y1:-20+i*10,y2:-20+i*10,stroke:'#3d64a8','stroke-width':.8},g);el('line',{x1:-26+i*13,x2:-26+i*13,y1:-20,y2:20,stroke:'#3d64a8','stroke-width':.8},g);}el('rect',{x:-14,y:-10,width:28,height:20,fill:'none',stroke:'#cfe0ff','stroke-width':1.5},g);return g;}
+function iconScreen(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-28,y:-20,width:56,height:36,rx:3,fill:'#26262b',stroke:'#55555c'},g);el('rect',{x:-6,y:16,width:12,height:6,fill:'#55555c'},g);for(let i=0;i<4;i++)el('line',{x1:-20,x2:-20+12+i*7,y1:-12+i*7,y2:-12+i*7,stroke:GOLDc,'stroke-width':2},g);return g;}
+function iconWafer(p,x,y,r=22){const g=el('g',{},p);el('circle',{cx:x,cy:y,r,fill:SIL,stroke:'#8f9aa8'},g);const n=Math.floor(r/6);for(let i=-n;i<=n;i++)for(let k=-n;k<=n;k++){const cx=x+i*6,cy=y+k*6;if((i*6)**2+(k*6)**2<(r-5)**2)el('rect',{x:cx-2.4,y:cy-2.4,width:4.8,height:4.8,fill:'#7c5cc4',opacity:.85},g);}return g;}
+function iconHBM(p,x,y,n=8,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);for(let i=0;i<n;i++)el('rect',{x:-16,y:-i*5,width:32,height:4,rx:1,fill:i%2?'#3fa36b':'#4fc26b'},g);return g;}
+function iconPackage(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-34,y:-16,width:68,height:32,rx:2,fill:'#2f6b3f'},g);el('rect',{x:-12,y:-11,width:24,height:22,fill:'#8a8f99'},g);[-26,18].forEach(dx=>{el('rect',{x:dx,y:-11,width:8,height:10,fill:'#4fc26b'},g);el('rect',{x:dx,y:1,width:8,height:10,fill:'#4fc26b'},g);});return g;}
+function iconRack(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-16,y:-26,width:32,height:52,rx:2,fill:'#1f1f23',stroke:'#55555c'},g);for(let i=0;i<6;i++){el('rect',{x:-12,y:-22+i*8,width:24,height:5,fill:'#3a3a40'},g);el('circle',{cx:8,cy:-19.5+i*8,r:1.2,fill:'#4fc26b'},g);}return g;}
+function iconCode(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-28,y:-18,width:56,height:36,rx:3,fill:'#1a1a1f',stroke:'#55555c'},g);T_(g,-22,-4,'</>',{fill:GOLDc,'font-size':13,'font-weight':800});T_(g,-22,10,'CUDA',{fill:'#cfcbc3','font-size':10,'font-weight':700});return g;}
+function iconEUV(p,x,y,s=1){const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},p);el('rect',{x:-30,y:-20,width:60,height:40,rx:4,fill:'#d9dde3'},g);el('rect',{x:-30,y:-20,width:60,height:9,fill:'#a9b2be'},g);el('line',{x1:-6,y1:-6,x2:6,y2:12,stroke:'#b58cff','stroke-width':2.5},g);return g;}
+
+// scene 0: intro
+{const g=sg('intro');el('path',{d:'M20 120 Q48 76 76 120 Z',fill:'#d8c48f'},g);T_(g,48,138,'sand',{'text-anchor':'middle','font-size':12,fill:'#cfcbc3','font-weight':600});
+ el('line',{x1:86,y1:100,x2:236,y2:100,stroke:'#55555c','stroke-width':2,'stroke-dasharray':'5 6'},g);
+ const ch=el('g',{class:'stg-travel'},g);el('rect',{x:-9,y:-9,width:18,height:18,rx:2,fill:GOLDc},ch);
+ iconRack(g,270,94,1.3);T_(g,270,146,'AI server',{'text-anchor':'middle','font-size':12,fill:'#cfcbc3','font-weight':600});}
+// scene 1: design, a blueprint being drawn
+{const g=sg('1');iconBlueprint(g,150,85,2.4);const tr=el('path',{class:'stg-draw',d:'M118 62 h64 v46 h-64 z M134 62 v46 M150 62 v46 M166 62 v46 M118 85 h64',fill:'none',stroke:'#fff','stroke-width':2},g);
+ tr.style.setProperty('--len',520);
+ }
+// scene 2: EDA software checking the layout
+{const g=sg('2');iconScreen(g,150,82,2.4);const ck=el('g',{class:'stg-blink'},g);el('circle',{cx:205,cy:52,r:10,fill:'#4fc26b'},ck);el('path',{d:'M200 52 l4 4 l7 -8',fill:'none',stroke:'#fff','stroke-width':2.4},ck);
+ }
+// scene 3: EUV machine prints the pattern on a wafer
+{const g=sg('3');el('rect',{x:60,y:36,width:190,height:96,rx:8,fill:'#d9dde3'},g);el('rect',{x:60,y:36,width:190,height:22,rx:8,fill:'#a9b2be'},g);T_(g,155,51,'EUV',{'text-anchor':'middle','font-size':11,fill:'#2b2f36','font-weight':800});
+ const beam=el('path',{class:'stg-pulse',d:'M100 70 L150 112 L200 70',fill:'none',stroke:'#b58cff','stroke-width':4,'stroke-linejoin':'round'},g);
+ el('ellipse',{cx:150,cy:118,rx:34,ry:7,fill:SIL,stroke:'#8f9aa8'},g);
+ }
+// scene 4: wafer fab: ingot -> wafer -> layers
+{const g=sg('4');el('rect',{x:40,y:56,width:50,height:62,rx:6,fill:SIL,stroke:'#8f9aa8'},g);T_(g,65,138,'ingot',{'text-anchor':'middle'});
+ el('path',{d:'M98 87 h22',stroke:'#55555c','stroke-width':2,'marker-end':'url(#ah)'},g);
+ const w=iconWafer(g,175,86,40);w.setAttribute('class','stg-spin');w.style.transformOrigin='175px 86px';T_(g,175,145,'300 mm wafer',{'text-anchor':'middle'});
+ const lay=el('g',{},g);for(let i=0;i<5;i++){const r=el('rect',{class:'stg-layer',x:250,y:112-i*9,width:36,height:7,fill:['#7c5cc4','#b58cff','#c08a2d','#7c5cc4','#b58cff'][i]},lay);r.style.setProperty('--i',i);}T_(g,268,138,'layers',{'text-anchor':'middle'});
+ T_(g,320,110,'steps over two to three months; then',{'font-size':12});}
+// scene 5: HBM memory being stacked
+{const g=sg('5');for(let i=0;i<12;i++){const r=el('rect',{class:'stg-stack',x:110,y:128-i*8,width:90,height:6,rx:1,fill:i%2?'#3fa36b':'#4fc26b'},g);r.style.setProperty('--i',i);}
+ el('line',{x1:130,y1:40,x2:130,y2:134,stroke:'#c08a2d','stroke-width':1.5,'stroke-dasharray':'2 3'},g);el('line',{x1:180,y1:40,x2:180,y2:134,stroke:'#c08a2d','stroke-width':1.5,'stroke-dasharray':'2 3'},g);
+ T_(g,155,152,'one HBM stack',{'text-anchor':'middle'});
+ }
+// scene 6: packaging, the GPU and its HBM slide together
+{const g=sg('6');el('rect',{x:40,y:96,width:220,height:22,rx:3,fill:'#2f6b3f'},g);el('rect',{x:62,y:84,width:176,height:12,fill:'#8a6d3b'},g);
+ const gpu=el('g',{class:'stg-join',style:'--d:0'},g);el('rect',{x:118,y:46,width:64,height:38,fill:'#8a8f99'},gpu);T_(gpu,150,70,'GPU',{'text-anchor':'middle',fill:'#1a1a1f','font-size':11,'font-weight':800});
+ [[72,'-1'],[198,'1']].forEach(([x,dir],k)=>{const h=el('g',{class:'stg-join',style:`--d:${k+1};--dir:${dir}`},g);for(let i=0;i<6;i++)el('rect',{x,y:78-i*6,width:30,height:5,fill:i%2?'#3fa36b':'#4fc26b'},h);});
+ T_(g,150,140,'silicon base (CoWoS)',{'text-anchor':'middle'});
+ }
+// scene 7: rack assembly, 72 chips in one rack
+{const g=sg('7');el('rect',{x:110,y:20,width:90,height:136,rx:4,fill:'#1f1f23',stroke:'#55555c'},g);
+ for(let i=0;i<9;i++){const tr=el('g',{class:'stg-tray',style:`--i:${i}`},g);el('rect',{x:116,y:26+i*14,width:78,height:10,fill:'#3a3a40'},tr);for(let k=0;k<4;k++)el('rect',{x:121+k*12,y:28+i*14,width:8,height:6,fill:GOLDc},tr);el('circle',{class:'stg-blink',cx:186,cy:31+i*14,r:1.8,fill:'#4fc26b'},tr);}
+ }
+// scene 8: software
+{const g=sg('8');el('rect',{x:60,y:34,width:180,height:108,rx:6,fill:'#1a1a1f',stroke:'#55555c'},g);
+ ['import torch','model.to("cuda")','train(model)'].forEach((l,i)=>{const t=T_(g,74,62+i*24,l,{fill:i===1?GOLDc:'#cfcbc3','font-size':12,'font-family':'ui-monospace,Menlo,monospace',class:'stg-type',style:`--i:${i}`});});
+ }
+// overview for the summary states: two rows of four
+{const g=sg('all');const icons=[iconBlueprint,iconScreen,iconEUV,(p,x,y)=>iconWafer(p,x,y,18),(p,x,y)=>iconHBM(p,x,y+14,8),iconPackage,iconRack,iconCode];
+ const names=['Design','EDA','Equipment','Wafer fab','Memory','Packaging','Assembly','Software'];
+ icons.forEach((f,i)=>{const x=40+(i%4)*80, y=40+Math.floor(i/4)*76;const ig=el('g',{class:'stg-ico','data-k':names[i]},g);f(ig,x,y,.78);T_(ig,x,y+38,names[i],{'text-anchor':'middle','font-size':11,fill:'#cfcbc3'});});}
+
+const CAP={
+  none:'<b>From sand to server.</b> Follow one AI chip through eight stops. The picture shows what happens to it at each one.',
+  smile:'<b>From sand to server.</b> Follow one AI chip through eight stops. The picture shows what happens to it at each one.',
+  '1':'<b>Blueprint.</b> Engineers lay out the chip: Nvidia\u2019s Blackwell has 208 billion transistors.',
+  '2':'<b>Design software</b> places every transistor and checks every wire before anything is built.',
+  '3':'<b>Lithography.</b> ASML\u2019s EUV machine prints the circuit onto silicon with extreme-ultraviolet light. Only ASML makes them.',
+  '4':'<b>Wafer fab.</b> A silicon ingot is sliced into 300 mm wafers, then printed, etched and layered through hundreds of steps over two to three months, and cut into chips.',
+  '5a':'<b>Memory.</b> Eight to twelve thin memory chips are stacked and wired straight through, making one HBM stack.',
+  '5':'<b>Memory.</b> Eight to twelve thin memory chips are stacked and wired straight through. SK hynix says it\u2019s booked into 2029.',
+  '6':'<b>Packaging.</b> The processor and its memory stacks are joined side by side on one silicon base (TSMC\u2019s CoWoS), so data moves fast between them.',
+  '7':'<b>Rack assembly.</b> 72 chips go into one server rack, with power, cooling and cables. Foxconn builds over 40% of AI servers.',
+  '8':'<b>Software.</b> Developers write AI code for Nvidia\u2019s CUDA, so moving to another chip means rewriting it.',
+  real:'<b>The whole journey:</b> eight stops from blueprint to server rack.',
+  scarce:'<b>Blue: the bottlenecks.</b> The machines, the fab and the memory are sold out and hard to copy.'};
+function setStage(s){
+  const key={'smile':'intro','none':'intro','1':'1','2':'2','3':'3','4':'4','5a':'5','5':'5','6':'6','7':'7','8':'8','real':'all','scarce':'all'}[s]||'intro';
+  Object.entries(SC).forEach(([k,g])=>g.classList.toggle('on',k===key));
+  SC.all.querySelectorAll('.stg-ico').forEach(ic=>{const hot=s==='scarce'&&['Equipment','Wafer fab','Memory'].includes(ic.dataset.k);ic.classList.toggle('hot',hot);ic.classList.toggle('dim',s==='scarce'&&!hot);});
+  if(stageCap) stageCap.innerHTML=CAP[s]||'';
+  if(stageCap) stageCap.style.display=CAP[s]?'':'none';
+}
 const title=document.getElementById('chartTitle'), sub=document.getElementById('chartSub');
 function setState(s){
   const order=['smile','1','2','3','4','5a','5','6','7','8','real','scarce'];
@@ -92,6 +179,7 @@ function setState(s){
   railEls.forEach((r,i)=>{r.classList.toggle('on',i===current);r.classList.toggle('done',current!==undefined?i<current:(idx>=10));});
   if(idx>=10){title.textContent= idx===11?'Margin follows scarcity':'The 2026 curve vs the textbook smile'; sub.textContent= idx===11?'Blue: bottlenecks that are sold out and hard to copy':'Gold line: what each step actually keeps';}
   else {title.textContent='Profit kept per dollar, by step'; sub.textContent='From idea (left) to customer (right)';}
+  setStage(s);
 }
 setState('none');
 const steps=[...document.querySelectorAll('.step')];

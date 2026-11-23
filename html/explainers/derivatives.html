@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/bottleneck.css">
 <link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/scene-kit.css">
 <link rel="stylesheet" href="../../css/derivatives.css">
 </head>
 <body>
@@ -40,8 +41,8 @@
 
 <div class="byline">
   <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
-  <div>November 25, 2026 · 9 min read</div>
-  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
+  <div>November 23, 2026 · 14 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
 </div>
 
 <article class="art">
@@ -52,25 +53,35 @@
     <a href="#s3">3. Hedging vs speculation</a>
     <a href="#s4">4. Buffett's warning</a>
     <a href="#s5">5. When derivatives blew up</a>
-    <a href="#s6">6. Open interest</a>
-    <a href="#sources">Notes</a>
+    <a href="#s6">6. After 2008: the clearing house</a>
+    <a href="#s7">7. Open interest</a>
+    <a href="#sources">Sources</a>
   </aside>
 
-  <p class="disc">This explains what derivatives are and how they're used, in plain terms, with simplified numbers to show mechanisms rather than exact market prices. The historical episodes (LTCM, AIG, 2008) are summarised; the full stories are more involved than any one cause. Where I describe risks, I am setting out how a tool can fail when misused, not making a claim that any particular product or firm will. This is educational, not investment advice.</p>
+  <p class="disc">This explains what derivatives are and how they're used, in plain terms, with simplified numbers to show mechanisms rather than exact market prices. The historical episodes (LTCM, AIG, 2008 and the later blow-ups) are summarised; the full stories are more involved than any one cause. Where I describe risks, I am setting out how a tool can fail when misused, not making a claim that any particular product or firm will. This is educational, not investment advice.</p>
 
   <div class="keys rv">
     <h3>Key findings</h3>
     <ul>
-      <li>A derivative is a <b>contract that settles at a future date</b>, and its value is <b>derived</b> from an underlying thing: a commodity price, an interest rate, a stock, an index.</li>
+      <li>A derivative is a <b>contract that settles at a future date</b>, and its value is <b>derived</b> from an underlying thing: a commodity price, an interest rate, a stock, an index. Contracts traded privately between banks had a face value of about <b>$846 trillion</b> in mid-2025, but were actually worth about <b>$22 trillion</b>: the face value is mostly a reference figure, not money at stake.</li>
       <li>Three building blocks cover most of the market: <b>futures</b> (fix a price now for a trade later), <b>options</b> (the right, not the duty, to trade at a set price), and <b>swaps</b> (exchange one stream of payments for another).</li>
       <li>The same contract can <b>reduce</b> risk or <b>add</b> it. A user with real exposure <b>hedges</b>; a trader with none <b>speculates</b>, often with heavy <b>leverage</b>, controlling a large position for a small outlay.</li>
-      <li>Buffett's 2002 "weapons of mass destruction" warning was about that leverage plus <b>interconnection</b>: when big players owe each other on derivatives, one failure can cascade. <b>LTCM</b> (1998), <b>AIG</b> (2008) and the wider 2008 crisis all showed it.</li>
+      <li>Buffett's 2002 "weapons of mass destruction" warning was about that leverage plus <b>interconnection</b>: when big players owe each other on derivatives, one failure can cascade. <b>LTCM</b> (1998), <b>AIG</b> (2008) and the wider 2008 crisis all showed it, and smaller blow-ups since (negative oil prices in 2020, Archegos in 2021, UK pension funds in 2022) show it still can.</li>
+      <li>After 2008 the world's leaders pushed standard derivatives through <b>clearing houses</b> that stand between buyer and seller and demand <b>collateral</b> every day. That untangled the web of bilateral debts, but it also concentrated the risk in a few central hubs.</li>
     </ul>
   </div>
 
   <h2 id="s1"><span class="n">Part 1</span>What a derivative is</h2>
   <p class="t dropcap">Buy a share of a company and you own something directly. A <b>derivative</b> is one step removed: it's a <b>contract</b> whose value is <i>derived</i> from the price of something else, the "underlying." The underlying can be almost anything with a price that moves: wheat, oil, a currency, an interest rate, a stock, a market index. You don't have to own the underlying to trade a derivative on it.</p>
   <p class="t">The common thread is <b>time</b>. A derivative is an agreement made today about a transaction that settles <b>later</b>, at a price or on terms fixed now. That lets two parties move a future risk between them: one of them wants certainty about a future price, and the other is willing to take the other side. Everything else is a variation on that idea.</p>
+  <p class="t">The market built on that idea is enormous, and its headline number is easy to misread. Contracts traded privately between banks and big firms, known as <b>over-the-counter</b> (OTC) derivatives, had a <b>notional</b> value of about <b>$846 trillion</b> at the end of June 2025, several times the world's annual output. But notional is just the reference amount payments are calculated on: an interest-rate swap on $100 million doesn't put $100 million at risk, only the difference between two interest rates on it. What the contracts were actually worth, if every one were settled at market prices, was about <b>$21.8 trillion</b>. After netting out what the same firms owe each other, the real exposure was about <b>$3 trillion</b>.</p>
+
+  <figure class="fig rv" id="sizeFig">
+    <div class="ft">The big number and the real one</div>
+    <div class="fs">OTC derivatives outstanding, end of June 2025, drawn to scale by area</div>
+    <svg id="sizeSvg" viewBox="0 0 680 340" role="img" aria-label="Three squares drawn to scale by area. The largest, $846 trillion, is the notional amount of OTC derivatives. Inside its corner, a much smaller square of $21.8 trillion is their gross market value, and a tiny square of $3.0 trillion is gross credit exposure after netting."></svg>
+    <figcaption>Notional is the amount payments are calculated on; gross market value is what it would cost to replace every contract at market prices; credit exposure is what's left after legally enforceable netting between the same firms. Exchange-traded futures and options are counted separately. Source: Bank for International Settlements, OTC derivatives statistics at end-June 2025.</figcaption>
+  </figure>
 
   <h2 id="s2"><span class="n">Part 2</span>The three building blocks</h2>
   <p class="t">Most derivatives are built from three basic kinds of contract. Learn these and the rest are combinations.</p>
@@ -94,28 +105,15 @@
 
   <figure class="fig rv" id="payoffFig">
     <div class="ft">Why an option is like insurance</div>
-    <div class="fs">Payoff of the right to buy a stock at $100</div>
-    <svg id="payoffSvg" viewBox="0 0 640 320" role="img" aria-label="A payoff chart. Below a stock price of one hundred dollars the option holder loses only the premium they paid, a small flat amount. Above one hundred dollars the payoff rises in a straight line as the stock climbs, so losses are capped but gains are not.">
-      <!-- axes -->
-      <line x1="70" y1="40" x2="70" y2="250" stroke="#c9c3b6" stroke-width="1.5"/>
-      <line x1="70" y1="210" x2="600" y2="210" stroke="#c9c3b6" stroke-width="1.5"/>
-      <!-- zero line label -->
-      <text x="60" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">$0</text>
-      <text x="60" y="44" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">gain</text>
-      <text x="60" y="248" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#8a8373">loss</text>
-      <!-- strike marker -->
-      <line x1="300" y1="40" x2="300" y2="250" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="3 4"/>
-      <text x="300" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#8a8373">strike $100</text>
-      <!-- payoff line: flat (premium loss) then rising -->
-      <polyline points="70,230 300,230 560,70" fill="none" stroke="#c2412d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-      <!-- premium loss label -->
-      <text x="185" y="248" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#8a8373">lose only the premium</text>
-      <!-- upside label -->
-      <text x="470" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#1f1f22" font-weight="600">upside open</text>
-      <!-- x axis label -->
-      <text x="335" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8a8373">stock price at expiry →</text>
-    </svg>
-    <figcaption>Simplified. The most you can lose by buying this call option is the premium you paid, no matter how far the stock falls. If the stock rises well above $100, your gain keeps climbing. Capped loss, open upside: that asymmetry is what people pay the premium for.</figcaption>
+    <div class="fs">Profit at expiry on one option to trade a stock at $100, for a $5 premium</div>
+    <div class="po-ctl" role="group" aria-label="Choose the option">
+      <div class="seg" id="poKind"><button type="button" data-v="call" aria-pressed="true">Call (right to buy)</button><button type="button" data-v="put" aria-pressed="false">Put (right to sell)</button></div>
+      <div class="seg" id="poSide"><button type="button" data-v="buy" aria-pressed="true">You buy it</button><button type="button" data-v="sell" aria-pressed="false">You sell it</button></div>
+    </div>
+    <svg id="payoffSvg" viewBox="0 0 640 300" role="img" aria-label="Interactive payoff chart. Choose a call or a put, and whether you buy or sell it, then drag the stock price at expiry to see the profit or loss."></svg>
+    <div class="po-ctl"><label for="poPrice">Stock price at expiry: <b id="poPriceV">$120</b></label><input type="range" id="poPrice" min="50" max="150" step="1" value="120"></div>
+    <p class="po-why" id="poWhy"></p>
+    <figcaption>Simplified: one share, a $100 strike, a $5 premium, no fees or interest. The buyer of an option can lose at most the premium; the seller pockets the premium but takes the open-ended side. Every option has both, which is why selling options for income can end badly.</figcaption>
   </figure>
 
   <h2 id="s3"><span class="n">Part 3</span>Hedging vs speculation</h2>
@@ -135,6 +133,26 @@
     <figcaption>Hedging and speculating aren't different products; they're different reasons for holding the same product. Markets need both: speculators provide the willing counterparties that let hedgers offload risk. Trouble starts when the speculative, leveraged side grows large and interconnected.</figcaption>
   </figure>
 
+  <figure class="fig rv" id="hedgeFig">
+    <div class="ft">How the airline's hedge works</div>
+    <div class="fs">Fuel for next year, 100 million gallons, locked in with futures at $2.50 a gallon</div>
+    <svg id="hedgeSvg" viewBox="0 0 680 250" role="img" aria-label="Interactive chart. A slider sets the market price of jet fuel next year. Bars show the airline's fuel bill at that price, the gain or loss on its futures, and the net cost, which stays at $250 million whatever the price."></svg>
+    <div class="po-ctl"><label for="hedgePrice">Jet fuel price next year: <b id="hedgePriceV">$3.50</b> a gallon</label><input type="range" id="hedgePrice" min="1.5" max="4" step="0.05" value="3.5"></div>
+    <figcaption>Illustrative numbers. Whatever happens to the price, the bill plus the futures result adds up to the locked-in $250 million. The airline gives up the benefit if fuel gets cheaper, in exchange for certainty if it gets dearer. In practice hedges are partial and the fuel and the contract don't track each other perfectly.</figcaption>
+  </figure>
+
+  <figure class="fig rv" id="levFig">
+    <div class="ft">What leverage does to a small move</div>
+    <div class="fs">A $100,000 oil position, held with a small deposit (the margin)</div>
+    <div class="po-ctl" role="group" aria-label="Choose the deposit">
+      <div class="seg" id="levM"><button type="button" data-v="100" aria-pressed="false">Pay in full</button><button type="button" data-v="20" aria-pressed="false">20% down</button><button type="button" data-v="10" aria-pressed="true">10% down</button><button type="button" data-v="5" aria-pressed="false">5% down</button></div>
+    </div>
+    <svg id="levSvg" viewBox="0 0 680 190" role="img" aria-label="Interactive chart. Choose how much of a $100,000 oil position you put down, then move the oil price. The bar shows the change in the price and the much larger change in your deposit; past a certain fall the whole deposit is gone."></svg>
+    <div class="po-ctl"><label for="levMove">Oil price moves: <b id="levMoveV">−6%</b></label><input type="range" id="levMove" min="-20" max="20" step="1" value="-6"></div>
+    <p class="po-why" id="levWhy"></p>
+    <figcaption>Simplified: futures exchanges set the deposit, called initial margin, and collect or pay out gains and losses every day. When losses eat into it, the broker makes a <b>margin call</b> for more cash, and if you can't pay, the position is closed at a loss.</figcaption>
+  </figure>
+
   <p class="pull">A derivative doesn't create or destroy risk by itself. It moves risk from someone who wants to shed it to someone willing to carry it.</p>
 
   <h2 id="s4"><span class="n">Part 4</span>Buffett's warning</h2>
@@ -147,20 +165,22 @@
 
   <p class="t">His worry wasn't the contracts themselves; it was three things that come with a large, lightly watched derivatives market. <b>Leverage</b> lets positions grow far beyond the cash behind them. <b>Interconnection</b> means big institutions owe each other on these contracts, so one firm's failure becomes everyone's problem. And <b>opacity</b>: positions valued by models rather than market prices can hide how large and how fragile they really are, until they aren't. Within a decade, each of those played out.</p>
 
+  <div class="note"><b class="h">Buffett used them too</b>The warning came from a user, not a bystander. A few years after the letter, Berkshire Hathaway sold long-dated put options on stock indices, collecting about <b>$4.9 billion</b> in premiums up front, and explained in later letters that it was comfortable because the contracts were few, mispriced in its favour, and needed little collateral. That fits his own test: he wasn't against derivatives, but against leverage, interconnection and positions nobody can see.</div>
+
   <h2 id="s5"><span class="n">Part 5</span>When derivatives blew up</h2>
-  <p class="t">Three episodes show the failure modes Buffett named. In each, derivatives did exactly what they were designed to do until conditions turned, and the leverage and interconnection that made them powerful made the fallout spread.</p>
+  <p class="t">Three big episodes show the failure modes Buffett named. In each, derivatives did exactly what they were designed to do until conditions turned, and the leverage and interconnection that made them powerful made the fallout spread.</p>
 
   <div class="cards rv">
     <div class="card">
       <div class="cn">Leverage</div>
       <h4>LTCM, 1998</h4>
-      <p>Long-Term Capital Management, a hedge fund run by Nobel laureates, used huge leverage on derivative bets that small price gaps would close. When markets moved the wrong way, the magnified losses threatened its many trading partners.</p>
-      <div class="eg"><b>What happened:</b> the Federal Reserve organised a roughly <b>$3.6 billion</b> rescue by its lenders to unwind the positions in an orderly way and prevent a chain reaction.</div>
+      <p>Long-Term Capital Management, a hedge fund run by Nobel laureates, used huge leverage on bets that small price gaps would close, with derivatives of more than <b>$1 trillion</b> in notional value on under $5 billion of capital. When Russia defaulted and markets moved the wrong way, the magnified losses threatened its many trading partners.</p>
+      <div class="eg"><b>What happened:</b> the New York Fed organised a roughly <b>$3.6 billion</b> rescue by 14 of its lenders to unwind the positions in an orderly way and prevent a chain reaction.</div>
     </div>
     <div class="card">
       <div class="cn">Interconnection</div>
       <h4>AIG, 2008</h4>
-      <p>The insurer AIG had sold vast amounts of <b>credit default swaps</b>, contracts promising to pay out if certain mortgage bonds defaulted. It collected premiums as if the payouts would never come, and set aside little against them.</p>
+      <p>The insurer AIG had sold vast amounts of <b>credit default swaps</b>, contracts promising to pay out if certain mortgage bonds defaulted. About <b>$79 billion</b> of them insured complex bundles of mortgage debt. It collected premiums as if the payouts would never come, and set aside little against them.</p>
       <div class="eg"><b>What happened:</b> when housing collapsed, the claims did come. AIG couldn't cover them, and because so many banks relied on its guarantees, the US committed up to <b>$182 billion</b> of support.</div>
     </div>
     <div class="card">
@@ -171,11 +191,60 @@
     </div>
   </div>
 
-  <div class="note warn"><b class="h">The pattern, not the products</b>Note what's common across all three: the derivative worked as intended in calm times and masked a build-up of risk. The problem each time was a large, leveraged, interconnected position whose true size and fragility were hard to see from outside, exactly the "latent, potentially lethal" danger Buffett described. Used to hedge a real exposure, these same contracts are routine and useful. The danger lives in scale, leverage and opacity, not in the idea of a derivative.</div>
+  <h3 class="sub">Since 2008</h3>
+  <p class="t">The reforms after 2008 (Part 6) made the biggest banks safer, but smaller blow-ups have kept arriving, each through the same three doors.</p>
+  <div class="cards rv">
+    <div class="card">
+      <div class="cn">Leverage</div>
+      <h4>Oil below zero, 2020</h4>
+      <p>A futures contract can require <b>physical delivery</b>. As COVID emptied the roads, storage at the delivery hub in Cushing, Oklahoma filled up, and traders holding May oil contracts with nowhere to put the oil had to pay others to take them.</p>
+      <div class="eg"><b>What happened:</b> on 20 April 2020 the expiring US oil contract settled at <b>minus $37.63</b> a barrel, the first negative price in its history.</div>
+    </div>
+    <div class="card">
+      <div class="cn">Opacity</div>
+      <h4>Archegos, 2021</h4>
+      <p>A family office built giant stock bets through <b>total return swaps</b> with several banks. Because the banks held the shares, no one outside, and no single bank, saw how big the combined position was.</p>
+      <div class="eg"><b>What happened:</b> when its stocks fell, the banks raced to sell. Losses topped <b>$10 billion</b>, about $5 billion of them at Credit Suisse, which was taken over two years later.</div>
+    </div>
+    <div class="card">
+      <div class="cn">Interconnection</div>
+      <h4>UK pensions, 2022</h4>
+      <p>British pension funds used interest-rate swaps and borrowing in "liability-driven" strategies. When a surprise budget sent bond yields soaring, they faced sudden <b>collateral calls</b> and had to dump government bonds, pushing yields higher still.</p>
+      <div class="eg"><b>What happened:</b> the Bank of England stepped in to buy long-dated gilts, about <b>£19 billion</b> over two weeks, after some funds came within hours of collapse.</div>
+    </div>
+  </div>
 
-  <h2 id="s6"><span class="n">Part 6</span>Open interest</h2>
+  <div class="note warn"><b class="h">The pattern, not the products</b>Note what's common across all of these: the derivative worked as intended in calm times and masked a build-up of risk. The problem each time was a large, leveraged, interconnected position whose true size and fragility were hard to see from outside, exactly the "latent, potentially lethal" danger Buffett described. Used to hedge a real exposure, these same contracts are routine and useful. The danger lives in scale, leverage and opacity, not in the idea of a derivative.</div>
+
+  <h2 id="s6"><span class="n">Part 6</span>After 2008: the clearing house</h2>
+  <p class="t">The AIG rescue showed the core problem: when big firms trade derivatives directly with each other, everyone is exposed to everyone, and no one can see the whole web. So in September 2009 the G20 leaders agreed that standard OTC derivatives should be <b>centrally cleared</b>, traded on platforms where possible, and reported to regulators, with tougher capital rules for the rest. The US wrote it into the <b>Dodd-Frank Act</b> in 2010; Europe followed.</p>
+  <p class="t">A <b>clearing house</b>, or central counterparty, steps into the middle of every trade: it becomes the buyer to every seller and the seller to every buyer. Each member posts <b>collateral</b> up front and settles gains and losses with it every day, so losses can't quietly pile up the way they did at AIG. If a member fails, its collateral and a shared default fund absorb the loss before anyone else is hit.</p>
+
+  <figure class="fig rv" id="ccpFig">
+    <div class="ft">From a tangle to a hub</div>
+    <div class="fs">Who owes whom, before and after central clearing</div>
+    <div class="po-ctl" role="group" aria-label="Choose the view"><div class="seg" id="ccpMode"><button type="button" data-v="web" aria-pressed="true">Trading directly</button><button type="button" data-v="hub" aria-pressed="false">Through a clearing house</button></div><button type="button" class="ghost" id="ccpFail">Make one bank fail</button></div>
+    <svg id="ccpSvg" viewBox="0 0 680 330" role="img" aria-label="Diagram of eight banks. Trading directly, each is linked to many others by bilateral contracts, and when one fails the shock passes along the links. Through a clearing house, each bank has a single link to the hub, and a failure is absorbed by the failed bank's collateral and the default fund."></svg>
+    <p class="po-why" id="ccpWhy"></p>
+    <figcaption>Schematic. Central clearing doesn't remove risk; it gathers it in one place, behind layers of collateral and capital. That makes the clearing houses themselves "too important to fail," which is why regulators now treat them as critical infrastructure.</figcaption>
+  </figure>
+
+  <h2 id="s7"><span class="n">Part 7</span>Open interest</h2>
   <p class="t">One number tells you how big and how active a derivatives market has become: <b>open interest</b>. It's the total count of contracts that are currently <b>open</b>, meaning entered into and not yet closed out, settled or expired. Every open contract has a buyer on one side and a seller on the other, so it measures the stack of live obligations between market participants.</p>
-  <p class="t">Open interest isn't the same as volume. <b>Volume</b> counts how many contracts changed hands in a day, including ones opened and closed the same day; <b>open interest</b> counts how many remain outstanding at the end of it. A single contract can trade many times (adding to volume) without changing open interest, because it's just passing between hands. Open interest only moves when a <b>new</b> contract is created or an existing one is <b>closed</b>.</p>
+  <p class="t">Open interest isn't the same as volume. <b>Volume</b> counts how many contracts changed hands in a day, including ones opened and closed the same day; <b>open interest</b> counts how many remain outstanding at the end of it. A single contract can trade many times (adding to volume) without changing open interest, because it's just passing between hands. Open interest only moves when a <b>new</b> contract is created or an existing one is <b>closed</b>. Try it.</p>
+
+  <figure class="fig rv" id="oiSimFig">
+    <div class="ft">Make some trades</div>
+    <div class="fs">Watch which number moves</div>
+    <div class="oi-btns">
+      <button type="button" data-a="open">Two traders open a new contract</button>
+      <button type="button" data-a="pass">A holder sells to someone new</button>
+      <button type="button" data-a="close">Both sides close a contract</button>
+      <button type="button" data-a="day" class="ghost">End the day</button>
+    </div>
+    <svg id="oiSvg" viewBox="0 0 680 230" role="img" aria-label="Interactive. Buttons open, pass on or close contracts between traders. Counters show today's volume and the open interest. Passing a contract to someone new adds to volume but leaves open interest unchanged; ending the day resets volume but not open interest."></svg>
+    <p class="po-why" id="oiWhy" aria-live="polite">Each line is one open contract between a buyer (left) and a seller (right).</p>
+  </figure>
 
   <figure class="fig rv" id="oiFig">
     <div class="ft">Open interest vs volume</div>
@@ -191,7 +260,7 @@
         </tbody>
       </table>
     </div>
-    <figcaption>Why it matters: rising open interest means fresh money and new obligations are flowing into a market, so more risk is being carried between participants. That's the leverage-and-interconnection build-up Buffett was pointing at, made into a single trackable figure.</figcaption>
+    <figcaption>Why it matters: rising open interest means fresh money and new obligations are flowing into a market, so more risk is being carried between participants. That's the leverage-and-interconnection build-up Buffett was pointing at, made into a single trackable figure. For scale: exchanges worldwide traded about <b>119 billion</b> futures and options contracts in 2025, while open interest at the year's end was about <b>1.5 billion</b>. Source: FIA.</figcaption>
   </figure>
 
   <p class="t">So when you read that open interest in a contract is "at a record," it means more live bets than ever are stacked up in that market, each one an obligation someone eventually has to honour. Whether that's healthy hedging or a fragile pile of speculation is the same question this whole piece turns on.</p>
@@ -205,12 +274,16 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
   <ul class="sources">
-    <li>Definitions of futures, options and swaps, and the hedging-versus-speculation distinction: standard descriptions in general finance references and exchange educational materials (e.g. <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group education</a>).</li>
-    <li>The "financial weapons of mass destruction" and "time bombs" quotes: <a href="https://www.berkshirehathaway.com/letters/2002pdf.pdf" target="_blank" rel="noopener">Berkshire Hathaway's 2002 annual letter</a>, in the section on derivatives.</li>
-    <li>Long-Term Capital Management's 1998 near-collapse and the roughly $3.6 billion creditor-led rescue coordinated by the Federal Reserve Bank of New York: contemporary reporting and Federal Reserve accounts.</li>
-    <li>AIG's credit-default-swap exposures and the up-to-$182 billion of US government support in 2008: US Treasury and Federal Reserve disclosures and crisis reporting.</li>
-    <li>The role of mortgage-linked derivatives in the 2008 financial crisis: the Financial Crisis Inquiry Commission report and standard accounts of the crisis.</li>
-    <li>Open interest and its distinction from trading volume: exchange and regulator definitions (e.g. <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group</a>).</li>
+    <li>Definitions of futures, options and swaps, hedging, margin and open interest: <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group education</a> and the <a href="https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm" target="_blank" rel="noopener">CFTC glossary</a>.</li>
+    <li>OTC derivatives at end-June 2025: notional of about $846 trillion, gross market value of $21.8 trillion, gross credit exposure of about $3.0 trillion: <a href="https://www.bis.org/publ/otc_hy2512.htm" target="_blank" rel="noopener">Bank for International Settlements</a> and <a href="https://www.isda.org/a/oSdgE/Key-trends-in-the-size-and-composition-of-OTC-derivatives-markets-in-the-first-half-of-2025.pdf" target="_blank" rel="noopener">ISDA</a>.</li>
+    <li>Exchange-traded volume of 119.3 billion contracts in 2025 and year-end open interest of about 1.5 billion: <a href="https://www.fia.org/fia/articles/etd-volume-december-2025" target="_blank" rel="noopener">FIA</a>.</li>
+    <li>The "financial weapons of mass destruction" and "time bombs" quotes: <a href="https://www.berkshirehathaway.com/letters/2002pdf.pdf" target="_blank" rel="noopener">Berkshire Hathaway's 2002 annual letter</a>; Berkshire's own index put options and roughly $4.9 billion of premiums: <a href="https://www.berkshirehathaway.com/letters/2008ltr.pdf" target="_blank" rel="noopener">Berkshire Hathaway's 2008 annual letter</a>.</li>
+    <li>Long-Term Capital Management's derivatives of more than $1 trillion notional and the roughly $3.6 billion recapitalisation by 14 institutions, coordinated by the New York Fed: <a href="https://www.federalreservehistory.org/essays/ltcm-near-failure" target="_blank" rel="noopener">Federal Reserve History</a>.</li>
+    <li>AIG's credit default swaps, including about $79 billion on mortgage-linked CDOs, the role of derivatives in the 2008 crisis, and the up-to-$182 billion of government support: <a href="https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf" target="_blank" rel="noopener">Financial Crisis Inquiry Commission report</a>.</li>
+    <li>The May 2020 WTI contract settling at −$37.63 on 20 April 2020: <a href="https://www.cftc.gov/media/5296/InterimStaffReportNYMEX_WTICrudeOil/download" target="_blank" rel="noopener">CFTC interim staff report</a>.</li>
+    <li>Archegos's total return swaps and bank losses above $10 billion, including Credit Suisse's: <a href="https://fortune.com/2021/04/27/heres-how-much-big-banks-have-lost-so-far-from-the-archegos-collapse/" target="_blank" rel="noopener">Fortune</a> and the <a href="https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/regulatory-action/final-notice-from-pra-to-credit-suisse.pdf" target="_blank" rel="noopener">Bank of England PRA final notice to Credit Suisse</a>.</li>
+    <li>The September 2022 LDI crisis and the Bank of England's temporary gilt purchases: <a href="https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study" target="_blank" rel="noopener">Bank of England Quarterly Bulletin</a> and <a href="https://www.bis.org/publ/qtrpdf/r_qt2212v.htm" target="_blank" rel="noopener">BIS Quarterly Review</a>.</li>
+    <li>The G20's 2009 commitment to central clearing and reporting of standard OTC derivatives: <a href="http://www.g20.utoronto.ca/2009/2009communique0925.html" target="_blank" rel="noopener">G20 Pittsburgh leaders' statement</a>.</li>
   </ul>
   <p class="end">Educational only. Not investment, legal or tax advice. Derivatives are complex and can lose more than the money put up; the historical episodes here are simplified summaries. Confirm any figure before relying on it.</p>
 </article>
@@ -219,13 +292,13 @@
   <div class="in">
     <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
     <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
-    <div><h5>Read</h5><p><a href="#s4">Buffett's warning</a><br><a href="#s5">When derivatives blew up</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">The option payoff chart</a><br><a href="#s5">When derivatives blew up</a><br><a href="#s6">The clearing house</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
   </div>
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
 </footer>
 
 <script src="../../js/scene-kit.js"></script>
 <script src="../../js/menu.js"></script>
-<script src="../../js/bond-market.js"></script>
+<script src="../../js/derivatives.js"></script>
 </body>
 </html>

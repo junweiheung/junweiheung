@@ -414,8 +414,8 @@ window.BOTTLENECK = {
       kicker: "Explainer",
       topic: "Derivatives",
       category: "Market infrastructure",
-      date: "2026-11-25",
-      readMins: 9,
+      date: "2026-11-23",
+      readMins: 14,
       dek: "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
       summary: "Futures, options and swaps, hedging versus speculation, and why Buffett warned about them",
       thumb: "../images/thumbs/derivatives.svg",
@@ -461,8 +461,8 @@ window.BOTTLENECK = {
       kicker: "Explainer",
       topic: "Seigniorage",
       category: "Market infrastructure",
-      date: "2026-11-27",
-      readMins: 10,
+      date: "2026-11-23",
+      readMins: 13,
       dek: "Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage, the oldest profit in finance. Medieval lords took it by minting coins and quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take a version of it. Here is how the same trick has worked from the mint to the blockchain.",
       summary: "The profit from issuing money, from coin debasement to central banks, bank deposits, stablecoins and CBDCs",
       thumb: "../images/thumbs/seigniorage.svg",
@@ -475,6 +475,30 @@ window.BOTTLENECK = {
       // A concept explainer about how money issuers profit, from minting to
       // stablecoins. Not a company or single-country profile: no country link,
       // and nothing added to the company map.
+      chain: []
+    },
+    {
+      id: "asian-crisis",
+      href: "explainers/asian-crisis.html",
+      title: "The Domino Year: How the 1997 Asian Financial Crisis Spread",
+      short: "The 1997 Asian crisis",
+      kicker: "Explainer",
+      topic: "Financial crises",
+      category: "Economic history",
+      date: "2026-11-23",
+      readMins: 15,
+      dek: "In July 1997 Thailand ran out of dollars defending its currency and let the baht float. It fell, and the panic jumped from one Asian economy to the next: Indonesia, Malaysia, the Philippines, then South Korea, in months. The IMF arrived with the largest rescues in its history and conditions that still divide economists. Here is how the dominoes fell, and what the bailouts did.",
+      summary: "The baht's collapse, the contagion across Asia, the record IMF bailouts and their conditions, and Malaysia's different path",
+      thumb: "../images/thumbs/asian-crisis.svg",
+      stats: [
+        { big: "Jul 2 1997", text: "The day Thailand abandoned its dollar peg and let the baht float, after burning through reserves defending it. The crisis spread from there." },
+        { big: "~80%", text: "How far Indonesia's rupiah fell against the dollar at the depth of the crisis, wiping out companies that had borrowed in dollars." },
+        { big: "~$58B", text: "South Korea's IMF-led rescue in December 1997, the largest in the Fund's history to that point." },
+        { big: "4 phases", text: "The IMF's own split of the contagion: the lead-up in Thailand, the first spillover, the deepening across the ASEAN-4, and the spread to Korea and beyond." }
+      ],
+      // A regional economic-history explainer. Linked on the country map to the
+      // economies deeply involved; it profiles no single company, so it adds
+      // nothing to the company map.
       chain: []
     }
   ],

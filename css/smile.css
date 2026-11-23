@@ -24,3 +24,54 @@ h1{max-width:15ch}
 @media(max-width:900px){
   .rail{display:none}
 }
+
+/* ---------- The chip's journey, shown above the margin curve in the pinned panel ---------- */
+#stage{width:100%;height:auto;max-height:min(190px,24vh);display:block;border-bottom:1px solid #26262a;margin-bottom:6px}
+#stage .stg{opacity:0;transition:opacity .45s ease;pointer-events:none}
+#stage .stg.on{opacity:1}
+.stage-cap{font-family:var(--sans);font-size:14px;line-height:1.5;color:#cfcbc3;margin:2px 0 14px;min-height:4.5em}
+.stage-cap b{color:#fff}
+/* small loops, only while a scene is showing */
+#stage .stg-draw{stroke-dasharray:var(--len,500);stroke-dashoffset:var(--len,500)}
+#stage .stg.on .stg-draw{animation:stgDraw 2.4s ease forwards}
+#stage .stg.on .stg-blink{animation:stgBlink 1.4s steps(1) infinite}
+#stage .stg.on .stg-pulse{animation:stgPulse 1.2s ease-in-out infinite}
+#stage .stg.on .stg-spin{animation:stgSpin 9s linear infinite}
+#stage .stg-layer,#stage .stg-stack,#stage .stg-tray,#stage .stg-type{opacity:0}
+#stage .stg.on .stg-layer{animation:stgDrop .4s ease forwards;animation-delay:calc(.2s + var(--i,0)*.35s)}
+#stage .stg.on .stg-stack{animation:stgDrop .3s ease forwards;animation-delay:calc(.1s + var(--i,0)*.18s)}
+#stage .stg.on .stg-tray{animation:stgSlide .35s ease forwards;animation-delay:calc(.1s + var(--i,0)*.15s)}
+#stage .stg.on .stg-type{animation:stgFade .3s ease forwards;animation-delay:calc(.3s + var(--i,0)*.6s)}
+#stage .stg-travel{transform:translate(86px,100px)}
+#stage .stg-join{transform:translateX(calc(var(--dir,0) * 36px)) translateY(calc(var(--dir,0) * 0px - 20px));opacity:0}
+#stage .stg.on .stg-join{animation:stgJoin .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.2s + var(--d,0)*.25s)}
+#stage .stg.on .stg-travel{animation:stgTravel 3.6s ease-in-out infinite}
+#stage .stg-ico{transition:opacity .4s}
+#stage .stg-ico.dim{opacity:.3}
+#stage .stg-ico.hot text{fill:#4d8bff;font-weight:700}
+@keyframes stgDraw{to{stroke-dashoffset:0}}
+@keyframes stgBlink{50%{opacity:.25}}
+@keyframes stgPulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes stgSpin{to{transform:rotate(360deg)}}
+@keyframes stgDrop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes stgSlide{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@keyframes stgFade{to{opacity:1}}
+@keyframes stgJoin{to{opacity:1;transform:none}}
+@keyframes stgTravel{0%{transform:translate(86px,100px)}80%,100%{transform:translate(236px,100px)}}
+@media(max-width:900px){.stage-cap{font-size:12.5px;margin-bottom:6px;min-height:3.2em}#stage{max-height:120px}}
+@media (prefers-reduced-motion:reduce){
+  #stage .stg,#stage .stg *{animation:none!important;transition:none!important}
+  #stage .stg-draw{stroke-dashoffset:0}
+  #stage .stg-layer,#stage .stg-stack,#stage .stg-tray,#stage .stg-type,#stage .stg-travel{transform:translate(86px,100px)}
+#stage .stg-join{opacity:1;transform:none}
+}
+/* phones: the pinned panel (pictures + curve) comes first and stays at the top while the step cards scroll
+   past below it; otherwise it would only appear after the last card */
+@media(max-width:900px){
+  #s3 .sticky{order:-1}
+  #s3 .chartbox{padding:12px 12px 8px}
+  #s3 #curve{max-height:30vh}
+  #s3 .chartnote{display:none}
+  #s3 .step{align-items:flex-end;min-height:75vh}
+  #s3 .step .card{font-size:16px;padding:16px 18px}
+}

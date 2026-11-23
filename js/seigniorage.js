@@ -235,3 +235,250 @@ if (copyBtn) copyBtn.addEventListener('click', async (e) => {
   // set each drawn line's real length so the CSS draw-on animation matches it
   s.querySelectorAll('.ol-down, .ol-up').forEach((p) => { p.style.setProperty('--len', Math.ceil(p.getTotalLength())); });
 })();
+
+/* shared SVG helpers for the graphics below */
+const SVGNS = 'http://www.w3.org/2000/svg';
+const mk = (t, a, p) => { const e = document.createElementNS(SVGNS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const say = (p, x, y, str, a = {}) => { const t = mk('text', Object.assign({ x, y, 'font-family': 'Inter' }, a), p); t.textContent = str; return t; };
+// run fn(t) on every frame only while el is on screen (t = seconds since it first appeared)
+function whileVisible(el, fn) {
+  let raf = 0, on = false, t0 = 0;
+  const loop = (now) => { if (!on) return; if (!t0) t0 = now; fn((now - t0) / 1000); raf = requestAnimationFrame(loop); };
+  new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting && !on) { on = true; raf = requestAnimationFrame(loop); }
+    if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); t0 = 0; }
+  }), { threshold: 0.2 }).observe(el);
+}
+const ease = (p) => p * p * (3 - 2 * p);
+// on phones the wide SVGs shrink a lot, so their labels are drawn bigger
+const NARROW = matchMedia('(max-width: 560px)').matches;
+const FS = NARROW ? 1.8 : 1;
+const lerp = (a, b, p) => a + (b - a) * p;
+
+/* ---------------- Gresham's law: good coins hoarded, bad coins spent ---------------- */
+(function () {
+  const s = document.getElementById('greshamSvg'); if (!s) return;
+  const K = window.SceneKit, F = 300;
+  mk('rect', { x: 0, y: 0, width: 800, height: 330, fill: '#f3efe6' }, s);
+  mk('rect', { x: 0, y: F, width: 800, height: 30, fill: '#d8d0bf' }, s);
+  // the hoard jar, at home (left)
+  mk('rect', { x: 40, y: 150, width: 170, height: 150, fill: '#e9e2d2' }, s);
+  mk('path', { d: 'M30 152 L125 96 L220 152 Z', fill: '#b9a27a' }, s);
+  say(s, 125, 140, 'AT HOME', { 'text-anchor': 'middle', 'font-size': 11 * FS, 'font-weight': 800, fill: '#6e5f45', 'letter-spacing': '.12em' });
+  mk('path', { d: 'M82 190 h86 v8 q8 4 8 14 v74 q0 12 -12 12 h-78 q-12 0 -12 -12 v-74 q0 -10 8 -14 z', fill: 'rgba(255,255,255,.55)', stroke: '#8a8578', 'stroke-width': 2 }, s);
+  const jarFill = mk('g', {}, s);
+  say(s, 125, 324, NARROW ? 'kept: good coins' : 'kept: the good coins', { 'text-anchor': 'middle', 'font-size': 12 * FS, 'font-weight': 700, fill: '#5d5a55' });
+  // the market stall (right)
+  mk('rect', { x: 590, y: 190, width: 170, height: 110, fill: '#c9b08a' }, s);
+  mk('rect', { x: 580, y: 180, width: 190, height: 14, fill: '#8a6d3b' }, s);
+  for (let i = 0; i < 5; i++) mk('path', { d: `M${580 + i * 38} 120 h38 v34 q-19 14 -38 0 z`, fill: i % 2 ? '#fff' : '#c2412d' }, s);
+  mk('rect', { x: 584, y: 120, width: 6, height: 70, fill: '#6e5530' }, s);
+  mk('rect', { x: 760, y: 120, width: 6, height: 70, fill: '#6e5530' }, s);
+  say(s, 675, 250, 'MARKET', { 'text-anchor': 'middle', 'font-size': 11 * FS, 'font-weight': 800, fill: '#5b4526', 'letter-spacing': '.12em' });
+  const tray = mk('g', {}, s);
+  say(s, 675, 324, NARROW ? 'spent: debased' : 'spent: the debased coins', { 'text-anchor': 'middle', 'font-size': 12 * FS, 'font-weight': 700, fill: '#5d5a55' });
+  // the shopper in the middle
+  if (K) K.person(s, 400, { floor: F, sh: 168, top: '#7a5c8e', pants: '#2b2b30', hair: K.hair.short, hairColor: '#3a2a1a', skin: K.SKINS[1], arms: 'hold', smile: 3 });
+  // a coin: good = bright silver, bad = dull grey-brown with a rough edge
+  const coin = (p, good, r = 13) => {
+    const g = mk('g', {}, p);
+    mk('circle', { r, fill: good ? '#e6e8ec' : '#9b8e78', stroke: good ? '#9aa3b0' : '#6b604f', 'stroke-width': 2 }, g);
+    mk('circle', { r: r - 4, fill: 'none', stroke: good ? '#b8c0cb' : '#7d7260', 'stroke-width': 1 }, g);
+    say(g, 0, 4, 'I', { 'text-anchor': 'middle', 'font-size': r, 'font-weight': 800, fill: good ? '#7d8694' : '#5a5040' });
+    return g;
+  };
+  // stacks that build up as coins land
+  const jarSpots = [], traySpots = [];
+  for (let i = 0; i < 12; i++) jarSpots.push([96 + (i % 4) * 22, 280 - Math.floor(i / 4) * 16]);
+  for (let i = 0; i < 12; i++) traySpots.push([610 + (i % 6) * 26, 172 - Math.floor(i / 6) * 9]);
+  const jarCoins = jarSpots.map(([x, y]) => { const c = coin(jarFill, true, 10); c.setAttribute('transform', `translate(${x} ${y})`); c.style.opacity = 0; return c; });
+  const trayCoins = traySpots.map(([x, y]) => { const c = coin(tray, false, 10); c.setAttribute('transform', `translate(${x} ${y})`); c.style.opacity = 0; return c; });
+  // the coin in flight
+  const label = say(s, 400, 40, '', { 'text-anchor': 'middle', 'font-size': 13 * FS, 'font-weight': 800 });
+  const flying = [coin(s, true), coin(s, false)];
+  const CYCLE = 1.6, N = 24; // coins alternate good/bad; 24 coins then reset
+  if (reduced) { jarCoins.forEach((c) => (c.style.opacity = 1)); trayCoins.forEach((c) => (c.style.opacity = 1)); flying.forEach((f) => (f.style.opacity = 0)); return; }
+  flying.forEach((f) => (f.style.opacity = 0));
+  whileVisible(s, (t) => {
+    const total = t % (N * CYCLE + 2.5);
+    const k = Math.floor(total / CYCLE), p = (total % CYCLE) / CYCLE;
+    const good = k % 2 === 0, n = Math.floor(k / 2);
+    jarCoins.forEach((c, i) => (c.style.opacity = i < (good ? n : n + 1) && k < N ? 1 : (k >= N ? 1 : 0)));
+    trayCoins.forEach((c, i) => (c.style.opacity = i < n && k < N ? 1 : (k >= N ? 1 : 0)));
+    flying.forEach((f) => (f.style.opacity = 0));
+    if (k >= N) { label.textContent = 'Only the debased coins circulate'; label.setAttribute('fill', '#8a2a1c'); return; }
+    const f = flying[good ? 0 : 1]; f.style.opacity = 1;
+    label.textContent = good ? 'Full silver: keep it' : 'Debased: spend it';
+    label.setAttribute('fill', good ? '#5d7fae' : '#8a2a1c');
+    // drop into the hand, pause, then fly to the jar or the stall
+    const hand = [400, 262], dest = good ? jarSpots[Math.min(n, 11)] : traySpots[Math.min(n, 11)];
+    let x, y;
+    if (p < 0.35) { const q = ease(p / 0.35); x = 400; y = lerp(60, hand[1], q); }
+    else if (p < 0.5) { x = hand[0]; y = hand[1]; }
+    else { const q = ease((p - 0.5) / 0.5); x = lerp(hand[0], dest[0], q); y = lerp(hand[1], dest[1], q) - Math.sin(q * Math.PI) * 90; }
+    f.setAttribute('transform', `translate(${x} ${y})`);
+  });
+})();
+
+/* ---------------- Balance scales: face value against cost ---------------- */
+(function () {
+  const s = document.getElementById('scaleSvg'); if (!s) return;
+  const ITEMS = [
+    { name: '$100 note', face: '$100', cost: '9¢', tilt: -1, verdict: 'Profit: about $99.91', short: '+$99.91', col: '#5f8a63' },
+    { name: 'Penny', face: '1¢', cost: '3.7¢', tilt: 1, verdict: 'Loss: 2.7¢ a coin', short: '−2.7¢ each', col: '#c2412d' },
+    { name: 'Nickel', face: '5¢', cost: '13.8¢', tilt: 1, verdict: 'Loss: 8.8¢ a coin', short: '−8.8¢ each', col: '#c2412d' }
+  ];
+  const parts = ITEMS.map((it, i) => {
+    const cx = 120 + i * 240, py = 84, arm = 80;
+    mk('path', { d: `M${cx - 34} 220 h68 l-10 -12 h-48 z`, fill: '#8a8578' }, s);
+    mk('rect', { x: cx - 4, y: py, width: 8, height: 126, fill: '#8a8578' }, s);
+    mk('circle', { cx, cy: py, r: 7, fill: '#5d5a55' }, s);
+    const beam = mk('rect', { x: cx - arm, y: py - 3, width: arm * 2, height: 6, rx: 3, fill: '#5d5a55' }, s);
+    const pan = (lab, sub, fill) => {
+      const g = mk('g', {}, s);
+      mk('line', { x1: -26, y1: 0, x2: 0, y2: -48, stroke: '#8a8578', 'stroke-width': 1.5 }, g);
+      mk('line', { x1: 26, y1: 0, x2: 0, y2: -48, stroke: '#8a8578', 'stroke-width': 1.5 }, g);
+      mk('path', { d: 'M-34 0 h68 q-6 14 -34 14 q-28 0 -34 -14 z', fill: '#cfc7b6' }, g);
+      const bw = NARROW ? 76 : 54, bh = NARROW ? 32 : 24;
+      mk('rect', { x: -bw / 2, y: -bh - 3, width: bw, height: bh, rx: 4, fill }, g);
+      say(g, 0, NARROW ? -11 : -10, lab, { 'text-anchor': 'middle', 'font-size': NARROW ? 21 : 13, 'font-weight': 800, fill: '#fff' });
+      say(g, 0, NARROW ? 38 : 32, sub, { 'text-anchor': 'middle', 'font-size': NARROW ? 17 : 10.5, 'font-weight': 700, fill: '#5d5a55' });
+      return g;
+    };
+    const L = pan(it.face, NARROW ? 'face' : 'face value', '#5f8a63'), R = pan(it.cost, NARROW ? 'cost' : 'cost to make', '#9a6a3a');
+    say(s, cx, 30, it.name, { 'text-anchor': 'middle', 'font-size': 15 * (NARROW ? 1.6 : 1), 'font-weight': 800, fill: '#1f1f22' });
+    const v = say(s, cx, 254, NARROW ? it.short : it.verdict, { 'text-anchor': 'middle', 'font-size': NARROW ? 19 : 12.5, 'font-weight': 800, fill: it.col });
+    v.style.opacity = 0; v.style.transition = 'opacity .5s ease .9s';
+    return { it, cx, py, arm, beam, L, R, v };
+  });
+  const draw = (p) => parts.forEach(({ it, cx, py, arm, beam, L, R }) => {
+    const a = it.tilt * 14 * p * Math.PI / 180;
+    beam.setAttribute('transform', `rotate(${a * 180 / Math.PI} ${cx} ${py})`);
+    const dx = Math.cos(a) * arm, dy = Math.sin(a) * arm;
+    L.setAttribute('transform', `translate(${cx - dx} ${py - dy + 48})`);
+    R.setAttribute('transform', `translate(${cx + dx} ${py + dy + 48})`);
+  });
+  draw(0);
+  const fig = s.closest('.fig');
+  new IntersectionObserver((es, o) => es.forEach((e) => {
+    if (!e.isIntersecting) return; o.disconnect();
+    parts.forEach((x) => (x.v.style.opacity = 1));
+    if (reduced) { draw(1); return; }
+    const t0 = performance.now() + 300;
+    const step = (now) => {
+      const q = Math.min(1, Math.max(0, (now - t0) / 1100));
+      // a little overshoot so it settles like a real scale
+      draw(q < 1 ? ease(q) * (1 + 0.15 * Math.sin(q * Math.PI)) : 1);
+      if (q < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }), { threshold: 0.35 }).observe(fig);
+})();
+
+/* ---------------- The Fed's profit or loss at different interest rates ---------------- */
+(function () {
+  const s = document.getElementById('fedSvg'); const r = document.getElementById('fedRate'); if (!s || !r) return;
+  const out = document.getElementById('fedRateV'), why = document.getElementById('fedWhy');
+  const ASSETS = 7700, YIELD = 2.1, CASH = 2300, RES = 5300, COSTS = 9; // $bn, %, rounded ~2023
+  const income = ASSETS * YIELD / 100; // ~162
+  const cashPart = CASH * YIELD / 100; // ~48, earned on the bonds behind the notes
+  // wide: labels left of the bars; narrow: a 360-wide chart with each label above its bar
+  if (NARROW) s.setAttribute('viewBox', '0 0 360 300');
+  const L = NARROW ? 8 : 210, Z = NARROW ? 190 : 480, SC = NARROW ? 0.5 : 0.55, RX = NARROW ? 352 : 670;
+  const ROWY = NARROW ? [26, 96, 156, 226] : [30, 85, 125, 175];
+  const rows = ['Interest earned on its bonds', 'Interest paid on reserves', 'Running costs', 'Result for the year'];
+  rows.forEach((lab, i) => NARROW
+    ? say(s, L, ROWY[i] - 6, lab, { 'font-size': 13, 'font-weight': 700, fill: '#1f1f22' })
+    : say(s, L - 12, ROWY[i] + 17, lab, { 'text-anchor': 'end', 'font-size': 12.5, 'font-weight': 700, fill: '#1f1f22' }));
+  mk('line', { x1: Z, x2: Z, y1: ROWY[0] - (NARROW ? 0 : 12), y2: ROWY[3] + 37, stroke: '#8a8578' }, s);
+  mk('line', { x1: L, x2: RX, y1: ROWY[3] - (NARROW ? 26 : 15), y2: ROWY[3] - (NARROW ? 26 : 15), stroke: '#e4dfd3' }, s);
+  const bar = (y, fill) => mk('rect', { x: Z, y, width: 0, height: 26, fill }, s);
+  const bInc = bar(ROWY[0], '#5f8a63'); mk('rect', { x: Z, y: ROWY[0], width: cashPart * SC, height: 26, fill: '#3f6a45' }, s);
+  const bPay = bar(ROWY[1], '#c2412d'), bCost = bar(ROWY[2], '#9a9385'), bRes = bar(ROWY[3], '#5f8a63');
+  bInc.setAttribute('width', income * SC);
+  bCost.setAttribute('x', Z - COSTS * SC); bCost.setAttribute('width', COSTS * SC);
+  const tInc = say(s, Z + income * SC + 6, ROWY[0] + 18, '', { 'font-size': 12, 'font-weight': 800, fill: '#1f1f22' });
+  say(s, NARROW ? L : Z, ROWY[0] + 40, NARROW ? 'darker part: earned on the bonds behind cash' : 'darker: backing cash', { 'font-size': NARROW ? 11 : 10, 'font-weight': 600, fill: '#3f6a45' });
+  const tPay = say(s, 0, ROWY[1] + 18, '', { 'font-size': 12, 'font-weight': 800, fill: '#1f1f22', 'text-anchor': 'end' });
+  say(s, Z - COSTS * SC - 6, ROWY[2] + 18, '−$9bn', { 'font-size': 12, 'font-weight': 800, fill: '#1f1f22', 'text-anchor': 'end' });
+  const tRes = say(s, 0, ROWY[3] + 18, '', { 'font-size': 13, 'font-weight': 800 });
+  tInc.textContent = '+$' + Math.round(income) + 'bn';
+  function update() {
+    const rate = +r.value; out.textContent = rate.toFixed(1) + '%';
+    const pay = RES * rate / 100, res = income - pay - COSTS;
+    bPay.setAttribute('x', Z - pay * SC); bPay.setAttribute('width', pay * SC);
+    tPay.textContent = '−$' + Math.round(pay) + 'bn';
+    // if the bar runs too close to the left edge, write its value inside it
+    const inside = Z - pay * SC < (NARROW ? 70 : L + 60);
+    tPay.setAttribute('x', inside ? Z - pay * SC + 6 : Z - pay * SC - 6); tPay.setAttribute('text-anchor', inside ? 'start' : 'end'); tPay.setAttribute('fill', inside ? '#fff' : '#1f1f22');
+    const w = Math.abs(res) * SC;
+    bRes.setAttribute('x', res >= 0 ? Z : Z - w); bRes.setAttribute('width', w); bRes.setAttribute('fill', res >= 0 ? '#5f8a63' : '#8a2a1c');
+    tRes.setAttribute('x', res >= 0 ? Z + w + 6 : Z - w - 6); tRes.setAttribute('text-anchor', res >= 0 ? 'start' : 'end');
+    tRes.setAttribute('fill', res >= 0 ? '#3f6a45' : '#8a2a1c');
+    tRes.textContent = (res >= 0 ? 'Profit $' : 'Loss $') + Math.abs(Math.round(res)) + 'bn';
+    why.innerHTML = res >= 0
+      ? (rate < 1 ? 'Near-zero rates, as in 2021: reserves cost almost nothing, so nearly all the bond interest is profit, and it goes to the Treasury.' : `At ${rate.toFixed(1)}% the Fed still profits, but every rise in rates eats into it.`)
+      : `At ${rate.toFixed(1)}% the interest on reserves outruns the bond income: a loss, booked as a deferred asset. ${rate >= 5 ? 'This is roughly 2023.' : ''} The dark-green slice, earned on the bonds behind cash, never goes away.`;
+  }
+  r.addEventListener('input', update);
+  update();
+  // a gentle demo: slide the rate up once when the chart first appears, unless the reader touches it
+  if (!reduced) {
+    let touched = false; r.addEventListener('pointerdown', () => (touched = true)); r.addEventListener('keydown', () => (touched = true));
+    new IntersectionObserver((es, o) => es.forEach((e) => {
+      if (!e.isIntersecting) return; o.disconnect();
+      const t0 = performance.now() + 500;
+      const step = (now) => {
+        if (touched) return;
+        const q = Math.min(1, Math.max(0, (now - t0) / 3000));
+        r.value = (0.1 + 5.2 * ease(q)).toFixed(1); update();
+        if (q < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }), { threshold: 0.5 }).observe(s);
+  }
+})();
+
+/* ---------------- Stablecoin: the dollar goes in, the token comes out, the yield stays ---------------- */
+(function () {
+  const s = document.getElementById('stableSvg'); if (!s) return;
+  const cnt = document.getElementById('stableCount');
+  const node = (x, title, sub, fill) => {
+    mk('rect', { x: x - 70, y: 50, width: 140, height: 76, rx: 10, fill: '#fff', stroke: fill, 'stroke-width': 2.5 }, s);
+    say(s, x, 82, title, { 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 800, fill: '#1f1f22' });
+    say(s, x, 104, sub, { 'text-anchor': 'middle', 'font-size': 11.5, fill: '#5d5a55' });
+  };
+  const X = [100, 340, 580];
+  node(X[0], 'You', 'hold the token', '#5d7fae');
+  node(X[1], 'Issuer', 'keeps the interest', '#5f8a63');
+  node(X[2], 'Treasury bill', 'pays interest', '#9a6a3a');
+  mk('path', { d: `M${X[0] + 74} 70 H${X[1] - 74}`, stroke: '#d8d2c4', 'stroke-width': 2, 'stroke-dasharray': '4 4' }, s);
+  mk('path', { d: `M${X[1] + 74} 70 H${X[2] - 74}`, stroke: '#d8d2c4', 'stroke-width': 2, 'stroke-dasharray': '4 4' }, s);
+  const chip = (txt, fill) => { const g = mk('g', {}, s); mk('rect', { x: -22, y: -12, width: 44, height: 24, rx: 12, fill }, g); say(g, 0, 5, txt, { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: '#fff' }); g.style.opacity = 0; return g; };
+  const dollar = chip('$1', '#3f6a45'), token = chip('1 tkn', '#5d7fae');
+  const drips = [0, 1, 2].map(() => chip('+i', '#b8892f'));
+  const cap = say(s, 340, 160, '', { 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 800, fill: '#1f1f22' });
+  const no = say(s, X[0], 160, '', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700, fill: '#8a2a1c' });
+  const at = (g, x, y) => g.setAttribute('transform', `translate(${x} ${y})`);
+  const PER_SEC = 100e9 * 0.04 / (365 * 24 * 3600); // $100bn at 4%
+  if (reduced) {
+    at(dollar, X[2], 30); dollar.style.opacity = 1; at(token, X[0], 30); token.style.opacity = 1;
+    cap.textContent = 'The interest goes to the issuer, not to you';
+    if (cnt) cnt.textContent = 'On $100 billion of backing at 4%, the issuer earns about $127 a second, or $4 billion a year.';
+    return;
+  }
+  whileVisible(s, (t) => {
+    if (cnt) cnt.innerHTML = `While you've watched, $100 billion of backing at 4% has earned the issuer about <b>$${Math.round(t * PER_SEC).toLocaleString('en-US')}</b>.`;
+    const c = t % 8;
+    dollar.style.opacity = token.style.opacity = 0; drips.forEach((d) => (d.style.opacity = 0)); no.textContent = '';
+    if (c < 1.4) { const q = ease(c / 1.4); dollar.style.opacity = 1; at(dollar, lerp(X[0], X[1], q), 30); cap.textContent = '1. You send the issuer a dollar'; }
+    else if (c < 2.8) { const q = ease((c - 1.4) / 1.4); token.style.opacity = 1; at(token, lerp(X[1], X[0], q), 30); dollar.style.opacity = 1; at(dollar, X[1], 30); cap.textContent = '2. It mints a token for almost nothing'; }
+    else if (c < 4.2) { const q = ease((c - 2.8) / 1.4); token.style.opacity = 1; at(token, X[0], 30); dollar.style.opacity = 1; at(dollar, lerp(X[1], X[2], q), 30); cap.textContent = '3. Your dollar buys a Treasury bill'; }
+    else {
+      token.style.opacity = 1; at(token, X[0], 30); dollar.style.opacity = 1; at(dollar, X[2], 30);
+      cap.textContent = '4. The interest flows to the issuer';
+      no.textContent = 'none of it to you';
+      drips.forEach((d, i) => { const q = ((c - 4.2) / 1.2 - i * 0.4); if (q < 0 || q > 1) return; d.style.opacity = 1; at(d, lerp(X[2], X[1], ease(q)), 145 - Math.sin(q * Math.PI) * 18); });
+    }
+  });
+})();

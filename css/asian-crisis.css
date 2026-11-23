@@ -1,0 +1,111 @@
+/* Page-specific styles for the 1997 Asian crisis explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box (plus a warning variant) ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.note.warn{border-left-color:var(--red,#c2412d)}
+.note.warn b.h{color:var(--red,#c2412d)}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Comparison tables ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
+table.cmp tbody tr:hover{background:#faf8f2}
+
+/* ---------- Vertical flow of steps (shared look) ---------- */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:30px 0;font-family:var(--sans)}
+.fstep{background:#0d0d0f;color:#fff;padding:18px 22px;width:100%;max-width:560px;box-sizing:border-box;transition:transform .25s ease,box-shadow .25s ease}
+.fstep .fl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.fstep p{font-size:15.5px;line-height:1.5;color:#e7e3da}
+.fstep:not(.tag) p b{color:#fff}
+.fstep.bad{border-top:3px solid var(--red,#c2412d)}
+.fstep:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.farrow{width:2px;height:26px;background:var(--rule);position:relative}
+.farrow::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--rule)}
+.flow > *{opacity:0}
+.flow > .fstep{transform:translateY(16px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.flow > .farrow{transform:scaleY(0);transform-origin:top;transition:opacity .25s ease,transform .35s ease}
+.flow.in-view > *,.fig.in-view .flow > *{opacity:1;transition-delay:calc(var(--i, 0) * 140ms)}
+.flow.in-view > .fstep,.fig.in-view .flow > .fstep{transform:none}
+.flow.in-view > .farrow,.fig.in-view .flow > .farrow{transform:scaleY(1)}
+
+/* ---------- The contagion map ---------- */
+.crisis-map-wrap{position:relative}
+#crisisMap{width:100%;height:440px;display:block;background:#fbfaf6;border:1px solid var(--rule)}
+#crisisMap .cmap{fill:#efece3}
+#crisisMap .epi{stroke:#5a1408;stroke-width:2.4px;animation:epiPulse 1.4s ease-in-out infinite}
+@keyframes epiPulse{0%,100%{stroke-opacity:1;stroke-width:2.4px}50%{stroke-opacity:.35;stroke-width:5px}}
+#crisisMap .cmap{transition:fill .6s ease}
+#crisisMap .cbadge{opacity:0;transition:opacity .5s ease .3s}
+#crisisMap .cbadge.on{opacity:1}
+#crisisMap .cdot circle{transition:fill .6s ease}
+.crisis-controls{display:flex;align-items:center;gap:14px;margin-top:14px;font-family:var(--sans);flex-wrap:wrap}
+.crisis-controls button{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.04em;background:#0d0d0f;color:#fff;border:none;padding:9px 16px;cursor:pointer}
+.crisis-controls button:hover{background:#2a2a2e}
+.crisis-controls input[type=range]{flex:1;min-width:140px;accent-color:var(--red,#c2412d)}
+.crisis-step{font-family:var(--sans);font-size:14px;font-weight:800;color:var(--red,#c2412d);min-width:110px}
+.crisis-why,.map-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);border-left:3px solid var(--red,#c2412d);padding:8px 0 8px 14px;margin:14px 0 2px;min-height:3.4em}
+
+/* ---------- Per-country bailout outcome tabs ---------- */
+.octabs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0;font-family:var(--sans)}
+.octabs button{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.02em;background:#f0ece2;color:var(--ink2);border:1px solid var(--rule);border-bottom:none;padding:9px 16px;cursor:pointer}
+.octabs button:hover{background:#e8e3d7}
+.octabs button[aria-selected=true]{background:#0d0d0f;color:#fff;border-color:#0d0d0f}
+.ocpanel{border:1px solid var(--rule);border-top:3px solid var(--muted);background:#fff;padding:20px 22px;font-family:var(--sans)}
+.ocpanel.v-win{border-top-color:#5f8a63}
+.ocpanel.v-mixed{border-top-color:var(--gold,#b8892b)}
+.ocpanel.v-fail{border-top-color:var(--red,#c2412d)}
+.ochead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #eee}
+.ochead h4{font-family:var(--serif);font-size:22px;margin:0;color:var(--ink)}
+.ocverdict{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;color:#fff}
+.v-win .ocverdict{background:#5f8a63}.v-mixed .ocverdict{background:var(--gold,#b8892b)}.v-fail .ocverdict{background:var(--red,#c2412d)}
+.ocgdp{margin-left:auto;font-size:12.5px;color:var(--muted)}.ocgdp b{color:var(--ink);font-size:14px}
+.ocrows{margin:0;display:grid;gap:14px}
+.ocrows > div{display:grid;grid-template-columns:170px 1fr;gap:16px}
+.ocrows dt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.ocrows dd{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink2)}
+@media (max-width:680px){.ocrows > div{grid-template-columns:1fr;gap:4px}.ocgdp{margin-left:0}}
+
+/* ---------- Map legend row ---------- */
+.fig .maplg{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px;font-family:var(--sans);font-size:12.5px;color:var(--ink2)}
+.fig .maplg span{display:inline-flex;align-items:center;gap:6px}
+.fig .maplg i{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.08)}
+
+@media (prefers-reduced-motion:reduce){
+  .flow > *{opacity:1;transform:none;transition:none}
+  .fstep{transition:none}
+  #crisisMap .epi{animation:none}
+}
+
+/* map legend: hollow ring for the newest country */
+.fig .maplg i.ring{background:transparent;border:2.5px solid #5a1408;border-radius:50%}
+
+/* how far the currencies fell */
+#fallSvg{width:100%;height:auto;display:block}
+#fallSvg .fall-bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*120ms)}
+#fallSvg .fall-lab{opacity:0;transition:opacity .4s ease;transition-delay:calc(var(--i)*120ms + .8s)}
+#fallFig.in-view .fall-bar{transform:scaleX(1)}
+#fallFig.in-view .fall-lab{opacity:1}
+
+/* the falling-currency analogy */
+#debtSvg{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+#debtFig .say{font-family:var(--sans);font-size:14px;color:var(--ink2);margin:10px 0 0;line-height:1.5}
+#debtSvg .dbt-sweat{transition:opacity .4s}
+
+/* 1998 GDP bars above the country tabs */
+.gdpbars{font-family:var(--sans);margin:18px 0 14px;display:grid;gap:6px}
+.gdpbars .gb-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3,#8a8578)}
+.gdpbars .gb{display:grid;grid-template-columns:110px 1fr 58px;align-items:center;gap:10px;background:none;border:0;padding:4px 6px;margin:0 -6px;cursor:pointer;font:inherit;color:var(--ink);text-align:left;border-radius:4px}
+.gdpbars .gb:hover{background:#f3efe6}
+.gdpbars .gb.on{background:#efe9dc}
+.gdpbars .gb-n{font-size:13px;font-weight:700}
+.gdpbars .gb-t{height:14px;background:#f0ece2;border-radius:2px;overflow:hidden}
+.gdpbars .gb-t i{display:block;height:100%;width:var(--w);background:#c2412d}
+.gdpbars .gb.on .gb-t i{background:#8a2a1c}
+.gdpbars b{font-size:13px;text-align:right}
+@media (max-width:560px){.gdpbars .gb{grid-template-columns:86px 1fr 50px;gap:8px}}
+@media (prefers-reduced-motion:reduce){#fallSvg .fall-bar{transition:none;transform:none}#fallSvg .fall-lab{transition:none;opacity:1}}
+@media (max-width:560px){#crisisMap{height:360px}}

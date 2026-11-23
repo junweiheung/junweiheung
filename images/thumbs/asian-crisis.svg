@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .dot{opacity:0;animation:light .5s ease forwards}
+    .d1{animation-delay:.2s}.d2{animation-delay:.7s}.d3{animation-delay:1.1s}.d4{animation-delay:1.5s}.d5{animation-delay:1.9s}
+    .link{stroke-dasharray:300;stroke-dashoffset:300;animation:draw .5s ease forwards}
+    .l1{animation-delay:.6s}.l2{animation-delay:1.0s}.l3{animation-delay:1.4s}.l4{animation-delay:1.8s}
+    .ring{opacity:0;transform-origin:center;animation:pulse 1.6s ease-out .4s infinite}
+    @keyframes light{to{opacity:1}}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes pulse{0%{opacity:.6;transform:scale(.3)}100%{opacity:0;transform:scale(1)}}
+    @media (prefers-reduced-motion:reduce){.dot,.link{animation:none;opacity:1;stroke-dashoffset:0}.ring{animation:none;opacity:0}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">The domino year</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">How the 1997 Asian crisis spread, country to country</text>
+
+  <!-- contagion links (drawn in order) -->
+  <g fill="none" stroke="#c2412d" stroke-width="4" stroke-linecap="round">
+    <path class="link l1" d="M470,560 L700,470"/>
+    <path class="link l2" d="M700,470 L560,660"/>
+    <path class="link l3" d="M560,660 L820,620"/>
+    <path class="link l4" d="M820,620 L1060,420"/>
+  </g>
+
+  <!-- nodes: Thailand (epicentre) -> Malaysia -> Philippines -> Indonesia -> S. Korea -->
+  <g>
+    <circle class="ring" cx="470" cy="560" r="70" fill="#c2412d"/>
+    <circle class="dot d1" cx="470" cy="560" r="20" fill="#8a2a1c"/>
+    <text class="dot d1" x="470" y="615" fill="#cfcbc3" font-size="22" text-anchor="middle">Thailand</text>
+
+    <circle class="dot d2" cx="700" cy="470" r="17" fill="#c2412d"/>
+    <text class="dot d2" x="700" y="440" fill="#cfcbc3" font-size="22" text-anchor="middle">Malaysia</text>
+
+    <circle class="dot d3" cx="560" cy="660" r="17" fill="#c2412d"/>
+    <text class="dot d3" x="560" y="710" fill="#cfcbc3" font-size="22" text-anchor="middle">Philippines</text>
+
+    <circle class="dot d4" cx="820" cy="620" r="17" fill="#c2412d"/>
+    <text class="dot d4" x="820" y="672" fill="#cfcbc3" font-size="22" text-anchor="middle">Indonesia</text>
+
+    <circle class="dot d5" cx="1060" cy="420" r="17" fill="#c2412d"/>
+    <text class="dot d5" x="1060" y="390" fill="#cfcbc3" font-size="22" text-anchor="middle">S. Korea</text>
+  </g>
+
+  <text x="120" y="840" fill="#8d8a84" font-size="22">Jul 1997: Thailand floats the baht. Within months, five economies fall.</text>
+</svg>

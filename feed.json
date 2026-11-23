@@ -13,11 +13,33 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "japan-bubble",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/japan-bubble.html",
+      "title": "The Biggest Bubble in History: Japan's Lost Decades",
+      "summary": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
+      "content_text": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
+      "date_published": "2026-11-26T09:00:00+08:00",
+      "tags": [
+        "Asset bubbles"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png",
+      "_bottleneck": {
+        "short": "Japan's lost decades",
+        "topic": "Asset bubbles",
+        "readMins": 14,
+        "stat": {
+          "big": "38,915",
+          "text": "The Nikkei 225's peak, reached at the end of December 1989. One broker predicted it would hit 80,000 by 1995; instead it fell about 60% by 1992."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png"
+      }
+    },
+    {
       "id": "chip-share",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/chip-share.html",
-      "title": "Three Companies, Four Battlegrounds: AMD vs Intel vs Nvidia",
-      "summary": "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
-      "content_text": "Intel once owned the processor. Today the fight splits across four markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      "title": "Three Companies, One Industry: AMD vs Intel vs Nvidia",
+      "summary": "Intel once owned the processor. Today the fight splits across different markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
+      "content_text": "Intel once owned the processor. Today the fight splits across different markets: server and PC chips, AI accelerators, gaming graphics and embedded. In each, the leader is different. Here is who holds what, and how it got that way.",
       "date_published": "2026-11-24T09:00:00+08:00",
       "tags": [
         "Semiconductors"
@@ -32,6 +54,72 @@
           "text": "AMD's share of x86 server CPU units in Q3 2026, a record, up from 27.8% a year earlier (Mercury Research)."
         },
         "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chip-share.png"
+      }
+    },
+    {
+      "id": "asian-crisis",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/asian-crisis.html",
+      "title": "The Domino Year: How the 1997 Asian Financial Crisis Spread",
+      "summary": "In July 1997 Thailand ran out of dollars defending its currency and let the baht float. It fell, and the panic jumped from one Asian economy to the next: Indonesia, Malaysia, the Philippines, then South Korea, in months. The IMF arrived with the largest rescues in its history and conditions that still divide economists. Here is how the dominoes fell, and what the bailouts did.",
+      "content_text": "In July 1997 Thailand ran out of dollars defending its currency and let the baht float. It fell, and the panic jumped from one Asian economy to the next: Indonesia, Malaysia, the Philippines, then South Korea, in months. The IMF arrived with the largest rescues in its history and conditions that still divide economists. Here is how the dominoes fell, and what the bailouts did.",
+      "date_published": "2026-11-23T09:00:00+08:00",
+      "tags": [
+        "Financial crises"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/asian-crisis.png",
+      "_bottleneck": {
+        "short": "The 1997 Asian crisis",
+        "topic": "Financial crises",
+        "readMins": 15,
+        "stat": {
+          "big": "Jul 2 1997",
+          "text": "The day Thailand abandoned its dollar peg and let the baht float, after burning through reserves defending it. The crisis spread from there."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/asian-crisis.png"
+      }
+    },
+    {
+      "id": "seigniorage",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/seigniorage.html",
+      "title": "The Lord's Cut: How Seigniorage Lets Money-Makers Profit",
+      "summary": "Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage, the oldest profit in finance. Medieval lords took it by minting coins and quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take a version of it. Here is how the same trick has worked from the mint to the blockchain.",
+      "content_text": "Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage, the oldest profit in finance. Medieval lords took it by minting coins and quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take a version of it. Here is how the same trick has worked from the mint to the blockchain.",
+      "date_published": "2026-11-23T09:00:00+08:00",
+      "tags": [
+        "Seigniorage"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/seigniorage.png",
+      "_bottleneck": {
+        "short": "The profit in making money",
+        "topic": "Seigniorage",
+        "readMins": 13,
+        "stat": {
+          "big": "~9¢",
+          "text": "Rough cost to the US to print a $100 note; the issuer captures almost the entire $100 of face value as seigniorage (Federal Reserve)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/seigniorage.png"
+      }
+    },
+    {
+      "id": "derivatives",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/derivatives.html",
+      "title": "Financial Weapons of Mass Destruction? How Derivatives Work",
+      "summary": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      "content_text": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      "date_published": "2026-11-23T09:00:00+08:00",
+      "tags": [
+        "Derivatives"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/derivatives.png",
+      "_bottleneck": {
+        "short": "How derivatives work",
+        "topic": "Derivatives",
+        "readMins": 14,
+        "stat": {
+          "big": "3",
+          "text": "Main building blocks: futures (fix a price now for a trade later), options (the right but not the duty to trade), and swaps (exchange one cash-flow stream for another)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/derivatives.png"
       }
     },
     {
