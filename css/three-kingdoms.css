@@ -196,3 +196,6 @@ table.tk-novel td:first-child{width:auto}
   table.cmp.tk-novel{font-size:14px}
   .tk-nq p{font-size:14.5px}
 }
+.tk-legend .tk-popbtn{flex-basis:auto;font-family:var(--sans);font-size:11.5px;font-weight:700;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:6px;padding:4px 9px;cursor:pointer}
+.tk-legend .tk-popbtn:hover{border-color:var(--ink);color:var(--ink)}
+.tk-legend .tk-popbtn+.tk-popchart{margin-top:2px}

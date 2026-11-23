@@ -239,8 +239,18 @@
   const dotI = mk('circle', { r: 5, fill: '#2463d6', stroke: '#0d0d0f', 'stroke-width': 2 }, svg);
   const pre = say(svg, (L + R) / 2, (T + B) / 2, 'Share prices on this chart start in 2002', { 'text-anchor': 'middle', 'font-size': NARROW ? 15 : 14, 'font-weight': 700, fill: '#8d8a84' });
   const yearEl = document.getElementById('tlYear'), valsEl = document.getElementById('tlVals');
-  // the latest data point at or before time t
+  // the latest data point at or before time t (what the readout reports)
   const at = (pts, t) => { let p = null; pts.forEach((q) => { if (q.t <= t + 0.001) p = q; }); return p; };
+  // where the drawn line crosses time t: the lines are straight between points on screen (log scale),
+  // so the dot is placed on that straight segment, exactly under the cursor. null before the first point.
+  const yOn = (pts, t) => {
+    if (t < pts[0].t) return null;
+    for (let k = 0; k < pts.length - 1; k++) {
+      const p = pts[k], q = pts[k + 1];
+      if (t >= p.t && t <= q.t) return Y(p.v) + (Y(q.v) - Y(p.v)) * (t - p.t) / (q.t - p.t);
+    }
+    return Y(pts[pts.length - 1].v);
+  };
   const fmt = (v) => '$' + (v >= 100 ? v.toFixed(0) : v.toFixed(2));
   const when = (p) => p.d || ('end ' + p.ye);
   function setTime(t, label) {
@@ -252,10 +262,13 @@
     if (before) { valsEl.innerHTML = ''; return; }
     cur.setAttribute('x1', X(t)); cur.setAttribute('x2', X(t));
     const a = at(AMD, t), i = at(INTC, t);
-    if (a) { dotA.setAttribute('cx', X(a.t)); dotA.setAttribute('cy', Y(a.v)); }
-    if (i) { dotI.setAttribute('cx', X(i.t)); dotI.setAttribute('cy', Y(i.v)); }
+    const tx = Math.min(t, AMD[AMD.length - 1].t);              // past the last close, the dots rest on it
+    const ya = yOn(AMD, tx), yi = yOn(INTC, Math.min(t, INTC[INTC.length - 1].t));
+    dotA.style.display = ya === null ? 'none' : ''; dotI.style.display = yi === null ? 'none' : '';
+    if (ya !== null) { dotA.setAttribute('cx', X(tx)); dotA.setAttribute('cy', ya); }
+    if (yi !== null) { dotI.setAttribute('cx', X(Math.min(t, INTC[INTC.length - 1].t))); dotI.setAttribute('cy', yi); }
     // each price carries its own date: the two series don't always have a point on the same day
-    valsEl.innerHTML = (a ? `<span class="va">AMD <b>${fmt(a.v)}</b> <small>${when(a)}</small></span>` : '') + (i ? `<span class="vi">Intel <b>${fmt(i.v)}</b> <small>${when(i)}</small></span>` : '');
+    valsEl.innerHTML = (a ? `<span class="va">AMD <b>${fmt(a.v)}</b> <small>${when(a)}</small></span>` : '') + (i ? `<span class="vi">Intel <b>${fmt(i.v)}</b> <small>${when(i)}</small></span>` : '') + (a || i ? '<span class="vw">last close</span>' : '');
   }
 
   const steps = [...document.querySelectorAll('.tl-step')];

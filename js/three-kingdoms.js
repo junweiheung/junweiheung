@@ -122,7 +122,7 @@ const VIEWS = [['political', 'Political', '政治'], ['economy', 'Economy', '经
 
 /* Economy: resources and policies, each shown from the year it starts (and until it ends, if it does).
    Glyph categories: 盐 salt, 铁 iron, 粮 grain land, 屯 state farms, 马 horses, 锦 silk, 船 fleets, 钱 money. */
-const ECON_KIND = { salt: ['盐', '#7f8c99', 'Salt', '盐'], iron: ['铁', '#4d4a46', 'Iron', '铁'], grain: ['粮', '#c49a2c', 'Grain land', '粮区'], farm: ['屯', '#5f8a3a', 'State farms', '屯田'], horse: ['马', '#8a5a3a', 'Horses', '马匹'], silk: ['锦', '#b0447a', 'Silk', '蜀锦'], ship: ['船', '#2f6a8f', 'Fleets', '水军'], coin: ['钱', '#b8892b', 'Money', '钱币'] };
+const ECON_KIND = { salt: ['盐', '#7f8c99', 'Salt', '盐'], iron: ['铁', '#4d4a46', 'Iron', '铁'], grain: ['粮', '#c49a2c', 'Grain land', '粮区'], farm: ['屯', '#5f8a3a', 'State farms', '屯田'], horse: ['马', '#8a5a3a', 'Horses', '马匹'], silk: ['锦', '#b0447a', 'Silk', '蜀锦'], ship: ['船', '#2f6a8f', 'Fleets', '水军'], coin: ['钱', '#b8892b', 'Money', '钱币'], water: ['堰', '#3f86a8', 'Waterworks', '水利'], tribute: ['贡', '#9a6b2f', 'Tribute', '贡赋'] };
 const ECON = [
   { k: 'salt', ll: [110.95, 34.92], from: 155, side: 'l', en: 'Hedong salt lake', zh: '河东盐池', d: ["The great salt lake of Hedong; whoever held it controlled much of the north’s salt.", "河东解县（今运城）盐池，北方食盐的重要来源，控制河东即掌握大量盐利。"] },
   { k: 'salt', ll: [103.45, 30.25], from: 155, en: 'Brine wells of Shu', zh: '蜀地盐井', d: ["Sichuan drilled wells for brine and boiled it into salt, a key revenue for Liu Zhang and then Shu.", "蜀地凿井取卤煮盐，是刘璋和后来蜀汉的重要财源。"] },
@@ -139,7 +139,10 @@ const ECON = [
   { k: 'farm', ll: [117.6, 33.0], from: 241, en: 'Deng Ai’s Huai farms (241)', zh: '邓艾淮南淮北屯田（241）', d: ["Deng Ai’s canals and farms on both banks of the Huai fed Wei’s armies against Wu for decades.", "邓艾在淮南淮北开渠屯田，为魏国对吴作战提供了长期的军粮。"] },
   { k: 'horse', ll: [101.5, 37.8], from: 155, en: 'Liang horses', zh: '凉州马', d: ["The north-western frontier bred the warhorses behind Ma Teng, Han Sui and Ma Chao.", "西北边地出产战马，是马腾、韩遂、马超骑兵的基础。"] },
   { k: 'horse', ll: [118.6, 41.6], from: 207, en: 'Wuhuan cavalry joins Cao Cao (207)', zh: '乌桓突骑归曹（207）', d: ["After White Wolf Mountain, Wuhuan horsemen joined Cao Cao’s armies and were called the finest cavalry in the realm.", "白狼山之战后，乌桓骑兵编入曹军，“由是三郡乌丸为天下名骑”。"] },
-  { k: 'silk', ll: [104.06, 30.66], from: 214, en: 'Shu brocade', zh: '蜀锦', d: ["Chengdu’s brocade was Shu’s chief export; Wei and Wu both bought it, helping pay for the wars.", "成都织锦是蜀汉最重要的输出品，魏、吴都向蜀购锦，用以支撑战争开支。"] },
+  { k: 'silk', ll: [104.06, 30.66], from: 214, en: 'Shu brocade', zh: '蜀锦', d: ["Chengdu’s brocade was Shu’s chief export, and Wei and Wu both bought it. Zhuge Liang is quoted as saying: “The people are poor and the state is empty; the means to fight the enemy rest on brocade alone” (今民贫国虚，决敌之资，唯仰锦耳; his collected works, quoted in the Taiping Yulan). He ran an older trade rather than inventing it: Chengdu’s brocade quarter was already called the “former brocade office”.", "成都织锦是蜀汉最重要的输出品，魏、吴都向蜀购锦。诸葛亮说：“今民贫国虚，决敌之资，唯仰锦耳。”（《太平御览》引《诸葛亮集》）《丹阳记》称江东无锦，“魏则市于蜀，而吴亦资西道”。锦业并非诸葛亮首创，《华阳国志》称成都锦里“故锦官也”。"] },
+  { k: 'salt', ll: [104.06, 30.66], from: 215, side: 'l', en: 'Salt and iron officials (after 214)', zh: '司盐校尉、司金中郎将（214年后）', d: ["After Liu Bei took Yi, Wang Lian ran the salt and iron profits as Colonel of Salt, and the gains were “very large, a help to the state’s needs”; Zhang Yi, as Inspector of Metals, made farm tools and weapons. These were posts of the government Zhuge Liang ran.", "刘备取益州后，王连迁司盐校尉，“较盐铁之利，利入甚多，有裨国用”（《王连传》）；张裔为司金中郎将，典作农战之器（《张裔传》）。诸葛亮主政时一直沿用。"] },
+  { k: 'tribute', ll: [103.8, 25.5], from: 225, en: 'Nanzhong pays for the army (225)', zh: '南中军资（225）', d: ["After Zhuge Liang’s southern campaign of 225, “the army’s supplies came from there and the state grew rich” (Records); the Huayang Guozhi lists gold, silver, cinnabar, lacquer, plough oxen and warhorses.", "225年诸葛亮南征，“其秋悉平，军资所出，国以富饶”（《诸葛亮传》）。《华阳国志·南中志》称南中“出其金、银、丹、漆、耕牛、战马给军国之用”。"] },
+  { k: 'water', ll: [103.62, 31.0], from: 227, en: 'Dujiangyan weir guarded (from 227)', zh: '都江堰置堰官（227年起）', d: ["When he marched north, Zhuge Liang called the weir “the root of farming, what the state relies on”, and set 1,200 conscripts and a weir officer to guard it (Shuijing Zhu).", "《水经注·江水》：“诸葛亮北征，以此堰农本，国之所资，以征丁千二百人主护之，有堰官。”"] },
   { k: 'ship', ll: [119.45, 32.2], from: 200, en: 'Wu fleets', zh: '东吴水军', d: ["Wu’s war fleets on the Yangtze were its main defence against the northern armies.", "长江上的东吴水军，是抵御北方大军的主要屏障。"] },
   { k: 'ship', ll: [114.35, 36.33], from: 208, to: 208, en: 'Xuanwu Pool navy drill (208)', zh: '玄武池练水军（208）', d: ["Cao Cao dug a lake at Ye to train sailors before marching south.", "曹操在邺城开凿玄武池操练水军，准备南征。"] },
   { k: 'coin', ll: [112.45, 34.62], from: 190, to: 196, side: 'l', en: 'Dong Zhuo’s small coins: grain at hundreds of thousands', zh: '董卓铸小钱，谷价飞涨', d: ["Dong Zhuo melted bronze statues into tiny coins; prices soared and a measure of grain cost hundreds of thousands.", "董卓熔铜人、铸小钱，物价飞涨，谷一斛至数十万钱。"] },
@@ -329,6 +332,9 @@ applyStatic();
   };
   namesBtn.addEventListener('click', () => { showNames = !showNames; renderNamesBtn(); draw(curSi, curWho); });
   renderViews(); renderNamesBtn();
+  // the population bar chart sits under the map and can cover its lower part, so it can be folded away
+  let showPop = true;
+  legendEl.addEventListener('click', (e) => { if (!e.target.closest('.tk-popbtn')) return; showPop = !showPop; draw(curSi, curWho); });
   let curSi = 0, curWho = 'caocao';
   // the chosen person's trail and position
   const trail = mk('path', { fill: 'none', stroke: '#111', 'stroke-width': 2, 'stroke-dasharray': '2 5', 'stroke-linecap': 'round', opacity: 0.75 }, svg);
@@ -376,8 +382,17 @@ applyStatic();
     trail.style.display = trailDots.style.display = view === 'political' ? '' : 'none';
     if (view === 'economy') {
       const items = ECON.filter((m) => m.from <= end && (m.to === undefined || m.to >= s.y));
+      const placed = []; // markers that land on top of one another (several sit at Chengdu) are spread apart
       items.forEach((m) => {
-        const [g, col] = ECON_KIND[m.k], c = pt(m.ll);
+        const [g, col] = ECON_KIND[m.k], c = pt(m.ll).slice();
+        const free = (x, y) => !placed.some((q) => Math.hypot(q[0] - x, q[1] - y) < 20);
+        if (!free(c[0], c[1])) { // try rings of spots around the true place, nearest first
+          outer: for (let ring = 1; ring <= 3; ring++) for (let j = 0; j < 8 * ring; j++) {
+            const a = Math.PI / 4 + j * 2 * Math.PI / (8 * ring), x = c[0] + 21 * ring * Math.cos(a), y = c[1] + 21 * ring * Math.sin(a);
+            if (free(x, y)) { c[0] = x; c[1] = y; break outer; }
+          }
+        }
+        placed.push(c);
         const fresh = m.from >= s.y && m.from <= end && m.from > 155;
         const grp = mk('g', { transform: `translate(${c[0]} ${c[1]})`, class: 'tk-mk' }, ovG);
         Object.assign(grp, { __xy: c, __name: zh ? m.zh : m.en, __desc: m.d[zh ? 1 : 0] });
@@ -398,7 +413,8 @@ applyStatic();
         mk('circle', { cx: c[0], cy: c[1], r, fill: 'rgba(194,65,45,.55)', stroke: '#8a2a1c', 'stroke-width': 1.2 }, ovG);
         say(ovG, c[0], c[1] + 4, fmtPop(v), { 'text-anchor': 'middle', 'font-size': NARROW ? 12.5 : 11, 'font-weight': 800, fill: '#1f1f22', 'paint-order': 'stroke', stroke: 'rgba(255,255,255,.9)', 'stroke-width': 3 });
       });
-      legendEl.innerHTML = popChart(zh);
+      const pb = `<button type="button" class="tk-popbtn" aria-expanded="${showPop}">${showPop ? (zh ? '收起人口图 ▾' : 'Hide population chart ▾') : (zh ? '展开人口图 ▸' : 'Show population chart ▸')}</button>`;
+      legendEl.innerHTML = pb + (showPop ? popChart(zh) : '');
     } else if (view === 'battles') {
       BATTLES.filter((b) => b[0] <= end).forEach(([y, ll, f, en, zhn, den, dzh]) => {
         const c = pt(ll), now = y >= s.y && y <= end;

@@ -30,7 +30,7 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6vw,76px);line-
 .share button:hover{border-color:var(--ink);color:var(--ink)}
 
 /* ---------- Article layout and table of contents ---------- */
-.art{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr minmax(0,680px) 1fr;gap:0 40px}
+.art{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,680px) minmax(0,1fr);gap:0 40px}
 .art>*{grid-column:2}
 .toc{grid-column:1;grid-row:1/span 60;align-self:start;position:sticky;top:90px;font-family:var(--sans);font-size:12.5px;padding-top:46px;max-width:200px;justify-self:end}
 .toc p{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);margin-bottom:12px}
