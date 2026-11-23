@@ -105,3 +105,6 @@ ${items.map((a) => `  <item>
 fs.writeFileSync(path.join(ROOT, "feed.json"), JSON.stringify(json, null, 2) + "\n");
 fs.writeFileSync(path.join(ROOT, "feed.xml"), rss);
 console.log(`feed.json and feed.xml written: ${items.length} item(s), latest "${items[0] && items[0].id}"`);
+
+// the site search index is built from the same registry, so keep it in step
+require("./build-search.js");
