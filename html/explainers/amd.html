@@ -36,17 +36,12 @@
 <div class="head" id="top">
   <div class="kicker">Explainer <span>· Living document · Semiconductors</span></div>
   <h1>From a $2 Stock to the Trillion-Dollar Club: How AMD Came Back</h1>
-  <p class="dek">In July 2015 AMD's shares closed at $1.62 and analysts wondered if it would survive. Eleven years later it is worth about $860 billion, briefly topped $1 trillion, and sells AI chips to OpenAI, Meta and Microsoft. This is the story of the comeback, and of the engineer who ran it, Lisa Su.</p>
-</div>
-
-<div class="hero-fig">
-  <div class="hero-box"><svg id="heroSvg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="AMD's share price on a log scale from 2014 to November 2026: $2.67 at the end of 2014, a low of $1.62 in July 2015, $45.86 at the end of 2019, $64.77 at the end of 2022, $214.16 at the end of 2025, an intraday high of $615.52 on 21 September 2026 when its value passed $1 trillion, and $530.14 on 18 November 2026."></svg></div>
-  <div class="hero-cap">AMD's share price, year-end closes plus the 2015 low, the September 2026 intraday high and the latest close (18 Nov 2026), on a log scale so each step up is the same percentage gain. Sources: StatMuse, StockAnalysis, TweakTown. Graphic: Jun Wei Heung.</div>
+  <p class="dek">In July 2015 AMD's shares closed at $1.62 and analysts wondered if it would survive. Eleven years later it briefly topped $1 trillion, sells AI chips to OpenAI, Meta and Microsoft, and has just bought a company that builds AI models into chips. This is the story of the comeback, told against Intel’s, and of the engineer who ran it, Lisa Su.</p>
 </div>
 
 <div class="byline">
   <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
-  <div>November 19, 2026 · 13 min read</div>
+  <div>November 19, 2026 · Updated November 23, 2026 · 20 min read</div>
   <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
 </div>
 
@@ -54,13 +49,8 @@
   <aside class="toc" id="toc">
     <p>In this story</p>
     <a href="#s1">1. Two cousins, two chip giants</a>
-    <a href="#s2">2. The Intel rivalry</a>
-    <a href="#s3">3. The dark decade</a>
-    <a href="#s4">4. Lisa Su's two bets</a>
-    <a href="#s5">5. The Xilinx trick</a>
-    <a href="#s6">6. Intel trips</a>
-    <a href="#s7">7. The AI race</a>
-    <a href="#s8">8. How we got here</a>
+    <a href="#s2">2. The timeline</a>
+    <a href="#s3">3. What it adds up to</a>
     <a href="#sources">Sources</a>
   </aside>
 
@@ -73,7 +63,8 @@
       <li>Its near-death came from two directions: the <b>$5.4 billion ATI purchase</b> in 2006, much of which it later wrote off, and a collapse in server chips, where its share fell from about <b>26% in 2006</b> to <b>1–2% by 2018</b>.</li>
       <li>The comeback ran on the <b>Zen</b> chiplet design (2017) and <b>EPYC</b> server chips. By early 2026 AMD earned a record <b>46.2% of all x86 server-chip revenue</b>.</li>
       <li>The <b>Xilinx deal</b> was paid in shares, so AMD's rising stock lifted its value from about <b>$35 billion</b> when agreed to about <b>$49 billion</b> when it closed in 2022.</li>
-      <li>AI is now the main event. Data-centre sales hit <b>$8.5 billion</b> in July–September 2026, nearly two-thirds of revenue, and AMD's value briefly passed <b>$1 trillion</b> on 21 September 2026. Nvidia is still more than six times bigger.</li>
+      <li>AI is now the main event. Data-centre sales hit <b>$8.5 billion</b> in July–September 2026, nearly two-thirds of revenue, and AMD's value passed <b>$1 trillion</b> on 21 September 2026. Its shares peaked at <b>$649.42</b> on 6 October, then fell about 35% in a November chip selloff.</li>
+      <li>Its newest bet is on <b>inference</b>, running AI models rather than training them. In November 2026 AMD completed its purchase of <b>Taalas</b>, a Toronto start-up that etches a whole model into a chip, for about <b>$2.9 billion</b>. Taalas's first chip runs one small model at roughly <b>17,000 tokens a second</b> for a single user, about 70 times what a top GPU manages.</li>
     </ul>
   </div>
 
@@ -86,74 +77,232 @@
     <figcaption>Lisa Su speaking at Computex in Taipei in June 2015, a month before AMD's shares hit their low. She became CEO in October 2014. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:AMD_CEO_Lisa_Su_20150603.jpg" target="_blank" rel="noopener">Gene Wang</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, via Wikimedia Commons.</span></figcaption>
   </figure>
 
-  <h2 id="s2"><span class="n">Part 2</span>The Intel rivalry</h2>
-  <p class="t">Both companies trace back to Fairchild Semiconductor, the firm often called the cradle of Silicon Valley. Its two best-known founders, Robert Noyce and Gordon Moore, left to start Intel in 1968. A year later Fairchild's sales chief, Jerry Sanders, left to start AMD. The two were uneven from the start: Intel had the famous scientists and easy money, while AMD was one of dozens of small chip start-ups scrapping for funding. One of Sanders's early backers, according to the video profiles, was Noyce himself.</p>
-  <p class="t">For its first stretch AMD survived in Intel's slipstream. When IBM built its PC in the early 1980s, it didn't want to depend on a single chip supplier, so Intel agreed to license its x86 designs to a "second source." AMD signed that deal in 1982 and built Intel-compatible chips alongside Intel.</p>
+  <h2 id="s2"><span class="n">Part 2</span>The timeline</h2>
+  <p class="t">Scroll through fifty-seven years of AMD. On the left, AMD’s and Intel’s share prices from 2002, drawn up to the moment you’re reading about; on the right, what happened.</p>
 
-  <figure class="fig rv scene analogy" id="draftFig">
+  <div class="tl-scrolly" id="tlScrolly">
+    <div class="tl-sticky"><div class="tl-chartbox">
+      <div class="tl-head"><span id="tlYear">1969</span><span class="tl-vals" id="tlVals"></span></div>
+      <svg id="tlChart" role="img" aria-label="Share prices of AMD and Intel from 2002 to November 2026 on a log scale, drawn up to the point in the story you are reading."></svg>
+      <div class="tl-key"><span><i style="background:#e01e2b"></i>AMD</span><span><i style="background:#2463d6"></i>Intel</span><span class="tl-note">Share price, US$, log scale. Not company size: the two have different numbers of shares.</span></div>
+    </div></div>
+    <div class="tl-steps" id="tlSteps">
+    <div class="tl-step" data-y="1969"><div class="card">
+      <div class="tl-yr">1968–1971</div><h3>Born in Intel’s shadow</h3>
+      <p>Both companies trace back to Fairchild Semiconductor, often called the cradle of Silicon Valley. Its best-known founders, Robert Noyce and Gordon Moore, left to start Intel in 1968. A year later Fairchild’s sales chief, Jerry Sanders, started AMD. The two were uneven from the start: Intel had the famous scientists and easy money, while AMD was one of dozens of small chip start-ups scrapping for funding. One of Sanders’s early backers, according to the video profiles, was Noyce himself.</p>
+      <p>AMD’s first products were logic chips, many of them second-source versions of other companies’ designs, sold on a promise of stricter testing than the originals. Its first chip of its own design, the Am2501 counter, followed in 1970.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="1975"><div class="card">
+      <div class="tl-yr">1972–1980</div><h3>Going public by copying Intel</h3>
+      <p>AMD went public in 1972. Its early business was making cheaper, compatible versions of other companies’ chips. In 1975 it released the Am9080, a copy of Intel’s 8080 processor that AMD’s engineers worked out by studying the chip itself.</p>
+      <p>Rather than fight, Intel signed a patent cross-licence with AMD in 1976, giving it rights to make Intel-compatible processors legally. That agreement is the root of AMD’s place in the x86 business today. By 1980 AMD was a well-established chipmaker, still far smaller than Intel.</p>
+    </div></div>
+    <div class="tl-step" data-y="1982"><div class="card">
+      <div class="tl-yr">1981–1983</div><h3>Riding in the slipstream</h3>
+      <p>When IBM built its PC it didn’t want to depend on a single chip supplier, so Intel agreed to license its x86 designs to a “second source.” IBM launched its PC in August 1981 with an Intel processor; AMD signed the second-source deal in February 1982 and built Intel-compatible chips alongside Intel as PC sales took off.</p>
+      <figure class="fig rv scene analogy" id="draftFig">
     <div class="ft">An analogy: riding in the slipstream</div>
     <svg id="draftSvg" viewBox="0 0 800 360" role="img" aria-label="Analogy: two cyclists on a road. The leader, in blue, pushes into the wind. The follower, in red, tucks in behind and pedals easily. Then the follower pulls out and sprints alongside."></svg>
     <p class="say">A cyclist riding close behind another uses far less energy, because the leader takes the wind. For years AMD rode behind Intel, making Intel's own designs as a licensed second supplier. The catch: you can't win a race from the slipstream. Sooner or later you have to pull out and pedal into the wind yourself.</p>
   </figure>
-
-  <p class="t">AMD eventually pulled out. It bought the chip-design firm NexGen in 1996 and in 1999 launched the Athlon, faster than Intel's equivalent and cheaper. In 2000 AMD made close to $1 billion in profit. In 2003 it launched Opteron for servers, and by mid-2006 Opteron held about <a href="https://www.eweek.com/networking/amd-gained-market-share-in-06-new-research-shows/" target="_blank" rel="noopener">26% of the x86 server market</a>. By the end of 2006 AMD had a quarter of all x86 chips. Riding that high, it made the bet that nearly killed it.</p>
-  <p class="pull">The rival AMD could never shake wasn't Nvidia. It was Intel.</p>
-
-  <h2 id="s3"><span class="n">Part 3</span>The dark decade</h2>
-  <p class="t">A computer needs two main chips: a CPU, the general-purpose brain, and a GPU, the graphics processor. AMD saw a prize in owning both: combine them and you could sell a package Intel couldn't match. Only two serious GPU makers were left, Nvidia and ATI. Nvidia was too big and too expensive. So in 2006 AMD bought ATI.</p>
-  <p class="t">The price was about <b>$5.4 billion</b>: roughly $4.3 billion in cash, much of it borrowed through a $2.5 billion loan, plus 58 million AMD shares. The strategy was sound, and it's why AMD can make graphics chips today. The price wasn't. Within about a year AMD admitted ATI was worth far less than it paid and began writing it down, by billions of dollars over 2007 and 2008. The timing made it worse: days after the ATI deal was announced, Intel launched its Core 2 chips, fast and power-efficient, and pulled away again.</p>
-  <p class="t">Now AMD was designing and manufacturing at the same time, with debt approaching $5 billion. In 2009 it spun off its factories into a new company, GlobalFoundries, and kept only chip design. That looked like retreat and turned out to be wise, but the bleeding continued. Server share fell to almost nothing. In 2013 AMD <a href="https://ir.amd.com/news-events/press-releases/detail/219/amd-closes-transaction-to-sell-and-lease-back-austin-campus-generating-approximately-164-million-in-cash" target="_blank" rel="noopener">sold its Austin campus and rented it back</a> to raise about $164 million in cash. By July 2015 the stock closed at $1.62.</p>
-
-  <figure class="fig rv" id="shareFig">
+    </div></div>
+    <div class="tl-step" data-y="1991"><div class="card">
+      <div class="tl-yr">1984–1995</div><h3>The licence war</h3>
+      <p>The second-source deal soured when Intel decided to keep its next chip, the 386, to itself. In 1987 the two companies went to arbitration over whether AMD’s licence covered it, a fight that lasted about seven years. A retired judge ruled largely in AMD’s favour in 1992, granting it a licence to the 386 design but not to later chips.</p>
+      <p>AMD launched its own Am386 in 1991. In January 1995 the companies settled everything: AMD got a royalty-free right to make 386 and 486 chips, provided it didn’t copy Intel’s internal microcode, and agreed not to copy the microcode of the Pentium. From then on AMD would have to design its own chips, which led straight to NexGen and the Athlon.</p>
+    </div></div>
+    <div class="tl-step" data-y="1999"><div class="card">
+      <div class="tl-yr">1996–2006</div><h3>Pulling out ahead</h3>
+      <p>AMD eventually pulled out. It bought the chip-design firm NexGen in 1996 and in 1999 launched the Athlon, faster than Intel’s equivalent and cheaper. In 2000 it made close to $1 billion in profit. In 2003 it launched Opteron for servers, and by mid-2006 Opteron held about <a href="https://www.eweek.com/networking/amd-gained-market-share-in-06-new-research-shows/" target="_blank" rel="noopener">26% of the x86 server market</a>. By the end of 2006 AMD had a quarter of all x86 chips.</p><p><i>The share-price chart starts in 2002; earlier year-end prices for both companies are not shown.</i></p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2006.5"><div class="card">
+      <div class="tl-yr">2006</div><h3>The bet that nearly killed it</h3>
+      <p>A computer needs a CPU, the general-purpose brain, and a GPU, the graphics processor. AMD saw a prize in owning both, and with Nvidia too big and too expensive it bought the other serious GPU maker, ATI, for about <b>$5.4 billion</b>: roughly $4.3 billion in cash, much of it borrowed through a $2.5 billion loan, plus 58 million AMD shares.</p><p>The strategy was sound, and it’s why AMD can make graphics chips today. The price wasn’t: within about a year AMD began writing ATI down, by billions of dollars over 2007 and 2008. Days after the deal was announced, Intel launched its fast, power-efficient Core 2 chips and pulled away again.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2008.5"><div class="card">
+      <div class="tl-yr">2007–2009</div><h3>Selling the factories</h3>
+      <p>Now AMD was designing and manufacturing at the same time, with debt approaching $5 billion. In 2009 it spun off its factories into a new company, GlobalFoundries, and kept only chip design. That looked like retreat and turned out to be wise, because it later let AMD use whichever factory was best. Its shares ended 2008 at $2.16.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2009.87"><div class="card">
+      <div class="tl-yr">November 2009</div><h3>Intel pays up</h3>
+      <p>In May 2009 the European Commission fined Intel €1.06 billion for using rebates and payments to keep PC makers from using AMD chips. In November, Intel settled all of AMD’s antitrust and patent claims by paying AMD <b>$1.25 billion</b> in cash and agreeing to a set of rules on rebates that would last ten years.</p>
+      <p>The money arrived when AMD needed it most. Neither side admitted wrongdoing, but the deal put a price on years in which AMD said its chips had been locked out of the market.</p>
+    </div></div>
+    <div class="tl-step" data-y="2011.5"><div class="card">
+      <div class="tl-yr">2010–2012</div><h3>A flop and a slide</h3>
+      <p>In January 2011 AMD’s board pushed out its chief executive, Dirk Meyer; Rory Read took over in August. The year brought one success and one failure. The “APU” chips put a CPU and a GPU on one die, the original logic of buying ATI, and sold reasonably well. The Bulldozer desktop chips, launched in October, were slower than Intel’s and often slower than AMD’s own older chips.</p>
+      <p>In 2012 AMD paid about $334 million for SeaMicro, a maker of dense servers, a bet it later shut down. Layoffs followed, and the shares fell from about $8 at the end of 2010 to <b>$2.40</b> at the end of 2012.</p>
+    </div></div>
+    <div class="tl-step" data-y="2013"><div class="card">
+      <div class="tl-yr">2013</div><h3>Consoles, and selling the headquarters</h3>
+      <p>The bleeding continued and server share fell to almost nothing. In 2013 AMD <a href="https://ir.amd.com/news-events/press-releases/detail/219/amd-closes-transaction-to-sell-and-lease-back-austin-campus-generating-approximately-164-million-in-cash" target="_blank" rel="noopener">sold its Austin campus and rented it back</a> to raise about $164 million in cash.</p>
+      <p>The same year brought the lifeline: AMD’s custom chips went inside both new consoles, Sony’s PlayStation 4 and Microsoft’s Xbox One. Only AMD could offer a CPU and a capable GPU on a single chip, thanks to ATI. Console sales gave it steady income through the lean years ahead.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2014.8"><div class="card">
+      <div class="tl-yr">October 2014</div><h3>Lisa Su takes over</h3>
+      <p>Lisa Su became CEO in October 2014. She is an MIT-trained electrical engineer with a doctorate, who worked on chips at Texas Instruments, IBM and Freescale before joining AMD in 2012. She told Bloomberg the job was a dream come true, even though she inherited a company trading around $3.</p><p>Su and Jensen Huang, who runs Nvidia, are distant relatives, both born in Tainan, Taiwan; she has said they didn’t grow up together.</p>
+      <figure class="fig rv photo">
+    <img style="max-width:100%;height:auto" src="../../images/photos/lisa-su.jpg" alt="Lisa Su, AMD's chief executive, speaking on stage in 2015" loading="lazy" width="960" height="755">
+    <figcaption>Lisa Su speaking at Computex in Taipei in June 2015, a month before AMD's shares hit their low. She became CEO in October 2014. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:AMD_CEO_Lisa_Su_20150603.jpg" target="_blank" rel="noopener">Gene Wang</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, via Wikimedia Commons.</span></figcaption>
+  </figure>
+    </div></div>
+    <div class="tl-step" data-y="2015.57"><div class="card">
+      <div class="tl-yr">July 2015</div><h3>The bottom: $1.62</h3>
+      <p>Nine months into Su’s tenure, AMD’s shares closed at <b>$1.62</b>, its lowest ever. The whole company was worth under $2 billion. After the basics (simplify the company, keep key customers, cut costs) Su made two bets, each hard on its own and far harder together.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2016.5"><div class="card">
+      <div class="tl-yr">2016</div><h3>Raising cash, waiting for Zen</h3>
+      <p>With Zen still a year away, AMD raised money where it could. It sold 85% of its chip assembly and test plants in Penang and Suzhou to Nantong Fujitsu Microelectronics for about <b>$371 million</b>, and licensed server-chip technology to a Chinese joint venture, THATIC, for about <b>$293 million</b> in fees over several years.</p>
+      <p>Its Polaris graphics cards (the Radeon RX 480) went after the mid-range market. Investors began to bet on the turnaround early: AMD’s shares roughly quadrupled during 2016, from $2.87 to $11.34.</p>
+    </div></div>
+    <div class="tl-step" data-y="2017.15"><div class="card">
+      <div class="tl-yr">2017</div><h3>Bet one: Zen</h3>
+      <p>AMD had drifted into the cheap end of the market. Su aimed it at top-end performance instead. The payoff was <b>Zen</b>: a clean-sheet design later built from small dies called “chiplets,” stitched together into bigger processors. Chiplets are cheaper to make, because a defect ruins one small die instead of one huge one. AMD had aimed for 40% more work per clock cycle; it delivered 52%, and the first Ryzen chips matched Intel’s eight-core Core i7 at around half the price.</p>
+      <figure class="fig rv scene" id="zenFig">
+    <div class="ft">2017: the Zen launch</div>
+    <div class="fs">A target of 40%, a result of 52%, and a price that undercut Intel.</div>
+    <svg id="zenSvg" viewBox="0 0 800 460" role="img" aria-label="Illustration of a product launch: a presenter on stage beside a screen showing a target of +40% and a result of +52% more work per clock, and a chip box marked ZEN 2017, while engineers in the audience cheer."></svg>
+    <figcaption>Illustration by Jun Wei Heung, based on AMD's Zen launch claims (Wikipedia, Tom's Hardware). Generic figures, not real people.</figcaption>
+  </figure><figure class="fig rv photo">
+    <img style="max-width:100%;height:auto" src="../../images/photos/amd-epyc-chiplets.jpg" alt="A delidded AMD EPYC processor showing one large central die surrounded by eight smaller chiplet dies" loading="lazy" width="960" height="747">
+    <figcaption>An AMD EPYC 7702 server chip (2019) with its lid removed: the large central input/output die is ringed by eight small "chiplets," each holding eight processor cores. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:AMD_Epyc_7702_delidded.jpg" target="_blank" rel="noopener">Fritzchens Fritz</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a>, via Wikimedia Commons.</span></figcaption>
+  </figure>
+    </div></div>
+    <div class="tl-step" data-y="2018"><div class="card">
+      <div class="tl-yr">2017–2019</div><h3>Bet two: consoles and the data centre</h3>
+      <p>Su also widened the business. Because the ATI deal gave AMD both CPUs and GPUs, it could build a whole console chip, and it won the PlayStation and Xbox (and later the Steam Deck): steady income through the lean years.</p><p>The bigger prize was the data centre, which Intel owned almost entirely. AMD’s pitch for its <b>EPYC</b> server chips was <b>total cost of ownership</b>: for a data centre, the chip’s price is the small part, and power, cooling and space over years of nonstop running are the rest. AWS, Microsoft Azure and Google Cloud all began using EPYC.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2019.5"><div class="card">
+      <div class="tl-yr">2019</div><h3>Intel trips</h3>
+      <p>Much of AMD’s rise came from Intel’s stumble. Intel’s move to a 10-nanometre manufacturing process ran into deep problems, leaving it on 14 nanometres for years, and in 2019 it wrote to customers to apologise for chip shortages. That’s the risk of making your own chips: when the factory stalls, the whole product line stalls. AMD, without factories, simply used the best one, and from 2019 that was TSMC’s 7-nanometre process.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2020.8"><div class="card">
+      <div class="tl-yr">2018–2026</div><h3>The server share climbs</h3>
+      <p>From about 1–2% of x86 server chips in 2018, AMD climbed past a third of units shipped and nearly half the revenue by 2026.</p>
+      <figure class="fig rv" id="shareFig">
     <div class="ft">AMD's share of x86 server chips</div>
     <div class="fs">The fall, then the climb after Zen and EPYC. Mercury Research estimates.</div>
     <div class="legend-row"><span><i class="k-unit"></i>Unit share (chips shipped)</span><span><i class="k-rev"></i>Revenue share (money earned)</span></div>
     <svg id="shareSvg" viewBox="0 0 800 420" role="img" aria-label="Chart: AMD's x86 server unit share was about 26% in mid-2006, fell to about 1 to 2% by 2018, then rose to 17.6% at the end of 2022, 25.1% at the end of 2024 and 34.5% in mid-2026. Its revenue share rose from 33% in early 2024 to 46.2% in early 2026."></svg>
     <figcaption>Only reported data points are plotted; the dashed line from 2006 to 2018 just joins two of them, with no data in between. 2006: Mercury via eWeek. 2018: Mercury via Wccftech ("1–2%"). 2022–2026: Mercury via Tom's Hardware, The Register, Fudzilla, Heise, Wccftech and TechPowerUp. Revenue share runs higher than unit share because AMD sells more of the expensive, many-core chips.</figcaption>
   </figure>
-
-  <h2 id="s4"><span class="n">Part 4</span>Lisa Su's two bets</h2>
-  <p class="t">Lisa Su became CEO in October 2014. She is an MIT-trained electrical engineer with a doctorate, who worked on chips at Texas Instruments, IBM and Freescale before joining AMD in 2012. She told Bloomberg the job was a dream come true, even though she inherited a company trading around $3. After the basics (simplify the company, keep key customers, cut costs) she made two bets, each hard on its own and far harder together.</p>
-  <p class="t"><b>Bet one: high-performance computing.</b> AMD had drifted into the cheap end of the market, selling budget chips on price. Su judged that the low end had no future: thin margins and no money to invest. She aimed the company at top-end performance instead. The payoff was <b>Zen</b>, launched in 2017: a clean-sheet design that AMD later built from small dies called "chiplets," stitched together into bigger processors. Chiplets are cheaper to make, because a defect ruins one small die instead of one huge one, and they let AMD mix and match. AMD had aimed for 40% more work per clock cycle than its previous design; it delivered 52%.</p>
-
-  <figure class="fig rv scene" id="zenFig">
-    <div class="ft">2017: the Zen launch</div>
-    <div class="fs">A target of 40%, a result of 52%, and a price that undercut Intel.</div>
-    <svg id="zenSvg" viewBox="0 0 800 460" role="img" aria-label="Illustration of a product launch: a presenter on stage beside a screen showing a target of +40% and a result of +52% more work per clock, and a chip box marked ZEN 2017, while engineers in the audience cheer."></svg>
-    <figcaption>Illustration by Jun Wei Heung, based on AMD's Zen launch claims (Wikipedia, Tom's Hardware). Generic figures, not real people.</figcaption>
-  </figure>
-
-  <p class="t">The first Ryzen 7 chips matched Intel's eight-core Core i7 in many multi-threaded tasks at around half the price. Later Zen generations, made by TSMC on its 7-nanometre process from 2019, went further and took the outright performance lead.</p>
-
-  <figure class="fig rv photo">
-    <img style="max-width:100%;height:auto" src="../../images/photos/amd-epyc-chiplets.jpg" alt="A delidded AMD EPYC processor showing one large central die surrounded by eight smaller chiplet dies" loading="lazy" width="960" height="747">
-    <figcaption>An AMD EPYC 7702 server chip (2019) with its lid removed: the large central input/output die is ringed by eight small "chiplets," each holding eight processor cores. <span class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:AMD_Epyc_7702_delidded.jpg" target="_blank" rel="noopener">Fritzchens Fritz</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a>, via Wikimedia Commons.</span></figcaption>
-  </figure>
-
-  <p class="t"><b>Bet two: widen the business.</b> AMD had leaned too long on PC chips. Su named three growth areas: gaming, the data centre, and embedded devices. Gaming was the quiet lifesaver. Because the ATI deal gave AMD both CPUs and GPUs, it could build a whole console chip, and it won the PlayStation and Xbox (and later the Steam Deck). That steady income helped cover the losses in PCs during the lean years.</p>
-  <p class="t">The far bigger prize was the data centre. Cloud providers and supercomputers buy enormous numbers of server CPUs, a market Intel owned almost entirely. Once Zen gave AMD a good enough chip, its pitch was <b>total cost of ownership</b>: for a data centre the chip's price is the small part, and power, cooling and space over years of nonstop running are the rest. AMD's <b>EPYC</b> server line argued it was cheaper to buy and cheaper to run than Intel's Xeon. Enterprise buyers move slowly, but AWS, Microsoft Azure and Google Cloud all began using EPYC, and the share chart above climbed with them.</p>
-
-  <h2 id="s5"><span class="n">Part 5</span>The Xilinx trick</h2>
-  <p class="t">To widen once more, AMD bought Xilinx, the leader in FPGAs: a third kind of chip, after CPUs and GPUs, that can be rewired after it's made and turns up in cars, telecoms gear and specialised equipment. The strategy was ordinary. How AMD paid for it was the interesting part.</p>
-  <p class="t">AMD didn't have the cash for a company that size, so it paid in its own <b>shares</b>: every Xilinx share would be swapped for 1.7234 AMD shares, a fixed ratio. When the deal was announced in October 2020, that was worth about <b>$35 billion</b>. Deals this big take more than a year to clear regulators, and during the wait the price floats with the buyer's stock: the number of shares is fixed, but their value isn't.</p>
-  <p class="t">By the time the deal closed on <b>14 February 2022</b>, AMD's stock had risen about 40%. The same share ratio was now worth about <b>$49 billion</b>, reported as the largest chip acquisition on record. In effect AMD paid around $14 billion more in value without spending any more cash. When your stock is soaring, it becomes a currency.</p>
-
-  <figure class="fig rv" id="swapFig">
+    </div></div>
+    <div class="tl-step" data-y="2020.9"><div class="card">
+      <div class="tl-yr">2020</div><h3>Zen 3, and a deal for Xilinx</h3>
+      <p>The pandemic set off a boom in PCs and cloud computing, and AMD was ready for it. In November 2020 its Zen 3 chips took the lead over Intel even in single-threaded tasks such as gaming, long Intel’s last stronghold. A month earlier AMD had agreed to buy Xilinx. Its shares doubled during the year, from $45.86 to $91.71.</p>
+    </div></div>
+    <div class="tl-step" data-y="2021.5"><div class="card">
+      <div class="tl-yr">2021</div><h3>The shortage boom</h3>
+      <p>A global chip shortage meant AMD could sell nearly everything TSMC made for it. Revenue rose 68% to about $16.4 billion, and the shares ended the year at $143.90. The Xilinx deal waited on regulators in the US, Europe and China.</p>
+    </div></div>
+    <div class="tl-step" data-y="2022.12"><div class="card">
+      <div class="tl-yr">Feb 2022</div><h3>The Xilinx trick, and passing Intel</h3>
+      <p>To widen once more AMD bought Xilinx, the leader in FPGAs, chips that can be rewired after they’re made. It paid in its own <b>shares</b>, a fixed 1.7234 AMD shares per Xilinx share. Announced in October 2020 at about <b>$35 billion</b>, by the close on 14 February 2022 AMD’s stock had risen about 40%, so the same ratio was worth about <b>$49 billion</b>. When your stock is soaring, it becomes a currency.</p><p>With the Xilinx shares added, <b>AMD’s market value passed Intel’s</b> for the first time. On the chart the two lines don’t cross, because they show each company’s own share price, not its size.</p>
+      <figure class="fig rv" id="swapFig">
     <div class="ft">Paying with stock that keeps rising</div>
     <div class="fs">Same 1.7234 AMD shares per Xilinx share; a higher AMD price, so a bigger deal.</div>
     <svg id="swapSvg" viewBox="0 0 800 400" role="img" aria-label="Two bars: the Xilinx deal was worth about $35 billion when announced in October 2020 and about $49 billion when it closed in February 2022, with the same share ratio."></svg>
     <figcaption>Bars to scale. Sources: AMD press release, AnandTech, Reuters.</figcaption>
   </figure>
-
-  <h2 id="s6"><span class="n">Part 6</span>Intel trips</h2>
-  <p class="t">Much of AMD's rise came from Intel's stumble. For years Intel improved its chips in small, regular steps it called "tick-tock," and critics grumbled it was squeezing out gains like the last of the toothpaste. Then it got stuck. Its move to a 10-nanometre manufacturing process ran into deep problems, leaving it on 14 nanometres for years, and in 2019 it wrote to customers to apologise for chip shortages.</p>
-  <p class="t">That's the risk of making your own chips: when the factory stalls, the whole product line stalls with it. AMD, having spun off its factories a decade earlier, could simply use whoever had the best process, and from 2019 that was TSMC. The scoreboard followed. In February 2022, with the Xilinx shares added, <b>AMD's market value passed Intel's</b> for the first time.</p>
-
-  <h2 id="s7"><span class="n">Part 7</span>The AI race</h2>
-  <p class="t">The fight with Nvidia is a different contest from the one with Intel. Against Intel it was close to zero-sum: the same CPU customers, one winner per order. In AI accelerators, demand has run far ahead of supply, so buyers want a second supplier. AMD's MI300 chips passed <b>$5 billion</b> in sales in 2024, mostly to Microsoft and Meta.</p>
-  <p class="t">Then in October 2025 AMD signed its biggest AI deal: <a href="https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/" target="_blank" rel="noopener">OpenAI agreed to deploy 6 gigawatts</a> of AMD's Instinct chips over several generations, starting with 1 gigawatt of the MI450 series in the second half of 2026. To seal it, AMD gave OpenAI a warrant to buy up to <b>160 million AMD shares</b> for a cent each, released in stages as the deployments happen and as AMD's share price hits targets that reportedly go up to $600. It's the Xilinx trick in reverse: this time AMD used its own shares to win a customer.</p>
-
-  <figure class="fig rv" id="dcFig">
+    </div></div>
+    <div class="tl-step" data-y="2022.6"><div class="card">
+      <div class="tl-yr">May–Dec 2022</div><h3>An exascale first, then a PC bust</h3>
+      <p>In May 2022 Frontier, a US government supercomputer built with AMD EPYC processors and Instinct accelerators, became the first machine officially measured at over a quintillion calculations a second.</p>
+      <p>Then the pandemic PC boom ended. Sales of PCs and their chips fell sharply, and AMD’s shares lost more than half their value in 2022, ending at $64.77.</p>
+    </div></div>
+    <div class="tl-step" data-y="2023.9"><div class="card">
+      <div class="tl-yr">2023</div><h3>Racing into AI</h3>
+      <p>ChatGPT, released at the end of 2022, set off a rush for AI chips, and Nvidia took almost all of it. AMD answered in December 2023 with the Instinct MI300X, an accelerator with more memory than Nvidia’s H100, which mattered for running large models. Its shares more than doubled in 2023, to $147.41.</p>
+    </div></div>
+    <div class="tl-step" data-y="2024.5"><div class="card">
+      <div class="tl-yr">2024</div><h3>The AI race</h3>
+      <p>The fight with Nvidia is a different contest from the one with Intel. In AI accelerators, demand has run far ahead of supply, so buyers want a second supplier. AMD’s MI300 chips passed <b>$5 billion</b> in sales in 2024, mostly to Microsoft and Meta.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2025.4"><div class="card">
+      <div class="tl-yr">March–June 2025</div><h3>Buying the rack builder</h3>
+      <p>AI customers increasingly buy whole racks, not single chips. In March 2025 AMD completed its purchase of ZT Systems, a builder of data-centre infrastructure for the biggest cloud companies, agreed the year before at about $4.9 billion; it kept the design teams and set out to sell the factories. In June it launched the MI350 accelerators and previewed Helios, its own full-rack system.</p>
+    </div></div>
+    <div class="tl-step" data-y="2025.77"><div class="card">
+      <div class="tl-yr">October 2025</div><h3>The OpenAI deal</h3>
+      <p>AMD signed its biggest AI deal: <a href="https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/" target="_blank" rel="noopener">OpenAI agreed to deploy 6 gigawatts</a> of AMD’s Instinct chips over several generations, starting with 1 gigawatt of the MI450 series in the second half of 2026. In return AMD gave OpenAI a warrant to buy up to <b>160 million AMD shares</b> for a cent each, released as deployments happen and as AMD’s share price hits targets reportedly up to $600. It’s the Xilinx trick in reverse: this time AMD used its shares to win a customer.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2026.47"><div class="card">
+      <div class="tl-yr">Jan–Jun 2026</div><h3>Intel’s comeback rally</h3>
+      <p>Intel had its own surge. Its 18A chips entered high-volume production in Arizona in January, it gave strong forecasts in April, and in June reports of a preliminary chip-making deal with Apple (not confirmed by either company) sent the shares to a record. Intel closed at about <b>$141 on 22 June</b>, nearly four times its price at the start of the year.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2026.55"><div class="card">
+      <div class="tl-yr">The physics</div><h3>The memory wall</h3>
+      <p>Training a model happens once; <b>inference</b>, running it to answer a question, happens on every request, so over a model’s life it usually costs more. A request is chopped into tokens, routed, and batched with others, then processed in two phases.</p>
+      <figure class="fig rv" id="phaseFig">
+    <div class="ft">Two phases of every answer</div>
+    <div class="fs">A short burst, then a long relay</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Prefill</th><th>Decode</th></tr></thead>
+        <tbody>
+          <tr><td>What it does</td><td>Reads your whole prompt at once and stores what it worked out in a <b>KV cache</b></td><td>Writes the answer one token at a time, looking back at the KV cache on every step</td></tr>
+          <tr><td>What limits it</td><td><b>Compute</b>: raw arithmetic</td><td><b>Memory bandwidth</b>: moving data</td></tr>
+          <tr><td>What you notice</td><td>The wait before the first word (time to first token)</td><td>How fast the words stream (time between tokens)</td></tr>
+          <tr><td>When it dominates</td><td>Long prompt, short answer</td><td>Short prompt, long answer: chat, code, agents</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Within one request the steps are strictly in order: decode needs the cache, and each token needs the one before it. Across many users, a server interleaves different requests' prefill and decode on the same chip ("continuous batching") to keep it busy. That raises the provider's total output but doesn't make your own answer arrive faster.</figcaption>
+  </figure><p>Decode is slow because on a GPU the model’s weights sit in high-bandwidth memory beside the processor, not inside it, so for every token the chip streams the whole model in. For Llama 3.1 8B (about 16 GB at 16 bits) on an H200 (4.8 TB/s), that caps one user at about <b>300 tokens a second</b>; Nvidia measures about <b>230</b>.</p><figure class="fig rv" id="memFig">
+    <div class="ft">The speed limit set by memory</div>
+    <div class="fs">Most tokens per second one user can get, if each token needs the whole model read once</div>
+    <div class="mw-ctl">
+      <label><span>Model size: <b id="mwP">8B</b> weights</span><input type="range" id="mwParams" min="0" max="5" step="1" value="1"></label>
+      <label><span>Precision</span><span class="seg" id="mwBits"><button type="button" data-v="16" aria-pressed="true">16-bit</button><button type="button" data-v="8" aria-pressed="false">8-bit</button><button type="button" data-v="4" aria-pressed="false">4-bit</button></span></label>
+      <label><span>Chip</span><span class="seg" id="mwChip"><button type="button" data-v="4.8" aria-pressed="true">Nvidia H200</button><button type="button" data-v="8" aria-pressed="false">AMD MI355X</button><button type="button" data-v="19.6" aria-pressed="false">AMD MI455X</button></span></label>
+    </div>
+    <div class="mw-out" id="mwOut"></div>
+    <figcaption>A simplified upper bound: real systems also read the KV cache, split very large models across several chips, and lose time to overheads, so real speeds are lower. Memory bandwidth: H200 4.8 TB/s, MI355X 8 TB/s (published specs); MI455X 19.6 TB/s (AMD's announced figure). Sources: Nvidia, AMD.</figcaption>
+  </figure>
+    </div></div>
+    <div class="tl-step" data-y="2026.6"><div class="card">
+      <div class="tl-yr">August 2026</div><h3>Buying Taalas</h3>
+      <p>Chipmakers have tried three ways around the memory wall. Toronto start-up <b>Taalas</b> took the most radical: build the model into the chip. Its HC1, announced in February 2026, holds all of Llama 3.1 8B on one TSMC 6nm die with 53 billion transistors, and runs at about <b>17,000 tokens a second</b> per user by Taalas’s count (independent testers measured 15,000–16,000), about 70 times the H200.</p>
+      <figure class="fig rv" id="wallFig">
+    <div class="ft">Three ways around the memory wall</div>
+    <div class="fs">Where the model's weights live, and what that costs</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Approach</th><th>Idea</th><th>Catch</th></tr></thead>
+        <tbody>
+          <tr><td>GPUs (Nvidia, AMD)</td><td>Weights in HBM next to the chip; batch many users to share each trip to memory</td><td>Every token still waits on memory: about 230 tokens a second per user on an H200 for an 8B model</td></tr>
+          <tr><td>Groq</td><td>Keep the weights in fast on-chip memory (SRAM)</td><td>About 230 MB of SRAM per chip, so a large model is spread over hundreds of chips working in lockstep; a 70B model needed 576 of them</td></tr>
+          <tr><td>Taalas</td><td>Build the weights into the chip itself as fixed circuitry next to the compute: "the model is the chip"</td><td>One model only, some quality loss from squeezing the weights, and a new model means a new chip</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>In December 2025 Nvidia struck a non-exclusive deal to license Groq's technology and hire its founder and senior staff, reported at about $20 billion (the companies did not confirm the price). Sources: TechCrunch, TechRepublic, Tom's Hardware; Groq chip figures from Groq.</figcaption>
+  </figure><figure class="fig rv" id="raceFig">
+    <div class="ft">The same answer, two chips</div>
+    <div class="fs">Both typed in slow motion, at the same slow-down, so you can see the gap</div>
+    <div class="race">
+      <div class="lane"><div class="lane-h"><b>Nvidia H200</b><span>~230 tokens/s</span></div><div class="lane-t" id="raceA"></div><div class="lane-bar"><i id="raceAb"></i></div></div>
+      <div class="lane hc"><div class="lane-h"><b>Taalas HC1</b><span>~17,000 tokens/s</span></div><div class="lane-t" id="raceB"></div><div class="lane-bar"><i id="raceBb"></i></div></div>
+    </div>
+    <button type="button" class="race-go" id="raceGo">Replay</button>
+    <figcaption>Llama 3.1 8B, one user. At real speed this 90-token answer takes about 0.4 seconds on the H200 and about 5 milliseconds on the HC1, too fast to see, so both are slowed 25 times. H200 figure: Nvidia's baseline as cited by Taalas; HC1: Taalas's claim, with independent tests at 15,000–16,000.</figcaption>
+  </figure><p>The catch: it runs one model only, with some quality loss from squeezing the weights, and a new model means a new chip, though Taalas says that takes about two months. The bet is an old one in chips: once a workload stops changing, specialised silicon eats it, as it did with Bitcoin mining and video decoding. Taalas built the HC1 with 24 people for about $30 million. In <b>August 2026</b> AMD agreed to buy it; AMD’s filing values the deal at about <b>$2.9 billion</b> in cash and stock, including up to about $1.4 billion that depends on conditions being met.</p>
+    </div></div>
+    <div class="tl-step" data-y="2026.72"><div class="card">
+      <div class="tl-yr">21 September 2026</div><h3>A trillion dollars</h3>
+      <p>In the third quarter AMD began shipping MI455X chips in volume inside full-rack “Helios” systems, naming Anthropic, Meta, Microsoft, OpenAI and Oracle as early customers. On <b>21 September</b> the shares closed at $615.52, lifting AMD’s value <a href="https://www.tweaktown.com/news/113684/amd-hits-dollars1-trillion-market-cap-for-the-first-time-on-ai-and-data-center-growth/index.html" target="_blank" rel="noopener">past $1 trillion</a>, the fourth US chip company to get there after Nvidia, Broadcom and Micron.</p>
+      <figure class="fig rv" id="dcFig">
     <div class="ft">AMD's data-centre sales, per quarter</div>
     <div class="fs">Server CPUs plus AI chips, US$ billions</div>
     <div class="lease">
@@ -164,29 +313,24 @@
     <div class="bigstat"><b>~64%</b><span>Data centre's share of AMD's $13.4 billion revenue in July–September 2026. AMD guided about $17 billion of total revenue for the final quarter of 2026, and said AI chip sales are now overtaking server CPU sales.</span></div>
     <figcaption>Sources: AMD Q3 2026 results (8-K filed with the SEC), ServeTheHome, Channel Insider. Bars to scale.</figcaption>
   </figure>
+    </div></div>
+    <div class="tl-step" data-y="2026.77"><div class="card">
+      <div class="tl-yr">October 2026</div><h3>The peak, and Intel’s fall</h3>
+      <p>AMD’s record close came on <b>6 October</b>, at <b>$649.42</b>. Intel went the other way: on <b>30 October</b> it fell 28.6% in a day after forecasting weaker fourth-quarter revenue, citing supply shortages and a prolonged PC slowdown.</p>
+      
+    </div></div>
+    <div class="tl-step" data-y="2026.89"><div class="card">
+      <div class="tl-yr">November 2026</div><h3>You are here</h3>
+      <p>AMD completed the Taalas deal on <b>17 November</b>, putting its technology into the Instinct roadmap alongside AMD’s GPUs, CPUs, ROCm software and Helios racks. Reported ideas around the deal, not AMD announcements, include GPUs handling prefill and Taalas chips decode, and a second-generation chip of around 20 billion weights.</p><p>Meanwhile chip stocks sold off on doubts about how long AI spending can last, regulation fears and stretched valuations. By <b>20 November</b> AMD had closed at <b>$424.39</b>, about 35% below its October peak, and Intel at <b>$51.28</b>, nearly two-thirds below its June record.</p>
+      
+    </div></div>
+    </div>
+  </div>
 
-  <p class="t">In the third quarter of 2026 AMD began shipping its MI455X chips in volume, inside full-rack "Helios" systems. It named Anthropic, Meta, Microsoft, OpenAI and Oracle as early customers. On <b>21 September 2026</b>, shares jumped about 10% to an intraday record of $615.52, briefly lifting AMD's value <a href="https://www.tweaktown.com/news/113684/amd-hits-dollars1-trillion-market-cap-for-the-first-time-on-ai-and-data-center-growth/index.html" target="_blank" rel="noopener">above $1 trillion</a>, the fourth US chip company to get there after Nvidia, Broadcom and Micron. It has since slipped back: the 18 November close of $530.14 puts it at roughly $860 billion.</p>
-  <p class="t">Nvidia is still far ahead, worth about <b>$5.4 trillion</b>, with CUDA, the software most AI developers build on, making it painful to switch. AMD is a strong, fast-growing number two, not yet a challenger for the top spot.</p>
-
-  <p class="t">The lesson runs through this whole series: in chips, leadership is rented, not owned. A new architecture or a manufacturing slip can topple the leader within a few years, so whoever is on top has to keep betting heavily on the next five. AMD kept betting when it was nearly broke. Intel slowed down when it was on top. That's why no one at the top can relax.</p>
-
-  <h2 id="s8"><span class="n">Part 8</span>How we got here</h2>
-  <ol class="tl rv">
-    <li><span class="yr">1969</span>Jerry Sanders and colleagues from Fairchild found AMD, a year after Intel.</li>
-    <li><span class="yr">1982</span>AMD becomes a licensed second source for Intel's x86 chips, for the IBM PC.</li>
-    <li><span class="yr">1999–2003</span>Athlon beats Intel on PCs; Opteron takes on Intel in servers.</li>
-    <li><span class="yr">2006</span>AMD buys ATI for $5.4 billion. Intel launches Core 2 the same week.<span class="big">$5.4B</span></li>
-    <li><span class="yr">2009</span>AMD spins off its factories as GlobalFoundries.</li>
-    <li><span class="yr">Oct 2014</span>Lisa Su becomes CEO.</li>
-    <li class="hi"><span class="yr">Jul 2015</span>The stock closes at its low.<span class="big">$1.62</span></li>
-    <li><span class="yr">2017</span>Zen ships in Ryzen and EPYC chips: 52% more work per clock.</li>
-    <li><span class="yr">2019</span>Zen 2 moves to TSMC's 7nm process; Intel apologises for chip shortages.</li>
-    <li><span class="yr">Feb 2022</span>The Xilinx deal closes at about $49 billion; AMD's value passes Intel's.<span class="big">$49B</span></li>
-    <li><span class="yr">2024</span>MI300 AI chips pass $5 billion in a year.</li>
-    <li><span class="yr">Oct 2025</span>OpenAI signs up for 6 gigawatts of AMD chips.<span class="big">6 GW</span></li>
-    <li class="hi"><span class="yr">21 Sep 2026</span>AMD's value briefly passes $1 trillion.<span class="big">$1T</span></li>
-    <li class="hi"><span class="yr">Nov 2026</span>You are here. Data-centre sales hit $8.5 billion a quarter.</li>
-  </ol>
+  <h2 id="s3"><span class="n">Part 3</span>What it adds up to</h2>
+  <p class="t">Nvidia is still far ahead, with CUDA, the software most AI developers build on, making it painful to switch. AMD is a strong, fast-growing number two, not yet a challenger for the top spot, and its November slide shows how much of its value now rides on AI spending.</p>
+  <p class="t">The lesson runs through this whole series: in chips, leadership is rented, not owned. A new architecture or a manufacturing slip can topple the leader within a few years, so whoever is on top has to keep betting heavily on the next five. AMD kept betting when it was nearly broke. Intel slowed down when it was on top. 2026 showed how fast it can swing both ways.</p>
+  <p class="pull">A GPU is fast at maths and slow at fetching. Taalas's answer is to stop fetching.</p>
 
   <p class="t">If you're trying to judge whether AMD's comeback lasts, ask two things.</p>
   <div class="qs" id="qs">
@@ -197,8 +341,10 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Each number and where it comes from.</p>
   <ul class="sources">
-    <li>Year-end closing prices 2014–2025 and the $1.62 low (July 2015): <a href="https://www.statmuse.com/money/ask/amd-price-chart-by-year" target="_blank" rel="noopener">StatMuse</a>; 18 November 2026 close of $530.14: <a href="https://stockanalysis.com/stocks/amd/history/" target="_blank" rel="noopener">StockAnalysis</a>. Lisa Su becoming CEO in October 2014 and her career: <a href="https://spectrum.ieee.org/amds-lisa-su-breaks-through-the-silicon-ceiling" target="_blank" rel="noopener">IEEE Spectrum</a>, <a href="https://www.cnbc.com/2025/03/20/amds-lisa-su-has-already-beaten-intel-now-comes-nvidia.html" target="_blank" rel="noopener">CNBC</a>.</li>
-    <li>$1 trillion on 21 September 2026, $615.52 intraday high, fourth US chipmaker, Nvidia about $5.4 trillion: <a href="https://www.tweaktown.com/news/113684/amd-hits-dollars1-trillion-market-cap-for-the-first-time-on-ai-and-data-center-growth/index.html" target="_blank" rel="noopener">TweakTown</a>, <a href="https://www.channelinsider.com/channel-business/news-amd-1-trillion-market-cap-ai-rally/" target="_blank" rel="noopener">Channel Insider</a>, <a href="https://www.fool.com/investing/2026/10/04/amd-reaches-a-1-trillion-market-cap-can-it-finally/" target="_blank" rel="noopener">Motley Fool</a>. The roughly $860 billion value at $530.14 is my estimate, scaling the $1 trillion at $615.52.</li>
+    <li>Timeline chart: year-end closing share prices 2002–2025 for AMD and Intel from StatMuse (<a href="https://www.statmuse.com/money/ask/amd-price-chart-by-year" target="_blank" rel="noopener">AMD</a>, <a href="https://www.statmuse.com/money/ask/intel-stock-price-by-year" target="_blank" rel="noopener">Intel</a>), plus AMD’s $1.62 low (27 July 2015); 2026 daily closes (AMD $615.52 on 21 Sep, $649.42 on 6 Oct, $424.39 on 20 Nov; Intel $127.39 on 24 Sep, $51.28 on 20 Nov) from StockAnalysis (<a href="https://stockanalysis.com/stocks/amd/history/" target="_blank" rel="noopener">AMD</a>, <a href="https://stockanalysis.com/stocks/intc/history/" target="_blank" rel="noopener">Intel</a>); Intel’s record close of $140.94 on 22 June 2026 from <a href="https://companiesmarketcap.com/intel/stock-price-history/" target="_blank" rel="noopener">CompaniesMarketCap</a>. Earlier prices are not shown because I couldn’t find year-end figures that reconcile across sources. Lisa Su becoming CEO in October 2014 and her career: <a href="https://spectrum.ieee.org/amds-lisa-su-breaks-through-the-silicon-ceiling" target="_blank" rel="noopener">IEEE Spectrum</a>, <a href="https://www.cnbc.com/2025/03/20/amds-lisa-su-has-already-beaten-intel-now-comes-nvidia.html" target="_blank" rel="noopener">CNBC</a>.</li>
+    <li>$1 trillion on 21 September 2026 at a $615.52 close, fourth US chipmaker: <a href="https://www.tweaktown.com/news/113684/amd-hits-dollars1-trillion-market-cap-for-the-first-time-on-ai-and-data-center-growth/index.html" target="_blank" rel="noopener">TweakTown</a>, <a href="https://www.channelinsider.com/channel-business/news-amd-1-trillion-market-cap-ai-rally/" target="_blank" rel="noopener">Channel Insider</a>, <a href="https://www.fool.com/investing/2026/10/04/amd-reaches-a-1-trillion-market-cap-can-it-finally/" target="_blank" rel="noopener">Motley Fool</a>.</li>
+    <li>Filling the timeline’s middle years. 1970s (IPO in 1972, the Am9080 in 1975, the 1976 cross-licence), Meyer’s exit and Read’s arrival (2011), Bulldozer and the APUs, SeaMicro (2012), the PS4 and Xbox One chips (2013), Zen 3 (2020), Frontier (2022) and MI300X (2023): <a href="https://en.wikipedia.org/wiki/Advanced_Micro_Devices" target="_blank" rel="noopener">Wikipedia, “Advanced Micro Devices”</a> and the sources it cites. The 1987–1995 licence arbitration and January 1995 settlement: <a href="https://cpushack.com/CIC/archive/intel_vs_amd" target="_blank" rel="noopener">CPU Shack</a>, <a href="https://www.electronicdesign.com/technologies/embedded/digital-ics/article/21777593/a-conversation-with-judge-j-barton-phelps-reliving-the-landmark-amd-v-intel-case" target="_blank" rel="noopener">Electronic Design</a>. The 2009 settlement ($1.25 billion and conduct rules to 2019): <a href="https://ir.amd.com/news-events/press-releases/detail/321/amd-and-intel-announce-settlement-of-all-antitrust-and-ip-disputes" target="_blank" rel="noopener">AMD</a>, <a href="https://spectrum.ieee.org/intel-pays-amd-125-billion" target="_blank" rel="noopener">IEEE Spectrum</a>. The 2016 plant sale (about $371 million) and THATIC licence (about $293 million): <a href="https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on" target="_blank" rel="noopener">AMD</a>, <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248817000043/amd-12312016x10k.htm" target="_blank" rel="noopener">AMD 10-K 2016</a>. ZT Systems completed 31 March 2025: <a href="https://ir.amd.com/news-events/press-releases/detail/1240/amd-completes-acquisition-of-zt-systems" target="_blank" rel="noopener">AMD</a>. Year-end share prices in these cards: StatMuse, as above.</li>
+    <li>Intel’s 2026: 18A in volume production, the April forecast and the reported Apple deal behind the June record: <a href="https://invezz.com/news/2026/06/22/intel-stock-hits-a-new-all-time-high-on-monday-heres-why/" target="_blank" rel="noopener">Invezz</a>, <a href="https://nasdaq.com/articles/why-intel-stock-soared-278-first-half-2026" target="_blank" rel="noopener">Nasdaq/Motley Fool</a>; the 28.6% fall on 30 October and the November selloff: <a href="https://www.ibtimes.com.au/intel-shares-plunge-weak-pc-outlook-1879169" target="_blank" rel="noopener">IBTimes</a>, <a href="https://247wallst.com/investing/2026/11/05/amd-tumbles-13-nvidia-slides-7-as-ai-regulation-fears-hit-chip-stocks-intel-sinks-8/" target="_blank" rel="noopener">24/7 Wall St.</a>, <a href="https://www.fool.com/coverage/better-buy/2026/11/20/amd-is-down-26-and-intel-is-down-42-which-ai-stock-is-worth-buying-on-the-dip/" target="_blank" rel="noopener">Motley Fool</a>.</li>
     <li>2006 market shares (Opteron 25.9% of x86 servers in Q2; AMD 25.5% of all x86 by Q4): <a href="https://www.eweek.com/networking/amd-gained-market-share-in-06-new-research-shows/" target="_blank" rel="noopener">eWeek</a>, <a href="https://www.eweek.com/pc-hardware/amd-announces-strong-fourth-quarter-results/" target="_blank" rel="noopener">eWeek</a>.</li>
     <li>ATI acquisition, about $5.4 billion, $2.5 billion term loan: <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312506217735/dex991.htm" target="_blank" rel="noopener">AMD 8-K press release (SEC)</a>, <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312507087794/dex992.htm" target="_blank" rel="noopener">AMD pro forma financials (SEC)</a>; write-downs: <a href="https://arstechnica.com/gadgets/2008/12/amd-writes-down-atis-value-again/" target="_blank" rel="noopener">Ars Technica</a>, <a href="https://www.latimes.com/archives/la-xpm-2007-dec-13-fi-amd13-story.html" target="_blank" rel="noopener">Los Angeles Times</a>.</li>
     <li>Austin campus sale and leaseback, about $164 million (2013): <a href="https://ir.amd.com/news-events/press-releases/detail/219/amd-closes-transaction-to-sell-and-lease-back-austin-campus-generating-approximately-164-million-in-cash" target="_blank" rel="noopener">AMD</a>.</li>
@@ -208,6 +354,10 @@
     <li>MI300 above $5 billion in 2024: <a href="https://www.crn.com/news/components-peripherals/2025/amd-fourth-quarter-2024-earnings" target="_blank" rel="noopener">CRN</a>, <a href="https://www.datacenterdynamics.com/en/news/amd-posts-record-data-center-revenue-in-q2-2024-thanks-to-1bn-in-mi300x-sales/" target="_blank" rel="noopener">DataCenterDynamics</a>.</li>
     <li>OpenAI deal, 6 gigawatts, 1 gigawatt of MI450 from the second half of 2026, warrant for up to 160 million shares: <a href="https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/" target="_blank" rel="noopener">AMD newsroom</a>; one-cent exercise price and share-price targets up to $600: <a href="https://www.tomshardware.com/pc-components/gpus/openai-signs-6gw-amd-gpu-deal" target="_blank" rel="noopener">Tom's Hardware</a>.</li>
     <li>Q2 2026 data-centre revenue $6.7 billion; Q3 2026 revenue $13.4 billion, data centre $8.5 billion (up 97%), MI455X and Helios customers, about $17 billion Q4 guidance: <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000188/q32026991.htm" target="_blank" rel="noopener">AMD Q3 2026 results (SEC)</a>, <a href="https://www.servethehome.com/amd-q3-2026-earnings-data-center-growth/" target="_blank" rel="noopener">ServeTheHome</a>, <a href="https://www.channelinsider.com/channel-business/news-amd-1-trillion-market-cap-ai-rally/" target="_blank" rel="noopener">Channel Insider</a>.</li>
+    <li>Inference phases (prefill, decode, KV cache, continuous batching) and memory bandwidth: H200 4.8 TB/s from <a href="https://www.nvidia.com/en-us/data-center/h200/" target="_blank" rel="noopener">Nvidia</a>; MI355X 8 TB/s and MI455X 19.6 TB/s from <a href="https://www.amd.com/en/products/accelerators/instinct.html" target="_blank" rel="noopener">AMD</a>. The memory-limit chart is my calculation: bandwidth divided by model size.</li>
+    <li>Groq: Nvidia's non-exclusive licence and hires in December 2025, reported at about $20 billion: <a href="https://techcrunch.com/2025/12/24/nvidia-acquires-ai-chip-challenger-groq-for-20b-report-says/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.techrepublic.com/article/news-nvidia-licenses-groq-ai-inference-technology-in-20b-deal/" target="_blank" rel="noopener">TechRepublic</a>, <a href="https://www.tomshardware.com/tech-industry/semiconductors/nvidia-confirms-20-billion-groq-deal-to-bolster-ai-inference-dominance" target="_blank" rel="noopener">Tom's Hardware</a>.</li>
+    <li>Taalas HC1 (Llama 3.1 8B, about 17,000 tokens/s claimed, 15,000–16,000 measured, 53 billion transistors, TSMC 6nm, 815 mm², about 200 W, LoRA, quality loss from quantisation, H200 baseline of about 230 tokens/s): <a href="https://www.cnx-software.com/2026/02/22/taalas-hc1-hardwired-llama-3-1-8b-ai-accelerator-delivers-up-to-17000-tokens-s/" target="_blank" rel="noopener">CNX Software</a>, <a href="https://heise.de/-11185112" target="_blank" rel="noopener">Heise</a>, <a href="https://simonwillison.net/2026/Feb/20/taalas/" target="_blank" rel="noopener">Simon Willison</a>, <a href="https://kaitchup.substack.com/p/taalas-hc1-absurdly-fast-per-user" target="_blank" rel="noopener">The Kaitchup</a>. Team of 24, about $30 million spent of more than $200 million raised, two-month turnaround: <a href="https://thelogic.co/briefing/torontos-taalas-raises-us169m-for-faster-ai-chips/" target="_blank" rel="noopener">The Logic</a>, <a href="https://www.siliconrepublic.com/start-ups/canadian-start-up-chipmaker-taalas-raises-169m" target="_blank" rel="noopener">Silicon Republic</a>.</li>
+    <li>AMD's acquisition of Taalas: agreed August 2026 at about $2.9 billion in cash and stock including up to about $1.4 billion of contingent consideration, per <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000191/amd-20260926.htm" target="_blank" rel="noopener">AMD's 10-Q (SEC)</a>; completed 17 November 2026, with the roadmap and Canada plans, per AMD's announcement as reported by <a href="https://www.techpowerup.com/354943/amd-completes-acquisition-of-taalas-to-advance-ai-inference-innovation" target="_blank" rel="noopener">TechPowerUp</a>, <a href="https://www.engineering.com/amd-completes-acquisition-of-ai-inference-chip-pioneer-taalas/" target="_blank" rel="noopener">Engineering.com</a> and <a href="https://www.datacenterdynamics.com/en/news/amd-acquires-ai-chip-startup-taalas-to-further-support-inference-workloads/" target="_blank" rel="noopener">DCD</a>; analysis: <a href="https://www.digitimes.com/news/a20261123PD218/amd-acquisition-ai-inference-asic-cuda-2026.html" target="_blank" rel="noopener">Digitimes</a>. The prefill-on-GPU, decode-on-Taalas split and the second-generation chip plans are reported ideas, not AMD announcements.</li>
     <li>Video profiles used for the history and anecdotes (Fairchild origins, Noyce as an early backer, the second-source story, the ATI decision, the cost-of-ownership pitch, and Lisa Su's remarks): <a href="https://youtu.be/cnTSFpSqYSM" target="_blank" rel="noopener">一口气了解AMD (小Lin说)</a>; <a href="https://youtu.be/SMN2v2HdeDo" target="_blank" rel="noopener">看蘇姿丰如何扭轉AMD (名人商業解密)</a>; <a href="https://youtu.be/8Ve5SAFPYZ8" target="_blank" rel="noopener">AMD's CEO Wants to Chip Away at Nvidia's Lead (Bloomberg Originals)</a>.</li>
   </ul>
   <p class="end">Educational only. Not investment advice. A living document; figures will be updated as AMD reports.</p>
@@ -217,7 +367,7 @@
   <div class="in">
     <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
     <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
-    <div><h5>Read</h5><p><a href="#s3">The dark decade</a><br><a href="#s4">Lisa Su's two bets</a><br><a href="#s7">The AI race</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">The timeline</a><br><a href="#s3">What it adds up to</a><br><a href="../all.html">All explainers</a></p></div>
   </div>
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised by the companies that report them.</div>
 </footer>

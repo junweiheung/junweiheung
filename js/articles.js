@@ -195,7 +195,7 @@ window.BOTTLENECK = {
       topic: "Semiconductors",
       category: "Chips & hardware",
       date: "2026-11-19",
-      readMins: 13,
+      readMins: 19,
       dek: "In July 2015 AMD closed at $1.62 and analysts wondered if it would survive. Under Lisa Su it passed Intel, won OpenAI as an AI-chip customer, and briefly topped $1 trillion in September 2026.",
       summary: "A $1.62 stock, the Zen bet, a $49B share swap, and the AI race",
       thumb: "../images/thumbs/amd.svg",
