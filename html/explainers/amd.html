@@ -238,53 +238,9 @@
     </div></div>
     <div class="tl-step" data-y="2026.55" id="memwall"><div class="card">
       <div class="tl-yr">The physics</div><h3>The memory wall</h3>
-      <p>Training a model happens once; <b>inference</b>, running it to answer a question, happens on every request, so over a model’s life it usually costs more. A single message takes this path:</p>
-      <figure class="fig rv" id="flowFig">
-    <div class="ft">The life of one request</div>
-    <div class="fs">From the send button to the words on your screen</div>
-    <div class="fl-key"><span><span class="fl-tag cpu">CPU</span> ordinary server processors, such as AMD’s EPYC</span><span><span class="fl-tag gpu">Accelerator</span> AI chips, such as AMD’s Instinct or Nvidia’s GPUs</span></div>
-    <ol class="fl">
-      <li><div class="fl-h">Message</div><div class="fl-x">You press send. The app packages the whole conversation so far, not just your last line.</div><span class="fl-tag dev">Your device</span></li>
-      <li><div class="fl-h">API</div><div class="fl-x">The provider’s front door checks your account and usage limits and accepts the request.</div><span class="fl-tag cpu">CPU</span></li>
-      <li><div class="fl-h">Tokenise</div><div class="fl-x">The text is cut into tokens, word pieces of a few letters each, and each token becomes a number.</div><span class="fl-tag cpu">CPU</span></li>
-      <li><div class="fl-h">Route</div><div class="fl-x">A load balancer sends the request to a server in a data centre that has the model loaded and room to spare.</div><span class="fl-tag cpu">CPU</span></li>
-      <li class="fl-grp"><div class="fl-brk">Inference</div><ol>
-        <li><div class="fl-h">Schedule</div><div class="fl-x">The server queues the request and batches it with other people’s, so the chips never sit idle.</div><span class="fl-tag cpu">CPU</span></li>
-        <li class="fl-pre"><div class="fl-h">Prefill</div><div class="fl-x">The whole prompt is processed at once, and what the model worked out is stored in the <b>KV cache</b>. Limited by <b>compute</b>.</div><span class="fl-tag gpu">Accelerator</span></li>
-        <li class="fl-dec"><div class="fl-h">Decode <span class="fl-loop" aria-hidden="true">↻</span></div><div class="fl-x">One token at a time: the chip rereads the model’s weights and the KV cache for every token, then repeats until the answer is done. Limited by <b>memory bandwidth</b>.</div><span class="fl-tag gpu">Accelerator</span></li>
-      </ol></li>
-      <li><div class="fl-h">Detokenise and stream</div><div class="fl-x">Each new token is turned back into text and sent the moment it is made, which is why answers appear word by word.</div><span class="fl-tag cpu">CPU</span></li>
-      <li><div class="fl-h">Response</div><div class="fl-x">The words appear on your screen while decode is still writing the rest.</div><span class="fl-tag dev">Your device</span></li>
-    </ol>
-    <figcaption>A simplified picture of how large providers typically serve a model; the details differ between companies, and the plumbing steps take milliseconds while prefill and decode take most of the time. The point for AMD: it sells the chips for both halves, the CPUs that handle the plumbing and the accelerators that do the maths.</figcaption>
-  </figure>
-      <p>The two phases at the heart of it work very differently:</p>
-      <figure class="fig rv" id="phaseFig">
-    <div class="ft">Two phases of every answer</div>
-    <div class="fs">A short burst, then a long relay</div>
-    <div class="tbl-wrap">
-      <table class="cmp">
-        <thead><tr><th></th><th>Prefill</th><th>Decode</th></tr></thead>
-        <tbody>
-          <tr><td>What it does</td><td>Reads your whole prompt at once and stores what it worked out in a <b>KV cache</b></td><td>Writes the answer one token at a time, looking back at the KV cache on every step</td></tr>
-          <tr><td>What limits it</td><td><b>Compute</b>: raw arithmetic</td><td><b>Memory bandwidth</b>: moving data</td></tr>
-          <tr><td>What you notice</td><td>The wait before the first word (time to first token)</td><td>How fast the words stream (time between tokens)</td></tr>
-          <tr><td>When it dominates</td><td>Long prompt, short answer</td><td>Short prompt, long answer: chat, code, agents</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <figcaption>Within one request the steps are strictly in order: decode needs the cache, and each token needs the one before it. Across many users, a server interleaves different requests' prefill and decode on the same chip ("continuous batching") to keep it busy. That raises the provider's total output but doesn't make your own answer arrive faster.</figcaption>
-  </figure><p>Decode is slow because on a GPU the model’s weights sit in high-bandwidth memory beside the processor, not inside it, so for every token the chip streams the whole model in. For Llama 3.1 8B (about 16 GB at 16 bits) on an H200 (4.8 TB/s), that caps one user at about <b>300 tokens a second</b>; Nvidia measures about <b>230</b>.</p><figure class="fig rv" id="memFig">
-    <div class="ft">The speed limit set by memory</div>
-    <div class="fs">Most tokens per second one user can get, if each token needs the whole model read once</div>
-    <div class="mw-ctl">
-      <label><span>Model size: <b id="mwP">8B</b> weights</span><input type="range" id="mwParams" min="0" max="5" step="1" value="1"></label>
-      <label><span>Precision</span><span class="seg" id="mwBits"><button type="button" data-v="16" aria-pressed="true">16-bit</button><button type="button" data-v="8" aria-pressed="false">8-bit</button><button type="button" data-v="4" aria-pressed="false">4-bit</button></span></label>
-      <label><span>Chip</span><span class="seg" id="mwChip"><button type="button" data-v="4.8" aria-pressed="true">Nvidia H200</button><button type="button" data-v="8" aria-pressed="false">AMD MI355X</button><button type="button" data-v="19.6" aria-pressed="false">AMD MI455X</button></span></label>
-    </div>
-    <div class="mw-out" id="mwOut"></div>
-    <figcaption>A simplified upper bound: real systems also read the KV cache, split very large models across several chips, and lose time to overheads, so real speeds are lower. Memory bandwidth: H200 4.8 TB/s, MI355X 8 TB/s (published specs); MI455X 19.6 TB/s (AMD's announced figure). Sources: Nvidia, AMD.</figcaption>
-  </figure>
+      <p>Training a model happens once; <b>inference</b>, running it to answer a question, happens on every request, so over a model’s life it usually costs more. Every answer comes in two phases. <b>Prefill</b> reads your whole prompt at once and stores what it worked out in a <b>KV cache</b>; it is limited by <b>compute</b>, and it is the pause before the first word. <b>Decode</b> then writes the answer one token at a time, and it is limited by <b>memory bandwidth</b>, how fast the chip can read data. Chat, code and agents spend most of their time in decode. (The whole path of a request, step by step, with mixture-of-experts models and Groq’s chips, is in <a href="inference.html">What Happens When You Press Send</a>.)</p>
+      <p>Decode is slow because on a GPU the model’s weights sit in high-bandwidth memory beside the processor, not inside it, so for every token the chip streams the whole model in. For Llama 3.1 8B (about 16 GB at 16 bits) on an H200 (4.8 TB/s), that caps one user at about <b>300 tokens a second</b>; Nvidia measures about <b>230</b>. AMD’s pitch is more memory bandwidth: 8 TB/s on the MI355X and 19.6 TB/s announced for the MI455X, which raises the same ceiling. (Try the numbers in <a href="inference.html#memFig">the memory-limit calculator</a>.)</p>
+
     </div></div>
     <div class="tl-step" data-y="2026.6"><div class="card">
       <div class="tl-yr">August 2026</div><h3>Buying Taalas</h3>
@@ -347,11 +303,6 @@
   <p class="t">The lesson runs through this whole series: in chips, leadership is rented, not owned. A new architecture or a manufacturing slip can topple the leader within a few years, so whoever is on top has to keep betting heavily on the next five. AMD kept betting when it was nearly broke. Intel slowed down when it was on top. 2026 showed how fast it can swing both ways.</p>
   <p class="pull">A GPU is fast at maths and slow at fetching. Taalas's answer is to stop fetching.</p>
 
-  <p class="t">If you're trying to judge whether AMD's comeback lasts, ask two things.</p>
-  <div class="qs" id="qs">
-    <div class="q" data-answer="The article leaves this open. Nvidia stays far ahead partly because CUDA, the software most AI developers build on, makes switching painful. It rates AMD a strong number two on chips rather than a challenger for the top spot, and claims no software parity."><div class="qn">QUESTION 1</div><p>Can AMD's software catch up with Nvidia's CUDA, or only its chips?</p></div>
-    <div class="q" data-answer="Posed as a risk, not a resolved question. The article shows how concentrated AMD now is: data centre was about 64% of its $13.4 billion revenue in July to September 2026, with customers like OpenAI, Meta and Microsoft, and the OpenAI deal tied to share-price targets."><div class="qn">QUESTION 2</div><p>What happens to AMD if its AI customers run short of money, or of power for their data centres?</p></div>
-  </div>
 
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Each number and where it comes from.</p>

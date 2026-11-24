@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Happens When You Press Send: Inside an AI Answer — Bottleneck by Jun Wei</title>
+<meta name="description" content="An explainer on AI inference: the path one message takes from your screen through tokenising, routing, batching, prefill and decode, why mixture-of-experts models change the maths, and why Groq and Taalas built such different chips.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/inference.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· AI infrastructure · Semiconductors</span></div>
+  <h1>What Happens When You Press Send: Inside an AI Answer</h1>
+  <p class="dek">Every reply from a chatbot is a short trip through a data centre: your words are cut into tokens, queued with thousands of other people’s, read in one burst and then answered one token at a time. Follow a single message along that path, see why “mixture-of-experts” models change the arithmetic, and why two chip start-ups, Groq and Taalas, bet on opposite ways to make it faster.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 24, 2026 · 18 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. One request, step by step</a>
+    <a href="#s2">2. Dense and mixture-of-experts</a>
+    <a href="#s3">3. Three ways to build the chip</a>
+    <a href="#s4">4. Where it all meets</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This is a simplified picture of how large providers typically serve a language model; each company does it differently and few publish the details. The worked numbers are my own arithmetic from published specifications and model cards, and they are upper bounds at perfect efficiency: real systems are slower. Company claims are labelled as claims.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>An answer comes in two phases. <b>Prefill</b> reads your whole prompt at once and is limited by <b>arithmetic</b>; <b>decode</b> writes the answer one token at a time and is limited by how fast the chip can <b>read memory</b>.</li>
+      <li>For every token it writes, a chip must read essentially the whole model again. For a 70-billion-weight model stored at one byte per weight, that is <b>70 GB per token</b>.</li>
+      <li><b>Mixture-of-experts</b> models only use a slice of themselves per token. DeepSeek-V3 holds <b>671 billion</b> weights but uses <b>37 billion</b> per token, so it needs the memory of a giant and the arithmetic of a mid-sized model.</li>
+      <li>That saving shrinks when many users share a chip: their tokens call on different experts, and with 64 users in a batch, if tokens chose experts at random, about <b>87%</b> of DeepSeek-V3’s experts would be read on every step.</li>
+      <li><b>Groq</b> keeps models in fast on-chip memory spread over hundreds of chips; Nvidia licensed its technology in a deal reported at about <b>$20 billion</b> and now pairs Groq-designed chips with its GPUs. <b>Taalas</b> builds one model directly into the silicon; AMD bought it in November 2026.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>One request, step by step</h2>
+  <p class="t dropcap">Training a model is a one-off project. Running it, which the industry calls <b>inference</b>, happens every time anyone asks anything, and over a popular model’s life it is usually the bigger bill. It is also where most of the engineering effort now goes, because the speed of every answer and the cost of every token is decided here.</p>
+  <p class="t">Follow one question, “Why is the sky blue?”, from the send button to the screen. On the left, what the request looks like at each stage; on the right, what is happening and why.</p>
+
+  <div class="if-scrolly" id="ifScrolly">
+    <div class="if-sticky">
+      <div class="if-box">
+        <ol class="if-rail" id="ifRail" aria-hidden="true">
+          <li>Message</li><li>API</li><li>Tokenise</li><li>Route</li><li class="gx">Schedule</li><li class="gx">Prefill</li><li class="gx">Decode</li><li class="gx">Sample</li><li>Stream</li><li>Response</li>
+        </ol>
+        <div class="if-where" id="ifWhere"></div>
+        <div class="if-view" id="ifView" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="if-steps" id="ifSteps">
+
+      <div class="if-step" data-k="0"><div class="card">
+        <div class="if-n">Step 1 · Your device</div><h3>The message</h3>
+        <p>You type a question and press send. What leaves your phone is not just that line: the app packages the <b>whole conversation so far</b>, every earlier question and answer, because the model itself remembers nothing between requests. Each new message is, to the model, a brand-new document that happens to contain the history.</p>
+        <p>That is why long chats get slower and more expensive: every turn re-sends everything before it.</p>
+      </div></div>
+
+      <div class="if-step" data-k="1"><div class="card">
+        <div class="if-n">Step 2 · CPU servers</div><h3>The front door: the API</h3>
+        <p>The request arrives at the provider’s API, a set of ordinary servers. They check who you are and whether you have hit a usage limit, run safety filters, and add things you never see: a <b>system prompt</b>, the provider’s standing instructions to the model, and descriptions of any tools it may use.</p>
+        <p>None of this needs an AI chip. It is web-server work, done by the kind of processors AMD sells as EPYC and Intel as Xeon.</p>
+      </div></div>
+
+      <div class="if-step" data-k="2"><div class="card">
+        <div class="if-n">Step 3 · CPU servers</div><h3>Tokenise: words become numbers</h3>
+        <p>Models do not read letters or words. They read <b>tokens</b>: chunks of text from a fixed vocabulary, learned so that common words are one token and rare words are a few. Llama 3’s vocabulary has <b>128,256</b> of them. Each token is swapped for its number in that list.</p>
+        <p>As a rule of thumb from OpenAI, a token is about <b>four characters</b>, or three-quarters of an English word. Other languages and code split differently. Tokens are also the unit everything is priced and measured in.</p>
+        <figure class="fig" id="tokFig">
+          <div class="ft">Try it: cut a sentence into tokens</div>
+          <div class="fs">A rough imitation of a tokeniser, not a real one</div>
+          <textarea id="tokIn" rows="2" aria-label="Text to split into tokens">Why is the sky blue? Rayleigh scattering, explained simply.</textarea>
+          <div class="tok-out" id="tokOut"></div>
+          <div class="tok-stat" id="tokStat"></div>
+          <figcaption>Real tokenisers (byte-pair encoding) learn their pieces from data, and every model family has its own. This toy keeps short common words whole and splits longer ones into chunks, which gets the counts roughly right for English. For exact counts, use a model’s own tokeniser.</figcaption>
+        </figure>
+      </div></div>
+
+      <div class="if-step" data-k="3"><div class="card">
+        <div class="if-n">Step 4 · CPU servers</div><h3>Route: pick a server</h3>
+        <p>A load balancer sends the request to a data centre, and then to one group of servers that has the right model loaded and room to spare. Big models do not fit on one chip, so a “server” here is usually a box of eight accelerators working as one, or several such boxes.</p>
+        <p>Routing is smarter than it sounds. If you are continuing a conversation, sending you back to a server that has <b>already processed</b> the earlier part saves redoing that work. Providers pass the saving on: Anthropic, for example, charges about a tenth of the normal input price for text read from this <b>prompt cache</b>.</p>
+      </div></div>
+
+      <div class="if-step" data-k="4"><div class="card">
+        <div class="if-n">Step 5 · Host CPU</div><h3>Schedule: join the batch</h3>
+        <p>An accelerator is fastest when it serves many people at once, because reading the model from memory is the slow part and one read can serve a whole <b>batch</b> of users. So the server queues your request and slots it in with others.</p>
+        <p>Modern servers use <b>continuous batching</b>: instead of waiting for a whole batch to finish, they add new requests and remove finished ones on every step. The technique comes from research systems such as Orca (2022) and vLLM (2023), and it is now standard.</p>
+        <p>The trade-off: a bigger batch means more answers per second for the provider, but each user’s words arrive a little slower.</p>
+      </div></div>
+
+      <div class="if-step" data-k="5"><div class="card">
+        <div class="if-n">Step 6 · Accelerator</div><h3>Prefill: read the whole prompt at once</h3>
+        <p>Now the AI chip starts. In <b>prefill</b> it pushes every token of your prompt through the model in one go. Each layer works out, for every token, a pair of summaries called keys and values, and stores them in the <b>KV cache</b> so they never have to be worked out again.</p>
+        <p>Because all the tokens go through together, the chip reads its weights once and does a great deal of arithmetic with them. Prefill is limited by <b>compute</b>. A rule of thumb is about two operations per weight per token, so a 2,000-token prompt through a 70-billion-weight model is roughly <b>280 trillion</b> operations: about 0.02 seconds on an eight-GPU Nvidia H200 server at perfect efficiency, longer in practice.</p>
+        <p>This is the pause before the first word appears, which engineers call <b>time to first token</b>.</p>
+      </div></div>
+
+      <div class="if-step" data-k="6"><div class="card">
+        <div class="if-n">Step 7 · Accelerator</div><h3>Decode: one token at a time</h3>
+        <p>Then the answer is written, and it can only be written one token at a time, because each token depends on the one before. For every single token the chip must read <b>all of the model’s weights</b> again, plus the KV cache of everything said so far, to do comparatively little arithmetic.</p>
+        <p>So decode is limited by <b>memory bandwidth</b>, how fast data comes out of memory, not by arithmetic. A 70-billion-weight model at one byte per weight means about 70 GB read per token; an eight-GPU H200 server reads 38.4 TB a second, which caps one user at roughly <b>550 tokens a second</b> before any real-world losses.</p>
+        <p>The KV cache grows as the conversation does. For Llama 3.1 70B it is about <b>0.33 MB per token</b>, so a 100,000-token conversation carries around 33 GB of it, which must be read on every step too.</p>
+      </div></div>
+
+      <div class="if-step" data-k="7"><div class="card">
+        <div class="if-n">Step 8 · Accelerator</div><h3>Sample: choose the next word</h3>
+        <p>Each pass through the model does not produce a word. It produces a score for <b>every token in the vocabulary</b>, all 128,256 of them for Llama 3, which become probabilities. The server then picks one.</p>
+        <p>A setting called <b>temperature</b> controls how adventurous the pick is: low temperature almost always takes the top choice, high temperature gives less likely tokens a real chance. That is why the same question can get different answers.</p>
+      </div></div>
+
+      <div class="if-step" data-k="8"><div class="card">
+        <div class="if-n">Step 9 · CPU servers</div><h3>Detokenise and stream</h3>
+        <p>The chosen token’s number is turned back into text and sent to you <b>immediately</b>, while decode carries on with the next one. That is why answers appear word by word: you are watching the decode loop in real time.</p>
+        <p>The loop stops when the model picks a special end-of-answer token, or hits a length limit.</p>
+      </div></div>
+
+      <div class="if-step" data-k="9"><div class="card">
+        <div class="if-n">Step 10 · Your device</div><h3>The response</h3>
+        <p>The plumbing (API, tokenising, routing, streaming) takes milliseconds. Almost all of the time, and almost all of the cost, sits in the two phases on the accelerator: a short burst of arithmetic, then a long relay of memory reads.</p>
+        <p>Which raises the question the rest of this page is about: if decode spends most of its time <b>reading the model</b>, what happens when you change the model, or change where it is stored?</p>
+      </div></div>
+
+    </div>
+  </div>
+
+  <p class="pull">Prefill is a sprint of arithmetic. Decode is a relay of memory reads, one lap per word.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>Dense and mixture-of-experts</h2>
+  <p class="t">A <b>dense</b> model uses every one of its weights for every token. Llama 3.1 70B is dense: 70 billion weights, all 70 billion used each time.</p>
+  <p class="t">A <b>mixture-of-experts</b> (MoE) model splits most of its layers into many smaller blocks, the “experts”, and adds a small <b>router</b> that sends each token to only a few of them. Mixtral 8x7B has eight experts per layer and uses two; DeepSeek-V3 has 256 and uses eight, plus one shared expert every token visits. Most of the model sits idle for any given token.</p>
+
+  <figure class="fig rv" id="moeFig">
+    <div class="ft">One token through one layer</div>
+    <div class="fs">A dense layer uses everything; an MoE layer lights up a few experts</div>
+    <div class="moe-pair">
+      <div class="moe-side">
+        <div class="moe-h">Dense</div>
+        <div class="moe-grid dense" id="moeDense" aria-hidden="true"></div>
+        <div class="moe-cap">Every weight, every token</div>
+      </div>
+      <div class="moe-side">
+        <div class="moe-h">Mixture-of-experts <span class="moe-tok" id="moeTok">token: “sky”</span></div>
+        <div class="moe-router" aria-hidden="true">router</div>
+        <div class="moe-grid moe" id="moeGrid" aria-hidden="true"></div>
+        <div class="moe-cap">Here 2 of 16 experts per token; the router picks different ones for each token</div>
+      </div>
+    </div>
+    <figcaption>An illustration, not a real routing pattern. Which experts a token visits is learned during training; experts do not map neatly onto topics like “grammar” or “science”.</figcaption>
+  </figure>
+
+  <p class="t">The point is that two numbers now describe a model instead of one. <b>Total</b> weights decide how much <b>memory</b> you need to hold it. <b>Active</b> weights decide how much <b>arithmetic</b> each token costs, and, for a single user, how much must be read per token. DeepSeek-V3 has to be stored like a 671-billion-weight model but computes like a 37-billion one.</p>
+  <p class="t">There is a catch, and it is about batching. One user’s token reads only its few experts. But a server batching 64 users is handling 64 tokens per step, each choosing its own experts, so between them they touch most of the model anyway. The memory-read saving that makes MoE fast for one person largely disappears when the chip is busy, which is exactly when providers make their money.</p>
+
+  <figure class="fig rv" id="calcFig">
+    <div class="ft">Dense vs MoE on one server</div>
+    <div class="fs">One eight-GPU Nvidia H200 server: 1,128 GB of memory, 38.4 TB/s, about 15.8 petaFLOPS at 8-bit</div>
+    <div class="cx-ctl">
+      <div class="cx-row"><span class="cx-l">Model</span><span class="seg" id="cxModel" role="group" aria-label="Model"></span></div>
+      <div class="cx-row"><span class="cx-l">Precision</span><span class="seg" id="cxPrec" role="group" aria-label="Precision"><button type="button" data-p="1" aria-pressed="true">8-bit</button><button type="button" data-p="2" aria-pressed="false">16-bit</button></span></div>
+      <label class="cx-row cx-slide"><span class="cx-l">Users in the batch: <b id="cxBv">1</b></span><input type="range" id="cxB" min="0" max="8" step="1" value="0" aria-label="Users in the batch"></label>
+    </div>
+    <div class="cx-out" id="cxOut"></div>
+    <figcaption>My calculation, as an upper bound. Time per decode step is the larger of (weights read ÷ memory bandwidth) and (arithmetic ÷ compute), ignoring the KV cache, communication between GPUs and software overheads, all of which make real speeds lower. For MoE, the share of experts read assumes each token picks its experts at random; the split of each model into shared and expert weights is derived from its published total and active counts, so it is approximate. Real large MoE deployments spread experts over many more GPUs: DeepSeek describes decoding on units of 320 GPUs. Sources: model cards and papers from Meta, Mistral and DeepSeek; Nvidia H200 specifications.</figcaption>
+  </figure>
+
+  <p class="t">So MoE is not a free lunch. It cuts arithmetic per token sharply, which is why frontier labs have embraced it, but it makes memory capacity matter even more: you must hold every expert somewhere, and with many users you end up reading most of them. That is the problem the chip designers in Part 3 are attacking from opposite directions.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Three ways to build the chip</h2>
+  <p class="t">If decode is a memory problem, there are three places to put the model’s weights, and each has become a business.</p>
+  <p class="t">Start with the usual one, a GPU. Its weights sit in high-bandwidth memory beside the processor, so the fastest one user can ever be served is simply the chip’s memory speed divided by the size of the model. For Llama 3.1 8B at 16 bits (about 16 GB) on an Nvidia H200 (4.8 TB/s), that is about 300 tokens a second; Nvidia measures about 230. AMD’s answer has been to sell more bandwidth.</p>
+  <figure class="fig rv" id="memFig">
+    <div class="ft">The speed limit set by memory</div>
+    <div class="fs">Most tokens per second one user can get, if each token needs the whole model read once</div>
+    <div class="mw-ctl">
+      <label><span>Model size: <b id="mwP">8B</b> weights</span><input type="range" id="mwParams" min="0" max="5" step="1" value="1"></label>
+      <label><span>Precision</span><span class="seg" id="mwBits"><button type="button" data-v="16" aria-pressed="true">16-bit</button><button type="button" data-v="8" aria-pressed="false">8-bit</button><button type="button" data-v="4" aria-pressed="false">4-bit</button></span></label>
+      <label><span>Chip</span><span class="seg" id="mwChip"><button type="button" data-v="4.8" aria-pressed="true">Nvidia H200</button><button type="button" data-v="8" aria-pressed="false">AMD MI355X</button><button type="button" data-v="19.6" aria-pressed="false">AMD MI455X</button></span></label>
+    </div>
+    <div class="mw-out" id="mwOut"></div>
+    <figcaption>A simplified upper bound: real systems also read the KV cache, split very large models across several chips, and lose time to overheads, so real speeds are lower. Memory bandwidth: H200 4.8 TB/s, MI355X 8 TB/s (published specs); MI455X 19.6 TB/s (AMD's announced figure). Sources: Nvidia, AMD.</figcaption>
+  </figure>
+  <p class="t">More bandwidth raises the ceiling, but only so far: every token still means reading the whole model. The other two designs try to stop reading it from far away.</p>
+
+  <figure class="fig rv" id="hwFig">
+    <div class="ft">Where the weights live</div>
+    <div class="fs">Three designs, three trade-offs</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>GPU with HBM</th><th>Groq LPU</th><th>Taalas HC1</th></tr></thead>
+        <tbody>
+          <tr><td>Who</td><td>Nvidia, AMD</td><td>Groq; licensed by Nvidia (Dec 2025)</td><td>Taalas; bought by AMD (Nov 2026)</td></tr>
+          <tr><td>Where the weights sit</td><td>Stacked high-bandwidth memory beside the chip</td><td>SRAM, fast memory on the chip itself</td><td>Built into the chip’s circuitry</td></tr>
+          <tr><td>Memory per chip</td><td>141 GB (H200)</td><td>230 MB (first gen); 500 MB (Groq 3 LP30)</td><td>One 8-billion-weight model</td></tr>
+          <tr><td>Memory speed</td><td>4.8 TB/s (H200)</td><td>80 TB/s (first gen); 150 TB/s (LP30)</td><td>Weights sit next to the maths: no fetching</td></tr>
+          <tr><td>Strength</td><td>Runs any model; huge capacity; serves big batches cheaply</td><td>Very fast per user</td><td>Fastest and cheapest per token</td></tr>
+          <tr><td>Catch</td><td>Each user waits on memory</td><td>Tiny capacity per chip: big models need hundreds or thousands of chips</td><td>One model only; a new model means a new chip</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Sources: Nvidia (H200, LPX); Groq (first-generation LPU); The Register (LP30); Taalas’s HC1 as reported by CNX Software, Heise and others.</figcaption>
+  </figure>
+
+  <h3 class="if-h3">Groq: keep the model on the chip</h3>
+  <p class="t">Groq’s chip, the LPU, has no external high-bandwidth memory at all. It keeps the model in SRAM on the chip, the same kind of memory a processor uses for its fastest caches, which Groq says runs at more than <b>80 TB/s</b>, many times what HBM delivers. The first-generation chip, made on a 14-nanometre process, holds just <b>230 MB</b>. So a model is spread across a great many chips that pass data along in a carefully timed pipeline: in 2023, Groq’s fast Llama 2 70B demonstration reportedly used <b>576 chips</b> in nine racks.</p>
+  <p class="t">It worked. Groq became known for answers that seemed to appear all at once, and in December 2025 Nvidia struck a non-exclusive deal to license its technology and hire its founder, reported at about <b>$20 billion</b>. By March 2026 Nvidia had turned it into a product: the <b>Groq 3 LPX</b> rack, 256 LP30 chips with 500 MB of SRAM each, 128 GB in all. In Nvidia’s reference design, GPUs do the prefill and the attention part of decode, while the LPUs handle the memory-hungry feed-forward layers, the very layers that MoE splits into experts.</p>
+  <p class="t">The catch is capacity. 128 GB is a whole rack. The Register worked out that a trillion-weight model needs four to eight LPX racks, 1,024 to 2,048 chips, depending on whether weights are stored at 4 or 8 bits.</p>
+
+  <h3 class="if-h3">Taalas: make the model the chip</h3>
+  <p class="t">Taalas went further: why store the weights at all? Its HC1 chip, announced in February 2026, builds all of Llama 3.1 8B into the circuitry of one TSMC 6nm chip with 53 billion transistors, so the weights sit right where the arithmetic happens. Taalas claims about <b>17,000 tokens a second</b> for a single user; independent testers measured 15,000 to 16,000, about 70 times an H200.</p>
+  <p class="t">The cost is flexibility. The chip runs one model, some quality is lost squeezing its weights small, and a new model needs a new chip, which Taalas says takes about two months. AMD agreed to buy the company in August 2026 and completed the deal in November. <a href="amd.html#memwall">That story is told in the AMD explainer</a>.</p>
+
+  <figure class="fig rv" id="chipsFig">
+    <div class="ft">How many chips just to hold the model?</div>
+    <div class="fs">Weights only, at 8-bit, before any room for the KV cache or other working memory</div>
+    <div class="cx-row"><span class="cx-l">Model</span><span class="seg" id="chModel" role="group" aria-label="Model"></span></div>
+    <div class="ch-bars" id="chBars"></div>
+    <figcaption>My calculation: model size at one byte per weight, divided by each chip’s memory, rounded up, on a logarithmic scale. Real deployments need more: Groq’s 70B demo used 576 first-generation chips. The Taalas line is hypothetical, counting “chips the size of one HC1” for models Taalas has not built; it shows the scale, not a product.</figcaption>
+  </figure>
+
+  <h2 id="s4"><span class="n">Part 4</span>Where it all meets</h2>
+  <p class="t">Put Parts 2 and 3 together and the industry’s direction makes sense. Mixture-of-experts suits <b>GPUs</b> well: they have room for every expert and only need to do the arithmetic for the active few. It is awkward for <b>Groq-style</b> chips, because every expert still needs scarce SRAM, so the chip count grows with the total model, not the active slice. And it is hardest for <b>Taalas-style</b> chips, which would have to etch every expert into silicon.</p>
+  <p class="t">So nobody is betting on one design. The trend is to <b>split the work</b>: give prefill, which wants arithmetic, to GPUs, and give decode, which wants memory speed, to something built for it. Nvidia’s GPU-plus-LPX racks do exactly that. Reported ideas around AMD’s Taalas purchase, not AMD announcements, include GPUs doing prefill and Taalas chips doing decode.</p>
+  <p class="t">For a reader, the useful habit is to ask two questions of any claim about a faster AI chip. Fast for <b>one user</b>, or for many at once? And fast on <b>which model</b>, at what size, and could it run a different one tomorrow?</p>
+
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Each number and where it comes from.</p>
+  <ul class="sources">
+    <li>Tokens as about four characters or three-quarters of an English word: <a href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them" target="_blank" rel="noopener">OpenAI Help Center</a>. Llama 3 vocabulary of 128,256 tokens, and Llama 3.1 70B’s 80 layers and 8 key-value heads (from which the 0.33 MB-per-token KV cache is my calculation at 16-bit): Meta’s Llama 3.1 model card and configuration on Hugging Face.</li>
+    <li>Prompt-cache reads at 0.1 times the base input price for most models: <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" rel="noopener">Anthropic prompt caching documentation</a>.</li>
+    <li>Continuous batching: Yu et al., “Orca” (OSDI 2022); Kwon et al., “Efficient Memory Management for Large Language Model Serving with PagedAttention” (vLLM, SOSP 2023).</li>
+    <li>About two operations per weight per token: Kaplan et al., “Scaling Laws for Neural Language Models” (2020). Prefill and decode timings are my calculations, as upper bounds.</li>
+    <li>Nvidia H200: 141 GB HBM3e, 4.8 TB/s, about 1,979 dense FP8 teraFLOPS (3,958 with sparsity): <a href="https://www.nvidia.com/en-us/data-center/h200/" target="_blank" rel="noopener">Nvidia</a>.</li>
+    <li>AMD Instinct memory bandwidth for the memory-limit calculator: MI355X 8 TB/s (published specification) and MI455X 19.6 TB/s (AMD’s announced figure): AMD. The calculator is my arithmetic: bandwidth divided by the bytes of weights read per token.</li>
+    <li>Mixtral 8x7B, 46.7 billion total and 12.9 billion active weights, two of eight experts: <a href="https://mistral.ai/news/mixtral-of-experts/" target="_blank" rel="noopener">Mistral</a> and <a href="https://arxiv.org/abs/2401.04088" target="_blank" rel="noopener">Jiang et al. (2024)</a>. DeepSeek-V3, 671 billion total and 37 billion active, 256 routed experts with eight active plus one shared, decoding deployed on units of 320 GPUs: <a href="https://arxiv.org/abs/2412.19437" target="_blank" rel="noopener">DeepSeek-V3 technical report</a>. Llama 4 Maverick, 400 billion total and 17 billion active, 128 routed experts plus one shared: <a href="https://build.nvidia.com/meta/llama-4-maverick-17b-128e-instruct" target="_blank" rel="noopener">model card via Nvidia</a>. The shared/expert splits in the calculator are my derivation from these totals.</li>
+    <li>Groq first-generation LPU: 230 MB SRAM per chip (<a href="https://groq.com/wp-content/uploads/2024/08/GroqChip%E2%84%A2-Processor-Product-Brief-v1.7.pdf" target="_blank" rel="noopener">GroqChip product brief</a>), more than 80 TB/s on-chip bandwidth and a 14 nm process (<a href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener">Groq, “What is a Language Processing Unit?”</a>). The 576-chip, nine-rack Llama 2 70B system: <a href="https://www.nextplatform.com/2023/11/27/groq-says-it-can-deploy-1-million-ai-inference-chips-in-two-years/" target="_blank" rel="noopener">The Next Platform</a>.</li>
+    <li>Nvidia’s non-exclusive Groq licence and hires (December 2025), reported at about $20 billion: <a href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener">Groq</a>, TechCrunch. Groq 3 LPX (256 LPUs per rack, 500 MB SRAM and 150 TB/s per LPU, 128 GB per rack): <a href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener">Nvidia</a>; the GPU/LPU division of work and the 1,024–2,048 chips for a trillion-weight model: <a href="https://www.theregister.com/2026/03/19/nvidia_lpx_deep_dive/" target="_blank" rel="noopener">The Register</a>.</li>
+    <li>Taalas HC1 (Llama 3.1 8B, about 17,000 tokens/s claimed, 15,000–16,000 measured, 53 billion transistors, TSMC 6nm, quality loss from quantisation, two-month turnaround) and AMD’s purchase: as cited in detail in the <a href="amd.html#sources">AMD explainer’s sources</a>.</li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. A living document; figures will be updated as chips and models change.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">One request, step by step</a><br><a href="#s2">Dense and MoE</a><br><a href="#s3">Three ways to build the chip</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice. Figures come from the sources listed and may be revised by the companies that report them.</div>
+</footer>
+
+<script src="../../js/inference.js"></script>
+<script src="../../js/menu.js"></script>
+</body>
+</html>

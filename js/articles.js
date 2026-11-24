@@ -523,6 +523,31 @@ window.BOTTLENECK = {
       // A history explainer about China. Linked on the country map to China;
       // it profiles no company, so it adds nothing to the company map.
       chain: []
+    },
+    {
+      id: "inference",
+      href: "explainers/inference.html",
+      title: "What Happens When You Press Send: Inside an AI Answer",
+      short: "Inside an AI answer",
+      kicker: "Explainer",
+      topic: "AI infrastructure",
+      category: "Chips & hardware",
+      date: "2026-11-24",
+      readMins: 18,
+      dek: "Every chatbot reply is a short trip through a data centre: tokenised, routed, batched, read in one burst and written one token at a time. Follow one message along that path, see why mixture-of-experts models change the arithmetic, and why Groq and Taalas bet on opposite chips to make it faster.",
+      summary: "Prefill and decode, dense versus mixture-of-experts, and three places to keep a model's weights",
+      thumb: "../images/thumbs/inference.svg",
+      stats: [
+        { big: "70 GB", text: "Read from memory for every token a 70-billion-weight model writes, at one byte per weight." },
+        { big: "37B of 671B", text: "Weights DeepSeek-V3 actually uses per token: the memory of a giant, the arithmetic of a mid-sized model." },
+        { big: "230 MB", text: "On-chip memory in Groq's first-generation chip, so its 2023 Llama 2 70B demo reportedly used 576 chips." },
+        { big: "~17,000", text: "Tokens a second Taalas claims for one user on its HC1, a chip with one model built into it (testers measured 15,000–16,000)." }
+      ],
+      chain: [
+        { step: "Model makers", companies: ["meta", "mistral", "deepseek"] },
+        { step: "GPUs with HBM", companies: ["nvidia", "amd"] },
+        { step: "Memory-first inference chips", companies: ["groq", "taalas"] }
+      ]
     }
   ],
 
@@ -593,6 +618,10 @@ window.BOTTLENECK = {
     acfminera:{ name: "ACF Minera",        hq: "Chile",        sector: "Iodine producers" },
     ise:      { name: "Ise Chemicals",     hq: "Japan",        sector: "Iodine producers" },
     godoshigen:{ name: "Godo Shigen",      hq: "Japan",        sector: "Iodine producers" },
-    inpex:    { name: "INPEX",             hq: "Japan",        sector: "Iodine producers" }
+    inpex:    { name: "INPEX",             hq: "Japan",        sector: "Iodine producers" },
+    mistral:  { name: "Mistral AI",        hq: "France",       sector: "AI labs" },
+    deepseek: { name: "DeepSeek",          hq: "China",        sector: "AI labs" },
+    groq:     { name: "Groq",              hq: "US",           sector: "Chip design" },
+    taalas:   { name: "Taalas",            hq: "Canada",       sector: "Chip design" }
   }
 };

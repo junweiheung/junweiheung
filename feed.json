@@ -35,6 +35,28 @@
       }
     },
     {
+      "id": "inference",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/inference.html",
+      "title": "What Happens When You Press Send: Inside an AI Answer",
+      "summary": "Every chatbot reply is a short trip through a data centre: tokenised, routed, batched, read in one burst and written one token at a time. Follow one message along that path, see why mixture-of-experts models change the arithmetic, and why Groq and Taalas bet on opposite chips to make it faster.",
+      "content_text": "Every chatbot reply is a short trip through a data centre: tokenised, routed, batched, read in one burst and written one token at a time. Follow one message along that path, see why mixture-of-experts models change the arithmetic, and why Groq and Taalas bet on opposite chips to make it faster.",
+      "date_published": "2026-11-24T09:00:00+08:00",
+      "tags": [
+        "AI infrastructure"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/inference.png",
+      "_bottleneck": {
+        "short": "Inside an AI answer",
+        "topic": "AI infrastructure",
+        "readMins": 18,
+        "stat": {
+          "big": "70 GB",
+          "text": "Read from memory for every token a 70-billion-weight model writes, at one byte per weight."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/inference.png"
+      }
+    },
+    {
       "id": "chip-share",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/chip-share.html",
       "title": "Three Companies, One Industry: AMD vs Intel vs Nvidia",

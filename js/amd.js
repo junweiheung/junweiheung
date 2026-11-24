@@ -131,42 +131,6 @@
   if (cl) cl.addEventListener('click', async (e) => { try { await navigator.clipboard.writeText(location.href); e.target.textContent = 'Copied'; } catch (_) { e.target.textContent = 'Copy from address bar'; } });
 })();
 
-/* ---------------- Part 8: the memory-wall calculator ----------------
-   Upper bound on tokens/s for one user = memory bandwidth ÷ bytes of weights read per token.
-   If the model doesn't fit in one chip's memory it is split over N chips, each reading its share. */
-(function () {
-  const out = document.getElementById('mwOut'), slider = document.getElementById('mwParams'); if (!out || !slider) return;
-  const SIZES = [1, 8, 70, 120, 405, 1000];                      // billions of weights
-  const CHIPS = { '4.8': ['Nvidia H200', 141], '8': ['AMD MI355X', 288], '19.6': ['AMD MI455X', 432] };   // TB/s → [name, GB of memory]
-  let bits = 16, bw = 4.8;
-  const seg = (id, set) => {
-    const box = document.getElementById(id);
-    box.addEventListener('click', (e) => {
-      const b = e.target.closest('button'); if (!b) return;
-      box.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-      set(+b.dataset.v); draw();
-    });
-  };
-  const fmt = (n) => n >= 100 ? Math.round(n).toLocaleString('en-US') : n.toFixed(n >= 10 ? 0 : 1);
-  function draw() {
-    const p = SIZES[+slider.value];
-    document.getElementById('mwP').textContent = p >= 1000 ? (p / 1000) + 'T' : p + 'B';
-    const gb = p * bits / 8;                                     // GB of weights
-    const [name, cap] = CHIPS[String(bw)];
-    const n = Math.max(1, Math.ceil(gb / (cap * 0.9)));          // leave a little room for the KV cache
-    const tps = bw * 1000 * n / gb;
-    out.innerHTML = `<div class="mw-big"><b>≈ ${fmt(tps)}</b><span>tokens a second, at most, for one user</span></div>
-      <p class="mw-why">${p >= 1000 ? (p / 1000) + ' trillion' : p + ' billion'} weights × ${bits / 8} byte${bits === 8 ? '' : 's'} each = <b>${fmt(gb)} GB</b> to read for every token. ` +
-      (n === 1 ? `The ${name} reads ${bw} TB a second from memory, so ${bw * 1000} GB ÷ ${fmt(gb)} GB ≈ ${fmt(tps)}.`
-               : `That doesn't fit in one ${name}'s ${cap} GB, so it is split across at least <b>${n}</b> chips, each reading its share at ${bw} TB/s. Linking them adds delays this ignores.`) +
-      `${p === 8 && bits === 16 && bw === 4.8 ? ' Nvidia measures about 230 in practice. Taalas’s HC1, with the model built into the chip, does about 17,000.' : ''}</p>`;
-  }
-  seg('mwBits', (v) => { bits = v; });
-  seg('mwChip', (v) => { bw = v; });
-  slider.addEventListener('input', draw);
-  draw();
-})();
-
 /* ---------------- Part 8: the same answer typed by two chips, both slowed 25 times ---------------- */
 (function () {
   const A = document.getElementById('raceA'), B = document.getElementById('raceB'); if (!A || !B) return;
@@ -288,24 +252,4 @@
   // the contents list fades out while the timeline (which uses its column) is on screen
   const scrolly = document.getElementById('tlScrolly');
   new IntersectionObserver((es) => es.forEach((e) => document.body.classList.toggle('tl-wide', e.isIntersecting)), { rootMargin: '-20% 0px -20% 0px' }).observe(scrolly);
-})();
-
-/* ---------------- Request flow: a highlight walks the steps of one request, lingering on decode ---------------- */
-(function () {
-  const fig = document.getElementById('flowFig'); if (!fig) return;
-  const rows = [...fig.querySelectorAll('ol.fl li')].filter((li) => !li.classList.contains('fl-grp'));
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  // time spent on each step (ms): the plumbing is quick, decode is the long part
-  const dwell = rows.map((li) => li.classList.contains('fl-dec') ? 3200 : li.classList.contains('fl-pre') ? 1300 : 750);
-  let k = -1, timer = null;
-  const step = () => {
-    rows.forEach((r) => r.classList.remove('now'));
-    k = (k + 1) % (rows.length + 1);           // one beat of rest after the response
-    if (k < rows.length) rows[k].classList.add('now');
-    timer = setTimeout(step, k < rows.length ? dwell[k] : 1200);
-  };
-  new IntersectionObserver((es) => es.forEach((e) => {
-    if (e.isIntersecting && !timer) step();
-    else if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; k = -1; rows.forEach((r) => r.classList.remove('now')); }
-  }), { threshold: 0.3 }).observe(fig);
 })();

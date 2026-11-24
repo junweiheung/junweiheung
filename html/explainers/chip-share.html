@@ -122,7 +122,7 @@
   <h2 id="s3"><span class="n">Part 2</span>Data centre: two very different races</h2>
   <p class="t">The data centre is really two markets. In <b>server CPUs</b>, AMD's EPYC has stormed back: <b>35.5%</b> of all x86 server units in Q3 2026, up from 27.8% a year earlier, and <b>46.8%</b> once you narrow to mainstream cloud and enterprise two-socket servers, almost half. Intel's Xeon still holds the majority overall, but the gap is the narrowest in decades.</p>
   <p class="t">In <b>AI accelerators</b>, the picture flips entirely. This is a $200 billion-plus market, and <b>Nvidia owns roughly 75–81% of the revenue</b>. AMD's Instinct line holds about <b>5–7%</b> (and may climb toward 7–10% as its MI450 and Helios racks ship), while custom hyperscaler chips, Google's TPU and Broadcom-built accelerators, take around 12–15%. Intel is a rounding error here.</p>
-  <p class="t">That share is still largely won in <b>training</b>, where raw computing power decides. The bill that grows with every user is <b>inference</b>, answering their questions, which over a model’s life usually costs more than training it. There, the limit is often not arithmetic but how fast a chip can pull the model out of memory. That opens the door to chips built around memory rather than compute, and is why AMD bought the inference-chip start-up Taalas. <a href="amd.html#memwall">The memory wall, explained in the AMD story</a>.</p>
+  <p class="t">That share is still largely won in <b>training</b>, where raw computing power decides. The bill that grows with every user is <b>inference</b>, answering their questions, which over a model’s life usually costs more than training it. There, the limit is often not arithmetic but how fast a chip can pull the model out of memory. That opens the door to chips built around memory rather than compute, and is why AMD bought the inference-chip start-up Taalas. <a href="amd.html#memwall">The memory wall, explained in the AMD story</a>; the whole path of a request, in <a href="inference.html">What Happens When You Press Send</a>.</p>
 
   <h2 id="s4"><span class="n">Part 3</span>Client PCs: Intel still ships the most</h2>
   <p class="t">In the PCs people actually buy, Intel remains ahead by units. In Q3 2026 AMD held <b>29.9%</b> of x86 desktop CPUs (down from 34.9% the prior quarter, as GPU supply bottlenecks hit gaming-PC builds) against Intel's 70.1%, and a record <b>29.2%</b> of laptop processors against Intel's 70.8%. Combine client and server and AMD sits at <b>30.1%</b> of all x86 units, up from 25.6% a year earlier, its highest ever, while Intel's share dipped below 70% for the first time since 1995.</p>
@@ -136,11 +136,6 @@
 
   <p class="pull">There is no "chip champion." There are several separate races, and three companies that each win different ones.</p>
 
-  <p class="t">So next time someone says a company "leads the chip market," ask two things.</p>
-  <div class="qs" id="qs">
-    <div class="q" data-answer="Which market. Intel leads PC CPUs by units; AMD leads cloud server CPUs, consoles and FPGAs; Nvidia dominates AI accelerators and discrete gaming GPUs. 'The chip market' isn't one race."><div class="qn">QUESTION 1</div><p>Which segment do they actually lead?</p></div>
-    <div class="q" data-answer="Units or revenue, discrete or total. AMD has ~8% of discrete GPUs but ~21% once you count integrated graphics; Nvidia has most AI revenue but a different share of units. The measure changes who looks dominant."><div class="qn">QUESTION 2</div><p>Are they counting units or revenue, and which slice?</p></div>
-  </div>
 
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures come from.</p>
