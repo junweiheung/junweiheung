@@ -109,3 +109,15 @@ table.cmp tbody tr:hover{background:#faf8f2}
 @media (max-width:560px){.gdpbars .gb{grid-template-columns:86px 1fr 50px;gap:8px}}
 @media (prefers-reduced-motion:reduce){#fallSvg .fall-bar{transition:none;transform:none}#fallSvg .fall-lab{transition:none;opacity:1}}
 @media (max-width:560px){#crisisMap{height:360px}}
+
+/* ---------- Offshore ringgit stepper (Part 8) ---------- */
+.or-box{border:1px solid var(--rule);border-top:3px solid #0d0d0f;background:#fff;padding:14px 14px 10px}
+#orSvg{display:block;width:100%;height:auto;font-family:var(--sans)}
+#orSvg .stg{opacity:0;transition:opacity .35s}
+#orSvg .stg.on{opacity:1}
+#orSvg .res{transition:height .5s,y .5s}
+.or-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:10px 0 2px;min-height:4.6em}
+.or-list{padding-left:20px}
+.or-list li{margin-bottom:10px}
+.or-scroll{overflow-x:auto}
+@media(max-width:640px){.or-why{min-height:7em}#orSvg{min-width:600px}}

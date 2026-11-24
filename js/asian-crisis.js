@@ -312,3 +312,76 @@ if (copyBtn) copyBtn.addEventListener('click', async (e) => {
     tabs.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) bars.querySelectorAll('.gb').forEach((x) => x.classList.toggle('on', x.dataset.c === b.dataset.c)); });
   }
 })();
+
+/* Offshore ringgit stepper: three stages of the 1997-98 offshore market and Malaysia's September 1998 shutdown. */
+(function () {
+  const svg = document.getElementById('orSvg'), tabs = document.getElementById('orTabs'), why = document.getElementById('orWhy');
+  if (!svg || !tabs) return;
+  const RED = '#c2412d', BLUE = '#2463d6', INK = '#3d3d3d', MUTED = '#76736c', GREEN = '#2f7a4a';
+  const box = (x, title, sub, c) => `<rect x="${x}" y="40" width="190" height="170" rx="6" fill="#faf8f3" stroke="${c}" stroke-width="2"/>
+    <text x="${x + 95}" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="${c}">${title}</text>
+    <text x="${x + 95}" y="232" text-anchor="middle" font-size="11" fill="${MUTED}">${sub}</text>`;
+  const arrow = (x1, y1, x2, y2, c, dash) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="2.5" ${dash ? 'stroke-dasharray="6 4"' : ''} marker-end="url(#or-ah-${c.slice(1)})"/>`;
+  const t = (x, y, s, c, w, a) => `<text x="${x}" y="${y}" font-size="11.5" fill="${c || INK}" font-weight="${w || 500}" text-anchor="${a || 'middle'}">${s}</text>`;
+  const marker = (c) => `<marker id="or-ah-${c.slice(1)}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="${c}"/></marker>`;
+  svg.innerHTML = `<defs>${[RED, BLUE, INK, GREEN].map(marker).join('')}</defs>
+    ${box(10, 'Singapore', 'offshore ringgit market', RED)}
+    ${box(245, 'External accounts', 'held by foreigners at Malaysian banks', INK)}
+    ${box(480, 'Malaysia', 'onshore market', BLUE)}
+    <rect x="610" y="70" width="44" height="120" fill="#eee"/>
+    <rect class="res" id="orRes" x="610" y="70" width="44" height="120" fill="${BLUE}"/>
+    ${t(632, 204, 'reserves', MUTED)}
+    <g class="stg" data-s="1">
+      ${t(340, 70, 'Ringgit balances pile up:', INK, 700)}
+      ${t(340, 92, 'export proceeds kept in RM')}
+      ${t(340, 110, 'swaps: dollars in, RM credit out')}
+      ${t(340, 128, 'higher offshore deposit rates')}
+      ${arrow(480, 150, 440, 150, BLUE)}
+      ${arrow(245, 170, 205, 170, INK, true)}
+      ${t(105, 95, 'Lent on to anyone,', INK, 700)}
+      ${t(105, 113, 'beyond Malaysia’s rules')}
+      ${t(545, 110, 'ringgit drawn', MUTED, 500)}
+      ${t(545, 126, 'offshore', MUTED, 500)}
+    </g>
+    <g class="stg" data-s="2">
+      ${t(105, 70, 'Hedge fund borrows RM,', RED, 700)}
+      ${t(105, 88, 'sells it for dollars')}
+      ${t(105, 130, 'RM 3.00 per $', RED, 800)}
+      ${t(105, 148, 'ringgit cheap offshore', MUTED)}
+      ${t(545, 130, 'RM 2.50 per $', BLUE, 800)}
+      ${t(545, 148, 'dearer onshore', MUTED)}
+      ${arrow(200, 196, 595, 196, RED)}
+      ${t(340, 160, 'Arbitrage: buy cheap RM', RED, 700)}
+      ${t(340, 176, 'offshore, sell it onshore for $', RED, 700)}
+      ${t(340, 78, 'Balances move from', INK, 700)}
+      ${t(340, 96, 'account to account')}
+      ${t(340, 114, 'as fast as trades clear')}
+    </g>
+    <g class="stg" data-s="3">
+      <rect x="245" y="40" width="190" height="170" rx="6" fill="#fdecea" opacity=".6"/>
+      ${t(340, 78, 'Transfers need', RED, 800)}
+      ${t(340, 96, 'central-bank approval', RED, 800)}
+      ${arrow(440, 130, 480, 130, GREEN)}
+      ${t(340, 134, 'RM must come home', INK, 600)}
+      ${t(340, 152, 'by 1 October 1998')}
+      ${t(105, 95, 'No ringgit to borrow', RED, 700)}
+      ${t(105, 113, 'or buy back:')}
+      ${t(105, 140, 'SHORT SQUEEZE', RED, 800)}
+      ${t(545, 110, 'Peg: RM 3.80 per $', GREEN, 800)}
+      ${t(545, 128, 'one-year lock-in', INK)}
+    </g>`;
+  const TXT = {
+    1: 'Offshore ringgit was never cash in Singapore. It was balances in external accounts at banks in Malaysia, built up by foreign firms keeping export earnings in ringgit, by swaps that gave foreign banks ringgit credits for dollars, and by higher deposit rates abroad. Banks in Singapore could lend those balances freely.',
+    2: 'Speculators borrowed ringgit offshore and sold it straight away for dollars. The selling made ringgit cheaper in Singapore than at home, so traders bought it there and swapped it for dollars in Malaysia, where the central bank had to pay out from its reserves.',
+    3: 'On 1 September 1998 Malaysia required central-bank approval to move ringgit between external accounts and ordered offshore ringgit home within a month. The pool speculators borrowed from vanished, so short-sellers could not cover. A day later the ringgit was pegged at 3.80.'
+  };
+  const RES = { 1: 120, 2: 62, 3: 62 };
+  function show(s) {
+    tabs.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.s === String(s))));
+    svg.querySelectorAll('.stg').forEach((g) => g.classList.toggle('on', g.dataset.s === String(s)));
+    const r = svg.querySelector('#orRes'); r.setAttribute('height', RES[s]); r.setAttribute('y', 190 - RES[s]);
+    why.textContent = TXT[s];
+  }
+  tabs.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) show(b.dataset.s); });
+  show(1);
+})();
