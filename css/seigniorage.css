@@ -88,3 +88,15 @@ table.cmp tbody tr:hover{background:#faf8f2}
 .fed-why{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink2);margin:6px 0 0;padding-left:12px;border-left:3px solid #c2412d;min-height:3em}
 .st-count{font-family:var(--sans);font-size:14px;color:var(--ink2);margin:4px 0 14px;text-align:center;min-height:1.5em}
 .st-count b{color:#3f6a45;font-variant-numeric:tabular-nums}
+
+/* ---------- Monetary regimes timeline (Part 4) ---------- */
+.mr{list-style:none;margin:10px 0 0;padding:0;font-family:var(--sans)}
+.mr-era{display:grid;grid-template-columns:170px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:22px;padding:16px 0;border-bottom:1px solid #eee}
+.mr-era:last-child{border-bottom:0}
+.mr-y{grid-column:1;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mr-n{grid-column:1;font-size:15px;font-weight:700;color:var(--ink);line-height:1.25;margin:4px 0 10px}
+.mr-tie{grid-column:1;height:6px;background:#eee;border-radius:3px;overflow:hidden}
+.mr-tie i{display:block;height:100%;width:var(--t);background:var(--gold);border-radius:3px}
+.mr-era p{grid-column:2;grid-row:1 / span 3;font-size:13.5px;line-height:1.55;color:var(--ink2);margin:0}
+.mr-era p.mr-cap{grid-row:4;font-size:13px;color:var(--ink);font-weight:600;margin-top:8px}
+@media(max-width:640px){.mr-era{grid-template-columns:minmax(0,1fr);grid-template-rows:none}.mr-era p,.mr-era p.mr-cap{grid-column:1;grid-row:auto}.mr-tie{margin-bottom:10px;max-width:220px}}

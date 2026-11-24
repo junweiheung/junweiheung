@@ -548,6 +548,28 @@ window.BOTTLENECK = {
         { step: "GPUs with HBM", companies: ["nvidia", "amd"] },
         { step: "Memory-first inference chips", companies: ["groq", "taalas"] }
       ]
+    },
+    {
+      id: "forex",
+      href: "explainers/forex.html",
+      title: "The $9.6 Trillion Market: How Forex Works",
+      short: "How the forex market works",
+      kicker: "Explainer",
+      topic: "Foreign exchange",
+      category: "Market infrastructure",
+      date: "2026-11-24",
+      readMins: 11,
+      dek: "Every day about $9.6 trillion of currencies changes hands, more than any other market. Most of it is banks and funds you never see; a sliver is people at home trading with borrowed money. Here is who trades forex, how to read a currency pair, why leverage pulls traders in, and what happens when a currency breaks.",
+      summary: "Who trades currencies, how pairs, pips and leverage work, broken pegs from 1992 to 2015, and reading retail sentiment",
+      thumb: "../images/thumbs/forex.svg",
+      stats: [
+        { big: "$9.6T", text: "Average daily foreign-exchange turnover in April 2025, up 28% in three years (BIS Triennial Survey)." },
+        { big: "89%", text: "Share of all currency trades with the US dollar on one side, the market's vehicle currency (BIS, 2025)." },
+        { big: "11.8%", text: "Singapore's share of global forex turnover in 2025, up from 9.5% in 2022; London leads with 38%." },
+        { big: "74–89%", text: "Share of retail accounts that typically lost money trading leveraged products, as found by EU regulator ESMA in 2018." }
+      ],
+      // A market explainer, not a company or country profile: no company chain.
+      chain: []
     }
   ],
 

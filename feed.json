@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "forex",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/forex.html",
+      "title": "The $9.6 Trillion Market: How Forex Works",
+      "summary": "Every day about $9.6 trillion of currencies changes hands, more than any other market. Most of it is banks and funds you never see; a sliver is people at home trading with borrowed money. Here is who trades forex, how to read a currency pair, why leverage pulls traders in, and what happens when a currency breaks.",
+      "content_text": "Every day about $9.6 trillion of currencies changes hands, more than any other market. Most of it is banks and funds you never see; a sliver is people at home trading with borrowed money. Here is who trades forex, how to read a currency pair, why leverage pulls traders in, and what happens when a currency breaks.",
+      "date_published": "2026-11-24T09:00:00+08:00",
+      "tags": [
+        "Foreign exchange"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/forex.png",
+      "_bottleneck": {
+        "short": "How the forex market works",
+        "topic": "Foreign exchange",
+        "readMins": 11,
+        "stat": {
+          "big": "$9.6T",
+          "text": "Average daily foreign-exchange turnover in April 2025, up 28% in three years (BIS Triennial Survey)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/forex.png"
+      }
+    },
+    {
       "id": "inference",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/inference.html",
       "title": "What Happens When You Press Send: Inside an AI Answer",

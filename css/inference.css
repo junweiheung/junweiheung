@@ -118,7 +118,7 @@ body.if-wide .toc{opacity:0;visibility:hidden}
 
 /* ---- Part 3 ---- */
 .if-h3{font-family:var(--serif);font-size:24px;margin:36px 0 8px}
-#hwFig .tbl-wrap{overflow-x:auto}
+#hwFig .tbl-wrap,#latFig .tbl-wrap{overflow-x:auto}
 table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
 table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
 table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}

@@ -1,0 +1,82 @@
+/* Page-specific styles for the forex explainer. Shared: bottleneck.css + article.css. */
+:root{--up:#1f7a45;--dn:#c2412d}
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Segmented buttons ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- Part 1: market rings ---------- */
+.tier{display:grid;grid-template-columns:270px minmax(0,1fr);gap:26px;align-items:center;font-family:var(--sans)}
+.tier svg{width:100%;height:auto;display:block}
+.tier svg text{font-family:var(--sans)}
+.tier-key{margin:0;padding:0 0 0 18px;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.tier-key li{margin:0 0 9px}
+.tier-key b{color:var(--ink)}
+
+/* ---------- Part 1: currency shares ---------- */
+.ccy{font-family:var(--sans);font-size:13.5px}
+.ccy-r{display:grid;grid-template-columns:130px minmax(0,1fr) 52px;gap:12px;align-items:center;padding:6px 0}
+.ccy-n{color:var(--ink2);font-weight:600}
+.ccy-t{height:16px;background:#f0ede6;border-radius:3px;overflow:hidden}
+.ccy-t i{display:block;height:100%;width:0;background:var(--grey);border-radius:3px;transition:width .9s ease}
+.ccy-r.on .ccy-t i{background:var(--blue)}
+#ccyFig.in-view .ccy-t i{width:var(--v)}
+.ccy-v{font-weight:700;text-align:right;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.ccy-t i{transition:none}}
+
+/* ---------- Calculators ---------- */
+.px-ctl{display:flex;flex-direction:column;gap:10px;font-family:var(--sans);margin-bottom:16px}
+.px-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center;min-width:0}
+.px-l{font-size:12.5px;font-weight:600;color:var(--muted)}
+.px-l b{color:var(--ink)}
+.px-slide{grid-template-columns:minmax(0,1fr)}
+.px-slide input{width:100%;accent-color:var(--blue)}
+.px-out,.lv-out{font-family:var(--sans);border-top:1px solid #eee;padding-top:14px}
+.px-say{font-size:14px;line-height:1.55;color:var(--ink2);margin:0 0 12px}
+.px-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.px-grid div{background:#faf8f3;border:1px solid #eee;padding:10px 12px;min-width:0}
+.px-grid span{display:block;font-size:11.5px;color:var(--muted);line-height:1.35;margin-bottom:4px}
+.px-grid b{font-size:19px;color:var(--ink)}
+.px-grid b.up{color:var(--up)}
+.px-grid b.dn{color:var(--dn)}
+.px-foot{font-size:13px;line-height:1.5;color:var(--ink2);margin:12px 0 0}
+.lv-bar{position:relative;height:22px;background:#f0ede6;border-radius:4px;overflow:hidden}
+.lv-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--grey);transition:width .25s ease}
+.lv-bar i.up{background:var(--up)}
+.lv-bar i.dn{background:#e08a6f}
+.lv-bar i.gone{width:0!important}
+.lv-bar em{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.lv-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:5px 0 12px}
+
+/* ---------- Part 4: broken pegs ---------- */
+.brk{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin:30px 0;font-family:var(--sans)}
+.brk-c{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:16px 16px 18px}
+.brk-c:last-child{border-top-color:var(--dn)}
+.brk-y{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brk-c h3{font-size:16px;line-height:1.25;margin:6px 0 8px}
+.brk-c p{font-size:14.5px;line-height:1.55;color:var(--ink2);margin:0}
+.brk-c a{color:var(--ink);text-decoration-color:var(--gold)}
+
+/* ---------- Part 5: sentiment ---------- */
+.sn{font-family:var(--sans)}
+.sn-bar{display:flex;height:34px;border-radius:4px;overflow:hidden;font-size:13px;font-weight:700;color:#fff}
+.sn-bar span{display:flex;align-items:center;padding:0 12px;white-space:nowrap}
+.sn-long{background:var(--up)}
+.sn-short{background:var(--dn);justify-content:flex-end}
+.sn-note{font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0}
+
+
+@media(max-width:640px){
+  .tier{grid-template-columns:minmax(0,1fr)}.tier svg{max-width:260px;margin:0 auto}
+  .ccy-r{grid-template-columns:96px minmax(0,1fr) 46px;gap:8px;font-size:12.5px}
+  .px-row{grid-template-columns:minmax(0,1fr);gap:6px}
+  .px-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .px-grid b{font-size:17px}
+}

@@ -87,3 +87,17 @@ table.cmp tbody tr:hover{background:#faf8f2}
 #sizeFig.in-view .sz-lab{opacity:1}
 #ccpSvg circle,#ccpSvg line{transition:fill .35s,stroke .35s,opacity .4s}
 @media (prefers-reduced-motion:reduce){#sizeSvg .sz-sq,#sizeSvg .sz-lab{transition:none;transform:none;opacity:1}}
+
+/* ---------- Exchange vs OTC table and OTC stock tiers (Part 3) ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:520px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
+.ot{display:flex;flex-direction:column;gap:8px;font-family:var(--sans)}
+.ot-t{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;border-left:5px solid var(--c);background:#faf8f3;padding:12px 14px}
+.ot-t:nth-child(2){margin-left:4%}.ot-t:nth-child(3){margin-left:8%}.ot-t:nth-child(4){margin-left:12%;opacity:.85}
+.ot-h b{display:block;font-size:16px;color:var(--c)}
+.ot-h span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ot-t p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+@media(max-width:640px){.ot-t{grid-template-columns:minmax(0,1fr);gap:6px}.ot-t:nth-child(n){margin-left:0}}

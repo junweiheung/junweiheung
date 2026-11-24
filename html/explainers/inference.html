@@ -119,21 +119,22 @@
         <div class="if-n">Step 5 · Host CPU</div><h3>Schedule: join the batch</h3>
         <p>An accelerator is fastest when it serves many people at once, because reading the model from memory is the slow part and one read can serve a whole <b>batch</b> of users. So the server queues your request and slots it in with others.</p>
         <p>Modern servers use <b>continuous batching</b>: instead of waiting for a whole batch to finish, they add new requests and remove finished ones on every step. The technique comes from research systems such as Orca (2022) and vLLM (2023), and it is now standard.</p>
-        <p>The trade-off: a bigger batch means more answers per second for the provider, but each user’s words arrive a little slower.</p>
+        <p>The trade-off: a bigger batch means more answers per second for the provider, but each user’s words arrive a little slower, because every step now carries more users’ work. In engineers’ terms, throughput goes up and <b>inter-token latency</b> goes up with it.</p>
       </div></div>
 
       <div class="if-step" data-k="5"><div class="card">
         <div class="if-n">Step 6 · Accelerator</div><h3>Prefill: read the whole prompt at once</h3>
         <p>Now the AI chip starts. In <b>prefill</b> it pushes every token of your prompt through the model in one go. Each layer works out, for every token, a pair of summaries called keys and values, and stores them in the <b>KV cache</b> so they never have to be worked out again.</p>
         <p>Because all the tokens go through together, the chip reads its weights once and does a great deal of arithmetic with them. Prefill is limited by <b>compute</b>. A rule of thumb is about two operations per weight per token, so a 2,000-token prompt through a 70-billion-weight model is roughly <b>280 trillion</b> operations: about 0.02 seconds on an eight-GPU Nvidia H200 server at perfect efficiency, longer in practice.</p>
-        <p>This is the pause before the first word appears, which engineers call <b>time to first token</b>.</p>
+        <p>This is the pause before the first word appears, which engineers call <b>time to first token</b> (TTFT). Because prefill work grows with the prompt, pasting in a long document makes this wait longer.</p>
       </div></div>
 
       <div class="if-step" data-k="6"><div class="card">
         <div class="if-n">Step 7 · Accelerator</div><h3>Decode: one token at a time</h3>
         <p>Then the answer is written, and it can only be written one token at a time, because each token depends on the one before. For every single token the chip must read <b>all of the model’s weights</b> again, plus the KV cache of everything said so far, to do comparatively little arithmetic.</p>
         <p>So decode is limited by <b>memory bandwidth</b>, how fast data comes out of memory, not by arithmetic. A 70-billion-weight model at one byte per weight means about 70 GB read per token; an eight-GPU H200 server reads 38.4 TB a second, which caps one user at roughly <b>550 tokens a second</b> before any real-world losses.</p>
-        <p>The KV cache grows as the conversation does. For Llama 3.1 70B it is about <b>0.33 MB per token</b>, so a 100,000-token conversation carries around 33 GB of it, which must be read on every step too.</p>
+        <p>Turned round, that is one token every <b>1.8 milliseconds</b>. The gap between one token and the next is called <b>inter-token latency</b> (ITL), and it sets how fast the answer seems to type.</p>
+        <p>The KV cache grows as the conversation does. For Llama 3.1 70B it is about <b>0.33 MB per token</b>, so a 100,000-token conversation carries around 33 GB of it, which must be read on every step too. That is why long chats can type more slowly.</p>
       </div></div>
 
       <div class="if-step" data-k="7"><div class="card">
@@ -158,6 +159,26 @@
   </div>
 
   <p class="pull">Prefill is a sprint of arithmetic. Decode is a relay of memory reads, one lap per word.</p>
+
+  <p class="t">Those two phases give the two numbers you actually feel when you use a chatbot. <b>Time to first token</b> is the wait before anything appears; <b>inter-token latency</b> is how fast it types once it starts. They are set by different phases, so they can go wrong separately: a reply can start instantly and then crawl, or sit silent for seconds and then pour out.</p>
+  <figure class="fig rv" id="latFig">
+    <div class="ft">The wait, and the typing speed</div>
+    <div class="fs">Two latency numbers, set by the two phases on the accelerator</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Time to first token (TTFT)</th><th>Inter-token latency (ITL)</th></tr></thead>
+        <tbody>
+          <tr><td>Measures</td><td>Time from pressing send to the first token arriving</td><td>Average gap between one token and the next</td></tr>
+          <tr><td>What you feel</td><td>The pause before anything appears</td><td>How fast the answer types</td></tr>
+          <tr><td>Set mostly by</td><td>Queueing, then <b>prefill</b> (compute)</td><td><b>Decode</b> (memory bandwidth)</td></tr>
+          <tr><td>Worse with</td><td>Longer prompts; a busy queue</td><td>Bigger models; bigger batches; longer conversations (more KV cache)</td></tr>
+          <tr><td>Helped by</td><td>More compute; prompt caching, which skips prefill for a repeated start</td><td>More memory bandwidth; smaller or MoE models; chips such as Groq’s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>A reader manages roughly 240 words a minute (Brysbaert, 2019), about five tokens a second, so any ITL under about 200 milliseconds keeps ahead of reading. For an agent or a program consuming the output, faster still matters.</figcaption>
+  </figure>
+  <p class="t">The two also get in each other’s way. If one chip does both phases, a newcomer’s long prefill can take over a step and stall every stream already decoding, a spike in everyone else’s ITL. Servers soften this by chopping prefill into chunks that ride alongside decode steps, or by putting prefill and decode on <b>separate machines</b> altogether, an idea that comes back in Part 4.</p>
 
   <h2 id="s2"><span class="n">Part 2</span>Dense and mixture-of-experts</h2>
   <p class="t">A <b>dense</b> model uses every one of its weights for every token. Llama 3.1 70B is dense: 70 billion weights, all 70 billion used each time.</p>
@@ -253,7 +274,7 @@
 
   <h2 id="s4"><span class="n">Part 4</span>Where it all meets</h2>
   <p class="t">Put Parts 2 and 3 together and the industry’s direction makes sense. Mixture-of-experts suits <b>GPUs</b> well: they have room for every expert and only need to do the arithmetic for the active few. It is awkward for <b>Groq-style</b> chips, because every expert still needs scarce SRAM, so the chip count grows with the total model, not the active slice. And it is hardest for <b>Taalas-style</b> chips, which would have to etch every expert into silicon.</p>
-  <p class="t">So nobody is betting on one design. The trend is to <b>split the work</b>: give prefill, which wants arithmetic, to GPUs, and give decode, which wants memory speed, to something built for it. Nvidia’s GPU-plus-LPX racks do exactly that. Reported ideas around AMD’s Taalas purchase, not AMD announcements, include GPUs doing prefill and Taalas chips doing decode.</p>
+  <p class="t">So nobody is betting on one design. The trend is to <b>split the work</b>: give prefill, which wants arithmetic, to GPUs, and give decode, which wants memory speed, to something built for it. Nvidia’s GPU-plus-LPX racks do exactly that. A bonus is that a newcomer’s long prompt no longer stalls everyone else’s typing: time to first token and inter-token latency can each be tuned on their own hardware. Reported ideas around AMD’s Taalas purchase, not AMD announcements, include GPUs doing prefill and Taalas chips doing decode.</p>
   <p class="t">For a reader, the useful habit is to ask two questions of any claim about a faster AI chip. Fast for <b>one user</b>, or for many at once? And fast on <b>which model</b>, at what size, and could it run a different one tomorrow?</p>
 
 
@@ -262,6 +283,7 @@
   <ul class="sources">
     <li>Tokens as about four characters or three-quarters of an English word: <a href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them" target="_blank" rel="noopener">OpenAI Help Center</a>. Llama 3 vocabulary of 128,256 tokens, and Llama 3.1 70B’s 80 layers and 8 key-value heads (from which the 0.33 MB-per-token KV cache is my calculation at 16-bit): Meta’s Llama 3.1 model card and configuration on Hugging Face.</li>
     <li>Prompt-cache reads at 0.1 times the base input price for most models: <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" rel="noopener">Anthropic prompt caching documentation</a>.</li>
+    <li>Time to first token and inter-token latency, and prefill stalling decode: Agrawal et al., “Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve” (OSDI 2024), on chunked prefill; Zhong et al., “DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving” (OSDI 2024). Reading speed: Brysbaert, “How many words do we read per minute?”, <i>Journal of Memory and Language</i> (2019).</li>
     <li>Continuous batching: Yu et al., “Orca” (OSDI 2022); Kwon et al., “Efficient Memory Management for Large Language Model Serving with PagedAttention” (vLLM, SOSP 2023).</li>
     <li>About two operations per weight per token: Kaplan et al., “Scaling Laws for Neural Language Models” (2020). Prefill and decode timings are my calculations, as upper bounds.</li>
     <li>Nvidia H200: 141 GB HBM3e, 4.8 TB/s, about 1,979 dense FP8 teraFLOPS (3,958 with sparsity): <a href="https://www.nvidia.com/en-us/data-center/h200/" target="_blank" rel="noopener">Nvidia</a>.</li>

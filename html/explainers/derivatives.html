@@ -50,11 +50,12 @@
     <p>In this story</p>
     <a href="#s1">1. What a derivative is</a>
     <a href="#s2">2. The three building blocks</a>
-    <a href="#s3">3. Hedging vs speculation</a>
-    <a href="#s4">4. Buffett's warning</a>
-    <a href="#s5">5. When derivatives blew up</a>
-    <a href="#s6">6. After 2008: the clearing house</a>
-    <a href="#s7">7. Open interest</a>
+    <a href="#sotc">3. Exchange or over the counter</a>
+    <a href="#s3">4. Hedging vs speculation</a>
+    <a href="#s4">5. Buffett's warning</a>
+    <a href="#s5">6. When derivatives blew up</a>
+    <a href="#s6">7. After 2008: the clearing house</a>
+    <a href="#s7">8. Open interest</a>
     <a href="#sources">Sources</a>
   </aside>
 
@@ -116,7 +117,47 @@
     <figcaption>Simplified: one share, a $100 strike, a $5 premium, no fees or interest. The buyer of an option can lose at most the premium; the seller pockets the premium but takes the open-ended side. Every option has both, which is why selling options for income can end badly.</figcaption>
   </figure>
 
-  <h2 id="s3"><span class="n">Part 3</span>Hedging vs speculation</h2>
+  <h2 id="sotc"><span class="n">Part 3</span>Exchange or over the counter</h2>
+  <p class="t">There are two ways to strike any of these contracts. On an <b>exchange</b>, such as CME in Chicago or SGX in Singapore, everyone trades the same standard contract, prices are public, and a clearing house stands between buyer and seller. <b>Over the counter</b> (OTC) means there is no central exchange: two parties deal with each other directly, usually with a dealer bank quoting a price by phone, chat or an electronic platform, and the terms can be written to fit.</p>
+  <p class="t">That flexibility is why most derivatives, by notional value, are OTC. A company that wants to swap a floating loan rate for a fixed one on exactly its loan’s dates and amount can’t find that contract on an exchange, but a bank will write it. The cost is what the exchange took away: the price is private, the contract is hard to sell on, and you are exposed to the <b>other party</b> failing to pay. Parts 6 and 7 show how that last risk nearly brought down the system in 2008, and what was done about it.</p>
+
+  <figure class="fig rv" id="otcFig">
+    <div class="ft">Two ways to trade the same risk</div>
+    <div class="fs">What changes when a derivative leaves the exchange</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Exchange-traded</th><th>Over the counter (OTC)</th></tr></thead>
+        <tbody>
+          <tr><td>Examples</td><td>Futures; listed stock and index options</td><td>Interest-rate swaps; currency forwards; credit default swaps</td></tr>
+          <tr><td>Terms</td><td>Standard sizes and dates set by the exchange</td><td>Custom, negotiated between the two sides</td></tr>
+          <tr><td>Prices</td><td>Public, on a central order book</td><td>Private quotes from dealers, though many trades must now be reported</td></tr>
+          <tr><td>If the other side fails</td><td>The clearing house pays, backed by margin and a default fund</td><td>Your loss, unless the trade is centrally cleared or backed by collateral</td></tr>
+          <tr><td>Who uses it</td><td>Anyone with a broker, including individuals</td><td>Mostly banks, funds, companies and governments</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Simplified. Since the 2009 G20 reforms, standard OTC derivatives such as common interest-rate swaps must be centrally cleared and reported in the US and Europe, so the gap between the two columns has narrowed. Custom contracts remain bilateral.</figcaption>
+  </figure>
+
+  <h3>The other over-the-counter market: stocks</h3>
+  <p class="t">OTC describes how something trades, not what it is. Most bonds and almost all currency trading happen over the counter too. And in the US there is a large OTC market for <b>shares</b> of companies that aren’t listed on an exchange such as the NYSE or Nasdaq: small and early-stage firms, companies too troubled to stay listed, and big foreign companies, such as Roche and Nestlé, whose main listing is at home but whose shares can also be bought in the US. Cannabis companies are a well-known group: because cannabis is still illegal under US federal law, US exchanges won’t list American cannabis operators, so they list in Canada and trade OTC in the US.</p>
+  <p class="t">Most of these quotes run on platforms operated by <b>OTC Markets Group</b>, which sorts companies into tiers by how much they disclose. The tiers are about information, not quality: a top-tier company can still be a bad investment, but a bottom-tier one may tell you almost nothing.</p>
+
+  <figure class="fig rv" id="tierFig">
+    <div class="ft">The OTC stock market’s tiers</div>
+    <div class="fs">Sorted by disclosure, from the most to the least</div>
+    <div class="ot">
+      <div class="ot-t" style="--c:#2f7a4a"><div class="ot-h"><b>OTCQX</b><span>Best Market</span></div><p>The top tier. Companies must be current in their reporting, meet financial standards, and can’t be shell companies, penny stocks or in bankruptcy. Typical members are established foreign companies and US firms that may later move to a major exchange.</p></div>
+      <div class="ot-t" style="--c:#b8892b"><div class="ot-h"><b>OTCQB</b><span>Venture Market</span></div><p>The middle tier, for early-stage and developing companies. They must be current in their reporting, have management certify their information each year, and keep a share price of at least one cent.</p></div>
+      <div class="ot-t" style="--c:#c2412d"><div class="ot-h"><b>Pink</b><span>Open Market</span></div><p>The most speculative tier, with no financial standards. Companies need not be registered with the SEC; some report fully, some publish only basic information through OTC Markets. This is where microcap fraud and pump-and-dump schemes concentrate.</p></div>
+      <div class="ot-t" style="--c:#76736c"><div class="ot-h"><b>Expert Market</b><span>below the public tiers</span></div><p>Since an SEC rule change took effect in 2021, brokers can’t publicly quote a stock whose issuer has no current public information. Those shares sit here, where quotes aren’t shown to the general public.</p></div>
+    </div>
+    <figcaption>Tier names and rules as published by OTC Markets Group; the “Pink Sheets” name comes from the pink paper the quotes were once printed on. A higher tier means more disclosure, not a safe investment. Sources: OTC Markets Group; SEC, amendments to Rule 15c2-11 (2020, compliance from 2021); SEC investor alerts on microcap fraud.</figcaption>
+  </figure>
+
+  <div class="note warn"><b class="h">Why the bottom tier draws scams</b>A pump-and-dump needs three things: shares that are cheap, a market thin enough that a little buying moves the price, and little reliable information for anyone to check the hype against. Promoters buy, spread glowing tips through emails, chat groups or social media, and sell into the rush of buyers they created. The SEC warns that microcap stocks quoted over the counter are a common target, precisely because so little is disclosed about them.</div>
+
+  <h2 id="s3"><span class="n">Part 4</span>Hedging vs speculation</h2>
   <p class="t">The same contract can make the financial system <b>safer</b> or <b>riskier</b>. What changes is who's using it and why. Two people can hold the identical futures contract for opposite reasons.</p>
   <p class="t">A <b>hedger</b> already has a real-world exposure and uses a derivative to cancel it out. An airline knows it must buy jet fuel for years to come, so it buys contracts that lock in the price; if fuel spikes, the gain on the contract offsets the higher bill. A <b>speculator</b> has no such exposure. They take the position purely to profit from a price move, often using <b>leverage</b>: a small deposit controls a large contract, so gains and losses are both magnified.</p>
 
@@ -155,7 +196,7 @@
 
   <p class="pull">A derivative doesn't create or destroy risk by itself. It moves risk from someone who wants to shed it to someone willing to carry it.</p>
 
-  <h2 id="s4"><span class="n">Part 4</span>Buffett's warning</h2>
+  <h2 id="s4"><span class="n">Part 5</span>Buffett's warning</h2>
   <p class="t">In Berkshire Hathaway's 2002 annual letter, Warren Buffett set out at length why he distrusted the fast-growing derivatives market. His line became the most quoted verdict on the subject.</p>
 
   <div class="bigquote rv">
@@ -167,7 +208,7 @@
 
   <div class="note"><b class="h">Buffett used them too</b>The warning came from a user, not a bystander. A few years after the letter, Berkshire Hathaway sold long-dated put options on stock indices, collecting about <b>$4.9 billion</b> in premiums up front, and explained in later letters that it was comfortable because the contracts were few, mispriced in its favour, and needed little collateral. That fits his own test: he wasn't against derivatives, but against leverage, interconnection and positions nobody can see.</div>
 
-  <h2 id="s5"><span class="n">Part 5</span>When derivatives blew up</h2>
+  <h2 id="s5"><span class="n">Part 6</span>When derivatives blew up</h2>
   <p class="t">Three big episodes show the failure modes Buffett named. In each, derivatives did exactly what they were designed to do until conditions turned, and the leverage and interconnection that made them powerful made the fallout spread.</p>
 
   <div class="cards rv">
@@ -216,7 +257,7 @@
 
   <div class="note warn"><b class="h">The pattern, not the products</b>Note what's common across all of these: the derivative worked as intended in calm times and masked a build-up of risk. The problem each time was a large, leveraged, interconnected position whose true size and fragility were hard to see from outside, exactly the "latent, potentially lethal" danger Buffett described. Used to hedge a real exposure, these same contracts are routine and useful. The danger lives in scale, leverage and opacity, not in the idea of a derivative.</div>
 
-  <h2 id="s6"><span class="n">Part 6</span>After 2008: the clearing house</h2>
+  <h2 id="s6"><span class="n">Part 7</span>After 2008: the clearing house</h2>
   <p class="t">The AIG rescue showed the core problem: when big firms trade derivatives directly with each other, everyone is exposed to everyone, and no one can see the whole web. So in September 2009 the G20 leaders agreed that standard OTC derivatives should be <b>centrally cleared</b>, traded on platforms where possible, and reported to regulators, with tougher capital rules for the rest. The US wrote it into the <b>Dodd-Frank Act</b> in 2010; Europe followed.</p>
   <p class="t">A <b>clearing house</b>, or central counterparty, steps into the middle of every trade: it becomes the buyer to every seller and the seller to every buyer. Each member posts <b>collateral</b> up front and settles gains and losses with it every day, so losses can't quietly pile up the way they did at AIG. If a member fails, its collateral and a shared default fund absorb the loss before anyone else is hit.</p>
 
@@ -229,7 +270,7 @@
     <figcaption>Schematic. Central clearing doesn't remove risk; it gathers it in one place, behind layers of collateral and capital. That makes the clearing houses themselves "too important to fail," which is why regulators now treat them as critical infrastructure.</figcaption>
   </figure>
 
-  <h2 id="s7"><span class="n">Part 7</span>Open interest</h2>
+  <h2 id="s7"><span class="n">Part 8</span>Open interest</h2>
   <p class="t">One number tells you how big and how active a derivatives market has become: <b>open interest</b>. It's the total count of contracts that are currently <b>open</b>, meaning entered into and not yet closed out, settled or expired. Every open contract has a buyer on one side and a seller on the other, so it measures the stack of live obligations between market participants.</p>
   <p class="t">Open interest isn't the same as volume. <b>Volume</b> counts how many contracts changed hands in a day, including ones opened and closed the same day; <b>open interest</b> counts how many remain outstanding at the end of it. A single contract can trade many times (adding to volume) without changing open interest, because it's just passing between hands. Open interest only moves when a <b>new</b> contract is created or an existing one is <b>closed</b>. Try it.</p>
 
@@ -269,6 +310,8 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
   <ul class="sources">
+    <li>Exchange-traded versus over-the-counter derivatives, and the 2009 G20 move to central clearing of standard OTC contracts: <a href="https://www.bis.org/publ/otc_hy2512.htm" target="_blank" rel="noopener">Bank for International Settlements</a> and the <a href="https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/FuturesMarketBasics/index.htm" target="_blank" rel="noopener">CFTC</a>.</li>
+    <li>OTC stock tiers (OTCQX, OTCQB, Pink) and their standards: <a href="https://www.otcmarkets.com/files/OTCQX_Rules_for_U.S._Companies.pdf" target="_blank" rel="noopener">OTC Markets Group, OTCQX rules</a> and <a href="https://www.otcmarkets.com/files/OTCQB_Standards.pdf" target="_blank" rel="noopener">OTCQB standards</a>. The Expert Market and the SEC's amended Rule 15c2-11: <a href="https://www.sec.gov/rules/final/2020/34-89891.pdf" target="_blank" rel="noopener">SEC final rule (2020)</a>. Pump-and-dump schemes in OTC microcap stocks: <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/microcap-fraud" target="_blank" rel="noopener">SEC, Investor.gov</a>. US cannabis operators trading OTC because of federal illegality: company filings and Reuters reporting.</li>
     <li>Definitions of futures, options and swaps, hedging, margin and open interest: <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group education</a> and the <a href="https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm" target="_blank" rel="noopener">CFTC glossary</a>.</li>
     <li>OTC derivatives at end-June 2025: notional of about $846 trillion, gross market value of $21.8 trillion, gross credit exposure of about $3.0 trillion: <a href="https://www.bis.org/publ/otc_hy2512.htm" target="_blank" rel="noopener">Bank for International Settlements</a> and <a href="https://www.isda.org/a/oSdgE/Key-trends-in-the-size-and-composition-of-OTC-derivatives-markets-in-the-first-half-of-2025.pdf" target="_blank" rel="noopener">ISDA</a>.</li>
     <li>Exchange-traded volume of 119.3 billion contracts in 2025 and year-end open interest of about 1.5 billion: <a href="https://www.fia.org/fia/articles/etd-volume-december-2025" target="_blank" rel="noopener">FIA</a>.</li>
@@ -286,7 +329,7 @@
 <footer>
   <div class="in">
     <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
-    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
     <div><h5>Read</h5><p><a href="#s2">The option payoff chart</a><br><a href="#s5">When derivatives blew up</a><br><a href="#s6">The clearing house</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
   </div>
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
