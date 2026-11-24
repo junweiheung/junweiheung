@@ -437,7 +437,7 @@ window.BOTTLENECK = {
       kicker: "Explainer",
       topic: "Asset bubbles",
       category: "Economic history",
-      date: "2026-11-26",
+      date: "2026-11-24",
       readMins: 14,
       dek: "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
       summary: "The post-war miracle, the Plaza Accord, the land-and-share feedback loop, the burst, zombie loans and QE",

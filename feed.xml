@@ -6,15 +6,7 @@
   <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Explainers on the companies and industries the world can't do without.</description>
   <language>en-sg</language>
-  <lastBuildDate>Thu, 26 Nov 2026 01:00:00 GMT</lastBuildDate>
-  <item>
-    <title>The Biggest Bubble in History: Japan&apos;s Lost Decades</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/japan-bubble.html</link>
-    <guid isPermaLink="false">bottleneck-japan-bubble</guid>
-    <pubDate>Thu, 26 Nov 2026 01:00:00 GMT</pubDate>
-    <category>Asset bubbles</category>
-    <description>By 1989 Japan was the world&apos;s second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo&apos;s Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.</description>
-  </item>
+  <lastBuildDate>Tue, 24 Nov 2026 01:00:00 GMT</lastBuildDate>
   <item>
     <title>What Happens When You Press Send: Inside an AI Answer</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/inference.html</link>
@@ -22,6 +14,14 @@
     <pubDate>Tue, 24 Nov 2026 01:00:00 GMT</pubDate>
     <category>AI infrastructure</category>
     <description>Every chatbot reply is a short trip through a data centre: tokenised, routed, batched, read in one burst and written one token at a time. Follow one message along that path, see why mixture-of-experts models change the arithmetic, and why Groq and Taalas bet on opposite chips to make it faster.</description>
+  </item>
+  <item>
+    <title>The Biggest Bubble in History: Japan&apos;s Lost Decades</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/japan-bubble.html</link>
+    <guid isPermaLink="false">bottleneck-japan-bubble</guid>
+    <pubDate>Tue, 24 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Asset bubbles</category>
+    <description>By 1989 Japan was the world&apos;s second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo&apos;s Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.</description>
   </item>
   <item>
     <title>Three Companies, One Industry: AMD vs Intel vs Nvidia</title>

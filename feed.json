@@ -13,28 +13,6 @@
   "language": "en-SG",
   "items": [
     {
-      "id": "japan-bubble",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/japan-bubble.html",
-      "title": "The Biggest Bubble in History: Japan's Lost Decades",
-      "summary": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
-      "content_text": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
-      "date_published": "2026-11-26T09:00:00+08:00",
-      "tags": [
-        "Asset bubbles"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png",
-      "_bottleneck": {
-        "short": "Japan's lost decades",
-        "topic": "Asset bubbles",
-        "readMins": 14,
-        "stat": {
-          "big": "38,915",
-          "text": "The Nikkei 225's peak, reached at the end of December 1989. One broker predicted it would hit 80,000 by 1995; instead it fell about 60% by 1992."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png"
-      }
-    },
-    {
       "id": "inference",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/inference.html",
       "title": "What Happens When You Press Send: Inside an AI Answer",
@@ -54,6 +32,28 @@
           "text": "Read from memory for every token a 70-billion-weight model writes, at one byte per weight."
         },
         "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/inference.png"
+      }
+    },
+    {
+      "id": "japan-bubble",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/japan-bubble.html",
+      "title": "The Biggest Bubble in History: Japan's Lost Decades",
+      "summary": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
+      "content_text": "By 1989 Japan was the world's second-largest economy, home to 32 of the 50 biggest companies, with land under Tokyo's Imperial Palace said to be worth more than all of California. Then the bubble burst. Here is how post-war Japan rose so fast, how a feedback loop between land and shares inflated the biggest asset bubble in history, and why the fall became two lost decades.",
+      "date_published": "2026-11-24T09:00:00+08:00",
+      "tags": [
+        "Asset bubbles"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png",
+      "_bottleneck": {
+        "short": "Japan's lost decades",
+        "topic": "Asset bubbles",
+        "readMins": 14,
+        "stat": {
+          "big": "38,915",
+          "text": "The Nikkei 225's peak, reached at the end of December 1989. One broker predicted it would hit 80,000 by 1995; instead it fell about 60% by 1992."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/japan-bubble.png"
       }
     },
     {
