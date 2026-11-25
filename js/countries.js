@@ -8,7 +8,9 @@
  * are drawn as clickable marker dots at their coordinates, shaded like the rest.
  */
 (function () {
-  const $ = (id) => document.getElementById(id);
+  // On the All explainers page the map lives in the Countries view, whose ids carry a prefix
+  const PREFIX = (document.getElementById("viewCountries") || { dataset: {} }).dataset.prefix || "";
+  const $ = (id) => document.getElementById(PREFIX + id);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const DATA = (window.BOTTLENECK_COUNTRIES || { countries: {} }).countries;
   const svgEl = $("worldmap");

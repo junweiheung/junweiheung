@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All explainers — Bottleneck by Jun Wei</title>
-<meta name="description" content="Every Bottleneck explainer ever released, newest first, as a list or as a map of how the topics connect.">
+<meta name="description" content="Every Bottleneck explainer in one place: a list, a map of how the topics connect, a map of the companies that appear across stories, and a country map.">
 <meta name="author" content="Jun Wei Heung">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +24,6 @@
       <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
       <div class="sheet">
         <a href="explainers.html">Home</a>
-        <a href="companies.html">Companies</a>
-        <a href="countries.html">Countries</a>
         <a href="all.html">All explainers</a>
         <a class="base" href="../index.html">← Jun Wei</a>
       </div>
@@ -39,13 +37,15 @@
       <div class="kicker">The series <span>· Every explainer</span></div>
       <h1>All explainers</h1>
     </div>
-    <p class="dek">Every Bottleneck explainer ever released, newest first. Switch to the map to see how the topics connect, from savers through markets to the companies and industries they fund.</p>
+    <p class="dek">Every Bottleneck explainer in one place. Read them as a list, newest first, or explore them three ways: by topic, by the companies that turn up across stories, and by country.</p>
   </div>
 
   <div class="label" id="all">All explainers <span id="count"></span></div>
   <div class="views" id="viewTabs" role="tablist" aria-label="View">
     <button type="button" role="tab" id="tabList" aria-controls="viewList" aria-selected="true">List</button>
-    <button type="button" role="tab" id="tabMap" aria-controls="viewMap" aria-selected="false">Map</button>
+    <button type="button" role="tab" id="tabMap" aria-controls="viewMap" aria-selected="false">Topics</button>
+    <button type="button" role="tab" id="tabCompanies" aria-controls="viewCompanies" aria-selected="false">Companies</button>
+    <button type="button" role="tab" id="tabCountries" aria-controls="viewCountries" aria-selected="false">Countries</button>
   </div>
 
   <div id="viewList" role="tabpanel" aria-labelledby="tabList">
@@ -70,6 +70,56 @@
       </div>
     </div>
     <p class="cv-hint" id="cvHint" aria-live="polite">Hover an explainer to see what it connects to: links in the text, shared companies, or a related topic.</p>
+  </section>
+
+  <!--
+    The company and country views reuse js/explainers.js and js/countries.js, loaded by js/all.js the
+    first time each tab opens. Their element ids carry the prefix in data-prefix so they don't clash
+    with the Topics view. Companies come from the `chain` of each explainer in articles.js; countries
+    from js/countries-data.js.
+  -->
+  <section id="viewCompanies" data-prefix="co-" role="tabpanel" aria-labelledby="tabCompanies" hidden>
+    <div class="map-intro">
+      <h3>Who shows up where</h3>
+      <p>Each black box is a category, the same ones the explainers are grouped by. The <b style="color:var(--blue)">blue</b> companies show up in more than one of them: those are the ones holding different industries together. Click a category to pop out every company in it; click it again to close. Click a company to see where it appears. <span class="mapcount" id="co-mapCount"></span></p>
+    </div>
+    <button type="button" class="expand" id="co-mapExpand" aria-pressed="false" hidden></button>
+    <div class="mapbox">
+      <div class="graphwrap">
+        <svg id="co-graph" role="img" aria-label="Network map of companies and the value-chain steps they appear in"></svg>
+        <div class="zoomctl" role="group" aria-label="Zoom the company map">
+          <button type="button" id="co-zoomIn" aria-label="Zoom in">+</button>
+          <button type="button" id="co-zoomOut" aria-label="Zoom out">−</button>
+          <button type="button" id="co-zoomReset" aria-label="Reset zoom">⟲</button>
+        </div>
+      </div>
+      <div class="panel" id="co-panel" aria-live="polite"></div>
+    </div>
+    <div class="legend">
+      <span><i class="sq" style="background:#111"></i>Category (or, inside an explainer, a value-chain step)</span>
+      <span><i style="background:var(--gold2)"></i>Company</span>
+      <span><i style="background:var(--blue)"></i>Company in several explainers or steps</span>
+    </div>
+  </section>
+
+  <section id="viewCountries" data-prefix="ct-" role="tabpanel" aria-labelledby="tabCountries" hidden>
+    <div class="map-intro">
+      <h3>Where the stories are</h3>
+      <p>Each country is shaded by the number of explainers about it, from empty to deep gold: pieces about one country’s economy or history, or about a company based there. Hover to see the count, click a shaded country to list its explainers. Scroll or pinch to zoom, drag to pan.</p>
+    </div>
+    <div class="mapbox">
+      <div class="graphwrap">
+        <svg id="ct-worldmap" role="img" aria-label="World map shaded by how many explainers cover each country"></svg>
+        <div class="maptip" id="ct-maptip" hidden></div>
+        <div class="zoomctl" role="group" aria-label="Zoom the country map">
+          <button type="button" id="ct-zoomIn" aria-label="Zoom in">+</button>
+          <button type="button" id="ct-zoomOut" aria-label="Zoom out">−</button>
+          <button type="button" id="ct-zoomReset" aria-label="Reset zoom">⟲</button>
+        </div>
+      </div>
+      <div class="panel" id="ct-panel" aria-live="polite"></div>
+    </div>
+    <div class="maplegend" id="ct-maplegend"></div>
   </section>
 </main>
 

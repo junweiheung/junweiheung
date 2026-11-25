@@ -25,7 +25,20 @@ window.BOTTLENECK_COUNTRIES = {
       articles: [
         { title: "Who owns Anthropic? Inside the $1.5 trillion IPO", href: "explainers/anthropic-ipo.html" },
         { title: "From a $2 stock to the trillion-dollar club: how AMD came back", href: "explainers/amd.html" },
-        { title: "The bank behind the currency market (CLS)", href: "explainers/cls.html" }
+        { title: "The bank behind the currency market (CLS)", href: "explainers/cls.html" },
+        { title: "One seesaw, two fears: how the Fed uses the bond market", href: "explainers/bond-market.html" },
+        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
+      ]
+    },
+    "Singapore": {
+      articles: [
+        { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" },
+        { title: "The saver's ladder: from fixed deposits to stocks", href: "explainers/risk-ladder.html" }
+      ]
+    },
+    "Germany": {
+      articles: [
+        { title: "The dark wizard: how Hjalmar Schacht paid for Hitler's rearmament", href: "explainers/schacht.html" }
       ]
     },
     "Japan": {

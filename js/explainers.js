@@ -29,9 +29,13 @@
       </a>`).join("");
   }
 
-  /* ---------- company map ---------- */
-  if (!$("graph")) return;
-  const panel = $("panel");
+  /* ---------- company map ----------
+     On the All explainers page the map sits in the Companies view, whose element ids carry a
+     prefix (data-prefix on #viewCompanies) so they don't clash with the other map views. */
+  const MAP_PREFIX = (document.getElementById("viewCompanies") || { dataset: {} }).dataset.prefix || "";
+  const m$ = (id) => document.getElementById(MAP_PREFIX + id);
+  if (!m$("graph")) return;
+  const panel = m$("panel");
   const HINT = `<p class="hint">Click a company on the map to see which explainers it appears in, what it does there, and what it keeps per dollar.</p>`;
   panel.innerHTML = HINT;
 
@@ -41,7 +45,7 @@
     (appearances[c] = appearances[c] || []).push({ a, step: s.step, margin: (a.margins || {})[c] });
   })));
   const coIds = Object.keys(appearances);
-  $("mapCount").textContent = `${coIds.length} companies · ${articles.length} explainer${articles.length === 1 ? "" : "s"}`;
+  m$("mapCount").textContent = `${coIds.length} companies · ${articles.length} explainer${articles.length === 1 ? "" : "s"}`;
 
   function showCompany(id) {
     const c = companies[id] || { name: id };
@@ -60,9 +64,9 @@
       ${peers.size ? `<p class="peers">Alongside: ${[...peers].map((p) => esc((companies[p] || { name: p }).name)).join(", ")}</p>` : ""}`;
   }
 
-  if (!window.d3) { $("graph").outerHTML = `<p class="panel">The map couldn't load (no internet connection?).</p>`; return; }
+  if (!window.d3) { m$("graph").outerHTML = `<p class="panel">The map couldn't load (no internet connection?).</p>`; return; }
 
-  const svg = d3.select("#graph");
+  const svg = d3.select(m$("graph"));
   let sim;
   // zoom/pan: everything is drawn inside `vp`, and d3.zoom transforms it.
   let vp = svg.append("g").attr("class", "vp");
@@ -73,9 +77,9 @@
   svg.call(zoom).on("dblclick.zoom", null);
   const zoomBy = (k) => svg.transition().duration(200).call(zoom.scaleBy, k);
   const zoomReset = () => svg.transition().duration(250).call(zoom.transform, d3.zoomIdentity);
-  $("zoomIn") && $("zoomIn").addEventListener("click", () => zoomBy(1.4));
-  $("zoomOut") && $("zoomOut").addEventListener("click", () => zoomBy(1 / 1.4));
-  $("zoomReset") && $("zoomReset").addEventListener("click", zoomReset);
+  m$("zoomIn") && m$("zoomIn").addEventListener("click", () => zoomBy(1.4));
+  m$("zoomOut") && m$("zoomOut").addEventListener("click", () => zoomBy(1 / 1.4));
+  m$("zoomReset") && m$("zoomReset").addEventListener("click", zoomReset);
   // which explainers each company appears in
   const artsOf = {};
   coIds.forEach((c) => { artsOf[c] = [...new Set(appearances[c].map((r) => r.a))]; });
@@ -88,7 +92,7 @@
   let showEvery = false;
   // categories the user has clicked open: their companies are drawn as bubbles
   const expanded = new Set();
-  const expandBtn = $("mapExpand");
+  const expandBtn = m$("mapExpand");
 
   /* Overview: one hub per category (matching the explainers list). A company links to
      every category it appears in; companies spanning 2+ categories are the bottlenecks
@@ -320,7 +324,7 @@
 
   // The map always shows the category overview; there is no per-explainer filter row.
   const mapFilter = "all";
-  if ($("mapChips")) $("mapChips").hidden = true;
+  if (m$("mapChips")) m$("mapChips").hidden = true;
   if (expandBtn) {
     // companies hidden by default: those in a single category AND a single explainer
     const hiddenCount = coIds.filter((c) => catsOf(c).length === 1 && artsOf[c].length === 1).length;

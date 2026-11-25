@@ -49,9 +49,12 @@
 .cv-board.cv-list .cv-out{display:block}
 
 /* List / Map switch on the All explainers page */
-.views{display:inline-flex;border:1px solid var(--rule);margin:16px 0 4px;font-family:var(--sans)}
+.views{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);margin:16px 0 4px;font-family:var(--sans);max-width:100%}
 .views button{font-family:var(--sans);font-size:12.5px;font-weight:600;background:none;border:0;padding:8px 18px;cursor:pointer;color:var(--ink2)}
 .views button+button{border-left:1px solid var(--rule)}
 .views button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 #viewMap{padding-top:12px}
 .cv-lede{font-family:var(--sans);font-size:14.5px;line-height:1.55;color:var(--ink2);max-width:72ch;margin:4px 0 14px}
+
+#viewCompanies,#viewCountries{padding-top:4px}
+.mapcount{display:block;margin-top:8px;font-size:13px;color:var(--muted);font-family:var(--sans)}
