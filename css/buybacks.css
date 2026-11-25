@@ -1,0 +1,64 @@
+/* Page-specific styles for the stock buybacks explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note.warn{border-left-color:var(--gold)}
+.note.warn b.h{color:#8a6414}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Segmented buttons ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- Part 1: buyback effect ---------- */
+.bb-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-family:var(--sans);font-size:13.5px;color:var(--ink2);margin-bottom:14px}
+.bb-row input[type=range]{width:260px;max-width:100%;accent-color:var(--ink)}
+.bb-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;font-family:var(--sans)}
+.bb-t{border:1px solid var(--rule);border-top:4px solid var(--c);padding:10px 12px;background:#fff;min-width:0}
+.bb-l{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;min-height:2.6em}
+.bb-a{display:block;font-size:20px;font-weight:800;color:var(--ink);margin:4px 0 2px}
+.bb-b{display:block;font-size:11.5px;color:var(--muted)}
+.bb-b em{font-style:normal;font-weight:700}
+.bb-b em.u{color:#2f7a4a}.bb-b em.d{color:#a3141f}
+.bb-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:14px 0 0}
+@media(max-width:760px){.bb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bb-t:last-child{grid-column:1/-1}.bb-l{min-height:0}}
+
+/* ---------- Part 2: rule cards and trading day ---------- */
+.rl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-family:var(--sans)}
+.rl-c{border:1px solid var(--rule);border-left:5px solid var(--c);padding:12px 14px;background:#fff}
+.rl-c > b{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.rl-c p{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--ink2)}
+@media(max-width:560px){.rl{grid-template-columns:minmax(0,1fr)}}
+.day{margin-top:18px;font-family:var(--sans)}
+.day-bar{position:relative;height:18px;background:#2f7a4a;border-radius:3px;overflow:hidden}
+.day-x{position:absolute;top:0;bottom:0;background:#a3141f}
+.day-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:5px}
+
+/* ---------- Part 2: pace calculator ---------- */
+.pc-ctl{margin-bottom:14px}
+.pc-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-family:var(--sans)}
+.pc-nums div{border-top:2px solid var(--ink);padding-top:8px}
+.pc-nums b{display:block;font-size:24px;font-weight:800;color:var(--ink)}
+.pc-nums span{font-size:12px;color:var(--muted)}
+.pc-days{display:flex;flex-wrap:wrap;gap:3px;margin-top:16px;align-items:center}
+.pc-days i{width:11px;height:11px;border-radius:2px;background:#a3141f}
+.pc-days em{font-family:var(--sans);font-style:normal;font-size:12px;font-weight:700;color:var(--ink2);margin-left:6px}
+.pc-note{font-family:var(--sans);font-size:12px;color:var(--muted);margin:8px 0 0}
+@media(max-width:520px){.pc-nums b{font-size:19px}}
+
+/* ---------- Part 4: blackout strip ---------- */
+.win{font-family:var(--sans);padding-bottom:34px;position:relative}
+.win-cells{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:2px}
+.win-cells i{height:26px;border-radius:2px}
+.win-cells .w-open{background:#2f7a4a}
+.win-cells .w-shut{background:#d9d5cc}
+.win-cells .w-res{box-shadow:inset 0 0 0 2px var(--ink)}
+.win-lab{position:relative;height:0}
+.win-lab span{position:absolute;top:6px;font-size:11.5px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--muted);padding-left:4px}
+.win-lab span.r{top:20px}
+.win-key{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--sans);font-size:12.5px;color:var(--ink2)}
+.win-key i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.win-key .w-open{background:#2f7a4a}.win-key .w-shut{background:#d9d5cc}

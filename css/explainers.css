@@ -39,6 +39,15 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,9vw,120px);line
 /* ---------- Explore: company + country map cards ---------- */
 .explore{display:grid;grid-template-columns:1fr;gap:20px;padding:30px 0 64px}
 @media(min-width:760px){.explore{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.explore{grid-template-columns:repeat(3,1fr)}}
+.xcard .nd{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--gold2)}
+.xcard .nd.n1{left:30px;top:56px}.xcard .nd.n2{left:110px;top:24px;background:var(--blue)}.xcard .nd.n3{left:190px;top:72px;background:#7fbf8a}.xcard .nd.n4{left:250px;top:30px;background:#c2412d}
+.xcard .ln{position:absolute;height:1px;background:#6a6356;transform-origin:left}
+.xcard .ln.a{left:36px;top:62px;width:89px;transform:rotate(-23deg)}
+.xcard .ln.b{left:116px;top:30px;width:98px;transform:rotate(29deg)}
+.xcard .ln.c{left:196px;top:78px;width:73px;transform:rotate(-41deg);border-top:1px dashed var(--blue2);background:none}
+.xcard.connections:hover .nd{animation:xdot 1.6s ease-in-out infinite}
+.xcard.connections:hover .nd.n2{animation-delay:.2s}.xcard.connections:hover .nd.n3{animation-delay:.4s}.xcard.connections:hover .nd.n4{animation-delay:.6s}
 .xcard{text-decoration:none;color:var(--paper);background:#0d0d0f;border:1px solid var(--ink);display:flex;flex-direction:column;min-height:260px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
 .xcard:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.22)}
 .xcard-art{position:relative;height:120px;background:#14120e;border-bottom:1px solid #2a2724;overflow:hidden}

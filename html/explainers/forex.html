@@ -40,7 +40,7 @@
 
 <div class="byline">
   <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
-  <div>November 24, 2026 · 11 min read</div>
+  <div>November 24, 2026 · 14 min read</div>
   <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
 </div>
 
@@ -50,8 +50,9 @@
     <a href="#s1">1. Who trades</a>
     <a href="#s2">2. Reading a pair</a>
     <a href="#s3">3. The pull, and the catch</a>
-    <a href="#s4">4. When a currency breaks</a>
-    <a href="#s5">5. Reading the crowd</a>
+    <a href="#sreg">4. Float, manage or peg</a>
+    <a href="#s4">5. When a currency breaks</a>
+    <a href="#s5">6. Reading the crowd</a>
     <a href="#sources">Sources</a>
   </aside>
 
@@ -60,9 +61,10 @@
   <div class="keys rv">
     <h3>Key findings</h3>
     <ul>
-      <li>Foreign exchange is the world’s <b>largest market</b>: about <b>$9.6 trillion a day</b> in April 2025, up 28% in three years, by the Bank for International Settlements’ count. It has no central exchange. Big dealer banks quote prices to each other and to everyone else.</li>
-      <li>The <b>US dollar</b> is on one side of <b>89%</b> of all trades. <b>London</b> handles 38% of the world’s turnover, and <b>Singapore</b> 11.8%, a bigger share than ever.</li>
-      <li>Every trade is a <b>pair</b>: buying one currency means selling another. Prices move in <b>pips</b>, usually a hundredth of a cent, which is why retail traders use <b>leverage</b>. At 20:1, the cap for Singapore retail traders, a 5% move against you wipes out your whole deposit.</li>
+      <li>Foreign exchange is the world’s <b>largest market</b>: about <b>$9.6 trillion<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup> a day</b> in April 2025, up 28% in three years, by the Bank for International Settlements’ count. It has no central exchange. Big dealer banks quote prices to each other and to everyone else.</li>
+      <li>The <b>US dollar</b> is on one side of <b>89%</b> of all trades. <b>London</b> handles 38%<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> of the world’s turnover, and <b>Singapore</b> 11.8%, a bigger share than ever.</li>
+      <li>Every trade is a <b>pair</b>: buying one currency means selling another. Prices move in <b>pips</b>, usually a hundredth of a cent, which is why retail traders use <b>leverage</b>. At 20:1, the cap for Singapore retail traders<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>, a 5% move against you wipes out your whole deposit.</li>
+      <li>Every country chooses how its currency is set: left to the market, <b>managed</b> within a range, or <b>pegged</b>. The <b>impossible trinity</b> says it can have only two of a fixed exchange rate, free movement of capital and its own interest rates. Hong Kong gives up its own rates; the US gives up a stable rate; China keeps controls on capital.</li>
       <li>When a fixed rate breaks, the move can be enormous. In January 2015 the Swiss franc jumped by up to about <b>30%</b> in minutes, leaving traders owing more than they had deposited and pushing a major broker to an emergency rescue.</li>
     </ul>
   </div>
@@ -112,6 +114,25 @@
   <p class="t">A currency is always priced in another currency, so forex trades in <b>pairs</b>. In <b>EUR/USD 1.1600</b>, the euro is the <b>base</b> currency and the dollar the <b>quote</b> currency: one euro costs 1.16 dollars. Buying EUR/USD means buying euros and paying in dollars; selling it means the reverse. Every trade is therefore long one currency and short another.</p>
   <p class="t">Dealers show two prices, a lower <b>bid</b> they will pay and a higher <b>ask</b> they will sell at. The gap is the <b>spread</b>, and for most retail traders it is the main cost: many brokers charge no separate commission, because they are paid in the spread instead. Price moves are counted in <b>pips</b>, the fourth decimal place for most pairs (0.0001) and the second for yen pairs (0.01), because a yen is worth so little. Trades come in <b>lots</b>: a standard lot is 100,000 units of the base currency, a mini lot 10,000 and a micro lot 1,000, and many brokers allow sizes in between.</p>
 
+  <p class="t">The bid and ask are not peculiar to currencies. Every market that matches buyers with sellers, from a stock exchange to a crypto exchange, works off the same two numbers. The <b>bid</b> is the highest price any buyer is currently willing to pay; the <b>ask</b> (or offer) is the lowest price any seller is willing to accept. A <b>market order</b> trades immediately against them: a market buy pays the best ask, a market sell receives the best bid. On an exchange, all the waiting orders sit in a public <b>order book</b>; in forex, dealers quote their own, but the logic is the same.</p>
+
+  <figure class="fig rv" id="bookFig">
+    <div class="ft">What a market order does</div>
+    <div class="fs">A simplified order book. Pick a market, a side and a size</div>
+    <div class="px-ctl bk-ctl">
+      <div class="px-row"><span class="px-l">Market</span><span class="seg" id="bookMk" role="group" aria-label="Market"><button type="button" data-v="stock" aria-pressed="true">Stock</button><button type="button" data-v="forex" aria-pressed="false">Forex</button><button type="button" data-v="crypto" aria-pressed="false">Crypto</button></span></div>
+      <div class="px-row"><span class="px-l">Order</span><span class="seg" id="bookSide" role="group" aria-label="Order side"><button type="button" data-v="buy" aria-pressed="true">Market buy</button><button type="button" data-v="sell" aria-pressed="false">Market sell</button></span></div>
+      <div class="px-row"><span class="px-l">Size</span><span class="seg" id="bookSize" role="group" aria-label="Order size"><button type="button" data-i="0" aria-pressed="true">Small</button><button type="button" data-i="1" aria-pressed="false">Medium</button><button type="button" data-i="2" aria-pressed="false">Large</button></span></div>
+    </div>
+    <div class="bk">
+      <div class="bk-book" id="bookRows"></div>
+      <div class="bk-out" id="bookOut" aria-live="polite"></div>
+    </div>
+    <figcaption>Illustrative prices and sizes, not live data. Real books have many more levels and change many times a second. In forex, retail brokers usually quote a single bid and ask rather than showing a book.</figcaption>
+  </figure>
+
+  <p class="t">Two things follow. First, the <b>spread is a cost</b> you pay every time you cross it: buy at the ask and you could only sell straight back at the bid. Second, a big market order can <b>run through several price levels</b>, filling at worse prices as it goes, which traders call <b>slippage</b>. The alternative is a <b>limit order</b>: you name your price, say a buy at the bid or below, and wait in the book for someone to trade with you. You may get a better price, or you may not get filled at all.</p>
+
   <div class="note"><b class="h">Majors, crosses and exotics</b>Traders sort pairs into three groups. <b>Majors</b> pair the US dollar with another big, heavily traded currency: the euro, yen, pound, Swiss franc, Canadian, Australian or New Zealand dollar. <b>Crosses</b> leave the dollar out entirely, such as EUR/JPY or GBP/JPY; they are sometimes loosely called “minors”. <b>Exotics</b> pair the dollar or euro with a smaller or emerging-market currency, such as USD/THB or USD/SGD, and usually carry wider spreads.</div>
 
   <figure class="fig rv" id="pairFig">
@@ -146,19 +167,49 @@
 
   <p class="pull">Leverage turns half a percent into a living. It also turns half a percent into a wipe-out.</p>
 
-  <h2 id="s4"><span class="n">Part 4</span>When a currency breaks</h2>
+  <h2 id="sreg"><span class="n">Part 4</span>Float, manage or peg</h2>
+  <p class="t">Every currency price in this story is set by the market, but the market works inside rules each government chooses. Broadly there are three choices, and most of the world sits somewhere along the line between them.</p>
+
+  <div class="reg rv">
+    <div class="reg-c" style="--c:#2463d6"><div class="reg-k">Free float</div><h3>The market decides</h3><p>The rate moves with supply and demand, and the central bank rarely steps in. The US dollar, euro, yen and pound work this way. The price can swing a lot, but no one has a level to defend.</p></div>
+    <div class="reg-c" style="--c:#b8892b"><div class="reg-k">Managed float</div><h3>The market decides, within limits</h3><p>The central bank lets the rate move but leans against it. <b>Singapore</b> steers its dollar within an undisclosed band against a basket of trading partners’ currencies. <b>China</b> lets the yuan trade up to 2% either side of a reference rate it sets each morning.</p></div>
+    <div class="reg-c" style="--c:#a3141f"><div class="reg-k">Fixed or pegged</div><h3>The government decides</h3><p>The rate is tied to another currency and defended with reserves. The <b>Hong Kong</b> dollar has been held between 7.75 and 7.85<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup> to the US dollar since 2005, under a link that began in 1983; Saudi Arabia holds the riyal at 3.75.</p></div>
+  </div>
+
+  <p class="t">Why not just pick the best of everything? Because of a constraint economists call the <b>impossible trinity</b>, or trilemma, worked out by Robert Mundell and Marcus Fleming in the 1960s. A country would like three things: a <b>stable exchange rate</b>, <b>free movement of capital</b> in and out, and <b>its own interest rates</b> set for its own economy. It can have any two, but not all three. Pick a side of the triangle to see why.</p>
+
+  <figure class="fig rv" id="triFig">
+    <div class="ft">The impossible trinity</div>
+    <div class="fs">Choose two goals; the third has to give</div>
+    <div class="tri">
+      <svg viewBox="0 0 340 300" id="triSvg" role="img" aria-label="A triangle with three goals at its corners: a fixed exchange rate, free capital flows and independent monetary policy. Each side is one choice of two goals."></svg>
+      <div class="tri-out">
+        <span class="seg" id="triPick" role="group" aria-label="Which two goals">
+          <button type="button" data-i="0" aria-pressed="true">Fixed rate + open capital</button><button type="button" data-i="1" aria-pressed="false">Open capital + own rates</button><button type="button" data-i="2" aria-pressed="false">Fixed rate + own rates</button>
+        </span>
+        <div class="tri-card" id="triCard" aria-live="polite"></div>
+      </div>
+    </div>
+    <figcaption>Simplified: real currencies sit between the corners, trading a bit of one goal for a bit of another. Examples as of 2025–26.</figcaption>
+  </figure>
+
+  <p class="t">The logic is arbitrage. If Hong Kong set its interest rates well below America’s while letting money move freely, investors would sell Hong Kong dollars to earn the higher US rate, pushing the currency below its peg. To hold the peg, Hong Kong has to let its rates follow the Federal Reserve’s. Block the money from leaving, as China does, and the rates can differ. Let the currency float, as America does, and the rate absorbs the difference instead.</p>
+  <p class="t"><b>Singapore</b> is a useful twist, because it is often put in the wrong box. With capital moving freely and trade more than three times the size of its economy, the exchange rate matters more to prices than interest rates do. So the Monetary Authority of Singapore uses the <b>exchange rate itself</b><sup class="fn"><a href="#src-7" id="ref-7">7</a></sup> as its policy tool, steering the Singapore dollar within its band, and accepts that domestic interest rates are largely set by global ones. It keeps open capital and control of the currency, and gives up its own interest rates, the same trade Hong Kong makes but with a moving band instead of a fixed line.</p>
+  <p class="t">The trinity also explains the crises in the next part. Each one was a country trying to hold a fixed rate with open capital while its own economy needed something different. Malaysia’s answer in 1998 was to take the third route: it fixed the ringgit and shut the door on short-term capital, as <a href="asian-crisis.html#s8">the Asian crisis explainer</a> describes.</p>
+
+  <h2 id="s4"><span class="n">Part 5</span>When a currency breaks</h2>
   <p class="t">Most of the time currencies drift. The violent moves come when a government has <b>fixed</b> its rate and the market decides it can’t hold. Then the trade becomes one-sided: if the peg holds, a short seller loses a little; if it breaks, the seller wins big. Three episodes show the pattern, and its mirror image.</p>
 
   <div class="brk rv">
-    <div class="brk-c"><div class="brk-y">1992 · Sterling</div><h3>Breaking the Bank of England</h3><p>Britain had tied the pound to the German mark in Europe’s Exchange Rate Mechanism, at a rate many traders thought too high. George Soros’s Quantum Fund bet billions against it. On 16 September, “Black Wednesday”, the Bank of England raised rates and bought pounds, then gave up; Britain left the mechanism that evening. Soros’s fund was reported to have made about <b>$1 billion</b>.</p></div>
-    <div class="brk-c"><div class="brk-y">1997 · Thai baht</div><h3>The peg that started a crisis</h3><p>Thailand held the baht near 25 to the dollar while its foreign borrowing piled up. Hedge funds, Soros’s among them, sold the baht short; the central bank spent most of its usable reserves defending it, then floated it on 2 July. The baht soon lost about half its value and the panic spread across Asia. <a href="asian-crisis.html#s2">The full story is in the Asian crisis explainer.</a></p></div>
-    <div class="brk-c"><div class="brk-y">2015 · Swiss franc</div><h3>The floor that vanished</h3><p>Here the leveraged traders were on the wrong side. Since 2011 the Swiss National Bank had capped the franc at 1.20 per euro, and many retail traders bet the cap would hold. On 15 January the bank dropped it without warning. The franc jumped by up to about <b>30%</b> within minutes, prices skipped past stop-loss orders, and clients of the broker FXCM ended up owing it about <b>$225 million</b>. FXCM needed a $300 million rescue loan from Leucadia to stay in business.</p></div>
+    <div class="brk-c"><div class="brk-y">1992 · Sterling</div><h3>Breaking the Bank of England</h3><p>Britain had tied the pound to the German mark in Europe’s Exchange Rate Mechanism, at a rate many traders thought too high. George Soros’s Quantum Fund bet billions against it. On 16 September, “Black Wednesday”, the Bank of England raised rates and bought pounds, then gave up; Britain left the mechanism that evening. Soros’s fund was reported to have made about <b>$1 billion</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>.</p></div>
+    <div class="brk-c"><div class="brk-y">1997 · Thai baht</div><h3>The peg that started a crisis</h3><p>Thailand held the baht near 25 to the dollar while its foreign borrowing piled up. Hedge funds, Soros’s among them, sold the baht short; the central bank spent most of its usable reserves defending it, then floated it on 2 July<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup>. The baht soon lost about half its value and the panic spread across Asia. <a href="asian-crisis.html#s2">The full story is in the Asian crisis explainer.</a></p></div>
+    <div class="brk-c"><div class="brk-y">2015 · Swiss franc</div><h3>The floor that vanished</h3><p>Here the leveraged traders were on the wrong side. Since 2011 the Swiss National Bank had capped the franc at 1.20<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup> per euro, and many retail traders bet the cap would hold. On 15 January the bank dropped it without warning. The franc jumped by up to about <b>30%</b> within minutes, prices skipped past stop-loss orders, and clients of the broker FXCM ended up owing it about <b>$225 million</b>. FXCM needed a $300 million rescue loan from Leucadia to stay in business.</p></div>
   </div>
 
   <p class="t">The franc is the lesson the brochures skip. A stop-loss order only works if there is a price to fill it at; in a gap, there isn’t. With 50:1 leverage, a 30% move is not a loss of the deposit but fifteen times the deposit. Since then many regulators, including ESMA, have required brokers to offer <b>negative-balance protection</b>, so retail clients can’t lose more than they put in.</p>
 
-  <h2 id="s5"><span class="n">Part 5</span>Reading the crowd</h2>
-  <p class="t">Because forex has no central exchange, nobody sees the whole order book. Traders look for clues in <b>positioning</b>: who is long and who is short. One popular retail source is Myfxbook’s <a href="https://www.myfxbook.com/community/outlook" target="_blank" rel="noopener">Community Outlook</a>, which shows, for each pair, what share of the retail accounts linked to the site are long or short, along with their average entry prices.</p>
+  <h2 id="s5"><span class="n">Part 6</span>Reading the crowd</h2>
+  <p class="t">Because forex has no central exchange, nobody sees the whole order book. Traders look for clues in <b>positioning</b>: who is long and who is short. One popular retail source is Myfxbook’s <a href="https://www.myfxbook.com/community/outlook" target="_blank" rel="noopener">Community Outlook</a><sup class="fn"><a href="#src-9" id="ref-9">9</a></sup>, which shows, for each pair, what share of the retail accounts linked to the site are long or short, along with their average entry prices.</p>
 
   <figure class="fig rv" id="sentFig">
     <div class="ft">How retail sentiment is usually read</div>
@@ -176,13 +227,15 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
   <ul class="sources">
-    <li>Daily turnover of $9.6 trillion in April 2025, up 28% from 2022; FX swaps about $4 trillion a day; spot up 42%; the dollar on one side of 89.2% of trades, the euro 28.9%, yen 16.8%, sterling 10.2%, renminbi 8.5%; Singapore 11.8% of turnover: <a href="https://www.bis.org/statistics/rpfx25_fx.htm" target="_blank" rel="noopener">BIS, OTC foreign exchange turnover in April 2025</a> and <a href="https://www.bis.org/press/p250930.htm" target="_blank" rel="noopener">BIS press release, 30 September 2025</a>. The BIS later revised the total to $9.5 trillion in its <a href="https://www.bis.org/publ/qtrpdf/r_qt2512b.htm" target="_blank" rel="noopener">December 2025 Quarterly Review</a>.</li>
-    <li>The UK’s 38% share of global turnover (37.8%): <a href="https://www.bankofengland.co.uk/statistics/bis-survey/2025" target="_blank" rel="noopener">Bank of England, 2025 survey results</a>.</li>
-    <li>Retail leverage caps: 20:1 for major pairs in Singapore from October 2019 (<a href="https://www.financemagnates.com/forex/regulation/fx-leverage-cut-to-201-in-singapore/" target="_blank" rel="noopener">Finance Magnates</a>, reporting the MAS rules); 30:1 for majors in the EU and the 74–89% share of retail accounts losing money: <a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors" target="_blank" rel="noopener">ESMA, March 2018</a>; 50:1 for majors in the US: National Futures Association and CFTC retail forex rules.</li>
-    <li>Black Wednesday, 16 September 1992, and Soros’s reported profit of about $1 billion: <a href="https://www.bankofengland.co.uk/museum" target="_blank" rel="noopener">Bank of England Museum</a> and contemporary reporting.</li>
-    <li>The baht float of 2 July 1997: see the sources of <a href="asian-crisis.html#sources">the Asian crisis explainer</a>.</li>
-    <li>The Swiss National Bank’s removal of the 1.20 floor on 15 January 2015: <a href="https://www.snb.ch/en/" target="_blank" rel="noopener">Swiss National Bank</a>; FXCM’s client negative balances of about $225 million and the $300 million Leucadia loan: Reuters and FXCM’s own filings.</li>
-    <li>Community Outlook, retail positioning by pair: <a href="https://www.myfxbook.com/community/outlook" target="_blank" rel="noopener">Myfxbook</a>. Commitments of Traders: <a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm" target="_blank" rel="noopener">CFTC</a>.</li>
+    <li id="src-1"><span class="src-n">1</span>Daily turnover of $9.6 trillion in April 2025, up 28% from 2022; FX swaps about $4 trillion a day; spot up 42%; the dollar on one side of 89.2% of trades, the euro 28.9%, yen 16.8%, sterling 10.2%, renminbi 8.5%; Singapore 11.8% of turnover: <a href="https://www.bis.org/statistics/rpfx25_fx.htm" target="_blank" rel="noopener">BIS, OTC foreign exchange turnover in April 2025</a> and <a href="https://www.bis.org/press/p250930.htm" target="_blank" rel="noopener">BIS press release, 30 September 2025</a>. The BIS later revised the total to $9.5 trillion in its <a href="https://www.bis.org/publ/qtrpdf/r_qt2512b.htm" target="_blank" rel="noopener">December 2025 Quarterly Review</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>The UK’s 38% share of global turnover (37.8%): <a href="https://www.bankofengland.co.uk/statistics/bis-survey/2025" target="_blank" rel="noopener">Bank of England, 2025 survey results</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Retail leverage caps: 20:1 for major pairs in Singapore from October 2019 (<a href="https://www.financemagnates.com/forex/regulation/fx-leverage-cut-to-201-in-singapore/" target="_blank" rel="noopener">Finance Magnates</a>, reporting the MAS rules); 30:1 for majors in the EU and the 74–89% share of retail accounts losing money: <a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors" target="_blank" rel="noopener">ESMA, March 2018</a>; 50:1 for majors in the US: National Futures Association and CFTC retail forex rules. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Black Wednesday, 16 September 1992, and Soros’s reported profit of about $1 billion: <a href="https://www.bankofengland.co.uk/museum" target="_blank" rel="noopener">Bank of England Museum</a> and contemporary reporting. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>The baht float of 2 July 1997: see the sources of <a href="asian-crisis.html#sources">the Asian crisis explainer</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>The Swiss National Bank’s removal of the 1.20 floor on 15 January 2015: <a href="https://www.snb.ch/en/" target="_blank" rel="noopener">Swiss National Bank</a>; FXCM’s client negative balances of about $225 million and the $300 million Leucadia loan: Reuters and FXCM’s own filings. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Singapore’s exchange-rate-centred monetary policy, the S$NEER policy band, and domestic interest rates being largely set by global rates under an open capital account: <a href="https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework/faqs/section-2" target="_blank" rel="noopener">MAS, monetary policy framework FAQ</a>; <a href="https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework/faqs/section-4" target="_blank" rel="noopener">MAS, how monetary policy is carried out</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>Hong Kong’s Linked Exchange Rate System (since 1983; convertibility range 7.75–7.85 since 2005): <a href="https://www.hkma.gov.hk/eng/key-functions/money/linked-exchange-rate-system/" target="_blank" rel="noopener">Hong Kong Monetary Authority</a>. The yuan’s ±2% daily band around the central parity, in place since March 2014: <a href="https://www.business-standard.com/article/pti-stories/china-widens-yuan-daily-trading-band-to-2-114031500625_1.html" target="_blank" rel="noopener">Business Standard (2014)</a>. The impossible trinity: Mundell (1963) and Fleming (1962), as summarised by the <a href="https://www.imf.org/en/Publications/fandd/issues/2018/12/basics-trilemma" target="_blank" rel="noopener">IMF’s Finance &amp; Development</a>. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>Community Outlook, retail positioning by pair: <a href="https://www.myfxbook.com/community/outlook" target="_blank" rel="noopener">Myfxbook</a>. Commitments of Traders: <a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm" target="_blank" rel="noopener">CFTC</a>. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
   </ul>
   <p class="end">Educational only. Exchange rates and spreads in the calculators are illustrative. Nothing here is investment, legal or tax advice.</p>
 </article>
@@ -191,7 +244,7 @@
   <div class="in">
     <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
     <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
-    <div><h5>Read</h5><p><a href="#pairFig">The pair calculator</a><br><a href="#levFig">The leverage calculator</a><br><a href="#s4">When a currency breaks</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
+    <div><h5>Read</h5><p><a href="#bookFig">The order book</a><br><a href="#pairFig">The pair calculator</a><br><a href="#levFig">The leverage calculator</a><br><a href="#triFig">The impossible trinity</a><br><a href="#s4">When a currency breaks</a><br><a href="../countries.html">Country map</a><br><a href="../all.html">All explainers</a></p></div>
   </div>
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
 </footer>

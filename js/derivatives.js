@@ -1,5 +1,5 @@
 /* Derivatives explainer: reveal-on-scroll, progress bar, TOC, copy link, plus the graphics:
-   market size squares, option payoff explorer, airline hedge, leverage, clearing-house network
+   market size squares, option payoff explorer, airline hedge, collar, leverage, clearing-house network
    and the open-interest simulator. */
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const NARROW = matchMedia('(max-width: 560px)').matches;
@@ -171,6 +171,68 @@ const RED = '#c2412d', GREEN = '#5f8a63', INK = '#1f1f22', MUTED = '#8a8578', RU
     put(1, fut, fut >= 0 ? GREEN : RED); labs[1].textContent = (fut >= 0 ? '+' : '') + money(fut) + 'm';
     put(2, net, INK); labs[2].textContent = money(net) + (NARROW ? 'm' : 'm, locked in');
   }
+  r.addEventListener('input', draw); draw();
+})();
+
+/* ---------------- The collar: buy one option, sell the other ---------------- */
+(function () {
+  const svg = document.getElementById('collarSvg'), r = document.getElementById('colPrice'), who = document.getElementById('colWho'), out = document.getElementById('colOut');
+  if (!svg || !r || !who || !out) return;
+  const NS = 'http://www.w3.org/2000/svg', PUT = 70, CALL = 80, LO = 50, HI = 100;
+  const W = 680, H = 280, X0 = 64, X1 = 650, Y0 = 240, Y1 = 22;
+  const x = (p) => X0 + (p - LO) / (HI - LO) * (X1 - X0), y = (p) => Y0 - (p - LO) / (HI - LO) * (Y0 - Y1);
+  const FONT = 'Inter, sans-serif';
+  const el = (t, a, txt) => { const e = document.createElementNS(NS, t); Object.entries(a).forEach(([k, v]) => e.setAttribute(k, v)); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+  let mode = 'air';
+  const eff = (p) => Math.min(Math.max(p, PUT), CALL); // either side ends up inside the band
+  const usd = (v) => (v < 0 ? '−$' : '$') + Math.abs(v);
+  const signed = (v) => (v > 0 ? '+$' + v : v < 0 ? '−$' + (-v) : '$0');
+  function draw() {
+    const p = +r.value;
+    document.getElementById('colPriceV').textContent = '$' + p;
+    svg.innerHTML = '';
+    // the band the collar keeps the price inside, and a light grid
+    el('rect', { x: X0, y: y(CALL), width: X1 - X0, height: y(PUT) - y(CALL), fill: '#f3efe6' });
+    [50, 60, 70, 80, 90, 100].forEach((v) => {
+      el('line', { x1: X0, x2: X1, y1: y(v), y2: y(v), stroke: '#eee' });
+      el('text', { x: X0 - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 12, fill: '#76736c', 'font-family': FONT }, '$' + v);
+      el('text', { x: x(v), y: Y0 + 18, 'text-anchor': 'middle', 'font-size': 12, fill: '#76736c', 'font-family': FONT }, '$' + v);
+    });
+    el('text', { x: X1, y: Y0 + 34, 'text-anchor': 'end', 'font-size': 11.5, fill: '#76736c', 'font-family': FONT }, 'Market price of oil →');
+    el('text', { x: X0 + 6, y: Y1 + 4, 'font-size': 11.5, fill: '#76736c', 'font-family': FONT }, mode === 'air' ? '↑ What the airline effectively pays' : '↑ What the producer effectively receives');
+    // no hedge: follows the market
+    el('line', { x1: x(LO), y1: y(LO), x2: x(HI), y2: y(HI), stroke: '#a9a59c', 'stroke-width': 2, 'stroke-dasharray': '5 5' });
+    el('text', { x: x(97), y: y(99) - 4, 'text-anchor': 'end', 'font-size': 12, 'font-weight': 700, fill: '#76736c', 'font-family': FONT }, 'No hedge');
+    // the collar: flat, rising, flat
+    const col = mode === 'air' ? '#2463d6' : '#2f7a4a';
+    el('polyline', { points: `${x(LO)},${y(PUT)} ${x(PUT)},${y(PUT)} ${x(CALL)},${y(CALL)} ${x(HI)},${y(CALL)}`, fill: 'none', stroke: col, 'stroke-width': 4, 'stroke-linejoin': 'round' });
+    el('text', { x: x(HI) - 4, y: y(CALL) - 8, 'text-anchor': 'end', 'font-size': 12.5, 'font-weight': 800, fill: col, 'font-family': FONT }, mode === 'air' ? 'Ceiling $80 (bought call)' : 'Cap $80 (sold call)');
+    el('text', { x: x(LO) + 4, y: y(PUT) + 18, 'font-size': 12.5, 'font-weight': 800, fill: col, 'font-family': FONT }, mode === 'air' ? 'Floor $70 (sold put)' : 'Floor $70 (bought put)');
+    // where the slider is: grey dot on the no-hedge line, coloured dot on the collar
+    el('line', { x1: x(p), x2: x(p), y1: Y1 + 10, y2: Y0, stroke: '#111', 'stroke-dasharray': '3 3' });
+    el('circle', { cx: x(p), cy: y(p), r: 5, fill: '#fff', stroke: '#a9a59c', 'stroke-width': 2 });
+    el('circle', { cx: x(p), cy: y(eff(p)), r: 7, fill: col, stroke: '#fff', 'stroke-width': 2 });
+
+    const call = Math.max(p - CALL, 0), put = Math.max(PUT - p, 0);
+    let rows, why;
+    if (mode === 'air') {
+      rows = [['Buys fuel at the market', usd(-p)], ['Call it bought ($80)', signed(call)], ['Put it sold ($70)', signed(-put)], ['Net cost per barrel', '$' + eff(p)]];
+      why = p > CALL ? `Oil is above $80, so the call pays the airline $${call}. Its fuel effectively costs $80, the ceiling.`
+        : p < PUT ? `Oil is below $70, so the buyer of the put collects $${put} from the airline. But the airline is buying fuel at $${p}, so its cost is still $70: it has given up the savings below the floor, not lost money overall.`
+        : 'Between $70 and $80 neither option pays. The airline simply pays the market price.';
+    } else {
+      rows = [['Sells oil at the market', '+$' + p], ['Put it bought ($70)', signed(put)], ['Call it sold ($80)', signed(-call)], ['Net received per barrel', '$' + eff(p)]];
+      why = p < PUT ? `Oil is below $70, so the put pays the producer $${put}. It effectively receives $70, the floor.`
+        : p > CALL ? `Oil is above $80, so the producer pays $${call} to the buyer of its call. It still sells at $${p}, so it receives $80: it has given up the gains above the cap.`
+        : 'Between $70 and $80 neither option pays. The producer simply gets the market price.';
+    }
+    out.innerHTML = `<div class="col-grid">${rows.map(([k, v], i) => `<div${i === 3 ? ' class="net"' : ''}><span>${k}</span><b>${v}</b></div>`).join('')}</div><p class="po-why">${why}</p>`;
+  }
+  who.addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    who.querySelectorAll('button').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    mode = b.dataset.v; draw();
+  });
   r.addEventListener('input', draw); draw();
 })();
 

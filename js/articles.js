@@ -13,6 +13,10 @@
  * A company that appears in several explainers links them together on the map.
  * `margins` is optional: what each company keeps per dollar, as reported in that explainer.
  * Paths (href, thumb) are relative to the html/ folder.
+ *
+ * `related` (below the articles) feeds the connections map (the Map view of html/all.html): pairs of explainers on
+ * linked topics that don't link to each other in the text, each with a one-line reason. Links written
+ * in the text and companies shared through `chain` are found automatically by scripts/build-graph.js.
  */
 window.BOTTLENECK = {
   articles: [
@@ -340,7 +344,7 @@ window.BOTTLENECK = {
       topic: "Government debt",
       category: "Market infrastructure",
       date: "2026-11-22",
-      readMins: 9,
+      readMins: 13,
       dek: "A bond is a loan you make to a government. The US borrows to spend and now pays more interest than it spends on defence. Singapore borrows more, relative to its economy, yet almost none of it funds spending. Two countries, two very different reasons to issue debt.",
       summary: "T-Bills, bonds and SSBs, and why the US and Singapore borrow for opposite reasons",
       thumb: "../images/thumbs/govt-bonds.svg",
@@ -558,7 +562,7 @@ window.BOTTLENECK = {
       topic: "Foreign exchange",
       category: "Market infrastructure",
       date: "2026-11-24",
-      readMins: 11,
+      readMins: 14,
       dek: "Every day about $9.6 trillion of currencies changes hands, more than any other market. Most of it is banks and funds you never see; a sliver is people at home trading with borrowed money. Here is who trades forex, how to read a currency pair, why leverage pulls traders in, and what happens when a currency breaks.",
       summary: "Who trades currencies, how pairs, pips and leverage work, broken pegs from 1992 to 2015, and reading retail sentiment",
       thumb: "../images/thumbs/forex.svg",
@@ -592,7 +596,130 @@ window.BOTTLENECK = {
       ],
       // A personal-finance concept explainer: no company chain or country link.
       chain: []
+    },
+    {
+      id: "index-weights",
+      href: "explainers/index-weights.html",
+      title: "Who Gets the Biggest Slice? How Stock Indexes Weight Companies",
+      short: "How indexes weight companies",
+      kicker: "Explainer",
+      topic: "Stock indexes",
+      category: "Market infrastructure",
+      date: "2026-11-25",
+      readMins: 10,
+      dek: "The S&P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts, because each uses a different rule for how much each company counts. Here are the three rules, what they do to your money, and why a stock split can change a company's place in the Dow.",
+      summary: "Market-cap, equal and price weighting: how the S&P 500, the Dow and the Nikkei decide how much each company counts",
+      thumb: "../images/thumbs/index-weights.svg",
+      stats: [
+        { big: "40%", text: "Share of the S&P 500 in its ten largest companies in 2025, a level S&P says was last seen in the mid-1960s." },
+        { big: "0.2%", text: "Weight of each company in the S&P 500 Equal Weight Index at every quarterly rebalance." },
+        { big: "~6 pts", text: "How far the Dow moves for every $1 change in any member's share price, whatever the company's size." },
+        { big: "10%+", text: "Fast Retailing's weight in the price-weighted Nikkei 225 before Nikkei began capping it." }
+      ],
+      // A market-structure explainer, paired with buybacks: no company chain.
+      chain: []
+    },
+    {
+      id: "buybacks",
+      href: "explainers/buybacks.html",
+      title: "Shrinking the Pie: How Stock Buybacks Work",
+      short: "How stock buybacks work",
+      kicker: "Explainer",
+      topic: "Stock buybacks",
+      category: "Market infrastructure",
+      date: "2026-11-25",
+      readMins: 11,
+      dek: "When a company buys back its own shares, it isn't placing one giant order. It buys slowly, through a broker, only from people who choose to sell, under rules that cap how much it can buy each day, and it can stop whenever it likes.",
+      summary: "How companies buy back shares, the SEC rule that paces them, blackout windows, and why a buyback is a plan, not a promise",
+      thumb: "../images/thumbs/buybacks.svg",
+      stats: [
+        { big: "$942.5B", text: "S&P 500 buybacks in 2024, a calendar-year record (S&P Dow Jones Indices)." },
+        { big: "$110B", text: "Apple's 2024 buyback authorisation, the largest in US history." },
+        { big: "25%", text: "Share of average daily trading volume a company can buy each day under the SEC's Rule 10b-18 safe harbour." },
+        { big: "80%+", text: "S&P 500 companies estimated to be in a buyback blackout in April 2024 (Deutsche Bank)." }
+      ],
+      // A market-structure explainer, paired with index-weights: no company chain.
+      chain: []
+    },
+    {
+      id: "valuation",
+      href: "explainers/valuation.html",
+      title: "What Is a Company Worth? Reading P/E, EV and EBITDA",
+      short: "What is a company worth?",
+      kicker: "Explainer",
+      topic: "Valuation",
+      category: "Personal finance",
+      date: "2026-11-25",
+      readMins: 14,
+      dek: "A share price on its own says almost nothing. Valuation ratios turn a price into a comparison: what you pay for each dollar of sales, profit or cash. Here is what each common ratio measures, when to use which, and where the numbers come from.",
+      summary: "Market cap, enterprise value, P/E, forward P/E, PEG, EV/Revenue and EV/EBITDA, and the reports the numbers come from",
+      thumb: "../images/thumbs/valuation.svg",
+      stats: [
+        { big: "22×", text: "The S&P 500's price against forecast earnings at the end of 2025, above its 10-year average of about 18.5 (FactSet)." },
+        { big: "15.7×", text: "US semiconductor companies' enterprise value against revenue, January 2026 (Damodaran)." },
+        { big: "$65B", text: "Enterprise value of a $50B company with $20B of debt and $5B of cash: the takeover price." },
+        { big: "PEG 1", text: "A P/E of 40 with 40% expected growth: often read as fairly valued despite the high P/E." }
+      ],
+      // A personal-finance concept explainer: no company chain or country link.
+      chain: []
+    },
+    {
+      id: "schacht",
+      href: "explainers/schacht.html",
+      title: "The Dark Wizard: How Hjalmar Schacht Paid for Hitler's Rearmament",
+      short: "The dark wizard",
+      kicker: "Explainer",
+      topic: "Germany, 1918–1939",
+      category: "Economic history",
+      date: "2026-11-25",
+      readMins: 15,
+      dek: "In 1933 six million Germans were out of work. By 1939 unemployment had all but vanished and Hitler was parading a new army, built by a country short of gold, oil and rubber. Much of the financing was engineered by one central banker, Hjalmar Schacht. Here is how the tricks worked, what they hid, and what they cost.",
+      summary: "Weimar hyperinflation and austerity, the hidden Mefo bills, and the controls that paid for Nazi rearmament",
+      thumb: "../images/thumbs/schacht.svg",
+      stats: [
+        { big: "~6M", text: "Registered unemployed in Germany at the 1932–33 peak, about 30% of the workforce." },
+        { big: "4.2T", text: "Paper marks to the US dollar at the height of the 1923 hyperinflation." },
+        { big: "12bn RM", text: "Mefo bills outstanding by 1938: rearmament financed through a shell company, off the budget." },
+        { big: "941M RM", text: "Collected through the Reich Flight Tax, mostly from Jewish Germans forced to emigrate." }
+      ],
+      // An economic-history explainer about one country; profiles no company.
+      chain: []
+    },
+    {
+      id: "chart-reading",
+      href: "explainers/chart-reading.html",
+      title: "Reading the Squiggles: How Traders Read a Price Chart",
+      short: "Reading the squiggles",
+      kicker: "Explainer",
+      topic: "Technical analysis",
+      category: "Personal finance",
+      date: "2026-11-25",
+      readMins: 16,
+      dek: "Candlesticks, Point and Figure, Kagi and Renko charts, golden and death crosses, RSI, MACD and a dozen other momentum studies: what technical analysts look at, how each tool is built, and what the evidence says about whether any of it works.",
+      summary: "Four chart types, moving-average crosses, RSI, MACD and fifteen momentum studies, and the evidence on whether they work",
+      thumb: "../images/thumbs/chart-reading.svg",
+      stats: [
+        { big: "50 / 200", text: "The moving averages behind the golden cross (50-day rises above the 200-day) and the death cross (it falls below)." },
+        { big: "70 / 30", text: "The RSI levels conventionally read as overbought and oversold." },
+        { big: "1897–1986", text: "The Dow history on which simple moving-average rules beat cash in a famous 1992 study; later work found the edge faded after costs." },
+        { big: "15", text: "Common momentum studies, grouped into oscillators, moving-average tools, money-flow indicators and bands." }
+      ],
+      // A personal-finance concept explainer: no company chain or country link.
+      chain: []
     }
+  ],
+
+  related: [
+    ["forex", "cls", "CLS settles a large share of the currency market's trades"],
+    ["derivatives", "forex", "Currency forwards and swaps are the biggest derivatives market"],
+    ["derivatives", "oil-window", "Oil futures and swaps settle against benchmark prices"],
+    ["pi-clubs", "oil-window", "The tankers carrying benchmark-priced oil need P&I cover"],
+    ["stablecoins", "govt-bonds", "Dollar stablecoins hold much of their reserves in US Treasury bills"],
+    ["bond-market", "govt-bonds", "The same government bonds, seen from the Fed and from the borrower"],
+    ["index-weights", "chip-share", "Nvidia's weight in the S&P 500 and its place in the Dow"],
+    ["buybacks", "anthropic-ipo", "Issuing shares and buying them back: the two ends of a company's share count"],
+    ["iodine", "glass-cloth", "Single-supplier materials that technology quietly depends on"],
+    ["inference", "stargate", "The data centres that run every AI answer"]
   ],
 
   companies: {

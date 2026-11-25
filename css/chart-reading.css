@@ -1,0 +1,35 @@
+/* Page-specific styles for the chart-reading explainer. Shared: bottleneck.css + article.css. */
+
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note.warn{border-left-color:var(--gold)}
+.note.warn b.h{color:#8a6414}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:620px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:120px}
+.st-tbl td:first-child{width:190px}
+
+#ctSvg,#maSvg,#ohlcSvg{width:100%;height:auto;display:block;font-family:var(--sans)}
+.ct-tabs,.st-tabs{margin-bottom:12px}
+.ct-why,.ma-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0;min-height:3em}
+.ma-ctl{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+
+/* ---------- pattern cheatsheets ---------- */
+.pat-tabs{margin-bottom:14px}
+.pat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;font-family:var(--sans)}
+.pat{border:1px solid var(--rule);border-top:3px solid var(--c);background:#fff;padding:8px 10px 10px;min-width:0}
+.pat svg{display:block;width:100%;height:auto;background:#faf8f3;border-radius:3px;margin-bottom:6px}
+.pat b{display:block;font-size:13.5px;color:var(--ink);line-height:1.25}
+.pat .pat-k{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--c);margin:3px 0 4px}
+.pat p{margin:0;font-size:12.5px;line-height:1.45;color:var(--ink2)}
+.pf-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+@media(max-width:420px){.pat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

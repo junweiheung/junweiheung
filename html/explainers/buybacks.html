@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shrinking the Pie: How Stock Buybacks Work — Bottleneck by Jun Wei</title>
+<meta name="description" content="US companies spent a record $942.5 billion buying back their own shares in 2024. An explainer on how a buyback actually happens, the SEC rule that limits how fast a company can buy, why buybacks pause around earnings, and why a buyback is a plan, not a promise.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/buybacks.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Market infrastructure · Stock buybacks</span></div>
+  <h1>Shrinking the Pie</h1>
+  <p class="dek">When a company buys back its own shares, it isn't placing one giant order. It buys slowly, through a broker, only from people who choose to sell, under rules that cap how much it can buy each day, and it can stop whenever it likes. Here is how a buyback works, what it does to the shares left behind, and why it is a plan rather than a promise.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 11 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Fewer slices, same pie</a>
+    <a href="#s2">2. Not one giant order</a>
+    <a href="#s3">3. Who sells, and where the shares go</a>
+    <a href="#s4">4. A plan, not a promise</a>
+    <a href="#s5">5. The case for and against</a>
+    <a href="#s6">6. Back to the index</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how US share buybacks work in general. The rules described are US rules; other markets, including Singapore, have their own. Companies named are examples only. Nothing here is investment advice or a recommendation to buy or sell anything.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A <b>buyback</b> is a company spending its cash to buy its own shares from investors. Those shares are cancelled or held in the company's treasury, so the remaining shareholders each own a bigger slice. S&amp;P 500 companies spent a record <b>$942.5 billion</b><sup class="fn"><a href="#src-1" id="ref-1">1</a></sup> on buybacks in 2024; Apple alone announced a <b>$110 billion</b><sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> programme that year, the largest in US history.</li>
+      <li>A buyback is not one big order. Most are carried out in the open market by a broker, bit by bit, over weeks or months. The SEC's <b>Rule 10b-18</b><sup class="fn"><a href="#src-3" id="ref-3">3</a></sup> safe harbour limits a company to about <b>25%</b> of the stock's average daily trading volume, keeps it out of the opening trade and the last minutes of the day, and stops it paying more than the market price.</li>
+      <li>The company only buys from people who choose to sell. It cannot force anyone to part with shares, and it does not set a price above the market.</li>
+      <li>An announced buyback is an <b>authorisation</b>, not an obligation. Companies usually pause in the weeks around earnings, and can stop entirely: in 2020 the largest US banks halted buybacks, and the Federal Reserve then ordered them to. Anyone counting on the company to keep buying is relying on a promise it never made.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Fewer slices, same pie</h2>
+  <p class="t dropcap">A company that makes more cash than it needs can give it back to shareholders in two main ways. It can pay a <b>dividend</b>, sending every shareholder the same amount per share. Or it can <b>buy back</b> shares from whoever wants to sell. The shareholders who sell get cash; those who keep their shares end up owning a larger slice of the company, because there are fewer slices in total.</p>
+  <p class="t">The effect is easiest to see in the numbers per share. A company's profit is split across all its shares as <b>earnings per share</b> (EPS). Retire a tenth of the shares and the same profit is spread over fewer of them, so EPS rises, even though the business itself has not earned a cent more. Move the slider to see it.</p>
+
+  <figure class="fig rv" id="pieFig">
+    <div class="ft">What a buyback does to the shares left behind</div>
+    <div class="fs">A hypothetical company: $1 billion profit a year, 1 billion shares at $20, and $4 billion of spare cash</div>
+    <label class="bb-row"><span>Cash spent on buybacks: <b id="bbAmtV">$2.0B</b></span><input type="range" id="bbAmt" min="0" max="4" step="0.5" value="2" aria-label="Cash spent on buybacks, in billions of dollars"></label>
+    <div class="bb-grid" id="bbGrid"></div>
+    <p class="bb-why" id="bbWhy" aria-live="polite"></p>
+    <figcaption>My illustration. Assumes shares are bought at $20 and the company's profit stays at $1 billion; in reality the spent cash would have earned some interest, which slightly lowers profit. The share price shown is the simple “fair value” (company value ÷ shares) before any market reaction.</figcaption>
+  </figure>
+
+  <p class="t">Notice what does <i>not</i> change in the simple version: the price per share. The company is worth less by exactly the cash it paid out, and there are fewer shares by exactly the number it bought, so each remaining share is worth the same. A buyback is not free money. It is a way of handing cash to the shareholders who sell, while the ones who stay own a larger share of a slightly smaller company. Whether the price rises in practice depends on whether the market thinks the company bought cheaply and spent cash it didn't need.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>Not one giant order</h2>
+  <p class="t">It is tempting to picture a buyback as a company walking into the market and placing one enormous order, say for 10 million shares at $150. That is not how most of them work. Before 1982, a company buying its own shares in size risked being accused of manipulating its price. That year the SEC adopted <b>Rule 10b-18</b>, a voluntary “safe harbour”: buy within four conditions every day, and you are protected from that charge. Nearly every US open-market buyback is now run to fit inside it.</p>
+
+  <figure class="fig rv" id="ruleFig">
+    <div class="ft">The four daily conditions of Rule 10b-18</div>
+    <div class="fs">Meet all four on a given day, or none of that day's purchases are covered</div>
+    <div class="rl">
+      <div class="rl-c" style="--c:#2463d6"><b>Manner</b><p>All purchases on a given day go through a <b>single broker or dealer</b>, so the company can't look like many separate buyers.</p></div>
+      <div class="rl-c" style="--c:#2f7a4a"><b>Timing</b><p>No buying in the <b>opening trade</b>, or in the last <b>10 minutes</b> before the close (the last <b>30 minutes</b> for smaller, thinly traded stocks), when prices are set for the day.</p></div>
+      <div class="rl-c" style="--c:#b8892b"><b>Price</b><p>Pay no more than the <b>highest independent bid</b> or the <b>last independent trade</b>, whichever is higher. The company follows the market; it doesn't lead it up.</p></div>
+      <div class="rl-c" style="--c:#a3141f"><b>Volume</b><p>Buy no more than <b>25%</b> of the stock's <b>average daily trading volume</b> over the previous four weeks.</p></div>
+    </div>
+    <div class="day" aria-hidden="true">
+      <div class="day-bar"><i class="day-x" style="left:0;width:1.5%"></i><i class="day-x" style="right:0;width:2.6%"></i></div>
+      <div class="day-l"><span>9:30 open</span><span>Allowed window</span><span>4:00 close</span></div>
+    </div>
+    <figcaption>17 CFR 240.10b-18 and SEC staff guidance. The 10-minute closing cutoff applies to stocks with average daily trading value of at least $1 million and public float of at least $150 million; for others it is 30 minutes. The rule is voluntary: buying outside it is not automatically illegal, but loses the protection.</figcaption>
+  </figure>
+
+  <p class="t">The volume limit is the one that turns a buyback into a slow process. Take a hypothetical stock at $150 that trades about 20 million shares a day. The company can buy at most 5 million of them a day inside the safe harbour. Use the buttons to see how long programmes of different sizes would take at that maximum pace.</p>
+
+  <figure class="fig rv" id="paceFig">
+    <div class="ft">How long a buyback takes at the 25% limit</div>
+    <div class="fs">Hypothetical stock: $150 a share, 20 million shares traded a day, so at most 5 million a day for the company</div>
+    <div class="pc-ctl"><span class="seg" id="pcAmt" role="group" aria-label="Buyback size"><button type="button" data-b="1.5" aria-pressed="true">$1.5 billion</button><button type="button" data-b="10" aria-pressed="false">$10 billion</button><button type="button" data-b="110" aria-pressed="false">$110 billion</button></span></div>
+    <div class="pc-out" id="pcOut"></div>
+    <figcaption>My calculation: shares to buy = amount ÷ $150; minimum trading days = shares ÷ 5 million; about 21 trading days a month. Real programmes usually run well below the maximum to avoid pushing the price up. The $110 billion option matches Apple's 2024 authorisation in size, but uses this hypothetical stock's volume, not Apple's.</figcaption>
+  </figure>
+
+  <p class="t">So the 10 million shares at $150 in the example above, $1.5 billion, would take at least two trading days even at full pace, and in practice a broker would usually stretch it over weeks. There are faster routes. In an <b>accelerated share repurchase</b>, a bank delivers most of the shares to the company up front, borrowing them, and then buys in the market over the following months to cover itself. In a <b>tender offer</b>, the company publicly offers to buy a set number of shares at a fixed price, usually above the market, for a limited time. Both are less common than steady open-market buying.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Who sells, and where the shares go</h2>
+  <p class="t">A buyback has to have sellers. The company's broker posts bids in the market like any other buyer, and the shares come from whoever accepts them: pension funds trimming a position, traders taking profits, individuals who need cash. Nobody is made to sell. If no one wants to sell at the market price, the company simply buys less that day.</p>
+  <p class="t">Once bought, the shares leave circulation. Most US companies either <b>cancel</b> them outright or keep them as <b>treasury stock</b>, shares the company owns but which carry no vote and receive no dividend. Treasury shares can later be reissued, for example to pay employees in stock. In both cases they no longer count when working out earnings per share or ownership.</p>
+  <p class="t">That employee link matters more than it sounds. Many technology companies pay staff partly in shares, which creates new shares every year. Part of their buyback spending simply buys those back to stop existing owners being diluted. S&amp;P Dow Jones Indices' analyst noted that rising share prices in 2024 made employee options more valuable, and companies bought back stock to cover them. Not every dollar of buybacks shrinks the share count.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>A plan, not a promise</h2>
+  <p class="t">Headlines say a company “announced a $110 billion buyback”. What the board has approved is an <b>authorisation</b>: permission to spend up to that amount, usually with no deadline. The company is not obliged to spend any of it, and does not have to say in advance when it will buy.</p>
+  <p class="t">Most companies stop buying in a <b>blackout window</b> each quarter, from a few weeks before their results until shortly after. Insiders know the numbers before the public, so buying then could look like trading on inside information. Because so many companies report around the same time, a large share of the market's buyback demand disappears at once: Deutsche Bank estimated that in April 2024 more than 80%<sup class="fn"><a href="#src-4" id="ref-4">4</a></sup> of S&amp;P 500 companies were in blackout. When the windows reopen, buying returns. In the sell-off of August 2024, Goldman Sachs' buyback desk reported record orders from companies buying the dip.</p>
+
+  <figure class="fig rv" id="winFig">
+    <div class="ft">A typical company's quarter</div>
+    <div class="fs">Many companies stop buying from about two weeks before the quarter ends until a day or two after results</div>
+    <div class="win" id="winBar" role="img" aria-label="A three-month quarter. The company can buy for most of the first two and a half months, then enters a blackout from about two weeks before quarter end until two days after its results, roughly three to four weeks into the next quarter."></div>
+    <div class="win-key"><span><i class="w-open"></i>Open window: buying allowed</span><span><i class="w-shut"></i>Blackout: usually no buying</span></div>
+    <figcaption>Simplified. Each company sets its own window in its insider trading policy; some keep buying through blackouts using a pre-arranged trading plan (a Rule 10b5-1 plan) agreed while the window was open.</figcaption>
+  </figure>
+
+  <p class="t">Companies can also stop altogether. When the pandemic hit in March 2020, eight of the largest US banks<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup>, including JPMorgan Chase, Bank of America and Goldman Sachs, suspended buybacks. In June the Federal Reserve made it mandatory for large banks, and in September extended the ban through the end of the year. Many companies outside banking cut back too, to keep cash through the uncertainty.</p>
+  <p class="t">This is the weak point in any strategy that treats buybacks as a floor under a share price. A company's buying can support the price while it runs, and few outside buyers can match its scale; an investor who tried to hold a big company's price up with their own money would need billions, and could not print more shares to fund it. But the company can pause at any moment, with no warning, for its own reasons. An investor who bought expensive shares expecting the company to keep buying is relying on a commitment that was never made, and if the buying stops, they can be left holding a stock that has lost its largest buyer.</p>
+
+  <div class="note warn"><b class="h">What to read from an announcement</b>An authorisation says what the board will allow, not what the company will do. The figure to watch is the money actually spent, which US companies report each quarter in their filings, along with the number of shares bought and the average price paid.</div>
+
+  <h2 id="s5"><span class="n">Part 5</span>The case for and against</h2>
+  <p class="t">Buybacks are among the most argued-over habits in modern finance. The case for them is practical. Cash a company can't invest well is better returned to owners, who can invest it elsewhere. Unlike a dividend, a buyback can be switched off without the shock of a dividend cut, and shareholders who don't sell owe no tax until they do. If managers think the shares are cheap, buying them is a way of saying so with money.</p>
+  <p class="t">The case against is about incentives and timing. Executive pay is often tied to earnings per share, and buybacks lift EPS without the business doing better. The economist William Lazonick<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup> argued in a widely read 2014 <i>Harvard Business Review</i> essay that large buybacks drain money that could have gone into investment and wages. Companies also tend to buy most when profits and share prices are high, and least in downturns when shares are cheap, the opposite of buying low.</p>
+  <p class="t">Lawmakers have nudged the balance. Since 2023 US companies have paid a <b>1% excise tax</b> on the value of shares they buy back. S&amp;P's analyst has described it as a manageable expense that has not reduced buybacks overall; 2024 still set a record.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Back to the index</h2>
+  <p class="t">The companion piece, <a href="index-weights.html">Who Gets the Biggest Slice?</a>, showed that most index funds weight companies by <b>share price × number of shares</b>. A buyback changes the second half of that sum. In a market-cap index such as the S&amp;P 500, the index provider updates each company's share count, so a company that has retired shares counts slightly less. In theory it also has slightly less cash, so its weight in the index moves roughly in line with its smaller value, and an index fund doesn't have to do anything. A price-weighted index such as the Dow ignores share counts altogether: a buyback only shows up there if the share price itself moves.</p>
+  <p class="t">For an index investor, buybacks are mostly invisible, except that the companies in the fund are, collectively, one of the market's biggest buyers. Index funds buy because money flows in; companies buy because boards decide to. Neither is choosing stocks the way a stock picker does, and both are now large enough to matter for prices. The difference is that one keeps buying as long as savers keep saving, and the other can stop whenever it chooses.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>S&amp;P 500 buybacks of $942.5 billion in 2024 (up from $795.2 billion in 2023), Apple's $104.2 billion of buybacks in 2024, comments on the 1% tax and on buying back shares to cover employee options: <a href="https://www.spglobal.com/spdji/en/corporate-news/article/sp-500-q4-2024-buybacks-increase-74-and-2024-expenditure-sets-new-record-by-increasing-18-5" target="_blank" rel="noopener">S&amp;P Dow Jones Indices (March 2025)</a>; <a href="https://www.axios.com/2025/03/20/stock-market-apple-buybacks" target="_blank" rel="noopener">Axios (2025)</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>Apple's $110 billion buyback authorisation (May 2024), the largest in US history: <a href="https://bnnbloomberg.ca/apple-s-110-billion-stock-buyback-plan-is-largest-in-us-history-1.2068329" target="_blank" rel="noopener">Bloomberg via BNN (2024)</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Rule 10b-18 (adopted 1982): the manner, timing, price and volume conditions and the 25% of average daily trading volume limit: <a href="https://www.law.cornell.edu/cfr/text/17/240.10b-18" target="_blank" rel="noopener">17 CFR 240.10b-18</a>; <a href="https://www.sec.gov/divisions/marketreg/r10b18faq0504.htm" target="_blank" rel="noopener">SEC staff FAQ</a>; <a href="https://www.skadden.com/-/media/files/publications/2020/03/trading-issues-arising-out-of-market-disruptions/rule_10b_18_safe_harbors.pdf" target="_blank" rel="noopener">Skadden summary (2020)</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Buyback blackout windows, the more-than-80% estimate for April 2024 and record orders at Goldman's buyback desk in August 2024: <a href="https://www.bloomberg.com/news/articles/2024-04-11/s-p-500-is-heading-for-a-rough-patch-as-buyback-blackouts-arrive" target="_blank" rel="noopener">Bloomberg (April 2024)</a>; <a href="https://bnnbloomberg.ca/business/company-news/2024/08/15/goldman-buyback-desk-flooded-with-record-orders-during-stock-swoon" target="_blank" rel="noopener">Bloomberg via BNN (August 2024)</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Large US banks suspending buybacks in March 2020, and the Federal Reserve's mandatory suspension for the third and fourth quarters of 2020: <a href="https://www.federalreserve.gov/newsevents/pressreleases/bcreg20200625c.htm" target="_blank" rel="noopener">Federal Reserve (June 2020)</a>; <a href="https://www.federalreserve.gov/newsevents/pressreleases/bcreg20200930b.htm" target="_blank" rel="noopener">Federal Reserve (September 2020)</a>; <a href="https://finance.yahoo.com/news/big-us-banks-suspend-stock-132901677.html" target="_blank" rel="noopener">Yahoo Finance (March 2020)</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>William Lazonick, “Profits Without Prosperity”, <a href="https://hbr.org/2014/09/profits-without-prosperity" target="_blank" rel="noopener"><i>Harvard Business Review</i> (September 2014)</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. US rules described in general terms. Nothing here is investment, legal or tax advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#pieFig">What a buyback does</a><br><a href="#paceFig">How long a buyback takes</a><br><a href="index-weights.html">How indexes weight companies</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/buybacks.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Company Worth? Reading P/E, EV and EBITDA — Bottleneck by Jun Wei</title>
+<meta name="description" content="Market cap, enterprise value, P/E, forward P/E, PEG, EV/Revenue and EV/EBITDA: what each valuation ratio measures, when to use it, where it misleads, and where the numbers come from in a company's reports.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/valuation.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Personal finance · Valuation</span></div>
+  <h1>What Is a Company Worth?</h1>
+  <p class="dek">A share price on its own says almost nothing. Is $500 expensive? Is a P/E of 40 a bubble? Valuation ratios turn a price into a comparison: what you pay for each dollar of sales, profit or cash. Here is what each common ratio measures, when to use which, and where the numbers come from.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 14 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Price times shares</a>
+    <a href="#s2">2. The takeover price</a>
+    <a href="#s3">3. Paying for profits</a>
+    <a href="#s4">4. Before the profits</a>
+    <a href="#s5">5. Which ratio, when</a>
+    <a href="#s6">6. Where the numbers come from</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how common valuation ratios work. The ranges quoted are rough conventions that vary by industry and era, not buy or sell signals. Companies are named as examples only. Nothing here is investment advice or a recommendation to buy or sell anything.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li><b>Market cap</b> (share price × shares) is what the stock market says the owners’ stake is worth. <b>Enterprise value</b> adds debt and subtracts cash: roughly what it would cost to buy the whole company and settle what it owes. Two companies with the same market cap can have very different enterprise values.</li>
+      <li>The <b>P/E ratio</b> is what you pay for each dollar of last year’s profit. <b>Forward P/E</b> uses analysts’ forecasts instead, and the <b>PEG ratio</b> divides P/E by expected growth, so a high P/E can still be reasonable for a fast grower. The S&amp;P 500 traded at about <b>22 times</b> forecast earnings at the end of 2025, against a 10-year average near 18.5.</li>
+      <li>For companies without profits, investors use <b>EV/Revenue</b>; to compare companies with different debts and tax bills, <b>EV/EBITDA</b>. EBITDA is a rough stand-in for operating cash, not cash itself: Charlie Munger suggested reading it as “bullshit earnings”.</li>
+      <li>“Normal” multiples differ hugely by industry. At the start of 2026, US semiconductor companies traded at about <b>16 times sales</b> on Aswath Damodaran’s figures, several times the level for most other industries. Compare a company with its peers and its own history, not with the whole market.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Price times shares</h2>
+  <p class="t dropcap">A share price is meaningless on its own, because companies divide themselves into very different numbers of shares. A company with a $500 share price and 100 million shares is smaller than one with a $50 share price and 10 billion. The first useful number is <b>market capitalisation</b>: the share price multiplied by the number of shares outstanding.</p>
+
+  <div class="frm rv"><span class="frm-k">Market cap</span><code>Share price × Shares outstanding</code><span class="frm-e">$50 × 1 billion shares = <b>$50 billion</b></span></div>
+
+  <p class="t">Market cap is the stock market’s price for the <b>owners’ stake</b>, the equity. It is what decides a company’s weight in most stock indexes, as <a href="index-weights.html#s2">Who Gets the Biggest Slice?</a> explains, and it is how companies are sorted by size. The usual US bands are rough: <b>mega-cap</b> above about $200 billion<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup>, <b>large-cap</b> $10–200 billion, <b>mid-cap</b> $2–10 billion, <b>small-cap</b> about $250 million to $2 billion, and <b>micro-cap</b> below that. Size says something about risk, since small companies tend to swing more, but nothing about whether the price is fair.</p>
+  <p class="t">Its blind spot is the rest of the balance sheet. Market cap ignores what the company <b>owes</b> and the cash it <b>holds</b>. A company worth $50 billion on the stock market that also owes $30 billion is a very different proposition from one worth $50 billion with no debt and a pile of cash.</p>
+
+  <h3>Why companies split their shares</h3>
+  <p class="t">The clearest proof that the share price alone means little is a <b>stock split</b>. In a 10-for-1 split, every shareholder gets ten new shares for each old one, and the price falls to a tenth. The company, its profits and your slice of it are exactly the same; only the number of pieces changes. Nvidia<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup> split 10-for-1 in June 2024, Chipotle 50-for-1 the same month after its shares passed $3,000, and Walmart 3-for-1 that February.</p>
+
+  <figure class="fig rv" id="splitFig">
+    <div class="ft">What a split changes, and what it doesn’t</div>
+    <div class="fs">A company worth $50 billion, with 100 million shares at $500. You own 10 shares</div>
+    <div class="sp-ctl"><span class="seg" id="spRatio" role="group" aria-label="Split ratio"><button type="button" data-r="1" aria-pressed="false">No split</button><button type="button" data-r="2" aria-pressed="false">2-for-1</button><button type="button" data-r="4" aria-pressed="false">4-for-1</button><button type="button" data-r="10" aria-pressed="true">10-for-1</button><button type="button" data-r="50" aria-pressed="false">50-for-1</button></span></div>
+    <div class="sp-grid" id="spGrid"></div>
+    <figcaption>My illustration. Real share prices often move around a split announcement, but the split itself only changes the number of pieces.</figcaption>
+  </figure>
+
+  <p class="t">So why bother? Companies usually give three reasons. The first is <b>affordability</b>: a $50 share is easier for a small investor to buy than a $500 one, and employees paid in stock get round numbers. The second is <b>liquidity</b>, the idea that a lower price brings in more buyers and sellers. The evidence here is mixed: going back to a well-known 1979 study by Thomas Copeland<sup class="fn"><a href="#src-7" id="ref-7">7</a></sup>, researchers have often found that the bid–ask spread, measured as a share of the price, gets <i>wider</i> after a split, because spreads don’t shrink in proportion to the price. The third is <b>confidence</b>. Companies tend to split after a long rise, so a split signals that management expects the higher price to hold; that is a signal about the business, not something the split itself creates.</p>
+  <p class="t">The affordability case has weakened. Since around 2019 many brokers have let customers buy <b>fractions</b> of a share, so a $3,000 share can be bought $50 at a time. That is one reason some companies never split: Berkshire Hathaway’s Class A shares, which have never been split, trade for hundreds of thousands of dollars each. A split still matters in one place, the price-weighted Dow, where a lower share price means a smaller weight, as <a href="index-weights.html#s4">Who Gets the Biggest Slice?</a> explains.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>The takeover price</h2>
+  <p class="t">Imagine buying the whole company. You would pay the shareholders the market cap, but you would also take on its debts, which someone has to repay, and you would get its cash, which you could use to pay some of them off. That gives <b>enterprise value</b> (EV), sometimes called the takeover price.</p>
+
+  <div class="frm rv"><span class="frm-k">Enterprise value</span><code>Market cap + Total debt − Cash</code><span class="frm-e">$50B + $20B debt − $5B cash = <b>$65 billion</b></span></div>
+
+  <p class="t">EV is the value of the whole business, whoever financed it, owners or lenders. That makes it the better starting point for comparing companies that borrow very differently, such as an airline or a utility funded mostly by debt against a software company sitting on cash. Move the sliders to see two companies with the same market cap pull apart.</p>
+
+  <figure class="fig rv" id="evFig">
+    <div class="ft">Same market cap, different companies</div>
+    <div class="fs">Both are worth $50 billion on the stock market and both have $20 billion of revenue and $6 billion of EBITDA</div>
+    <div class="ev-ctl">
+      <label class="ev-row"><span>Company B’s debt: <b id="evDv">$30B</b></span><input type="range" id="evD" min="0" max="60" step="5" value="30" aria-label="Company B debt in billions"></label>
+      <label class="ev-row"><span>Company A’s cash: <b id="evCv">$15B</b></span><input type="range" id="evC" min="0" max="40" step="5" value="15" aria-label="Company A cash in billions"></label>
+    </div>
+    <div class="ev-out" id="evOut"></div>
+    <figcaption>My illustration. Company A has no debt; Company B has no spare cash. EV/Revenue and EV/EBITDA are explained in Part 4.</figcaption>
+  </figure>
+
+  <p class="t">On market cap alone the two look identical. Measured by EV, the indebted company is far more expensive per dollar of business, and it carries the extra risk that its lenders get paid first if things go wrong. That is why many analysts prefer EV-based ratios for debt-heavy industries such as manufacturing, telecoms, airlines and utilities.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Paying for profits</h2>
+  <p class="t">The most quoted ratio of all is the <b>price-to-earnings ratio</b> (P/E). It divides the share price by the profit per share, so it tells you how many dollars you are paying for each dollar of annual profit.</p>
+
+  <div class="frm rv"><span class="frm-k">P/E</span><code>Share price ÷ Earnings per share</code><span class="frm-e">or Market cap ÷ Net profit · $100 ÷ $5 = <b>20</b></span></div>
+
+  <p class="t">Another way to read it: at a P/E of 20, if profits never grew, it would take 20 years of earnings to add up to the price. Investors accept high P/Es when they expect profits to grow fast, and demand low ones when they doubt the profits will last. The <b>trailing</b> P/E uses the past 12 months of actual profit. The <b>forward</b> P/E uses analysts’ estimates for the next 12 months, which matters for fast-growing companies: a stock that looks expensive on last year’s profit can look reasonable on next year’s.</p>
+  <p class="t">To judge whether a high P/E is justified by growth, investors use the <b>PEG ratio</b>: the P/E divided by the expected annual growth in earnings, in percent. A P/E of 40 with profits growing 40% a year gives a PEG of 1, often read as fair value. The calculator puts the three together.</p>
+
+  <figure class="fig rv" id="peFig">
+    <div class="ft">P/E, forward P/E and PEG</div>
+    <div class="fs">Change the price, this year’s profit per share and the growth analysts expect</div>
+    <div class="pe-ctl">
+      <label class="ev-row"><span>Share price: <b id="pePv">$100</b></span><input type="range" id="peP" min="10" max="400" step="5" value="100" aria-label="Share price"></label>
+      <label class="ev-row"><span>Earnings per share, last 12 months: <b id="peEv">$5.00</b></span><input type="range" id="peE" min="0.5" max="20" step="0.5" value="5" aria-label="Earnings per share"></label>
+      <label class="ev-row"><span>Expected earnings growth: <b id="peGv">20%</b> a year</span><input type="range" id="peG" min="0" max="80" step="5" value="20" aria-label="Expected earnings growth"></label>
+    </div>
+    <div class="pe-out" id="peOut"></div>
+    <div class="pe-scale" id="peScale" aria-hidden="true"></div>
+    <p class="pe-why" id="peWhy" aria-live="polite"></p>
+    <figcaption>My calculation. Forward earnings = this year’s × (1 + growth). The bands are a rough, commonly used guide; what counts as normal differs by industry and by the level of interest rates.</figcaption>
+  </figure>
+
+  <p class="t">P/E has three well-known weaknesses. It is useless when a company makes a loss, since a negative P/E means nothing. It looks backwards, unless you use forecasts, and forecasts are often wrong. And it ignores debt, because it is built on market cap. A low P/E can be a bargain, or a sign that profits are about to fall; banks in a crisis and companies in decline often look “cheap”.</p>
+
+  <div class="note"><b class="h">A market-wide reading</b>The ratio works for whole markets too. FactSet put the S&amp;P 500 at about <b>22 times</b> the next 12 months<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>’ forecast earnings at the end of 2025, above its 5-year average of about 20 and its 10-year average of about 18.5. By November 2026 it had fallen to about 17.7, but mostly because forecast earnings jumped, not because prices fell: P/E can drop while a market rises.</div>
+
+  <h2 id="s4"><span class="n">Part 4</span>Before the profits</h2>
+  <p class="t">Many young companies, in technology and biotech especially, make no profit yet. Their P/E is meaningless, so investors fall back on sales. <b>EV/Revenue</b> (or its cousin, price-to-sales) tells you how much you are paying for each dollar of revenue, with debt included.</p>
+
+  <div class="frm rv"><span class="frm-k">EV/Revenue</span><code>Enterprise value ÷ Revenue</code><span class="frm-e">$65B ÷ $20B revenue = <b>3.25×</b></span></div>
+
+  <p class="t">Its weakness is the mirror image of its use: it ignores profitability. A company can grow revenue fast while losing money on every sale. EV/Revenue makes most sense alongside the company’s margins, and when comparing companies in the same business.</p>
+  <p class="t">One step down the income statement is <b>EBITDA</b>: earnings before interest, taxes, depreciation and amortisation. It starts from net profit and adds back the interest paid on debt, the tax bill, and the accounting charges for wearing out equipment (depreciation) and using up intangible assets such as patents (amortisation).</p>
+
+  <div class="frm rv"><span class="frm-k">EBITDA</span><code>Net profit + Interest + Taxes + Depreciation + Amortisation</code><span class="frm-e">A rough measure of operating cash, before financing and accounting choices</span></div>
+
+  <p class="t">Stripping those out makes companies with different debts, tax countries and accounting easier to compare, which is why <b>EV/EBITDA</b> is a favourite of bankers pricing takeovers. But EBITDA is not cash. It ignores the money a company must spend on new equipment, the cash tied up in stock and unpaid bills, and the debt it has to repay. Companies also like to publish “adjusted” EBITDA that adds back supposedly one-off costs, some of which recur every year. Charlie Munger, Warren Buffett<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>’s partner, said that every time you see the word EBITDA you should substitute “bullshit earnings”. The safer check is <b>free cash flow</b>: the cash from operations left after capital spending.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>Which ratio, when</h2>
+  <p class="t">No single number tells the whole story. Each ratio answers a different question, and the right one depends on what kind of company you are looking at.</p>
+
+  <figure class="fig rv" id="useFig">
+    <div class="ft">Choosing a ratio</div>
+    <div class="fs">Tap a question to see which ratio usually answers it</div>
+    <div class="qs" id="qsList"></div>
+    <figcaption>A common framework, simplified. Analysts usually look at several ratios together, alongside growth, margins, debt and cash flow.</figcaption>
+  </figure>
+
+  <p class="t">The ranges people quote for each ratio are only rough guides, and industry matters more than any rule of thumb. At the start of 2026, Aswath Damodaran of New York University calculated that US semiconductor companies traded at about <b>15.7<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> times revenue</b> and <b>35 times EBITDA</b> on average, levels that would look absurd for a supermarket or a steelmaker. For <b>banks</b>, whose business is borrowing and lending, debt is the raw material rather than a burden, so EV-based ratios make little sense; investors use <b>price-to-book</b> (market cap ÷ the accounting value of shareholders’ equity) instead.</p>
+
+  <figure class="fig rv" id="rngFig">
+    <div class="ft">Rough ranges, and how they are usually read</div>
+    <div class="fs">Rules of thumb, not signals; compare with peers and the company’s own history first</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Ratio</th><th>Formula</th><th>Best for</th><th>Commonly read as</th></tr></thead>
+        <tbody>
+          <tr><td>Market cap</td><td>Price × shares</td><td>Size and index weight</td><td>Mega &gt;$200B · large $10–200B · mid $2–10B · small $250M–2B</td></tr>
+          <tr><td>Enterprise value</td><td>Market cap + debt − cash</td><td>Debt-heavy or cash-rich companies</td><td>No good or bad level; the top line of EV ratios</td></tr>
+          <tr><td>P/E (trailing)</td><td>Price ÷ last 12 months’ EPS</td><td>Profitable, steady companies</td><td>&lt;10 cheap or in trouble · 10–20 fair · 20–30 growth premium · 30–50 high growth expected · &gt;50 extreme</td></tr>
+          <tr><td>Forward P/E</td><td>Price ÷ forecast EPS</td><td>Fast-growing companies</td><td>Compare with trailing P/E: much lower means fast growth is expected</td></tr>
+          <tr><td>PEG</td><td>P/E ÷ growth %</td><td>Judging a high P/E</td><td>&lt;1 possibly cheap · about 1 fair · &gt;1 possibly expensive</td></tr>
+          <tr><td>EV/Revenue</td><td>EV ÷ revenue</td><td>Companies without profits</td><td>&lt;1 cheap or low-margin · 1–3 typical · 3–10 growth premium · &gt;10 high expectations</td></tr>
+          <tr><td>EV/EBITDA</td><td>EV ÷ EBITDA</td><td>Comparing across debt levels; takeovers</td><td>&lt;6 cheap · 6–10 fair · 10–15 growth premium · &gt;15 expensive</td></tr>
+          <tr><td>Price-to-book</td><td>Market cap ÷ book equity</td><td>Banks and insurers</td><td>Around 1 means priced near the value on its books</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Ranges are widely used conventions, not laws; they shift with interest rates (low rates tend to lift all multiples) and by industry. Damodaran industry multiples, January 2026, show how far sectors differ.</figcaption>
+  </figure>
+
+  <div class="note warn"><b class="h">Four common mistakes</b><b>Comparing across industries:</b> a software company and a utility will never have similar P/Es. <b>Ignoring debt:</b> a low P/E can hide a heavy loan book; check EV. <b>Using P/E on a loss-maker:</b> switch to EV/Revenue or price-to-book. <b>Looking at one ratio only:</b> combine it with growth, margins, cash flow and the quality of management.</div>
+
+  <h2 id="s6"><span class="n">Part 6</span>Where the numbers come from</h2>
+  <p class="t">Every ratio is built from figures in a company’s own reports. Knowing which document holds which number makes it much easier to check a claim yourself.</p>
+
+  <figure class="fig rv" id="docFig">
+    <div class="ft">The three statements, and the reports they come in</div>
+    <div class="fs">What each holds, and which ratios use it</div>
+    <div class="docs">
+      <div class="doc" style="--c:#2463d6"><b>Income statement</b><p>Revenue, costs, operating profit, net profit and earnings per share, over a quarter or a year.</p><span>Feeds P/E, EV/Revenue, EBITDA</span></div>
+      <div class="doc" style="--c:#2f7a4a"><b>Balance sheet</b><p>A snapshot of what the company owns and owes on one date: cash, debt, other assets and liabilities, and shareholders’ equity.</p><span>Feeds EV (debt, cash), price-to-book</span></div>
+      <div class="doc" style="--c:#b8892b"><b>Cash-flow statement</b><p>Cash actually generated by operations, spent on investment, and raised or repaid through financing.</p><span>Feeds free cash flow, the check on EBITDA</span></div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Document</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td>Earnings release</td><td>The headline results for the quarter or year, usually with management’s summary and adjusted figures. Published first, on results day.</td></tr>
+          <tr><td>Earnings call and presentation</td><td>Management explains the results and answers analysts’ questions. Often where the most useful detail comes out.</td></tr>
+          <tr><td>Guidance</td><td>The company’s own forecast of revenue, profit, margins or cash flow for the coming period. Missing or changing it moves share prices.</td></tr>
+          <tr><td>10-Q (US)<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup></td><td>The quarterly report filed with the Securities and Exchange Commission: full statements, reviewed but not audited.</td></tr>
+          <tr><td>10-K (US)</td><td>The annual report filed with the SEC: audited statements, risk factors and a detailed description of the business.</td></tr>
+          <tr><td>8-K (US)</td><td>A filing for important events between reports, such as results announcements, big contracts, acquisitions or a change of chief executive.</td></tr>
+          <tr><td>SGX announcements (Singapore)</td><td>Results and material news posted on SGXNet. Since February 2020<sup class="fn"><a href="#src-4" id="ref-4">4</a></sup> most SGX companies report every half-year; quarterly reports are required only for companies SGX considers higher-risk.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>US filings are free on the SEC’s EDGAR database; Singapore companies’ announcements are on the SGX website.</figcaption>
+  </figure>
+
+  <p class="t">A practical order of reading is the earnings release for the headline, the call for the explanation, and the full 10-Q or 10-K, or the SGX half-yearly report, for the detail and the footnotes, where the debt, the one-off items and the share count actually live. Those are the inputs; the ratios are just ways of dividing one by another. For the other school, which ignores the business and studies the price chart itself, see <a href="chart-reading.html">Reading the Squiggles</a>. <a href="buybacks.html">Shrinking the Pie</a> shows one way the share count, and so earnings per share, can change without the business changing at all.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>S&amp;P 500 forward 12-month P/E of about 22 at the end of 2025, against 5-year (about 20) and 10-year (about 18.5) averages; 17.7 on November 5, 2026, with forecast earnings up much faster than prices: <a href="https://insight.factset.com/highest-forward-12-month-p/e-ratio-for-the-sp-500-in-more-than-5-years" target="_blank" rel="noopener">FactSet Insight</a> and FactSet <a href="https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_010926.pdf" target="_blank" rel="noopener">Earnings Insight (January 2026)</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>Industry EV/Sales (semiconductors about 15.7) and EV/EBITDA (about 35): <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/psdata.html" target="_blank" rel="noopener">Aswath Damodaran, revenue multiples by sector (January 2026)</a>; <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/vebitda.html" target="_blank" rel="noopener">EV/EBITDA by sector</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Charlie Munger on EBITDA as “bullshit earnings”, said at Berkshire Hathaway and Daily Journal meetings: <a href="https://www.cnbc.com/2020/02/12/charlie-munger-warns-there-are-lots-of-troubles-coming-because-of-too-much-wretched-excess.html" target="_blank" rel="noopener">CNBC (2020)</a>; <a href="https://www.foxbusiness.com/features/berkshire-meeting-munger-ebitda-is-a-horror" target="_blank" rel="noopener">Fox Business</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>SGX’s risk-based quarterly reporting from 7 February 2020, with half-yearly reporting as the baseline: <a href="https://www.allenandgledhill.com/sg/publication/articles/14285/sgx-implements-new-approach-to-quarterly-reporting-and-enhances-continuous-disclosure-requirements-on-7-february-2020" target="_blank" rel="noopener">Allen &amp; Gledhill (2020)</a>; <a href="https://www.thestar.com.my/business/business-news/2020/01/10/sgx-scraps-compulsory-quarterly-reporting-for-companies" target="_blank" rel="noopener">The Star (2020)</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Forms 10-Q, 10-K and 8-K: <a href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener">SEC EDGAR</a> and the SEC’s <a href="https://www.investor.gov/introduction-investing/getting-started/researching-investments/using-edgar-research-investments" target="_blank" rel="noopener">investor guide to EDGAR</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>Nvidia’s 10-for-1 split (June 2024), Chipotle’s 50-for-1 split (June 2024, from about $3,100–3,200 a share) and Walmart’s 3-for-1 split (February 2024): <a href="https://www.morningstar.com/stocks/what-does-chipotles-stock-split-mean-investors" target="_blank" rel="noopener">Morningstar</a>; <a href="https://www.fastcompany.com/91145371/chipotle-stock-split-price-date-reason-nvidia-walmart-2024" target="_blank" rel="noopener">Fast Company (2024)</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Proportional bid–ask spreads widening after splits: Thomas Copeland, “Liquidity changes following stock splits”, <i>Journal of Finance</i> (1979), and later studies summarised in <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/46D1B882F218BBED33C37FA9C4ED1709/S0022109000000600a.pdf/what_do_stock_splits_really_signal.pdf" target="_blank" rel="noopener">“What do stock splits really signal?”, <i>Journal of Financial and Quantitative Analysis</i></a>; <a href="https://www.janeway.econ.cam.ac.uk/working-paper-pdfs/jiwp2404.pdf" target="_blank" rel="noopener">Hafner, Linton and Wang (2024)</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>Market-cap size bands, P/E, PEG, EV/Revenue and EV/EBITDA ranges: widely used conventions in investor education, not fixed standards; they vary by source. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Ratios and ranges are general guides. Nothing here is investment advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#evFig">Same market cap, different companies</a><br><a href="#peFig">The P/E calculator</a><br><a href="index-weights.html">How indexes weight companies</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/valuation.js"></script>
+</body>
+</html>

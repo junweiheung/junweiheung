@@ -1,0 +1,55 @@
+/* Page-specific styles for the index weighting explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Segmented buttons ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- Comparison table ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
+
+/* ---------- Part 1: weighting explorer ---------- */
+.wt-ctl{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-bottom:14px}
+.wt-split{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#fff;color:var(--ink);border:1px dashed var(--ink2);border-radius:6px;padding:7px 11px;cursor:pointer}
+.wt-split[aria-pressed="true"]{background:var(--gold);border-style:solid;border-color:var(--gold);color:#fff}
+.wt-head,.wt-r{display:grid;grid-template-columns:140px 190px minmax(0,1fr) 56px;gap:4px 14px;align-items:center}
+.wt-head{font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 8px 6px;border-bottom:2px solid var(--ink)}
+.wt-head span:nth-child(3){grid-column:3/5;text-align:right}
+.wt-r{width:100%;text-align:left;font-family:var(--sans);background:#fff;border:0;border-bottom:1px solid #eee;border-left:4px solid transparent;padding:10px 8px;cursor:pointer;color:var(--ink2)}
+.wt-r:hover{background:#faf8f3}
+.wt-r[aria-pressed="true"]{border-left-color:var(--c);background:#f7f5f0}
+.wt-n{font-size:14px;font-weight:700;color:var(--ink)}
+.wt-n small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
+.wt-m{font-size:12.5px;color:var(--muted)}
+.wt-m b{color:var(--ink)}
+.wt-b{height:16px;background:#f3f0e9;border-radius:3px;overflow:hidden}
+.wt-b i{display:block;height:100%;background:var(--c);border-radius:3px;transition:width .4s ease}
+.wt-v{font-size:15px;font-weight:800;text-align:right;color:var(--ink)}
+.wt-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:14px 0 0;min-height:3em}
+@media(max-width:640px){
+  .wt-head{display:none}
+  .wt-r{grid-template-columns:minmax(0,1fr) 56px;grid-template-areas:"n v" "b b" "m m"}
+  .wt-n{grid-area:n}.wt-v{grid-area:v}.wt-b{grid-area:b}.wt-m{grid-area:m}
+}
+
+/* ---------- Part 2: top-ten bars ---------- */
+.top-bars{font-family:var(--sans);max-width:620px}
+.tp-r{display:grid;grid-template-columns:48px minmax(0,1fr) 170px;gap:12px;align-items:center;padding:8px 0}
+.tp-y{font-size:14px;font-weight:700;color:var(--ink)}
+.tp-b{height:22px;background:#f3f0e9;border-radius:3px;overflow:hidden}
+.tp-b i{display:block;height:100%;width:0;background:#2463d6;border-radius:3px;transition:width .9s ease}
+.tp-r:last-child .tp-b i{background:#a3141f}
+#topFig.in-view .tp-b i{width:var(--w)}
+.tp-v{font-size:15px;font-weight:800;color:var(--ink)}
+.tp-v small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
+@media(max-width:520px){.tp-r{grid-template-columns:44px minmax(0,1fr) 96px}}

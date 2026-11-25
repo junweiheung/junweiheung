@@ -1,4 +1,4 @@
-/* Full list of every explainer, newest first, with a category filter and pagination. Reads articles.js. */
+/* Full list of every explainer, newest first, with a category filter and pagination, plus the List / Map view switch. Reads articles.js. */
 (function () {
   const DATA = window.BOTTLENECK || { articles: [] };
   const articles = [...DATA.articles].reverse().sort((a, b) => b.date.localeCompare(a.date));
@@ -78,4 +78,21 @@
   }
 
   renderList();
+
+  // List / Map views. The map (js/map.js) lays itself out when its view is shown; #map in the URL opens it.
+  const tabList = $("tabList"), tabMap = $("tabMap"), viewList = $("viewList"), viewMap = $("viewMap");
+  function showView(v, push) {
+    if (!tabList || !viewMap) return;
+    const map = v === "map";
+    tabList.setAttribute("aria-selected", String(!map)); tabMap.setAttribute("aria-selected", String(map));
+    viewList.hidden = map; viewMap.hidden = !map;
+    if (map) dispatchEvent(new Event("bottleneck:mapshow"));
+    if (push) history.replaceState(null, "", map ? "#map" : location.pathname + location.search);
+  }
+  if (tabList) {
+    tabList.addEventListener("click", () => showView("list", true));
+    tabMap.addEventListener("click", () => showView("map", true));
+    addEventListener("hashchange", () => showView(location.hash === "#map" ? "map" : "list", false));
+    if (location.hash === "#map") showView("map", false);
+  }
 })();

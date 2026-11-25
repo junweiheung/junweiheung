@@ -156,3 +156,58 @@
 
   render(byHolder, false); // initial draw; reveal handled by the .in-view transition
 })();
+
+/* ---------------- Four ways out of a debt: debt-to-GDP path ----------------
+   d(t+1) = d(t) × (1 + r) / (1 + g) − primary balance. r = average interest rate on the debt,
+   g = nominal GDP growth, primary balance = budget balance before interest (negative = deficit). */
+(function () {
+  const svg = document.getElementById('exSvg'), out = document.getElementById('exOut'), pre = document.getElementById('exPre');
+  if (!svg || !out || !pre) return;
+  const $ = (id) => document.getElementById(id);
+  const G = $('exG'), R = $('exR'), P = $('exP');
+  const D0 = 100, YEARS = 20, Y0 = 2025;
+  const BASE = { g: 4.0, r: 3.3, p: -3.0 };
+  const PRESETS = {
+    base: { ...BASE, why: 'Roughly today’s US position: debt about 100% of GDP, an average interest rate of about 3.3%, nominal growth of about 4% and a deficit before interest of about 3% of GDP. The ratio keeps climbing.' },
+    grow: { g: 5.0, r: 3.3, p: -2.6, why: 'One extra point of real growth a year raises nominal growth to 5% and lifts tax revenue a little. The ratio still rises, just more slowly: growth alone rarely closes a gap this size.' },
+    inflate: { g: 7.5, r: 3.3, p: -3.0, why: 'About three extra points of inflation raise nominal growth to 7.5% while the interest on existing debt stays fixed, so the ratio falls. In practice lenders demand higher rates as debt rolls over, so the window is short; move the interest-rate slider up to see it close.' },
+    repress: { g: 4.5, r: 0.5, p: -3.0, why: 'Hold the interest rate on the debt far below growth, by capping yields or requiring banks and pension funds to buy government bonds, while tolerating slightly higher inflation. The ratio drifts down, and savers quietly pay through returns below inflation.' },
+    austere: { g: 3.2, r: 3.3, p: 1.0, why: 'Turn the deficit before interest into a 1% surplus by cutting spending or raising taxes. The ratio falls, but slower growth from the squeeze eats part of the gain, and the politics are brutal.' }
+  };
+  let cur = 'base';
+  const path = (g, r, p) => { const d = [D0]; for (let t = 0; t < YEARS; t++) d.push(d[t] * (1 + r / 100) / (1 + g / 100) - p); return d; };
+  const W = 640, H = 260, X0 = 46, X1 = 620, Yt = 16, Yb = 226, LO = 40, HI = 180;
+  const x = (t) => X0 + t / YEARS * (X1 - X0), y = (v) => Yb - (Math.min(Math.max(v, LO), HI) - LO) / (HI - LO) * (Yb - Yt);
+  const line = (d) => d.map((v, t) => `${t ? 'L' : 'M'}${x(t).toFixed(1)} ${y(v).toFixed(1)}`).join('');
+  function draw() {
+    const g = +G.value, r = +R.value, p = +P.value;
+    $('exGv').textContent = g.toFixed(1) + '%'; $('exRv').textContent = r.toFixed(1) + '%';
+    $('exPv').textContent = (p > 0 ? '+' : '') + p.toFixed(1) + '% of GDP';
+    const base = path(BASE.g, BASE.r, BASE.p), d = path(g, r, p);
+    let grid = '';
+    for (let v = 60; v <= 180; v += 20) grid += `<line x1="${X0}" x2="${X1}" y1="${y(v)}" y2="${y(v)}" stroke="#eee"/><text x="${X0 - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#76736c">${v}%</text>`;
+    for (let t = 0; t <= YEARS; t += 5) grid += `<text x="${x(t)}" y="${Yb + 18}" text-anchor="middle" font-size="11" fill="#76736c">${Y0 + t}</text>`;
+    svg.innerHTML = grid +
+      `<line x1="${X0}" x2="${X1}" y1="${y(100)}" y2="${y(100)}" stroke="#a9a59c" stroke-dasharray="3 4"/>` +
+      `<path d="${line(base)}" fill="none" stroke="#a9a59c" stroke-width="2" stroke-dasharray="6 5"/>` +
+      `<path d="${line(d)}" fill="none" stroke="#a3141f" stroke-width="3.5" stroke-linejoin="round"/>` +
+      `<circle cx="${x(YEARS)}" cy="${y(d[YEARS])}" r="5" fill="#a3141f"/>` +
+      `<text x="${x(YEARS) - 8}" y="${y(d[YEARS]) - 10}" text-anchor="end" font-size="13" font-weight="800" fill="#111">${Math.round(d[YEARS])}%</text>` +
+      `<text x="${x(YEARS) - 8}" y="${y(base[YEARS]) + (Math.abs(base[YEARS] - d[YEARS]) < 8 ? 18 : -8)}" text-anchor="end" font-size="11.5" fill="#76736c">${cur === 'base' && g === BASE.g && r === BASE.r && p === BASE.p ? '' : 'today’s path ' + Math.round(base[YEARS]) + '%'}</text>`;
+    const need = D0 * (r - g) / (100 + g);   // primary balance (% of GDP) that holds the ratio steady
+    const custom = !(PRESETS[cur].g === g && PRESETS[cur].r === r && PRESETS[cur].p === p);
+    out.innerHTML = `<div class="ex-nums">
+        <div><span>Debt in ${Y0 + YEARS}</span><b>${Math.round(d[YEARS])}% of GDP</b></div>
+        <div><span>Growth minus interest</span><b>${(g - r) > 0 ? '+' : ''}${(g - r).toFixed(1)} pts</b></div>
+        <div><span>Balance before interest needed to hold debt steady</span><b>${need > 0 ? '+' : ''}${need.toFixed(1)}% of GDP</b></div>
+      </div><p class="ex-why">${custom ? 'Your own mix. When growth beats the interest rate, a country can run a small deficit before interest and still see the ratio fall; when interest beats growth, it needs a surplus just to stand still.' : PRESETS[cur].why}</p>`;
+    pre.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === cur && !custom)));
+  }
+  pre.addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    cur = b.dataset.v; const s = PRESETS[cur];
+    G.value = s.g; R.value = s.r; P.value = s.p; draw();
+  });
+  [G, R, P].forEach((el) => el.addEventListener('input', draw));
+  draw();
+})();

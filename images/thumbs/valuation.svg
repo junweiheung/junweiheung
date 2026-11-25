@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .g{transform-box:fill-box;transform-origin:left;animation:g .7s ease-out both}
+    .d1{animation-delay:.15s}.d2{animation-delay:.35s}
+    @keyframes g{from{transform:scaleX(0)}to{transform:none}}
+    @media (prefers-reduced-motion:reduce){.g{animation:none}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="60" font-weight="700">What is a company worth?</text>
+  <text x="120" y="186" fill="#8d8a84" font-size="28">Market cap, enterprise value and the ratios built on them</text>
+  <text x="120" y="320" fill="#cfcbc3" font-size="26" font-weight="700">Company A</text>
+  <g class="g d1"><rect x="120" y="340" width="540" height="70" fill="#2463d6"/><rect x="660" y="340" width="270" height="70" fill="#2a3a55"/></g>
+  <text x="120" y="470" fill="#cfcbc3" font-size="26" font-weight="700">Company B</text>
+  <g class="g d2"><rect x="120" y="490" width="810" height="70" fill="#2463d6"/><rect x="930" y="490" width="540" height="70" fill="#a3141f"/></g>
+  <text x="120" y="630" fill="#8d8a84" font-size="24">Same $50B market cap. B also owes $30B; A holds $15B of cash.</text>
+  <g font-weight="800">
+    <text x="120" y="770" fill="#e0b65a" font-size="72">P/E 20</text>
+    <text x="520" y="770" fill="#fff" font-size="72">EV $80B</text>
+    <text x="1000" y="770" fill="#cfcbc3" font-size="72">PEG 1.0</text>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .c{opacity:0;animation:in .4s ease-out forwards}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.c{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="60" font-weight="700">Reading the squiggles</text>
+  <text x="120" y="186" fill="#8d8a84" font-size="28">Candlesticks, crosses and momentum: how traders read a chart</text>
+  <g class="c" style="animation-delay:.1s">
+    <line x1="170" y1="420" x2="170" y2="560" stroke="#2f7a4a" stroke-width="4"/><rect x="150" y="450" width="40" height="80" fill="#2f7a4a"/>
+    <line x1="240" y1="380" x2="240" y2="500" stroke="#2f7a4a" stroke-width="4"/><rect x="220" y="400" width="40" height="70" fill="#2f7a4a"/>
+    <line x1="310" y1="360" x2="310" y2="470" stroke="#a3141f" stroke-width="4"/><rect x="290" y="380" width="40" height="60" fill="#a3141f"/>
+    <line x1="380" y1="410" x2="380" y2="540" stroke="#a3141f" stroke-width="4"/><rect x="360" y="430" width="40" height="90" fill="#a3141f"/>
+    <line x1="450" y1="330" x2="450" y2="480" stroke="#2f7a4a" stroke-width="4"/><rect x="430" y="350" width="40" height="110" fill="#2f7a4a"/>
+  </g>
+  <path class="c" style="animation-delay:.3s" d="M560 640 C700 600 760 420 900 420 S1100 600 1240 480 S1400 300 1480 320" fill="none" stroke="#a9a59c" stroke-width="5"/>
+  <path class="c" style="animation-delay:.45s" d="M560 620 C720 600 800 500 920 470 S1120 520 1260 470 S1400 380 1480 360" fill="none" stroke="#4d8bff" stroke-width="7"/>
+  <path class="c" style="animation-delay:.55s" d="M560 560 C760 540 900 520 1040 515 S1300 470 1480 430" fill="none" stroke="#e0b65a" stroke-width="7"/>
+  <circle class="c" style="animation-delay:.7s" cx="1243" cy="474" r="18" fill="#e0b65a" stroke="#0d0d0f" stroke-width="5"/>
+  <text class="c" style="animation-delay:.75s" x="1243" y="550" fill="#e0b65a" font-size="30" font-weight="800" text-anchor="middle">Golden cross</text>
+  <rect x="120" y="700" width="1360" height="110" fill="#17171a"/>
+  <rect x="120" y="700" width="1360" height="30" fill="rgba(163,20,31,.25)"/><rect x="120" y="780" width="1360" height="30" fill="rgba(47,122,74,.25)"/>
+  <path class="c" style="animation-delay:.6s" d="M120 770 L260 740 L380 715 L500 760 L640 795 L780 770 L900 735 L1040 760 L1180 720 L1320 710 L1480 745" fill="none" stroke="#b39ddb" stroke-width="5"/>
+  <text x="1470" y="852" fill="#8d8a84" font-size="24" text-anchor="end">RSI: 70 overbought · 30 oversold</text>
+</svg>

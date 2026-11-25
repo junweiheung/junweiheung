@@ -62,8 +62,8 @@
     <h3>Key findings</h3>
     <ul>
       <li>A stablecoin is a crypto token that tries to <b>track a reference value</b>, almost always one US dollar. How it holds that peg is the whole story.</li>
-      <li><b>Fiat-backed</b> coins (USDT, USDC) hold cash and reserves 1:1 and lean on <b>trust in the issuer</b> and audits. <b>Crypto-backed</b> coins (BOLD) lock <b>more</b> crypto than they issue. <b>Algorithmic</b> coins use code alone.</li>
-      <li>Algorithmic designs are the most capital-efficient and the most fragile. <b>TerraUSD</b> and its sister token <b>LUNA</b> collapsed together in a "death spiral" in May 2022, erasing roughly <b>$40 billion</b>.</li>
+      <li><b>Fiat-backed</b> coins (USDT, USDC) hold cash and reserves 1:1 and lean on <b>trust in the issuer</b> and audits. <b>Crypto-backed</b> coins (BOLD)<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> lock <b>more</b> crypto than they issue. <b>Algorithmic</b> coins use code alone.</li>
+      <li>Algorithmic designs are the most capital-efficient and the most fragile. <b>TerraUSD</b> and its sister token <b>LUNA</b> collapsed together in a "death spiral" in May 2022, erasing roughly <b>$40 billion</b><sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>.</li>
       <li>Even sound-looking designs can break: a crypto-backed coin can become <b>underbacked</b> if its collateral crashes faster than the system can sell it.</li>
     </ul>
   </div>
@@ -95,7 +95,7 @@
 
   <h2 id="s3"><span class="n">Part 3</span>Fiat-backed: trust the issuer</h2>
   <p class="t">The simplest design. For every token in circulation, the issuer claims to hold <b>one dollar</b> of cash or safe reserves, often including US Treasuries. <b>USDT</b> (Tether) and <b>USDC</b> (Circle) work this way. Hand a token back and you should get a dollar.</p>
-  <p class="t">Because you can't see the bank account, this design runs on <b>trust</b>, propped up three ways: issuers publish <b>periodic audits</b> or attestations to show the reserves exist; they keep <b>policies to restrict or delay redemptions</b> if too many people cash out at once; and the market itself arbitrages small gaps. Still, the price is set by trading, so a fiat-backed coin can briefly slip under a dollar when sellers pile up faster than buyers, which is exactly what a <b>bank run</b> looks like.</p>
+  <p class="t">Because you can't see the bank account, this design runs on <b>trust</b>, propped up three ways: issuers publish <b>periodic audits</b> or attestations to show the reserves exist; they keep <b>policies to restrict or delay redemptions</b> if too many people cash out at once; and the market itself arbitrages small gaps. Still, the price is set by trading, so a fiat-backed coin can briefly slip<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup> under a dollar when sellers pile up faster than buyers, which is exactly what a <b>bank run</b> looks like.</p>
 
   <h2 id="s4"><span class="n">Part 4</span>Crypto-backed: over-collateralise</h2>
   <p class="t">Here there's no bank to trust. Instead you lock <b>more</b> crypto than the stablecoin you mint, and everyone can see the collateral on-chain. <b>BOLD</b> is a crypto-backed stablecoin that targets $1 and is backed by <b>ETH</b>. You lock ETH in a smart contract, borrow freshly created BOLD against it, and if your collateral falls too far, the system <b>liquidates</b> it to cover the debt.</p>
@@ -142,8 +142,8 @@
 
   <h2 id="s6"><span class="n">Part 6</span>Bitcoin, Ether and a Bitcoin-backed stock</h2>
   <p class="t">Stablecoins live on top of two networks worth knowing.</p>
-  <p class="t"><b>Bitcoin</b> was the first widely successful cryptocurrency: scarce digital money with no central operator, which is why people call it "digital gold." Its coin is <b>BTC</b>. <b>Ethereum</b> is a platform where developers build things on top: stablecoins, lending, NFTs and other apps. Its coin is <b>Ether (ETH)</b>, the same ETH that backs BOLD above.</p>
-  <p class="t">Bitcoin's rise has also spawned instruments built around holding it. One is <b>STRC</b>, a perpetual preferred share issued by <b>Strategy</b> (formerly MicroStrategy), which uses the proceeds to buy and hold Bitcoin.</p>
+  <p class="t"><b>Bitcoin</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup> was the first widely successful cryptocurrency: scarce digital money with no central operator, which is why people call it "digital gold." Its coin is <b>BTC</b>. <b>Ethereum</b> is a platform where developers build things on top: stablecoins, lending, NFTs and other apps. Its coin is <b>Ether (ETH)</b>, the same ETH that backs BOLD above.</p>
+  <p class="t">Bitcoin's rise has also spawned instruments built around holding it. One is <b>STRC</b>, a perpetual preferred share<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup> issued by <b>Strategy</b> (formerly MicroStrategy), which uses the proceeds to buy and hold Bitcoin.</p>
 
   <figure class="fig rv" id="strcFig">
     <div class="ft">STRC, in plain terms</div>
@@ -170,11 +170,11 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
   <ul class="sources">
-    <li>Stablecoin types, fiat-backing 1:1, audits and redemption controls, and that exchange price is set by trading: general stablecoin descriptions from the issuers (<a href="https://tether.to/" target="_blank" rel="noopener">Tether</a>, <a href="https://www.circle.com/usdc" target="_blank" rel="noopener">Circle</a>).</li>
-    <li>BOLD mechanics (ETH collateral, borrowing, liquidation, the under-collateralisation scenario): <a href="https://docs.liquity.org/" target="_blank" rel="noopener">Liquity documentation</a>.</li>
-    <li>The TerraUSD / LUNA design and the May 2022 collapse, including the roughly $40 billion in value lost: contemporary reporting on the Terra collapse.</li>
-    <li>Bitcoin as the first widely successful cryptocurrency and "digital gold"; Ethereum as a platform for stablecoins, lending and NFTs: general network descriptions.</li>
-    <li>STRC as a perpetual preferred share from <a href="https://www.strategy.com/" target="_blank" rel="noopener">Strategy</a> funding Bitcoin purchases, with a stated ~11.5% annual dividend and a ~$100 target: Strategy's disclosures. The Ponzi-like criticism is a characterisation by sceptics, not a statement of fact about the company.</li>
+    <li id="src-1"><span class="src-n">1</span>Stablecoin types, fiat-backing 1:1, audits and redemption controls, and that exchange price is set by trading: general stablecoin descriptions from the issuers (<a href="https://tether.to/" target="_blank" rel="noopener">Tether</a>, <a href="https://www.circle.com/usdc" target="_blank" rel="noopener">Circle</a>). <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>BOLD mechanics (ETH collateral, borrowing, liquidation, the under-collateralisation scenario): <a href="https://docs.liquity.org/" target="_blank" rel="noopener">Liquity documentation</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>The TerraUSD / LUNA design and the May 2022 collapse, including the roughly $40 billion in value lost: contemporary reporting on the Terra collapse. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Bitcoin as the first widely successful cryptocurrency and "digital gold"; Ethereum as a platform for stablecoins, lending and NFTs: general network descriptions. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>STRC as a perpetual preferred share from <a href="https://www.strategy.com/" target="_blank" rel="noopener">Strategy</a> funding Bitcoin purchases, with a stated ~11.5% annual dividend and a ~$100 target: Strategy's disclosures. The Ponzi-like criticism is a characterisation by sceptics, not a statement of fact about the company. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
   </ul>
   <p class="end">Educational only. Not investment, legal or tax advice. Crypto products are volatile and can lose all their value; confirm every figure with the issuer before acting.</p>
 </article>

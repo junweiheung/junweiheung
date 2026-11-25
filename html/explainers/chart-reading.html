@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading the Squiggles: How Traders Read a Price Chart — Bottleneck by Jun Wei</title>
+<meta name="description" content="Candlesticks, Point and Figure, Kagi and Renko charts, golden and death crosses, RSI, MACD and a dozen other momentum studies: what technical analysts look at, how each tool is built, and what the evidence says about whether any of it works.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/chart-reading.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Personal finance · Technical analysis</span></div>
+  <h1>Reading the Squiggles</h1>
+  <p class="dek">Open any trading app and the price comes wrapped in tools: candlesticks, moving averages, an RSI line hovering between 30 and 70. This is technical analysis, the practice of reading price and volume history for clues about what comes next. Here is how the main charts and indicators are built, what traders look for in them, and what the evidence says.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 16 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Two ways to judge a stock</a>
+    <a href="#s2">2. Five ways to draw the same prices</a>
+    <a href="#s3">3. Moving averages and crosses</a>
+    <a href="#s4">4. Momentum studies</a>
+    <a href="#s5">5. Does any of it work?</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how common chart types and indicators are built and read. The price series in the figures is generated for illustration, not a real stock. Indicator signals are conventions, not predictions. Nothing here is investment advice or a recommendation to trade.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li><b>Technical analysis</b> studies past prices and volume to judge where a price may go; <b>fundamental analysis</b> studies the business. Many investors use both: fundamentals for <i>what</i> to buy, charts for <i>when</i>.</li>
+      <li>The same prices can be drawn very differently. <b>Candlesticks</b> and <b>OHLC bars</b> show every period’s open, high, low and close. <b>Point and Figure</b>, <b>Kagi</b> and <b>Renko</b> charts drop time altogether and only move when the price moves by a set amount, filtering out noise.</li>
+      <li>Traders read <b>patterns</b> in both: on candlesticks, shapes such as the hammer, engulfing candle and morning star; on Point &amp; Figure, breakouts such as the double-top buy signal. Most are reversal signals that need context and confirmation.</li>
+      <li>A <b>golden cross</b> is the 50-day moving average rising above the 200-day; a <b>death cross</b> is the reverse. Momentum tools such as <b>RSI</b> (overbought above 70, oversold below 30) and <b>MACD</b> try to measure how fast a move is going and whether it is tiring.</li>
+      <li>The evidence is mixed. A famous 1992 study found simple moving-average rules beat the market on a century of Dow data, but later work found the edge largely vanished after trading costs and faded once it was published.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Two ways to judge a stock</h2>
+  <p class="t dropcap">There are two broad ways to decide whether a share is worth buying. <b>Fundamental analysis</b> looks at the business: its revenue, profits, debt and how its price compares, the ratios in <a href="valuation.html">What Is a Company Worth?</a>. It asks what the company is worth. <b>Technical analysis</b> looks only at the market’s own record, the history of prices and trading volume, and asks what the crowd is doing and whether that is likely to continue.</p>
+  <p class="t">The idea behind it is that prices move in <b>trends</b> that persist for a while, that crowds repeat their behaviour, and that some of that behaviour leaves patterns in the price. Technical tools are most popular with short-term traders, in currencies and crypto as well as stocks, but plenty of long-term investors glance at a chart before buying. Everything starts with how the prices are drawn.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>Five ways to draw the same prices</h2>
+  <p class="t">A <b>candlestick</b> chart, the default in most apps, draws one candle per period, a day here. The thick body runs from the opening price to the closing price, coloured up or down; thin wicks show the high and low. A bar chart, usually called <b>OHLC</b> for open, high, low and close, shows the same four numbers as a vertical line from the low to the high, with a tick to the left at the open and a tick to the right at the close. Many traders find candles quicker to read because the coloured body makes the day’s direction obvious; OHLC bars are thinner, so more days fit on screen. Candlesticks are said<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup> to trace back to Japanese rice traders in the 18th century and became popular in the West in the 1990s.</p>
+  <figure class="fig rv" id="ohlcFig">
+    <div class="ft">One day, drawn two ways</div>
+    <div class="fs">The same four prices, open, high, low and close, as a candlestick and as an OHLC bar</div>
+    <svg id="ohlcSvg" viewBox="0 0 640 250" role="img" aria-label="Diagram: a rising and a falling day, each drawn as a candlestick and as an OHLC bar, with the open, high, low and close labelled.">
+      <g font-family="Inter, sans-serif" font-size="12" fill="#3d3d3d">
+        <text x="160" y="20" text-anchor="middle" font-weight="800" fill="#2f7a4a">A day that closed higher</text>
+        <text x="480" y="20" text-anchor="middle" font-weight="800" fill="#a3141f">A day that closed lower</text>
+        <!-- up day: candle -->
+        <line x1="110" x2="110" y1="40" y2="220" stroke="#2f7a4a" stroke-width="2"/>
+        <rect x="90" y="70" width="40" height="110" fill="#2f7a4a"/>
+        <text x="110" y="240" text-anchor="middle" font-weight="700">Candlestick</text>
+        <!-- up day: OHLC bar -->
+        <line x1="220" x2="220" y1="40" y2="220" stroke="#2f7a4a" stroke-width="3"/>
+        <line x1="200" x2="220" y1="180" y2="180" stroke="#2f7a4a" stroke-width="3"/>
+        <line x1="220" x2="240" y1="70" y2="70" stroke="#2f7a4a" stroke-width="3"/>
+        <text x="220" y="240" text-anchor="middle" font-weight="700">OHLC bar</text>
+        <!-- labels, up day -->
+        <g fill="#76736c" font-size="11.5">
+          <text x="250" y="44">High</text><text x="250" y="74">Close</text><text x="250" y="184">Open</text><text x="250" y="224">Low</text>
+          <line x1="226" x2="246" y1="40" y2="40" stroke="#c9c4b8"/><line x1="244" x2="248" y1="70" y2="70" stroke="#c9c4b8"/><line x1="200" x2="198" y1="180" y2="180" stroke="#c9c4b8"/><line x1="226" x2="246" y1="220" y2="220" stroke="#c9c4b8"/>
+          <text x="40" y="44" text-anchor="end">wick</text><line x1="44" x2="104" y1="40" y2="40" stroke="#c9c4b8" stroke-dasharray="2 3"/>
+          <text x="40" y="129" text-anchor="end">body</text><line x1="44" x2="86" y1="125" y2="125" stroke="#c9c4b8" stroke-dasharray="2 3"/>
+        </g>
+        <!-- down day: candle -->
+        <line x1="430" x2="430" y1="50" y2="230" stroke="#a3141f" stroke-width="2"/>
+        <rect x="410" y="80" width="40" height="100" fill="#a3141f"/>
+        <text x="430" y="248" text-anchor="middle" font-weight="700">Candlestick</text>
+        <!-- down day: OHLC bar -->
+        <line x1="540" x2="540" y1="50" y2="230" stroke="#a3141f" stroke-width="3"/>
+        <line x1="520" x2="540" y1="80" y2="80" stroke="#a3141f" stroke-width="3"/>
+        <line x1="540" x2="560" y1="180" y2="180" stroke="#a3141f" stroke-width="3"/>
+        <text x="540" y="248" text-anchor="middle" font-weight="700">OHLC bar</text>
+        <g fill="#76736c" font-size="11.5">
+          <text x="568" y="54">High</text><text x="568" y="84">Open</text><text x="568" y="184">Close</text><text x="568" y="234">Low</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption>On a candle the body runs from open to close and is coloured by direction. On an OHLC bar the vertical line runs from low to high, the tick on the left marks the open and the tick on the right marks the close.</figcaption>
+  </figure>
+
+  <p class="t">The other three throw away the calendar. They only add something when the price has moved by a set amount, so quiet days leave no mark. Switch between them below: it is the same 160 days of prices each time.</p>
+
+  <figure class="fig rv" id="typeFig">
+    <div class="ft">One price history, five charts</div>
+    <div class="fs">The same 160 trading days of an illustrative stock</div>
+    <div class="seg ct-tabs" id="ctTabs" role="tablist">
+      <button type="button" data-v="candle" aria-pressed="true">Candlestick</button><button type="button" data-v="ohlc" aria-pressed="false">OHLC bars</button><button type="button" data-v="pf" aria-pressed="false">Point &amp; Figure</button><button type="button" data-v="kagi" aria-pressed="false">Kagi</button><button type="button" data-v="renko" aria-pressed="false">Renko</button>
+    </div>
+    <svg id="ctSvg" viewBox="0 0 680 300" role="img" aria-label="The same illustrative price history drawn as the chosen chart type."></svg>
+    <p class="ct-why" id="ctWhy" aria-live="polite"></p>
+    <figcaption>Generated prices, not a real stock. Point &amp; Figure uses a box of $2 and a 3-box reversal; Kagi reverses on a 3% move; Renko uses $2 bricks on closing prices.</figcaption>
+  </figure>
+
+  <figure class="fig rv" id="cmpFig">
+    <div class="ft">The four chart types compared</div>
+    <div class="fs">What each one keeps, and what it filters out</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Feature</th><th>Candlestick / OHLC bar</th><th>Point &amp; Figure</th><th>Kagi</th><th>Renko</th></tr></thead>
+        <tbody>
+          <tr><td>Focus</td><td>Time and price</td><td>Price moves only</td><td>Price moves only</td><td>Price moves only</td></tr>
+          <tr><td>Time</td><td>Yes: one candle or bar per fixed period (a minute, a day)</td><td>No: only price changes matter</td><td>No: the line changes only when price moves by a set amount</td><td>No: a brick forms only when price moves</td></tr>
+          <tr><td>Built from</td><td>Candle: a body from open to close, wicks to the high and low. Bar: a line from low to high, ticks at the open (left) and close (right)</td><td>Columns of X’s (rising) and O’s (falling)</td><td>One continuous line that changes direction and thickness</td><td>Equal-sized bricks stepping up or down at 45 degrees</td></tr>
+          <tr><td>Reversal rule</td><td>None: a new candle every period</td><td>A new column only when price reverses by a set number of boxes (e.g. 3)</td><td>The line turns only when price moves against it by the reversal amount</td><td>A brick the other way only when price moves by twice the brick size</td></tr>
+          <tr><td>Noise</td><td>High: every move shows</td><td>Low: moves smaller than a box vanish</td><td>Low: moves below the reversal amount vanish</td><td>Very low: anything smaller than a brick vanishes</td></tr>
+          <tr><td>Best for</td><td>Short-term trading and the detail of each session</td><td>Clear support and resistance levels and breakouts</td><td>Shifts in supply and demand, shown by line thickness</td><td>Following the main trend without the wiggles</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Simplified; each chart type has variations in how boxes, bricks and reversal amounts are set.</figcaption>
+  </figure>
+
+  <h3>Candlestick patterns: a cheatsheet</h3>
+  <p class="t">Candlestick traders read the shape of one to three candles as a sign of who won the session: a long lower wick means sellers pushed the price down and buyers pushed it back; a big body that swallows the previous one means one side took over. Most patterns are <b>reversal</b> signals and only mean something in context: a hammer after a fall is a possible bottom, the same shape after a rise is a “hanging man”. Traders usually wait for the next candle to <b>confirm</b> before acting.</p>
+
+  <figure class="fig rv" id="candlePat">
+    <div class="ft">Candlestick patterns</div>
+    <div class="fs">Twenty-two common patterns. Filter by what they usually signal</div>
+    <div class="seg pat-tabs" id="cpTabs" role="group" aria-label="Filter patterns">
+      <button type="button" data-v="all" aria-pressed="true">All</button><button type="button" data-v="bull" aria-pressed="false">Bullish</button><button type="button" data-v="bear" aria-pressed="false">Bearish</button><button type="button" data-v="neutral" aria-pressed="false">Indecision</button>
+    </div>
+    <div class="pat-grid" id="cpGrid"></div>
+    <figcaption>Grey candles show the trend the pattern needs to appear in; coloured candles are the pattern itself. Definitions follow common usage; exact rules (how long a wick, how small a body) vary between sources.</figcaption>
+  </figure>
+
+  <h3>Point &amp; Figure patterns: a cheatsheet</h3>
+  <p class="t">Point &amp; Figure charts have a simpler, more mechanical vocabulary. The basic signal is a <b>breakout</b>: a <b>buy signal</b> when a column of X’s rises one box above the top of the previous X column, and a <b>sell signal</b> when a column of O’s falls one box below the bottom of the previous O column. The other patterns are variations on that, with more columns testing the same level before it breaks.</p>
+
+  <figure class="fig rv" id="pfPat">
+    <div class="ft">Point &amp; Figure patterns</div>
+    <div class="fs">Ten classic signals; the highlighted box is where the signal is given</div>
+    <div class="seg pat-tabs" id="ppTabs" role="group" aria-label="Filter patterns">
+      <button type="button" data-v="all" aria-pressed="true">All</button><button type="button" data-v="bull" aria-pressed="false">Buy signals</button><button type="button" data-v="bear" aria-pressed="false">Sell signals</button>
+    </div>
+    <div class="pat-grid pf-grid" id="ppGrid"></div>
+    <figcaption>Drawn with a 3-box reversal. A common way to set a price target from a breakout is the <b>vertical count</b>: the number of boxes in the breakout column × the box size × the reversal amount, added to the column’s low (or subtracted from its high for a sell signal).</figcaption>
+  </figure>
+
+  <div class="note"><b class="h">Patterns are probabilities, not promises</b>Every pattern here fails often, and on a finished chart it is easy to remember the ones that worked. Traders who use them typically look for a pattern at a meaningful level (an old high, a long-term average), on rising volume, and confirmed by the next candle or column, and they decide in advance where they will get out if it fails.</div>
+
+  <h2 id="s3"><span class="n">Part 3</span>Moving averages and crosses</h2>
+  <p class="t">The simplest technical tool is the <b>moving average</b>: the average closing price over the last so many days, recalculated each day so it slides along with the price. A 50-day average smooths out daily noise; a 200-day average shows the long-term trend. When the price is above its 200-day average, many traders treat the trend as up.</p>
+  <p class="t">The most famous signals come from two averages crossing. A <b>golden cross</b> is when the 50-day average rises above the 200-day: the recent trend has turned up strongly enough to lift the short average over the long one, often read as the start of a major rally. A <b>death cross</b> is the opposite, the 50-day falling below the 200-day. Because averages lag the price, both signals arrive after the turn has already begun.</p>
+
+  <figure class="fig rv" id="maFig">
+    <div class="ft">Golden and death crosses</div>
+    <div class="fs">Closing price with two moving averages; the panel below shows a momentum indicator for the same days</div>
+    <div class="ma-ctl">
+      <span class="seg" id="maPair" role="group" aria-label="Moving averages"><button type="button" data-v="50,200" aria-pressed="true">50 / 200 day</button><button type="button" data-v="20,50" aria-pressed="false">20 / 50 day</button></span>
+      <span class="seg" id="maOsc" role="group" aria-label="Momentum panel"><button type="button" data-v="rsi" aria-pressed="true">RSI (14)</button><button type="button" data-v="macd" aria-pressed="false">MACD (12, 26, 9)</button></span>
+    </div>
+    <svg id="maSvg" viewBox="0 0 680 380" role="img" aria-label="Line chart of the illustrative price with two moving averages, crosses marked, and a momentum indicator below."></svg>
+    <p class="ma-why" id="maWhy" aria-live="polite"></p>
+    <figcaption>Generated prices, not a real stock. Simple moving averages of closing prices. RSI uses Wilder’s 14-day smoothing<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup>; MACD is the 12-day minus the 26-day exponential average, with a 9-day signal line.</figcaption>
+  </figure>
+
+  <h2 id="s4"><span class="n">Part 4</span>Momentum studies</h2>
+  <p class="t">Beyond moving averages sits a long menu of <b>studies</b>, the indicators a charting app offers under a button. Most fall into four families. <b>Momentum oscillators</b> measure how fast prices are moving and flag when a move may be overstretched. <b>Moving-average tools</b> such as MACD measure the gap between a fast and a slow average. <b>Volume and money-flow</b> indicators weigh price moves by how much was traded, on the idea that a rise on heavy volume means more than one on light volume. <b>Bands</b> draw a channel around the price to show when it has strayed far from its average.</p>
+  <p class="t">Two ideas run through almost all of them. <b>Overbought and oversold</b>: when an oscillator reaches an extreme, the move may be due a pause. And <b>divergence</b>: when the price makes a new high but the indicator doesn’t, the move may be losing strength. Pick a family to see its members.</p>
+
+  <figure class="fig rv" id="studyFig">
+    <div class="ft">The studies menu</div>
+    <div class="fs">Fifteen common indicators, by family</div>
+    <div class="seg st-tabs" id="stTabs" role="tablist"></div>
+    <div class="tbl-wrap"><table class="cmp st-tbl"><thead><tr><th>Study</th><th>What it measures</th><th>How it is usually read</th></tr></thead><tbody id="stBody"></tbody></table></div>
+    <figcaption>Readings like “above 70 is overbought” are conventions traders use, not rules the market follows. Many of these indicators are built from the same few inputs, so they often agree with each other for that reason alone.</figcaption>
+  </figure>
+
+  <h2 id="s5"><span class="n">Part 5</span>Does any of it work?</h2>
+  <p class="t">This is where economists and traders have argued for decades. The case against: if past prices reliably predicted future ones, traders would exploit the pattern until it disappeared. That is the idea behind the efficient-market view, and it is why many academics long dismissed chart-reading.</p>
+  <p class="t">The evidence is more mixed than either side admits. In 1992 William Brock<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>, Josef Lakonishok and Blake LeBaron tested simple moving-average and breakout rules on the Dow Jones index from 1897 to 1986 and found they beat holding cash, with prices falling on average after sell signals. Later researchers pushed back: some found the profits would have been eaten by <b>trading costs</b>, others that testing hundreds of rules and keeping the winners, <b>data snooping</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>, explains much of the result, and a 2015 study found the predictive power of moving averages had faded in the decades after the paper was published.</p>
+  <p class="t">There is also a self-fulfilling side. When enough traders watch the same 200-day average or the same round-number level, their orders can cluster there and make the level matter, for a while. And charts can be useful without predicting anything: as a way to see the trend at a glance, to set a stop-loss, or to avoid buying into a move that has already run a long way.</p>
+
+  <div class="note warn"><b class="h">Three traps</b><b>Hindsight:</b> on a finished chart every signal looks obvious; in real time, most crosses and breakouts fail or arrive late. <b>Overfitting:</b> tune enough settings on past data and something will always look brilliant, which is why tests on data the rule has never seen matter. <b>Costs:</b> frequent trading pays the spread and fees every time, as <a href="forex.html#bookFig">the order book in the forex explainer</a> shows.</div>
+
+  <p class="t">Used sensibly, technical analysis is a way of reading the crowd, the same thing <a href="forex.html#s5">retail sentiment data</a> tries to do. It tells you what prices have done and how traders are positioned; what the business is worth is a separate question, and the long-run evidence in <a href="risk-ladder.html#s4">The Saver’s Ladder</a> suggests that for most people, owning the whole market cheaply beats trying to time it.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>Chart types, moving-average crosses and the momentum-study definitions: the author’s study notes, checked against standard references such as <a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener">CME Group education</a> and <a href="https://chartschool.stockcharts.com/" target="_blank" rel="noopener">StockCharts ChartSchool</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>RSI introduced by J. Welles Wilder in <i>New Concepts in Technical Trading Systems</i> (1978); MACD developed by Gerald Appel in the late 1970s. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Moving-average and trading-range rules on the Dow, 1897–1986: William Brock, Josef Lakonishok and Blake LeBaron, <a href="https://ideas.repec.org/a/bla/jfinan/v47y1992i5p1731-64.html" target="_blank" rel="noopener">“Simple Technical Trading Rules and the Stochastic Properties of Stock Returns”, <i>Journal of Finance</i> (1992)</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Data snooping and transaction costs: Sullivan, Timmermann and White (1999), <a href="https://bashtage.github.io/kevinsheppard.com/files/teaching/mfe/advanced-econometrics/Sullivan_Timmermann_White.pdf" target="_blank" rel="noopener">“Data-Snooping, Technical Trading Rule Performance, and the Bootstrap”</a>; Bessembinder and Chan (1998) and Ready (2002), as summarised in <a href="https://eprints.soton.ac.uk/377140/1/Urquhart_How.pdf" target="_blank" rel="noopener">Urquhart, Gebka and Hudson (2015)</a>, which also finds moving-average predictability diminished over 1987–2013. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. The price series is generated. Nothing here is investment advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#typeFig">Five chart types</a><br><a href="#candlePat">Candlestick patterns</a><br><a href="#pfPat">Point &amp; Figure patterns</a><br><a href="#maFig">Golden and death crosses</a><br><a href="valuation.html">What is a company worth?</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/chart-reading.js"></script>
+</body>
+</html>

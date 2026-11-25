@@ -1,0 +1,95 @@
+/* Page-specific styles for the valuation ratios explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note.warn{border-left-color:var(--gold)}
+.note.warn b.h{color:#8a6414}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Comparison table ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:140px}
+
+/* ---------- Formula strip ---------- */
+.frm{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:26px 0;padding:14px 18px;background:#fff;border:1px solid var(--rule);border-left:4px solid var(--ink);font-family:var(--sans)}
+.frm-k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);min-width:110px}
+.frm code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;font-weight:600;color:var(--ink);background:#f3efe6;padding:3px 8px;border-radius:4px}
+.frm-e{font-size:13.5px;color:var(--ink2)}
+
+/* ---------- sliders ---------- */
+.ev-ctl,.pe-ctl{display:flex;flex-wrap:wrap;gap:10px 28px;margin-bottom:16px;font-family:var(--sans)}
+.ev-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:13px;color:var(--ink2);min-width:0}
+.ev-row input[type=range]{width:200px;max-width:100%;accent-color:var(--ink)}
+
+/* ---------- Part 2: EV comparison ---------- */
+.ev-co{padding:12px 0;border-bottom:1px solid #eee;font-family:var(--sans)}
+.ev-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:14px;color:var(--ink);margin-bottom:8px}
+.ev-h span{font-size:12.5px;color:var(--muted)}
+.ev-bar{display:flex;height:22px;background:#f3f0e9;border-radius:3px;overflow:hidden}
+.ev-bar i{display:block;height:100%;transition:width .35s ease}
+.b-mc{background:#2463d6}
+.b-cash{background:repeating-linear-gradient(45deg,#cfe0f7 0 5px,#e9f0fb 5px 10px)}
+.b-debt{background:#a3141f}
+.ev-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.ev-nums span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ev-nums b{font-size:18px;font-weight:800;color:var(--ink)}
+.ev-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-family:var(--sans);font-size:12.5px;color:var(--ink2)}
+.ev-key i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.ev-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0}
+@media(max-width:560px){.ev-nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Part 3: P/E calculator ---------- */
+.pe-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-family:var(--sans)}
+.pe-nums div{border-top:2px solid var(--ink);padding-top:8px;min-width:0}
+.pe-nums span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pe-nums b{display:block;font-size:26px;font-weight:800;color:var(--ink);margin:2px 0}
+.pe-nums small{font-size:12px;color:var(--muted);font-weight:600}
+.pe-scale{margin-top:22px;font-family:var(--sans)}
+.ps-track{position:relative;height:30px}
+.ps-track i{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;opacity:.85}
+.ps-track i span{font-size:11px;font-weight:700;color:#fff;white-space:nowrap}
+.ps-mk{position:absolute;top:-7px;width:4px;height:44px;margin-left:-2px;background:var(--ink);border-radius:2px;transition:left .3s ease}
+.ps-mk.fwd{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.ps-key{display:flex;gap:18px;margin-top:12px;font-size:12.5px;color:var(--ink2)}
+.ps-dot{display:inline-block;width:4px;height:14px;background:var(--ink);margin-right:6px;vertical-align:-2px;border-radius:2px}
+.ps-dot.fwd{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.pe-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:14px 0 0}
+@media(max-width:560px){.pe-nums b{font-size:20px}.ps-track i span{font-size:9.5px}}
+
+/* ---------- Part 5: which ratio ---------- */
+.qs{display:flex;flex-direction:column;gap:8px;font-family:var(--sans)}
+.q{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;text-align:left;background:#fff;border:1px solid var(--rule);border-left:4px solid var(--rule);padding:12px 14px;cursor:pointer;font-family:var(--sans);color:var(--ink)}
+.q:hover{border-left-color:var(--gold)}
+.q-q{font-size:14.5px;font-weight:700}
+.q-a{font-size:13px;font-weight:700;color:var(--blue);text-align:right}
+.q-w{grid-column:1/-1;font-size:13.5px;line-height:1.5;color:var(--ink2);display:none}
+.q[aria-expanded="true"]{border-left-color:var(--blue)}
+.q[aria-expanded="true"] .q-w{display:block}
+@media(max-width:560px){.q{grid-template-columns:minmax(0,1fr)}.q-a{text-align:left}}
+
+/* ---------- Part 6: statements ---------- */
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px;font-family:var(--sans)}
+.doc{border:1px solid var(--rule);border-top:4px solid var(--c);padding:12px 14px;background:#fff}
+.doc b{font-size:15px;color:var(--ink)}
+.doc p{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:6px 0 8px}
+.doc span{font-size:12px;font-weight:600;color:var(--c)}
+@media(max-width:700px){.docs{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Part 1: stock split ---------- */
+.sp-ctl{margin-bottom:14px}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.sp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-family:var(--sans)}
+.sp-c{border:1px solid var(--rule);border-top:3px solid var(--gold);padding:10px 12px;background:#fff;min-width:0}
+.sp-c.same{border-top-color:#2f7a4a}
+.sp-c span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.sp-c b{display:block;font-size:20px;font-weight:800;color:var(--ink);margin:3px 0 1px;font-variant-numeric:tabular-nums}
+.sp-c small{font-size:12px;color:var(--muted)}
+.sp-c.same small{color:#2f7a4a;font-weight:600}
+@media(max-width:560px){.sp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

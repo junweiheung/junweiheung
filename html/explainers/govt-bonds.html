@@ -40,7 +40,7 @@
 
 <div class="byline">
   <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
-  <div>November 22, 2026 · 9 min read</div>
+  <div>November 22, 2026 · 13 min read</div>
   <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Notes</button></div>
 </div>
 
@@ -50,20 +50,21 @@
     <a href="#s1">1. What a bond is</a>
     <a href="#s2">2. USA: bills vs bonds</a>
     <a href="#s3">3. USA: the interest problem</a>
-    <a href="#s4">4. Singapore: three choices</a>
-    <a href="#s5">5. Singapore: borrowing it doesn't need</a>
-    <a href="#s6">6. Two opposite playbooks</a>
+    <a href="#sexit">4. Four ways out of a debt</a>
+    <a href="#s4">5. Singapore: three choices</a>
+    <a href="#s5">6. Singapore: borrowing it doesn't need</a>
+    <a href="#s6">7. Two opposite playbooks</a>
     <a href="#sources">Notes</a>
   </aside>
 
-  <p class="disc">This is a plain-English comparison of how two governments borrow. The figures are drawn from US sources (the Congressional Budget Office and the US Treasury) and Singapore's bond framework (MAS and the Singapore Savings Bond rules), as summarised in my notes below. Bond rules, rates and tax treatment change; check the official pages before acting on anything here. This explains an instrument; it isn't investment, legal or tax advice.</p>
+  <p class="disc">This is a plain-English comparison of how two governments borrow. The figures are drawn from US sources (the Congressional Budget Office and the US Treasury<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>) and Singapore's bond framework (MAS and the Singapore Savings Bond<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup> rules), as summarised in my notes below. Bond rules, rates and tax treatment change; check the official pages before acting on anything here. This explains an instrument; it isn't investment, legal or tax advice.</p>
 
   <div class="keys rv">
     <h3>Key findings</h3>
     <ul>
       <li>A bond is a <b>loan to a borrower</b>, usually a government or company. You hand over cash now and get interest, then your money back at the end.</li>
       <li>In the US, <b>interest on the debt hit about $963B</b> in the first ten months of fiscal 2026, <b>more than the $763B spent on defence</b>, on roughly <b>$40.1T</b> of public debt.</li>
-      <li>Singapore's government debt is about <b>172% of GDP</b>, higher than the US, yet about <b>99% of it is issued to build markets and reserves</b>, not to fund day-to-day spending.</li>
+      <li>Singapore's government debt is about <b>172%<sup class="fn"><a href="#src-9" id="ref-9">9</a></sup> of GDP</b>, higher than the US, yet about <b>99% of it is issued to build markets and reserves</b>, not to fund day-to-day spending.</li>
       <li>Both offer short <b>T-Bills</b> and longer <b>bonds</b>; Singapore adds the <b>Singapore Savings Bond</b>, a saver-friendly bond you can redeem any month with no penalty.</li>
     </ul>
   </div>
@@ -95,7 +96,7 @@
   </figure>
 
   <h2 id="s3"><span class="n">Part 3</span>USA: the interest problem</h2>
-  <p class="t">Borrowing is not free, and for the US the bill has grown enormous. In the first ten months of fiscal 2026, the government spent about <b>$963 billion</b> on interest, more than the <b>$763 billion</b> it spent on defence. Interest is now the second-largest single spending category, growing faster than any other.</p>
+  <p class="t">Borrowing is not free, and for the US the bill has grown enormous. In the first ten months of fiscal 2026, the government spent about <b>$963<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> billion</b> on interest, more than the <b>$763 billion</b> it spent on defence. Interest is now the second-largest single spending category, growing faster than any other.</p>
 
   <figure class="fig rv" id="usSpendFig">
     <div class="ft">More on interest than on defence</div>
@@ -127,8 +128,37 @@
 
   <div class="note"><b class="h">Why rising rates bite twice</b>When the Fed raises rates to fight inflation, the government must offer higher coupons to sell new debt and to roll over old debt. So the same rate rise that cools the economy also makes the government's own borrowing more expensive, feeding the interest bill.</div>
 
-  <h2 id="s4"><span class="n">Part 4</span>Singapore: three choices</h2>
-  <p class="t">Singapore offers three main government instruments to savers today: short <b>T-Bills</b>, long <b>SGS Bonds</b>, and the <b>Singapore Savings Bond (SSB)</b>, a product built specifically for ordinary individuals.</p>
+  <h2 id="sexit"><span class="n">Part 4</span>Four ways out of a debt</h2>
+  <p class="t">There is no crisis yet. The US has run deficits for most of its history without trouble in the bond market. But US debt held by the public has risen from about 60%<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup> of GDP two decades ago to about <b>100%</b><sup class="fn"><a href="#src-6" id="ref-6">6</a></sup>, and the Congressional Budget Office expects deficits of around 6% of GDP to continue for a decade. So what are the options if the debt ever has to come down? History offers four, and most countries end up using a mix.</p>
+  <p class="t">They all work through one piece of arithmetic. What matters is not the size of the debt in dollars but the <b>debt-to-GDP ratio</b>: debt divided by the size of the economy. Each year the debt grows with the interest paid on it, and the economy grows with real growth plus inflation, its <b>nominal growth</b>. If nominal growth beats the interest rate, the ratio drifts down on its own, unless new borrowing adds to it. If interest beats growth, the government needs a surplus before interest just to stand still. The calculator shows each route.</p>
+
+  <figure class="fig rv" id="exitFig">
+    <div class="ft">Where the US debt ratio goes</div>
+    <div class="fs">Debt held by the public, % of GDP, over 20 years. Pick a route, or set your own mix</div>
+    <div class="ex-pre seg" id="exPre" role="group" aria-label="Route out of debt">
+      <button type="button" data-v="base" aria-pressed="true">Today’s path</button><button type="button" data-v="grow" aria-pressed="false">Grow</button><button type="button" data-v="inflate" aria-pressed="false">Inflate</button><button type="button" data-v="repress" aria-pressed="false">Repress</button><button type="button" data-v="austere" aria-pressed="false">Austerity</button>
+    </div>
+    <div class="ex-ctl">
+      <label class="ex-row"><span>Nominal growth: <b id="exGv">4.0%</b></span><input type="range" id="exG" min="1" max="8" step="0.1" value="4" aria-label="Nominal GDP growth"></label>
+      <label class="ex-row"><span>Interest rate on the debt: <b id="exRv">3.3%</b></span><input type="range" id="exR" min="0" max="7" step="0.1" value="3.3" aria-label="Average interest rate on the debt"></label>
+      <label class="ex-row"><span>Balance before interest: <b id="exPv">−3.0% of GDP</b></span><input type="range" id="exP" min="-6" max="3" step="0.1" value="-3" aria-label="Primary balance as a share of GDP"></label>
+    </div>
+    <svg id="exSvg" viewBox="0 0 640 250" role="img" aria-label="Line chart of the US debt-to-GDP ratio over 20 years under the chosen route, with today's path dashed for comparison."></svg>
+    <div class="ex-out" id="exOut" aria-live="polite"></div>
+    <figcaption>My simplified model: each year, debt ratio × (1 + interest rate) ÷ (1 + nominal growth), minus the balance before interest. The starting point is close to CBO’s January 2025 baseline (debt about 100% of GDP, a total deficit of about 6.2% of GDP of which net interest about 3.2%); the routes’ numbers are round illustrations. Real interest costs adjust gradually as old bonds mature, which this ignores.</figcaption>
+  </figure>
+
+  <div class="ways">
+    <div class="way" style="--c:#2f7a4a"><div class="way-k">1 · Grow</div><h3>Outgrow the debt</h3><p>The least painful route: if the economy grows faster than the debt, the ratio shrinks without anyone being made worse off. Capital Group’s analysts see productivity gains from AI as the main hope for the US. The catch is that growth can’t be ordered up, and it has to be fast to close a gap this size.</p></div>
+    <div class="way" style="--c:#b8892b"><div class="way-k">2 · Inflate</div><h3>Shrink the debt in real terms</h3><p>Inflation raises nominal GDP and tax revenue while the debt is fixed in dollars, so its real burden falls: a hidden, partial default. Germany’s 1923 hyperinflation wiped out its domestic war debt, along with the savings of everyone who held it (see <a href="schacht.html#s3">The Dark Wizard</a>). Italy leaned on inflation after the Second World War, at the cost of a weak currency, capital flight and stagflation. The window is short: once lenders expect inflation, they demand higher rates, and a weaker dollar could eventually test its role as the world’s reserve currency.</p></div>
+    <div class="way" style="--c:#2463d6"><div class="way-k">3 · Repress</div><h3>Keep interest below inflation</h3><p><b>Financial repression</b> means holding interest rates below inflation, through caps, central-bank buying or rules that make banks and pension funds hold government bonds. After 1945 the US and UK reduced their debts this way, by an estimated 3–4%<sup class="fn"><a href="#src-7" id="ref-7">7</a></sup> of GDP a year. Japan’s central bank has owned a huge share of its government’s bonds. It works only while inflation stays tame and savers have nowhere else to go; otherwise money leaks abroad, pressure shifts from the bond market to the currency, and the central bank’s independence is questioned.</p></div>
+    <div class="way" style="--c:#a3141f"><div class="way-k">4 · Cut</div><h3>Austerity</h3><p>Cut spending or raise taxes. It is the most direct route and usually comes only after markets force it. Greece cut deeply under its 2010–18 bailouts and still needed a 53.5%<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup> haircut on private bondholders; its economy shrank by more than a quarter between 2008 and 2013 and unemployment peaked near 27.5%. Indonesia’s IMF programme in 1997–98 came amid one of the deepest recessions of the Asian crisis (see <a href="asian-crisis.html">The Domino Year</a>). In the US, most spending is Social Security, Medicare and defence, which neither party wants to cut.</p></div>
+  </div>
+
+  <p class="t">The fifth route, an outright <b>default</b>, is the one nobody plans for. For a country that borrows in its own currency and prints it, as the US does, a formal default is almost unthinkable; inflation and repression are the softer versions of the same thing. Capital Group’s analysts expect that if the US debt ever comes to a head, <b>inflation and financial repression would come first, and austerity last</b>, which is one reason long-term Treasury yields carry a premium. How the Fed’s own bond buying feeds into this is covered in <a href="bond-market.html">One Seesaw, Two Fears</a>.</p>
+
+  <h2 id="s4"><span class="n">Part 5</span>Singapore: three choices</h2>
+  <p class="t">Singapore offers three main government instruments to savers today: short <b>T-Bills</b>, long <b>SGS Bonds</b>, and the <b>Singapore Savings Bond (SSB)</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>, a product built specifically for ordinary individuals.</p>
 
   <figure class="fig rv" id="sgTblFig">
     <div class="ft">T-Bills vs SGS Bonds vs SSB</div>
@@ -155,7 +185,7 @@
 
   <p class="t">These three sit near the bottom of a longer ladder of places to put savings, below corporate bonds, funds and individual stocks. <a href="risk-ladder.html">The Saver's Ladder</a> compares all of them: what each one guarantees, what can go wrong, and what 125 years of returns say.</p>
 
-  <h2 id="s5"><span class="n">Part 5</span>Singapore: borrowing it doesn't need</h2>
+  <h2 id="s5"><span class="n">Part 6</span>Singapore: borrowing it doesn't need</h2>
   <p class="t">Here is the twist. Singapore's government debt is about <b>172% of GDP</b>, well above the US and far above the 100% mark often treated as a warning line. On its face that looks alarming. It isn't, because the debt is raised for an entirely different purpose.</p>
 
   <figure class="fig rv" id="sgSplitFig">
@@ -170,7 +200,7 @@
 
   <p class="t">Singapore runs <b>controlled deficits</b> with a reputation for fiscal discipline, and in surplus years the government collects more than it spends. Those surpluses go into the reserves and are <b>reinvested through GIC, Temasek and MAS</b>, rather than being spent. So where the US borrows because it spends more than it earns, Singapore borrows almost entirely to build financial plumbing and hold safe assets, while its actual budget stays tight.</p>
 
-  <h2 id="s6"><span class="n">Part 6</span>Two opposite playbooks</h2>
+  <h2 id="s6"><span class="n">Part 7</span>Two opposite playbooks</h2>
   <p class="t">Strip it down and the contrast is the whole story.</p>
 
   <figure class="fig rv" id="cmpFig">
@@ -196,11 +226,15 @@
   <h2 id="sources"><span class="n">Notes</span>Sources</h2>
   <p class="t" style="font-size:17px">Where the figures come from.</p>
   <ul class="sources">
-    <li>US T-Bill vs T-Bond features, tax treatment and where to buy: US Treasury / <a href="https://www.treasurydirect.gov/" target="_blank" rel="noopener">TreasuryDirect</a>.</li>
-    <li>US interest of $963B vs $763B defence in the first ten months of fiscal 2026, +14% growth, $131m an hour, and the $40.1T debt with Japan, the UK and China as the largest foreign holders: CBO Monthly Budget Review and US Treasury, as summarised in <a href="https://www.reddit.com/r/dataisbeautiful/comments/1w03hrn/oc_us_interest_on_the_debt_exceeds_defense/" target="_blank" rel="noopener">"US Interest on the Debt Exceeds Defense Spending" (r/dataisbeautiful)</a>. The over-$1 trillion 2027 figure is a projection.</li>
-    <li>Singapore T-Bills, SGS Bonds and the Singapore Savings Bond, including minimums, tenures, redemption and CPF/SRS eligibility: <a href="https://www.mas.gov.sg/" target="_blank" rel="noopener">Monetary Authority of Singapore</a> and the Singapore Savings Bond rules.</li>
-    <li>Tracking SSB issues, projected rates, swap maths and auction cut-offs: <a href="https://www.ilovessb.com/" target="_blank" rel="noopener">I Love SSB</a> (an independent, unofficial tracker).</li>
-    <li>Singapore's ~172% debt-to-GDP, the ~99% / 1% split, controlled deficits and reserves reinvested via GIC, Temasek and MAS: Singapore's government borrowing framework.</li>
+    <li id="src-1"><span class="src-n">1</span>US T-Bill vs T-Bond features, tax treatment and where to buy: US Treasury / <a href="https://www.treasurydirect.gov/" target="_blank" rel="noopener">TreasuryDirect</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>US interest of $963B vs $763B defence in the first ten months of fiscal 2026, +14% growth, $131m an hour, and the $40.1T debt with Japan, the UK and China as the largest foreign holders: CBO Monthly Budget Review and US Treasury, as summarised in <a href="https://www.reddit.com/r/dataisbeautiful/comments/1w03hrn/oc_us_interest_on_the_debt_exceeds_defense/" target="_blank" rel="noopener">"US Interest on the Debt Exceeds Defense Spending" (r/dataisbeautiful)</a>. The over-$1 trillion 2027 figure is a projection. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Singapore T-Bills, SGS Bonds and the Singapore Savings Bond, including minimums, tenures, redemption and CPF/SRS eligibility: <a href="https://www.mas.gov.sg/" target="_blank" rel="noopener">Monetary Authority of Singapore</a> and the Singapore Savings Bond rules. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Tracking SSB issues, projected rates, swap maths and auction cut-offs: <a href="https://www.ilovessb.com/" target="_blank" rel="noopener">I Love SSB</a> (an independent, unofficial tracker). <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>The four routes out of high debt, the US debt ratio rising from about 60% to nearly 100% of GDP, Italy’s post-war inflation, Japan’s financial repression and the expectation that inflation and repression would precede austerity: Jason Davis, Doug Kletter and Arjun Madan, <a href="https://www.capitalgroup.com/content/dam/cgc/tenants/eacg/documents/insights/en/2025/q3/ii-what-happens-if-us-debt-becomes-unsustainable.pdf" target="_blank" rel="noopener">“What happens if US debt becomes unsustainable?”, Capital Group (September 2025)</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>US debt held by the public about 100% of GDP, a 2025 deficit of about 6.2% of GDP and net interest of about 3.2%: <a href="https://www.cbo.gov/publication/61172" target="_blank" rel="noopener">CBO, The Budget and Economic Outlook: 2025 to 2035</a>. Actual fiscal 2025: deficit 5.9% of GDP, debt 99.8%: <a href="https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf" target="_blank" rel="noopener">CBO Monthly Budget Review</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Post-war debt reduction through negative real interest rates, about 3–4% of GDP a year for the US and UK: Carmen Reinhart and M. Belen Sbrancia, <a href="https://www.nber.org/papers/w16893" target="_blank" rel="noopener">“The Liquidation of Government Debt”, NBER (2011)</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>Greece: output down by more than a quarter between 2008 and 2013, unemployment peaking near 27.5%, and the 53.5% private-sector haircut: <a href="https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/FlagPost/2015/July/Greece" target="_blank" rel="noopener">Australian Parliamentary Library (2015)</a>; <a href="https://www.lse.ac.uk/asset-library/hellenic-observatory/greese-no130.pdf" target="_blank" rel="noopener">LSE Hellenic Observatory</a>. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>Singapore's ~172% debt-to-GDP, the ~99% / 1% split, controlled deficits and reserves reinvested via GIC, Temasek and MAS: Singapore's government borrowing framework. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
   </ul>
   <p class="end">Educational only. Not investment, legal or tax advice. Bond terms, rates and tax rules change; confirm with the official sources before acting.</p>
 </article>
@@ -209,7 +243,7 @@
   <div class="in">
     <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
     <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome: <a href="mailto:heungjunwei@gmail.com">email me</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
-    <div><h5>Read</h5><p><a href="#s3">The US interest problem</a><br><a href="#s5">Singapore's borrowing</a><br><a href="../countries.html">Country map</a><br><a href="../explainers.html">All explainers</a></p></div>
+    <div><h5>Read</h5><p><a href="#s3">The US interest problem</a><br><a href="#exitFig">Four ways out of a debt</a><br><a href="#s5">Singapore's borrowing</a><br><a href="../countries.html">Country map</a><br><a href="../explainers.html">All explainers</a></p></div>
   </div>
   <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
 </footer>

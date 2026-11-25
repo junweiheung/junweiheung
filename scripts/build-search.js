@@ -35,7 +35,10 @@ function sectionsOf(html) {
     .replace(/<header[\s\S]*?<\/header>/gi, " ")
     .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
     .replace(/<aside class="toc"[\s\S]*?<\/aside>/gi, " ")
-    .replace(/<svg[\s\S]*?<\/svg>/gi, " ");
+    .replace(/<svg[\s\S]*?<\/svg>/gi, " ")
+    // footnote markers and the Sources list's numbers / back-links are navigation, not text
+    .replace(/<sup class="fn">[\s\S]*?<\/sup>/gi, "")
+    .replace(/<span class="src-n">\d+<\/span>|<a class="src-back"[^>]*>[\s\S]*?<\/a>/gi, "");
   const out = [];
   // everything before the first <h2> is the intro; then one section per <h2 id>
   const re = /<h2[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/gi;

@@ -173,3 +173,14 @@ figure.photo figcaption .credit{display:block;margin-top:4px;color:#9a958b}
   figure.photo .pair{grid-template-columns:1fr}
 }
 figure.photo > img{width:auto;max-width:100%;max-height:560px;margin:0 auto}
+
+/* ---------- footnote citations: superscript numbers in the text, numbered Sources list ---------- */
+sup.fn{font-family:var(--sans);font-size:.62em;font-weight:700;line-height:0;vertical-align:super;margin-left:1px;white-space:nowrap}
+sup.fn a{color:var(--gold);text-decoration:none;padding:0 1px;border-radius:2px}
+sup.fn a:hover,sup.fn a:focus-visible{color:var(--ink);background:#f6e7bf;outline:none}
+[id^="ref-"]{scroll-margin-top:96px}
+.sources li[id^="src-"]{list-style:none;margin-left:0;padding:4px 6px 4px 34px;position:relative;scroll-margin-top:96px;border-radius:3px;transition:background .3s}
+.sources li[id^="src-"] .src-n{position:absolute;left:4px;top:4px;min-width:24px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.sources li:target{background:#fdf3d9}
+.sources .src-back{text-decoration:none;color:var(--muted);margin-left:2px}
+.sources .src-back:hover{color:var(--ink)}

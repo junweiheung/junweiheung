@@ -108,3 +108,6 @@ console.log(`feed.json and feed.xml written: ${items.length} item(s), latest "${
 
 // the site search index is built from the same registry, so keep it in step
 require("./build-search.js");
+
+// and the connections map
+require("./build-graph.js");

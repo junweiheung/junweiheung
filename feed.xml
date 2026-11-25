@@ -8,6 +8,46 @@
   <language>en-sg</language>
   <lastBuildDate>Wed, 25 Nov 2026 01:00:00 GMT</lastBuildDate>
   <item>
+    <title>Reading the Squiggles: How Traders Read a Price Chart</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/chart-reading.html</link>
+    <guid isPermaLink="false">bottleneck-chart-reading</guid>
+    <pubDate>Wed, 25 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Technical analysis</category>
+    <description>Candlesticks, Point and Figure, Kagi and Renko charts, golden and death crosses, RSI, MACD and a dozen other momentum studies: what technical analysts look at, how each tool is built, and what the evidence says about whether any of it works.</description>
+  </item>
+  <item>
+    <title>The Dark Wizard: How Hjalmar Schacht Paid for Hitler&apos;s Rearmament</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/schacht.html</link>
+    <guid isPermaLink="false">bottleneck-schacht</guid>
+    <pubDate>Wed, 25 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Germany, 1918–1939</category>
+    <description>In 1933 six million Germans were out of work. By 1939 unemployment had all but vanished and Hitler was parading a new army, built by a country short of gold, oil and rubber. Much of the financing was engineered by one central banker, Hjalmar Schacht. Here is how the tricks worked, what they hid, and what they cost.</description>
+  </item>
+  <item>
+    <title>What Is a Company Worth? Reading P/E, EV and EBITDA</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/valuation.html</link>
+    <guid isPermaLink="false">bottleneck-valuation</guid>
+    <pubDate>Wed, 25 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Valuation</category>
+    <description>A share price on its own says almost nothing. Valuation ratios turn a price into a comparison: what you pay for each dollar of sales, profit or cash. Here is what each common ratio measures, when to use which, and where the numbers come from.</description>
+  </item>
+  <item>
+    <title>Shrinking the Pie: How Stock Buybacks Work</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/buybacks.html</link>
+    <guid isPermaLink="false">bottleneck-buybacks</guid>
+    <pubDate>Wed, 25 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Stock buybacks</category>
+    <description>When a company buys back its own shares, it isn&apos;t placing one giant order. It buys slowly, through a broker, only from people who choose to sell, under rules that cap how much it can buy each day, and it can stop whenever it likes.</description>
+  </item>
+  <item>
+    <title>Who Gets the Biggest Slice? How Stock Indexes Weight Companies</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/index-weights.html</link>
+    <guid isPermaLink="false">bottleneck-index-weights</guid>
+    <pubDate>Wed, 25 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Stock indexes</category>
+    <description>The S&amp;P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts, because each uses a different rule for how much each company counts. Here are the three rules, what they do to your money, and why a stock split can change a company&apos;s place in the Dow.</description>
+  </item>
+  <item>
     <title>The Saver&apos;s Ladder: From Fixed Deposits to Stocks</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/risk-ladder.html</link>
     <guid isPermaLink="false">bottleneck-risk-ladder</guid>

@@ -13,6 +13,116 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "chart-reading",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/chart-reading.html",
+      "title": "Reading the Squiggles: How Traders Read a Price Chart",
+      "summary": "Candlesticks, Point and Figure, Kagi and Renko charts, golden and death crosses, RSI, MACD and a dozen other momentum studies: what technical analysts look at, how each tool is built, and what the evidence says about whether any of it works.",
+      "content_text": "Candlesticks, Point and Figure, Kagi and Renko charts, golden and death crosses, RSI, MACD and a dozen other momentum studies: what technical analysts look at, how each tool is built, and what the evidence says about whether any of it works.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Technical analysis"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chart-reading.png",
+      "_bottleneck": {
+        "short": "Reading the squiggles",
+        "topic": "Technical analysis",
+        "readMins": 16,
+        "stat": {
+          "big": "50 / 200",
+          "text": "The moving averages behind the golden cross (50-day rises above the 200-day) and the death cross (it falls below)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chart-reading.png"
+      }
+    },
+    {
+      "id": "schacht",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/schacht.html",
+      "title": "The Dark Wizard: How Hjalmar Schacht Paid for Hitler's Rearmament",
+      "summary": "In 1933 six million Germans were out of work. By 1939 unemployment had all but vanished and Hitler was parading a new army, built by a country short of gold, oil and rubber. Much of the financing was engineered by one central banker, Hjalmar Schacht. Here is how the tricks worked, what they hid, and what they cost.",
+      "content_text": "In 1933 six million Germans were out of work. By 1939 unemployment had all but vanished and Hitler was parading a new army, built by a country short of gold, oil and rubber. Much of the financing was engineered by one central banker, Hjalmar Schacht. Here is how the tricks worked, what they hid, and what they cost.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Germany, 1918–1939"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/schacht.png",
+      "_bottleneck": {
+        "short": "The dark wizard",
+        "topic": "Germany, 1918–1939",
+        "readMins": 15,
+        "stat": {
+          "big": "~6M",
+          "text": "Registered unemployed in Germany at the 1932–33 peak, about 30% of the workforce."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/schacht.png"
+      }
+    },
+    {
+      "id": "valuation",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/valuation.html",
+      "title": "What Is a Company Worth? Reading P/E, EV and EBITDA",
+      "summary": "A share price on its own says almost nothing. Valuation ratios turn a price into a comparison: what you pay for each dollar of sales, profit or cash. Here is what each common ratio measures, when to use which, and where the numbers come from.",
+      "content_text": "A share price on its own says almost nothing. Valuation ratios turn a price into a comparison: what you pay for each dollar of sales, profit or cash. Here is what each common ratio measures, when to use which, and where the numbers come from.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Valuation"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/valuation.png",
+      "_bottleneck": {
+        "short": "What is a company worth?",
+        "topic": "Valuation",
+        "readMins": 14,
+        "stat": {
+          "big": "22×",
+          "text": "The S&P 500's price against forecast earnings at the end of 2025, above its 10-year average of about 18.5 (FactSet)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/valuation.png"
+      }
+    },
+    {
+      "id": "buybacks",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/buybacks.html",
+      "title": "Shrinking the Pie: How Stock Buybacks Work",
+      "summary": "When a company buys back its own shares, it isn't placing one giant order. It buys slowly, through a broker, only from people who choose to sell, under rules that cap how much it can buy each day, and it can stop whenever it likes.",
+      "content_text": "When a company buys back its own shares, it isn't placing one giant order. It buys slowly, through a broker, only from people who choose to sell, under rules that cap how much it can buy each day, and it can stop whenever it likes.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Stock buybacks"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/buybacks.png",
+      "_bottleneck": {
+        "short": "How stock buybacks work",
+        "topic": "Stock buybacks",
+        "readMins": 11,
+        "stat": {
+          "big": "$942.5B",
+          "text": "S&P 500 buybacks in 2024, a calendar-year record (S&P Dow Jones Indices)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/buybacks.png"
+      }
+    },
+    {
+      "id": "index-weights",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/index-weights.html",
+      "title": "Who Gets the Biggest Slice? How Stock Indexes Weight Companies",
+      "summary": "The S&P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts, because each uses a different rule for how much each company counts. Here are the three rules, what they do to your money, and why a stock split can change a company's place in the Dow.",
+      "content_text": "The S&P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts, because each uses a different rule for how much each company counts. Here are the three rules, what they do to your money, and why a stock split can change a company's place in the Dow.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Stock indexes"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/index-weights.png",
+      "_bottleneck": {
+        "short": "How indexes weight companies",
+        "topic": "Stock indexes",
+        "readMins": 10,
+        "stat": {
+          "big": "40%",
+          "text": "Share of the S&P 500 in its ten largest companies in 2025, a level S&P says was last seen in the mid-1960s."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/index-weights.png"
+      }
+    },
+    {
       "id": "risk-ladder",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/risk-ladder.html",
       "title": "The Saver's Ladder: From Fixed Deposits to Stocks",
@@ -48,7 +158,7 @@
       "_bottleneck": {
         "short": "How the forex market works",
         "topic": "Foreign exchange",
-        "readMins": 11,
+        "readMins": 14,
         "stat": {
           "big": "$9.6T",
           "text": "Average daily foreign-exchange turnover in April 2025, up 28% in three years (BIS Triennial Survey)."
@@ -246,7 +356,7 @@
       "_bottleneck": {
         "short": "Lending to governments",
         "topic": "Government debt",
-        "readMins": 9,
+        "readMins": 13,
         "stat": {
           "big": "$963B",
           "text": "US interest on the debt in the first ten months of fiscal 2026, more than the $763B spent on defence (CBO)."

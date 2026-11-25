@@ -64,7 +64,7 @@ table.cmp tbody tr:hover{background:#faf8f2}
 }
 
 /* ---------- Interactive graphics ---------- */
-#sizeSvg,#payoffSvg,#hedgeSvg,#levSvg,#ccpSvg,#oiSvg{width:100%;height:auto;display:block}
+#sizeSvg,#payoffSvg,#hedgeSvg,#collarSvg,#levSvg,#ccpSvg,#oiSvg{width:100%;height:auto;display:block}
 .art h3.sub{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--red,#c2412d);margin:38px 0 6px}
 .po-ctl{font-family:var(--sans);font-size:14px;color:var(--ink2);margin:10px 0 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .po-ctl label{flex-basis:100%}
@@ -101,3 +101,11 @@ table.cmp td:first-child{font-weight:700;color:var(--ink);width:150px}
 .ot-h span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .ot-t p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink2)}
 @media(max-width:640px){.ot-t{grid-template-columns:minmax(0,1fr);gap:6px}.ot-t:nth-child(n){margin-left:0}}
+
+/* ---------- the collar ---------- */
+.col-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-family:var(--sans);margin-top:6px}
+.col-grid div{border-top:2px solid var(--rule);padding-top:6px;min-width:0}
+.col-grid div.net{border-top-color:var(--ink)}
+.col-grid span{display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.col-grid b{font-size:18px;font-weight:800;color:var(--ink)}
+@media(max-width:560px){.col-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

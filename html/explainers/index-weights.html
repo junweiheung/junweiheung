@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Gets the Biggest Slice? How Stock Indexes Weight Companies — Bottleneck by Jun Wei</title>
+<meta name="description" content="The S&P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts. An explainer on market-cap, equal and price weighting: how each works, why a stock split can change a company's place in the Dow, and why ten companies now make up about 40% of the S&P 500.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/index-weights.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Market infrastructure · Stock indexes</span></div>
+  <h1>Who Gets the Biggest Slice?</h1>
+  <p class="dek">“The market rose 1% today” depends on which market you mean. The S&amp;P 500, the Dow and an equal-weight fund can hold the same companies in very different amounts, because each uses a different rule for deciding how much each company counts. Here are the three rules, what they do to your money, and why a stock split can change a company's place in the Dow.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 10 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. An index is a recipe</a>
+    <a href="#s2">2. By company value</a>
+    <a href="#s3">3. Every company equal</a>
+    <a href="#s4">4. By share price</a>
+    <a href="#s5">5. The same day, three answers</a>
+    <a href="#s6">6. Price times shares</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how stock indexes are built. Weights and index levels change every trading day; figures here are snapshots from the dates given. Funds are named as examples only. Nothing here is investment advice or a recommendation to buy anything.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>An index is a list of companies plus a rule for how much each one counts. The three common rules are <b>market-cap weighting</b> (by company value), <b>equal weighting</b> (every company the same) and <b>price weighting</b> (by the price of one share).</li>
+      <li>Most index funds, including those tracking the <b>S&amp;P 500</b>, <b>MSCI World</b> and Singapore's <b>STI</b>, weight by market value. That makes them cheap to run and self-adjusting, but top-heavy: the ten largest S&amp;P 500 companies passed <b>40%</b><sup class="fn"><a href="#src-1" id="ref-1">1</a></sup> of the index in 2025, a level S&amp;P says was last seen in the mid-1960s.</li>
+      <li>An <b>equal-weight</b> S&amp;P 500 fund puts about <b>0.2%</b><sup class="fn"><a href="#src-2" id="ref-2">2</a></sup> in each company at every quarterly rebalance, which means regularly selling what has risen and buying what has fallen.</li>
+      <li>The <b>Dow</b> and Japan's <b>Nikkei 225</b> weight by share price, so a $600 share counts ten times as much as a $60 one regardless of company size. Uniqlo's owner, Fast Retailing, passed <b>10%</b> of the Nikkei, and a stock split can shrink a company's influence overnight without changing its value.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>An index is a recipe</h2>
+  <p class="t dropcap">A stock index is two decisions written down. The first is <b>which companies are in it</b>: the 500 large US companies a committee picks for the S&amp;P 500, the 30 biggest on the Singapore Exchange for the Straits Times Index, the 225 Tokyo blue chips in the Nikkei. The second is <b>how much each one counts</b>. That second decision gets far less attention, and it can matter as much as the first.</p>
+  <p class="t">For most of their history indexes were just a number in the newspaper, a way to say whether the market was up or down. Since index funds and ETFs arrived, the recipe has become an instruction. A fund that tracks an index buys each company in the proportion the index says, so the weighting rule decides how your money is actually spread. Two funds holding exactly the same 500 companies can still own very different portfolios.</p>
+  <p class="t">The figure below uses five made-up companies to show how far apart the three rules can land. Pick a rule, then tap a company to see how much a 10% jump in its shares would move the index.</p>
+
+  <figure class="fig rv" id="wtFig">
+    <div class="ft">Same five companies, three recipes</div>
+    <div class="fs">Five hypothetical companies. Tap a company to see how much a 10% rise in its share price moves each index.</div>
+    <div class="wt-ctl">
+      <span class="seg" id="wtMode" role="group" aria-label="Weighting rule">
+        <button type="button" data-m="cap" aria-pressed="true">By company value</button><button type="button" data-m="eq" aria-pressed="false">Equal</button><button type="button" data-m="px" aria-pressed="false">By share price</button>
+      </span>
+      <button type="button" class="wt-split" id="wtSplit" aria-pressed="false">Split MegaSoft 4-for-1</button>
+    </div>
+    <div class="wt-head"><span>Company</span><span>Share price × shares = value</span><span>Weight</span></div>
+    <div class="wt-rows" id="wtRows"></div>
+    <p class="wt-why" id="wtWhy" aria-live="polite"></p>
+    <figcaption>Illustrative companies and numbers, rounded. Weight under market-cap weighting = company value ÷ total value; equal weighting gives each 20%; price weighting = share price ÷ sum of share prices. Real indexes adjust for free float, caps and divisors, but follow the same logic.</figcaption>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>By company value</h2>
+  <p class="t">The most common rule weights each company by its <b>market capitalisation</b>, the share price multiplied by the number of shares. A company worth $3 trillion counts a hundred times as much as one worth $30 billion. The S&amp;P 500, the Nasdaq-100, MSCI's world and emerging-market indexes, and Singapore's Straits Times Index all work this way. Most use <b>free float</b>: they count only the shares available to ordinary investors, leaving out large blocks held by founders, governments or parent companies.</p>
+  <p class="t">The appeal is that the index mirrors the market itself. If you added up every share of every company in it, you would own exactly these proportions, so a cap-weighted fund holds “the market” as it is. It also looks after itself. When a company's price rises, its weight rises by the same amount, so the fund needs no trading to stay in line. Shares only need buying or selling when companies join, leave, or issue or retire shares. That is a large part of why these funds are so cheap to run.</p>
+  <p class="t">The cost is concentration. Because weight follows value, the winners take up more and more of the index. In 2025 the ten largest S&amp;P 500 companies passed <b>40%</b> of its value. S&amp;P Dow Jones Indices said that level had not been seen since the mid-1960s; around 2015 the top ten were under a fifth. Much of that weight sits in a handful of technology companies whose fortunes are tied to the same trend, so an investor who thinks they own “500 companies” is, in practice, making a large bet on a few.</p>
+
+  <figure class="fig rv" id="topFig">
+    <div class="ft">How much of the S&amp;P 500 the ten largest companies made up</div>
+    <div class="fs">Share of the index's total value, approximate</div>
+    <div class="top-bars" id="topBars" role="img" aria-label="The ten largest S&amp;P 500 companies made up about 23% of the index in 2000, about 19% in 2015, and about 40% in 2025."></div>
+    <figcaption>Approximate, from S&amp;P Dow Jones Indices and RBC Wealth Management research as reported; sources differ slightly by date and method. 2000 is the dot-com peak; 2025 is the mid-to-late-year level.</figcaption>
+  </figure>
+
+  <p class="t">Index providers have added limits for indexes where one company can dominate. Many sector and country indexes cap any single company, often at 10% to 25%, and redistribute the excess. A broad S&amp;P 500 fund has no such cap, which is why its exposure to its largest names keeps rising as they grow.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Every company equal</h2>
+  <p class="t">The simplest alternative ignores size. An <b>equal-weight</b> index gives every member the same slice. The S&amp;P 500 Equal Weight Index, tracked by an Invesco ETF launched in 2003, sets each company to about <b>0.2%</b> (one in 500) at every quarterly rebalance. A company worth $20 billion counts for exactly as much as one worth $3 trillion.</p>
+  <p class="t">That changes what you own. Compared with the regular S&amp;P 500, the equal-weight version holds far less of the giants and far more of the smaller members, so it leans toward mid-sized companies and toward sectors such as industrials and utilities that have many members but few giants. When the largest companies lead the market, as they have for much of the past decade, equal weight lags. When the rest of the market catches up, it can lead.</p>
+  <p class="t">It also has to trade. Between rebalances, winners grow above 0.2% and losers shrink below it. Each quarter the fund sells some of what has risen and buys more of what has fallen, to bring everything back to equal. That is a built-in “sell high, buy low” habit, which can help when prices swing back and hurt when a strong trend keeps running. The trading costs money too, so equal-weight funds usually charge more than the cheapest cap-weighted funds.</p>
+
+  <div class="note"><b class="h">Equal weight is not the same as “safer”</b>Spreading money evenly removes the dependence on a few giants, but it adds weight to smaller companies, which tend to swing more on their own. Which version does better depends on which part of the market leads, and that changes over the years.</div>
+
+  <h2 id="s4"><span class="n">Part 4</span>By share price</h2>
+  <p class="t">The oldest rule is the strangest. A <b>price-weighted</b> index adds up the price of one share of each company and divides by a number called the <b>divisor</b>. Charles Dow did this in 1896 because it was easy to work out by hand, and the <b>Dow Jones Industrial Average</b> still works this way, as does Japan's <b>Nikkei 225</b>.</p>
+  <p class="t">The result is that a company's weight depends on its share price, not its size. In 2025 Goldman Sachs, with a share price<sup class="fn"><a href="#src-4" id="ref-4">4</a></sup> above $600, was the heaviest company in the Dow at roughly <b>9–10%</b>, while Nvidia, then one of the most valuable companies in the world but with shares around $100–200 after a split, made up about <b>2%</b>. Because the Dow's divisor is around 0.16<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>, every $1 move in any member's share price moves the index by about <b>six points</b>, whether the company is worth $50 billion or $4 trillion.</p>
+  <p class="t">Japan shows the extreme. Fast Retailing, the owner of Uniqlo<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup>, has one of the highest share prices on the Tokyo exchange, and its weight in the Nikkei 225 passed <b>10%</b>. In 2022 Nikkei began capping how much any one company could count, and Fast Retailing was the first company the cap applied to.</p>
+  <p class="t">Price weighting also produces a quirk ordinary investors notice: a <b>stock split</b>. When a company splits each share into four, its value does not change, but its share price falls to a quarter, and so does its weight in a price-weighted index. Apple's 4-for-1 split in 2020 took it from the heaviest stock in the Dow to well down the list. Nvidia's 10-for-1 split in 2024 brought its share price down to a level where adding it would not let one stock dominate, and it replaced Intel in the Dow<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup> that November. Amazon, after a 20-for-1 split in 2022, had joined earlier that year. Toggle the split in the figure above to see the effect.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The same day, three answers</h2>
+  <p class="t">Because the rules differ, indexes built from overlapping companies can give quite different readings on the same day. A strong day for a few technology giants can lift the S&amp;P 500 while the equal-weight version barely moves. A big move in one high-priced stock such as Goldman Sachs can swing the Dow by hundreds of points while hardly registering in the S&amp;P 500. Headlines that say “the market” usually mean whichever index the writer looked at.</p>
+
+  <figure class="fig rv" id="idxFig">
+    <div class="ft">Well-known indexes and how they weight</div>
+    <div class="fs">What a fund tracking each one is actually buying</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Index</th><th>Members</th><th>Weighting</th><th>What that means</th></tr></thead>
+        <tbody>
+          <tr><td>S&amp;P 500</td><td>About 500 large US companies</td><td>Market cap, free float</td><td>Mirrors the US large-company market; top ten passed 40% in 2025</td></tr>
+          <tr><td>MSCI World</td><td>About 1,400 companies in developed markets</td><td>Market cap, free float</td><td>Global, but the US is around 70% of it, and the same US giants lead</td></tr>
+          <tr><td>Straits Times Index (STI)</td><td>30 largest SGX companies</td><td>Market cap, free float</td><td>The three local banks make up a large share of the index</td></tr>
+          <tr><td>S&amp;P 500 Equal Weight</td><td>Same companies as the S&amp;P 500</td><td>Equal, about 0.2% each</td><td>Less in the giants, more in mid-sized firms; rebalanced quarterly</td></tr>
+          <tr><td>Dow Jones Industrial Average</td><td>30 large US companies</td><td>Share price</td><td>A $600 share counts ten times a $60 one; splits change weights</td></tr>
+          <tr><td>Nikkei 225</td><td>225 large Tokyo-listed companies</td><td>Share price, with caps</td><td>A few high-priced shares, led by Fast Retailing, carry much of the index</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Index provider rules as published by S&amp;P Dow Jones Indices, MSCI, FTSE Russell (STI) and Nikkei. Member counts and concentration are approximate and change over time.</figcaption>
+  </figure>
+
+  <p class="t">For an investor the practical question is what each fund concentrates in. A cap-weighted world or S&amp;P 500 fund is the cheapest and most common choice, and its weight in the largest companies is the price of that simplicity. An equal-weight fund spreads the bet more evenly at a higher cost and with more trading. A price-weighted index is mostly a historical habit: hardly anyone would design one today, but the Dow's long history keeps it in the headlines. <a href="risk-ladder.html#s4">The Saver's Ladder</a> covers why owning many companies matters in the first place.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Price times shares</h2>
+  <p class="t">Market value is <b>share price × number of shares</b>. Index weighting is usually discussed as if only the price moves. But companies can change the other half of the sum. When a company issues new shares, there are more slices of the same pie. When it <b>buys back</b> its own shares and cancels them, there are fewer, and each remaining share owns a bigger piece of the company.</p>
+  <p class="t">Those buybacks have become one of the largest sources of demand for US shares, alongside index funds themselves: S&amp;P 500 companies spent a record <b>$942.5 billion</b><sup class="fn"><a href="#src-7" id="ref-7">7</a></sup> buying back their own stock in 2024. How that buying works, who sells to the company, and why it can be paused at any time are covered in the companion piece, <a href="buybacks.html">Shrinking the Pie: How Stock Buybacks Work</a>.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>Top ten S&amp;P 500 companies near 40% of the index, a level not seen since the mid-1960s: <a href="https://www.spglobal.com/spdji/en/research/article/in-the-shadows-of-giants/" target="_blank" rel="noopener">S&amp;P Dow Jones Indices, “In the Shadows of Giants”</a>. Year-end 2025 near 41%, about 23% in 2000: <a href="https://ca.rbcwealthmanagement.com/michael.capobianco/blog/4722077-The-Narrowing-Of-Focus" target="_blank" rel="noopener">RBC Wealth Management</a>. Top ten about 19% of index weight in 2015, and 40% as of August 2025: <a href="https://advisorservices.schwab.com/story/every-breadth-you-take-market-concentration-risks" target="_blank" rel="noopener">Charles Schwab</a> and press reports citing S&amp;P data. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>S&amp;P 500 Equal Weight Index, fixed weight of about 0.2% per company at each quarterly rebalance, and the Invesco S&amp;P 500 Equal Weight ETF (launched April 2003): <a href="https://www.invesco.com/us/financial-products/etfs/product-detail?ticker=RSP" target="_blank" rel="noopener">Invesco</a>; <a href="https://www.morningstar.com/funds/this-invesco-etf-equal-weights-sp-500" target="_blank" rel="noopener">Morningstar</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Dow price weighting, the divisor (about 0.163 at the end of 2024, so roughly six points per $1 move) and split adjustments: <a href="https://www.spglobal.com/spdji/en/documents/education/education-130-years-of-stewardship-the-evolution-of-the-dow.pdf" target="_blank" rel="noopener">S&amp;P Dow Jones Indices, “130 Years of Stewardship”</a>; <a href="https://corporatefinanceinstitute.com/resources/equities/dow-divisor/" target="_blank" rel="noopener">CFI</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Goldman Sachs at about 8.7% of the Dow in May 2025 and Nvidia about 1.9%: <a href="https://www.axios.com/2025/05/13/unh-stock-unitedhealth-ceo-dow-jones" target="_blank" rel="noopener">Axios (2025)</a>; about 10% by August 2025: <a href="https://www.disruptionbanking.com/2025/08/04/goldman-sachs-dow-jones-heaviest-hitter/" target="_blank" rel="noopener">Disruption Banking (2025)</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Nvidia replacing Intel in the Dow from November 8, 2024: <a href="https://press.spglobal.com/2024-11-01-NVIDIA-and-Sherwin-Williams-Set-to-Join-Dow-Jones-Industrial-Average-Vistra-to-Join-Dow-Jones-Utility-Average" target="_blank" rel="noopener">S&amp;P Dow Jones Indices announcement</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>Fast Retailing's weight in the Nikkei 225 and the weight cap introduced in 2022: <a href="https://asia.nikkei.com/announcements/nikkei-225-to-cap-fast-retailing-share-weight-in-index-calculation" target="_blank" rel="noopener">Nikkei</a>; <a href="https://indexes.nikkei.co.jp/en/nkave/factsheet?idx=nk225" target="_blank" rel="noopener">Nikkei 225 factsheet</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>S&amp;P 500 buybacks of $942.5 billion in 2024: <a href="https://www.spglobal.com/spdji/en/corporate-news/article/sp-500-q4-2024-buybacks-increase-74-and-2024-expenditure-sets-new-record-by-increasing-18-5" target="_blank" rel="noopener">S&amp;P Dow Jones Indices (2025)</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Index weights change daily. Nothing here is investment advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#wtFig">Three recipes, compared</a><br><a href="buybacks.html">How stock buybacks work</a><br><a href="risk-ladder.html">The saver's ladder</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/index-weights.js"></script>
+</body>
+</html>

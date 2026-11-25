@@ -1,0 +1,80 @@
+/* Page-specific styles for the Schacht explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note.warn{border-left-color:#a3141f}
+.note.warn b.h{color:#a3141f}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Segmented buttons ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- Part 1: timeline ---------- */
+.sc-tl{list-style:none;margin:0;padding:0;font-family:var(--sans);position:relative}
+.sc-tl::before{content:"";position:absolute;left:118px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.sc-tl li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:4px 30px;padding:8px 0;position:relative}
+.sc-tl li::before{content:"";position:absolute;left:113px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 0 0 1px var(--c)}
+.tl-y{font-size:13px;font-weight:800;color:var(--ink);text-align:right;padding-top:2px}
+.tl-e{grid-column:2;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.sc-tl li p{grid-column:2;margin:0;font-size:14px;line-height:1.5;color:var(--ink2)}
+.sc-tl li .tl-y{grid-row:1/3}
+@media(max-width:560px){
+  .sc-tl::before{left:8px}
+  .sc-tl li{grid-template-columns:minmax(0,1fr);padding-left:28px;gap:2px}
+  .sc-tl li::before{left:3px}
+  .tl-y{text-align:left;grid-row:auto!important}
+  .tl-e,.sc-tl li p{grid-column:1}
+}
+
+/* ---------- Part 2: balance of payments ---------- */
+.bp-ctl{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--sans);margin-bottom:12px}
+.bp-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:13px;color:var(--ink2)}
+.bp-row input[type=range]{width:200px;max-width:100%;accent-color:var(--ink)}
+.bp-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.bp-tools button{font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--ink2);background:#fff;border:1px dashed var(--ink2);border-radius:6px;padding:7px 11px;cursor:pointer}
+.bp-tools button[aria-pressed="true"]{background:var(--gold);border:1px solid var(--gold);color:#fff}
+.bp-r{display:grid;grid-template-columns:170px minmax(0,1fr) 44px;gap:12px;align-items:center;padding:6px 0;font-family:var(--sans)}
+.bp-l{font-size:13px;font-weight:600;color:var(--ink2)}
+.bp-b{height:20px;background:#f3f0e9;border-radius:3px;overflow:hidden}
+.bp-b i{display:block;height:100%;transition:width .35s ease}
+.bp-r b{font-size:15px;font-weight:800;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.bp-net{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-top:10px;padding:10px 12px;font-family:var(--sans);font-size:14px;border-left:4px solid}
+.bp-net.dn{border-color:#a3141f;background:#fbeceb}.bp-net.up{border-color:#2f7a4a;background:#ebf5ee}
+.bp-net b{font-size:16px}
+.bp-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0}
+@media(max-width:560px){.bp-r{grid-template-columns:minmax(0,1fr) 44px}.bp-b{grid-column:1/-1;grid-row:2}}
+
+/* ---------- Part 4: Mefo flow ---------- */
+.mf-tabs{margin-bottom:14px}
+.mf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;font-family:var(--sans)}
+.mf-n{border:1px solid var(--rule);background:#faf8f3;padding:10px;opacity:.4;transition:opacity .25s,border-color .25s,background .25s;min-width:0}
+.mf-n.on{opacity:1;background:#fff;border-color:var(--ink)}
+.mf-n b{display:block;font-size:13.5px;color:var(--ink)}
+.mf-n span{display:block;font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+.mf-n.mf-mefo.on{border-color:var(--gold);background:#fdf8ec}
+.mf-n.mf-rb.on{border-color:#a3141f}
+.mf-arrows{grid-column:1/-1;list-style:none;margin:8px 0 0;padding:0;font-size:13.5px;color:var(--ink2)}
+.mf-arrows li{padding:3px 0}
+.mf-arrows b{color:var(--ink)}
+.mf-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0;min-height:3em}
+@media(max-width:640px){.mf{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Part 5: toolkit ---------- */
+.tk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-family:var(--sans);margin-bottom:14px}
+.tk-b{display:flex;gap:8px;align-items:flex-start;text-align:left;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--rule);border-top:3px solid var(--rule);padding:10px;cursor:pointer;line-height:1.3}
+.tk-b span{flex:none;width:20px;height:20px;border-radius:50%;background:#f3efe6;color:var(--ink2);font-size:11px;display:flex;align-items:center;justify-content:center}
+.tk-b:hover{border-top-color:var(--gold)}
+.tk-b[aria-pressed="true"]{border-top-color:#a3141f;background:#fdf8ec}
+.tk-b[aria-pressed="true"] span{background:#a3141f;color:#fff}
+.tk-card{border:1px solid var(--rule);border-left:4px solid #a3141f;background:#fff;padding:14px 16px;font-family:var(--sans)}
+.tk-card h4{margin:0 0 2px;font-size:17px;color:var(--ink)}
+.tk-p{margin:0 0 6px;font-size:13px;color:var(--muted);font-weight:600}
+.tk-card dl{margin:0;font-size:14px;line-height:1.5}
+.tk-card dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:8px}
+.tk-card dd{margin:2px 0 0;color:var(--ink2)}
+.tk-card dd.cost{color:#8a1a1f}
+@media(max-width:700px){.tk{grid-template-columns:repeat(2,minmax(0,1fr))}}
