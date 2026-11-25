@@ -13,6 +13,28 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "risk-ladder",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/risk-ladder.html",
+      "title": "The Saver's Ladder: From Fixed Deposits to Stocks",
+      "summary": "A fixed deposit, a Singapore Savings Bond, a corporate bond, an ETF and a single stock are all places to park the same dollar. Each step up offers more expected return and asks you to accept more ways to lose. Here is what you own on each rung, who promises what, and what 125 years of history say about the climb.",
+      "content_text": "A fixed deposit, a Singapore Savings Bond, a corporate bond, an ETF and a single stock are all places to park the same dollar. Each step up offers more expected return and asks you to accept more ways to lose. Here is what you own on each rung, who promises what, and what 125 years of history say about the climb.",
+      "date_published": "2026-11-25T09:00:00+08:00",
+      "tags": [
+        "Saving and investing"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/risk-ladder.png",
+      "_bottleneck": {
+        "short": "Where savings can go",
+        "topic": "Saving and investing",
+        "readMins": 12,
+        "stat": {
+          "big": "S$100k",
+          "text": "Deposit insurance per depositor per bank in Singapore since April 2024, up from S$75,000 (SDIC)."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/risk-ladder.png"
+      }
+    },
+    {
       "id": "forex",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/forex.html",
       "title": "The $9.6 Trillion Market: How Forex Works",

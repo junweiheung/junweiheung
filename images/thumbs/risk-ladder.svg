@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .r{opacity:0;animation:in .45s ease-out forwards}
+    .r1{animation-delay:.05s}.r2{animation-delay:.2s}.r3{animation-delay:.35s}.r4{animation-delay:.5s}.r5{animation-delay:.65s}.r6{animation-delay:.8s}
+    @keyframes in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.r{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="130" fill="#fff" font-size="60" font-weight="700">The saver's ladder</text>
+  <text x="120" y="186" fill="#8d8a84" font-size="28">From fixed deposits to stocks: what each step up asks you to risk</text>
+  <rect x="120" y="250" width="14" height="590" fill="#2a2a30"/>
+  <rect x="806" y="250" width="14" height="590" fill="#2a2a30"/>
+  <g font-size="30" font-weight="700">
+    <g class="r r6"><rect x="150" y="262" width="640" height="76" rx="8" fill="#a3141f"/><text x="180" y="311" fill="#fff">Individual stocks</text></g>
+    <g class="r r5"><rect x="150" y="358" width="640" height="76" rx="8" fill="#c2412d"/><text x="180" y="407" fill="#fff">ETFs and index funds</text></g>
+    <g class="r r4"><rect x="150" y="454" width="640" height="76" rx="8" fill="#b8892b"/><text x="180" y="503" fill="#fff">Corporate bonds</text></g>
+    <g class="r r3"><rect x="150" y="550" width="640" height="76" rx="8" fill="#2f7a4a"/><text x="180" y="599" fill="#fff">SSBs and T-bills</text></g>
+    <g class="r r2"><rect x="150" y="646" width="640" height="76" rx="8" fill="#2463d6"/><text x="180" y="695" fill="#fff">Fixed deposits</text></g>
+    <g class="r r1"><rect x="150" y="742" width="640" height="76" rx="8" fill="#4d8bff"/><text x="180" y="791" fill="#fff">Savings account</text></g>
+  </g>
+  <g font-size="26" font-weight="600" fill="#cfcbc3">
+    <text x="900" y="310">↑ more expected return</text>
+    <text x="900" y="360">↑ bigger price swings</text>
+    <text x="900" y="410">↑ fewer guarantees</text>
+    <text x="900" y="760">↓ guaranteed in dollars</text>
+    <text x="900" y="810">↓ but inflation still bites</text>
+  </g>
+  <text x="900" y="560" fill="#e0b65a" font-size="64" font-weight="800">5.2% vs 0.5%</text>
+  <text x="900" y="604" fill="#8d8a84" font-size="22">world stocks vs bills, a year after inflation, 1900–2024</text>
+</svg>

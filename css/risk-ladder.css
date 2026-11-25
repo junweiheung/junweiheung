@@ -1,0 +1,68 @@
+/* Page-specific styles for the saver's ladder explainer. Shared: bottleneck.css + article.css. */
+
+/* ---------- Note box ---------- */
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note.warn{border-left-color:var(--gold)}
+.note.warn b.h{color:#8a6414}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- Segmented buttons ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content;max-width:100%}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:7px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- Comparison table ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:140px}
+
+/* ---------- Part 1: the ladder ---------- */
+.lad{display:grid;grid-template-columns:250px minmax(0,1fr);gap:20px;font-family:var(--sans)}
+.lad-rungs{display:flex;flex-direction:column;gap:6px;position:relative;padding:0 12px;border-left:4px solid #d9d5cc;border-right:4px solid #d9d5cc}
+.lad-rungs button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--ink);background:#f7f5f0;border:1px solid var(--rule);border-left:5px solid var(--c);padding:11px 10px;cursor:pointer;border-radius:3px}
+.lad-rungs button:hover{background:#efebe2}
+.lad-rungs button[aria-selected="true"]{background:var(--c);color:#fff;border-color:var(--c)}
+.lr-lvl:empty{display:none}
+.lr-lvl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;opacity:.7}
+.lad-card{border:1px solid var(--rule);border-top:4px solid var(--c,#999);background:#fff;padding:16px 18px}
+.lad-card h4{margin:0 0 10px;font-size:17px;color:var(--ink)}
+.lc-m{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);font-weight:600;padding:3px 0;max-width:300px}
+.lc-dots{display:inline-flex;gap:4px}
+.lc-dots i{width:11px;height:11px;border-radius:50%;background:#e8e4da}
+.lc-dots i.on{background:var(--c)}
+.lad-card dl{margin:12px 0 0;font-size:13.5px;line-height:1.5}
+.lad-card dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:9px}
+.lad-card dd{margin:2px 0 0;color:var(--ink2)}
+@media(max-width:700px){.lad{grid-template-columns:minmax(0,1fr)}.lad-rungs button{padding:9px 10px}}
+
+/* ---------- Part 4: dot grid ---------- */
+.dots{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:4px;max-width:520px}
+.dots i{aspect-ratio:1;border-radius:2px;background:#cfcbc3;opacity:0;transform:scale(.6);transition:opacity .4s,transform .4s}
+.dots i.k2{background:#e9e5dc}
+.dots i.k3{background:var(--gold)}
+#dotFig.in-view .dots i{opacity:1;transform:none}
+#dotFig.in-view .dots i.k3{transition-delay:.5s}
+.dot-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-family:var(--sans);font-size:12.5px;color:var(--ink2)}
+.dot-key i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.dot-key .k1{background:#cfcbc3}.dot-key .k2{background:#e9e5dc;border:1px solid #d9d5cc}.dot-key .k3{background:var(--gold)}
+@media(max-width:520px){.dots{grid-template-columns:repeat(10,minmax(0,1fr))}}
+
+/* ---------- Part 5: growth calculator ---------- */
+.gr-ctl{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-family:var(--sans);font-size:13px;color:var(--ink2);margin-bottom:14px}
+.gr-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0}
+.gr-row input[type=range]{width:200px;max-width:100%;accent-color:var(--ink)}
+.gr-bars{font-family:var(--sans)}
+.gb-r{display:grid;grid-template-columns:150px minmax(0,1fr) 96px;grid-template-areas:"n t v" ". w w";gap:2px 12px;align-items:center;padding:8px 0;border-bottom:1px solid #eee}
+.gb-n{grid-area:n;font-size:13.5px;font-weight:700;color:var(--ink)}
+.gb-n small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
+.gb-t{grid-area:t;height:18px;background:#f3f0e9;border-radius:3px;position:relative}
+.gb-t i{display:block;height:100%;border-radius:3px;transition:width .35s ease}
+.gb-start{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.gb-v{grid-area:v;font-size:14px;font-weight:800;text-align:right;color:var(--ink)}
+.gb-w{grid-area:w;font-size:11.5px;color:var(--muted)}
+.gr-why{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2);margin:12px 0 0}
+@media(max-width:560px){.gb-r{grid-template-columns:minmax(0,1fr) 84px;grid-template-areas:"n v" "t t" "w w"}}

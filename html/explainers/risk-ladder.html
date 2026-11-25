@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Saver's Ladder: From Fixed Deposits to Stocks — Bottleneck by Jun Wei</title>
+<meta name="description" content="Where can a Singapore saver put money, and what do you give up at each step? An explainer on cash, fixed deposits, Singapore Savings Bonds and T-bills, corporate bonds, ETFs and individual stocks: who pays you, what is guaranteed, what can go wrong, and what 125 years of returns say.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/risk-ladder.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../companies.html">Companies</a>
+        <a href="../countries.html">Countries</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Personal finance · Saving and investing</span></div>
+  <h1>The Saver's Ladder</h1>
+  <p class="dek">A fixed deposit, a Singapore Savings Bond, a corporate bond, an ETF and a single stock are all places to park the same dollar. Each step up offers more expected return and asks you to accept more ways to lose. Here is what you actually own on each rung, who promises what, and what 125 years of history say about the climb.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 25, 2026 · 12 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. Three things you trade off</a>
+    <a href="#s2">2. The guaranteed rungs</a>
+    <a href="#s3">3. Lending to companies</a>
+    <a href="#s4">4. Owning companies</a>
+    <a href="#s5">5. What time does</a>
+    <a href="#s6">6. Matching rung to purpose</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how common savings and investment products work, using Singapore examples. Rates on deposits, Singapore Savings Bonds and T-bills change every month; long-run returns are historical averages, not forecasts. Products are named as examples only. Nothing here is investment advice or a recommendation to buy anything; for decisions about your own money, consider a licensed adviser.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>Every savings product trades off three things: <b>expected return</b>, <b>risk</b> (how far and how often its value can fall) and <b>liquidity</b> (how fast you can get cash out without a penalty). No product wins on all three.</li>
+      <li>The bottom rungs are <b>guaranteed in dollars</b>: Singapore bank deposits are insured up to <b>S$100,000</b> per depositor per bank, and Singapore Savings Bonds and T-bills are backed by the government. Their quiet risk is <b>inflation</b>, which can make a guaranteed dollar buy less.</li>
+      <li>Higher rungs pay more because they can fail. About <b>34,000</b> mostly retail investors held some <b>S$900 million</b> of Hyflux perpetual securities and preference shares when the water company collapsed in 2018.</li>
+      <li>Over 1900–2024, world stocks returned about <b>5.2% a year</b> above inflation, against <b>1.7%</b> for bonds and <b>0.5%</b> for cash-like bills. But a study of US stocks found <b>58%</b> did worse than Treasury bills over their lifetimes, and just <b>4%</b> produced all the market's net gains, which is the case for owning many companies rather than a few.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>Three things you trade off</h2>
+  <p class="t dropcap">Put S$10,000 somewhere and you are making a trade, whether you think of it that way or not. You are choosing how much you hope to earn, how much the value can drop along the way, and how quickly you can turn it back into cash. Those three, <b>return</b>, <b>risk</b> and <b>liquidity</b>, pull against each other. A product that is safe and instantly available pays little, because the bank or government taking your money can count on keeping it only briefly and promising you everything back. A product that might pay a lot does so because something can go wrong.</p>
+  <p class="t">There is a fourth thing that sits under all three: <b>inflation</b>. A dollar that is guaranteed to stay a dollar can still lose value, because prices rise. In Singapore, the central bank's core inflation measure peaked at <b>about 5.5%</b> in early 2023. Money earning 2% that year was safe in dollars and still lost about 3% of its buying power. So “safe” always means safe from <i>something</i>.</p>
+  <p class="t">Picture the choices as a ladder. Each rung up, you are further from a guarantee and closer to owning a business outright. Tap a rung to see what you actually hold.</p>
+
+  <figure class="fig rv" id="ladFig">
+    <div class="ft">The saver's ladder</div>
+    <div class="fs">From a guaranteed claim at the bottom to part-ownership of one company at the top</div>
+    <div class="lad">
+      <div class="lad-rungs" id="ladRungs" role="tablist" aria-label="Choose a rung"></div>
+      <div class="lad-card" id="ladCard" role="tabpanel" aria-live="polite"></div>
+    </div>
+    <figcaption>Dots are a rough, relative guide for comparison, not a rating or a measure. “Expected return” is the long-run tendency, not a promise for any year. Guarantee details are for Singapore: deposit insurance is from the Singapore Deposit Insurance Corporation (SDIC); SSB and T-bill details are from the Monetary Authority of Singapore.</figcaption>
+  </figure>
+
+  <div class="note warn"><b class="h">Two dials, not one</b>The ladder ranks <b>lending versus owning</b>: for the same company, its bond is safer than its shares, because lenders are paid first. A second dial is <b>how many companies you hold</b>. A single company's bond can lose most of its value if that one company fails, while a broad stock fund holding thousands of companies can fall 40% in a bad year but would need all of them to fail together to go to zero. So one company's bond can carry more risk of permanent loss than a broad stock ETF, and a narrow single-theme ETF can swing like one stock. The order here reflects expected return and typical price swings, not every kind of risk.</div>
+
+  <h2 id="s2"><span class="n">Part 2</span>The guaranteed rungs</h2>
+  <p class="t">The bottom of the ladder is where your claim is fixed in dollars and someone very solid stands behind it.</p>
+  <p class="t"><b>A savings account</b> is a loan to your bank that you can call back at any moment. The bank lends most of it on, which is why it pays you anything at all. <b>A fixed deposit</b> is the same loan with a lock: you promise to leave the money for, say, six or twelve months, and in exchange the bank usually pays a higher rate. Break the lock early and you typically lose some or all of the interest, though not your principal. Both are covered by Singapore's deposit insurance scheme, run by the <b>SDIC</b>, up to <b>S$100,000</b> per depositor at each member bank, a limit raised from S$75,000 in April 2024. Above that, you are relying on the bank itself.</p>
+  <p class="t">One step over sit loans to the <b>Singapore government</b>. <b>Singapore Savings Bonds</b> (SSBs) are made for individuals: you can put in as little as S$500, they last up to ten years with interest that steps up the longer you hold, and you can get your money back in any month with no penalty. <b>Treasury bills</b> are six-month or one-year loans sold at auction; you buy at a discount and get the full face value at the end. Both are backed by a government with a top credit rating, so the risk of not being repaid is about as low as it gets. <a href="govt-bonds.html#s4">Lending to Governments</a> explains how the three government options differ, and why Singapore borrows money it doesn't need.</p>
+  <p class="t">Many Singaporeans also hold a large guaranteed balance without choosing it: their <b>CPF</b>. The government guarantees a floor of 2.5% on the Ordinary Account and 4% on the Special and Retirement accounts. It is not liquid in the usual sense, since it is locked mainly for housing and retirement, but it is part of the same bottom of the ladder.</p>
+
+  <div class="note"><b class="h">The guarantee is in dollars, not in buying power</b>Everything on these rungs promises you a fixed number of dollars. That makes them right for money you will need on a date, and for an emergency fund. It also means their real return, after inflation, has historically been thin: cash-like bills returned about <b>0.5% a year</b> above inflation across 125 years of world markets. Safety from loss and growth over time are different jobs.</div>
+
+  <h2 id="s3"><span class="n">Part 3</span>Lending to companies</h2>
+  <p class="t">A <b>corporate bond</b> is the same idea as a government bond, a loan with fixed interest and a date to be repaid, but the borrower is a company. Companies can and do fail, so they must pay more than the government to borrow. That extra yield is not a gift; it is the price of <b>credit risk</b>. The weaker the borrower, the higher the yield, and the larger the chance it is never paid.</p>
+  <p class="t">Singapore learned this in public with <b>Hyflux</b>, once a celebrated water-treatment company. In 2016 it sold S$500 million of 6% <b>perpetual securities</b> to the public, in amounts small enough for retail savers. Perpetuals look like bonds but are weaker: they have no fixed date for repayment, the issuer can often defer interest, and in a collapse they are paid after ordinary lenders. When Hyflux went into court-supervised restructuring in 2018, about <b>34,000</b> investors, mostly individuals, held some <b>S$900 million</b> of its perpetuals and preference shares. Years of negotiation followed, and those holders recovered only a small fraction of what they had put in.</p>
+  <p class="t">The lesson isn't that company bonds are bad; large, stable companies borrow this way all the time. It is that a 6% coupon when banks pay 1–2% is telling you something. A yield above the safe rate is always payment for a risk, and the question is whether you can see which one.</p>
+  <p class="t">Hyflux also shows the second dial at work. Its holders had lent to <b>one</b> company, so one failure was enough. A <b>bond fund</b> or bond ETF spreads the same money across hundreds of borrowers, so a single default costs a sliver rather than most of the stake, the same protection a broad stock ETF gives against any one company going under. Bond funds still fall when interest rates rise, as they did in 2022, but a fund that keeps buying new bonds earns the higher yields back over time; a default is simply gone.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Owning companies</h2>
+  <p class="t">At the top of the ladder you stop lending and start <b>owning</b>. A share is a slice of a company: you get no promised interest and no repayment date, only a claim on whatever profits are left after everyone else is paid, through dividends and a rising share price. Because owners stand last in line, they demand the highest expected return, and over long periods they have got it.</p>
+  <p class="t">But that long-run return belongs to the market <i>as a whole</i>, and the average hides an uncomfortable fact about the individual pieces. The finance professor Hendrik Bessembinder studied every US common stock from 1926 to 2016. Most of them did not even beat one-month Treasury bills over their listed lifetimes. All of the stock market's net gain above Treasury bills came from about one in twenty-five companies.</p>
+
+  <figure class="fig rv" id="dotFig">
+    <div class="ft">One hundred US stocks, by what they returned over their lifetimes</div>
+    <div class="fs">Each square is 1% of US common stocks listed between 1926 and 2016</div>
+    <div class="dots" id="dots" role="img" aria-label="A grid of 100 squares. 58 are grey, for stocks whose lifetime return was less than one-month Treasury bills. 38 are light, for stocks that beat Treasury bills but together added nothing on net. 4 are gold, for the stocks that produced all of the market's net wealth creation."></div>
+    <div class="dot-key"><span><i class="k1"></i>58%: lifetime return below Treasury bills</span><span><i class="k2"></i>38%: beat bills, but no net gain together</span><span><i class="k3"></i>4%: all of the market's net gain</span></div>
+    <figcaption>Hendrik Bessembinder, “Do stocks outperform Treasury bills?”, <i>Journal of Financial Economics</i> (2018). The middle and bottom groups together matched Treasury bills; the top 4% accounted for the entire net wealth created. Proportions rounded.</figcaption>
+  </figure>
+
+  <p class="t">Pick a handful of stocks and the odds are that you miss most of that rare 4%. That is the argument for an <b>index fund</b> or an <b>exchange-traded fund</b> (ETF): a single product, bought on the stock exchange like a share, that holds hundreds or thousands of companies at once. An STI ETF holds the 30 companies in Singapore's Straits Times Index; a global ETF can hold thousands across dozens of countries. You give up the chance of picking the next giant and in return you are sure to own it, along with all the duds.</p>
+  <p class="t">Not all ETFs are equally diversified. A fund that holds only one sector, one country or one theme can swing as wildly as a single stock. And they all charge a yearly fee, the <b>expense ratio</b>, taken quietly from the fund's value. A difference of a percentage point a year sounds small; the calculator below shows what it does over decades.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>What time does</h2>
+  <p class="t">Over a single year, the top of the ladder can be painful. World stocks fell by roughly <b>40%</b> in 2008. Even bonds, usually the calm rung, had a terrible 2022, when rising interest rates knocked about <b>16%</b> off a broad global bond index. Over a long stretch, though, the ranking has been remarkably stable. The researchers Elroy Dimson, Paul Marsh and Mike Staunton track returns for markets around the world back to 1900. Their figures, after inflation, are what the calculator uses.</p>
+
+  <figure class="fig rv" id="growFig">
+    <div class="ft">What S$10,000 became, in today's money</div>
+    <div class="fs">Growth at long-run average real returns, 1900–2024, after inflation</div>
+    <div class="gr-ctl">
+      <label class="gr-row"><span>Years invested: <b id="grYv">20</b></span><input type="range" id="grY" min="1" max="40" step="1" value="20" aria-label="Years invested"></label>
+      <div class="gr-row"><span>Yearly fund fee on stocks</span><span class="seg" id="grFee" role="group" aria-label="Yearly fund fee on stocks"><button type="button" data-f="0.2" aria-pressed="true">0.2%</button><button type="button" data-f="0.8" aria-pressed="false">0.8%</button><button type="button" data-f="1.5" aria-pressed="false">1.5%</button></span></div>
+    </div>
+    <div class="gr-bars" id="grBars"></div>
+    <p class="gr-why" id="grWhy"></p>
+    <figcaption>My calculation: S$10,000 compounded at a constant real return. Idle cash assumes 0% interest and 2% a year inflation. Bills, bonds and world stocks use the Dimson–Marsh–Staunton annualised real returns for 1900–2024 (0.5%, 1.7% and 5.2%), with the chosen fee subtracted from stocks. Real returns are never this smooth: the “worst year” lines show how far each has fallen in a single bad year. Averages over 125 years say little about the next 20; they show the ranking, not a forecast. Sources: UBS Global Investment Returns Yearbook 2025; MSCI and Bloomberg index data.</figcaption>
+  </figure>
+
+  <p class="t">Two things stand out. The gaps between rungs are small in any one year and enormous over decades, because returns compound on returns. And fees compound too: at 1.5% a year, a fund hands a large share of the stock market's real return to its manager. Time is what lets the top of the ladder work, and it is exactly what money for next month's rent doesn't have.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Matching rung to purpose</h2>
+  <p class="t">So the question is rarely “which rung is best?” but “what is this money <i>for</i>, and when?” The usual way people and planners think about it lines each pot of money up with the rung that suits its job.</p>
+
+  <figure class="fig rv" id="useFig">
+    <div class="ft">Common ways of matching money to a rung</div>
+    <div class="fs">A widely used framework, not personal advice</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>The money's job</th><th>When it's needed</th><th>What usually suits it</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Emergency fund</td><td>Any day</td><td>Savings account; part in fixed deposits or SSBs</td><td>Must be there in full, instantly, even in a crash</td></tr>
+          <tr><td>A known bill</td><td>On a date within a few years</td><td>Fixed deposits, T-bills, SSBs timed to the date</td><td>A guaranteed amount on the day matters more than growth</td></tr>
+          <tr><td>Long-term savings</td><td>In ten years or more</td><td>Mostly diversified, low-fee funds, with some bonds</td><td>Time to ride out bad years; inflation is the bigger threat</td></tr>
+          <tr><td>Money you can afford to lose</td><td>Never, really</td><td>Individual stocks, themes, higher-yield bonds</td><td>Concentrated bets can pay off, or go to zero</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Simplified. How much to keep on each rung depends on income, family, age, CPF balances and how much a fall would hurt, which is why advisers ask about all of them. Educational only.</figcaption>
+  </figure>
+
+  <p class="t">The ladder is the same idea that runs through the rest of this series. A government that borrows cheaply, a bank that lends out deposits, a company that issues shares: each sits on one end of a trade where someone else is on your rung. Knowing who is on the other side, and what they promised, is most of what it takes to read any financial product. For how the government end works, see <a href="govt-bonds.html">Lending to Governments</a> and <a href="bond-market.html">One Seesaw, Two Fears</a>; for products further out on the risk curve, see <a href="derivatives.html">How Derivatives Work</a>.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li>Deposit insurance coverage of S$100,000 per depositor per Scheme member, raised from S$75,000 from 1 April 2024: <a href="https://www.sdic.org.sg/" target="_blank" rel="noopener">Singapore Deposit Insurance Corporation</a>.</li>
+    <li>Singapore Savings Bonds (minimum S$500, step-up interest over up to ten years, redeemable in any month without penalty) and Singapore Government T-bills: <a href="https://www.mas.gov.sg/bonds-and-bills" target="_blank" rel="noopener">Monetary Authority of Singapore, bonds and bills</a>.</li>
+    <li>CPF interest floors of 2.5% (Ordinary Account) and 4% (Special and Retirement accounts): <a href="https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest" target="_blank" rel="noopener">CPF Board</a>.</li>
+    <li>MAS core inflation peaking at about 5.5% in early 2023: <a href="https://www.mas.gov.sg/monetary-policy/macroeconomic-review" target="_blank" rel="noopener">MAS Macroeconomic Review</a>.</li>
+    <li>Hyflux's S$500 million 6% perpetual securities (2016), about S$900 million of perpetuals and preference shares held by some 34,000 mostly retail investors, and the restructuring: <a href="https://links.sgx.com/1.0.0/corporate-announcements/TU0QI96T6M4K1MPQ/405283_Perpetual%20Capital%20Securities%20-%20Lodgement%20Announcement%2017%20May%202016.pdf" target="_blank" rel="noopener">Hyflux SGX announcement (2016)</a>; <a href="https://www.bloombergquint.com/opinion/blame-for-singapore-s-hyflux-failure-goes-beyond-investor-greed" target="_blank" rel="noopener">Bloomberg Opinion (2019)</a>; <a href="https://www.thestar.com.my/business/business-news/2019/02/18/hyflux-unveils-survival-plan-as-singapore-bondholders-watch" target="_blank" rel="noopener">Bloomberg via The Star (2019)</a>.</li>
+    <li>58% of US common stocks with lifetime buy-and-hold returns below one-month Treasury bills, and the top 4% accounting for all net wealth creation, 1926–2016: <a href="https://econpapers.repec.org/RePEc:eee:jfinec:v:129:y:2018:i:3:p:440-457" target="_blank" rel="noopener">Bessembinder, <i>Journal of Financial Economics</i> (2018)</a> and <a href="https://wpcarey.asu.edu/index.php/department-finance/faculty-research/do-stocks-outperform-treasury-bills" target="_blank" rel="noopener">Arizona State University</a>.</li>
+    <li>Annualised real returns 1900–2024 of 5.2% (world equities), 1.7% (bonds) and 0.5% (bills): <a href="https://www.jbs.cam.ac.uk/2025/report-stocks-have-far-outperformed-over-the-past-125-years/" target="_blank" rel="noopener">Cambridge Judge Business School, on the UBS Global Investment Returns Yearbook 2025</a> by Dimson, Marsh and Staunton.</li>
+    <li>World stocks' roughly 40% fall in 2008 (MSCI World) and the broad global bond index's roughly 16% fall in 2022 (Bloomberg Global Aggregate): index provider data as widely reported.</li>
+  </ul>
+  <p class="end">Educational only. Rates change monthly and historical returns are not forecasts. Nothing here is investment, legal or tax advice.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#ladFig">The saver's ladder</a><br><a href="#growFig">The growth calculator</a><br><a href="govt-bonds.html">Lending to governments</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/risk-ladder.js"></script>
+</body>
+</html>

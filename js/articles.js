@@ -570,6 +570,28 @@ window.BOTTLENECK = {
       ],
       // A market explainer, not a company or country profile: no company chain.
       chain: []
+    },
+    {
+      id: "risk-ladder",
+      href: "explainers/risk-ladder.html",
+      title: "The Saver's Ladder: From Fixed Deposits to Stocks",
+      short: "Where savings can go",
+      kicker: "Explainer",
+      topic: "Saving and investing",
+      category: "Personal finance",
+      date: "2026-11-25",
+      readMins: 12,
+      dek: "A fixed deposit, a Singapore Savings Bond, a corporate bond, an ETF and a single stock are all places to park the same dollar. Each step up offers more expected return and asks you to accept more ways to lose. Here is what you own on each rung, who promises what, and what 125 years of history say about the climb.",
+      summary: "Cash, fixed deposits, SSBs and T-bills, corporate bonds, ETFs and stocks: return, risk and liquidity on each rung",
+      thumb: "../images/thumbs/risk-ladder.svg",
+      stats: [
+        { big: "S$100k", text: "Deposit insurance per depositor per bank in Singapore since April 2024, up from S$75,000 (SDIC)." },
+        { big: "5.2%", text: "Annual return above inflation on world stocks, 1900–2024, against 1.7% for bonds and 0.5% for bills (Dimson, Marsh and Staunton)." },
+        { big: "4%", text: "Share of US stocks that produced all of the market's net gain over Treasury bills, 1926–2016 (Bessembinder)." },
+        { big: "34,000", text: "Mostly retail investors holding about S$900 million of Hyflux perpetuals and preference shares when it collapsed in 2018." }
+      ],
+      // A personal-finance concept explainer: no company chain or country link.
+      chain: []
     }
   ],
 
