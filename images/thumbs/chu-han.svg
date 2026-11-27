@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .r{opacity:0;animation:in .6s ease forwards}
+    .r1{animation-delay:.2s}.r2{animation-delay:.6s}.r3{animation-delay:1s}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.r{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Chu and Han</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">From the First Emperor’s death to Empress Lü’s, 210–180 BC</text>
+
+  <!-- the realm, schematic: Han in the west, Chu in the east, divided at the Hong Canal -->
+  <g stroke="#0d0d0f" stroke-width="6" stroke-linejoin="round">
+    <path class="r r1" fill="#3b3b44" d="M430,300 L760,250 L800,420 L760,560 L700,720 L520,740 L400,600 L380,420 Z"/>
+    <path class="r r2" fill="#c2412d" d="M430,300 L760,250 L800,420 L760,560 L700,720 L520,740 L400,600 L380,420 Z"/>
+    <path class="r r3" fill="#6b4f8f" d="M760,250 L1060,240 L1180,360 L1150,520 L1040,700 L860,760 L700,720 L760,560 L800,420 Z"/>
+  </g>
+  <path class="r r3" d="M780,250 L800,420 L760,560 L700,720" fill="none" stroke="#e8c26a" stroke-width="5" stroke-dasharray="14 10"/>
+  <g fill="#fff" font-weight="800" font-size="34" letter-spacing="3" text-anchor="middle">
+    <text x="580" y="520" class="r r2">HAN</text>
+    <text x="960" y="500" class="r r3">CHU</text>
+  </g>
+  <text x="815" y="300" class="r r3" fill="#e8c26a" font-size="20" font-weight="700">Hong Canal</text>
+  <g font-size="64" font-weight="700" text-anchor="middle">
+    <text x="1380" y="380" class="r r1" fill="#7a7a86">秦</text>
+    <text x="1380" y="520" class="r r2" fill="#c2412d">漢</text>
+    <text x="1380" y="660" class="r r3" fill="#8f73b5">楚</text>
+  </g>
+</svg>

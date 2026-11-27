@@ -54,6 +54,7 @@ function sectionsOf(html) {
 
 /* pages whose main text is drawn by their own script: index that text from the data files too */
 function extraSections(id) {
+  if (id === "chu-han") return chuHanSections();
   if (id !== "three-kingdoms") return [];
   const w = {};
   ["three-kingdoms-data.js", "three-kingdoms-novel.js"].forEach((f) => {
@@ -70,6 +71,26 @@ function extraSections(id) {
     t: Object.values(p.life).map((e) => `${e[2]} ${e[1]}`).join(" ")
   }));
   (w.TK_NOVEL?.rows || []).forEach((r) => out.push({
+    id: "s4", h: `${r.s[0]} · ${r.s[1]}`,
+    t: [r.n[0], r.n[1], r.h[0], r.h[1], r.q?.c].filter(Boolean).join(" ")
+  }));
+  return out;
+}
+
+/* the Chu–Han timeline cards, lives and legend table (js/chu-han-data.js) */
+function chuHanSections() {
+  const w = {}, p = path.join(ROOT, "js", "chu-han-data.js");
+  if (fs.existsSync(p)) new Function("window", fs.readFileSync(p, "utf8"))(w);
+  const D = w.CH_DATA || {}, out = [];
+  (D.steps || []).forEach((s) => out.push({
+    id: "s3", h: `${s.yr} BC ${s.en.t} · ${s.zh.t}`,
+    t: [s.en.x, s.zh.x, s.q?.c].filter(Boolean).join(" ")
+  }));
+  Object.values(D.people || {}).forEach((per) => out.push({
+    id: "s3", h: `${per.n[0]} · ${per.n[1]}`,
+    t: Object.values(per.life).map((e) => `${e[2]} ${e[1]}`).join(" ")
+  }));
+  (D.legend?.rows || []).forEach((r) => out.push({
     id: "s4", h: `${r.s[0]} · ${r.s[1]}`,
     t: [r.n[0], r.n[1], r.h[0], r.h[1], r.q?.c].filter(Boolean).join(" ")
   }));

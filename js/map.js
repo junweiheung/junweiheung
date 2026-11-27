@@ -34,13 +34,13 @@
       items: [['Raising', 'anthropic-ipo'], ['Returning', 'buybacks'], ['Comeback', 'amd'], ['Rivals', 'chip-share']] },
     { id: 'chips', x: 1300, y: 900, w: 330, title: 'Chips and AI',
       note: 'The industry the money is pouring into right now.',
-      items: [['Value chain', 'smile'], ['Compute', 'gpu-unlock'], ['Data centres', 'stargate'], ['Inference', 'inference']] },
+      items: [['Value chain', 'smile'], ['Compute', 'gpu-unlock'], ['Data centres', 'stargate'], ['Inference', 'inference'], ['The lab', 'anthropic-story']] },
     { id: 'materials', x: 760, y: 940, w: 320, title: 'Raw materials',
       note: 'Single-supplier inputs the whole chain quietly depends on.',
       items: [['Glass cloth', 'glass-cloth'], ['Iodine', 'iodine']] },
     { id: 'beyond', x: 60, y: 920, w: 320, title: 'Beyond finance',
       note: 'Stories off the money map.',
-      items: [['Neurotech', 'implants'], ['History', 'three-kingdoms']] }
+      items: [['Neurotech', 'implants'], ['AD 184–280', 'three-kingdoms'], ['210–180 BC', 'chu-han']] }
   ];
   const ARROWS = [
     ['savers', 'hub', 'invest in'],

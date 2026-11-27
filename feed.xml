@@ -6,7 +6,23 @@
   <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Explainers on the companies and industries the world can't do without.</description>
   <language>en-sg</language>
-  <lastBuildDate>Wed, 25 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 27 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <item>
+    <title>The Safety Lab That Became a Juggernaut: The Anthropic Story</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/anthropic-story.html</link>
+    <guid isPermaLink="false">bottleneck-anthropic-story</guid>
+    <pubDate>Fri, 27 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Anthropic</category>
+    <description>In late 2020 seven researchers walked out of OpenAI. Six years later the company they founded is worth about $1.5 trillion and has fought the Pentagon in court. How Anthropic got there, where the accounts of its rise disagree, and the strongest case its critics make.</description>
+  </item>
+  <item>
+    <title>Chu and Han: From the First Emperor’s Death to Empress Lü’s, 210–180 BC</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/chu-han.html</link>
+    <guid isPermaLink="false">bottleneck-chu-han</guid>
+    <pubDate>Thu, 26 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Chu–Han Contention</category>
+    <description>In 210 BC the First Emperor of Qin died on the road, and his empire outlived him by three years. Then came the war between Xiang Yu and Liu Bang, the purge of the generals who won it, and fifteen years of Empress Lü. A scrolling map, year by year, and one life followed through it: Liu Bang, Lü Zhi, Zhang Liang, Han Xin, Xiang Yu or Fan Zeng.</description>
+  </item>
   <item>
     <title>Reading the Squiggles: How Traders Read a Price Chart</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/chart-reading.html</link>

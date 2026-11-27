@@ -13,6 +13,50 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "anthropic-story",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/anthropic-story.html",
+      "title": "The Safety Lab That Became a Juggernaut: The Anthropic Story",
+      "summary": "In late 2020 seven researchers walked out of OpenAI. Six years later the company they founded is worth about $1.5 trillion and has fought the Pentagon in court. How Anthropic got there, where the accounts of its rise disagree, and the strongest case its critics make.",
+      "content_text": "In late 2020 seven researchers walked out of OpenAI. Six years later the company they founded is worth about $1.5 trillion and has fought the Pentagon in court. How Anthropic got there, where the accounts of its rise disagree, and the strongest case its critics make.",
+      "date_published": "2026-11-27T09:00:00+08:00",
+      "tags": [
+        "Anthropic"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-story.png",
+      "_bottleneck": {
+        "short": "The Anthropic story",
+        "topic": "Anthropic",
+        "readMins": 19,
+        "stat": {
+          "big": "7",
+          "text": "Former OpenAI staff who founded Anthropic in 2021, led by siblings Dario and Daniela Amodei."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-story.png"
+      }
+    },
+    {
+      "id": "chu-han",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/chu-han.html",
+      "title": "Chu and Han: From the First Emperor’s Death to Empress Lü’s, 210–180 BC",
+      "summary": "In 210 BC the First Emperor of Qin died on the road, and his empire outlived him by three years. Then came the war between Xiang Yu and Liu Bang, the purge of the generals who won it, and fifteen years of Empress Lü. A scrolling map, year by year, and one life followed through it: Liu Bang, Lü Zhi, Zhang Liang, Han Xin, Xiang Yu or Fan Zeng.",
+      "content_text": "In 210 BC the First Emperor of Qin died on the road, and his empire outlived him by three years. Then came the war between Xiang Yu and Liu Bang, the purge of the generals who won it, and fifteen years of Empress Lü. A scrolling map, year by year, and one life followed through it: Liu Bang, Lü Zhi, Zhang Liang, Han Xin, Xiang Yu or Fan Zeng.",
+      "date_published": "2026-11-26T09:00:00+08:00",
+      "tags": [
+        "Chu–Han Contention"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chu-han.png",
+      "_bottleneck": {
+        "short": "Chu and Han",
+        "topic": "Chu–Han Contention",
+        "readMins": 30,
+        "stat": {
+          "big": "3 years",
+          "text": "From the First Emperor's death in 210 BC to the surrender of Qin to Liu Bang."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/chu-han.png"
+      }
+    },
+    {
       "id": "chart-reading",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/chart-reading.html",
       "title": "Reading the Squiggles: How Traders Read a Price Chart",

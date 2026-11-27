@@ -1,0 +1,201 @@
+/* Page-specific styles for the Chu–Han timeline. Shared: bottleneck.css + article.css. */
+
+.note{border-left:3px solid var(--blue);background:#fff;padding:18px 22px;margin:30px 0;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink2)}
+.note b.h{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.tbl-wrap{overflow-x:auto;margin-top:6px}
+table.cmp{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;line-height:1.45;min-width:560px}
+table.cmp th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+table.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:700;color:var(--ink);width:170px}
+.fig figcaption a,.note a{color:inherit;text-decoration-color:var(--gold)}
+
+/* ---------- The cast chart ---------- */
+#castSvg{width:100%;height:auto;display:block}
+#castSvg .cast-row{cursor:pointer;outline:none}
+#castSvg .cast-row .cast-bar{opacity:.55;transition:opacity .25s}
+#castSvg .cast-row:hover .cast-bar,#castSvg .cast-row:focus-visible .cast-bar,#castSvg .cast-row.on .cast-bar{opacity:1}
+#castSvg .cast-row.on > rect:first-child{fill:#f6f2e8}
+
+/* ---------- The scrolly: sticky map + steps ---------- */
+.art .ch-scrolly{grid-column:2/4;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;margin:30px 0;position:relative}
+.ch-sticky{position:sticky;top:70px;height:calc(100vh - 86px);display:flex;flex-direction:column;justify-content:center}
+.ch-mapbox{background:#fff;border:1px solid var(--rule);padding:14px 14px 10px;display:flex;flex-direction:column;max-height:100%}
+.ch-head{display:flex;align-items:baseline;gap:12px;font-family:var(--sans);margin-bottom:8px}
+.ch-head #chYear{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.ch-head #chTitle{font-size:14px;font-weight:700;color:var(--muted)}
+#chMap{width:100%;height:auto;max-height:calc(100vh - 230px);display:block;min-height:0}
+#chMap .ch-prov{transition:fill .7s ease}
+#chMap .ch-faclab text{pointer-events:none}
+#chMap .ch-me{transition:transform .7s cubic-bezier(.3,.7,.3,1)}
+#chMap .ch-pulse{transform-box:fill-box;transform-origin:center;animation:chPulse 1.8s ease-out infinite}
+@keyframes chPulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+.ch-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--sans);font-size:11.5px;color:var(--ink2);margin-top:8px}
+.ch-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.ch-note{font-family:var(--sans);font-size:13px;color:var(--muted)}
+
+/* the person picker */
+.ch-pickbar{position:sticky;top:70px;z-index:3;background:var(--paper);padding:10px 0 12px;border-bottom:1px solid var(--rule)}
+.ch-pickbar .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ch-pick{display:flex;flex-wrap:wrap;gap:6px}
+.ch-pick button{font-family:var(--sans);font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:5px 12px 5px 5px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.ch-pick button b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pc);color:#fff;font-size:12px;font-weight:700}
+.ch-pick button:hover{border-color:var(--pc)}
+.ch-pick button[aria-pressed=true]{background:var(--pc);color:#fff;border-color:var(--pc)}
+.ch-pick button[aria-pressed=true] b{background:#fff;color:var(--pc)}
+.ch-pick-m{display:none}
+
+/* the steps */
+#chSteps{padding:8vh 0 30vh}
+.ch-step{min-height:78vh;display:flex;align-items:center}
+.ch-step .card{background:#fff;border:1px solid var(--rule);padding:22px 24px;max-width:540px;opacity:.35;transition:opacity .4s,border-color .4s}
+.ch-step.on .card{opacity:1;border-color:var(--ink)}
+.ch-yr{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gold)}
+.ch-step h3{font-family:var(--serif);font-size:23px;line-height:1.2;margin:4px 0 8px}
+.ch-step p{font-size:16.5px;line-height:1.55;color:#1d1d1d;margin:0}
+.ch-person{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)}
+.ch-who{display:flex;align-items:center;gap:12px;font-family:var(--sans)}
+.ch-av{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--pc);color:#fff;font-size:19px;font-weight:700}
+.ch-who.gone .ch-av{background:#fff;color:var(--pc);border:2px solid var(--pc)}
+.ch-wn{font-size:15px;font-weight:800;color:var(--ink)}
+.ch-wn span{font-weight:600;color:var(--muted);margin-left:4px}
+.ch-wm{font-size:12.5px;color:var(--muted);margin-top:2px}
+.ch-step p.ch-wt{margin-top:10px;font-size:16px;border-left:3px solid var(--pc);padding-left:12px}
+
+@media(max-width:1100px){.art .ch-scrolly{grid-column:1}}
+@media(max-width:900px){
+  .art .ch-scrolly{grid-template-columns:minmax(0,1fr);gap:0}
+  .ch-sticky{top:56px;height:auto;z-index:5;padding:6px 0 0;background:var(--paper)}
+  .ch-mapbox{padding:8px 8px 6px}
+  .ch-head{margin-bottom:4px}
+  .ch-head #chYear{font-size:20px}
+  .ch-head #chTitle{font-size:12.5px}
+  #chMap{max-height:36vh}
+  .ch-legend{display:none}
+  .ch-pick-m{display:flex;flex-wrap:nowrap;overflow-x:auto;margin-top:6px;padding-bottom:2px;scrollbar-width:none}
+  .ch-pick-m::-webkit-scrollbar{display:none}
+  .ch-pick-m button{flex:none}
+  .ch-pickbar{display:none}
+  #chSteps{padding:4vh 0 20vh;position:relative;z-index:4}
+  .ch-step{min-height:70vh;align-items:flex-end}
+  .ch-step .card{padding:18px 18px}
+  .ch-step h3{font-size:20px}
+  .ch-step p{font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  #chMap .ch-prov,#chMap .ch-me{transition:none}
+  #chMap .ch-pulse{animation:none;opacity:0}
+}
+
+/* ---------- Chinese version: CJK fonts after the Latin ones, and no fake drop cap ---------- */
+html:lang(zh){--serif:"Source Serif 4","Songti SC","Noto Serif SC","Noto Serif CJK SC","STSong","SimSun",serif;--sans:Inter,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+html:lang(zh) .art p.t,html:lang(zh) .ch-step p{line-height:1.8}
+html:lang(zh) .dropcap::first-letter{float:none;font-size:inherit;padding:0;line-height:inherit;font-weight:inherit}
+html:lang(zh) .head h1{letter-spacing:.08em}
+#langBtn{font-weight:700}
+
+/* ---------- Year-by-year cards: era, quotation box, silent years ---------- */
+.ch-yr span{font-weight:700;letter-spacing:.04em;color:var(--muted)}
+.ch-step{min-height:64vh}
+.ch-q{margin:14px 0 0;padding:10px 14px;background:#f6f2e8;border-left:3px solid var(--gold);font-family:var(--serif)}
+.ch-qs{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:4px}
+.ch-step .ch-q p{font-size:15px;line-height:1.75;color:#2a2620}
+.ch-step .ch-q p.ch-qe{font-size:14px;font-style:italic;color:var(--muted);margin-top:6px;line-height:1.5}
+.ch-who.quiet .ch-av{background:#fff;color:var(--pc);border:2px dashed var(--pc)}
+.ch-step p.ch-wt.quiet{color:var(--muted);font-style:italic;border-left-style:dashed}
+@media(max-width:900px){.ch-step{min-height:62vh}.ch-step .ch-q p{font-size:14.5px}}
+
+/* ---------- Wide timeline: the map takes over the table-of-contents column ----------
+   On wide screens the timeline spans the full article width (and a bit beyond), with the map on the left
+   getting most of it. The "In this story" list fades out while the timeline is on screen. */
+@media(min-width:901px){
+  .art .ch-scrolly{grid-column:1/-1;justify-self:start;width:min(1400px,calc(100vw - 48px));margin-left:calc(50% - min(700px,calc(50vw - 24px)));grid-template-columns:minmax(0,1.45fr) minmax(340px,.8fr);gap:36px}
+  .ch-sticky{top:64px;height:calc(100vh - 72px)}
+  .ch-mapbox{padding:12px 14px 8px}
+  #chMap{max-height:calc(100vh - 150px)}
+  .ch-legend{margin-top:6px;font-size:11px}
+  .ch-step .card{max-width:none}
+}
+.toc{transition:opacity .3s ease,visibility .3s}
+body.ch-wide .toc{opacity:0;visibility:hidden}
+
+/* the map fills its whole box: content beyond the viewBox shows, and the box clips it */
+#chMap{overflow:visible}
+.ch-mapwrap{overflow:hidden;line-height:0;background:#dfe6ea}
+#chMap{background:#dfe6ea}
+
+/* ---------- Person picker grouped by side ---------- */
+.ch-pick{gap:6px 14px}
+.ch-grp{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ch-gl{font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gc);border-bottom:2px solid var(--gc);padding:0 1px 1px;margin-right:2px}
+@media(max-width:900px){.ch-pick-m{gap:12px}.ch-grp{flex-wrap:nowrap;flex:none}}
+
+/* ---------- Person picker as a dropdown ---------- */
+.ch-pick{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.ch-selav{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--pc,#3e6aa8);color:#fff;font-family:var(--sans);font-size:14px;font-weight:700}
+.ch-sel{flex:1;min-width:0;max-width:280px;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23111' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--rule);border-radius:8px;padding:8px 34px 8px 12px;appearance:none;-webkit-appearance:none;cursor:pointer}
+.ch-sel:hover,.ch-sel:focus{border-color:var(--ink);outline:none}
+@media(max-width:900px){.ch-pick-m{display:flex;overflow:visible;margin-top:6px}.ch-pick-m .ch-sel{max-width:none;font-size:15px}}
+@media(min-width:901px){.ch-pick-m{display:none}}
+
+/* ---------- Map views: political, battles ---------- */
+.ch-head{flex-wrap:wrap}
+.ch-views{margin-left:auto;display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden;align-self:center}
+.ch-views button{font-family:var(--sans);font-size:12.5px;font-weight:700;background:#f3efe6;color:var(--ink2);border:0;padding:6px 11px;cursor:pointer}
+.ch-views button+button{border-left:1px solid var(--rule)}
+.ch-views button[aria-pressed=true]{background:#0d0d0f;color:#fff}
+#chMap g[clip-path]{transition:opacity .4s}
+.ch-legend i.g{width:16px;height:16px;border-radius:50%;color:#fff;font-size:10px;font-style:normal;font-weight:700;display:inline-grid;place-items:center;vertical-align:-3px}
+.ch-legend .ch-lnote{flex-basis:100%;color:var(--muted);line-height:1.45}
+@media(max-width:900px){
+  .ch-views{margin-left:0;width:100%;margin-top:4px}
+  .ch-views button{flex:1;padding:5px 4px}
+  .ch-legend{display:none}
+}
+#chMap .ch-mk{cursor:help}
+
+/* ---------- Marker tooltip card ---------- */
+.ch-mapwrap{position:relative}
+.ch-tipbox{position:absolute;z-index:4;max-width:250px;background:#111;color:#eee;border-radius:6px;padding:8px 10px;font-family:var(--sans);font-size:12.5px;line-height:1.45;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none}
+.ch-tipbox b{display:block;color:#fff;font-size:13px;margin-bottom:3px}
+.ch-tipbox span{display:block}
+.ch-tipbox[hidden]{display:none}
+.ch-namesbtn{font-family:var(--sans);font-size:12px;font-weight:700;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:7px;padding:6px 10px;cursor:pointer;align-self:center}
+.ch-namesbtn[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}
+.ch-namesbtn:hover{border-color:var(--ink)}
+@media(max-width:900px){.ch-views{width:auto;flex:1}.ch-namesbtn{margin-top:4px;padding:5px 8px}}
+.ch-views button{white-space:nowrap}
+@media(max-width:900px){
+  .ch-namesbtn{margin-left:auto;margin-top:0}
+  .ch-views{order:3;flex:1 1 100%;width:100%;margin-top:4px}
+}
+.ch-legend .ch-popchart{flex-basis:100%;max-width:520px;width:100%;height:auto}
+
+/* ---------- History and legend table ---------- */
+table.cmp.ch-leg{min-width:0;table-layout:fixed}
+table.ch-leg th:nth-child(1){width:22%}
+table.ch-leg th:nth-child(2){width:30%}
+table.ch-leg td:first-child{width:auto}
+.ch-sc{display:block;font-weight:800;color:var(--ink);margin-bottom:6px}
+.ch-vd{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--vc);border-radius:3px;padding:2px 6px}
+.ch-nq{margin:8px 0 0;padding:8px 10px;background:#f6f2e8;border-left:3px solid var(--gold);font-family:var(--serif)}
+.ch-nq p{font-size:13.5px;line-height:1.65;color:#2a2620;margin:0}
+.ch-nq p.ch-qe{font-family:var(--sans);font-size:12.5px;font-style:italic;color:var(--muted);margin-top:4px;line-height:1.45}
+@media(max-width:640px){
+  table.ch-leg,table.ch-leg tbody,table.ch-leg tr,table.ch-leg td{display:block;width:auto}
+  table.ch-leg thead{display:none}
+  table.ch-leg tr{border-bottom:1px solid var(--rule);padding:12px 0}
+  table.ch-leg td{border:0;padding:4px 0}
+  table.ch-leg td[data-h]::before{content:attr(data-h);display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+}
+
+/* ---------- Wide legend table on desktop (the contents list fades out while it is on screen) ---------- */
+@media(min-width:901px){
+  .art #legendFig{grid-column:1/-1;justify-self:start;width:min(1180px,calc(100vw - 48px));margin-left:calc(50% - min(590px,calc(50vw - 24px)));box-sizing:border-box;position:relative;z-index:2}
+  table.ch-leg th:nth-child(1){width:17%}
+  table.ch-leg th:nth-child(2){width:28%}
+  table.cmp.ch-leg{font-size:14px}
+  .ch-nq p{font-size:14.5px}
+}
+.ch-legend .ch-popbtn{flex-basis:auto;font-family:var(--sans);font-size:11.5px;font-weight:700;background:#fff;color:var(--ink2);border:1px solid var(--rule);border-radius:6px;padding:4px 9px;cursor:pointer}
+.ch-legend .ch-popbtn:hover{border-color:var(--ink);color:var(--ink)}
+.ch-legend .ch-popbtn+.ch-popchart{margin-top:2px}

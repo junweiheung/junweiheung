@@ -706,6 +706,55 @@ window.BOTTLENECK = {
       ],
       // A personal-finance concept explainer: no company chain or country link.
       chain: []
+    },
+    {
+      id: "chu-han",
+      href: "explainers/chu-han.html",
+      title: "Chu and Han: From the First Emperor’s Death to Empress Lü’s, 210–180 BC",
+      short: "Chu and Han",
+      kicker: "Explainer",
+      topic: "Chu–Han Contention",
+      category: "History",
+      date: "2026-11-26",
+      readMins: 30,
+      dek: "In 210 BC the First Emperor of Qin died on the road, and his empire outlived him by three years. Then came the war between Xiang Yu and Liu Bang, the purge of the generals who won it, and fifteen years of Empress Lü. A scrolling map, year by year, and one life followed through it: Liu Bang, Lü Zhi, Zhang Liang, Han Xin, Xiang Yu or Fan Zeng.",
+      summary: "A scrolling map of China from the fall of Qin through the Chu–Han war to Empress Lü's death, with six lives to follow",
+      thumb: "../images/thumbs/chu-han.svg",
+      stats: [
+        { big: "3 years", text: "From the First Emperor's death in 210 BC to the surrender of Qin to Liu Bang." },
+        { big: "18", text: "Kingdoms Xiang Yu carved the empire into in 206 BC. They were at war within months." },
+        { big: "7 of 8", text: "Kings outside the Liu family who were dead, exiled or in revolt within seven years of Han's founding." },
+        { big: "15 years", text: "Empress Lü's time in power, 195–180 BC. Her clan was wiped out within two months of her death." }
+      ],
+      // A history explainer about China. It profiles no company, so it adds nothing to the company map.
+      chain: []
+    },
+    {
+      id: "anthropic-story",
+      href: "explainers/anthropic-story.html",
+      title: "The Safety Lab That Became a Juggernaut: The Anthropic Story",
+      short: "The Anthropic story",
+      kicker: "Explainer",
+      topic: "Anthropic",
+      category: "AI & capital",
+      date: "2026-11-27",
+      readMins: 19,
+      dek: "In late 2020 seven researchers walked out of OpenAI. Six years later the company they founded is worth about $1.5 trillion and has fought the Pentagon in court. How Anthropic got there, where the accounts of its rise disagree, and the strongest case its critics make.",
+      summary: "From the OpenAI split to the IPO: Constitutional AI, FTX, Claude Code, the Pentagon standoff, and the critics' case",
+      thumb: "../images/thumbs/anthropic-story.svg",
+      stats: [
+        { big: "7", text: "Former OpenAI staff who founded Anthropic in 2021, led by siblings Dario and Daniela Amodei." },
+        { big: "$2.5B", text: "Claude Code's annualised revenue by February 2026, about a year after its preview." },
+        { big: "$974M", text: "Anthropic's first quarterly operating profit, in Q2 2026, per its IPO filing." },
+        { big: "$1.5T", text: "Fully diluted value at the $83 IPO price in November 2026." }
+      ],
+      chain: [
+        { step: "Where the founders came from", companies: ["openai"] },
+        { step: "Cloud investors", companies: ["amazon", "google"] },
+        { step: "Defence partner", companies: ["palantir"] },
+        { step: "Accused of distillation", companies: ["deepseek", "moonshot", "minimax"] },
+        { step: "The company", companies: ["anthropic"] }
+      ]
     }
   ],
 
@@ -793,6 +842,9 @@ window.BOTTLENECK = {
     mistral:  { name: "Mistral AI",        hq: "France",       sector: "AI labs" },
     deepseek: { name: "DeepSeek",          hq: "China",        sector: "AI labs" },
     groq:     { name: "Groq",              hq: "US",           sector: "Chip design" },
-    taalas:   { name: "Taalas",            hq: "Canada",       sector: "Chip design" }
+    taalas:   { name: "Taalas",            hq: "Canada",       sector: "Chip design" },
+    palantir: { name: "Palantir",          hq: "US",           sector: "Software & data" },
+    moonshot: { name: "Moonshot AI",       hq: "China",        sector: "AI labs" },
+    minimax:  { name: "MiniMax",           hq: "China",        sector: "AI labs" }
   }
 };

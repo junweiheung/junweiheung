@@ -24,6 +24,7 @@ window.BOTTLENECK_COUNTRIES = {
     "United States of America": {
       articles: [
         { title: "Who owns Anthropic? Inside the $1.5 trillion IPO", href: "explainers/anthropic-ipo.html" },
+        { title: "The safety lab that became a juggernaut: the Anthropic story", href: "explainers/anthropic-story.html" },
         { title: "From a $2 stock to the trillion-dollar club: how AMD came back", href: "explainers/amd.html" },
         { title: "The bank behind the currency market (CLS)", href: "explainers/cls.html" },
         { title: "One seesaw, two fears: how the Fed uses the bond market", href: "explainers/bond-market.html" },
@@ -49,7 +50,8 @@ window.BOTTLENECK_COUNTRIES = {
     },
     "China": {
       articles: [
-        { title: "Three Kingdoms: how the Han empire broke apart", href: "explainers/three-kingdoms.html" }
+        { title: "Three Kingdoms: how the Han empire broke apart", href: "explainers/three-kingdoms.html" },
+        { title: "Chu and Han: from the First Emperor's death to Empress Lü's", href: "explainers/chu-han.html" }
       ]
     },
     "Thailand": {
