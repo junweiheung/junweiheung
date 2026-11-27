@@ -53,7 +53,9 @@ const say = (p, x, y, str, a = {}) => { const t = mk('text', Object.assign({ x, 
 /* ================= DATA ================= */
 
 /* Regions, drawn approximately as [lon, lat] outlines that share their borders: the Qin commanderies
-   grouped the way Xiang Yu split them into kingdoms in 206 BC, so the same shapes serve the whole period.
+   grouped the way Xiang Yu split them into kingdoms in 206 BC, plus the pieces the early Han kingdoms
+   were later cut along (Jinan out of Jibei; Dongyang between the Huai and the Yangtze). The shapes
+   never move; each step only changes who holds them.
    The map is clipped to the modern coastline. */
 const REG = {
   yong: { n: ['Yong', '雍'], p: [[103, 37], [106.6, 37], [107.5, 35.6], [108.3, 35.6], [108.3, 33.9], [105.5, 33.9], [103, 34.5]] },
@@ -68,22 +70,30 @@ const REG = {
   yin: { n: ['Henei', '河内'], p: [[112, 34.85], [112.6, 35.1], [113.3, 36.2], [114.8, 36.6], [115.6, 36.4], [116, 36.0], [114.5, 35.2], [114.4, 35.15], [113.4, 34.95], [113.0, 34.92]] },
   dai: { n: ['Dai', '代'], p: [[110.6, 37.2], [110.6, 39.6], [111, 41], [114, 41.2], [115.2, 40.5], [114.6, 38.4], [113.6, 37.6], [112.9, 37.2]] },
   zhao: { n: ['Zhao', '赵'], p: [[112.9, 37.2], [113.6, 37.6], [114.6, 38.4], [115.2, 39.0], [116.8, 38.6], [116.8, 37.3], [115.6, 36.4], [114.8, 36.6], [113.3, 36.2]] },
-  yan: { n: ['Yan', '燕'], p: [[114, 41.2], [117, 42], [119.5, 41.5], [119.5, 39.6], [118.2, 39.0], [117.4, 38.6], [116.8, 38.6], [115.2, 39.0], [114.6, 38.4], [115.2, 40.5]] },
-  liaodong: { n: ['Liaodong', '辽东'], p: [[119.5, 41.5], [124.5, 42.8], [126, 41], [124, 39.6], [121.5, 38.8], [121, 40.3], [119.5, 39.6]] },
-  jibei: { n: ['Jibei', '济北'], p: [[116.8, 38.6], [117.4, 38.6], [118.2, 38.0], [118.0, 37.0], [117.2, 36.0], [116, 36.0], [115.6, 36.4], [116.8, 37.3]] },
-  linzi: { n: ['Linzi', '临淄'], p: [[118.2, 38.0], [119.3, 37.4], [119.6, 36.0], [120.3, 35.9], [119.8, 35.0], [118.6, 35.0], [117.6, 35.4], [117.2, 36.0], [118.0, 37.0]] },
+  yan: { n: ['Yan', '燕'], p: [[114, 41.2], [117, 42], [119.5, 41.5], [119.5, 39.6], [119.3, 39.0], [118.2, 39.0], [117.4, 38.6], [116.8, 38.6], [115.2, 39.0], [114.6, 38.4], [115.2, 40.5]] },
+  liaodong: { n: ['Liaodong', '辽东'], p: [[119.5, 41.5], [124.5, 42.8], [126, 41], [125.6, 39.5], [124, 39.6], [121.1, 38.6], [121, 40.3], [119.5, 39.6]] },
+  jibei: { n: ['Jibei', '济北'], p: [[116.8, 38.6], [117.4, 38.6], [118.2, 39.0], [118.2, 38.0], [118.08, 37.4], [117.3, 37.35], [116.75, 36.8], [117.0, 36.35], [117.6, 36.5], [117.2, 36.0], [116, 36.0], [115.6, 36.4], [116.8, 37.3]] },
+  jinan: { n: ['Jinan', '济南'], p: [[116.75, 36.8], [117.3, 37.35], [118.08, 37.4], [118.0, 37.0], [117.6, 36.5], [117.0, 36.35]] },
+  linzi: { n: ['Linzi', '临淄'], p: [[118.2, 38.0], [118.2, 38.3], [119.2, 38.3], [119.3, 37.4], [119.6, 36.0], [120.3, 35.9], [119.8, 35.0], [118.6, 35.0], [117.6, 35.4], [117.2, 36.0], [118.0, 37.0]] },
   jiaodong: { n: ['Jiaodong', '胶东'], p: [[119.3, 37.4], [121, 37.8], [122.8, 37.4], [122.5, 36.6], [120.3, 35.9], [119.6, 36.0]] },
   liang: { n: ['Dang', '砀'], p: [[114.4, 35.15], [114.5, 35.2], [116, 36.0], [117.2, 36.0], [116.2, 35.0], [115.6, 34.2], [115.0, 34.0], [114.6, 34.3]] },
-  chu: { n: ['Sishui', '泗水'], p: [[117.2, 36.0], [117.6, 35.4], [118.6, 35.0], [119.8, 35.0], [121.2, 33.5], [121.6, 32.2], [119.0, 32.4], [117.0, 32.6], [116.0, 33.3], [115.0, 34.0], [115.6, 34.2], [116.2, 35.0]] },
+  chu: { n: ['Sishui', '泗水'], p: [[117.2, 36.0], [117.6, 35.4], [118.6, 35.0], [119.8, 35.0], [120.55, 34.2], [119.2, 33.6], [118.5, 33.05], [117.6, 32.95], [117.0, 33.0], [116.0, 33.3], [115.0, 34.0], [115.6, 34.2], [116.2, 35.0]] },
+  dongyang: { n: ['Dongyang', '东阳'], p: [[117.6, 32.95], [118.5, 33.05], [119.2, 33.6], [120.55, 34.2], [121.2, 33.5], [122.1, 31.85], [119.0, 32.4], [117.6, 32.54]] },
   chen: { n: ['Chen', '陈'], p: [[114.6, 34.3], [115.0, 34.0], [116.0, 33.3], [115.4, 32.2], [114.0, 32.4], [113.0, 33.0], [114.4, 33.3]] },
-  jiujiang: { n: ['Jiujiang', '九江'], p: [[115.4, 32.2], [116.0, 33.3], [117.0, 32.6], [119.0, 32.4], [118.6, 31.7], [117.6, 30.8], [116.2, 29.8], [115.0, 30.2], [114.6, 31.2], [114.0, 32.4]] },
-  hengshan: { n: ['Hengshan', '衡山'], p: [[113.5, 31.6], [114.6, 31.2], [115.0, 30.2], [116.2, 29.8], [116.5, 28.0], [116.0, 26.0], [114.5, 25.2], [114.3, 27.0], [113.0, 29.0], [114.0, 30.5]] },
+  jiujiang: { n: ['Jiujiang', '九江'], p: [[115.4, 32.2], [116.0, 33.3], [117.0, 33.0], [117.6, 32.95], [117.6, 32.54], [119.0, 32.4], [118.6, 31.7], [117.6, 30.8], [116.2, 29.8], [115.0, 30.2], [114.6, 31.2], [114.0, 32.4]] },
+  hengshan: { n: ['Hengshan', '衡山'], p: [[113.5, 31.6], [114.0, 32.4], [114.6, 31.2], [115.0, 30.2], [116.2, 29.8], [116.5, 28.0], [116.0, 26.0], [114.5, 25.2], [114.3, 27.0], [113.0, 29.0], [114.0, 30.5]] },
   linjiang: { n: ['Nan', '南郡'], p: [[110.8, 32.6], [111.5, 31.8], [113.5, 31.6], [114.0, 30.5], [113.0, 29.0], [112.0, 27.5], [110, 26.5], [109.5, 28.5], [110.3, 30.5]] },
-  changsha: { n: ['Changsha', '长沙'], p: [[110, 26.5], [112, 27.5], [113.0, 29.0], [114.3, 27.0], [114.5, 25.2], [112, 24.8], [110.5, 25.2]] },
-  kuaiji: { n: ['Kuaiji', '会稽'], p: [[119.0, 32.4], [121.6, 32.2], [122.3, 30.5], [121.8, 28.5], [120.4, 27.4], [118, 28.0], [116.5, 28.0], [116.2, 29.8], [117.6, 30.8], [118.6, 31.7]] },
-  minyue: { n: ['Min', '闽'], p: [[116.5, 28.0], [118, 28.0], [120.4, 27.4], [120.8, 26.2], [118.5, 23.9], [116.5, 24.5], [116.0, 26.0]] },
-  nanyue: { n: ['Lingnan', '岭南'], p: [[110.5, 25.2], [112, 24.8], [114.5, 25.2], [116.0, 26.0], [116.5, 24.5], [118.5, 23.9], [117, 22.4], [113, 21.2], [110, 20], [108, 21.4], [106.5, 22.5], [107.5, 24.5], [109.5, 25.5]] }
+  changsha: { n: ['Changsha', '长沙'], p: [[110, 26.5], [112, 27.5], [113.0, 29.0], [114.3, 27.0], [114.5, 25.2], [112, 24.8], [110.5, 25.2], [109.5, 25.5]] },
+  kuaiji: { n: ['Kuaiji', '会稽'], p: [[119.0, 32.4], [122.1, 31.85], [122.3, 30.5], [122.2, 28.4], [121.3, 27.7], [120.9, 27.1], [118, 28.0], [116.5, 28.0], [116.2, 29.8], [117.6, 30.8], [118.6, 31.7]] },
+  minyue: { n: ['Min', '闽'], p: [[116.5, 28.0], [118, 28.0], [120.9, 27.1], [120.8, 26.2], [118.5, 23.9], [116.5, 24.5], [116.0, 26.0]] },
+  nanyue: { n: ['Lingnan', '岭南'], p: [[110.5, 25.2], [112, 24.8], [114.5, 25.2], [116.0, 26.0], [116.5, 24.5], [118.5, 23.9], [117, 22.4], [113, 21.2], [110, 20], [107.6, 20.9], [106.5, 22.5], [107.5, 24.5], [109.5, 25.5]] }
 };
+/* Lines along which a region was carved out of an older unit; drawn dotted. Each point is a vertex the two
+   regions share. */
+const CUTS = [
+  [[118.08, 37.4], [117.3, 37.35], [116.75, 36.8], [117.0, 36.35], [117.6, 36.5]],   // Jinan out of Jibei
+  [[117.6, 32.95], [118.5, 33.05], [119.2, 33.6], [120.55, 34.2]]                     // Dongyang out of Sishui, along the Huai
+];
 const LABEL_AT = { bashu: [105.2, 30.2], nanyue: [111.5, 23.2], kuaiji: [119.6, 29.6], hengshan: [115.4, 27.8], liaodong: [123, 41.2], di: [109, 38.2], dai: [112.5, 39.6], yong: [105.2, 35.6], minyue: [118.3, 25.9], hanzhong: [107.3, 33.1], linjiang: [111.6, 29.7] };
 
 /* Who's who on the map, [English, Chinese]. A step's `nm` can rename a side; `b` is a short label for the map. */
@@ -107,9 +117,31 @@ const FAC = {
   hengshank: { n: ['Hengshan (Wu Rui)', '衡山（吴芮）'], c: '#9fbad0' },
   linjiangk: { n: ['Linjiang (Gong Ao)', '临江（共敖）'], c: '#b9967a' },
   nanyue: { n: ['Nanyue (Zhao Tuo)', '南越（赵佗）'], c: '#5f8a8a' },
-  yiking: { n: ['Kings not of the Liu family', '异姓王'], b: ['Other kings', '异姓王'], c: '#d8a24a' },
-  liuking: { n: ['Liu princes', '刘氏诸侯王'], c: '#e9a08c' },
-  luking: { n: ['Lü kings', '吕氏诸王'], c: '#2f6a8f' },
+  // the seven kings not of the Liu family (202 BC), one side per kingdom; `k` marks a kingdom, whose map label keeps its king's name
+  kchu: { n: ['Chu (Han Xin)', '楚（韩信）'], c: '#a8862b', k: 1 },
+  kliang: { n: ['Liang (Peng Yue)', '梁（彭越）'], c: '#b58db0', k: 1 },
+  khuainan: { n: ['Huainan (Ying Bu)', '淮南（英布）'], c: '#8a5a3a', k: 1 },
+  kchangsha: { n: ['Changsha (Wu Rui)', '长沙（吴芮）'], c: '#d8a24a', k: 1 },
+  kzhao: { n: ['Zhao (Zhang Ao)', '赵（张敖）'], c: '#9b7bb0', k: 1 },
+  kyan: { n: ['Yan (Lu Wan)', '燕（卢绾）'], c: '#8d9aa6', k: 1 },
+  khann: { n: ['Hann (King Xin)', '韩（韩王信）'], c: '#86b3a6', k: 1 },
+  // the Liu princes: one side per kingdom, coloured apart from the Han emperor's red and from their neighbours, named for its first king (a step's `nm` renames it when the king changes)
+  lqi: { n: ['Qi (Liu Fei)', '齐（刘肥）'], c: '#ee8f4e', k: 1 },
+  lchu: { n: ['Chu (Liu Jiao)', '楚（刘交）'], c: '#c9a3d9', k: 1 },
+  ljing: { n: ['Jing (Liu Jia)', '荆（刘贾）'], c: '#e6c35c', k: 1 },
+  lwu: { n: ['Wu (Liu Bi)', '吴（刘濞）'], c: '#e6c35c', k: 1 },
+  ldai: { n: ['Dai (Liu Xi)', '代（刘喜）'], c: '#f3d9a4', k: 1 },
+  lzhao: { n: ['Zhao (Ruyi)', '赵（如意）'], c: '#a87ca0', k: 1 },
+  lliang: { n: ['Liang (Liu Hui)', '梁（刘恢）'], c: '#f2a7a0', k: 1 },
+  lhuaiyang: { n: ['Huaiyang (Liu You)', '淮阳（刘友）'], c: '#9fbf8f', k: 1 },
+  lhuainan: { n: ['Huainan (Liu Chang)', '淮南（刘长）'], c: '#e48f72', k: 1 },
+  lyan: { n: ['Yan (Liu Jian)', '燕（刘建）'], c: '#e3a9c2', k: 1 },
+  ljichuan: { n: ['Jichuan (Liu Tai)', '济川（刘太）'], c: '#d6c08a', k: 1 },
+  // the Lü kings, in blues
+  klu: { n: ['Lü (Lü Tai)', '吕（吕台）'], c: '#2f6a8f', k: 1 },
+  kluzhao: { n: ['Zhao (Lü Lu)', '赵（吕禄）'], c: '#3f7fb0', k: 1 },
+  kluliang: { n: ['Liang (Lü Chan)', '梁（吕产）'], c: '#5b9bc7', k: 1 },
+  kluyan: { n: ['Yan (Lü Tong)', '燕（吕通）'], c: '#24506e', k: 1 },
   revolt: { n: ['In revolt', '叛乱'], c: '#5d4a3c' },
   xiongnu: { n: ['Xiongnu', '匈奴'], c: '#5a4632' },
   other: { n: ['Unassigned or local', '未封或地方势力'], c: '#dcd5c6' }
@@ -181,6 +213,8 @@ Object.values(PEOPLE).forEach((per) => {
 });
 
 /* text lookups that follow the current language */
+// is a fill light enough to need dark text on it? (relative luminance of a #rrggbb colour)
+const light = (hex) => { const v = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2] > 0.55; };
 const facName = (si, f) => { const o = STEPS[si].names[f]; return o ? o[L()] : FAC[f].n[L()]; };
 const stepTitle = (i) => STEPS[i][isZh() ? 'zh' : 'en'].t;
 const stepText = (i) => STEPS[i][isZh() ? 'zh' : 'en'].x;
@@ -249,18 +283,31 @@ applyStatic();
   const regG = mk('g', { 'clip-path': 'url(#chLand)' }, svg);
   const regEls = {};
   Object.entries(REG).forEach(([k, v]) => {
-    regEls[k] = mk('path', { d: ring(v.p), class: 'ch-prov', fill: FAC.qin.c, stroke: '#fff', 'stroke-width': 0.9, 'stroke-linejoin': 'round' }, regG);
+    regEls[k] = mk('path', { d: ring(v.p), class: 'ch-prov', fill: FAC.qin.c, stroke: 'none' }, regG);
   });
+  // borders on their own layer: solid, except the lines along which a later kingdom was carved out
+  // of an older unit (Jinan out of Jibei, Dongyang out of Sishui), which are dotted
+  const segKey = (a, b) => [a, b].map((p) => p.join(',')).sort().join('|');
+  const CUT = new Set();
+  CUTS.forEach((line) => line.forEach((p, i) => { if (i) CUT.add(segKey(line[i - 1], p)); }));
+  const seg = (a, b) => `M${pt(a).map((v) => v.toFixed(1)).join(' ')}L${pt(b).map((v) => v.toFixed(1)).join(' ')}`;
+  let solid = '';
+  Object.values(REG).forEach((v) => v.p.forEach((a, i) => { const b = v.p[(i + 1) % v.p.length]; if (!CUT.has(segKey(a, b))) solid += seg(a, b); }));
+  const borderEls = [
+    mk('path', { d: solid, fill: 'none', stroke: '#fff', 'stroke-width': 0.9, 'stroke-linecap': 'round' }, regG),
+    mk('path', { d: CUTS.map((line) => 'M' + line.map((p) => pt(p).map((v) => v.toFixed(1)).join(' ')).join('L')).join(''), fill: 'none', stroke: '#fff', 'stroke-width': 1.3, 'stroke-dasharray': '1.5 3', 'stroke-linecap': 'round', class: 'ch-cut' }, regG)
+  ];
   // the steppe to the north: the Xiongnu
   const steppe = say(svg, pt([108, 41.4])[0], pt([108, 41.4])[1], '', { 'text-anchor': 'middle', 'font-size': NARROW ? 13 : 12, 'font-weight': 800, 'letter-spacing': '.2em', fill: 'rgba(90,70,50,.55)' });
   // region names, small
   const centroid = (pts) => d3.polygonCentroid(pts.map(pt));
   const regLab = mk('g', { class: 'ch-provlab' }, svg);
   // the small regions round Luoyang and Pengcheng crowd the capitals' names, so they go unlabelled
-  const SMALL = new Set(['henan', 'hann', 'liang', 'yin', 'chen', 'sai']);
-  const regTexts = Object.entries(REG).filter(([k]) => !SMALL.has(k)).map(([k, v]) => {
+  const SMALL = new Set(['henan', 'hann', 'liang', 'yin', 'chen', 'sai', 'jinan']);
+  // ...until the reader zooms in, when there is room for them (class ch-small, shown by .is-close)
+  const regTexts = Object.entries(REG).map(([k, v]) => {
     const c = LABEL_AT[k] ? pt(LABEL_AT[k]) : centroid(v.p);
-    return [k, say(regLab, c[0], c[1], '', { 'text-anchor': 'middle', 'font-size': NARROW ? 11.5 : 10, fill: 'rgba(255,255,255,.8)', 'font-weight': 600 })];
+    return [k, say(regLab, c[0], c[1], '', { 'text-anchor': 'middle', 'font-size': NARROW ? 11.5 : 10, fill: 'rgba(255,255,255,.8)', 'font-weight': 600, class: SMALL.has(k) ? 'ch-small' : '' })];
   });
   // capitals
   const cityG = mk('g', {}, svg);
@@ -279,11 +326,12 @@ applyStatic();
   const facLab = mk('g', { class: 'ch-faclab' }, svg);
   const ovG = mk('g', { class: 'ch-ov' }, svg);
   // marker tooltip: on hover with a mouse, on tap on phones
+  let vp = null; // the drag/zoom group, set up below
   const tip = document.createElement('div'); tip.className = 'ch-tipbox'; tip.hidden = true;
   wrap.appendChild(tip);
   let tipTimer = 0;
   const showTip = (m) => {
-    const c = svg.getScreenCTM(); if (!c) return;
+    const c = (vp || svg).getScreenCTM(); if (!c) return; // marker positions are in the zoomed group's coordinates
     const p = svg.createSVGPoint(); [p.x, p.y] = m.__xy; const q = p.matrixTransform(c);
     const r = wrap.getBoundingClientRect();
     tip.innerHTML = `<b>${m.__name}</b>${m.__desc ? `<span>${m.__desc}</span>` : ''}`;
@@ -318,7 +366,17 @@ applyStatic();
     namesBtn.textContent = (isZh() ? '势力名称' : 'Big names') + (showNames ? (isZh() ? '：开' : ': on') : (isZh() ? '：关' : ': off'));
   };
   namesBtn.addEventListener('click', () => { showNames = !showNames; renderNamesBtn(); draw(curSi, curWho); });
-  renderViews(); renderNamesBtn();
+  // the capitals switch: hides the city dots and names
+  let showCities = true;
+  const citiesBtn = document.createElement('button'); citiesBtn.type = 'button'; citiesBtn.className = 'ch-namesbtn';
+  head.appendChild(citiesBtn);
+  const renderCitiesBtn = () => {
+    citiesBtn.setAttribute('aria-pressed', showCities);
+    citiesBtn.textContent = (isZh() ? '城市' : 'Cities') + (showCities ? (isZh() ? '：开' : ': on') : (isZh() ? '：关' : ': off'));
+  };
+  citiesBtn.addEventListener('click', () => { showCities = !showCities; renderCitiesBtn(); cityG.style.display = showCities ? '' : 'none'; });
+  langHooks.push(renderCitiesBtn);
+  renderViews(); renderNamesBtn(); renderCitiesBtn();
   let curSi = 0, curWho = 'liubang';
   // the chosen person's trail and position
   const trail = mk('path', { fill: 'none', stroke: '#111', 'stroke-width': 2, 'stroke-dasharray': '2 5', 'stroke-linecap': 'round', opacity: 0.8 }, svg);
@@ -327,6 +385,65 @@ applyStatic();
   const pulse = mk('circle', { r: 9, fill: 'none', stroke: '#111', 'stroke-width': 2, class: 'ch-pulse' }, me);
   const meDot = mk('circle', { r: 7, fill: '#111', stroke: '#fff', 'stroke-width': 2.5 }, me);
   const meTag = mk('g', {}, me);
+
+  /* ---- drag and zoom ----
+     Everything drawn so far moves into one group that d3.zoom transforms. The map can't be dragged
+     off its frame. So the page still scrolls normally over the map, the mouse wheel zooms only with
+     Ctrl/⌘ (a trackpad pinch sends that too), and on touch screens one finger pans only once zoomed in;
+     two fingers pinch. */
+  vp = mk('g', { class: 'ch-vp' });
+  [...svg.childNodes].filter((n) => n !== defs).forEach((n) => vp.appendChild(n));
+  svg.appendChild(vp);
+  let zk = 1;
+  const zoom = d3.zoom()
+    .scaleExtent([1, 5])
+    .translateExtent([[0, 0], [W, H]])
+    .extent([[0, 0], [W, H]])
+    .clickDistance(4)
+    .filter((e) => {
+      if (e.type === 'wheel') return e.ctrlKey || e.metaKey;
+      if (e.type.startsWith('touch')) return e.touches.length > 1 || zk > 1;
+      return !e.button;
+    })
+    .on('zoom', (e) => {
+      zk = e.transform.k;
+      vp.setAttribute('transform', e.transform.toString());
+      svg.style.touchAction = zk > 1 ? 'none' : 'pan-y';
+      wrap.classList.toggle('is-zoomed', zk > 1.01);
+      wrap.classList.toggle('is-close', zk >= 1.5); // close enough to name the small regions
+      hideTip();
+    });
+  // labels stay at their normal size while the map zooms: divide each text's size (and halo) by the zoom,
+  // and border lines keep their width
+  const fitText = () => {
+    vp.querySelectorAll('text').forEach((t) => {
+      const fs = parseFloat(t.getAttribute('font-size')), sw = parseFloat(t.getAttribute('stroke-width'));
+      if (fs) t.style.fontSize = (fs / zk) + 'px';
+      if (sw) t.style.strokeWidth = (sw / zk) + 'px';
+    });
+  };
+  let fitQueued = false;
+  new MutationObserver(() => { if (zk !== 1 && !fitQueued) { fitQueued = true; requestAnimationFrame(() => { fitQueued = false; fitText(); }); } })
+    .observe(vp, { childList: true, subtree: true });
+  zoom.on('zoom.text', fitText);
+  borderEls.forEach((p) => p.setAttribute('vector-effect', 'non-scaling-stroke'));
+  d3.select(svg).call(zoom).on('dblclick.zoom', null);
+  svg.style.touchAction = 'pan-y';
+  const zc = document.createElement('div'); zc.className = 'ch-zoom';
+  const renderZoom = () => {
+    zc.innerHTML = [['in', '+', isZh() ? '放大' : 'Zoom in'], ['out', '−', isZh() ? '缩小' : 'Zoom out'], ['reset', '⟲', isZh() ? '复位' : 'Reset view']]
+      .map(([k, s, t]) => `<button type="button" data-z="${k}" aria-label="${t}" title="${t}">${s}</button>`).join('') +
+      `<span class="ch-zhint">${isZh() ? '放大后可拖动地图' : 'Zoom in, then drag to move'}</span>`;
+  };
+  renderZoom(); langHooks.push(renderZoom);
+  wrap.appendChild(zc);
+  zc.addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    const s = d3.select(svg).transition().duration(reduced ? 0 : 350);
+    if (b.dataset.z === 'in') s.call(zoom.scaleBy, 1.6);
+    else if (b.dataset.z === 'out') s.call(zoom.scaleBy, 1 / 1.6);
+    else s.call(zoom.transform, d3.zoomIdentity);
+  });
   const meBg = mk('rect', { rx: 3, height: 20, y: -32, fill: '#111' }, meTag);
   const meTx = say(meTag, 0, -18, '', { 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 800, fill: '#fff' });
   const area = (pts) => Math.abs(d3.polygonArea(pts.map(pt)));
@@ -355,7 +472,7 @@ applyStatic();
     curSi = si; curWho = who;
     const s = STEPS[si];
     Object.entries(s.map).forEach(([k, f]) => regEls[k].setAttribute('fill', FAC[f].c));
-    regTexts.forEach(([k, t]) => t.setAttribute('fill', ['other', 'liuking', 'dai', 'liaodongk', 'hengshank', 'henank', 'yiking'].includes(s.map[k]) ? 'rgba(20,20,20,.5)' : 'rgba(255,255,255,.75)'));
+    regTexts.forEach(([k, t]) => t.setAttribute('fill', light(FAC[s.map[k]].c) ? 'rgba(20,20,20,.5)' : 'rgba(255,255,255,.75)'));
     cityEls.forEach((c) => { c.g.style.display = !c.when || c.when(s.y) ? '' : 'none'; });
     // a side's name goes in its biggest region: after 202 the kings' lands are scattered, and their middle can be someone else's
     facLab.innerHTML = '';
@@ -363,10 +480,11 @@ applyStatic();
     Object.entries(s.map).forEach(([k, f]) => { const a = area(REG[k].p); (tally[f] = tally[f] || { a: 0, big: 0, k }); tally[f].a += a; if (a > tally[f].big) { tally[f].big = a; tally[f].k = k; } });
     const total = Object.values(tally).reduce((a, t) => a + t.a, 0);
     Object.entries(tally).forEach(([f, t]) => {
-      if (f === 'other' || t.a < total * 0.07) return;
-      const name = FAC[f].b && !STEPS[si].names[f] ? FAC[f].b[L()] : facName(si, f).replace(/ \(.*\)|（.*）/, '');
+      if (f === 'other' || t.a < total * (FAC[f].k ? 0.015 : 0.07)) return;
+      const name = FAC[f].k ? facName(si, f) : FAC[f].b && !STEPS[si].names[f] ? FAC[f].b[L()] : facName(si, f).replace(/ \(.*\)|（.*）/, '');
       const c = LABEL_AT[t.k] ? pt(LABEL_AT[t.k]) : centroid(REG[t.k].p);
-      say(facLab, c[0], c[1] + 16, isZh() ? name : name.toUpperCase(), { 'text-anchor': 'middle', 'font-size': NARROW ? 16 : 14, 'font-weight': 800, 'letter-spacing': '.05em', fill: '#fff', 'paint-order': 'stroke', stroke: FAC[f].c, 'stroke-width': 4 });
+      say(facLab, c[0], c[1] + 16, isZh() ? name : name.replace(/^[^(]+/, (m) => m.toUpperCase()), // "CHU (Han Xin)"
+         { 'text-anchor': 'middle', 'font-size': NARROW ? 16 : 14, 'font-weight': 800, 'letter-spacing': '.05em', fill: '#fff', 'paint-order': 'stroke', stroke: FAC[f].c, 'stroke-width': 4 });
     });
     legendEl.innerHTML = Object.keys(tally).sort((a, b) => tally[b].a - tally[a].a)
       .map((f) => `<span><i style="background:${FAC[f].c}"></i>${facName(si, f)}</span>`).join('');
