@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .fall{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+    .squeeze{stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1s cubic-bezier(.6,0,.4,1) 1.5s forwards}
+    .tag{opacity:0;animation:in .5s ease 2.4s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.fall,.squeeze{animation:none;stroke-dashoffset:0}.tag{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Betting on a fall</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">How short selling works, and why squeezes happen</text>
+
+  <!-- axes -->
+  <line x1="200" y1="260" x2="200" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <line x1="200" y1="760" x2="1420" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <text x="170" y="290" fill="#8d8a84" font-size="22" text-anchor="end">price</text>
+
+  <!-- sold short at $100 -->
+  <line x1="200" y1="420" x2="1420" y2="420" stroke="#4a4a50" stroke-width="2" stroke-dasharray="6 10"/>
+  <text x="1420" y="408" fill="#8d8a84" font-size="22" text-anchor="end">sold short here</text>
+
+  <!-- the price falls (the short seller's hope), then a squeeze sends it far above -->
+  <polyline class="fall" points="200,420 320,440 420,470 520,500 620,540 720,580 800,600" fill="none" stroke="#5f8a63" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline class="squeeze" points="800,600 880,560 960,470 1040,380 1120,300 1200,250" fill="none" stroke="#c2412d" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="800" cy="600" r="11" fill="#fff"/>
+  <text x="800" y="650" fill="#8d8a84" font-size="22" text-anchor="middle">buy back here: profit</text>
+  <text class="tag" x="1220" y="245" fill="#fff" font-size="26" font-weight="700">squeeze: no ceiling</text>
+
+  <text x="120" y="840" fill="#8d8a84" font-size="22">Borrow → sell → buy back → return</text>
+</svg>

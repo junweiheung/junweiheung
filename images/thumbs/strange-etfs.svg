@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .c{opacity:0;animation:in .4s ease forwards}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.c{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">An ETF for every theory</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Copying Congress, betting against Cramer, trading fear, and the boring fund they must beat</text>
+  <g class="c" style="animation-delay:0.00s"><rect x="200" y="260" width="360" height="120" rx="14" fill="#18181c" stroke="#2f5f9e" stroke-width="4"/><text x="380" y="340" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">VOO</text></g>
+  <g class="c" style="animation-delay:0.12s"><rect x="620" y="260" width="360" height="120" rx="14" fill="#18181c" stroke="#2f5f9e" stroke-width="4"/><text x="800" y="340" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">VWRA</text></g>
+  <g class="c" style="animation-delay:0.24s"><rect x="1040" y="260" width="360" height="120" rx="14" fill="#18181c" stroke="#5f8a63" stroke-width="4"/><text x="1220" y="340" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">NANC</text></g>
+  <g class="c" style="animation-delay:0.36s"><rect x="200" y="430" width="360" height="120" rx="14" fill="#18181c" stroke="#c2412d" stroke-width="4"/><text x="380" y="510" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">GOP</text></g>
+  <g class="c" style="animation-delay:0.48s"><rect x="620" y="430" width="360" height="120" rx="14" fill="#18181c" stroke="#5f8a63" stroke-width="4"/><text x="800" y="510" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">DEMZ</text></g>
+  <g class="c" style="animation-delay:0.60s"><rect x="1040" y="430" width="360" height="120" rx="14" fill="#18181c" stroke="#b06a1d" stroke-width="4"/><text x="1220" y="510" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">SARK</text></g>
+  <g class="c" style="animation-delay:0.72s"><rect x="200" y="600" width="360" height="120" rx="14" fill="#18181c" stroke="#8d8a84" stroke-width="4"/><text x="380" y="680" fill="#55555c" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">SJIM</text><line x1="240" y1="662" x2="520" y2="662" stroke="#c2412d" stroke-width="8"/></g>
+  <g class="c" style="animation-delay:0.84s"><rect x="620" y="600" width="360" height="120" rx="14" fill="#18181c" stroke="#6a4a9a" stroke-width="4"/><text x="800" y="680" fill="#fff" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">VXX</text></g>
+  <g class="c" style="animation-delay:0.96s"><rect x="1040" y="600" width="360" height="120" rx="14" fill="#18181c" stroke="#8d8a84" stroke-width="4"/><text x="1220" y="680" fill="#55555c" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="4">XIV</text><line x1="1080" y1="662" x2="1360" y2="662" stroke="#c2412d" stroke-width="8"/></g>
+  <text x="120" y="860" fill="#8d8a84" font-size="20">Struck through: closed</text>
+</svg>

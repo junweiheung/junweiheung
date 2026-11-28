@@ -8,7 +8,7 @@
     @media (prefers-reduced-motion:reduce){.payoff{animation:none;stroke-dashoffset:0}.fuse{animation:none;opacity:1}}
   </style>
   <rect width="1600" height="900" fill="#0d0d0f"/>
-  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Financial weapons of mass destruction?</text>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Hedge or bet?</text>
   <text x="120" y="166" fill="#8d8a84" font-size="26">Futures, options and swaps, and how they blow up</text>
 
   <!-- axes -->

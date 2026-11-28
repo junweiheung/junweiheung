@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .p{opacity:0;animation:in .35s ease forwards}
+    .bub{opacity:0;animation:in .5s ease .2s forwards}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.p,.bub{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">The rumour that emptied a bank</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">How bank runs work, and how governments stop them</text>
+
+  <!-- the bank -->
+  <polygon points="200,400 400,320 600,400" fill="#2a2a2f"/>
+  <rect x="210" y="400" width="380" height="24" fill="#2a2a2f"/>
+  <rect x="235" y="440" width="34" height="230" fill="#3a3a40"/>
+  <rect x="315" y="440" width="34" height="230" fill="#3a3a40"/>
+  <rect x="451" y="440" width="34" height="230" fill="#3a3a40"/>
+  <rect x="531" y="440" width="34" height="230" fill="#3a3a40"/>
+  <rect x="372" y="560" width="56" height="110" fill="#c2412d"/>
+  <rect x="200" y="670" width="400" height="22" fill="#2a2a2f"/>
+  <text x="400" y="390" fill="#8d8a84" font-size="24" font-weight="700" text-anchor="middle" letter-spacing="4">BANK</text>
+
+  <!-- the queue, growing from the door -->
+  <g fill="#e7e3da">
+    <g class="p" style="animation-delay:.1s"><circle cx="660" cy="600" r="16"/><rect x="646" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:.25s"><circle cx="730" cy="600" r="16"/><rect x="716" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:.4s"><circle cx="800" cy="600" r="16"/><rect x="786" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:.55s"><circle cx="870" cy="600" r="16"/><rect x="856" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:.7s"><circle cx="940" cy="600" r="16"/><rect x="926" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:.85s"><circle cx="1010" cy="600" r="16"/><rect x="996" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:1s"><circle cx="1080" cy="600" r="16"/><rect x="1066" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:1.15s"><circle cx="1150" cy="600" r="16"/><rect x="1136" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:1.3s"><circle cx="1220" cy="600" r="16"/><rect x="1206" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:1.45s"><circle cx="1290" cy="600" r="16"/><rect x="1276" y="620" width="28" height="60" rx="8"/></g>
+    <g class="p" style="animation-delay:1.6s"><circle cx="1360" cy="600" r="16"/><rect x="1346" y="620" width="28" height="60" rx="8"/></g>
+  </g>
+
+  <!-- the rumour -->
+  <g class="bub" style="animation-delay:1.8s">
+    <rect x="1060" y="420" width="380" height="84" rx="16" fill="#fff"/>
+    <polygon points="1320,504 1350,504 1355,540" fill="#fff"/>
+    <text x="1250" y="472" fill="#0d0d0f" font-size="28" font-weight="700" text-anchor="middle">"Is the bank in danger?"</text>
+  </g>
+
+  <text x="120" y="840" fill="#8d8a84" font-size="22">Toyokawa, Japan, December 1973 · Northern Rock · SVB · Credit Suisse</text>
+</svg>

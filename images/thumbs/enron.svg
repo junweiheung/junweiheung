@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .b{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);animation:grow .5s cubic-bezier(.2,.8,.2,1) forwards}
+    .crash{opacity:0;animation:in .4s ease 1.9s forwards}
+    @keyframes grow{to{transform:scaleY(1)}}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.b{animation:none;transform:none}.crash{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">Ask why: the rise and fall of Enron</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Profits on paper, losses in the partnerships, bankrupt in 2001</text>
+  <line x1="200" y1="740" x2="1420" y2="740" stroke="#3a3a3f" stroke-width="3"/>
+
+  <!-- reported profits climb -->
+  <rect class="b" style="animation-delay:.1s" x="240" y="620" width="110" height="120" fill="#2f5f9e"/>
+  <rect class="b" style="animation-delay:.3s" x="400" y="560" width="110" height="180" fill="#2f5f9e"/>
+  <rect class="b" style="animation-delay:.5s" x="560" y="480" width="110" height="260" fill="#2f5f9e"/>
+  <rect class="b" style="animation-delay:.7s" x="720" y="390" width="110" height="350" fill="#2f5f9e"/>
+  <rect class="b" style="animation-delay:.9s" x="880" y="290" width="110" height="450" fill="#2f5f9e"/>
+  <text x="615" y="270" fill="#8d8a84" font-size="24" text-anchor="middle">reported profit</text>
+
+  <!-- the cash that never matched -->
+  <polyline points="295,700 455,705 615,700 775,710 935,715" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="10 10"/>
+  <text x="935" y="770" fill="#fff" font-size="22" text-anchor="end">cash actually received</text>
+
+  <!-- the fall -->
+  <g class="crash">
+    <rect x="1100" y="738" width="110" height="4" fill="#c2412d"/>
+    <text x="1155" y="700" fill="#c2412d" font-size="30" font-weight="800" text-anchor="middle">BANKRUPT</text>
+    <text x="1155" y="660" fill="#8d8a84" font-size="22" text-anchor="middle">2 Dec 2001</text>
+  </g>
+
+  <text x="120" y="840" fill="#8d8a84" font-size="22">Illustrative · mark-to-market accounting and off-book partnerships</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .curve{stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 1.8s cubic-bezier(.2,.8,.2,1) forwards}
+    .tag{opacity:0;animation:in .5s ease 1.6s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.curve{animation:none;stroke-dashoffset:0}.tag{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">What's a bond worth?</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Price, yield, pull to par, credit risk and duration</text>
+  <line x1="200" y1="760" x2="1420" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <line x1="200" y1="260" x2="200" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <line x1="200" y1="472" x2="1420" y2="472" stroke="#4a4a50" stroke-width="2" stroke-dasharray="6 10"/>
+  <text x="1420" y="458" fill="#8d8a84" font-size="22" text-anchor="end">par: $100</text>
+  <polyline class="curve" points="200,290 228,303 255,317 283,329 311,342 339,354 366,366 394,378 422,390 450,401 477,412 505,422 533,433 560,443 588,453 616,463 644,472 671,481 699,490 727,499 755,508 782,516 810,524 838,532 865,540 893,548 921,555 949,563 976,570 1004,577 1032,584 1060,590 1087,597 1115,603 1143,609 1170,616 1198,622 1226,627 1254,633 1281,639 1309,644 1337,649 1365,655 1392,660 1420,665" fill="none" stroke="#6e9cff" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  <g class="tag">
+    <circle cx="421.8181818181818" cy="389.59053383160716" r="11" fill="#5f8a63"/><text x="445.8181818181818" y="373.59053383160716" fill="#fff" font-size="26" font-weight="700">premium</text>
+    <circle cx="643.6363636363636" cy="472" r="11" fill="#fff"/><text x="667.6363636363636" y="456" fill="#fff" font-size="26" font-weight="700">par</text>
+    <circle cx="1087.2727272727273" cy="596.8761899339554" r="11" fill="#c2412d"/><text x="1111.2727272727273" y="580.8761899339554" fill="#fff" font-size="26" font-weight="700">discount</text>
+  </g>
+  <text x="170" y="290" fill="#8d8a84" font-size="22" text-anchor="end">price</text>
+  <text x="1420" y="800" fill="#8d8a84" font-size="22" text-anchor="end">market yield →</text>
+  <text x="120" y="850" fill="#8d8a84" font-size="20">A 10-year, 5% coupon bond · illustrative</text>
+</svg>

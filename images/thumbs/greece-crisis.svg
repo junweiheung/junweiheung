@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <style>
+    text{font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .debt{stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 2.2s cubic-bezier(.2,.8,.2,1) forwards}
+    .tag{opacity:0;animation:in .5s ease 2s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes in{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.debt{animation:none;stroke-dashoffset:0}.tag{animation:none;opacity:1}}
+  </style>
+  <rect width="1600" height="900" fill="#0d0d0f"/>
+  <text x="120" y="118" fill="#fff" font-size="48" font-weight="700">The debt that nearly broke the euro</text>
+  <text x="120" y="166" fill="#8d8a84" font-size="26">Greece's government debt as a share of GDP, 1995–2025</text>
+  <line x1="200" y1="760" x2="1420" y2="760" stroke="#3a3a3f" stroke-width="3"/>
+  <line x1="200" y1="622" x2="1420" y2="622" stroke="#4a4a50" stroke-width="2" stroke-dasharray="6 10"/>
+  <text x="1420" y="610" fill="#8d8a84" font-size="22" text-anchor="end">euro limit: 60%</text>
+  <rect x="810" y="240" width="325.33333333333326" height="520" fill="#c2412d" opacity=".12"/>
+  <text x="972.6666666666666" y="230" fill="#c2412d" font-size="22" font-weight="700" text-anchor="middle">bailouts 2010–2018</text>
+  <polyline class="debt" points="200,529 241,521 281,524 322,528 363,524 403,510 444,506 485,512 525,520 566,517 607,507 647,518 688,519 729,505 769,464 810,420 851,357 891,383 932,345 973,340 1013,347 1054,339 1095,341 1135,325 1176,339 1217,278 1257,306 1298,351 1339,383 1379,407 1420,426" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle class="tag" cx="1216.6666666666665" cy="278.38000000000005" r="11" fill="#c2412d"/>
+  <text class="tag" x="1216.6666666666665" y="254.38000000000005" fill="#fff" font-size="26" font-weight="700" text-anchor="middle">209%</text>
+  <text x="200" y="800" fill="#8d8a84" font-size="22">1995</text>
+  <text x="444" y="800" fill="#8d8a84" font-size="22" text-anchor="middle">2001: joins euro</text>
+  <text x="1420" y="800" fill="#8d8a84" font-size="22" text-anchor="end">2025</text>
+  <text x="120" y="860" fill="#8d8a84" font-size="20">Source: Eurostat</text>
+</svg>

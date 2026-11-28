@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's a Bond Worth? How Bond Prices and Yields Work — Bottleneck by Jun Wei</title>
+<meta name="description" content="How bonds are priced, with a calculator for each idea: coupons and cash flows, zero-coupon bonds and yield to maturity, premium and discount, pull to par, selling before maturity, forward rates, credit risk and expected returns, duration, and inflation.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/bond-pricing.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Market infrastructure · Bonds</span></div>
+  <h1>What's a Bond Worth?</h1>
+  <p class="dek">A bond is a promise to pay fixed amounts on fixed dates. Working out what that promise is worth today explains almost everything about bonds: why prices fall when rates rise, why a "risk-free" Treasury can lose you money, why a 9% corporate bond may not return 9%, and why some bonds swing far more than others. Eight calculators, one idea at a time.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 28, 2026 · 18 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. A bond is a timeline</a>
+    <a href="#s2">2. Zero-coupon bonds</a>
+    <a href="#s3">3. Pricing a coupon bond</a>
+    <a href="#s4">4. Pull to par</a>
+    <a href="#s5">5. Selling before maturity</a>
+    <a href="#s6">6. Short or long?</a>
+    <a href="#s7">7. Credit risk</a>
+    <a href="#s8">8. Duration</a>
+    <a href="#s9">9. When governments print</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how bonds are priced, with the formulas written out and a calculator for each. The numbers in the calculators are round and illustrative, not market quotes; real bonds also have fees, taxes, accrued interest and day-count rules that are left out here. For what bonds are and why governments issue them, see the companion pieces on <a href="govt-bonds.html">government bonds</a> and <a href="bond-market.html">the Fed and the bond market</a>. This is educational, not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A bond's price is the <b>present value</b> of the cash it promises: each coupon and the final repayment, discounted at the market's required return, the <b>yield to maturity</b>.</li>
+      <li>If a bond's coupon is above the market yield it sells at a <b>premium</b>, above face value; below, at a <b>discount</b>; equal, at <b>par</b>. As maturity nears, every bond's price is <b>pulled towards par</b>.</li>
+      <li>Holding to maturity locks in the yield you bought at. <b>Selling early</b> exposes you to rate changes: even a Treasury, free of default risk, can lose money if rates rise.</li>
+      <li>A company's promised yield <b>overstates</b> what you should expect to earn, because some borrowers default. The <b>credit spread</b> over Treasuries pays for that risk.</li>
+      <li><b>Duration</b> measures how much a bond's price moves when rates move: roughly, a duration of 10 means a 1-point rise in rates cuts the price by about 10%. Longer maturities and smaller coupons mean higher duration.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>A bond is a timeline</h2>
+  <p class="t dropcap">Strip away the jargon and a bond is a list of payments with dates attached. You pay a price today. The borrower then pays you interest, the <b>coupon</b>, at regular intervals, and on the last date repays the <b>face value</b>, usually quoted as $100 or $1,000. The coupon rate is stated per year, but many bonds pay it in halves: US Treasury notes and bonds pay interest every six months<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>. So a 4% bond with a face value of $100 pays $2 twice a year.</p>
+  <p class="t">Coupon per payment = (annual coupon rate ÷ payments per year) × face value. The last payment is that coupon plus the face value.</p>
+
+  <figure class="fig rv" id="cfFig">
+    <div class="ft">The cash a bond promises</div>
+    <div class="fs">Bought at face value, $100. Money out below the line, money in above it.</div>
+    <div class="po-ctl" role="group" aria-label="Payment frequency">
+      <div class="seg" id="cfFreq"><button type="button" data-v="2" aria-pressed="true">Twice a year</button><button type="button" data-v="1" aria-pressed="false">Once a year</button></div>
+    </div>
+    <div class="po-ctl"><label for="cfRate">Coupon rate: <b id="cfRateV">4%</b> a year</label><input type="range" id="cfRate" min="0" max="10" step="0.5" value="4"></div>
+    <div class="po-ctl"><label for="cfYears">Years to maturity: <b id="cfYearsV">5</b></label><input type="range" id="cfYears" min="1" max="10" step="1" value="5"></div>
+    <svg id="cfSvg" viewBox="0 0 680 260" role="img" aria-label="Interactive cash-flow timeline. A bar below the line at time zero is the purchase price; small bars above are coupons; the last bar adds the face value."></svg>
+    <p class="po-why" id="cfWhy"></p>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>Zero-coupon bonds</h2>
+  <p class="t">The simplest bond pays no coupon at all. A <b>zero-coupon bond</b> is sold below its face value and repays the full face value at maturity; the gap is your interest. US Treasury bills work this way. Its price is the face value discounted back over the years to maturity:</p>
+  <p class="eq">Price = Face value ÷ (1 + YTM)<sup>n</sup></p>
+  <p class="t">Turn it around and you can read the yield off the price: YTM = (Face value ÷ Price)<sup>1/n</sup> − 1. The <b>yield to maturity</b> is the single annual rate that makes the price you pay today grow into what you're promised.</p>
+
+  <figure class="fig rv" id="zcFig">
+    <div class="ft">From price to yield</div>
+    <div class="fs">A zero-coupon bond that repays $100</div>
+    <div class="po-ctl"><label for="zcPrice">Price today: <b id="zcPriceV">$78.00</b></label><input type="range" id="zcPrice" min="40" max="100" step="0.5" value="78"></div>
+    <div class="po-ctl"><label for="zcYears">Years to maturity: <b id="zcYearsV">5</b></label><input type="range" id="zcYears" min="1" max="30" step="1" value="5"></div>
+    <svg id="zcSvg" viewBox="0 0 680 230" role="img" aria-label="Interactive chart. The bond's value grows from today's price to $100 at maturity, compounding at the yield to maturity, which is shown above."></svg>
+    <p class="po-why" id="zcWhy"></p>
+  </figure>
+
+  <p class="t">Line up the yields of zero-coupon bonds of different maturities and you get the <b>yield curve</b>. Normally longer maturities pay more, so the curve slopes upward: lenders want extra to tie money up for longer, and an upward slope can also reflect expectations that rates or inflation will rise. The US Treasury publishes the curve every business day<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup>. When short rates are above long ones, the curve is "inverted", which has often come before recessions.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>Pricing a coupon bond</h2>
+  <p class="t">A coupon bond is a bundle of zero-coupon payments: each coupon and the final repayment are discounted separately and added up. Because the coupons are equal, they can be valued together as an annuity:</p>
+  <p class="eq">Price = Coupon × [1 − (1 + y)<sup>−n</sup>] ÷ y + Face ÷ (1 + y)<sup>n</sup></p>
+  <p class="t">Here y is the yield per period and n the number of periods. The yield to maturity is the rate that makes this equal the bond's market price<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>. Three cases follow directly. If the coupon rate is above the yield investors demand, they'll pay more than face value for it: a <b>premium</b>. If it's below, the bond sells at a <b>discount</b>. If they're equal, it sells at <b>par</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>.</p>
+
+  <figure class="fig rv" id="cpFig">
+    <div class="ft">Premium, par or discount</div>
+    <div class="fs">A $100 bond paying coupons twice a year</div>
+    <div class="po-ctl"><label for="cpCoupon">Coupon rate: <b id="cpCouponV">5%</b></label><input type="range" id="cpCoupon" min="0" max="10" step="0.25" value="5"></div>
+    <div class="po-ctl"><label for="cpYtm">Market yield (YTM): <b id="cpYtmV">6%</b></label><input type="range" id="cpYtm" min="0.5" max="12" step="0.25" value="6"></div>
+    <div class="po-ctl"><label for="cpYears">Years to maturity: <b id="cpYearsV">10</b></label><input type="range" id="cpYears" min="1" max="30" step="1" value="10"></div>
+    <svg id="cpSvg" viewBox="0 0 680 280" role="img" aria-label="Interactive chart of the bond's price at every market yield from 0.5% to 12%. The curve slopes down: higher yields mean lower prices. A dot marks the chosen yield; a dashed line marks par, $100."></svg>
+    <p class="po-why" id="cpWhy"></p>
+    <figcaption>The curve always slopes down, the <a href="bond-market.html">price-yield seesaw</a>. It also bends: as yields rise, each extra point knocks a little less off the price. That curvature is called convexity.</figcaption>
+  </figure>
+
+  <h2 id="s4"><span class="n">Part 4</span>Pull to par</h2>
+  <p class="t">Whatever a bond trades at today, on its last day it's worth exactly its face value, because that's what's about to be paid. So as maturity approaches, a premium bond drifts down towards par and a discount bond drifts up, even if market yields never change. Near the end, the repayment of face value is so close that it dominates the price. This is the <b>pull to par</b>.</p>
+
+  <figure class="fig rv" id="ptpFig">
+    <div class="ft">Three bonds, one destination</div>
+    <div class="fs">Yields stay at 5% throughout. Coupons of 8%, 5% and 2%, ten years to maturity.</div>
+    <svg id="ptpSvg" viewBox="0 0 680 280" role="img" aria-label="Interactive chart of three bond prices over ten years with yields unchanged: a premium bond falling to $100, a par bond flat at $100, and a discount bond rising to $100."></svg>
+    <div class="po-ctl"><label for="ptpT">Years passed: <b id="ptpTV">0</b></label><input type="range" id="ptpT" min="0" max="10" step="0.5" value="0"></div>
+    <p class="po-why" id="ptpWhy"></p>
+    <figcaption>The premium bond's falling price isn't a loss in disguise: its higher coupons make up for it. Held to the end, all three return the 5% yield they were bought at.</figcaption>
+  </figure>
+
+  <h2 id="s5"><span class="n">Part 5</span>Selling before maturity</h2>
+  <p class="t">Buy a bond and hold it to the end, and, as long as the borrower pays and you can reinvest the coupons at the same rate, you earn the yield to maturity you bought at. Your <b>internal rate of return</b>, the actual annual return on the cash you put in and got out, equals that yield.</p>
+  <p class="t">Sell before maturity, though, and the price you get depends on yields on the day you sell. If yields are unchanged, your return still equals the original yield. If yields have fallen, the price has risen and you earn more. If yields have risen, the price has fallen and you earn less, and over a short holding period you can lose money outright.</p>
+
+  <figure class="fig rv" id="hprFig">
+    <div class="ft">What you actually earn if you sell early</div>
+    <div class="fs">Buy a 10-year, 5% bond at par ($100); coupons twice a year</div>
+    <div class="po-ctl"><label for="hprHold">Sell after: <b id="hprHoldV">2</b> years</label><input type="range" id="hprHold" min="0.5" max="9.5" step="0.5" value="2"></div>
+    <div class="po-ctl"><label for="hprNew">Market yield when you sell: <b id="hprNewV">7%</b></label><input type="range" id="hprNew" min="1" max="10" step="0.25" value="7"></div>
+    <svg id="hprSvg" viewBox="0 0 680 200" role="img" aria-label="Interactive chart comparing what you paid, the coupons you received and the price you sell at, and the resulting annual return."></svg>
+    <p class="po-why" id="hprWhy"></p>
+  </figure>
+
+  <p class="t">This is why "risk-free" needs care. A US Treasury carries essentially no risk that the government won't pay, but it carries plenty of <b>interest-rate risk</b> if you might need to sell. Silicon Valley Bank learned this in 2023: it held long-term government bonds that lost value as rates rose, and when depositors ran it had to sell them at a loss<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup>. The full story is in <a href="bank-run.html">the bank-run explainer</a>.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Short or long?</h2>
+  <p class="t">Suppose you want to lend for two years. You could buy a two-year bond and lock in its yield. Or you could buy a one-year bond, then roll the money into another one-year bond next year, at whatever the rate is then. If investors are willing to hold both, the two plans must be expected to end up in the same place:</p>
+  <p class="eq">(1 + r<sub>1</sub>) × (1 + f) = (1 + y<sub>2</sub>)<sup>2</sup></p>
+  <p class="t">Here r<sub>1</sub> is today's one-year rate, y<sub>2</sub> today's two-year yield, and f the one-year rate a year from now that would make you indifferent: the <b>forward rate</b>. It's the market's break-even guess for next year's rate, before any extra reward investors demand for lending longer. The same logic extends to any number of years: (1 + r<sub>1</sub>)(1 + r<sub>2</sub>)…(1 + r<sub>n</sub>) = (1 + y<sub>n</sub>)<sup>n</sup>.</p>
+
+  <figure class="fig rv" id="fwdFig">
+    <div class="ft">The rate that makes both plans equal</div>
+    <div class="fs">$100 invested for two years</div>
+    <div class="po-ctl"><label for="fwdR1">One-year rate today: <b id="fwdR1V">4%</b></label><input type="range" id="fwdR1" min="0.5" max="8" step="0.25" value="4"></div>
+    <div class="po-ctl"><label for="fwdY2">Two-year yield today: <b id="fwdY2V">5%</b> a year</label><input type="range" id="fwdY2" min="0.5" max="8" step="0.25" value="5"></div>
+    <svg id="fwdSvg" viewBox="0 0 680 210" role="img" aria-label="Interactive diagram of two paths for $100 over two years: locking in the two-year yield, or rolling two one-year bonds. The forward rate that makes them end equal is shown."></svg>
+    <p class="po-why" id="fwdWhy"></p>
+  </figure>
+
+  <h2 id="s7"><span class="n">Part 7</span>Credit risk</h2>
+  <p class="t">Companies can fail, so they have to pay more than the government to borrow. The difference between a corporate bond's yield and a Treasury of the same maturity is its <b>credit spread</b>. Rating agencies grade borrowers from AAA, the safest, through AA, A and BBB, the lowest "investment grade", to BB and below, "high yield" or "junk"; the lower the rating, the wider the spread. The <a href="risk-ladder.html">saver's ladder</a> tells the story of Hyflux, whose 6% securities showed what that extra yield can be paying for.</p>
+  <p class="t">The trap is that the yield to maturity is a <b>promised</b> return: what you earn if every payment arrives. To find the return you should <b>expect</b>, allow for the chance of default, and for what you'd recover if it happens:</p>
+  <p class="eq">Expected payout = (1 − PD) × Face value + PD × Recovery</p>
+  <p class="t">Recoveries vary a lot. Moody's has found that holders of senior unsecured corporate bonds recovered about 49 cents on the dollar on average over 1987–2008, but only 38 cents in the 2009 recession, when defaults peaked<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup>.</p>
+
+  <figure class="fig rv" id="crFig">
+    <div class="ft">Promised yield versus expected return</div>
+    <div class="fs">A one-year zero-coupon corporate bond, against a one-year Treasury yielding 4%</div>
+    <div class="po-ctl"><label for="crY">Promised yield: <b id="crYV">9%</b></label><input type="range" id="crY" min="4" max="20" step="0.5" value="9"></div>
+    <div class="po-ctl"><label for="crPd">Chance of default within the year: <b id="crPdV">5%</b></label><input type="range" id="crPd" min="0" max="30" step="0.5" value="5"></div>
+    <div class="po-ctl"><label for="crRec">Recovery if it defaults: <b id="crRecV">40</b> cents per dollar</label><input type="range" id="crRec" min="0" max="80" step="1" value="40"></div>
+    <svg id="crSvg" viewBox="0 0 680 190" role="img" aria-label="Interactive bar chart comparing the corporate bond's promised yield, its expected return after defaults and recoveries, and the Treasury yield."></svg>
+    <p class="po-why" id="crWhy"></p>
+  </figure>
+
+  <p class="t">Credit spreads are published daily; the St Louis Fed's FRED database tracks them for each rating band<sup class="fn"><a href="#src-7" id="ref-7">7</a></sup>. They widen sharply in crises, when investors fear defaults and want to be paid more to bear them.</p>
+
+  <h2 id="s8"><span class="n">Part 8</span>Duration</h2>
+  <p class="t">Some bonds barely move when rates change; others swing wildly. <b>Duration</b> measures that sensitivity. Formally it's the average time until you receive the bond's cash, weighted by the present value of each payment, but its practical use is a rule of thumb<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup>:</p>
+  <p class="eq">% change in price ≈ − Duration × change in yield</p>
+  <p class="t">A bond with a duration of 10 loses about 10% if yields rise by one percentage point. Two things raise duration. A <b>longer maturity</b> pushes the cash further into the future, where discounting bites hardest. A <b>smaller coupon</b> means less cash arrives early, so more of the value sits in the distant repayment. A long zero-coupon bond has the highest duration of all: equal to its maturity.</p>
+
+  <figure class="fig rv" id="durFig">
+    <div class="ft">Same rate move, very different swings</div>
+    <div class="fs">Three bonds, all yielding 4% today</div>
+    <div class="po-ctl"><label for="durDy">Yields change by: <b id="durDyV">+1.00</b> percentage point</label><input type="range" id="durDy" min="-3" max="3" step="0.25" value="1"></div>
+    <svg id="durSvg" viewBox="0 0 680 220" role="img" aria-label="Interactive bar chart of the percentage price change for a 2-year 6% coupon bond, a 10-year 4% coupon bond and a 30-year zero-coupon bond when yields move, comparing the exact change with the duration estimate."></svg>
+    <p class="po-why" id="durWhy"></p>
+    <figcaption>Solid bars: the exact price change, repricing each bond at the new yield. Thin markers: the duration estimate. They agree for small moves; for big ones the estimate overstates losses and understates gains, because of convexity.</figcaption>
+  </figure>
+
+  <p class="t">That's why banks, pension funds and insurers manage duration closely: they try to match the duration of their bonds to the timing of what they owe, so a change in rates moves both sides together. Shorter-duration bonds are the tool for anyone who might need the money back before maturity.</p>
+
+  <h2 id="s9"><span class="n">Part 9</span>When governments print</h2>
+  <p class="t">A government that borrows in its own currency has an option no company has: it can always create the money to pay. So it may never default outright, but it can pay you back in money that buys less, a <b>soft default</b> through inflation. The <a href="govt-bonds.html">government-bonds explainer</a> sets out the ways out of a big debt; <a href="greece-crisis.html">Greece</a> shows the other side, a country that borrowed in euros and couldn't print them, and so did default.</p>
+  <p class="t">For a bondholder, what matters is the <b>real</b> return, after inflation. A quick approximation, the Fisher relation:</p>
+  <p class="eq">Real return ≈ Nominal yield − Inflation</p>
+  <p class="t">A 4% Treasury with 3% inflation earns about 1% in real terms; with 6% inflation, it loses about 2% a year. Inflation-protected bonds, such as US TIPS, raise their principal with inflation so the real return is fixed<sup class="fn"><a href="#src-9" id="ref-9">9</a></sup>. For an ordinary bond, inflation is one more reason yields move, and through duration, one more reason prices do.</p>
+
+  <p class="pull">Every bond question comes back to one: what is a fixed promise worth, given everything that could happen before it's kept?</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the definitions and figures come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>Treasury notes and bonds paying interest every six months, and bills sold at a discount and repaid at face value: <a href="https://www.treasurydirect.gov/marketable-securities/treasury-notes/" target="_blank" rel="noopener">TreasuryDirect, Treasury notes</a> and <a href="https://www.treasurydirect.gov/marketable-securities/treasury-bills/" target="_blank" rel="noopener">Treasury bills</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>The daily Treasury yield curve: <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_par_yield_curve" target="_blank" rel="noopener">US Treasury, daily par yield curve rates</a>; the yield curve's record before recessions: <a href="https://www.newyorkfed.org/research/capital_markets/ycfaq" target="_blank" rel="noopener">Federal Reserve Bank of New York, the yield curve as a leading indicator</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Yield to maturity as the discount rate that sets the present value of a bond's cash flows equal to its price, and the inverse relation of price and yield: <a href="https://www.finra.org/investors/insights/bond-yield-and-return" target="_blank" rel="noopener">FINRA, Understanding bond yield and return</a>; the pricing formula: <a href="https://openstax.org/books/principles-finance-2e/pages/10-2-bond-valuation" target="_blank" rel="noopener">OpenStax, Principles of Finance, 10.2 Bond valuation</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>A bond's price above or below par depending on whether its yield is below or above its coupon rate: <a href="https://treasurydirect.gov/marketable-securities/understanding-pricing/" target="_blank" rel="noopener">TreasuryDirect, Understanding pricing and interest rates</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Silicon Valley Bank's interest-rate risk and the losses on its securities: <a href="https://www.federalreserve.gov/publications/2023-April-SVB-Key-Takeaways.htm" target="_blank" rel="noopener">Federal Reserve, review of the supervision and regulation of Silicon Valley Bank, key takeaways</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>Moody's recovery rates on senior unsecured bonds, about 49% over 1987–2008 and 38% in 2009: <a href="https://www.rba.gov.au/publications/fsr/2010/mar/box-a.html" target="_blank" rel="noopener">Reserve Bank of Australia, Financial Stability Review, March 2010, Box A</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Option-adjusted spreads of corporate bond indices by rating, for example BBB: <a href="https://fred.stlouisfed.org/series/BAMLC0A4CBBB" target="_blank" rel="noopener">FRED, ICE BofA BBB US Corporate Index option-adjusted spread</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>Duration and the rule of thumb that a bond's price moves by about its duration for each 1-point change in rates: <a href="https://www.finra.org/investors/insights/bonds-interest-rate-changes-duration" target="_blank" rel="noopener">FINRA, Brush up on bonds: interest rate changes and duration</a>. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>How Treasury Inflation-Protected Securities adjust their principal with inflation: <a href="https://www.treasurydirect.gov/marketable-securities/tips/" target="_blank" rel="noopener">TreasuryDirect, TIPS</a>. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Not investment advice. The calculators simplify: they ignore fees, taxes, accrued interest, day counts and reinvestment at changing rates. Confirm any figure before relying on it.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#cpFig">The bond price calculator</a><br><a href="#durFig">Duration</a><br><a href="bond-market.html">The price-yield seesaw</a><br><a href="govt-bonds.html">Government bonds</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/bond-pricing.js"></script>
+</body>
+</html>

@@ -13,6 +13,138 @@
   "language": "en-SG",
   "items": [
     {
+      "id": "strange-etfs",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/strange-etfs.html",
+      "title": "An ETF for Every Theory: The Strangest Funds",
+      "summary": "ETFs began as a cheap way to own the whole market. Now there's one for almost any idea: copying Congress, backing a party, betting against a fund manager or a TV stock-picker, or trading fear itself. What's inside them, and the boring fund they're all up against.",
+      "content_text": "ETFs began as a cheap way to own the whole market. Now there's one for almost any idea: copying Congress, backing a party, betting against a fund manager or a TV stock-picker, or trading fear itself. What's inside them, and the boring fund they're all up against.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "ETFs"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/strange-etfs.png",
+      "_bottleneck": {
+        "short": "The strangest ETFs",
+        "topic": "ETFs",
+        "readMins": 17,
+        "stat": {
+          "big": "0.03%",
+          "text": "VOO's yearly fee: $3 on every $10,000. The congressional-trading funds charge about 0.74%."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/strange-etfs.png"
+      }
+    },
+    {
+      "id": "bond-pricing",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/bond-pricing.html",
+      "title": "What's a Bond Worth? How Bond Prices and Yields Work",
+      "summary": "A bond is a promise to pay fixed amounts on fixed dates. Working out what that promise is worth today explains why prices fall when rates rise, why a risk-free Treasury can lose you money, why a 9% corporate bond may not return 9%, and why some bonds swing far more than others.",
+      "content_text": "A bond is a promise to pay fixed amounts on fixed dates. Working out what that promise is worth today explains why prices fall when rates rise, why a risk-free Treasury can lose you money, why a 9% corporate bond may not return 9%, and why some bonds swing far more than others.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "Bonds"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bond-pricing.png",
+      "_bottleneck": {
+        "short": "How bonds are priced",
+        "topic": "Bonds",
+        "readMins": 18,
+        "stat": {
+          "big": "6 mo",
+          "text": "How often US Treasury notes and bonds pay their coupon: half the annual rate, twice a year."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bond-pricing.png"
+      }
+    },
+    {
+      "id": "enron",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/enron.html",
+      "title": "Ask Why: The Rise and Fall of Enron",
+      "summary": "For six years running, Fortune named Enron America's most innovative company. In 2001 it went bankrupt and took its auditor down with it. How a pipeline company turned into a trading house, booked profits it hadn't earned, hid losses in its finance chief's partnerships, and fell apart when people finally asked.",
+      "content_text": "For six years running, Fortune named Enron America's most innovative company. In 2001 it went bankrupt and took its auditor down with it. How a pipeline company turned into a trading house, booked profits it hadn't earned, hid losses in its finance chief's partnerships, and fell apart when people finally asked.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "Enron"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/enron.png",
+      "_bottleneck": {
+        "short": "The fall of Enron",
+        "topic": "Enron",
+        "readMins": 18,
+        "stat": {
+          "big": "$101B",
+          "text": "Revenue Enron reported for 2000, seventh in the Fortune 500, swollen by counting the full value of its trades."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/enron.png"
+      }
+    },
+    {
+      "id": "greece-crisis",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/greece-crisis.html",
+      "title": "The Debt That Nearly Broke the Euro: Greece's Crisis",
+      "summary": "In 2001 Greece squeezed into the euro. Eight years later a new government admitted the budget figures had been wrong. How Greece got in, what it hid, why three bailouts and years of austerity left its debt higher than before, and what the crisis says about sharing a currency.",
+      "content_text": "In 2001 Greece squeezed into the euro. Eight years later a new government admitted the budget figures had been wrong. How Greece got in, what it hid, why three bailouts and years of austerity left its debt higher than before, and what the crisis says about sharing a currency.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "Greece"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/greece-crisis.png",
+      "_bottleneck": {
+        "short": "Greece's debt crisis",
+        "topic": "Greece",
+        "readMins": 17,
+        "stat": {
+          "big": "15.4%",
+          "text": "Greece's 2009 budget deficit as a share of GDP on Eurostat's revised figures. The outgoing government had forecast 3.7%."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/greece-crisis.png"
+      }
+    },
+    {
+      "id": "bank-run",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/bank-run.html",
+      "title": "The Rumour That Emptied a Bank: How Bank Runs Work",
+      "summary": "In December 1973 a schoolgirl's joke on a Japanese train sent thousands of people to queue outside a healthy bank. How banks lend out most of what you deposit, why a cash shortage can turn into a collapse, and the tools governments use to keep the queues away.",
+      "content_text": "In December 1973 a schoolgirl's joke on a Japanese train sent thousands of people to queue outside a healthy bank. How banks lend out most of what you deposit, why a cash shortage can turn into a collapse, and the tools governments use to keep the queues away.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "Bank runs"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bank-run.png",
+      "_bottleneck": {
+        "short": "How bank runs work",
+        "topic": "Bank runs",
+        "readMins": 16,
+        "stat": {
+          "big": "5 days",
+          "text": "From a joke on a train to queues outside Toyokawa Shinkin Bank in December 1973. Nothing was wrong with the bank."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/bank-run.png"
+      }
+    },
+    {
+      "id": "short-selling",
+      "url": "https://junweiheung.github.io/junweiheung/html/explainers/short-selling.html",
+      "title": "Betting on a Fall: How Short Selling Works",
+      "summary": "Most investors make money when prices rise. Short sellers borrow shares, sell them, and hope to buy them back cheaper. They're blamed when markets fall and, now and then, they're the first to spot a fraud. How shorting works, who lends the shares, how to read the numbers, and why a crowded short can blow up.",
+      "content_text": "Most investors make money when prices rise. Short sellers borrow shares, sell them, and hope to buy them back cheaper. They're blamed when markets fall and, now and then, they're the first to spot a fraud. How shorting works, who lends the shares, how to read the numbers, and why a crowded short can blow up.",
+      "date_published": "2026-11-28T09:00:00+08:00",
+      "tags": [
+        "Short selling"
+      ],
+      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/short-selling.png",
+      "_bottleneck": {
+        "short": "How short selling works",
+        "topic": "Short selling",
+        "readMins": 15,
+        "stat": {
+          "big": "100%",
+          "text": "The most a short seller can make, if the company goes to zero. The possible loss has no ceiling."
+        },
+        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/short-selling.png"
+      }
+    },
+    {
       "id": "anthropic-story",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/anthropic-story.html",
       "title": "The Safety Lab That Became a Juggernaut: The Anthropic Story",
@@ -345,9 +477,9 @@
     {
       "id": "derivatives",
       "url": "https://junweiheung.github.io/junweiheung/html/explainers/derivatives.html",
-      "title": "Financial Weapons of Mass Destruction? How Derivatives Work",
-      "summary": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
-      "content_text": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      "title": "Hedge or Bet? How Derivatives Work",
+      "summary": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size, or to bet that a price will fall. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      "content_text": "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size, or to bet that a price will fall. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
       "date_published": "2026-11-23T09:00:00+08:00",
       "tags": [
         "Derivatives"
@@ -356,7 +488,7 @@
       "_bottleneck": {
         "short": "How derivatives work",
         "topic": "Derivatives",
-        "readMins": 14,
+        "readMins": 15,
         "stat": {
           "big": "3",
           "text": "Main building blocks: futures (fix a price now for a trade later), options (the right but not the duty to trade), and swaps (exchange one cash-flow stream for another)."
@@ -538,138 +670,6 @@
           "text": "AMD's lowest close, July 2015, nine months into Lisa Su's time as CEO. Its market value was under $2 billion."
         },
         "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/amd.png"
-      }
-    },
-    {
-      "id": "anthropic-ipo",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/anthropic-ipo.html",
-      "title": "Who Owns Anthropic? Inside the $1.5 Trillion IPO",
-      "summary": "Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can't vote. Seven co-founders hold one share with 50.1% of the votes.",
-      "content_text": "Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can't vote. Seven co-founders hold one share with 50.1% of the votes.",
-      "date_published": "2026-11-19T09:00:00+08:00",
-      "tags": [
-        "AI and capital markets"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-ipo.png",
-      "_bottleneck": {
-        "short": "Who owns Anthropic?",
-        "topic": "AI and capital markets",
-        "readMins": 13,
-        "stat": {
-          "big": "$81.3B",
-          "text": "Raised at $83 a share, the largest IPO on record, valuing Anthropic at about $1.5 trillion fully diluted."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/anthropic-ipo.png"
-      }
-    },
-    {
-      "id": "implants",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/implants.html",
-      "title": "Chipped at Work: How Close Are Bosses to Putting Tech Inside You?",
-      "summary": "A Wisconsin company once threw a party to microchip its staff. Brain implants now let paralysed people move cursors by thought. How realistic is it that your boss asks you to get one?",
-      "content_text": "A Wisconsin company once threw a party to microchip its staff. Brain implants now let paralysed people move cursors by thought. How realistic is it that your boss asks you to get one?",
-      "date_published": "2026-11-19T09:00:00+08:00",
-      "tags": [
-        "Neurotech and work"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/implants.png",
-      "_bottleneck": {
-        "short": "Chipped at work",
-        "topic": "Neurotech and work",
-        "readMins": 12,
-        "stat": {
-          "big": "~80 / 250",
-          "text": "Staff at Three Square Market with a hand chip by 2018, a year after its 2017 chip party."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/implants.png"
-      }
-    },
-    {
-      "id": "glass-cloth",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/glass-cloth.html",
-      "title": "The Cloth Inside the Chip: One Japanese Mill and AI's Quietest Shortage",
-      "summary": "Under every advanced AI processor sits a sheet of woven glass. One Japanese company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade, and the queue for it is long.",
-      "content_text": "Under every advanced AI processor sits a sheet of woven glass. One Japanese company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade, and the queue for it is long.",
-      "date_published": "2026-11-19T09:00:00+08:00",
-      "tags": [
-        "Advanced packaging"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/glass-cloth.png",
-      "_bottleneck": {
-        "short": "The cloth inside the chip",
-        "topic": "Advanced packaging",
-        "readMins": 11,
-        "stat": {
-          "big": "~90%",
-          "text": "Nittobo's estimated share of T-glass cloth, the grade that keeps big AI chip packages flat."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/glass-cloth.png"
-      }
-    },
-    {
-      "id": "stargate",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/stargate.html",
-      "title": "The Gate That Didn't Open: How Stargate Shrank",
-      "summary": "A US$500 billion White House promise, a land grab across Texas, and a joint venture that barely started. How the biggest number in tech shrank.",
-      "content_text": "A US$500 billion White House promise, a land grab across Texas, and a joint venture that barely started. How the biggest number in tech shrank.",
-      "date_published": "2026-11-19T09:00:00+08:00",
-      "tags": [
-        "AI infrastructure"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/stargate.png",
-      "_bottleneck": {
-        "short": "The gate that didn't open",
-        "topic": "AI infrastructure",
-        "readMins": 13,
-        "stat": {
-          "big": "US$500B",
-          "text": "Promised at the White House in January 2025, over four years."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/stargate.png"
-      }
-    },
-    {
-      "id": "gpu-unlock",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/gpu-unlock.html",
-      "title": "Unlocked, and Still Out of Reach: The Hidden Compute in Gaming GPUs",
-      "summary": "An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here's why the unlock helps the people who need it least.",
-      "content_text": "An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here's why the unlock helps the people who need it least.",
-      "date_published": "2026-11-18T09:00:00+08:00",
-      "tags": [
-        "GPUs"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/gpu-unlock.png",
-      "_bottleneck": {
-        "short": "Unlocked, and still out of reach",
-        "topic": "GPUs",
-        "readMins": 10,
-        "stat": {
-          "big": "+65%",
-          "text": "RTX 3090 BF16 matrix compute after the unlock: 75 → 125 TFLOPS. The RTX 4090 roughly doubles."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/gpu-unlock.png"
-      }
-    },
-    {
-      "id": "smile",
-      "url": "https://junweiheung.github.io/junweiheung/html/explainers/smile.html",
-      "title": "Who Keeps the Money? The Smile Curve of AI Chips",
-      "summary": "The world will spend about $1.5 trillion on chips this year. I followed one AI chip through eight companies to see who actually keeps the money. The answer bends a thirty-year-old rule.",
-      "content_text": "The world will spend about $1.5 trillion on chips this year. I followed one AI chip through eight companies to see who actually keeps the money. The answer bends a thirty-year-old rule.",
-      "date_published": "2026-11-18T09:00:00+08:00",
-      "tags": [
-        "Semiconductors"
-      ],
-      "image": "https://junweiheung.github.io/junweiheung/images/thumbs/png/smile.png",
-      "_bottleneck": {
-        "short": "Who keeps the money?",
-        "topic": "Semiconductors",
-        "readMins": 12,
-        "stat": {
-          "big": "$1.51T",
-          "text": "Global chip sales forecast for 2026, up about 90% in a year."
-        },
-        "png": "https://junweiheung.github.io/junweiheung/images/thumbs/png/smile.png"
       }
     }
   ]

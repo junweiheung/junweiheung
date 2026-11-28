@@ -26,6 +26,7 @@ window.BOTTLENECK_COUNTRIES = {
         { title: "Who owns Anthropic? Inside the $1.5 trillion IPO", href: "explainers/anthropic-ipo.html" },
         { title: "The safety lab that became a juggernaut: the Anthropic story", href: "explainers/anthropic-story.html" },
         { title: "From a $2 stock to the trillion-dollar club: how AMD came back", href: "explainers/amd.html" },
+        { title: "Ask why: the rise and fall of Enron", href: "explainers/enron.html" },
         { title: "The bank behind the currency market (CLS)", href: "explainers/cls.html" },
         { title: "One seesaw, two fears: how the Fed uses the bond market", href: "explainers/bond-market.html" },
         { title: "Lending to governments: US Treasuries vs Singapore's bonds", href: "explainers/govt-bonds.html" }
@@ -77,6 +78,11 @@ window.BOTTLENECK_COUNTRIES = {
     "Philippines": {
       articles: [
         { title: "The domino year: the 1997 Asian financial crisis", href: "explainers/asian-crisis.html" }
+      ]
+    },
+    "Greece": {
+      articles: [
+        { title: "The debt that nearly broke the euro: Greece's crisis", href: "explainers/greece-crisis.html" }
       ]
     }
   }

@@ -6,7 +6,55 @@
   <atom:link href="https://junweiheung.github.io/junweiheung/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Explainers on the companies and industries the world can't do without.</description>
   <language>en-sg</language>
-  <lastBuildDate>Fri, 27 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 28 Nov 2026 01:00:00 GMT</lastBuildDate>
+  <item>
+    <title>An ETF for Every Theory: The Strangest Funds</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/strange-etfs.html</link>
+    <guid isPermaLink="false">bottleneck-strange-etfs</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>ETFs</category>
+    <description>ETFs began as a cheap way to own the whole market. Now there&apos;s one for almost any idea: copying Congress, backing a party, betting against a fund manager or a TV stock-picker, or trading fear itself. What&apos;s inside them, and the boring fund they&apos;re all up against.</description>
+  </item>
+  <item>
+    <title>What&apos;s a Bond Worth? How Bond Prices and Yields Work</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/bond-pricing.html</link>
+    <guid isPermaLink="false">bottleneck-bond-pricing</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Bonds</category>
+    <description>A bond is a promise to pay fixed amounts on fixed dates. Working out what that promise is worth today explains why prices fall when rates rise, why a risk-free Treasury can lose you money, why a 9% corporate bond may not return 9%, and why some bonds swing far more than others.</description>
+  </item>
+  <item>
+    <title>Ask Why: The Rise and Fall of Enron</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/enron.html</link>
+    <guid isPermaLink="false">bottleneck-enron</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Enron</category>
+    <description>For six years running, Fortune named Enron America&apos;s most innovative company. In 2001 it went bankrupt and took its auditor down with it. How a pipeline company turned into a trading house, booked profits it hadn&apos;t earned, hid losses in its finance chief&apos;s partnerships, and fell apart when people finally asked.</description>
+  </item>
+  <item>
+    <title>The Debt That Nearly Broke the Euro: Greece&apos;s Crisis</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/greece-crisis.html</link>
+    <guid isPermaLink="false">bottleneck-greece-crisis</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Greece</category>
+    <description>In 2001 Greece squeezed into the euro. Eight years later a new government admitted the budget figures had been wrong. How Greece got in, what it hid, why three bailouts and years of austerity left its debt higher than before, and what the crisis says about sharing a currency.</description>
+  </item>
+  <item>
+    <title>The Rumour That Emptied a Bank: How Bank Runs Work</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/bank-run.html</link>
+    <guid isPermaLink="false">bottleneck-bank-run</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Bank runs</category>
+    <description>In December 1973 a schoolgirl&apos;s joke on a Japanese train sent thousands of people to queue outside a healthy bank. How banks lend out most of what you deposit, why a cash shortage can turn into a collapse, and the tools governments use to keep the queues away.</description>
+  </item>
+  <item>
+    <title>Betting on a Fall: How Short Selling Works</title>
+    <link>https://junweiheung.github.io/junweiheung/html/explainers/short-selling.html</link>
+    <guid isPermaLink="false">bottleneck-short-selling</guid>
+    <pubDate>Sat, 28 Nov 2026 01:00:00 GMT</pubDate>
+    <category>Short selling</category>
+    <description>Most investors make money when prices rise. Short sellers borrow shares, sell them, and hope to buy them back cheaper. They&apos;re blamed when markets fall and, now and then, they&apos;re the first to spot a fraud. How shorting works, who lends the shares, how to read the numbers, and why a crowded short can blow up.</description>
+  </item>
   <item>
     <title>The Safety Lab That Became a Juggernaut: The Anthropic Story</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/anthropic-story.html</link>
@@ -128,12 +176,12 @@
     <description>Make a dollar for a few cents and spend it at face value, and you keep the difference. That gap is seigniorage, the oldest profit in finance. Medieval lords took it by minting coins and quietly shaving the silver out of them. Today a government, a bank and a stablecoin issuer each take a version of it. Here is how the same trick has worked from the mint to the blockchain.</description>
   </item>
   <item>
-    <title>Financial Weapons of Mass Destruction? How Derivatives Work</title>
+    <title>Hedge or Bet? How Derivatives Work</title>
     <link>https://junweiheung.github.io/junweiheung/html/explainers/derivatives.html</link>
     <guid isPermaLink="false">bottleneck-derivatives</guid>
     <pubDate>Mon, 23 Nov 2026 01:00:00 GMT</pubDate>
     <category>Derivatives</category>
-    <description>A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them &quot;financial weapons of mass destruction.&quot; Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.</description>
+    <description>A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size, or to bet that a price will fall. In 2002 Warren Buffett called them &quot;financial weapons of mass destruction.&quot; Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.</description>
   </item>
   <item>
     <title>Keeping a Coin Worth a Dollar: How Stablecoins Hold (and Lose) Their Peg</title>
@@ -198,54 +246,6 @@
     <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
     <category>Semiconductors</category>
     <description>In July 2015 AMD closed at $1.62 and analysts wondered if it would survive. Under Lisa Su it passed Intel, won OpenAI as an AI-chip customer, and briefly topped $1 trillion in September 2026.</description>
-  </item>
-  <item>
-    <title>Who Owns Anthropic? Inside the $1.5 Trillion IPO</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/anthropic-ipo.html</link>
-    <guid isPermaLink="false">bottleneck-anthropic-ipo</guid>
-    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
-    <category>AI and capital markets</category>
-    <description>Anthropic sold 980 million shares at $83 in the biggest IPO on record. Amazon and Google own over a quarter of it but can&apos;t vote. Seven co-founders hold one share with 50.1% of the votes.</description>
-  </item>
-  <item>
-    <title>Chipped at Work: How Close Are Bosses to Putting Tech Inside You?</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/implants.html</link>
-    <guid isPermaLink="false">bottleneck-implants</guid>
-    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
-    <category>Neurotech and work</category>
-    <description>A Wisconsin company once threw a party to microchip its staff. Brain implants now let paralysed people move cursors by thought. How realistic is it that your boss asks you to get one?</description>
-  </item>
-  <item>
-    <title>The Cloth Inside the Chip: One Japanese Mill and AI&apos;s Quietest Shortage</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/glass-cloth.html</link>
-    <guid isPermaLink="false">bottleneck-glass-cloth</guid>
-    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
-    <category>Advanced packaging</category>
-    <description>Under every advanced AI processor sits a sheet of woven glass. One Japanese company, founded as a silk spinner in 1918, reportedly makes about 90% of the best grade, and the queue for it is long.</description>
-  </item>
-  <item>
-    <title>The Gate That Didn&apos;t Open: How Stargate Shrank</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/stargate.html</link>
-    <guid isPermaLink="false">bottleneck-stargate</guid>
-    <pubDate>Thu, 19 Nov 2026 01:00:00 GMT</pubDate>
-    <category>AI infrastructure</category>
-    <description>A US$500 billion White House promise, a land grab across Texas, and a joint venture that barely started. How the biggest number in tech shrank.</description>
-  </item>
-  <item>
-    <title>Unlocked, and Still Out of Reach: The Hidden Compute in Gaming GPUs</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/gpu-unlock.html</link>
-    <guid isPermaLink="false">bottleneck-gpu-unlock</guid>
-    <pubDate>Wed, 18 Nov 2026 01:00:00 GMT</pubDate>
-    <category>GPUs</category>
-    <description>An open-source unlock nearly doubles the AI compute of RTX 30 and 40 graphics cards. Gamers get 0% more frames, and used prices keep climbing. Here&apos;s why the unlock helps the people who need it least.</description>
-  </item>
-  <item>
-    <title>Who Keeps the Money? The Smile Curve of AI Chips</title>
-    <link>https://junweiheung.github.io/junweiheung/html/explainers/smile.html</link>
-    <guid isPermaLink="false">bottleneck-smile</guid>
-    <pubDate>Wed, 18 Nov 2026 01:00:00 GMT</pubDate>
-    <category>Semiconductors</category>
-    <description>The world will spend about $1.5 trillion on chips this year. I followed one AI chip through eight companies to see who actually keeps the money. The answer bends a thirty-year-old rule.</description>
   </item>
 </channel>
 </rss>

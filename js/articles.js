@@ -413,14 +413,14 @@ window.BOTTLENECK = {
     {
       id: "derivatives",
       href: "explainers/derivatives.html",
-      title: "Financial Weapons of Mass Destruction? How Derivatives Work",
+      title: "Hedge or Bet? How Derivatives Work",
       short: "How derivatives work",
       kicker: "Explainer",
       topic: "Derivatives",
       category: "Market infrastructure",
       date: "2026-11-23",
-      readMins: 14,
-      dek: "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
+      readMins: 15,
+      dek: "A derivative is a contract whose value comes from something else: a price, a rate, an index. Farmers and airlines use them to lock in costs; speculators use them to bet with borrowed size, or to bet that a price will fall. In 2002 Warren Buffett called them \"financial weapons of mass destruction.\" Here is what they are, why they are useful, and how the same tools helped blow up LTCM, AIG and the 2008 crisis.",
       summary: "Futures, options and swaps, hedging versus speculation, and why Buffett warned about them",
       thumb: "../images/thumbs/derivatives.svg",
       stats: [
@@ -755,10 +755,157 @@ window.BOTTLENECK = {
         { step: "Accused of distillation", companies: ["deepseek", "moonshot", "minimax"] },
         { step: "The company", companies: ["anthropic"] }
       ]
+    },
+    {
+      id: "short-selling",
+      href: "explainers/short-selling.html",
+      title: "Betting on a Fall: How Short Selling Works",
+      short: "How short selling works",
+      kicker: "Explainer",
+      topic: "Short selling",
+      category: "Market infrastructure",
+      date: "2026-11-28",
+      readMins: 15,
+      dek: "Most investors make money when prices rise. Short sellers borrow shares, sell them, and hope to buy them back cheaper. They're blamed when markets fall and, now and then, they're the first to spot a fraud. How shorting works, who lends the shares, how to read the numbers, and why a crowded short can blow up.",
+      summary: "Borrow, sell, buy back: lopsided risk, securities lending, days to cover, the VW and GameStop squeezes, activist shorts and bans",
+      thumb: "../images/thumbs/short-selling.svg",
+      stats: [
+        { big: "100%", text: "The most a short seller can make, if the company goes to zero. The possible loss has no ceiling." },
+        { big: "€1,000+", text: "Volkswagen's share price on 28 October 2008, up from €211 the Friday before, as short sellers scrambled to buy." },
+        { big: "53%", text: "Melvin Capital's loss in January 2021, when GameStop's shares were squeezed." },
+        { big: "799", text: "Financial companies whose shares the SEC barred from short selling in September 2008." }
+      ],
+      // A concept explainer about markets, not a company profile, so it has no chain.
+      chain: []
+    },
+    {
+      id: "bank-run",
+      href: "explainers/bank-run.html",
+      title: "The Rumour That Emptied a Bank: How Bank Runs Work",
+      short: "How bank runs work",
+      kicker: "Explainer",
+      topic: "Bank runs",
+      category: "Market infrastructure",
+      date: "2026-11-28",
+      readMins: 16,
+      dek: "In December 1973 a schoolgirl's joke on a Japanese train sent thousands of people to queue outside a healthy bank. How banks lend out most of what you deposit, why a cash shortage can turn into a collapse, and the tools governments use to keep the queues away.",
+      summary: "Fractional-reserve banking, liquidity versus solvency, Toyokawa, Northern Rock, SVB and Credit Suisse, and deposit insurance",
+      thumb: "../images/thumbs/bank-run.svg",
+      stats: [
+        { big: "5 days", text: "From a joke on a train to queues outside Toyokawa Shinkin Bank in December 1973. Nothing was wrong with the bank." },
+        { big: "$42B", text: "Deposits withdrawn from Silicon Valley Bank on 9 March 2023, the day before it was closed." },
+        { big: "9,000", text: "US banks that suspended operations in the panics of 1930 to 1933, before deposit insurance." },
+        { big: "S$100K", text: "Singapore's deposit insurance cover per depositor per bank, from April 2024." }
+      ],
+      // A mechanism explainer with no single geography, so no chain and no country.
+      chain: []
+    },
+    {
+      id: "greece-crisis",
+      href: "explainers/greece-crisis.html",
+      title: "The Debt That Nearly Broke the Euro: Greece's Crisis",
+      short: "Greece's debt crisis",
+      kicker: "Explainer",
+      topic: "Greece",
+      category: "Economic history",
+      date: "2026-11-28",
+      readMins: 17,
+      dek: "In 2001 Greece squeezed into the euro. Eight years later a new government admitted the budget figures had been wrong. How Greece got in, what it hid, why three bailouts and years of austerity left its debt higher than before, and what the crisis says about sharing a currency.",
+      summary: "Euro entry, the Goldman swaps, the 2009 reveal, three bailouts and austerity, the 2015 showdown, and the lessons",
+      thumb: "../images/thumbs/greece-crisis.svg",
+      stats: [
+        { big: "15.4%", text: "Greece's 2009 budget deficit as a share of GDP on Eurostat's revised figures. The outgoing government had forecast 3.7%." },
+        { big: "−27%", text: "Fall in Greece's real GDP from 2008 to 2013." },
+        { big: "27.8%", text: "Greek unemployment in 2013, and 59% among under-25s." },
+        { big: "€107B", text: "Debt written off by private bondholders in 2012, in the largest restructuring of government bonds held by private investors." }
+      ],
+      chain: []
+    },
+    {
+      id: "enron",
+      href: "explainers/enron.html",
+      title: "Ask Why: The Rise and Fall of Enron",
+      short: "The fall of Enron",
+      kicker: "Explainer",
+      topic: "Enron",
+      category: "Economic history",
+      date: "2026-11-28",
+      readMins: 18,
+      dek: "For six years running, Fortune named Enron America's most innovative company. In 2001 it went bankrupt and took its auditor down with it. How a pipeline company turned into a trading house, booked profits it hadn't earned, hid losses in its finance chief's partnerships, and fell apart when people finally asked.",
+      summary: "Mark-to-market accounting, Fastow's partnerships, California, the last year of 2001, and what happened to Lay, Skilling, Fastow and Andersen",
+      thumb: "../images/thumbs/enron.svg",
+      stats: [
+        { big: "$101B", text: "Revenue Enron reported for 2000, seventh in the Fortune 500, swollen by counting the full value of its trades." },
+        { big: "$586M", text: "Profits Enron erased from its 1997–2000 results when it restated them on 8 November 2001." },
+        { big: "$63.4B", text: "Assets at Enron's bankruptcy on 2 December 2001, then the largest in US history." },
+        { big: "24 yrs", text: "Jeffrey Skilling's original prison sentence, cut to 14 in 2013. He was released in 2019." }
+      ],
+      chain: [
+        { step: "The company", companies: ["enron"] },
+        { step: "Its auditor", companies: ["andersen"] }
+      ]
+    },
+    {
+      id: "bond-pricing",
+      href: "explainers/bond-pricing.html",
+      title: "What's a Bond Worth? How Bond Prices and Yields Work",
+      short: "How bonds are priced",
+      kicker: "Explainer",
+      topic: "Bonds",
+      category: "Market infrastructure",
+      date: "2026-11-28",
+      readMins: 18,
+      dek: "A bond is a promise to pay fixed amounts on fixed dates. Working out what that promise is worth today explains why prices fall when rates rise, why a risk-free Treasury can lose you money, why a 9% corporate bond may not return 9%, and why some bonds swing far more than others.",
+      summary: "Coupons, yield to maturity, premium and discount, pull to par, selling early, forward rates, credit risk and duration, with a calculator for each",
+      thumb: "../images/thumbs/bond-pricing.svg",
+      stats: [
+        { big: "6 mo", text: "How often US Treasury notes and bonds pay their coupon: half the annual rate, twice a year." },
+        { big: "~10%", text: "Approximate fall in a bond with a duration of 10 if yields rise by one percentage point." },
+        { big: "38¢", text: "Average recovery per dollar on senior unsecured corporate bonds in 2009, against about 49¢ over 1987–2008 (Moody's)." },
+        { big: "$100", text: "Where every bond's price ends up at maturity, whatever it started at: the pull to par." }
+      ],
+      // A concept explainer about markets, not a company profile, so it has no chain.
+      chain: []
+    },
+    {
+      id: "strange-etfs",
+      href: "explainers/strange-etfs.html",
+      title: "An ETF for Every Theory: The Strangest Funds",
+      short: "The strangest ETFs",
+      kicker: "Explainer",
+      topic: "ETFs",
+      category: "Personal finance",
+      date: "2026-11-28",
+      readMins: 17,
+      dek: "ETFs began as a cheap way to own the whole market. Now there's one for almost any idea: copying Congress, backing a party, betting against a fund manager or a TV stock-picker, or trading fear itself. What's inside them, and the boring fund they're all up against.",
+      summary: "VOO and VWRA, NANC and GOP, DEMZ, SARK, the Inverse Cramer ETF and VIX products, with calculators for fees, domicile, daily resets and futures roll",
+      thumb: "../images/thumbs/strange-etfs.svg",
+      stats: [
+        { big: "0.03%", text: "VOO's yearly fee: $3 on every $10,000. The congressional-trading funds charge about 0.74%." },
+        { big: "30% vs 15%", text: "US tax on dividends for a Singapore investor in a US-domiciled fund, against the treaty rate an Irish-domiciled fund pays." },
+        { big: "−15%", text: "The Inverse Cramer ETF's return before it closed in February 2024, while the S&P 500 rose about 25%." },
+        { big: "90%+", text: "XIV's loss in a single day, 5 February 2018, when the VIX had its biggest one-day jump on record." }
+      ],
+      // A concept explainer about markets, not a company profile, so it has no chain.
+      chain: []
     }
   ],
 
   related: [
+    ["strange-etfs", "index-weights", "VOO is the plain S&P 500 fund every other ETF here must beat"],
+    ["strange-etfs", "short-selling", "SARK bets against ARK's fund using swaps rather than short selling"],
+    ["strange-etfs", "derivatives", "VIX products hold futures, not the index, and pay to roll them"],
+    ["bond-pricing", "bond-market", "The maths behind the price-yield seesaw"],
+    ["bond-pricing", "govt-bonds", "Pricing the Treasuries and Singapore bonds the other piece describes"],
+    ["bond-pricing", "risk-ladder", "Credit spreads put a number on the risk of lending to companies"],
+    ["enron", "short-selling", "Short sellers and a Fortune reporter questioned Enron months before it fell"],
+    ["enron", "derivatives", "Enron's trading arm was in effect a giant dealer in forward contracts"],
+    ["greece-crisis", "bank-run", "Greek banks lost 27% of their deposits in the first half of 2015"],
+    ["greece-crisis", "derivatives", "Goldman's currency swaps trimmed the debt Greece reported on joining the euro"],
+    ["greece-crisis", "govt-bonds", "What happens when a government can no longer borrow"],
+    ["bank-run", "risk-ladder", "Deposit insurance is what makes the bottom rung of the ladder safe"],
+    ["bank-run", "bond-market", "Rising rates cut the value of the bonds SVB held, and its depositors ran"],
+    ["derivatives", "short-selling", "Two ways to bet on a fall: put options and futures, or borrowed shares"],
     ["forex", "cls", "CLS settles a large share of the currency market's trades"],
     ["derivatives", "forex", "Currency forwards and swaps are the biggest derivatives market"],
     ["derivatives", "oil-window", "Oil futures and swaps settle against benchmark prices"],
@@ -845,6 +992,8 @@ window.BOTTLENECK = {
     taalas:   { name: "Taalas",            hq: "Canada",       sector: "Chip design" },
     palantir: { name: "Palantir",          hq: "US",           sector: "Software & data" },
     moonshot: { name: "Moonshot AI",       hq: "China",        sector: "AI labs" },
-    minimax:  { name: "MiniMax",           hq: "China",        sector: "AI labs" }
+    minimax:  { name: "MiniMax",           hq: "China",        sector: "AI labs" },
+    enron:    { name: "Enron",             hq: "US",           sector: "Energy trading" },
+    andersen: { name: "Arthur Andersen",   hq: "US",           sector: "Accounting" }
   }
 };

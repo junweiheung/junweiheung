@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Why: The Rise and Fall of Enron — Bottleneck by Jun Wei</title>
+<meta name="description" content="How Enron went from gas pipelines to America's most innovative company to the largest bankruptcy in US history: mark-to-market accounting, Andrew Fastow's partnerships, the California electricity crisis, the last year of 2001, and what happened to Lay, Skilling, Fastow and Arthur Andersen.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/enron.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Corporate fraud · Enron</span></div>
+  <h1>Ask Why</h1>
+  <p class="dek">Enron's slogan was "Ask why". For six years running, Fortune named it America's most innovative company. In 2001 it went bankrupt, then the largest bankruptcy in American history, and took its auditor down with it. How a gas-pipeline company turned into a trading house, booked profits it hadn't earned, hid losses in partnerships run by its own finance chief, and fell apart in a few months when people finally asked.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 28, 2026 · 18 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. A pipeline company</a>
+    <a href="#s2">2. The timeline</a>
+    <a href="#s3">3. Profits from the future</a>
+    <a href="#s4">4. The partnerships</a>
+    <a href="#s7">5. The reckoning</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This summarises the Enron scandal from the company's founding in 1985 to the trials that followed its collapse. The structure follows a Chinese-language video explainer<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>; every fact has been checked against court records, regulators and contemporary reporting, and where the video dramatised or got something wrong, this page uses the record. Ken Lay's conviction was vacated after his death, and Arthur Andersen's conviction was overturned on appeal; both are noted. The two interactive charts use invented round numbers to show how the accounting worked. This is educational, not investment advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li><b>Enron</b> began in 1985 as a merger of two gas-pipeline companies. Under <b>Jeffrey Skilling</b> it became a trading house that bought and sold gas, power and much else, and by 2000 it reported revenue of about <b>$101 billion</b>.</li>
+      <li><b>Mark-to-market accounting</b>, approved by the SEC in 1992, let Enron book the whole estimated profit of a long-term deal on the day it was signed. When deals earned less than hoped, Enron needed ever more new deals to cover the gap.</li>
+      <li>Chief financial officer <b>Andrew Fastow</b> ran partnerships that bought Enron's troubled assets and "hedged" its investments using, in effect, Enron's own shares. They hid losses only as long as the share price stayed high.</li>
+      <li>In 2001 the questions started: a Fortune article asking how Enron made money, Skilling's sudden resignation, an internal warning, then a $618 million loss and a $586 million restatement. Enron filed for bankruptcy on <b>2 December 2001</b>.</li>
+      <li>Fastow got six years and Skilling 24 years, later cut to 14. Ken Lay was convicted but died before sentencing. Arthur Andersen collapsed after being convicted of obstruction, a verdict the Supreme Court overturned in 2005. The scandal led directly to the <b>Sarbanes-Oxley Act</b> of 2002.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>A pipeline company</h2>
+  <p class="t dropcap">Enron was born in 1985 out of a merger between Houston Natural Gas and InterNorth, a pipeline company from Nebraska. <b>Kenneth Lay</b>, Houston Natural Gas's chief executive, soon ran the combined company. He had a doctorate in economics, had served as a naval officer in the Pentagon and as a senior energy official in Washington, and kept close ties to politicians, including the Bush family<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup>.</p>
+  <p class="t">For its first years Enron did something unglamorous: it owned pipelines and moved natural gas. But America was deregulating its gas and power markets, letting prices move with supply and demand, and Lay saw a chance to do more than move the stuff.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>The timeline</h2>
+  <p class="t">Scroll through sixteen years of Enron. On the left, its share price from 1995, drawn up to the moment you're reading about<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>; on the right, what happened.</p>
+
+  <div class="tl-scrolly" id="tlScrolly">
+    <div class="tl-sticky"><div class="tl-chartbox">
+      <div class="tl-head"><span id="tlYear">1985</span><span class="tl-vals" id="tlVals"></span></div>
+      <svg id="tlChart" role="img" aria-label="Enron's share price from the end of 1995 to its bankruptcy in December 2001, on a log scale, drawn up to the point in the story you are reading."></svg>
+      <div class="tl-key"><span><i style="background:#e8743b"></i>Enron</span><span class="tl-note">Share price, US$, log scale, adjusted for the 1999 two-for-one split. Year-end closes to 2000, then dated closes joined by straight lines. 2001 is stretched to show the collapse.</span></div>
+    </div></div>
+    <div class="tl-steps" id="tlSteps">
+    <div class="tl-step" data-y="1985.5"><div class="card">
+      <div class="tl-yr">1985</div><h3>Two pipelines become one</h3>
+      <p>Houston Natural Gas merges with InterNorth of Omaha. Ken Lay soon runs the combined company, renamed Enron. It owns pipelines and moves natural gas, a dull, steady business, just as Washington begins letting gas prices float.</p>
+    </div></div>
+    <div class="tl-step" data-y="1987.5"><div class="card">
+      <div class="tl-yr">1987</div><h3>The first warning</h3>
+      <p>Enron's oil-trading unit in Valhalla, New York, has been making unusually large profits. Its two top traders turn out to be running unauthorised bets and diverting money into their own accounts. By one account the bets could have cost Enron about $1 billion before a colleague unwound them; the reported loss is $85 million after tax<sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>.</p>
+      <p>Both traders later plead guilty, and one goes to prison. Accounts differ on how much Lay knew, but the unit had kept trading after the first red flags.</p>
+    </div></div>
+    <div class="tl-step" data-y="1990.5"><div class="card">
+      <div class="tl-yr">1990</div><h3>Skilling's Gas Bank</h3>
+      <p>Lay hires <b>Jeffrey Skilling</b>, a Harvard MBA who, as a McKinsey consultant, had advised Enron to set up a "Gas Bank". Enron would buy gas from producers and sell it to utilities and factories under long-term contracts at fixed prices, trading the risk in between: in effect, a dealer in <a href="derivatives.html">forward contracts</a>.</p>
+    </div></div>
+    <div class="tl-step" data-y="1992.1"><div class="card">
+      <div class="tl-yr">January 1992</div><h3>The accounting change</h3>
+      <p>The SEC allows Enron to use <b>mark-to-market</b> accounting for its gas contracts: the profit expected over a contract's whole life can be booked the day it's signed<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup>. Part 3 shows what that does to the numbers.</p>
+    </div></div>
+    <div class="tl-step" data-y="1997.5"><div class="card">
+      <div class="tl-yr">1996–1999</div><h3>America's most innovative company</h3>
+      <p>Skilling takes the trading model everywhere: electricity, coal, paper, steel, even weather. Because Enron counts the full value of each trade as revenue, not just its margin, revenue soars. Fortune names it "America's most innovative company" every year from 1996.</p>
+      <p>Inside, employees are ranked against each other every year, and the bottom group, often said to be about 15%, is pushed out. What counts is the deals you book, and the profit they show on paper.</p>
+    </div></div>
+    <div class="tl-step" data-y="1999.6"><div class="card">
+      <div class="tl-yr">1998–1999</div><h3>Fastow's partnerships</h3>
+      <p><b>Andrew Fastow</b> becomes chief financial officer in 1998 and starts setting up partnerships, such as LJM, that he runs himself. They buy Enron's troubled assets and do deals with it, keeping losses and debt off its books. Part 4 explains how.</p>
+      <p>The shares split two-for-one in August 1999 and end the year at $44.38, up from $28.53 a year earlier.</p>
+    </div></div>
+    <div class="tl-step" data-y="2000.3"><div class="card">
+      <div class="tl-yr">April 2000</div><h3>Films down the wire</h3>
+      <p>Enron's broadband unit signs a 20-year deal with Blockbuster to stream films to homes. The service barely works and ends within a year, but Enron uses a partnership deal to book about <b>$111 million</b> of profit from it<sup class="fn"><a href="#src-6" id="ref-6">6</a></sup>. Prosecutors later charge executives over it.</p>
+    </div></div>
+    <div class="tl-step" data-y="2000.645"><div class="card">
+      <div class="tl-yr">23 August 2000</div><h3>The peak</h3>
+      <p>Enron's shares close at <b>$90</b>, valuing it at about $70 billion. For 2000 it will report revenue of about $101 billion, seventh in the Fortune 500. Behind the paper profits, real investments are failing: a giant power plant at Dabhol in India, a water business called Azurix, the broadband unit.</p>
+    </div></div>
+    <div class="tl-step" data-y="2000.99"><div class="card">
+      <div class="tl-yr">2000–2001</div><h3>California</h3>
+      <p>California has partly deregulated electricity. Prices soar, rolling blackouts hit, and the state's biggest utility, PG&amp;E, files for bankruptcy in April 2001. Enron's traders profit, using strategies called "Death Star" and "Get Shorty" to game the market's rules. Recordings released in 2004 catch them joking about the money taken from "Grandma Millie"<sup class="fn"><a href="#src-7" id="ref-7">7</a></sup>.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.137"><div class="card">
+      <div class="tl-yr">February 2001</div><h3>"Is Enron overpriced?"</h3>
+      <p>Skilling becomes chief executive. Fortune's Bethany McLean asks a simple question: how exactly does Enron make its money? Few analysts can say, and short sellers are already betting against the stock<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup>. The shares close at $75.09 on 20 February.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.293"><div class="card">
+      <div class="tl-yr">17 April 2001</div><h3>The analyst call</h3>
+      <p>On a call with analysts, a fund manager presses Skilling on why Enron hasn't released a balance sheet with its earnings. Skilling calls him an obscene name.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.619"><div class="card">
+      <div class="tl-yr">14 August 2001</div><h3>Skilling quits</h3>
+      <p>After six months as chief executive, Skilling resigns, citing personal reasons. The shares close at <b>$39.55</b>, less than half their peak. Lay returns as CEO and tells employees the stock is a bargain<sup class="fn"><a href="#src-9" id="ref-9">9</a></sup>.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.622"><div class="card">
+      <div class="tl-yr">15 August 2001</div><h3>The memo</h3>
+      <p>Sherron Watkins, a vice-president, sends Lay an anonymous memo warning that Enron could "implode in a wave of accounting scandals". She later meets him in person<sup class="fn"><a href="#src-10" id="ref-10">10</a></sup>.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.792"><div class="card">
+      <div class="tl-yr">16 October 2001</div><h3>The loss</h3>
+      <p>Enron reports a <b>$618 million</b> quarterly loss and a <b>$1.2 billion</b> cut to shareholders' equity, much of it from the partnerships. The shares close at $33.84. Six days later the SEC opens an inquiry.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.83"><div class="card">
+      <div class="tl-yr">26–30 October 2001</div><h3>The partnerships come out</h3>
+      <p>The Wall Street Journal reports on Chewco, another Fastow partnership. The shares fall to $15.40, and on 30 October close at $11.16, a nine-year low. Fastow has already been replaced as finance chief.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.855"><div class="card">
+      <div class="tl-yr">8 November 2001</div><h3>The restatement</h3>
+      <p>Enron restates its results for 1997 to 2000, cutting reported profits by about <b>$586 million</b>. Years of growth were partly invented.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.91"><div class="card">
+      <div class="tl-yr">26–28 November 2001</div><h3>Junk</h3>
+      <p>The shares close at $4.01 on 26 November. Two days later a planned rescue merger with Dynegy collapses, rating agencies cut Enron to junk, and billions of dollars of debt fall due at once. The shares fall below $1.</p>
+    </div></div>
+    <div class="tl-step" data-y="2001.921"><div class="card">
+      <div class="tl-yr">2 December 2001</div><h3>Bankruptcy</h3>
+      <p>Enron files for <b>bankruptcy</b>, its last close 26 cents. With $63.4 billion of assets, it is then the largest bankruptcy in US history<sup class="fn"><a href="#src-11" id="ref-11">11</a></sup>. About 20,000 people lose their jobs, and many lose retirement savings held in Enron stock.</p>
+      <p>The end ran like a <a href="bank-run.html">bank run</a>: Enron's trading depended on borrowed money and on partners trusting it to pay. Once its rating fell, they demanded cash, and there wasn't enough.</p>
+    </div></div>
+    </div>
+  </div>
+
+  <h2 id="s3"><span class="n">Part 3</span>Profits from the future</h2>
+  <p class="t">Paper profits are the heart of the story. Most companies record profit as they earn it: sign a ten-year contract, and you book each year's profit in that year. In 1992 the SEC allowed Enron to use <b>mark-to-market</b> accounting for its gas contracts instead, as banks do for securities. Under mark-to-market, a contract is recorded at its estimated current value, so the profit expected over its whole life can be booked on the day it's signed.</p>
+  <p class="t">For a bank holding traded bonds, the value comes from market prices. For a 20-year power contract with no market price, the value came from Enron's own forecasts. If a deal later earned less than forecast, Enron had to record the shortfall as a loss, unless it could book enough new deals to cover it. The chart shows why that became a treadmill.</p>
+
+  <figure class="fig rv" id="mtmFig">
+    <div class="ft">One 10-year deal, two ways of counting</div>
+    <div class="fs">Enron forecasts a profit of $15 million a year. Set what the deal really earns.</div>
+    <div class="po-ctl" role="group" aria-label="Accounting method">
+      <div class="seg" id="mtmWay"><button type="button" data-v="mtm" aria-pressed="true">Mark-to-market</button><button type="button" data-v="acc" aria-pressed="false">Ordinary accounting</button></div>
+    </div>
+    <div class="po-ctl"><label for="mtmReal">What the deal really earns: <b id="mtmRealV">$6m</b> a year</label><input type="range" id="mtmReal" min="0" max="15" step="1" value="6"></div>
+    <svg id="mtmSvg" viewBox="0 0 680 280" role="img" aria-label="Interactive bar chart of the profit reported in each of ten years for one contract. Under mark-to-market, the whole forecast profit is booked in year one and shortfalls appear as losses in later years. Under ordinary accounting, each year shows what was actually earned."></svg>
+    <p class="po-why" id="mtmWhy"></p>
+    <figcaption>Illustrative numbers. Real mark-to-market values are discounted and revised as forecasts change, rather than written down in equal steps, but the pattern is the same: the profit comes first, the cash and any disappointment come later. Over ten years both methods add up to the same total.</figcaption>
+  </figure>
+
+  <p class="t">The trap is in the timing. Year one looks spectacular, but not a dollar of that profit has arrived as cash. Every later year starts with a hole. To keep reported earnings growing, Enron had to sign bigger deals each year, each booking its own forecast profit up front. Its earnings kept rising; its cash didn't.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>The partnerships</h2>
+  <p class="t">Mark-to-market inflated profits. The second trick hid losses and debt. <b>Andrew Fastow</b>, a finance specialist Skilling brought in who became chief financial officer in 1998, set up hundreds of <b>special purpose entities</b>: separate companies that could buy assets from Enron, borrow money or enter into deals with it. Under the accounting rules of the time, if outsiders put in at least 3% of an entity's equity and bore real risk, Enron didn't have to include it in its own accounts.</p>
+  <p class="t">Fastow ran several of these partnerships himself, called LJM, Chewco and a set known as the <b>Raptors</b>, and was paid millions of dollars in fees by them. An investigation commissioned by Enron's own board, the Powers report, and later the SEC found that the outside investment was often not really at risk, that Enron had secretly promised to protect investors, and that the deals let Enron hide losses and debt while Fastow and a few colleagues profited<sup class="fn"><a href="#src-12" id="ref-12">12</a></sup>.</p>
+
+  <figure class="fig rv" id="rapFlow">
+    <div class="ft">How a Raptor hid a loss</div>
+    <div class="fs">Simplified from the Raptor partnerships, 2000–2001</div>
+    <div class="flow">
+      <div class="fstep tag"><div class="fl">1. The investment</div><p>Enron owns shares in a technology company. Under mark-to-market, every fall in their price would show up as a loss in Enron's results.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">2. The "hedge"</div><p>Enron creates a partnership and gives it, in effect, <b>Enron's own shares</b>. The partnership promises to pay Enron if the investment falls. Enron's losses are now "hedged".</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">3. The loss vanishes</div><p>The investment falls. The partnership owes Enron the difference, so Enron reports no loss. But the partnership's only real asset is Enron stock.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">4. The catch</div><p>The partnership can only pay if <b>Enron's share price stays high</b>. If it falls, the "hedge" is worthless, and the hidden losses come back onto Enron's books, all at once.</p></div>
+    </div>
+    <figcaption>A real hedge moves risk to someone else. This one moved Enron's losses into a box filled with Enron's own shares: Enron was, in the end, insuring itself.</figcaption>
+  </figure>
+
+  <figure class="fig rv" id="rapFig">
+    <div class="ft">The doom loop</div>
+    <div class="fs">A partnership holding 18 million Enron shares, "hedging" $1.1 billion of hidden losses</div>
+    <div class="po-ctl"><label for="rapPrice">Enron's share price: <b id="rapPriceV">$80</b></label><input type="range" id="rapPrice" min="0" max="90" step="1" value="80"></div>
+    <svg id="rapSvg" viewBox="0 0 680 200" role="img" aria-label="Interactive chart. Lower Enron's share price to see the value of the partnership's Enron shares fall below the losses it is hiding, at which point the losses return to Enron's books."></svg>
+    <p class="po-why" id="rapWhy"></p>
+    <figcaption>Illustrative numbers, of roughly the right scale: Enron's shares peaked at about $90 in August 2000, and in October 2001 it took a $1.2 billion cut to shareholders' equity linked to the partnerships. Once losses came back, the share price fell further, which made the remaining partnerships fail too.</figcaption>
+  </figure>
+
+  <h2 id="s7"><span class="n">Part 5</span>The reckoning</h2>
+  <p class="t">Fastow pleaded guilty and became the government's key witness. In 2006 he was sentenced to six years in prison, less than the ten his plea deal had pointed to, and he was released in 2011. Lay and Skilling were convicted of fraud and conspiracy in May 2006. Lay died of heart disease that July, before he could be sentenced, and his conviction was vacated because he could no longer appeal. Skilling was sentenced to 24 years; in 2013 the sentence was cut to 14, and he was released in 2019 after about twelve years in custody<sup class="fn"><a href="#src-13" id="ref-13">13</a></sup>.</p>
+  <p class="t">Enron's auditor, <b>Arthur Andersen</b>, one of the five largest accounting firms in the world, was convicted in 2002 of obstructing justice by destroying Enron documents. The firm gave up its licence to audit public companies and collapsed; tens of thousands of staff worldwide lost their jobs, and the "Big Five" became the Big Four. In 2005 the Supreme Court unanimously overturned the conviction, because the jury had been wrongly instructed. By then there was no firm left to save<sup class="fn"><a href="#src-14" id="ref-14">14</a></sup>.</p>
+  <p class="t">Congress responded with the <b>Sarbanes-Oxley Act</b> of 2002. Chief executives and finance chiefs must now personally certify their company's accounts, auditors are overseen by a new public board and limited in the consulting they can sell to the firms they audit, and companies must test their internal controls<sup class="fn"><a href="#src-15" id="ref-15">15</a></sup>.</p>
+
+  <p class="pull">Enron's slogan was "Ask why". The people who asked, a reporter, a few short sellers and one of its own vice-presidents, were right.</p>
+
+  <p class="t">The video this page draws on ends with a string of questions. Why did Lay let the Valhalla traders keep going? Why did Skilling build a system that rewarded booking deals over making money? Why did Fastow turn his talent to hiding losses, the auditors sign off, and the analysts keep saying buy? There's no single answer. But the warning signs were there for anyone who asked how Enron's profits turned into cash. Mostly, they didn't.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>Credit: the structure of this explainer follows the Chinese-language video explainer on Enron <a href="https://www.youtube.com/watch?v=CSJ83slUHNU" target="_blank" rel="noopener">on YouTube</a>. Its account was checked against the sources below; where they differed (Fastow's sentence, the California blackouts, the fate of Arthur Andersen's conviction), this page follows the record, and its opening anecdote about a $5 million bonus is left out. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>Enron's 1985 formation, Lay's career and political ties, its 2000 revenue and Fortune 500 rank, and Fortune's "most innovative" award, 1996–2001: <a href="https://en.wikipedia.org/wiki/Enron" target="_blank" rel="noopener">Wikipedia, Enron</a>, <a href="https://en.wikipedia.org/wiki/Kenneth_Lay" target="_blank" rel="noopener">Kenneth Lay</a> and <a href="https://en.wikipedia.org/wiki/Jeffrey_Skilling" target="_blank" rel="noopener">Jeffrey Skilling</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Share prices: year-end closes for 1995–1999, adjusted for the August 1999 split, from <a href="https://picker.uchicago.edu/Enron/EnronAnnualReport1999.pdf" target="_blank" rel="noopener">Enron's 1999 annual report</a>; the peak close of $90 on 23 August 2000 and the roughly $70 billion market value: <a href="https://www.begintoinvest.com/enron-stock-chart/" target="_blank" rel="noopener">Begin To Invest</a>; the year-end 2000 close of $83.13: <a href="https://faculty.ksu.edu.sa/sites/default/files/enron_scandal_the_fall_of_a_wall_street_darling.pdf" target="_blank" rel="noopener">Investopedia, "Enron scandal: the fall of a Wall Street darling"</a>; closes on 20 February, 14 August, 16 October and 26 October 2001 and the last close of 26 cents: <a href="https://content.time.com/time/specials/packages/article/0,28804,2021097_2023262_2023247,00.html" target="_blank" rel="noopener">Time, "Chronology of a collapse"</a>; the 30 October close of $11.16: <a href="https://www.foxnews.com/story/enron-shares-drop-to-nine-year-low" target="_blank" rel="noopener">Reuters, via Fox News</a>; the 26 November close of $4.01: <a href="https://www.ogj.com/general-interest/companies/article/17261155/enron-shares-continues-slide-in-heavy-trading" target="_blank" rel="noopener">Oil &amp; Gas Journal</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>The 1987 Valhalla oil-trading scandal, the reported $85 million after-tax loss and the larger potential losses: <a href="https://bauer.uh.edu/arbogast/documents/untimelyProblemsFromValhalla.pdf" target="_blank" rel="noopener">Stephen Arbogast, "Untimely problems from Valhalla" (University of Houston case study)</a> and <a href="https://www.politicalcapitalism.org/book-3-enron-ascending-the-forgotten-years-1984-1996-4/" target="_blank" rel="noopener">Robert Bradley, Enron Ascending</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>The SEC's 1992 approval of mark-to-market accounting, Enron's revenue recognition on trades and its performance review system: <a href="https://en.wikipedia.org/wiki/Enron_scandal" target="_blank" rel="noopener">Wikipedia, Enron scandal</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>The Enron Broadband–Blockbuster deal and the roughly $111 million of profit booked from it: <a href="https://www.justice.gov/archive/opa/pr/2003/March/03_crm_153.htm" target="_blank" rel="noopener">US Department of Justice, 2003</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Enron traders' recorded conversations and trading strategies during the California electricity crisis: <a href="https://www.cbsnews.com/news/enron-traders-caught-on-tape/" target="_blank" rel="noopener">CBS News</a> and <a href="https://www.npr.org/2004/06/03/1920810/tapes-enron-traders-plotted-market-rigging" target="_blank" rel="noopener">NPR</a>; PG&E's bankruptcy and the wider crisis: <a href="https://en.wikipedia.org/wiki/2000%E2%80%9301_California_electricity_crisis" target="_blank" rel="noopener">Wikipedia, 2000–01 California electricity crisis</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>Bethany McLean, <a href="https://fortune.com/2015/12/30/is-enron-overpriced-fortune-2001/" target="_blank" rel="noopener">"Is Enron overpriced?"</a>, Fortune, 5 March 2001; short sellers' early bets against Enron: <a href="https://en.wikipedia.org/wiki/Jim_Chanos" target="_blank" rel="noopener">Wikipedia, Jim Chanos</a>. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>Skilling's appointment as chief executive in February 2001, the April 2001 analyst call, his resignation on 14 August 2001, Lay's return, Fastow's replacement as finance chief and the October and November 2001 disclosures: <a href="https://content.time.com/time/specials/packages/article/0,28804,2021097_2023262_2023247,00.html" target="_blank" rel="noopener">Time, Enron timeline</a> and <a href="https://en.wikipedia.org/wiki/Enron_scandal" target="_blank" rel="noopener">Wikipedia, Enron scandal</a>. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
+    <li id="src-10"><span class="src-n">10</span>Sherron Watkins's August 2001 memo to Ken Lay: <a href="https://en.wikipedia.org/wiki/Sherron_Watkins" target="_blank" rel="noopener">Wikipedia, Sherron Watkins</a>. <a class="src-back" href="#ref-10" aria-label="Back to the text">↩</a></li>
+    <li id="src-11"><span class="src-n">11</span>The failed Dynegy merger and the downgrade to junk: <a href="https://www.pbs.org/newshour/nation/business-july-dec01-enron_11-28" target="_blank" rel="noopener">PBS NewsHour, 28 November 2001</a>; the bankruptcy of 2 December 2001 and its size: <a href="https://www.govinfo.gov/content/pkg/CPRT-107SPRT82147/html/CPRT-107SPRT82147.htm" target="_blank" rel="noopener">US Senate Committee on Governmental Affairs, staff report (2002)</a>. <a class="src-back" href="#ref-11" aria-label="Back to the text">↩</a></li>
+    <li id="src-12"><span class="src-n">12</span>Fastow's partnerships (LJM, Chewco, the Raptors), the 3% outside-equity rule and the undisclosed guarantees: <a href="https://www.sec.gov/litigation/litreleases/lr18543.htm" target="_blank" rel="noopener">SEC litigation release on Andrew Fastow</a> and <a href="https://www.hsgac.senate.gov/wp-content/uploads/imo/media/doc/REPORT%20-%20Role%20of%20Board%20of%20Directors%20In%20Enron's%20Collapse%20(July%202002)1.pdf" target="_blank" rel="noopener">US Senate Permanent Subcommittee on Investigations, The role of the board of directors in Enron's collapse (2002)</a>, drawing on the Powers report. <a class="src-back" href="#ref-12" aria-label="Back to the text">↩</a></li>
+    <li id="src-13"><span class="src-n">13</span>Fastow's six-year sentence: <a href="https://www.npr.org/2006/09/26/6147490/enrons-fastow-seeks-and-receives-leniency" target="_blank" rel="noopener">NPR</a>; Lay's death and vacated conviction: <a href="https://en.wikipedia.org/wiki/Trial_of_Kenneth_Lay_and_Jeffrey_Skilling" target="_blank" rel="noopener">Wikipedia, Trial of Kenneth Lay and Jeffrey Skilling</a>; Skilling's reduced sentence: <a href="https://money.cnn.com/2013/06/21/news/companies/skilling-enron-resentencing/" target="_blank" rel="noopener">CNN Money</a>; his release in February 2019: <a href="https://news.bloomberglaw.com/securities-law/enrons-architect-of-destruction-walks-free-after-12-year-span" target="_blank" rel="noopener">Bloomberg Law</a>. <a class="src-back" href="#ref-13" aria-label="Back to the text">↩</a></li>
+    <li id="src-14"><span class="src-n">14</span>Arthur Andersen's conviction and the Supreme Court's unanimous reversal on 31 May 2005: <a href="https://www.npr.org/2005/05/31/4673930/supreme-court-throws-out-arthur-andersen-conviction" target="_blank" rel="noopener">NPR</a> and <a href="https://en.wikipedia.org/wiki/Arthur_Andersen_LLP_v._United_States" target="_blank" rel="noopener">Wikipedia, Arthur Andersen LLP v. United States</a>. <a class="src-back" href="#ref-14" aria-label="Back to the text">↩</a></li>
+    <li id="src-15"><span class="src-n">15</span>Enron, the reforms that followed and the Sarbanes-Oxley Act: <a href="https://www.sechistorical.org/museum/galleries/wwr/wwr06a-scandals-enron.php" target="_blank" rel="noopener">SEC Historical Society</a>. <a class="src-back" href="#ref-15" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Not investment, legal or tax advice. The interactive charts use invented numbers to show how the accounting worked. Ken Lay's conviction was vacated after his death and Arthur Andersen's conviction was overturned; the summaries here simplify long legal proceedings.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s2">The timeline</a><br><a href="#mtmFig">Profits from the future</a><br><a href="#rapFig">The doom loop</a><br><a href="short-selling.html">How short selling works</a><br><a href="derivatives.html">How derivatives work</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/enron.js"></script>
+</body>
+</html>

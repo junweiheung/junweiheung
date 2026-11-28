@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rumour That Emptied a Bank: How Bank Runs Work — Bottleneck by Jun Wei</title>
+<meta name="description" content="A bank run happens when depositors rush to withdraw because they fear the bank cannot repay them. The 1973 Toyokawa Shinkin rumour, fractional-reserve banking, how a cash shortage becomes insolvency, why runs are self-fulfilling, Northern Rock, SVB and Credit Suisse, and the tools governments use: deposit insurance, emergency lending, liquidity and capital rules, and rescues.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/bank-run.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Banking · Bank runs</span></div>
+  <h1>The Rumour That Emptied a Bank</h1>
+  <p class="dek">In December 1973 a schoolgirl's joke on a Japanese train sent thousands of people to queue outside a healthy bank. A bank run happens when depositors rush to take their money out because they fear the bank can't repay them. How banks lend out most of what you deposit, why a cash shortage can turn into a collapse, and the tools governments use to keep the queues away.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 28, 2026 · 16 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. A joke on a train</a>
+    <a href="#s2">2. Where your deposit goes</a>
+    <a href="#s3">3. From cash shortage to collapse</a>
+    <a href="#s4">4. Why panic spreads</a>
+    <a href="#s5">5. Runs that made history</a>
+    <a href="#s6">6. How governments stop runs</a>
+    <a href="#s7">7. What it means for your savings</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how bank runs work, in plain terms. The bank in the interactive chart is made up, with round numbers to show the mechanism; real balance sheets are far more complicated. The Toyokawa account follows Japanese studies of the rumour as summarised in English, and the case histories are summarised from regulators' reports. Deposit insurance details are for Singapore and the US; check the current rules where you bank. This is educational, not financial advice.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A <b>bank run</b> happens when many depositors rush to withdraw at once because they fear the bank can't repay them. It can start with nothing more than a rumour: in 1973 a joke between three schoolgirls set off a run on <b>Toyokawa Shinkin Bank</b> in Japan.</li>
+      <li>Banks keep only a <b>fraction</b> of deposits as cash and lend or invest the rest. That's how they pay interest and fund loans, but it means no bank can pay every depositor at once.</li>
+      <li>A run turns a <b>liquidity</b> problem, not enough cash today, into a <b>solvency</b> problem: to raise cash fast, the bank sells assets cheaply, and the losses can wipe out its capital. A bank that was sound can be broken by the run itself.</li>
+      <li>Runs are <b>self-fulfilling</b>: if you expect others to withdraw, withdrawing first is the sensible thing to do. The economists who modelled this, Douglas Diamond and Philip Dybvig, shared the 2022 Nobel prize.</li>
+      <li>Phones made runs faster: <b>Silicon Valley Bank</b> lost about $42 billion of deposits in a single day in March 2023. Governments respond with <b>deposit insurance</b> (S$100,000 per depositor per bank in Singapore), <b>emergency lending</b>, <b>liquidity and capital rules</b>, and, when all else fails, <b>rescues</b>.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>A joke on a train</h2>
+  <p class="t dropcap">On the morning of 8 December 1973, three high-school girls were chatting on a local train in Aichi Prefecture, central Japan. One of them had a job lined up after graduation at <b>Toyokawa Shinkin Bank</b>, a small local savings bank. Her friends teased her that the bank was "dangerous". They meant a bank clerk might get held up by robbers. She took it to heart, and that evening asked a relative whether a shinkin bank was really dangerous.</p>
+  <p class="t">Within five days the question had become a statement, and the statement had become a queue. Japanese researchers later traced the rumour person by person, which is why the case is still taught as a study in how panic spreads<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>. Nothing was wrong with the bank.</p>
+
+  <figure class="fig rv" id="rumourFig">
+    <div class="ft">How a joke became a run</div>
+    <div class="fs">Toyokawa, Aichi Prefecture, December 1973</div>
+    <div class="flow">
+      <div class="fstep tag"><div class="fl">8 Dec · On the train</div><p>Two schoolgirls tease a friend who will work at the bank: it's <b>"dangerous"</b>. They mean robbers. That evening she asks a relative, who asks another relative living near the bank's head office.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">9–11 Dec · The salon and the dry cleaner</div><p>The question passes through a hair salon and a dry cleaner's. By the 11th, local housewives aren't asking any more. They're saying: <b>"Toyokawa Shinkin is in danger."</b></p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">13 Dec · The phone call</div><p>A customer borrows the dry cleaner's phone and tells someone to withdraw <b>¥1.2 million</b> to pay a bill. He hasn't heard the rumour. The owner's wife overhears, takes it as proof, and withdraws <b>¥1.8 million</b> herself. That day 59 depositors take out ¥50 million.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">14 Dec · Every reassurance backfires</div><p>Police sent to manage the crowds look like an investigation. Numbered tickets look like rationing. New rumours spread that a manager has stolen money and the chairman has killed himself.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">15–17 Dec · Cash on display</div><p>The <b>Bank of Japan</b> says the bank is sound and sends cash, stacked about a metre high by the vault for customers to see. Newspapers call it a false rumour; police publish the chain. The queues fade over the following days.</p></div>
+    </div>
+    <figcaption>Accounts of the total differ: about ¥2 billion was withdrawn by most counts, while one newspaper at the time reported ¥1.4 billion and some 5,000 people. Japan already had deposit insurance, covering up to ¥1 million, but few depositors knew about it.</figcaption>
+  </figure>
+
+  <p class="t">The timing helped. A month earlier, the oil shock had set off a panic in which Japanese shoppers stripped shelves of toilet paper. People were primed to believe that things might run out. But the deeper reason the rumour worked is that it was, in one sense, true: no bank could have paid all its depositors at once. Not Toyokawa Shinkin, and not yours.</p>
+
+  <h2 id="s2"><span class="n">Part 2</span>Where your deposit goes</h2>
+  <p class="t">When you put $100 in a bank, the bank doesn't keep $100 in a vault. It keeps a small part as cash, or as money in its own account at the central bank, and uses the rest to make loans and buy bonds. This is <b>fractional-reserve banking</b>: banks keep only a fraction of customer deposits as reserves, and hold the rest in loans and investments.</p>
+  <p class="t">It's the whole point of a bank. Your deposit funds someone's mortgage or a company's expansion, and the interest on those loans pays the interest on your account. It works because, on any normal day, only a few depositors want their money back, and new deposits come in to replace them. Many countries once set a minimum fraction that banks had to keep as reserves. The US cut its requirement to <b>zero</b> in March 2020<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup>, relying instead on the liquidity rules described in Part 6.</p>
+  <p class="t">The catch is a mismatch of timing. Deposits can be withdrawn <b>today</b>; a mortgage is repaid over <b>30 years</b>. A bank is solvent if what it owns is worth more than what it owes. It is <b>liquid</b> if it can pay what's due right now. A bank can be the first without being the second.</p>
+
+  <h2 id="s3"><span class="n">Part 3</span>From cash shortage to collapse</h2>
+  <p class="t">Here is how a run breaks a bank. When withdrawals outrun its cash, the bank has to raise money fast. It sells bonds first, since they're easy to sell. If rates have risen since it bought them, they're worth less than it paid, and selling turns a paper loss into a real one. Then it has to sell loans, which buyers will only take at a steep discount if they're bought in a hurry. Every loss comes out of the bank's <b>capital</b>, the owners' money that absorbs losses before depositors do. When capital runs out, the bank is insolvent.</p>
+
+  <figure class="fig rv" id="runFig">
+    <div class="ft">Watch a run break a sound bank</div>
+    <div class="fs">A simple bank: $100 of deposits and $10 of its owners' capital, invested in $10 of cash, $30 of bonds and $70 of loans</div>
+    <div class="po-ctl" role="group" aria-label="Bond prices">
+      <div class="seg" id="runRates"><button type="button" data-v="calm" aria-pressed="true">Calm markets</button><button type="button" data-v="up" aria-pressed="false">Rates have risen</button></div>
+      <div class="seg" id="runHelp"><button type="button" data-v="sell" aria-pressed="true">Sell assets fast</button><button type="button" data-v="cb" aria-pressed="false">Central bank lends</button></div>
+    </div>
+    <div class="po-ctl"><label for="runPct">Depositors who withdraw: <b id="runPctV">0%</b></label><input type="range" id="runPct" min="0" max="100" step="1" value="0"></div>
+    <svg id="runSvg" viewBox="0 0 680 340" role="img" aria-label="Interactive balance sheet. Two stacked columns show what the bank owns (cash, bonds, loans) and what it owes (deposits, any central bank loan) plus its capital. Raise the share of depositors who withdraw to see cash run out, assets sold at a loss, and capital shrink until the bank is insolvent."></svg>
+    <p class="po-why" id="runWhy"></p>
+    <figcaption>Illustrative numbers. Bonds sell at full value in calm markets and at 80% after rates rise; loans sold in a hurry fetch 60% of their value; a central bank lends up to 80% of the loans' value against them as collateral. Real runs also hit the bank's other funding, and buyers' prices fall as more assets are dumped at once.</figcaption>
+  </figure>
+
+  <p class="t">Try the same run with the central bank lending instead. The bank pledges its loans rather than dumping them, so it raises the cash without taking a loss, and the run can pass. That is the logic of the <b>lender of last resort</b>, the oldest tool against runs, and it's why the Bank of Japan's cash display in Toyokawa worked: it showed depositors that money would not run out.</p>
+  <p class="pull">A bank can survive almost anything except everyone wanting their money back on the same day.</p>
+
+  <h2 id="s4"><span class="n">Part 4</span>Why panic spreads</h2>
+  <p class="t">The uncomfortable truth about a run is that joining it can be the sensible thing to do. Banks pay depositors in the order they turn up. If everyone else stays calm, you lose nothing by waiting. If everyone else runs, the depositors at the front of the queue get paid in full and the ones at the back may wait months, or lose money. So whether you should withdraw depends less on the bank's health than on what you think <b>other people</b> will do.</p>
+  <p class="t">In 1983 the economists <b>Douglas Diamond</b> and <b>Philip Dybvig</b> set this out in a model that showed runs could hit a perfectly healthy bank, as a self-fulfilling prophecy, and that deposit insurance could prevent them. Ben Bernanke showed how bank failures deepened the Great Depression. The three shared the 2022 Nobel prize in economics<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>.</p>
+
+  <figure class="fig rv" id="gameFig">
+    <div class="ft">The depositor's dilemma</div>
+    <div class="fs">What happens to you, depending on what you and everyone else do</div>
+    <div class="tbl-wrap">
+      <table class="cmp game">
+        <thead><tr><th></th><th>Everyone else stays</th><th>Everyone else runs</th></tr></thead>
+        <tbody>
+          <tr><td>You stay</td><td class="ok">Fine. You keep earning interest and the bank keeps lending.</td><td class="bad">Worst outcome. You're at the back of the queue when the cash runs out.</td></tr>
+          <tr><td>You run</td><td class="ok">Fine. You hold cash and miss a little interest.</td><td class="meh">You might get out in time. Running is the safer bet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Running is never much worse than staying, and sometimes much better. That's why a rumour only has to seem plausible. Deposit insurance changes the right-hand column: if your money is guaranteed, the back of the queue costs you nothing, so there's no reason to join it.</figcaption>
+  </figure>
+
+  <h2 id="s5"><span class="n">Part 5</span>Runs that made history</h2>
+  <p class="t">Runs have taken many forms: crowds on the pavement, a frenzy of online transfers, or wealthy clients quietly moving money abroad. Four stand out.</p>
+
+  <div class="cards two">
+    <div class="card">
+      <div class="cn">1930–1933 · United States</div>
+      <h4>The Great Depression</h4>
+      <p>Waves of panic swept American banks after late 1930, as depositors tried to turn deposits into cash. About <b>9,000</b><sup class="fn"><a href="#src-4" id="ref-4">4</a></sup> banks suspended operations, and the Federal Reserve did little to supply the cash they needed.</p>
+      <div class="eg"><b>What changed:</b> the Banking Act of 1933 created the Federal Deposit Insurance Corporation. Runs on American banks became rare for decades.</div>
+    </div>
+    <div class="card">
+      <div class="cn">September 2007 · Britain</div>
+      <h4>Northern Rock</h4>
+      <p>The mortgage lender funded itself by borrowing in markets that froze when the US housing crisis began. When news broke that it had asked the Bank of England for emergency support, savers queued outside its branches<sup class="fn"><a href="#src-5" id="ref-5">5</a></sup>: the first run on a British bank in well over a century.</p>
+      <div class="eg"><b>What happened:</b> the news of the rescue set off the run it was meant to prevent. The government guaranteed deposits and nationalised the bank in early 2008.</div>
+    </div>
+    <div class="card">
+      <div class="cn">March 2023 · United States</div>
+      <h4>Silicon Valley Bank</h4>
+      <p>SVB had put its deposits into long-term bonds that lost value as rates rose. Most of its depositors were tech start-ups and their investors, with balances far above the insured limit, who talked to each other and moved money by phone.</p>
+      <div class="eg"><b>What happened:</b> depositors withdrew about <b>$42 billion</b><sup class="fn"><a href="#src-6" id="ref-6">6</a></sup> on 9 March and asked for about $100 billion more the next morning. Regulators closed the bank on 10 March. The Fed's own review found its supervisors had not fully appreciated the risks.</div>
+    </div>
+    <div class="card">
+      <div class="cn">March 2023 · Switzerland</div>
+      <h4>Credit Suisse</h4>
+      <p>Years of losses and scandals had worn down trust in the 167-year-old bank. After SVB failed, wealthy clients moved money out quickly. Clients pulled a net <b>CHF 61.2 billion</b><sup class="fn"><a href="#src-7" id="ref-7">7</a></sup> in the first three months of 2023, most of it in the second half of March.</p>
+      <div class="eg"><b>What happened:</b> on 19 March the Swiss authorities arranged a takeover by its rival UBS, backed by huge loans from the Swiss National Bank.</div>
+    </div>
+  </div>
+
+  <p class="t">SVB showed how much faster runs had become. At Toyokawa the rumour took five days to reach the bank's counters, and depositors had to queue in person. In 2023, a run that would once have taken weeks happened in hours, organised in group chats and carried out on phones.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>How governments stop runs</h2>
+  <p class="t">No government can make every bank able to pay every depositor at once. What it can do is give depositors fewer reasons to run, and give banks ways to get cash without selling everything. There are five main tools.</p>
+
+  <figure class="fig rv" id="toolFig">
+    <div class="ft">The anti-run toolkit</div>
+    <div class="fs">Choose a tool</div>
+    <div class="tk-tabs" role="tablist" aria-label="Tools against bank runs" id="tkTabs">
+      <button type="button" role="tab" id="tk-t1" aria-controls="tk-p1" aria-selected="true">Deposit insurance</button>
+      <button type="button" role="tab" id="tk-t2" aria-controls="tk-p2" aria-selected="false" tabindex="-1">Emergency lending</button>
+      <button type="button" role="tab" id="tk-t3" aria-controls="tk-p3" aria-selected="false" tabindex="-1">Liquidity rules</button>
+      <button type="button" role="tab" id="tk-t4" aria-controls="tk-p4" aria-selected="false" tabindex="-1">Capital and supervision</button>
+      <button type="button" role="tab" id="tk-t5" aria-controls="tk-p5" aria-selected="false" tabindex="-1">Crisis intervention</button>
+      <span class="tk-ind" aria-hidden="true"></span>
+    </div>
+    <div class="tk-panel" role="tabpanel" id="tk-p1" aria-labelledby="tk-t1">
+      <p class="tk-what"><b>What it does:</b> protects deposits up to a limit, so covered savers have no reason to join a queue.</p>
+      <p>It's the tool Diamond and Dybvig pointed to: if your money is guaranteed, a rumour can't hurt you. The US covers up to <b>$250,000</b> per depositor, per bank, for each type of account. Singapore raised its cover to <b>S$100,000</b><sup class="fn"><a href="#src-8" id="ref-8">8</a></sup> per depositor per bank from April 2024, which fully covers about 91% of insured depositors. Toyokawa shows the catch: insurance only calms people who know they have it.</p>
+      <p class="tk-limit"><b>Its limit:</b> balances above the cap aren't covered. Almost all of SVB's deposits were above it.</p>
+    </div>
+    <div class="tk-panel" role="tabpanel" id="tk-p2" aria-labelledby="tk-t2" hidden>
+      <p class="tk-what"><b>What it does:</b> the central bank lends cash to banks that can't raise it fast enough, so they can pay depositors without dumping assets.</p>
+      <p>The rule of thumb goes back to Walter Bagehot, a Victorian editor of The Economist: in a panic, the central bank should lend freely, at a high rate of interest, against good collateral<sup class="fn"><a href="#src-9" id="ref-9">9</a></sup>. In 2023 the Fed set up a scheme that lent against government bonds at their full face value, so other banks didn't have to sell them at a loss to pay depositors.</p>
+      <p class="tk-limit"><b>Its limit:</b> it saves banks that are short of cash, not ones that have lost too much money. And as Northern Rock found, news that a bank needs it can start a run.</p>
+    </div>
+    <div class="tk-panel" role="tabpanel" id="tk-p3" aria-labelledby="tk-t3" hidden>
+      <p class="tk-what"><b>What it does:</b> makes banks hold enough cash and easily sold assets to survive a run for a while on their own.</p>
+      <p>Under the international Basel III rules, large banks must hold enough <b>high-quality liquid assets</b>, such as cash, central bank reserves and government bonds, to cover their expected outflows over a <b>30-day</b> stress<sup class="fn"><a href="#src-10" id="ref-10">10</a></sup>. The idea is to buy time for the bank, its regulators and its depositors to calm down.</p>
+      <p class="tk-limit"><b>Its limit:</b> the 30-day stress assumes a run at a normal pace. SVB lost a quarter of its deposits in a day.</p>
+    </div>
+    <div class="tk-panel" role="tabpanel" id="tk-p4" aria-labelledby="tk-t4" hidden>
+      <p class="tk-what"><b>What it does:</b> makes banks keep a cushion of their owners' money to absorb losses, and lets regulators check how much risk they're taking.</p>
+      <p>More capital means a bank can lose more on fire sales before depositors are at risk, which is exactly the buffer the chart in Part 3 runs down. Supervisors are meant to spot problems such as SVB's rate risk before depositors do.</p>
+      <p class="tk-limit"><b>Its limit:</b> rules work only if they're enforced, and capital measured at book value can hide losses on bonds a bank doesn't plan to sell.</p>
+    </div>
+    <div class="tk-panel" role="tabpanel" id="tk-p5" aria-labelledby="tk-t5" hidden>
+      <p class="tk-what"><b>What it does:</b> when a bank is failing, the authorities arrange a takeover, wind it down in an orderly way, or guarantee all its deposits.</p>
+      <p>On 12 March 2023 the US Treasury, Fed and FDIC agreed to protect <b>every</b> depositor at SVB and Signature Bank, insured or not, using a "systemic risk exception"<sup class="fn"><a href="#src-11" id="ref-11">11</a></sup>, to stop the run spreading to other banks. A week later Switzerland folded Credit Suisse into UBS.</p>
+      <p class="tk-limit"><b>Its limit:</b> if big depositors expect to be rescued anyway, they have less reason to watch which banks they trust. That's the "moral hazard" argument against bailouts.</p>
+    </div>
+  </figure>
+
+  <h2 id="s7"><span class="n">Part 7</span>What it means for your savings</h2>
+  <p class="t">For most savers in Singapore, the practical lesson is short. Singapore-dollar deposits at a full bank or finance company are insured up to <b>S$100,000 per depositor per bank</b><sup class="fn"><a href="#src-12" id="ref-12">12</a></sup>, by the Singapore Deposit Insurance Corporation. All your accounts at one bank count together towards that limit, but money at a different bank gets its own S$100,000. Foreign-currency deposits, structured deposits and investments such as shares and unit trusts aren't covered.</p>
+  <p class="t">So if you hold more than the limit, spreading it across banks keeps all of it insured. And the next time you hear that a bank is in trouble, it's worth remembering Toyokawa: the bank was fine, the rumour wasn't true, and the people who rushed to withdraw took the trouble of queueing for money that had never been at risk.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>The Toyokawa Shinkin Bank run of December 1973: the rumour's path, the withdrawals, the Bank of Japan's response and the factors behind it, drawing on Itō, Ogawa and Sakaki's 1974 field study: <a href="https://en.wikipedia.org/wiki/Toyokawa_Shinkin_Bank_incident" target="_blank" rel="noopener">Wikipedia, Toyokawa Shinkin Bank incident</a>; Kenya Numata, <a href="https://ci.nii.ac.jp/els/contentscinii_20181107234127.pdf?id=ART0007441495" target="_blank" rel="noopener">"The social psychology of rumour" (1989, in Japanese)</a>. Credit: the telling of the rumour in Part 1 also draws on the Chinese-language video explainer <a href="https://www.youtube.com/watch?v=DxGb78Gm6lk" target="_blank" rel="noopener"><span lang="zh">《幾位女高中生閒聊開玩笑，卻引發恐慌讓銀行倒閉！？｜豊川信用金庫事件》</span></a> (“A few schoolgirls joked, and the panic brought down a bank!? The Toyokawa Shinkin incident”) by <span lang="zh">叉雞</span> on YouTube. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>The cut in US reserve requirement ratios to zero from 26 March 2020: <a href="https://www.federalreserve.gov/monetarypolicy/reservereq.htm" target="_blank" rel="noopener">Federal Reserve, Reserve requirements</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Diamond and Dybvig's 1983 model of bank runs and deposit insurance, Bernanke's work on the Great Depression, and the 2022 prize: <a href="https://www.nobelprize.org/prizes/economic-sciences/2022/popular-information/" target="_blank" rel="noopener">Nobel Prize, popular information</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>About 9,000 bank suspensions from 1930 to 1933 and the creation of the FDIC by the Banking Act of 1933: <a href="https://www.fdic.gov/about/history/deposit-insurance/1930-1939.html" target="_blank" rel="noopener">FDIC, history of deposit insurance, 1930–1939</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Northern Rock's funding, the Bank of England's support and the run of September 2007: <a href="https://publications.parliament.uk/pa/cm200708/cmselect/cmtreasy/56/5604.htm" target="_blank" rel="noopener">House of Commons Treasury Committee, "The run on the Rock"</a>; the deposit guarantee and nationalisation: <a href="https://en.wikipedia.org/wiki/Nationalisation_of_Northern_Rock" target="_blank" rel="noopener">Wikipedia, Nationalisation of Northern Rock</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>SVB's $42 billion of withdrawals on 9 March 2023, the $100 billion expected the next day, and the findings on supervision: <a href="https://www.federalreserve.gov/publications/2023-April-SVB-Key-Takeaways.htm" target="_blank" rel="noopener">Federal Reserve, Review of the supervision and regulation of Silicon Valley Bank, key takeaways</a> and <a href="https://www.federalreserve.gov/publications/2023-april-svb-executive-summary.htm" target="_blank" rel="noopener">executive summary</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>Credit Suisse's net asset outflows of CHF 61.2 billion in the first quarter of 2023: <a href="https://www.sec.gov/Archives/edgar/data/1053092/000137036823000042/0001370368-23-000042.txt" target="_blank" rel="noopener">Credit Suisse 1Q23 earnings release, via SEC EDGAR</a>; the 19 March takeover by UBS: <a href="https://www.bostonglobe.com/2023/04/24/business/net-asset-outflows-topped-68-billion-first-quarter-credit-suisse-reported/" target="_blank" rel="noopener">Boston Globe</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>US deposit insurance of $250,000 per depositor, per bank, per ownership category: <a href="https://www.fdic.gov/resources/deposit-insurance" target="_blank" rel="noopener">FDIC</a>. Singapore's increase from S$75,000 to S$100,000 from 1 April 2024, covering about 91% of insured depositors in full: <a href="https://www.allenandgledhill.com/vn/publication/articles/26697/mas-to-increase-maximum-deposit-insurance-coverage-from-s-75-000-to-s-100-000-from-1-april-2024" target="_blank" rel="noopener">Allen &amp; Gledhill, on the MAS announcement</a>. <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>Lending freely in a panic against good security at a high rate: Walter Bagehot, <a href="https://www.gutenberg.org/ebooks/4359" target="_blank" rel="noopener">Lombard Street (1873)</a>. The Fed's 2023 Bank Term Funding Program, lending against bonds valued at par: <a href="https://www.federalreserve.gov/financial-stability/bank-term-funding-program.htm" target="_blank" rel="noopener">Federal Reserve</a>. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
+    <li id="src-10"><span class="src-n">10</span>The liquidity coverage ratio: high-quality liquid assets to cover net outflows over a 30-day stress: <a href="https://www.bis.org/committees/bcbs/basel-framework/LCR/standard.pdf" target="_blank" rel="noopener">Basel Committee on Banking Supervision, LCR standard</a>. <a class="src-back" href="#ref-10" aria-label="Back to the text">↩</a></li>
+    <li id="src-11"><span class="src-n">11</span>The systemic risk exception protecting all depositors of SVB and Signature Bank, 12 March 2023: <a href="https://home.treasury.gov/news/press-releases/jy1337" target="_blank" rel="noopener">Joint statement by the Treasury, Federal Reserve and FDIC</a>. <a class="src-back" href="#ref-11" aria-label="Back to the text">↩</a></li>
+    <li id="src-12"><span class="src-n">12</span>What Singapore's deposit insurance covers and excludes, and how the limit applies per depositor per bank: <a href="https://cms.law/en/sgp/legal-updates/increase-in-insurance-coverage-for-singapore-dollar-bank-deposits-to-s-100-000" target="_blank" rel="noopener">CMS legal update</a>; <a href="https://www.sdic.org.sg/" target="_blank" rel="noopener">Singapore Deposit Insurance Corporation</a>. <a class="src-back" href="#ref-12" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Not financial, legal or tax advice. The bank in the chart is invented to show the mechanism. Deposit insurance limits and rules change; check the current terms with your bank or deposit insurer before relying on them.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">The Toyokawa rumour</a><br><a href="#s3">Watch a run break a bank</a><br><a href="#s6">The anti-run toolkit</a><br><a href="risk-ladder.html">Where to save</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is financial, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/bank-run.js"></script>
+</body>
+</html>

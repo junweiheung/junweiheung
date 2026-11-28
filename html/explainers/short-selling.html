@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Betting on a Fall: How Short Selling Works — Bottleneck by Jun Wei</title>
+<meta name="description" content="Short sellers borrow shares, sell them and hope to buy them back cheaper. How a short sale works, why the risk is lopsided, who lends the shares, short interest and days to cover, the Volkswagen and GameStop squeezes, activist short sellers from Sino-Forest to Adani, and short-selling bans.">
+<meta name="author" content="Jun Wei Heung">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bottleneck.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/short-selling.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
+      <div class="sheet">
+        <a href="../explainers.html">Home</a>
+        <a href="../all.html">All explainers</a>
+        <a class="base" href="../../index.html">← Jun Wei</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="head" id="top">
+  <div class="kicker">Explainer <span>· Markets · Short selling</span></div>
+  <h1>Betting on a Fall</h1>
+  <p class="dek">Most investors make money when prices rise. Short sellers borrow shares, sell them, and hope to buy them back cheaper. They're blamed when markets fall and, now and then, they're the first to spot a fraud. Here is how shorting works, who lends the shares, how to read the numbers, and why a crowded short can blow up.</p>
+</div>
+
+<div class="byline">
+  <div>By <b><a href="../../index.html" style="text-decoration:none">Jun Wei Heung</a></b> · Words and graphics</div>
+  <div>November 28, 2026 · 15 min read</div>
+  <div class="share"><button id="copyLink">Copy link</button><button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Sources</button></div>
+</div>
+
+<article class="art">
+  <aside class="toc" id="toc">
+    <p>In this story</p>
+    <a href="#s1">1. How a short sale works</a>
+    <a href="#s2">2. Lopsided risk</a>
+    <a href="#s3">3. Who lends the shares</a>
+    <a href="#s4">4. Reading the numbers</a>
+    <a href="#s5">5. The squeeze</a>
+    <a href="#s6">6. Short sellers as detectives</a>
+    <a href="#s7">7. Rules and bans</a>
+    <a href="#sources">Sources</a>
+  </aside>
+
+  <p class="disc">This explains how short selling works, in plain terms, with simplified numbers to show mechanisms rather than real trades. The cases (Volkswagen, GameStop, Sino-Forest, Wirecard, Adani) are summarised from regulators, court and press reports; where a company disputed a short seller's claims, I say so. Rules described are mainly American, with Singapore's where they differ. This is educational, not investment advice.</p>
+
+  <p class="pairnote"><b>One of a pair.</b> This page is about betting on a fall with borrowed shares. For the contracts that let you hedge or bet on almost anything, including put options and futures, read <a href="derivatives.html">Hedge or Bet? How Derivatives Work</a>.</p>
+
+  <div class="keys rv">
+    <h3>Key findings</h3>
+    <ul>
+      <li>A short seller <b>borrows</b> shares, <b>sells</b> them, and later <b>buys them back</b> to return. The profit is the fall in price, less a borrowing fee. The debt is counted in <b>shares, not dollars</b>.</li>
+      <li>That makes the risk <b>lopsided</b>: the most a short can make is 100%, if the company goes to zero, but the loss has <b>no ceiling</b>.</li>
+      <li>The shares mostly come from <b>pension funds, insurers and index funds</b>, which lend them out for a fee and can ask for them back.</li>
+      <li>Every short must one day be bought back. When too many crowd in, a rising price can force them all to buy at once: the <b>squeeze</b> that hit Volkswagen shorts in 2008 and GameStop shorts in 2021.</li>
+      <li>Short sellers profit from bad news, so they hunt for it. Some of the biggest frauds of the past fifteen years, including <b>Sino-Forest</b> and <b>Wirecard</b>, were called out by shorts before regulators acted. Regulators still ban shorting in a panic, as the US did in 2008, six European countries in 2020 and South Korea from 2023 to 2025.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1"><span class="n">Part 1</span>How a short sale works</h2>
+  <p class="t dropcap">Most investors make money one way: buy, wait for the price to rise, sell. A <b>short seller</b> runs the trade backwards. They <b>borrow</b> shares from someone who owns them, usually arranged by a broker, <b>sell</b> them straight away, and hope to <b>buy them back</b> later for less and hand them back to the lender. The gap between the two prices is the profit. While the loan is open the short seller pays a borrowing fee and owes the lender any dividends the shares pay.</p>
+  <p class="t">US rules require the broker to have found shares to borrow, or have reasonable grounds to believe it can, before it accepts a short sale; selling without lining them up first is called <b>naked</b> short selling<sup class="fn"><a href="#src-1" id="ref-1">1</a></sup>. The animation below walks through a single share.</p>
+
+  <figure class="fig rv" id="shortFlow">
+    <div class="ft">A short sale, step by step</div>
+    <div class="fs">One share, borrowed and sold at $100. Press play, or pick a step.</div>
+    <div class="ss-tabs" role="tablist" aria-label="Steps of a short sale" id="ssTabs">
+      <button type="button" role="tab" data-s="1" style="--c:#2f7a4a"><i>1</i>Borrow</button>
+      <button type="button" role="tab" data-s="2" style="--c:#4f8a3c"><i>2</i>Sell</button>
+      <button type="button" role="tab" data-s="3" style="--c:#2f5f9e"><i>3</i>Price falls</button>
+      <button type="button" role="tab" data-s="4" style="--c:#6a4a9a"><i>4</i>Buy back</button>
+      <button type="button" role="tab" data-s="5" style="--c:#c27a1d"><i>5</i>Return</button>
+      <button type="button" role="tab" data-s="6" style="--c:#b8432f"><i>6</i>Profit</button>
+      <button type="button" role="tab" data-s="7" style="--c:#1f2a44"><i>7</i>The risk</button>
+      <span class="ss-ind" aria-hidden="true"></span>
+    </div>
+    <svg id="ssSvg" viewBox="0 0 680 300" role="img" aria-label="Animation of a short sale. A share moves from the broker to you and on to the market, cash comes back, the price falls, you buy the share back and return it. A final step shows what happens if the price rises instead."></svg>
+    <div class="ss-bar">
+      <button type="button" id="ssPlay" class="ss-play">▶ Play</button>
+      <p class="ss-say" id="ssSay" aria-live="polite"></p>
+    </div>
+    <div class="ss-sum"><b>In short:</b> <span data-s="1">Borrow</span> → <span data-s="2">Sell</span> → <span data-s="3">Price falls</span> → <span data-s="4">Buy back</span> → <span data-s="5">Return</span> → <span data-s="6">Profit, if the price fell</span><br><span class="bad" data-s="7">But if the price rises: a loss, with no limit</span></div>
+    <figcaption>The short seller's debt is counted in shares, not dollars. That's what makes the risk lopsided: the most a share can fall is to zero, but there's no limit to how far it can rise.</figcaption>
+  </figure>
+
+  <h2 id="s2"><span class="n">Part 2</span>Lopsided risk</h2>
+  <p class="t">That lopsidedness is the first thing to understand about shorting. Buy a share at $100 and the worst case is losing $100. Short it at $100 and the best case is making $100, if the company goes to zero, while the loss has no cap. In practice a short seller rarely rides a loss to the end: the broker holds the sale proceeds plus extra collateral, called <b>margin</b>, and as the price rises it asks for more. If the short seller can't pay, the broker buys the shares back for them, at a loss.</p>
+  <p class="t">There are other ways to bet on a fall, with different risks, and most of them are derivatives. <b>Buying a put option</b> gives the right to sell at a set price, so the most you can lose is what you paid for it. <b>Selling a futures contract</b> profits if the price drops, with no shares to borrow at all, though the loss is as open-ended as a short sale's. The chart compares a short sale with a put.</p>
+
+  <figure class="fig rv" id="shortFig">
+    <div class="ft">Why shorting is riskier than buying</div>
+    <div class="fs">Profit or loss on one share bought, or bet against, at $100</div>
+    <div class="po-ctl" role="group" aria-label="How to bet on a fall">
+      <div class="seg" id="shWay"><button type="button" data-v="short" aria-pressed="true">Short the shares</button><button type="button" data-v="put" aria-pressed="false">Buy a $100 put for $5</button></div>
+    </div>
+    <svg id="shortSvg" viewBox="0 0 640 300" role="img" aria-label="Interactive chart. The x axis is the share price later, from zero to $250. A faint line shows the profit of someone who bought at $100. The red line shows the bet against the share, either a short sale or a put option. Drag the price to compare."></svg>
+    <div class="po-ctl"><label for="shPrice">Share price later: <b id="shPriceV">$160</b></label><input type="range" id="shPrice" min="0" max="250" step="1" value="160"></div>
+    <p class="po-why" id="shWhy"></p>
+    <figcaption>Simplified: ignores borrowing fees, dividends and interest, and assumes the short is held to the end rather than closed by a margin call.</figcaption>
+  </figure>
+
+  <h2 id="s3"><span class="n">Part 3</span>Who lends the shares</h2>
+  <p class="t">Every short sale needs a lender, and the biggest lenders are the most patient investors in the market: <b>pension funds, insurers, sovereign funds, endowments and mutual and index funds</b>. They plan to hold their shares for years anyway, so lending them out for a fee earns a little extra. The borrower posts collateral, usually cash or bonds worth a bit more than the shares, and the lender can <b>recall</b> the shares when it wants them back<sup class="fn"><a href="#src-2" id="ref-2">2</a></sup>.</p>
+  <p class="t">The money is small but steady. Morningstar estimates that index funds earn about <b>0.1% a year</b> on average from lending, enough to offset part of their fees. For most large companies, plenty of shares are on offer and borrowing is cheap. For a stock that many people want to short and few are lending, the fee can climb steeply: such stocks are called <b>hard to borrow</b>. Recall is a risk for the short seller too: if the lender wants its shares back and no one else will lend, the short seller has to buy in the market, whatever the price.</p>
+
+  <figure class="fig rv" id="lendFig">
+    <div class="ft">The chain behind one borrowed share</div>
+    <div class="fs">Who earns what when a share is lent and sold short</div>
+    <div class="flow">
+      <div class="fstep tag"><div class="fl">The lender</div><p>A <b>pension fund</b> owns the share for the long run. It lends it through its custodian bank and earns a <b>fee</b>, keeping collateral worth slightly more than the share.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">The broker</div><p>The <b>prime broker</b> borrows the share and passes it to its client, charging the client a little more than it pays the lender.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep bad"><div class="fl">The short seller</div><p>A <b>hedge fund</b> sells the share in the market and pays the borrowing fee for as long as the short is open. It must hand back the share whenever it is recalled.</p></div>
+      <div class="farrow" aria-hidden="true"></div>
+      <div class="fstep"><div class="fl">The buyer</div><p>Someone else buys the share. They now own it outright and can <b>lend it again</b>, which is how short interest can exceed the shares in issue.</p></div>
+    </div>
+    <figcaption>Simplified. The pension fund gives up its vote on the share while it's on loan, and receives a payment in place of any dividend. Lenders can recall shares when they want to vote them.</figcaption>
+  </figure>
+
+  <h2 id="s4"><span class="n">Part 4</span>Reading the numbers</h2>
+  <p class="t">Because shorts must one day be bought back, how much of a company is sold short is worth watching. In the US, brokers report their customers' short positions in every stock <b>twice a month</b> to FINRA, the industry regulator, which publishes the totals about a week later<sup class="fn"><a href="#src-3" id="ref-3">3</a></sup>. In May 2026 FINRA proposed collecting them more often. Two numbers come out of it.</p>
+  <p class="t"><b>Short interest</b> is the number of shares sold short and not yet bought back, often shown as a percentage of the shares available to trade. <b>Days to cover</b> divides that by the average number of shares traded each day: it says how many days of normal trading it would take for every short seller to buy back. The higher either number, the more crowded the exit if the price starts to rise.</p>
+
+  <figure class="fig rv" id="dtcFig">
+    <div class="ft">How crowded is the short?</div>
+    <div class="fs">Days to cover = short interest ÷ average daily trading volume</div>
+    <div class="po-ctl"><label for="dtcSi">Short interest: <b id="dtcSiV">20%</b> of the shares available to trade</label><input type="range" id="dtcSi" min="1" max="140" step="1" value="20"></div>
+    <div class="po-ctl"><label for="dtcVol">Trading on a normal day: <b id="dtcVolV">2%</b> of those shares</label><input type="range" id="dtcVol" min="0.5" max="10" step="0.5" value="2"></div>
+    <svg id="dtcSvg" viewBox="0 0 640 150" role="img" aria-label="Interactive chart. Set the short interest and the normal daily trading volume. A row of squares, one per trading day, lights up to show how many days it would take short sellers to buy back every share."></svg>
+    <p class="po-why" id="dtcWhy"></p>
+    <figcaption>Illustrative. The formula is the one FINRA uses for its published figure. In a real squeeze, trading volume jumps as well, and much of the buying comes from people who aren't short at all.</figcaption>
+  </figure>
+
+  <p class="t">Singapore takes a different approach. Since October 2018 anyone whose short position in an SGX-listed stock reaches the lower of <b>0.2% of its shares or S$2 million</b> must report it to the Monetary Authority of Singapore each week, and brokers must mark every short sell order sent to the exchange<sup class="fn"><a href="#src-4" id="ref-4">4</a></sup>.</p>
+
+  <h2 id="s5"><span class="n">Part 5</span>The squeeze</h2>
+  <p class="t">Shorting has a weak spot that buying doesn't. Every short seller must one day buy the shares back, so a crowded short is a queue of guaranteed future buyers. If the price starts to rise, losses and margin calls force some of them to buy, which pushes the price up further and forces more of them to buy. That spiral is a <b>short squeeze</b>, and when there are few shares available it can be violent.</p>
+
+  <div class="cards two">
+    <div class="card">
+      <div class="cn">October 2008</div>
+      <h4>Volkswagen</h4>
+      <p>On Sunday 26 October, Porsche revealed that it controlled about <b>74%</b><sup class="fn"><a href="#src-5" id="ref-5">5</a></sup> of VW's ordinary shares: some held outright, the rest through cash-settled options that hadn't shown up in its earlier disclosures. With the state of Lower Saxony holding about a fifth, very few shares were left for the hedge funds that had shorted the stock to buy back.</p>
+      <div class="eg"><b>What happened:</b> the price went from €211 on the Friday to more than <b>€1,000</b> on the Tuesday, and for a day Volkswagen was the most valuable company in the world.</div>
+    </div>
+    <div class="card">
+      <div class="cn">January 2021</div>
+      <h4>GameStop</h4>
+      <p>Short interest in the struggling video-game retailer had reached more than the total number of its shares available to trade, possible because the same share can be lent, sold, and lent again. A wave of small investors, many organised on Reddit, bought the stock and its call options.</p>
+      <div class="eg"><b>What happened:</b> the price went from under $19 at the end of 2020 to a closing high of <b>$347.51</b><sup class="fn"><a href="#src-6" id="ref-6">6</a></sup> on 27 January (before a later share split). Melvin Capital, a hedge fund with a large short, lost 53% that month and took $2.75 billion of new money from Citadel and Point72.</div>
+    </div>
+  </div>
+
+  <p class="t">The two squeezes had different causes. Volkswagen's came from a buyer quietly cornering the shares through derivatives; GameStop's from crowds of buyers acting in the open. In both, the short sellers' own need to buy was the fuel.</p>
+
+  <h2 id="s6"><span class="n">Part 6</span>Short sellers as detectives</h2>
+  <p class="t">Short sellers are often unpopular: they profit when companies fail, and they're easy to blame when prices fall. But they're also among the few investors paid to look for bad news, and some go further. <b>Activist short sellers</b> research a company, take a short position, and then publish their findings, betting that the market will agree once it reads them. That conflict is real, since the authors profit from the fall they help cause, and companies often say so. Sometimes the research is right.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="cn">2011 · Muddy Waters</div>
+      <h4>Sino-Forest</h4>
+      <p>A report by Carson Block's firm said the Canadian-listed Chinese timber company had greatly overstated its forests. Sino-Forest denied it and accused the firm of profiting from the fall<sup class="fn"><a href="#src-7" id="ref-7">7</a></sup>.</p>
+      <div class="eg"><b>What happened:</b> the shares fell 64% in two days. Ontario's regulator halted trading that August, the company sought bankruptcy protection in 2012, and the regulator later ruled that its former chief executive and four other executives had broken Ontario securities law.</div>
+    </div>
+    <div class="card">
+      <div class="cn">2019 · Financial Times</div>
+      <h4>Wirecard</h4>
+      <p>After FT reporting questioned the German payments company's accounts, Germany's regulator, BaFin, banned new short positions in it for two months<sup class="fn"><a href="#src-8" id="ref-8">8</a></sup>, the first such ban on a single stock.</p>
+      <div class="eg"><b>What happened:</b> in June 2020 Wirecard admitted that €1.9 billion of cash it had reported probably didn't exist, and filed for insolvency. BaFin was later sharply criticised, including by a parliamentary inquiry, for going after the company's critics.</div>
+    </div>
+    <div class="card">
+      <div class="cn">2023 · Hindenburg</div>
+      <h4>Adani</h4>
+      <p>The day before Adani Enterprises' $2.5 billion share sale was due to open, Hindenburg Research accused the Indian group of stock manipulation and accounting fraud. Adani called it a "calculated attack on India" and denied it<sup class="fn"><a href="#src-9" id="ref-9">9</a></sup>.</p>
+      <div class="eg"><b>What happened:</b> the group's companies lost more than <b>$100 billion</b> of market value within days and the share sale was cancelled. Hindenburg's founder closed the firm in January 2025<sup class="fn"><a href="#src-10" id="ref-10">10</a></sup>.</div>
+    </div>
+  </div>
+
+  <p class="pull">A short seller is paid to doubt a company's story. That makes them biased, and sometimes the only ones checking.</p>
+
+  <h2 id="s7"><span class="n">Part 7</span>Rules and bans</h2>
+  <p class="t">The main US rules sit in <b>Regulation SHO</b>. Besides the locate rule, short sales must be marked as such, and if a seller fails to deliver the shares when the trade settles, the broker must buy shares to close the gap, generally by the start of trading on the next settlement day<sup class="fn"><a href="#src-11" id="ref-11">11</a></sup>. Stocks with large, persistent failures go on a public "threshold" list with tighter rules. Naked shorting worries regulators because it can sell shares that don't exist, piling extra selling onto a stock.</p>
+  <p class="t">In a panic, regulators sometimes go further and ban shorting outright, on the theory that short sellers deepen the fall. The record is mixed. A study of the 2008 US ban found that trading in the banned shares became more expensive, with wider gaps between buying and selling prices, while bank shares kept falling through the weeks it was in force.</p>
+
+  <figure class="fig rv" id="banFig">
+    <div class="ft">Short-selling bans in recent crises</div>
+    <div class="fs">Market-wide or sector bans, not single-stock orders</div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th>Where</th><th>When</th><th>What was banned</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>United States</td><td>19 Sep – 8 Oct 2008<sup class="fn"><a href="#src-12" id="ref-12">12</a></sup></td><td>Short sales of 799 financial companies</td><td>The collapse of Lehman Brothers and AIG; lifted once Congress passed the bank rescue law</td></tr>
+          <tr><td>Austria, Belgium, France, Greece, Italy, Spain</td><td>Mid-March – 18 May 2020<sup class="fn"><a href="#src-13" id="ref-13">13</a></sup></td><td>New or larger short positions in all shares on their markets</td><td>The Covid crash; the six bans ended together</td></tr>
+          <tr><td>South Korea</td><td>Nov 2023 – 31 Mar 2025<sup class="fn"><a href="#src-14" id="ref-14">14</a></sup></td><td>All short selling of listed shares</td><td>Illegal naked shorting found at several global banks; lifted once a real-time detection system was in place</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>The UK also banned shorting of financial shares in September 2008. South Korea had banned shorting before, from March 2020, and partly reopened in 2021.</figcaption>
+  </figure>
+
+  <p class="t">For a reader, the useful habit is the reverse of the short seller's: when a company's shares are heavily shorted, ask what the shorts think they know. Sometimes they're wrong and get squeezed. Sometimes, as with Wirecard, they were the only ones reading the accounts.</p>
+
+  <h2 id="sources"><span class="n">Notes</span>Sources</h2>
+  <p class="t" style="font-size:17px">Where the figures and claims come from.</p>
+  <ul class="sources">
+    <li id="src-1"><span class="src-n">1</span>How a short sale works, its unlimited risk, and the locate requirement under Regulation SHO: <a href="https://www.investor.gov/additional-resources/news-alerts/alerts-bulletins/investor-bulletin-introduction-short-sales" target="_blank" rel="noopener">SEC Investor Bulletin: An introduction to short sales</a>. <a class="src-back" href="#ref-1" aria-label="Back to the text">↩</a></li>
+    <li id="src-2"><span class="src-n">2</span>Who lends securities and why, and the collateral and recall terms: <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/securities-lending" target="_blank" rel="noopener">SEC, Investor.gov glossary</a>. Index funds earning about 10 basis points a year from lending: <a href="https://www.morningstar.com/funds/close-examination-risks-rewards-securities-lending" target="_blank" rel="noopener">Morningstar</a>. <a class="src-back" href="#ref-2" aria-label="Back to the text">↩</a></li>
+    <li id="src-3"><span class="src-n">3</span>Twice-monthly short interest reporting under FINRA Rule 4560 and its publication schedule: <a href="https://www.finra.org/filing-reporting/short-interest" target="_blank" rel="noopener">FINRA</a>; the days-to-cover formula: <a href="https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data/glossary" target="_blank" rel="noopener">FINRA equity short interest glossary</a>; the May 2026 proposal to collect it more often: <a href="https://www.finra.org/sites/default/files/2026-05/SR-FINRA-2026-012.pdf" target="_blank" rel="noopener">SR-FINRA-2026-012</a>. <a class="src-back" href="#ref-3" aria-label="Back to the text">↩</a></li>
+    <li id="src-4"><span class="src-n">4</span>Singapore's short position reporting from 1 October 2018 and the marking of short sell orders: <a href="https://www.mas.gov.sg/news/media-releases/2018/improving-transparency-on-short-selling-activities-in-singapore" target="_blank" rel="noopener">MAS media release (2018)</a>; the threshold of the lower of 0.2% of issued shares or S$2 million, reported weekly: <a href="https://www.mas.gov.sg/news/letters-to-editor/2020/current-rules-provide-transparency-on-short-selling-activities" target="_blank" rel="noopener">MAS letter (2020)</a>. <a class="src-back" href="#ref-4" aria-label="Back to the text">↩</a></li>
+    <li id="src-5"><span class="src-n">5</span>Porsche's 74.1% position in Volkswagen through shares and cash-settled options, the rise from €211 to above €1,000 on 28 October 2008, and Lower Saxony's stake: <a href="https://corpgov.law.harvard.edu/2021/09/15/market-efficiency-and-limits-to-arbitrage-evidence-from-the-volkswagen-short-squeeze/" target="_blank" rel="noopener">Harvard Law School Forum on Corporate Governance</a> and <a href="https://www.imd.org/research-knowledge/finance/case-studies/the-volkswagen-short-squeeze/" target="_blank" rel="noopener">IMD case study</a>. <a class="src-back" href="#ref-5" aria-label="Back to the text">↩</a></li>
+    <li id="src-6"><span class="src-n">6</span>GameStop's short interest above its tradable shares, its January 2021 prices, and re-lent shares: <a href="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf" target="_blank" rel="noopener">SEC Staff Report on Equity and Options Market Structure Conditions in Early 2021</a>. Melvin Capital's 53% loss and the $2.75 billion from Citadel and Point72: <a href="https://www.cnbc.com/2021/01/31/melvin-capital-lost-more-than-50percent-after-betting-against-gamestop-wsj.html" target="_blank" rel="noopener">CNBC, citing the Wall Street Journal</a>. <a class="src-back" href="#ref-6" aria-label="Back to the text">↩</a></li>
+    <li id="src-7"><span class="src-n">7</span>The Muddy Waters report and Sino-Forest's fall to C$5.23 by 3 June 2011: <a href="https://www.bloomberg.com/news/articles/2011-06-03/sino-forest-denies-short-seller-s-claims-on-timber-holdings-as-shares-drop" target="_blank" rel="noopener">Bloomberg</a>; the trading halt, bankruptcy filing and the Ontario Securities Commission's ruling: <a href="https://www.osler.com/en/blogs/risk/july-2017/osc-releases-long-awaited-decision-in-sino-forest" target="_blank" rel="noopener">Osler</a>. <a class="src-back" href="#ref-7" aria-label="Back to the text">↩</a></li>
+    <li id="src-8"><span class="src-n">8</span>BaFin's ban on new net short positions in Wirecard, 18 February to 18 April 2019: <a href="https://www.bloomberg.com/news/articles/2019-02-18/bafin-bans-new-wirecard-net-short-positions-and-increases" target="_blank" rel="noopener">Bloomberg</a>. The missing €1.9 billion, the June 2020 insolvency and criticism of BaFin: <a href="https://www.bpb.de/kurz-knapp/hintergrund-aktuell/562462/der-wirecard-skandal-und-die-bafin/" target="_blank" rel="noopener">Bundeszentrale für politische Bildung</a> (in German). <a class="src-back" href="#ref-8" aria-label="Back to the text">↩</a></li>
+    <li id="src-9"><span class="src-n">9</span>Hindenburg's January 2023 report, Adani's response and the cancelled $2.5 billion share sale: <a href="https://www.aljazeera.com/economy/2023/2/1/indias-adani-enterprises-calls-off-2-5bn-share-sale" target="_blank" rel="noopener">Al Jazeera</a>; market value losses above $100 billion: <a href="https://fortune.com/2023/02/04/inside-adani-group-stocks-selloff-india/" target="_blank" rel="noopener">Fortune</a>. <a class="src-back" href="#ref-9" aria-label="Back to the text">↩</a></li>
+    <li id="src-10"><span class="src-n">10</span>Hindenburg Research's closure, announced by its founder Nate Anderson in January 2025: <a href="https://www.aljazeera.com/economy/2025/1/16/muckraking-financial-firm-hindenburg-research-to-disband-founder-says" target="_blank" rel="noopener">Al Jazeera</a>. <a class="src-back" href="#ref-10" aria-label="Back to the text">↩</a></li>
+    <li id="src-11"><span class="src-n">11</span>Regulation SHO's marking, locate and close-out requirements and threshold securities: <a href="https://www.sec.gov/investor/pubs/regsho.htm" target="_blank" rel="noopener">SEC, Key points about Regulation SHO</a> and the <a href="https://www.sec.gov/rules/final/2009/34-60388fr.pdf" target="_blank" rel="noopener">SEC final rule on Rule 204 (2009)</a>. <a class="src-back" href="#ref-11" aria-label="Back to the text">↩</a></li>
+    <li id="src-12"><span class="src-n">12</span>The SEC's ban on short sales of 799 financial companies from 19 September 2008: <a href="https://www.sec.gov/news/press/2008/2008-211.htm" target="_blank" rel="noopener">SEC press release 2008-211</a>; its expiry on 8 October: <a href="https://www.sec.gov/news/press/2008/2008-238.htm" target="_blank" rel="noopener">SEC press release 2008-238</a>; the UK's parallel ban: <a href="https://abcnews.go.com/Business/story?id=5844171" target="_blank" rel="noopener">ABC News</a>; wider trading costs during the ban: <a href="https://business.columbia.edu/faculty/research/shackling-short-sellers-2008-shorting-ban" target="_blank" rel="noopener">Boehmer, Jones and Zhang, "Shackling short sellers"</a>. <a class="src-back" href="#ref-12" aria-label="Back to the text">↩</a></li>
+    <li id="src-13"><span class="src-n">13</span>The 2020 bans in Austria, Belgium, France, Greece, Italy and Spain, and their end on 18 May 2020: <a href="https://www.esma.europa.eu/sites/default/files/library/esma50-165-2033_-_the_2020_short_selling_bans.pdf" target="_blank" rel="noopener">ESMA, The 2020 short selling bans</a>. <a class="src-back" href="#ref-13" aria-label="Back to the text">↩</a></li>
+    <li id="src-14"><span class="src-n">14</span>South Korea's ban from November 2023, its reasons, and the full resumption on 31 March 2025; the earlier ban from March 2020: <a href="https://www.koreatimes.co.kr/amp/economy/20250224/korea-to-allow-short-selling-on-all-stocks-march-31-financial-regulator" target="_blank" rel="noopener">The Korea Times</a> and <a href="https://www.kedglobal.com/short-selling/newsView/ked202503300002" target="_blank" rel="noopener">KED Global</a>. <a class="src-back" href="#ref-14" aria-label="Back to the text">↩</a></li>
+  </ul>
+  <p class="end">Educational only. Not investment, legal or tax advice. Short selling can lose more than the money put up. The cases here are simplified summaries; where companies disputed short sellers' claims, that is noted. Confirm any figure before relying on it.</p>
+</article>
+
+<footer>
+  <div class="in">
+    <div><a class="logo" href="../explainers.html"><i></i>BOTTLENECK</a><p style="margin-top:12px">Explainers on the companies the world can't do without. A series by <a href="../../index.html">Jun Wei Heung</a>.</p></div>
+    <div><h5>The author</h5><p>Words, data and graphics by Jun Wei, a Business AI Systems student at NUS. Corrections and tips welcome via the <a href="../../index.html">homepage</a>.</p><p style="margin-top:10px"><a href="../../index.html">← Back to the homepage</a></p></div>
+    <div><h5>Read</h5><p><a href="#s1">The short sale, animated</a><br><a href="#s5">The squeeze</a><br><a href="#s6">Short sellers as detectives</a><br><a href="derivatives.html">Hedge or Bet? Derivatives</a><br><a href="../all.html">All explainers</a></p></div>
+  </div>
+  <div class="legal">Bottleneck publishes for education and information only. Nothing on this page is investment, legal or tax advice.</div>
+</footer>
+
+<script src="../../js/menu.js"></script>
+<script src="../../js/short-selling.js"></script>
+</body>
+</html>
